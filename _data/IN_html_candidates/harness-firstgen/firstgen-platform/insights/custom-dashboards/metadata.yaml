@@ -1,0 +1,114 @@
+type: article
+article_id: rxlbhvwe6q
+user_id: x5amubrz4l
+category_id: d53e6970ow
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Custom Dashboards Overview
+slug: custom-dashboards
+description: Use Harness' chart Widgets to build your own graphical reporting interface
+  around key DevOps metrics, including deployment frequency, lead time to production,
+  mean time to restore, and change failure rate.
+short_version: Use Harness' toolbox to build your own graphical reporting interface
+  around key DevOps metrics.
+tags:
+- mean time to restore
+- change failure rate
+- lead time to production
+- Most-Active Services
+- deployment frequency
+- deployment history
+- metrics
+- reporting
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:38.40836Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Custom Dashboards Overview
+  description: Use Harness' chart Widgets to build your own graphical reporting interface
+    around key DevOps metrics, including deployment frequency, lead time to production,
+    mean time to restore, and change failure rate.
+  short_version: Use Harness' toolbox to build your own graphical reporting interface
+    around key DevOps metrics.
+  body: <p>Custom Dashboards provide a toolbox for building your own visual interface
+    around Harness data using flexible filtering and criteria. By creating and fine-tuning
+    visualizations that slice and dice your data, you can identify and optimize:</p><ul><li>Development
+    and deployment velocity</li><li>Bottlenecks</li><li>Rollback durations and other
+    useful metrics</li></ul><p>In this topic:</p><ul><li><a href="#overview_of_custom_dashboards">Overview
+    of Custom Dashboards</a></li><li><a href="#rbac_and_dashboards">RBAC and Dashboards</a></li><li><a
+    href="#groups_and_permissions_for_custom_dashboard_management">Groups and Permissions
+    for Custom Dashboard Management</a></li><li><a href="#navigate_through_custom_dashboards">Navigate
+    Through Custom Dashboards</a></li><li><a href="#next_steps">Next Steps</a></li></ul><h3>Overview
+    of Custom Dashboards</h3><p>Custom Dashboards expand on Harness Manager&#39;s
+    default <a href="https://docs.harness.io/article/c3s245o7z8-main-and-services-dashboards">Main
+    and Services Dashboards</a>. They enable you to visualize and prioritize the deployment
+    and related data that matters to you in flexible display formats. Custom Dashboards
+    provide the following benefits:</p><ul><li>Each authorized Harness user has the
+    option to build multiple dashboards for different reporting purposes.</li><li>You
+    can create each dashboard around Harness’ rich set of setup, runtime, and instance
+    data.</li><li>You can insert Harness&#39; <a href="/article/xmho7wqlo6-primary-widgets">Primary
+    Widgets</a> or build your own <a href="/article/qjsd7uzgp2-custom-widgets">Custom
+    Widgets</a>. Primary Widgets display basic DevOps metrics like deployment frequency,
+    lead time to production, mean time to restore, and change failure rate. You can
+    further refine all Widgets to meet your needs.</li><li>Once you&#39;ve placed
+    your Widgets, simply drag to resize or rearrange them in this visual interface.
+    Custom Dashboards remain editable when they&#39;re reopened.</li><li>You can choose
+    to share each dashboard with one or more Harness <a href="/article/ven0bvulsj-users-and-permissions">User Groups</a>.</li></ul><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rxlbhvwe6q/1578097135459/image.png"/></figure><h3>RBAC
+    and Dashboards</h3><p><a href="/article/ven0bvulsj-users-and-permissions">Harness
+    RBAC</a> is <u>not</u> applied to:</p><ul><li><strong>Statistical data</strong>—Statistical
+    data means Custom Dashboard graphs displaying data points.<br/><br/>Statistical
+    data is not filtered using <a href="/article/ven0bvulsj-users-and-permissions">Harness
+    RBAC</a> if the dashboard is shared with a user.</li></ul><p>Harness RBAC <u>is</u>
+    applied to two areas of Custom Dashboards:</p><ul><li><strong>Dashboard management</strong>—This
+    is the creation, updating, and deleting of dashboards.</li><li><strong>Execution
+    details</strong>—This is what is displayed when a dashboard viewer clicks a data
+    point in a graph.</li></ul><h4>RBAC on Statistics vs Details</h4><p>Any viewer
+    has permission to view graphs (statistics) on dashboards shared with them, but
+    only permissions to view the details of the Harness entities (Applications, Services,
+    Environments, deployments, etc) that they have Read permissions for.</p><p></p><h3>Groups
+    and Permissions for Custom Dashboard Management</h3><p>A Harness user&#39;s interaction
+    with Custom Dashboards is role-based. Options depend on their membership in a
+    Harness User Group with specific Account Permissions.</p><p>To create and manage
+    Custom Dashboards, your Harness User Group must have the following Account Permissions:</p><ul><li>Create
+    Custom Dashboards</li><li>Manage Custom Dashboards</li></ul><p>Without these permissions,
+    you can still view and operate on a dashboard that has been <a href="https://docs.harness.io/article/x3zu4kmqqe-sharing">shared
+    with you</a>.</p><p>For more information, see <a href="https://docs.harness.io/article/rxlbhvwe6q-custom-dashboards#manage_groups_and_permissions_for_custom_dashboards">Manage
+    Groups and Permissions</a>.</p><h3>Navigate Through Custom Dashboards</h3><p>Once
+    you have one or more Custom Dashboards available to you, the <strong>Custom Dashboards</strong>
+    page lists them as the following:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/rxlbhvwe6q/1578097212013/image.png"/></figure><p></p><div
+    class="tip-callout">If you are not an Account Administrator, you will see only
+    Custom Dashboards that have been shared with your User Groups.</div><h4>List View</h4><p>This
+    list view provides the following controls:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1569373903999/image.png"
+    style="max-height:90%;max-width:90%" data-hd-height="90%" data-hd-width="90%"/></figure><h4>Detailed
+    View</h4><p>To view a Custom Dashboard, click its name in the list view&#39;s
+    <strong>Name</strong> column.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1569363543610/image.png"
+    style="max-height:100%;max-width:100%" data-hd-height="100%" data-hd-width="100%"/></figure><h3>Next
+    Steps</h3><ul><li><a href="/article/xmho7wqlo6-primary-widgets">Primary Widgets</a></li><li><a
+    href="/article/qjsd7uzgp2-custom-widgets">Custom Widgets</a></li><li><a href="/article/r8678luoeo-filters-groups-and-tags-in-custom-dashboard-widgets">Filters,
+    Groups, and Tags in Primary and Custom Widgets</a></li><li><a href="/article/r0d4wryo9d-put-all-together-completed-custom-dashboard">Completed
+    Custom Dashboards</a></li><li><a href="/article/zbe3yyssa6-create-and-manage-dashboards">Create
+    and Manage Custom Dashboards</a></li><li><a href="/article/906fuf04ne-add-and-configure-primary-widgets">Add
+    and Configure Primary Widgets</a></li><li><a href="/article/0hgsfuoojo-configure-custom-widgets">Add
+    and Configure Custom Widgets</a></li></ul><p></p>
+  slug: custom-dashboards
+  tags:
+  - mean time to restore
+  - change failure rate
+  - lead time to production
+  - Most-Active Services
+  - deployment frequency
+  - deployment history
+  - metrics
+  - reporting
+  is_live: true

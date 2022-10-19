@@ -1,0 +1,111 @@
+type: article
+article_id: 918lei069y
+user_id: 2te4j9f9g7
+category_id: fe0577j8ie
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Switch Account
+slug: switch-account
+description: This topic explains the authentication mechanism when the Account is
+  switched for a user.
+short_version: This topic explains the authentication mechanism when the Account is
+  switched for a user.
+tags:
+- authentication
+- switchaccount
+- account management
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-10T04:39:00.693578Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Switch Account
+  description: This topic explains the authentication mechanism when the Account is
+    switched for a user.
+  short_version: This topic explains the authentication mechanism when the Account
+    is switched for a user.
+  body: <p>You can be a part of more than one Harness Accounts.</p><p>This topic explains
+    how to switch between multiple Accounts in Harness.</p><h3>View and switch Accounts</h3><p>You
+    can check to see if you are a part of multiple Accounts by clicking on your User
+    Profile. </p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/918lei069y/1659947223593/screenshot-2022-08-08-at-1-55-04-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click
+    <strong>Switch Account</strong>. The <strong>Switch Account</strong> settings
+    appear.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/918lei069y/1659947371793/screenshot-2022-08-08-at-1-58-49-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>All
+    the Accounts that you are a member of, are listed here. </p><p>You can set a specific
+    Account as default by clicking <strong>Set as Default</strong>.</p><div class="note-callout">Switching
+    Accounts might require re-authentication based on the configured authentication
+    settings.</div><p>The following table shows which settings will need a re-authentication
+    when you switch accounts:</p><p></p><table><tbody><tr><td><p><strong>Authentication
+    Setting of Current Account</strong></p></td><td><p><strong>Authentication Setting
+    of the switch Account</strong></p></td><td><p><strong>Need to Re-authenticate</strong></p></td></tr><tr><td><p>Username
+    and Password</p></td><td><ul><li>Username and Password</li><li>Username and Password
+    + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP
+    (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains </li><li>2FA
+    at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>Username
+    and Password + OAuth</p></td><td><ul><li>Username and Password</li><li>Username
+    and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP
+    (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains </li><li>2FA
+    at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>OAuth
+    (All providers)</p></td><td><p></p><ul><li>Username and Password</li><li>Username
+    and Password + OAuth</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML
+    (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP
+    (Settings 2)</li><li>Whitelisted domains </li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>OAuth
+    (All providers)</p></td><td><ul><li>OAuth (All Providers)</li></ul></td><td><p>No</p></td></tr><tr><td><p>OAuth
+    (Google + GitHub)</p></td><td><ul><li>Username and Password</li><li>Username and
+    Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google)</li><li>SAML
+    (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP
+    (Settings 2)</li><li>Whitelisted domains </li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>OAuth
+    (Google + GitHub)</p></td><td><ul><li>OAuth (Google + GitHub)</li></ul></td><td><p>No</p></td></tr><tr><td><p>OAuth
+    (Google)</p></td><td><ul><li>Username and Password</li><li>Username and Password
+    + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>SAML
+    (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP
+    (Settings 2)</li><li>Whitelisted domains </li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>OAuth
+    (Google)</p></td><td><ul><li>OAuth (Google)</li></ul></td><td><p>No</p></td></tr><tr><td><p>SAML
+    (SSO Settings 1)</p></td><td><ul><li>Username and Password</li><li>Username and
+    Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP
+    (Settings 2)</li><li>Whitelisted domains </li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>SAML
+    (SSO Settings 1)</p></td><td><ul><li>SAML (SSO Settings 1)</li></ul></td><td><p>No</p></td></tr><tr><td><p>SAML
+    (SSO Settings 2)</p></td><td><ul><li>Username and Password</li><li>Username and
+    Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 1)</li><li>LDAP (Settings 1)</li><li>LDAP
+    (Settings 2)</li><li>Whitelisted domains </li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>SAML
+    (SSO Settings 2)</p></td><td><ul><li>SAML (SSO Settings 2)</li></ul></td><td><p>No</p></td></tr><tr><td><p>LDAP
+    (Settings 1)</p></td><td><ul><li>Username and Password</li><li>Username and Password
+    + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP
+    (Settings 2)</li><li>Whitelisted domains </li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>LDAP
+    (Settings 1)</p></td><td><ul><li>LDAP (Settings 1)</li></ul></td><td><p>No</p></td></tr><tr><td><p>LDAP
+    (Settings 2)</p></td><td><ul><li>Username and Password</li><li>Username and Password
+    + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP
+    (Settings 1)</li><li>Whitelisted domains </li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>LDAP
+    (Settings 2)</p></td><td><ul><li>LDAP (Settings 2)</li></ul></td><td><p>No</p></td></tr><tr><td><p>Whitelisted
+    domains </p></td><td><ul><li>Username and Password</li><li>Username and Password
+    + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP
+    (Settings 1)</li><li>LDAP (Settings 2)</li><li>2FA at Account scope + OAuth</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>Whitelisted
+    domains </p></td><td><ul><li>Whitelisted domains </li></ul></td><td><p>No</p></td></tr><tr><td><p>2FA
+    at Account scope + OAuth</p></td><td><ul><li>Username and Password</li><li>Username
+    and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth
+    (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP
+    (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li></ul></td><td><p>Yes</p></td></tr><tr><td><p>2FA
+    at Account scope + OAuth</p></td><td><ul><li>2FA at Account scope + OAuth</li></ul></td><td><p>No</p></td></tr></tbody></table><p></p><p></p>
+  slug: switch-account
+  tags:
+  - authentication
+  - switchaccount
+  - account management
+  is_live: true

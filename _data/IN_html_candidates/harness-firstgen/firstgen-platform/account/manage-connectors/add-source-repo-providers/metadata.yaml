@@ -1,0 +1,65 @@
+type: article
+article_id: ay9hlwbgwa
+user_id: mfr0nxh4be
+category_id: ll7h8ktlwe
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add Source Repo Providers
+slug: add-source-repo-providers
+description: You can add one or more Git repositories as Source Repo Providers in
+  Harness. Once added, a Git repo can be used to sync your Harness account and Applications
+  with your repos and branches.
+short_version: Integrating and syncing with Git repositories (GitHub, Bitbucket, GitLab,
+  CodeCommit, etc.).
+tags:
+- Gitlab
+- Bitbucket
+- Post Webhooks
+- Git sync
+- GitHub
+- Git
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:01:48.005485Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Source Repo Providers
+  description: You can add one or more Git repositories as Source Repo Providers in
+    Harness. Once added, a Git repo can be used to sync your Harness account and Applications
+    with your repos and branches.
+  short_version: Integrating and syncing with Git repositories (GitHub, Bitbucket,
+    GitLab, CodeCommit, etc.).
+  body: <p>Harness Source Repo Providers connect your Harness account with your Git
+    platform accounts to synchronize your Harness account and Applications and pull
+    important files, such as Helm charts, Kubernetes manifests, and Terraform scripts.</p><h3>Connect
+    to Your Repo</h3><ul><li><a href="/article/sip9rr6ogy-add-github-repo">Add a GitHub
+    Repo</a></li><li><a href="/article/etl0yejzsm-add-bitbucket-repo">Add a Bitbucket
+    Repo</a></li><li><a href="/article/od1u7t4vgq-add-a-gitlab-repo">Add a GitLab
+    Repo</a></li><li><a href="/article/o6w4vvzgdg-add-a-code-commit-repo">Add a CodeCommit
+    Repo</a></li><li><a href="/article/k89ioqv8fw-add-an-azure-dev-ops-repo">Add an
+    Azure DevOps Repo</a></li></ul><div class="note-callout">CodeCommit is supported
+    as a Source Repo only. It cannot be used with <a href="/article/htvzryeqjw-configuration-as-code">Harness
+    Git Sync</a>.</div><div class="note-callout">Ensure your Git repo is initialized
+    (<code>git init</code>) before connecting Harness to it.</div><h3>See Also</h3><ul><li>To
+    use Git repos to sync Harness accounts and Application, see <a href="/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code</a> and <a href="/article/3av5pc4goc-onboard-teams-using-git-ops">Onboard
+    Teams Using Git</a>.</li><li>To trigger Harness Workflows and Pipelines using
+    Git Webhooks, see <a href="/article/xerirloz9a-add-a-trigger-2">Add a Trigger</a>.</li></ul><p></p>
+  slug: add-source-repo-providers
+  tags:
+  - Gitlab
+  - Bitbucket
+  - Post Webhooks
+  - Git sync
+  - GitHub
+  - Git
+  is_live: true

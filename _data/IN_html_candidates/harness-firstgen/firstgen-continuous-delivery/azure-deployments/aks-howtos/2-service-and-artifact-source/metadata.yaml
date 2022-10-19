@@ -1,0 +1,187 @@
+type: article
+article_id: jjd1wrre7g
+user_id: mfr0nxh4be
+category_id: mkyr84ulx3
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: 2 - Harness Service Setup for Azure ACR and AKS
+slug: 2-service-and-artifact-source
+description: Set up the Harness Kubernetes Service and Artifact Source for an Azure
+  deployment.
+short_version: Set up the Harness Kubernetes Service and Artifact Source for an Azure
+  deployment.
+tags:
+- Azure
+- AKS
+- ACR
+- Kubernetes
+- Artifact Source
+- Service
+- manifest
+- imagePullSecret
+- infra.kubernetes.namespace
+- YAML
+- Go
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:28:44.914567Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 2 - Harness Service Setup for Azure ACR and AKS
+  description: Set up the Harness Kubernetes Service and Artifact Source for an Azure
+    deployment.
+  short_version: Set up the Harness Kubernetes Service and Artifact Source for an
+    Azure deployment.
+  body: '<div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/m7nkbph0ac">NextGen</a>.</div><p></p><p>This topic
+    describes how to set up the Harness Kubernetes Service and Artifact Source for
+    an Azure deployment:</p><ul><li><a href="https://docs.harness.io/article/jjd1wrre7g-2-service-and-artifact-source#application_setup">Application
+    Setup</a></li><li><a href="https://docs.harness.io/article/jjd1wrre7g-2-service-and-artifact-source#harness_service_setup">Harness
+    Service Setup</a></li><li><a href="https://docs.harness.io/article/jjd1wrre7g-2-service-and-artifact-source#next_step">Next
+    Step</a></li></ul><h3>Application Setup</h3><p>The following procedure creates
+    a Harness Application for a AKS Kubernetes deployment using an ACR repository.</p><p>An
+    Application in Harness represents a logical group of one or more entities, including
+    Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners.
+    Applications organize all of the entities and configurations in Harness CI/CD.
+    For more information, see <a href="https://docs.harness.io/article/bucothemly-application-configuration">Application
+    Components</a>.</p><p>To create the Harness Application, do the following:</p><ol><li>In
+    <strong>Harness</strong>, click <strong>Setup</strong>.</li><li>Click <strong>Add
+    Application</strong>. The <strong>Application</strong> dialog appears.</li><li>Give
+    your Application a name that describes your microservice or app. For the purposes
+    of this guide, we use the name <strong>ACR-to-AKS</strong>.</li><li>Click <strong>SUBMIT</strong>.
+    The new Application is added.</li><li>Click the Application name to open the Application.
+    The Application entities are displayed.</li></ol><p></p><div class="hd--html"><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1551914214481/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure></div><h3>Harness Service Setup</h3><p>There
+    are different types of Harness Services for different deployment platforms. The
+    Kubernetes type includes Kubernetes-specific settings.</p><p>To add the Kubernetes
+    Service, do the following:</p><ol><li>In your new Application, click <strong>Services</strong>.
+    The <strong>Services</strong> page appears.</li><li>In the <strong>Services</strong>
+    page, click <strong>Add Service</strong>. The <strong>Service</strong> dialog
+    appears.<div class="hd--html"><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551993890233/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></div></li><li>In
+    <strong>Name</strong>, enter a name for your Service, such as <strong>Todolist-ACR</strong>.</li><li>In
+    <strong>Description</strong>, enter a description for your service.</li><li>In
+    <strong>Deployment Type</strong>, select <strong>Kubernetes</strong>.</li><li>Click
+    the <strong>Enable Kubernetes V2</strong> checkbox. This setting configures the
+    Service with the latest Harness Kubernetes Service settings.</li><li>Click <strong>SUBMIT</strong>.
+    The new Service is displayed.</li></ol><p>Next, we will walk through how to set
+    up the Kubernetes manifest file and use the Service features.</p><h4>Add ACR Artifact
+    Source</h4><p>An Artifact Source in a Service is the microservice or application
+    artifact you want to deploy.</p><p>For this Azure deployment, the Artifact Source
+    uses the Azure Cloud Provider you set up for your Harness account to connect to
+    ACR (as described in <a href="/article/z75kx7sur5-1-harness-account-setup#azure_cloud_provider">Azure
+    Cloud Provider</a>), and selects a Todo List sample app Docker image as the artifact.</p><p>To
+    add an Artifact Source to this Service, do the following:</p><ol><li>In the Service,
+    click <strong>Add Artifact Source</strong>, and select <strong>Azure Container
+    Registry</strong>. The <strong>Artifact Source</strong> dialog appears.<div class="hd--html"><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551994834751/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></div></li><li>Configure
+    the following fields and click <strong>SUBMIT</strong>.</li></ol><ul><li><strong>Cloud
+    Provider</strong> - Select the Azure Cloud Provider we set up earlier.</li><li><strong>Subscription</strong>
+    - Select the Subscription set up in your ACR container registry. To locate the
+    Subscription in ACR, click <strong>Overview</strong>, and see <strong>Subscription</strong>.<div
+    class="hd--html"><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551994998788/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></div></li><li><strong>Azure
+    Registry Name</strong> - Select the registry you want to use.</li><li><strong>Repository
+    Name</strong> - Select the repository containing the Docker image you want to
+    use.</li></ul><p>When you are finished, the Artifact Source dialog will look something
+    like this:</p><p></p><div class="hd--html"><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551995118906/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></div><p>You
+    can add multiple Artifact Sources to a Service and view the build history for
+    each one by clicking <strong>Artifact History</strong>.</p><p></p><div class="hd--html"><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551995153899/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></div><h4>Add
+    Manifests</h4><p>The <strong>Manifests</strong> section of Service contains the
+    configuration files that describe the desired state of your application in terms
+    of Kubernetes object descriptions.</p><p></p><div class="hd--html"><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551995284144/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></div><h5>What
+    Can I Add in Manifests?</h5><p>You can add any Kubernetes configuration files,
+    formatted in YAML, such as object descriptions, in one or more files.</p><p>As
+    you can see, you can use Go templating and Harness built-in variables in combination
+    in your Manifest files. For information about the features of <strong>Manifests</strong>,
+    see <a href="/article/2j2vi5oxrq-define-kubernetes-manifests">Define Kubernetes
+    Manifests</a>.</p><p>For this guide, we will use the default manifests, with one
+    important change for ACR: we will edit the Kubernetes <strong>imagePullSecret</strong>
+    setting.</p><h5>Pull an Image from a Private ACR Registry</h5><p>To pull the image
+    from the private ACR registry, Harness accesses that registry using the credentials
+    set up in the Harness <a href="https://docs.harness.io/article/7dghbx1dbl-configuring-artifact-server">Artifact
+    Server</a>, but your AKS cluster might not have the needed permissions. To solve
+    this problem, the default values.yaml file contains <code>dockercfg: ${artifact.source.dockerconfig}</code>.</p><ol><li>n
+    your Harness Kubernetes Service, in <strong>Manifests</strong>, click <strong>values.yaml</strong>.</li><li>Verify
+    that <code>dockercfg</code> key exists, and uses the <code>${artifact.source.dockerconfig}</code> expression
+    to obtain the credentials:</li></ol><pre class="hljs apache">dockercfg: ${artifact.source.dockerconfig}</pre><ol><li
+    style="counter-increment:li 2" start="3">Click the <strong>deployment.yaml</strong> file.</li><li>Verify
+    that the Secret object is inside an <code>if</code> argument using <code>dockercfg</code> and
+    the <code>{{.Values.dockercfg}}</code> value:</li></ol><pre class="hljs properties">{{-
+    if .Values.dockercfg}}<br/>apiVersion: v1<br/>kind: Secret<br/>metadata:<br/>  name:
+    {{.Values.name}}-dockercfg<br/>  annotations:<br/>    harness.io/skip-versioning:
+    &#34;true&#34;<br/>data:<br/>  .dockercfg: {{.Values.dockercfg}}<br/>type: kubernetes.io/dockercfg<br/>---<br/>{{-
+    end}}</pre><p>With these requirements met, the cluster import the credentials
+    from the Docker credentials file in the artifact.</p><p>That&#39;s it. In your
+    AKS cluster at deployment runtime, Kubernetes will use the dockercfg credentials
+    to obtain the Docker image from ACR.</p><div class="note-callout">When you create
+    an AKS cluster, Azure also creates a service principal to support cluster operability
+    with other Azure resources. You can use this auto-generated service principal
+    for authentication with an ACR registry. If you can use this method, then only
+    the Kubernetes Cloud Provider is needed and the <code>createImagePullSecret</code>
+    setting can be left as <code>false</code>. In this guide, we create separate connections
+    for AKS and ACR because, in some instances, you might not be able to assign the
+    required role to the auto-generated AKS service principal granting it access to
+    ACR. For more information, see <a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks"
+    target="_blank">Authenticate with Azure Container Registry from Azure Kubernetes
+    Service</a> from Azure.</div><p>Now we can set up the deployment Environment to
+    tell Harness where to deploy the Docker image.</p><h5>Notes</h5><ul><li>When you
+    are using a public repo, the <code>dockercfg: ${artifact.source.dockerconfig}</code> in
+    values.yaml is ignored by Harness. You do not need to remove it.</li><li>If you
+    want to use a private repo and no imagePullSecret, then set <code>dockercfg</code> to
+    empty in values.yaml.</li><li><strong>Legacy imagePullSecret Method</strong> —
+    Previously, Harness used a <code>createImagePullSecret</code> value in values.yaml
+    that could be set to <code>true</code> or <code>false</code>, and <code>dockercfg:
+    ${artifact.source.dockerconfig}</code> to obtain the credentials. If <code>createImagePullSecret</code> was
+    set to <code>true</code>, the following default Secret object in deployment.yaml
+    would be used:</li></ul><pre class="hljs properties">{{- if .Values.createImagePullSecret}}<br/>apiVersion:
+    v1<br/>kind: Secret<br/>metadata:<br/>  name: {{.Values.name}}-dockercfg<br/>  annotations:<br/>    harness.io/skip-versioning:
+    &#34;true&#34;<br/>data:<br/>  .dockercfg: {{.Values.dockercfg}}<br/>type: kubernetes.io/dockercfg<br/>---<br/>{{-
+    end}}</pre><p>This legacy method is still supported for existing Services that
+    use it, but the current method of using the default values.yaml and deployment.yaml
+    files is recommended.</p><h4>Namespace Variable</h4><p>Before we set up the deployment
+    Environment, let&#39;s look at one more interesting setting, click <strong>values.yaml</strong>
+    and locate the <code>namespace</code> setting:</p><pre>namespace: ${infra.kubernetes.namespace}</pre><p>Next,
+    click the <strong>namespace.yaml</strong> file to see the variable referenced
+    in values.yaml:</p><pre>{{- if .Values.createNamespace}}<br/>apiVersion: v1<br/>kind:
+    Namespace<br/>metadata:<br/>  name: {{.Values.namespace}}<br/>{{- end}}</pre><p>The
+    <code>${infra.kubernetes.namespace}</code> variable is a Harness built-in variable
+    and it references the Kubernetes cluster namespace value enter in the Harness
+    Environment, which you will create later.</p><p>The <code>${infra.kubernetes.namespace}</code>
+    variable let&#39;s you enter any value in the Environment <strong>Namespace</strong>
+    setting and, at runtime, the Kubernetes Namespace manifest uses that name to create
+    a namespace.</p><h4>Config Variables and Files</h4><p>For the purpose of this
+    guide, we don&#39;t use many of the other Service settings you can use. For information
+    on the Config Variables and Files settings, see <a href="https://docs.harness.io/article/eb3kfl8uls-service-configuration#configuration_variables_and_files">Configuration
+    Variables and Files</a>.</p><h3>Next Step</h3><ul><li><a href="/article/7qsyj7wvpq-3-azure-environment">3
+    - Azure Environment</a></li></ul><p></p>'
+  slug: 2-service-and-artifact-source
+  tags:
+  - Azure
+  - AKS
+  - ACR
+  - Kubernetes
+  - Artifact Source
+  - Service
+  - manifest
+  - imagePullSecret
+  - infra.kubernetes.namespace
+  - YAML
+  - Go
+  is_live: true

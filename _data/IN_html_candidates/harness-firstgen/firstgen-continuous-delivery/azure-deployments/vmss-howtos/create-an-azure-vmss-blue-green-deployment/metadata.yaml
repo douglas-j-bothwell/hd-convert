@@ -1,0 +1,220 @@
+type: article
+article_id: 9op1u6dgks
+user_id: mfr0nxh4be
+category_id: 4o8zim2tfr
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Create an Azure VMSS Blue/Green Deployment
+slug: create-an-azure-vmss-blue-green-deployment
+description: Currently, this feature is behind the Feature Flag AZURE_VMSS. Contact
+  Harness Support to enable the feature.. A Blue/Green virtual machine scale set (VMSS)
+  deployment uses a load balancer with two b…
+short_version: Currently, this feature is behind the Feature Flag AZURE_VMSS. Contact
+  Harness Support to enable the feature.. A Blue/Green virtual machine scale set (VMSS)
+  deployment uses a load balancer with two b…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-11-15T22:34:53.24646Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create an Azure VMSS Blue/Green Deployment
+  description: ""
+  short_version: ""
+  body: '<p></p><div class="note-callout">Currently, this feature is behind the Feature
+    Flag <code>AZURE_VMSS</code>. Contact <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature. </div><p></p><p>A <a
+    href="/article/325x7awntc-deployment-concepts-and-strategies">Blue/Green</a> virtual
+    machine scale set (VMSS) deployment uses a load balancer with two backend pools:
+    one production pool and one stage pool. You identify the pools during Workflow
+    setup.</p><p>When you deploy the Blue/Green Workflow, it sets up a new VMSS using
+    the image you supplied in <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a> and the base VMSS template you selected
+    in <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a>.</p><p>At first, the Workflow uses the
+    <u>stage pool</u>. Once the deployment using the stage pool is successful, the
+    Workflow detaches the stage pool and attaches (swaps) the <u>production pool</u>
+    to the new VMSS.</p><div class="note-callout">For other deployment strategies,
+    see <a href="/article/74htogyjad-create-an-azure-vmss-basic-deployment">Create
+    an Azure VMSS Basic Deployment</a>, and <a href="/article/ebq6gwgs5r-create-an-azure-vmss-canary-deployment">Create
+    an Azure VMSS Canary Deployment</a>.</div><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#visual_summary">Visual Summary</a></li><li> <a
+    href="#undefined">Supported Platforms and Technologies</a></li><li> <a href="#review_load_balancer_requirements">Review:
+    Load Balancer Requirements</a></li><li> <a href="#step_1_create_the_blue_green_workflow">Step
+    1: Create the Blue/Green Workflow</a></li><li> <a href="#step_2_azure_virtual_machine_scale_set_setup">Step
+    2: Azure Virtual Machine Scale Set Setup</a></li><li> <a href="#option_use_variable_expressions_in_settings">Option:
+    Use Variable Expressions in Settings</a></li><li> <a href="#step_3_upgrade_virtual_machine_scale_set">Step
+    3: Upgrade Virtual Machine Scale Set</a></li><li> <a href="#step_4_swap_virtual_machine_scale_set_route">Step
+    4: Swap Virtual Machine Scale Set Route</a></li><li> <a href="#step_5_deploy">Step
+    5: Deploy</a></li><li> <a href="#review_blue_green_vmss_tags">Review: Blue/Green
+    VMSS Tags</a></li><li> <a href="#configure_as_code">Configure As Code</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li> <a href="/article/1h0723zsvm-azure-virtual-machine-scale-set-deployments">Azure
+    Virtual Machine Scale Set Deployments Overview</a></li><li> <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a></li><li> <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a></li><li><a href="/article/d5hob1zuip-connect-to-your-azure-vmss">Connect
+    to Azure for VMSS Deployments</a></li><li> <a href="/article/h9tkwmkrm7-delegate-installation">Harness
+    Delegate Overview</a></li><li> <a href="/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a></li></ul><h3>Visual Summary</h3><p>Here is the Azure load balancer
+    with two pools set up:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713649491/image.png"/></figure><p>Here
+    is a successful Blue/Green VMSS deployment, showing the swap from the stage to
+    prod pool:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713876963/image.png"/></figure><p>Here
+    is the final, deployed VMSS with its prod pool:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713759321/image.png"/></figure><h3
+    id="undefined">Supported Platforms and Technologies</h3><p>See <a href="/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h3>Review: Load Balancer Requirements</h3><p>A
+    Harness Blue/Green VMSS deployment requires an Azure load balancer with two backend
+    pools.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602713649491/image.png"/></figure><p></p><p>The
+    load balancer distributes inbound flows that arrive at the load balancer&#39;s
+    front end to the stage and production backend pool instances.</p><p>The backend
+    pool instances are instances in the virtual machine scale set Harness creates
+    in the deployment.</p><p>See <a href="https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview"
+    target="_blank">What is Azure Load Balancer?</a> from Azure.</p><h3>Step 1: Create
+    the Blue/Green Workflow</h3><p>In your Harness Application, click <strong>Workflows</strong>,
+    and then click <strong>Add Workflow</strong>.</p><p>Enter the new Workflow&#39;s
+    settings.</p><h4>Name</h4><p>Enter a name for the Workflow. You will use this
+    name to locate the Workflow in Deployments and to add it to <a href="/article/zc1u96u6uj-pipeline-configuration">Pipelines</a>.</p><h4>Workflow
+    Type</h4><p>Select <strong>Blue/Green</strong>. See <a href="/article/325x7awntc-deployment-concepts-and-strategies">Deployment
+    Concepts and Strategies</a>.</p><div class="note-callout">For other deployment
+    strategies, see <a href="/article/74htogyjad-create-an-azure-vmss-basic-deployment">Create
+    an Azure VMSS Basic Deployment</a>, and <a href="/article/ebq6gwgs5r-create-an-azure-vmss-canary-deployment">Create
+    an Azure VMSS Canary Deployment</a>.</div><h4>Environment</h4><p>Select the Environment
+    you created in <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a>.</p><h4>Service</h4><p>Select the Service
+    you created in <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a>.</p><h4>Infrastructure Definition</h4><p>Select
+    the Infrastructure Definition you created in <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a>.</p><h4>Submit</h4><p>When you are done,
+    click <strong>Submit</strong>.</p><p>The steps for the Blue/Green Workflow VMSS
+    deployment are generated automatically.</p><p>Next, we&#39;ll take a look at each
+    step&#39;s settings and how you can change them.</p><h3>Step 2: Azure Virtual
+    Machine Scale Set Setup</h3><p>The Azure Virtual Machine Scale Set Setup step
+    is where you specify the default settings for the new VMSS, the load balancer,
+    and the stage and production backend pools.</p><p>You will define the new VMSS
+    by specifying the min, max, and desired number of instances for the new VMSS.</p><p>These
+    correspond to the <strong>Instance limits</strong> settings in <strong>Auto created
+    scale condition</strong> in VMSS:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png"/></figure><p>Later,
+    in the <strong>Upgrade Virtual Machine Scale Set</strong> step, you will upgrade
+    the number of instances by a percentage or count of the desired instances.</p><h4>Name</h4><p>Enter
+    a name for the Workflow step.</p><h4>Virtual Machine Scale Set Name</h4><p>Enter
+    a name for the new VMSS. This is the name that will appear in the <strong>Virtual
+    machine scale sets</strong> blade in Azure.</p><div class="note-callout">Hyphens
+    in the names are converted to double underscores in Azure. For example, if you
+    enter <code>doc-basic</code> the name in Azure will be <code>doc__basic</code>.</div><p>The
+    first time you deploy, the name of the new VMSS is given the suffix <code>__1</code>.
+    Each time you deploy a new VMSS using the same Harness Infrastructure Definition,
+    the suffix is incremented, such as <code>__2</code>.</p><p>You can use the default
+    name, which is a concatenation of the names of your Application, Service, and
+    Environment: <code>${app.name}_${service.name}_${env.name}</code>.</p><div class="note-callout">For
+    information on naming and versioning, see <a href="/article/w67zx6mv87-azure-vmss-versioning-and-naming">Azure
+    VMSS Versioning and Naming</a>.</div><h4>Instances</h4><p>Select <strong>Fixed</strong>
+    or <strong>Same as already running Default Instances</strong>.</p><p>For <strong>Same
+    as already running Default instances</strong>, Harness determines if there is
+    a previous VMSS deployment for the same Infrastructure Definition. If one is present,
+    Harness takes the number of instances from there. If there is no previous deployment,
+    Harness uses the default of 6.</p><p>If there is more than one scaling policy
+    attached to the already running, previously deployed VMSS, Harness uses the policy
+    named <strong>Auto created scale condition</strong> or <strong>Profile1</strong>.</p><p><strong>Fixed</strong>
+    allows you to set the min, max, and desired number of instances for the new VMSS.</p><h4>Maximum
+    Instances</h4><p>Specify maximum instance count.</p><h4>Minimum Instances</h4><p>Specify
+    minimum instance count.</p><h4>Desired Instances</h4><p>Specify the desired instance
+    count. This is the same as default instance count in VMSS:</p><blockquote>In case
+    there is a problem reading the resource metrics and the current capacity is below
+    the default capacity, then to ensure the availability of the resource, Autoscale
+    will scale out to the default.</blockquote><blockquote>If the current capacity
+    is already higher than the default capacity, Autoscale will not scale in.</blockquote><h4>Resize
+    Strategy</h4><p>Select whether you want Harness to resize the new VMSS instances
+    first, or after it has downsized the old instances.</p><h4>Auto Scaling Steady
+    State Timeout</h4><p>Enter how long you want Harness to wait for this step to
+    finish. If the step&#39;s execution exceeds this timeout, Harness fails the deployment.</p><h4>Azure
+    Load Balancer</h4><p>Select the Azure Load Balancer to use for your new VMSS.
+    Ensure that this Azure Load Balancer has two backend pools.</p><p>Harness quires
+    Azure for the list of Azure Load Balancers using the Harness Azure Cloud Provider
+    you selected in the Infrastructure Definition for this Workflow.</p><h4>Production
+    Backend Pool</h4><p>Select the backend pool to use for live, production traffic.</p><h4>Stage
+    Backend Pool</h4><p>Select the backend pool to use for stage traffic.</p><h3>Option:
+    Use Variable Expressions in Settings</h3><p>You can use <a href="/article/9dvxcegm90-variables">Harness
+    variable expressions</a>, such as <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow
+    variables</a>, in certain step settings.</p><p>When you deploy the Workflow, alone,
+    in a Pipeline, or by a <a href="/article/xerirloz9a-add-a-trigger-2">Trigger</a>,
+    you will be prompted to provide values for the variables.</p><p>To see if a Workflow
+    variable can be used in a setting, enter <code>$</code> or <code>${workflow.variables</code>
+    and see the available expressions.</p><h3>Step 3: Upgrade Virtual Machine Scale
+    Set</h3><p>Use the Upgrade Virtual Machine Scale Set step to set the desired instances
+    for the new VMSS.</p><p>The number of instances will be used for both stage and
+    production traffic.</p><p>You can select a percentage or count.</p><p>This is
+    the same as the <strong>Scale mode</strong> settings in <strong>Auto created scale
+    condition</strong> in VMSS:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png"/></figure><h4>Name</h4><p>Enter
+    a name for the Workflow step.</p><h4>Desired Instances</h4><p>Set the number of
+    instances that the VMSS will attempt to deploy and maintain.</p><ul><li>If you
+    select <strong>Count</strong>, enter the actual number of instances.</li><li>If
+    you select <strong>Percent</strong>, enter a percentage of the available capacity.</li></ul><p>Your
+    setting cannot exceed your <strong>Maximum Instances</strong> setting in the Workflow&#39;s
+    preceding <strong>Azure Virtual Machine Scale Set Setup</strong> step.</p><p>This
+    setting corresponds to the <strong>Maximum</strong> setting in <strong>Instance
+    limits</strong> in VMSS.</p><div class="note-callout">You can use <a href="/article/9dvxcegm90-variables">Harness
+    variable expressions</a>, such as <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow
+    variables</a>, in this setting.</div><h3>Step 4: Swap Virtual Machine Scale Set
+    Route</h3><p>The Swap Virtual Machine Scale Set Route detaches the stage backend
+    pool from the new VMSS, and then attached the production backend pool to it.</p><p>Select
+    <strong>Downsize Old VMSS</strong> is you want Harness to downscale the previously
+    deployed VMSS to 0.</p><p>If you still want to maintain the previous VMSS and
+    its instances, do not select this option.</p><h3>Step 5: Deploy</h3><p>Now that
+    the Canary Workflow is complete, you can deploy it to Azure.</p><ol><li>When you
+    have set up your Workflow, click <strong>Deploy</strong>.</li><li>In <strong>Artifacts</strong>,
+    select the image you supplied in <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a>.</li><li>Click <strong>Submit</strong>.</li></ol><h4>Azure
+    Virtual Machine Scale Set Setup</h4><p>In <strong>Azure Virtual Machine Scale
+    Set Setup</strong>, you can see Harness set up the new VMSS.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602804784194/image.png"/></figure><h4>Upgrade
+    Virtual Machine Scale Set</h4><p>In <strong>Upgrade Virtual Machine Scale Set</strong>,
+    you can see the new VMSS upscaled to its desired instances.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602804852092/image.png"/></figure><h4>Swap
+    Virtual Machine Scale Set Route</h4><p>In <strong>Swap Virtual Machine Scale Set
+    Route</strong>, you can see Harness detach the stage pool from the new VMSS and
+    attached the production pool to it.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602804876072/image.png"/></figure><p>You
+    can see the swap in the logs:</p><pre>...<br/>Sending request to attach virtual
+    machine scale set:[doc__blue__green__2] to prod backend pool:[prod-backend-pool]<br/>Updating
+    virtual machine instance: [doc__blue__green__2_0] for the scale set: [doc__blue__green__2]<br/>All
+    virtual machine instances updated for the scale set: [doc__blue__green__2]<br/>Tagging
+    VMSS: [doc__blue__green__2] as [BLUE] deployment<br/>Tagged successfully VMSS:
+    [doc__blue__green__2]<br/>Sending request to detach virtual machine scale set:[doc__blue__green__1]
+    from prod backend pool:[prod-backend-pool]<br/>Updating virtual machine instance:
+    [doc__blue__green__1_1] for the scale set: [doc__blue__green__1]<br/>All virtual
+    machine instances updated for the scale set: [doc__blue__green__1]<br/>...</pre><p>Congratulations.
+    Your deployment was successful.</p><h3>Review: Blue/Green VMSS Tags</h3><p>Azure
+    tags are used for versioning by Harness, as described in <a href="/article/w67zx6mv87-azure-vmss-versioning-and-naming">Azure
+    VMSS Versioning and Naming</a>.</p><p>For Blue/Green deployments, the an additional
+    tag named is <code>BG_VERSION</code> added.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9op1u6dgks/1602620359490/image.png"/></figure><p>The
+    value for the tag is either BLUE or GREEN. The value alternates with each deployment.</p><p>In
+    the following example, the new deployment of <code>doc__blue__green</code> (<code>doc__blue__green__2</code>)
+    is tagged with <code>BLUE</code> and the previous version <code>doc__blue__green__1</code>
+    is tagged with <code>GREEN</code>.</p><pre>Starting Swap Backend pool step during
+    blue green deployment<br/>Sending request to detach virtual machine scale set:[doc__blue__green__2]
+    from stage backend pool:[stage-backend-pool]<br/>Updating virtual machine instance:
+    [doc__blue__green__2_0] for the scale set: [doc__blue__green__2]<br/>All virtual
+    machine instances updated for the scale set: [doc__blue__green__2]<br/>Sending
+    request to attach virtual machine scale set:[doc__blue__green__2] to prod backend
+    pool:[prod-backend-pool]<br/>Updating virtual machine instance: [doc__blue__green__2_0]
+    for the scale set: [doc__blue__green__2]<br/>All virtual machine instances updated
+    for the scale set: [doc__blue__green__2]<br/>Tagging VMSS: [doc__blue__green__2]
+    as [BLUE] deployment<br/>Tagged successfully VMSS: [doc__blue__green__2]<br/>Sending
+    request to detach virtual machine scale set:[doc__blue__green__1] from prod backend
+    pool:[prod-backend-pool]<br/>Updating virtual machine instance: [doc__blue__green__1_1]
+    for the scale set: [doc__blue__green__1]<br/>All virtual machine instances updated
+    for the scale set: [doc__blue__green__1]<br/>Tagging VMSS: [doc__blue__green__1]
+    as [GREEN] deployment<br/>Tagged successfully VMSS: [doc__blue__green__1]<br/>Swap
+    backend pool completed successfully</pre><h3>Configure As Code</h3><p>To see how
+    to configure the settings in this topic using YAML, configure the settings in
+    the UI first, and then click the YAML editor button (<span style="color:#fb9e00"
+    data-hd-color="#fb9e00"><strong>&lt;/&gt;</strong></span>).</p>'
+  slug: create-an-azure-vmss-blue-green-deployment
+  tags: []
+  is_live: true

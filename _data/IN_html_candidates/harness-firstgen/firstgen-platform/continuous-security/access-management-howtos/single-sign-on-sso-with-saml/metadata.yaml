@@ -1,0 +1,902 @@
+type: article
+article_id: zy8yjcrqzg
+user_id: mfr0nxh4be
+category_id: 49yov609ez
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Single Sign-On (SSO) with SAML in FirstGen
+slug: single-sign-on-sso-with-saml
+description: This content is for Harness FirstGen. Switch to NextGen. Harness supports
+  Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable
+  you to log your users into Harness as part…
+short_version: Covers Harness' Single Sign-On (SSO) integrations with Okta, Azure,
+  Google G Suite, and OneLogin, via SAML.
+tags:
+- SSO
+- SAML
+- SCIM
+- Azure
+- AD
+- 'single sign-on '
+- authentication
+- authorization
+- provisioning
+- Active Directory
+- gsuite
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-09-01T15:20:42.695929Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Single Sign-On (SSO) with SAML in FirstGen
+  description: ""
+  short_version: Covers Harness' Single Sign-On (SSO) integrations with Okta, Azure,
+    Google G Suite, and OneLogin, via SAML.
+  body: "<div class=\"tip-callout\">This content is for Harness <a href=\"https://docs.harness.io/article/1fjmm4by22\">FirstGen</a>.
+    Switch to <a href=\"/article/mlpksc7s6c-single-sign-on-saml\">NextGen</a>.</div><p>Harness
+    supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider
+    to enable you to log your users into Harness as part of your SSO infrastructure.</p><div
+    class=\"note-callout\">If the <a href=\"/article/gng086569h-harness-on-premise-versions\">Harness
+    On-Prem</a> version is not accessed using HTTPS load balancer, SAML authentication
+    will fail. Make sure you access the Harness On-Prem version using a HTTPS load
+    balancer, and not a HTTP load balancer.</div><p>This document explains how to
+    set up SAML authentication and authorization.</p><p></p><h3>Support Formats</h3><p>The
+    XML SAML file used with Harness must use UTF-8.</p><p>UTF-8 BOM is not supported.
+    Some text editors like Notepad++ save in UTF-8 BOM by default.</p><h3>SAML SSO
+    with Harness Overview</h3><p>To set up SAML SSO with Harness, you add a SAML SSO
+    provider to your Harness account, and enable it as the default authentication
+    method.</p><p>Harness SAML SSO involves the following:</p><ul><li><strong>Harness
+    User email addresses</strong> - Users are invited to Harness using their email
+    addresses. Once they log into Harness, their email addresses are registered with
+    Harness as Harness Users. To use SAML SSO, Harness Users must use the same email
+    addresses to register in Harness and the SAML provider.</li></ul><div class=\"note-callout\">Ensure
+    that you have at least two corresponding user accounts when setting up and testing
+    SAML SSO in Harness. This allows you to set up the account with a Harness Administrator
+    account and test it with a Harness user account.</div><ul><li><strong>SAML provider
+    user email addresses</strong> - To use the SAML provider to verify Harness Users,
+    the email addresses used in the SAML provider must match the email addresses for
+    the registered Harness Users you want to verify.</li><li><strong>Harness SAML
+    Endpoint URL</strong> - This URL is where the SAML provider will post the SAML
+    authentication response to your Harness account. This URL is provided by Harness
+    in the <strong>Single Sign-On (SSO) Provider</strong> dialog. You enter this URL
+    in your SAML SSO provider app to integrate it with Harness.</li><li><strong>SAML
+    metadata file</strong> - This file is provided by your SAML provider app. You
+    upload this file into the Harness <strong>Single Sign-On (SSO) Provider</strong>
+    dialog to integrate the app with Harness.</li></ul><p>Using Okta as an example,
+    here are the Harness Manager settings on the left and their corresponding SAML
+    provider settings on the right:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1578095422568/image.png\"/></figure><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1598475007686/image.png\"/></figure><p></p><h3>SAML
+    SSO with Okta Overview</h3><p>To set up Harness with Okta as a SAML SSO provider,
+    you exchange the necessary information between your Okta app and Harness.</p><div
+    class=\"warning-callout\">Users are not created as part of the SAML SSO integration.
+    Users are invited to Harness using their email addresses. Once they log into Harness,
+    their email addresses are registered as Harness Users. For more information, see
+    <a href=\"#saml_sso_with_harness_overview\">SAML SSO with Harness Overview</a>.</div><p>The
+    section describes the Okta-specific steps you must perform to use an Okta app
+    for Harness SAML SSO:</p><ul><li> <a href=\"#okta_user_accounts\">Okta ​User Accounts​</a></li><li>
+    <a href=\"#endpoint_url_for_okta\">​SAML Endpoint URL​ for Okta</a></li><li> <a
+    href=\"#okta_saml_metadata_file\">Okta ​SAML Metadata File​</a></li><li> <a href=\"#enable_and_test_sso_with_okta\">​Enable
+    and Test Okta SSO</a></li><li> <a href=\"#saml_authorization_with_okta\">SAML
+    Authorization with Okta</a></li></ul><h4>Okta User Accounts</h4><p>To set up an
+    SAML support in your Okta Harness app, ensure that the app has corresponding Users
+    in Harness:</p><ol><li>In Harness, add the users you want to set up for SAML SSO
+    by inviting them to Harness using the same email addresses that they use in your
+    SAML provider.</li><li>Using your Harness Users email addresses, add the Harness
+    Users to the SAML provider account and assign them to your SAML provider app.
+    Here is an example of two Harness Users added to an Okta app using the same email
+    addresses.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1578095470391/image.png\"/></figure></li></ol><div
+    class=\"tip-callout\">The only user property that must match between a Harness
+    User and its corresponding SAML provider user account is its <strong>email address</strong>.<br/><br/>Sometimes
+    users might have mixed case email addresses in Okta. In these situations, Harness
+    converts the email address to lowercase when adding them to Harness.</div><p></p><h3>Configure
+    SAML 2.0 for Harness</h3><p>As described above, you will enter the Harness <strong>SAML
+    Endpoint URL</strong> as your Okta app&#39;s <strong>ACS URL</strong>. You will
+    first copy the URL out of Harness Manager, and then enter it into your Okta app.</p><div
+    class=\"tip-callout\">For details about the Harness side of the information exchanges
+    described throughout this topic, see <a href=\"/article/zlymcu6bf1-authentication-settings\">Authentication
+    Settings</a>.</div><p>The first step is to add the Harness app to your Okta account.</p><ol><li>In
+    your Okta administrator account, click <strong>Applications</strong>.</li><li>In
+    <strong>Add Application</strong>, search for <strong>Harness</strong> and select
+    it.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1598474561454/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>On
+    the Harness app page, click <strong>Add</strong>.</li><li>In <strong>General Settings</strong>,
+    click <strong>Done</strong>.</li></ol><div class=\"note-callout\">The Harness
+    app is for the Harness SaaS edition. For Harness On-Prem editions, contact <a
+    href=\"mailto:support@harness.io\" target=\"_blank\">Harness Support</a>.</div><h5>Add
+    the Harness SAML Endpoint URL to Harness Okta App</h5><ol><li>In the Harness Okta
+    app, click the <strong>Sign On</strong> tab, and then click <strong>Edit</strong>.</li><li>In
+    <strong>ACS URL</strong> field, paste the Harness SAML Endpoint URL you copied.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1598474850795/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    your SAML provider app&#39;s <strong>Audience URI</strong> field (or similar name),
+    enter <code>app.harness.io</code>. The SAML application identifier should be always
+    <code>app.harness.io</code>.</li></ol><div class=\"note-callout\">For Harness
+    <a href=\"/article/gng086569h-harness-on-premise-versions\">On-Prem</a>, replace
+    <strong>app.harness.io</strong> with your custom URL.<br/>If you use a custom
+    Harness subdomain in any Harness version, like <strong>example.harness.io</strong>,
+    use that URL.</div><h4>Okta SAML Metadata File</h4><p>You must download the <strong>Identity
+    Provider metadata</strong> XML from your Okta app and upload the file into Harness.</p><ol><li>Download
+    the <strong>SAML metadata file</strong> from your Okta provider app.<br/><br/>For
+    example, here is what the SAML metadata file section looks like in an Okta application&#39;s
+    <strong>Sign On</strong> tab (only available in Classic UI view):<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561408714574/image.png\"/></figure></li><li>In
+    Harness&#39; <strong>Add SAML Provider</strong> dialog, under <strong>Upload a
+    new SAML Metadata File</strong>, click <strong>Choose File</strong> and add the
+    SAML metadata file you downloaded.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561184691757/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure></li><li>In
+    <strong>Display Name</strong>, enter a name for your SAML SSO provider, and click
+    <strong>SUBMIT</strong>. The new SSO provider is displayed.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1564538959861/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li></ol><p></p><h4>Enable
+    and Test SSO with Okta</h4><p>Now that Okta is set up in Harness as a SAML SSO
+    provider, you can enable and test it.</p><ol><li>To enable the SSO provider, drag
+    the slider under <strong>Authentication</strong> <strong>Enabled?</strong><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1564539138747/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>In
+    the resulting <strong>Enable SSO Provider</strong> dialog, click <strong>TEST</strong>
+    to verify the SAML connection you&#39;ve configured.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1578095649978/image.png\"/></figure>A
+    new browser tab will prompt you to log into your SAML provider.</li></ol><div
+    class=\"warning-callout\">If you do not see a new tab, your browser might have
+    blocked it with a pop-up blocker. Please disable the blocker temporarily and retry
+    the TEST button.</div><ol><li style=\"counter-increment:li 2\" start=\"3\">Upon
+    a successful test, Harness will display the <strong>SAML test successful</strong>
+    banner below.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1578095679227/image.png\"/></figure>When
+    you see this banner, it is safe to click <strong>CONFIRM</strong> to enable SAML
+    SSO in Harness.<br/><div class=\"warning-callout\">If you become locked out of
+    Harness because of an SSO issue, you must <a href=\"mailto:support@harness.io\">contact
+    Harness</a> to have the SSO Provider disabled.</div></li><li>Test the SSO Provider
+    as a Harness User.<br/><br/>To fully test SSO, you will log into Harness using
+    another User account. You should use a Chrome Incognito window to test SSO so
+    that you can disable SSO back in your Harness Administrator account if there are
+    any errors.<ol><li>Open an Incognito window in Chrome.</li><li>Log into Harness
+    using a Harness User account that has a corresponding user account email address
+    in the SAML SSO provider. You will be redirected to your SAML SSO provider&#39;s
+    login page.</li><li>Log into your SSO Provider using an email address for a Harness
+    User. The password does not have to be the same.<br/>You are automatically returned
+    to the Harness Manager, and logged into the dashboard using your SSO credentials.</li></ol></li></ol><h4>SAML
+    Authorization with Okta</h4><p>Once you have enabled Harness SSO with your Okta
+    app, you can set up and enable SAML authorization in Harness using Okta.</p><p>To
+    set up SAML authorization in Harness, you link a Harness User Group to a user
+    group in Okta. When a user from Okta logs into Harness, they are automatically
+    added to the linked Harness User Group, and inherit all the RBAC settings for
+    that User Group.</p><p>There are two Okta components you need to set up SAML authorization
+    in Harness:</p><ul><li><strong>Group Name</strong> - The name of the Okta group
+    containing the users you want to authorize in Harness. The email addresses registered
+    in this group must be the same as the email addresses these users have registered
+    in Harness.</li><li><strong>Group Attribute Name</strong> - The Group Attribute
+    Name associated with the Okta app you use for authentication. The Group Attribute
+    Name is different from the Okta group name. Your company might have many groups
+    set up in Okta. The Group Attribute Name is used to filter groups.</li></ul><p>In
+    Harness, you will enter the Group Attribute Name in the SAML SSO provider settings,
+    and then you will enter the group name in the Harness User Group to link it to
+    the Okta group.</p><p>Here are the Harness Manager settings on the left and their
+    corresponding Okta settings on the right:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552582023715/image.png\"/></figure><div
+    class=\"note-callout\">Remember that email addresses are how Harness identifies
+    Users. Always ensure that the email addresses of your registered Harness Users
+    match the Okta users you want to authenticate and authorize.</div><p>To set up
+    SAML Authorization with Okta, do the following:</p><ol><li>Set up SAML SSO in
+    Harness as described in <a href=\"#saml_sso_with_okta\">SAML SSO with Okta</a>.<br/><br/>You
+    will be authorizing the same Harness Users that are authenticated using your SAML
+    provider, so ensure that the email addresses registered in Harness are the same
+    email addresses registered in your SAML provider.</li><li>Add a user group to
+    your SAML provider, and then add users to the group. The group name will be used
+    to link the Harness User Group later.<br/><br/>In Okta, here is a user group named
+    <strong>QA</strong> with two members:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/39wgyobusz/1552504533997/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure>Both
+    members are already registered in Harness using the same email addresses in both
+    Harness and the SAML provider.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/39wgyobusz/1552504745805/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Ensure
+    that the SAML provider group is assigned to the same SAML provider app you use
+    for Harness SAML SSO. Here is the same SAML provider group assigned to an app
+    in Okta:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/39wgyobusz/1552504885698/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Configure
+    the <strong>Group Attribute Name</strong> in your SAML app. You will use the Group
+    Attribute Name later in Harness when you enable SAML authorization.<br/><br/>Here
+    are the steps for adding a Group Attribute Name in Okta:<ol><li>In <strong>Okta</strong>,
+    click <strong>Applications</strong>, and then click the name of the app you use
+    for Harness SAML SSO to open its settings.</li><li>In the app, click the <strong>General</strong>
+    tab.</li><li>For <strong>SAML Settings</strong>, click <strong>Edit</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552517336805/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    <strong>General Settings</strong>, click <strong>Next</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552517376166/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    <strong>GROUP ATTRIBUTE STATEMENTS (OPTIONAL)</strong>, in <strong>Name</strong>,
+    enter the Group Attribute Name you want to use, such as <strong>dept</strong>.</li><li>In
+    <strong>Filter</strong>, select <strong>Matches regex</strong> and enter period
+    asterisk (<strong>.*</strong>) in the field. When you are done, it will something
+    like this:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552517428145/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>Click
+    <strong>Next</strong>.</li><li>Click <strong>Finish</strong>.</li></ol></li><li>Enable
+    Authorization in Harness. Now that you have assigned a group to your SAML app
+    and added a Group Attribute Name, you can enable authorization in Harness.<ol><li>In
+    <strong>Harness</strong>, select <strong>Continuous Security</strong> &gt; <strong>Access
+    Management</strong> &gt; <strong>Authentication Settings</strong>.</li><li>Click
+    <strong>SSO Providers</strong>.</li><li>In <strong>SSO Providers</strong>, click
+    the vertical ellipsis (<strong>︙</strong>) next to the SSO Provider you have set
+    up for SSO authentication, and click <strong>Edit</strong>.<br/><br/>(Remember,
+    we are simply adding authorization to a SAML SSO provider that is already configured
+    for authentication and <strong>enabled</strong>, as described in <a href=\"#to_set_up_saml_sso\">To
+    Set Up SAML SSO</a>.)<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561355330201/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure></li><li>In
+    the <strong>Edit SAML Provider</strong> dialog, enable <strong>Enable Authorization</strong>.</li><li>In
+    <strong>Group Attribute Name</strong>, enter the Group Attribute Name you earlier
+    added to your SAML app in your SAML provider.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/39wgyobusz/1552509844657/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure></li></ol></li><li>Select
+    <strong>Add Entity ID</strong> and enter your custom Entity ID. The default Entity
+    ID is <strong>app.harness.io</strong>. The value you enter here will override
+    the default Entity ID.</li><li>Click <strong>SUBMIT</strong>. The SAML SSO Provider
+    is now set up to use the Group Attribute Name for authorization.</li><li>Link
+    the SAML SSO Provider to the Harness User Group. We will create a new Harness
+    User Group, but you can use an existing Group so long as your Harness User account
+    is a member and that User account is registered using the same email address you
+    used to register with your SAML provider.<ol><li>Click the <strong>Access Management</strong>
+    breadcrumb.</li><li>Click <strong>User Groups</strong>.</li><li>Click <strong>Add
+    User Group</strong>.</li><li>In <strong>Add User Group</strong>, enter a name
+    for the User Group and click <strong>SUBMIT</strong>. In this example, we use
+    the name <strong>QA</strong>.</li><li>In the new User Group, click <strong>Member
+    Users</strong>.</li><li>In <strong>Add Members</strong>, add your own User account
+    as a member. Also, ensure your Harness account is registered using the same email
+    address you used to register with your SAML provider.<br/><br/>Do not add any
+    other Harness Users at this point. When the other users log into Harness using
+    the same email address as they use in the SAML provider, Harness will verify their
+    email addresses with the SAML provider and add them to this linked Harness User
+    Group automatically.</li><li>Click <strong>SUBMIT</strong>.</li><li>In the <strong>User
+    Group</strong> page, in <strong>Member Users</strong>, click <strong>Link to SSO
+    Provider Group</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552517560380/image.png\"
+    style=\"max-height:30%;max-width:30%\" data-hd-height=\"30%\" data-hd-width=\"30%\"/></figure></li><li>In
+    the <strong>Link to SSO Provider Group</strong> dialog, in <strong>SSO Provider</strong>,
+    select the SAML SSO Provider you have set up.</li><li>In <strong>Group Name</strong>,
+    enter the name of the group you assigned to your app in your SAML provider. When
+    you are done, it will look something like this:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552517648325/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>Click
+    <strong>SUBMIT</strong>.</li></ol></li><li>Test the SAML Authorization using another
+    user account. We will test the SAML authorization using an email address for a
+    user in Harness and the SAML provider.<br/><br/>Do not log out of Harness. Use
+    a different Harness User account in a Chrome Incognito window to ensure that you
+    can disable SSO if needed.<ol><li>In Chrome, open an Incognito window, and navigate
+    to Harness.</li><li>Log into Harness using the email address of a Harness User
+    that is also used in the SAML provider group linked to the Harness User Group.<br/><br/>When
+    the user submits their email address in Harness Manager, the user is redirected
+    to the SAML provider to log in. For example, here is the Okta prompt:<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/39wgyobusz/1552515326619/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Log
+    into the SAML provider using the same email that the user is registered with in
+    Harness.<br/><br/>Once the user logs in, the user is redirected to Harness and
+    logged into Harness using the SAML credentials.</li><li>In your Harness account
+    in the other browser window, check the User Group you linked with your SAML provider.
+    The user that logged in is now added to the User Group, receiving the authorization
+    associated with that User Group.</li></ol></li></ol><p>You can link multiple Harness
+    User Groups with the SAML SSO Provider you set up in Harness.</p><p>You can also
+    remove a link between a Harness User Group and a Harness SAML SSO Provider without
+    losing the User Group members. In the Harness User Group, simply click <strong>Delink
+    Group</strong>:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552518007487/image.png\"
+    style=\"max-height:30%;max-width:30%\" data-hd-height=\"30%\" data-hd-width=\"30%\"/></figure><p>The
+    <strong>Delink External SSO Provider Group</strong> dialog appears.</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1552518040710/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p>Click
+    <strong>Retain all members in the user group</strong> and click <strong>Confirm</strong>.
+    The link to the SAML SSO Provider is removed and the Users are still members of
+    the User Group.</p><div class=\"note-callout\">You cannot delete a SAML SSO Provider
+    from Harness that is linked to a Harness Group. You must first remove the link
+    to the SSO Provider from the Group.</div><p></p><h3>SAML SSO with Azure</h3><p>The
+    section describes the Azure-specific steps you must perform to use an Azure app
+    for Harness SAML SSO:</p><ul><li> <a href=\"#azure_user_accounts\">Azure User
+    Accounts</a></li><li> <a href=\"#endpoint_url_for_azure\">Endpoint URL for Azure</a></li><li>
+    <a href=\"#user_attributes_claims\">User Attributes Claims</a></li><li> <a href=\"#azure_saml_metadata_file\">Azure
+    SAML Metadata File</a></li><li> <a href=\"#enable_and_test_sso_with_azure\">Enable
+    and Test SSO with Azure</a></li><li> <a href=\"#saml_authorization_with_azure\">SAML
+    Authorization with Azure</a></li></ul><div class=\"note-callout\">Make sure the
+    email address used in Harness matches with the email address in the Azure app
+    for every user.</div><div class=\"warning-callout\">Users are not created as part
+    of the SAML SSO integration. Users are invited to Harness using their email addresses.
+    Once they log into Harness, their email addresses are registered as Harness Users.
+    For more information, see <a href=\"#saml_sso_with_harness_overview\">SAML SSO
+    with Harness Overview</a>.</div><p>The following image shows the basic exchange
+    of information between Harness and your Azure app&#39;s Single sign-on settings:</p><p></p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561412201466/image.png\"/></figure><p></p><h4>Azure
+    User Accounts</h4><p>The Harness User accounts and their corresponding Azure user
+    accounts must have the same email addresses.</p><ol><li>Ensure that you have at
+    least two corresponding user accounts in both Harness and your Azure app when
+    setting up and testing SAML SSO. This allows you to set up the account with a
+    Harness Administrator account and test it with a Harness user account.</li></ol><p>The
+    following image shows a Harness User Group containing two users and their corresponding
+    accounts in the Azure app that will be used for SAML SSO. As you can see, the
+    email addresses are the same.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553548722461/image.png\"
+    style=\"max-height:750%;max-width:75%\" data-hd-height=\"750%\" data-hd-width=\"75%\"/></figure><h4>Endpoint
+    URL for Azure</h4><p>You must enter the <strong>Harness SAML Endpoint URL</strong>
+    from Harness in your Azure app <strong>Reply URL</strong>:</p><ol><li>In your
+    Azure app, click <strong>Single sign-on</strong>. The SSO settings for the Azure
+    app are displayed.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553552828203/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    <strong>Basic SAML Configuration</strong>, click the edit icon (pencil).</li><li>Enter
+    <strong>app.harness.io</strong> in the <strong>Identifier (Entity ID)</strong>
+    field.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553552929086/image.png\"
+    style=\"max-height:30%;max-width:30%\" data-hd-height=\"30%\" data-hd-width=\"30%\"/></figure>Next,
+    you will use the <strong>SAML SSO Provider</strong> settings in Harness to set
+    up your Azure app <strong>Single sign-on</strong>.</li></ol><div class=\"note-callout\">For
+    <a href=\"/article/gng086569h-harness-on-premise-versions\">Harness On-Prem</a>,
+    replace <strong>app.harness.io</strong> with your custom URL.<br/>If you use a
+    custom Harness subdomain in any Harness version, like <strong>example.harness.io</strong>,
+    use that URL.</div><ol><li style=\"counter-increment:li 3\" start=\"4\">In Harness,
+    click <strong>Continuous Security</strong>, and then click <strong>Access Management</strong>.</li><li>Click
+    <strong>SSO Providers</strong>, and then click <strong>Add SSO Provider</strong>
+    and choose <strong>SAML</strong>. The <strong>Add SAML Provider</strong> dialog
+    appears.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561412418775/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    <strong>Display Name</strong>, enter a name for the SAML SSO Provider, such as
+    <strong>Azure</strong>.</li><li>Copy the <strong>Harness SAML Endpoint URL</strong>
+    from the <strong>Add SAML Provider</strong> dialog, and paste it in the <strong>Reply
+    URL</strong> in your Azure app.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561418057379/image.png\"/></figure></li><li>Click
+    <strong>Save</strong>. The Basic SAML Configuration now looks like this:<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553553199711/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li></ol><h4>User
+    Attributes &amp; Claims</h4><p>Next, you need to ensure that Harness Users email
+    addresses will identify them when they log in via Azure. To do this, you set up
+    the <strong>Single sign-on</strong> section of your Azure app to use the <strong>User
+    name</strong> email address as the method to identify users.</p><p>The Azure users
+    that are added to your Azure app must have their email addresses listed as their
+    <strong>User name</strong>, for example:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1553620383775/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure><p></p><p>To
+    set this <strong>User name</strong> email address as the method for identifying
+    users, in the Azure app <strong>Single sign-on</strong> section, the Azure app
+    must use the <strong>user.userprincipalname</strong> as the <strong>Unique User
+    Identifier</strong>, and <strong>user.userprincipalname</strong> must use <strong>Email
+    address</strong> as the <strong>name identifier format</strong>.</p><p>To set
+    this up in your Azure app, do the following:</p><ol><li>In your Azure app, in
+    the <strong>Single sign-on</strong> blade, in <strong>User Attributes &amp; Claims</strong>,
+    click the edit icon (pencil). The <strong>User Attributes &amp; Claims</strong>
+    settings appear.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1553618885450/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>For
+    <strong>Name identifier value</strong>, click the edit icon. The <strong>Manage
+    user claims</strong> settings appear.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1553619139106/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Click
+    <strong>Choose name identifier format</strong>, and select <strong>Email address</strong>.</li><li>In
+    <strong>Source attribute</strong>, select <strong>user.userprincipalname</strong>.</li><li>Click
+    <strong>Save</strong>, and then close <strong>User Attributes &amp; Claims</strong>.
+    When you are finished, the <strong>User Attributes &amp; Claims</strong> section
+    of <strong>Single sign-on</strong> will look like this:</li></ol><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1553618593604/image.png\"/></figure><div
+    class=\"note-callout\">If your Azure users are set up with their email addresses
+    in some field other than <strong>User name</strong>, just ensure that the field
+    is mapped to the <strong>Unique User Identifier</strong> in the Azure app and
+    the <strong>name identifier format</strong> is <strong>Email address</strong>.</div><h4>Azure
+    SAML Metadata File</h4><p>You must download the <strong>Federation Metadata XML</strong>
+    from your Azure app and upload the file into Harness.</p><ol><li>Download the
+    <strong>Federation Metadata XML</strong> from your Azure app and upload it using
+    <strong>Upload a new SAML Metadata File</strong> in the <strong>Add SAML Provider</strong>
+    dialog in Harness.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561418183283/image.png\"/></figure></li><li>In
+    Harness&#39; <strong>Add SAML Provider</strong> dialog, click <strong>SUBMIT</strong>.
+    The new Azure SAML Provider is added.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561358314876/image.png\"/></figure></li></ol><h4>Enable
+    and Test SSO with Azure</h4><p>Now that Azure is set up in Harness as a SAML SSO
+    provider, you can enable and test it.</p><p>You can test the Azure app SSO from
+    within Azure if you are logged into Azure using a Azure user account that has
+    the following:</p><ul><li>A corresponding Harness User account with the same email
+    address.</li><li>The Azure user account is in the Azure app <strong>Users and
+    groups</strong> settings.</li><li>The Azure user account has the Global Administrator
+    Directory role in Azure.</li></ul><p>To test Azure SSO using Azure, do the following:</p><ol><li>In
+    the Azure app, click <strong>Single sign-on</strong>, and then at the bottom of
+    the <strong>Single sign-on</strong> settings, click <strong>Test</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1553623078852/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    the <strong>Test</strong> panel, click <strong>Sign in as current user</strong>.
+    If the settings are correct, you are logged into Harness. If you cannot log into
+    Harness, the <strong>Test</strong> panel will provide debugging information. See
+    also <a href=\"https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience\"
+    target=\"_blank\">Debug SAML-based single sign-on to applications in Azure Active
+    Directory</a> from Azure.</li></ol><p>To test Azure SSO using Harness, do the
+    following:</p><ol><li>In <strong>Harness</strong>, in <strong>SSO Providers</strong>,
+    click the <strong>Enabled</strong> checkbox to enable SAML SSO using the Azure
+    provider.</li><li>Open a new Chrome Incognito window to test the SSO login using
+    a Harness User account other than the one you are currently logged in with.</li><li>Using
+    one of the user account email addresses that is shared by Harness and Azure, log
+    into Harness. When you log into Harness, you are prompted with the Microsoft Sign
+    in dialog.</li><li>Enter the Azure user name for the user (most often, the email
+    address), enter the Azure password, and click <strong>Sign in</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553551644635/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure></li></ol><h4>SAML
+    Authorization with Azure</h4><p>Once you have enabled Harness SSO with your Azure
+    app, you can set up and enable SAML authorization in Harness using Azure.</p><p>To
+    set up SAML authorization in Harness, you link a Harness User Group to a user
+    group assigned to your Azure app. When a user from your Azure app logs into Harness,
+    they are automatically added to the linked Harness User Group, and inherit all
+    the RBAC settings for that Harness User Group.</p><p>There are two Harness SAML
+    settings you need from Azure to set up SAML authorization in Harness:</p><ul><li><strong>Group
+    Attribute Name</strong> - In Azure, this value is obtained from the <strong>Group
+    Claims</strong> in the Azure app <strong>User Attributes &amp; Claims</strong>
+    settings.</li><li><strong>Group Name</strong> - The Object ID of the Azure group
+    containing the Azure users you want to authorize in Harness. The email addresses
+    registered in this Azure group must be the same as the email addresses these users
+    have registered in Harness.</li></ul><p>For Harness <strong>Group Attribute Name</strong>,
+    here is the Harness <strong>SAML Provider</strong> setting on the left and their
+    corresponding Azure <strong>Group Claims</strong> settings on the right:</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561418679595/image.png\"/></figure><p></p><p>For
+    Harness <strong>Group Name</strong>, here is the Harness User Group link setting
+    on the left and the Azure group Object ID on the right.</p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553627861768/image.png\"/></figure><p>To
+    set up Azure Authorization in Harness, do the following:</p><ol><li>In Azure,
+    add the <strong>Group Claim</strong> (Name and Namespace) to the Azure app.<ol><li>In
+    your Azure app, click <strong>Single sign-on</strong>, and then in <strong>User
+    Attributes &amp; Claims</strong>, click edit (pencil icon).<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1553633401768/image.png\"
+    style=\"max-height:60%;max-width:60%\" data-hd-height=\"60%\" data-hd-width=\"60%\"/></figure></li><li>In
+    <strong>User Attributes &amp; Claims</strong>, edit the <strong>Groups returned
+    in claim</strong>. The <strong>Group Claims</strong> settings appear.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1553633448139/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Click
+    the <strong>All groups</strong> option and then enable <strong>Customize the name
+    of the group claim</strong>.</li><li>In <strong>Name</strong>, enter a name to
+    use to identify the Harness Group Attribute Name.</li><li>In <strong>Namespace</strong>,
+    enter a namespace name. When you are done, <strong>Group Claims</strong> will
+    look something like this:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553631370519/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Click
+    <strong>Save</strong>. <strong>User Attributes &amp; Groups</strong> now displays
+    the group claim you created.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553631562312/image.png\"
+    style=\"max-height:60%;max-width:60%\" data-hd-height=\"60%\" data-hd-width=\"60%\"/></figure></li><li>Close
+    <strong>User Attributes &amp; Groups</strong>.</li></ol></li><li>In Harness, enter
+    the Group Claim name and namespace in the SAML SSO Provider <strong>Group Attribute
+    Name</strong> field.<ol><li>Open the SAML SSO Provider dialog, and enable the
+    <strong>Enable Authorization</strong> setting. You need to enable <strong>Enable
+    Authorization</strong> in order to select this SSO Provider when you link a Harness
+    User Group for authorization.</li><li>Enter the Group Claim name and namespace
+    in the <strong>Group Attribute Name</strong> field in the same format as a Claim
+    Name (<code>namespace/name</code>). The SAML SSO Provider dialog will look something
+    like this:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553631848104/image.png\"
+    style=\"max-height:30%;max-width:30%\" data-hd-height=\"30%\" data-hd-width=\"30%\"/></figure></li></ol></li><li>Select
+    <strong>Add Entity ID</strong> and enter your custom Entity ID. The default Entity
+    ID is <strong>app.harness.io</strong>. The value you enter here will override
+    the default Entity ID. The Entity ID for your Azure app must match the Entity
+    ID in your Harness SAML settings. To check this in your Azure app, see Step 3
+    <a href=\"#endpoint_url_for_azure\">Endpoint URL for Azure</a>.</li><li>Click
+    <strong>SUBMIT</strong>. Authorization and the Group Attribute Name are set up.
+    Next, you need to set up your Azure and Harness groups.</li><li>In Azure, ensure
+    the Azure users with corresponding Harness accounts belong to an Azure group.
+    Here is an Azure group named <strong>Example</strong> with two members:<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553631987585/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Ensure
+    that the Azure group is assigned to the Azure app. Here you can see the <strong>Example</strong>
+    group in the Azure app&#39;s <strong>Users and groups</strong>:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553632064222/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Link
+    the Harness User Group to the Azure group using the Azure group Object ID.<ol><li>In
+    Azure, copy the Azure group <strong>Object ID</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553632193833/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    Harness, create a new User Group or open an existing User Group.</li><li>In the
+    <strong>Member Users</strong> section, click <strong>Link to SSO Provider Group</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553632304646/image.png\"
+    style=\"max-height:40%;max-width:40%\" data-hd-height=\"40%\" data-hd-width=\"40%\"/></figure></li><li>In
+    the <strong>Link to SSO Provider Group</strong> dialog, in <strong>SSO Provider</strong>,
+    select the Azure SSO Provider you set up, and in <strong>Group Name</strong>,
+    paste the Object ID you copied from Azure. When you are done, the dialog will
+    look something like this:<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553632522628/image.png\"
+    style=\"max-height:30%;max-width:30%\" data-hd-height=\"30%\" data-hd-width=\"30%\"/></figure></li><li>Click
+    <strong>SUBMIT</strong>. The User Group is now linked to the SAML SSO Provider
+    and Azure group Object ID.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553632592994/image.png\"
+    style=\"max-height:60%;max-width:60%\" data-hd-height=\"60%\" data-hd-width=\"60%\"/></figure></li></ol></li><li>Test
+    Authorization.<ol><li>Open a new Chrome Incognito window to test the authorization
+    using a Harness User account other than the one you are currently logged in with.</li><li>Log
+    into Harness using the user email address, and sign in using the Azure username
+    and password. If you are already logged into Azure in Chrome, you might be logged
+    into Harness automatically.</li><li>In the linked Harness User Group, ensure that
+    the Harness User account you logged in with was added.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/woihlvoeac/1553632825160/image.png\"
+    style=\"max-height:60%;max-width:60%\" data-hd-height=\"60%\" data-hd-width=\"60%\"/></figure>The
+    Harness User is now added and the RBAC settings for the Harness User Group are
+    applied to its account. For more information, see <a href=\"/article/ven0bvulsj-users-and-permissions\">Managing
+    Users and Groups (RBAC)</a>.</li></ol></li></ol><h3>SAML SSO with Azure Active
+    Directory</h3><p>You can use Azure Active Directory (AD) for SAML SSO with Harness,
+    enabling AD users to log into Harness using their AD credentials.</p><p>For detailed
+    steps on adding SAML SSO with Active Directory, follow the steps in the tutorial
+    <a href=\"https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial\"
+    target=\"_blank\">Azure Active Directory single sign-on (SSO) integration with
+    Harness</a> from Microsoft.</p><div class=\"warning-callout\">Users are not created
+    as part of the SAML SSO integration. Users are invited to Harness using their
+    email addresses. Once they log into Harness, their email addresses are registered
+    as Harness Users. For more information, see <a href=\"#saml_sso_with_harness_overview\">SAML
+    SSO with Harness Overview</a>.</div><h4>Users in over 150 Groups</h4><div class=\"note-callout\">Currently,
+    this feature is behind the feature flag <code>AZURE_SAML_150_GROUPS_SUPPORT</code>.
+    Contact <a href=\"mailto:support@harness.io\" target=\"_blank\">Harness Support</a>
+    to enable the feature.</div><p>When users have large numbers of group memberships,
+    the number of groups listed in the token can grow the token size. Azure Active
+    Directory limits the number of groups it will emit in a token to 150 for SAML
+    assertions.</p><p>If a user is a member of a larger number of groups, the groups
+    are omitted and a link to the Graph endpoint to obtain group information is included
+    instead.</p><p>To invoke the API Harness will need <strong>Client ID</strong>
+    and <strong>Client Secret</strong> for your registered app.</p><p>To get this
+    information, perform the following steps:</p><ol><li>In your Azure account, go
+    to <strong>App registrations</strong>.</li><li>Click on your app. Copy the Application
+    (client) ID and paste it in Client ID in your Harness account.</li><li>In your
+    Azure account, go to <strong>App registrations</strong>. Click <strong>Certificates
+    and Secrets</strong>.</li><li>Click New Client Secret.</li><li>Add a description
+    and click Add.</li><li>Make sure to copy this secret and save it as an encrypted
+    text secret. For detailed steps to create an encrypted text in Harness, see <a
+    href=\"/article/ygyvp998mu-use-encrypted-text-secrets\">Use Encrypted text Secrets</a>.</li><li>
+    Select the above secret reference in the Client Secret field in your Harness account.</li><li>Select <strong>Add
+    Entity ID</strong> and enter your custom Entity ID. The default Entity ID is <strong>app.harness.io</strong>.
+    The value you enter here will override the default Entity ID.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1643304453368/screenshot-2022-01-27-at-10-53-44-pm.png\"
+    style=\"max-height:70%;max-width:70%\" data-hd-height=\"70%\" data-hd-width=\"70%\"/></figure></li></ol><h3>SAML
+    SSO with Google G Suite</h3><p>Harness supports SAML integration with Google G
+    Suite to enable your employees to use their Google account credentials to sign
+    into the Harness platform.</p><div class=\"note-callout\">Google G Suite supports
+    authentication, but not authorization.</div><div class=\"warning-callout\">Users
+    are not created as part of the SAML SSO integration. Users are invited to Harness
+    using their email addresses. Once they log into Harness, their email addresses
+    are registered as Harness Users. For more information, see <a href=\"#saml_sso_with_harness_overview\">SAML
+    SSO with Harness Overview</a>.</div><p>For information about G Suite and SAML,
+    see <a href=\"https://support.google.com/a/answer/6349809?hl=en&amp;ref_topic=6348126\"
+    target=\"_blank\">Service provider SSO set up</a> from Google.</p><div class=\"note-callout\">To
+    set up SAML with Google, you must be a G Suite administrator. To integrate G Suite
+    SAML with Harness, your Harness account must be a member of the Account Administrator
+    group. For more information, see <a href=\"/article/ven0bvulsj-users-and-permissions\">Users
+    and Permissions</a>.</div><p>First, we will set up Harness as a SSO SAML app with
+    Google G Suite, and then we will configure Harness to use Google G Suite for SSO.</p><div
+    class=\"warning-callout\">If you become locked out of Harness because of a SSO
+    issue, you must contact Harness to have the SSO Provider disabled.</div><h4>Add
+    Harness as G Suite SSO App</h4><p>To set up SAML with Google G Suite, do the following:</p><ol><li>Log
+    into your G Suite Admin console.</li><li>From the Admin console Home page, go
+    to <strong>SAML apps</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536866084231/image.png\"
+    style=\"max-height:60%;max-width:60%\" data-hd-height=\"60%\" data-hd-width=\"60%\"/></figure></li><li>Click
+    the plus sign next to <strong>Enable SSO for a SAML Application</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536866136460/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure></li><li>In
+    <strong>Step 1</strong>, at the bottom, click <strong>SETUP MY OWN CUSTOM APP</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536866200030/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>In
+    <strong>Step 2</strong>, the <strong>Google IdP Information</strong> appears,
+    including the <strong>SSO URL</strong> and <strong>Entity ID</strong> URLs.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536866326018/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><ol><li>In
+    <strong>Option 2</strong>, click <strong>DOWNLOAD</strong> to download the <strong>IDP
+    metadata</strong> to your computer. The IDP metadata file will be used to set
+    up G Suite SSO in Harness.</li><li>Click <strong>NEXT</strong>.</li></ol></li><li>In
+    <strong>Step 3</strong>, in <strong>Application Name</strong>, enter a name for
+    the application. Make sure that the name does not include spaces or special characters.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1599716435830/new-gsuite-samlsso.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><ol><li>Now
+    you will get the Harness logo so your employees will easily identify Harness in
+    their G Suite apps. In another browser tab, download the <a href=\"https://github.com/wings-software/harness-docs/blob/main/harness_logo.png\"
+    target=\"_blank\">Harness logo</a>.</li><li>Back in <strong>Step 3</strong>, in
+    <strong>Upload logo</strong>, click <strong>CHOOSE FILE</strong>, and upload the
+    Harness logo.</li><li>Click <strong>NEXT</strong>.</li></ol></li><li>In <strong>Step
+    4</strong>, provide the Harness provider details.<ol><li>In <strong>ACS URL</strong>,
+    enter the <strong>Harness SAML Endpoint URL</strong> from the Harness <strong>Single
+    Sign-on (SSO) Provider</strong> dialog. To obtain this URL, in Harness, select
+    <strong>Continuous Security</strong> &gt; <strong>Access Management</strong> &gt;
+    <strong>Authentication Settings</strong>.</li><li>On the resulting <strong>Authentication
+    Settings</strong> page, click <strong>Add SSO Provider</strong>, and click <strong>SAML</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561359076776/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure>The
+    <strong>Single Sign-on (SSO) Provider</strong> dialog appears.</li><li>Copy the
+    <strong>Harness SAML Endpoint URL</strong> from the dialog and enter it in <strong>ACS
+    URL</strong> in G Suite.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/other/1571178530723/image.png\"/></figure></li><li>In
+    <strong>Entity ID</strong>, enter <strong>app.harness.io</strong>.</li></ol><div
+    class=\"note-callout\">For Harness <a href=\"/article/gng086569h-harness-on-premise-versions\">On-Prem</a>,
+    replace <strong>app.harness.io</strong> with your custom URL.<br/>If you use a
+    custom Harness subdomain in any Harness version, like <strong>example.harness.io</strong>,
+    use that URL.</div><ol><li style=\"counter-increment:li 4\" start=\"5\">In <strong>Start
+    URL</strong>, enter the same URL you entered for <strong>ACS URL</strong>.</li><li>Leave
+    <strong>Signed Response</strong> unchecked, and click <strong>NEXT</strong>.</li></ol></li><li>In
+    <strong>Step 5</strong>, click <strong>FINISH</strong>.</li><li>In the Harness
+    service provider page, click the <strong>pencil icon</strong> to turn on the new
+    Harness SSO app.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536867096145/image.png\"
+    style=\"max-height:60%;max-width:60%\" data-hd-height=\"60%\" data-hd-width=\"60%\"/></figure></li><li>In
+    the <strong>Status</strong> setting, click <strong>Settings for all organizational
+    units</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536867231065/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><div
+    class=\"note-callout\">Make sure you select this option. You&#39;ll get an error
+    saying that the service is not enabled for the user while testing the SAML connection
+    if you don&#39;t select this option.</div></li><li>In the <strong>Service Status</strong>
+    settings, click <strong>ON for everyone</strong>, and then click <strong>SAVE</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536867286403/image.png\"
+    style=\"max-height:85%;max-width:85%\" data-hd-height=\"85%\" data-hd-width=\"85%\"/></figure></li></ol><p>Next,
+    add G Suite as a Harness SSO provider for your Harness account.</p><h4>Add G Suite
+    as a Harness SSO Provider</h4><p>To add the Harness SSO G Suite App you created
+    as a Harness SSO Provider, do the following:</p><ol><li>Log into Harness with
+    an account that is in the Harness <strong>Account Administrator</strong> group.</li><li>In
+    <strong>Harness</strong>, select <strong>Continuous Security</strong> &gt; <strong>Access
+    Management</strong>. &gt; <strong>Authorization Settings</strong>.</li><li>Click
+    <strong>Add SSO Provider</strong>. The <strong>Single Sign-on (SSO) Provider</strong>
+    dialog appears.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/i4ftgq1vel/1561412634127/image.png\"
+    style=\"max-height:60%;max-width:60%\" data-hd-height=\"60%\" data-hd-width=\"60%\"/></figure></li><li>Click
+    <strong>Choose File</strong>, and upload the <strong>IDP metadata</strong> file
+    you downloaded from Google.</li><li>In <strong>Display Name</strong>, enter a
+    name to identify this SSO account, such as <strong>Google</strong>, and click
+    <strong>SUBMIT</strong>.</li><li>Back in the <strong>Single Sign-on(SSO) Provider
+    Setup</strong> list, enable the new SSO provider.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536867755595/image.png\"/></figure></li><li>You
+    are finished. To test the provider, log out of Harness.</li><li>Open a G Suite
+    app, such as <strong>Mail</strong>, and locate the Harness app you added by clicking
+    the Google Apps icon.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1536867893316/image.png\"
+    style=\"max-height:25%;max-width:25%\" data-hd-height=\"25%\" data-hd-width=\"25%\"/></figure></li><li>Click
+    the <strong>Harness</strong> app icon and you will be redirected to <strong>app.Harness.io</strong>,
+    and logged in.</li></ol><div class=\"note-callout\">For Harness <a href=\"/article/gng086569h-harness-on-premise-versions\">On-Prem</a>,
+    you will be directed to your custom URL.<br/>If you use a custom Harness subdomain
+    in any Harness version, like <strong>example.harness.io</strong>, it will be that
+    URL.</div><h3>SAML SSO with OneLogin</h3><p>To set up OneLogin as a SAML SSO provider
+    on Harness, you exchange the necessary information between the OneLogin Harness
+    application and Harness. The following sections cover <a href=\"#onelogin_authentication\">Authentication</a>
+    steps, followed by <a href=\"#onelogin_authorization\">Authorization</a> steps.</p><div
+    class=\"warning-callout\">Users are not created as part of the SAML SSO integration.
+    Users are invited to Harness using their email addresses. Once they log into Harness,
+    their email addresses are registered as Harness Users. For more information, see
+    <a href=\"#saml_sso_with_harness_overview\">SAML SSO with Harness Overview</a>.</div><h4
+    id=\"toc_0\">OneLogin Authentication on Harness</h4><p>Enabling OneLogin authentication
+    on Harness requires configuration on both platforms, as described in these sections:</p><h5>Exchange
+    Harness Consumer URL and OneLogin Metadata</h5><ol><li>In Harness Manager, select
+    <strong>Security</strong> &gt; <strong>Access Management</strong> &gt; <strong>Add
+    SSO Providers</strong>. From the resulting drop-down, select <strong>SAML</strong>.</li><li>In
+    the resulting <strong>Add SAML Provider</strong> dialog, copy the provided URL
+    to the clipboard.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583909424913/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>In
+    OneLogin, add the <strong>Harness</strong> app (for SaaS setup) or <strong>Harness
+    (On Prem)</strong> app for On-Prem setup. To do so, perform the following steps:<ol><li>Log
+    in to OneLogin.</li><li>Click <strong>Administration</strong>.</li><li>Under the
+    <strong>Applications</strong> tab, click <strong>Applications</strong>.</li><li>Click
+    <strong>Add App</strong>.</li><li>Find <strong>Harness</strong> or <strong>Harness
+    (On Prem)</strong> based on your setup, and then click the app.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1617186215490/screenshot-2021-03-31-at-3-51-27-pm.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li></ol></li><li>In
+    <strong>Configuration</strong>, paste this URL into the <strong>SCIM Base URL</strong> field.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583910413585/image.png\"
+    style=\"max-height:100%;max-width:100%\" data-hd-height=\"100%\" data-hd-width=\"100%\"/></figure></li><li>Skip
+    all other <strong>Application Details</strong> fields, and click <strong>Save</strong>.</li><li>Navigate
+    to OneLogin&#39;s <strong>Applications</strong> &gt; <strong>SSO</strong> tab.
+    At the upper right, select <strong>More Actions</strong> &gt; <strong>SSO Metadata</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583398317192/image.png\"
+    style=\"max-height:100%;max-width:100%\" data-hd-height=\"100%\" data-hd-width=\"100%\"/></figure></li><li>From
+    the resulting dialog, download the .xml authentication file that you&#39;ll need
+    to upload to Harness.</li></ol><p> </p><h5>Assign Users to Roles</h5><ol><li>In
+    OneLogin, select <strong>Users</strong> &gt; <strong>Users</strong>.<br/><div
+    class=\"tip-callout\">If you prefer to assign <em>groups</em> to roles, instead
+    start at <strong>Users</strong> &gt; <strong>Groups</strong>, and modify the following
+    instructions accordingly.</div></li><li>Search for a user that you want to add
+    to Harness.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583869787224/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>Click
+    to select the user.</li><li>On the resulting <strong>Users</strong> page, select
+    the <strong>Applications</strong> tab at left.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583903157026/image.png\"
+    style=\"max-height:100%;max-width:100%\" data-hd-height=\"100%\" data-hd-width=\"100%\"/></figure></li><li>Click
+    the <strong>+</strong> button at upper right to assign an Application.</li><li>Find
+    and select the Application, then click <strong>Continue</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583903896797/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Repeat
+    this section for other users (or groups) that you want to add to Harness.</li></ol><p>  </p><h5>Enable
+    OneLogin as a Harness SSO Provider</h5><ol><li>In Harness Manager, select <strong>Continuous Security</strong>
+    &gt; <strong>Access Management &gt; Authentication Settings</strong>.</li><li>Beside <strong>SSO Providers</strong>,
+    click the More Options ⋮ menu to open the <strong>Edit SAML Provider</strong>
+    dialog.</li><li>Use <strong>Choose File</strong> to upload the .xml file that
+    you obtained from OneLogin.</li><li>Change the <strong>Display Name</strong> to
+    a simple entry, like <strong>SAML</strong>.</li><li>Deselect <strong>Enable Authorization</strong>.</li><li>Select
+    <strong>Add Entity ID</strong> and enter your custom Entity ID. The default Entity
+    ID is <strong>app.harness.io</strong>. The value you enter here will override
+    the default Entity ID.</li><li>Select <strong>Submit</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583909918124/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure>This
+    adds OneLogin as a SSO Provider, and returns you to Harness <strong>Authentication
+    Settings</strong>,</li><li>Slide the <strong>Authentication enabled?</strong>
+    slider right, to enable your new provider.</li><li>In the resulting <strong>Enable SSO
+    Provider</strong> dialog, click <strong>Test</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583398196969/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>Once
+    the test is successful, click <strong>Submit</strong> to finish setting up OneLogin
+    authentication.</li></ol><p></p><h4 id=\"toc_1\">OneLogin Authorization on Harness</h4><p>Once
+    you&#39;ve enabled OneLogin authentication on Harness, the following sections
+    outline how to enable authorization between the two platforms:</p><h5 id=\"toc_2\">Assign
+    Roles to Users</h5><p>Harness’ SAML authorization replicates OneLogin Roles as
+    Harness User Groups. Here is how to begin mapping between these entities.</p><ol><li>From
+    OneLogin&#39;s, menu, select <strong>Users</strong> &gt; <strong>Users</strong>.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583910749488/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>Click
+    to select a user, assigned to Harness, whom we want to assign to appropriate OneLogin
+    Roles.</li><li>Select the <strong>Applications</strong> tab at left.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583911049171/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>As
+    shown above, click each Role that you want to assign to this user.</li><li>Click <strong>Save User</strong> at
+    upper right.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583911437230/image.png\"
+    style=\"max-height:100%;max-width:100%\" data-hd-height=\"100%\" data-hd-width=\"100%\"/></figure></li><li>Repeat
+    this section for other users to whom you want to assign Roles.<br/> </li></ol><h5>Define
+    Parameters</h5><ol><li>Select <strong>Applications</strong> &gt; <strong>Parameters</strong>,
+    then select the <code>+</code> button to add a new Parameter.</li><li>In the resulting <strong>New
+    Field</strong> dialog, assign a <strong>Field name</strong> (for example <strong>Groups</strong>).<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/zy8yjcrqzg/1583946837298/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Select
+    <strong>Include in SAML assertion</strong> and <strong>Multi-value parameter</strong>.
+    Then click <strong>Save</strong>.</li><li>Back on the <strong>Parameters</strong> tab,
+    select your new <strong>Groups</strong> field.</li><li>In the resulting <strong>Edit
+    Field Groups</strong> dialog, set <strong>Default if no value selected</strong> to <strong>User
+    Roles</strong>. Below that, select <strong>Semicolon Delimited input (Multi-value
+    output)</strong>. Then select <strong>Save</strong>.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583459407673/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure></li><li>Select
+    <strong>Save</strong> again at the <strong>Parameters</strong> page&#39;s upper
+    right.</li></ol><p> </p><h5 id=\"toc_3\">Sync Users in Harness</h5><ol><li>In
+    Harness Manager, select <strong>Continuous Security</strong> &gt; <strong>Access
+    Management &gt; Authentication Settings</strong>.</li><li>Beside <strong>SSO Providers</strong>,
+    click the More Options ⋮ menu to open the <strong>Edit SAML Provider</strong>
+    dialog.</li><li>Select <strong>Enable Authorization</strong></li><li>In <strong>Group
+    Attribute Name</strong>, type paste in the name of your the <a href=\"#group_parameters\">Field
+    Group</a> you configured in OneLogin.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583481125420/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li><li>Click <strong>Submit</strong>.
+    This returns you to the <strong>Authentication Settings</strong> page.<br/>Navigate
+    to <strong>Continuous Security</strong> &gt; <strong>Access Management</strong> &gt; <strong>User
+    Groups</strong>.</li><li>Select the User Group to sync.</li><li>On the Member
+    Users card, select <strong>Link to SSO Provider Group</strong>.</li><li>In the
+    resulting dialog, set the SSO Provider drop-down to <strong>SAML</strong>.</li><li>In <strong>Group
+    Name</strong>, type or paste the name of the <a href=\"#group_parameters\">Field
+    Group</a> you configured in OneLogin.</li><li>Click <strong>SUBMIT.</strong><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583481487829/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure>The
+    link now appears on the User Group&#39;s <strong>Member Users</strong> record.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/xhx9et5f44/1583481564433/image.png\"
+    style=\"max-height:75%;max-width:75%\" data-hd-height=\"75%\" data-hd-width=\"75%\"/></figure></li></ol><p> </p><h5
+    id=\"toc_3\">Test the Integration</h5><p>After you&#39;ve <a href=\"#sync_groups\">synced</a>
+    Users between OneLogin and Harness, users will be assigned to the designated Harness
+    User Group upon your <em>next</em> login to Harness. To test whether OneLogin
+    authentication and authorization on Harness are fully functional:</p><ol><li>Log
+    out of Harness.</li><li>Log back into Harness.<br/><div class=\"tip-callout\">For
+    an ideal test, use an Incognito browser window.</div></li><li>If you see a OneLogin
+    prompt for credentials, this indicates that authentication is set up.<br/><br/>Log
+    in with the credentials you set up in OneLogin, and confirm that doing so logs
+    you into your Harness account.</li><li>In Harness Manager, navigate to <strong>Continuous
+    Security</strong> &gt; <strong>Access Management</strong> &gt; <strong>User Groups</strong>.</li><li>Click
+    the Group you <a href=\"#sync_groups\">synced</a> earlier.</li><li>Verify that
+    users from the synced OneLogin group should now appear within this Harness User
+    Group. If so, this confirms successful authorization.</li></ol><p></p><div class=\"note-callout\">You
+    cannot delete a SAML SSO Provider from Harness that is linked to a Harness Group.
+    You must first remove the link to the SSO Provider from the Group.</div><h3>SAML
+    SSO FAQs</h3><p>Here&#39;s the list of common questions about Harness&#39; SAML
+    SSO.</p><p><strong>Which SAML binding methods/profiles does Harness support? (POST,
+    Redirect, Artifact, and so on.)</strong></p><p>POST method is supported.</p><p><strong>Does
+    Harness support signed SAML assertions?</strong></p><p>Yes.</p><p><strong>Does
+    Harness support SSL for transit of the SAML exchange?</strong></p><p>Yes.</p><p><strong>Does
+    Harness support encrypted SAML assertion queries/responses for handling sensitive
+    data?</strong></p><p>No.</p><p><strong>Which SAML flows does Harness support?
+    (For example, IDP initiated, SP initiated, or both)?</strong></p><p>Both IDP initiated
+    and SP initiated flows are supported.</p><p><strong>Does Harness support any non-SAML
+    SSO methods such as OpenID, OAuth, WS-Federation, HTTP get request header tokens,
+    HTTP query string tokens?</strong></p><p>No. Harness does not support any of these
+    mechanisms. Harness supports LDAP and integration is available for Google, Azure,
+    Github, Gitlab, Linkedin, and Bitbucket.</p><p><strong>What user attributes does
+    Harness application need?</strong></p><p>For authentication: Harness needs the
+    email address.</p><p>If you want to set up authorization, you need to send the
+    group information in the Assertion.</p><p><strong>What is the expected SAML name-id
+    format of this attribute? Is any customization required?</strong></p><pre>&lt;md:NameIDFormat&gt;<br/>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress<br/>&lt;/md:NameIDFormat&gt;</pre><p>No
+    customization is required.</p><h4>SAML2.0 Questionnaire</h4><p><strong>Does Harness
+    support SAML 2.0 SSO?</strong></p><p>Yes.</p><p><strong>Does Harness support IdP-initiated
+    Single Sign-on?</strong></p><p>Yes.</p><p><strong>Does Harness support SP-initiated
+    Single Sign-on?</strong></p><p>Yes.</p><p><strong>Does Harness require SP-initiated
+    Single Sign-on?</strong></p><p>No.</p><p><strong>Does Harness support SAML 2.0
+    HTTP-POST Bindings?</strong></p><p>Yes.</p><p><strong>Does Harness accept a digital
+    signature with the SAML Assertion?</strong></p><p>Yes.</p><p><strong>Does Harness
+    require that the signing certificate be an externally hosted and trusted Certificate
+    Authority (CA)?</strong></p><p>No.</p><p><strong>Does Harness support encrypting
+    the Assertion message?</strong></p><p>No.</p><p><strong>Does Harness require encrypting
+    the Assertion message?</strong></p><p>No.</p><p><strong>Does Harness support Single
+    Sign-OFF?</strong></p><p>No.</p><p><strong>Does Harness support simple URL redirection
+    for Single Sign-OFF?</strong></p><p>No.</p><p><strong>Will Harness have a test/development
+    environment accessible?</strong></p><p>No.</p><p><strong>Will Harness have a staging
+    environment accessible?</strong></p><p>No.</p><p><strong>If Harness does have
+    additional accessible environments (Yes on earlier two questions), will the environments
+    still be available and supported after the production SSO configuration?</strong></p><p>NA</p><p><strong>Provide
+    an IdP-initiated SAML assertion example for the vendor below.</strong></p><pre>&lt;?xml
+    version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;<br/>&lt;saml2p:Response Destination=&#34;https://app.harness.io/gateway/api/users/saml-login?accountId=UtTa95tnQqWxGByLkXlp6Q&#34;<br/>
+    \                ID=&#34;id12449674142140840515360365&#34;<br/>                 InResponseTo=&#34;z4de3af65-f858-4471-b9a3-6d4e92624f8c&#34;<br/>
+    \                IssueInstant=&#34;2020-08-03T16:41:31.327Z&#34;<br/>   \t             Version=&#34;2.0&#34;<br/>
+    \                xmlns:saml2p=&#34;urn:oasis:names:tc:SAML:2.0:protocol&#34;<br/>
+    \                xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;&gt;<br/>
+    \ &lt;saml2:Issuer Format=&#34;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&#34;<br/>
+    \               xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;http://www.okta.com/exksvbhw6anv5pTpy0h7&lt;/saml2:Issuer&gt;<br/><br/>&lt;ds:Signature
+    xmlns:ds=&#34;http://www.w3.org/2000/09/xmldsig#&#34;&gt;<br/>    &lt;ds:SignedInfo&gt;<br/>
+    \     &lt;ds:CanonicalizationMethod Algorithm=&#34;http://www.w3.org/2001/10/xml-exc-c14n#&#34;
+    /&gt;<br/>      &lt;ds:SignatureMethod Algorithm=&#34;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#34;
+    /&gt;<br/>      &lt;ds:Reference URI=&#34;#id12449674142140840515360365&#34;&gt;<br/>
+    \       &lt;ds:Transforms&gt;<br/>          &lt;ds:Transform Algorithm=&#34;http://www.w3.org/2000/09/xmldsig#enveloped-signature&#34;
+    /&gt;<br/>          &lt;ds:Transform Algorithm=&#34;http://www.w3.org/2001/10/xml-exc-c14n#&#34;&gt;<br/>
+    \           &lt;ec:InclusiveNamespaces PrefixList=&#34;xs&#34;<br/>                                    xmlns:ec=&#34;http://www.w3.org/2001/10/xml-exc-c14n#&#34;
+    /&gt;<br/>          &lt;/ds:Transform&gt;<br/>        &lt;/ds:Transforms&gt;<br/><br/>
+    \       &lt;ds:DigestMethod Algorithm=&#34;http://www.w3.org/2001/04/xmlenc#sha256&#34;
+    /&gt;<br/>        &lt;ds:DigestValue&gt;1gbNeG1uo2HkfpC11QT25aooQ5JQQvsJGax3BbldwO8=&lt;/ds:DigestValue&gt;<br/>
+    \     &lt;/ds:Reference&gt;<br/>    &lt;/ds:SignedInfo&gt;<br/>    &lt;ds:SignatureValue&gt;<br/>&lt;redacted&gt;&lt;/ds:SignatureValue&gt;<br/><br/>
+    \   &lt;ds:KeyInfo&gt;<br/>      &lt;ds:X509Data&gt;<br/>        &lt;ds:X509Certificate&gt;<br/>redacted
+    \       <br/>&lt;/ds:X509Certificate&gt;<br/>      &lt;/ds:X509Data&gt;<br/>    &lt;/ds:KeyInfo&gt;<br/>
+    \ &lt;/ds:Signature&gt;<br/><br/>  &lt;saml2p:Status xmlns:saml2p=&#34;urn:oasis:names:tc:SAML:2.0:protocol&#34;&gt;<br/>
+    \   &lt;saml2p:StatusCode Value=&#34;urn:oasis:names:tc:SAML:2.0:status:Success&#34;
+    /&gt;&lt;/saml2p:Status&gt;<br/><br/>  &lt;saml2:Assertion ID=&#34;id124496741422157271397253292&#34;<br/>
+    \                  IssueInstant=&#34;2020-08-03T16:41:31.327Z&#34;<br/>                   Version=&#34;2.0&#34;<br/>
+    \                  xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;<br/>
+    \                  xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;&gt;<br/><br/>
+    \   &lt;saml2:Issuer Format=&#34;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&#34;<br/>
+    \                 xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;http://www.okta.com/exksvbhw6anv5pTpy0h7&lt;/saml2:Issuer&gt;<br/><br/>
+    \   &lt;ds:Signature xmlns:ds=&#34;http://www.w3.org/2000/09/xmldsig#&#34;&gt;<br/>
+    \     &lt;ds:SignedInfo&gt;<br/>        &lt;ds:CanonicalizationMethod Algorithm=&#34;http://www.w3.org/2001/10/xml-exc-c14n#&#34;
+    /&gt;<br/>        &lt;ds:SignatureMethod Algorithm=&#34;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#34;
+    /&gt;<br/>        &lt;ds:Reference URI=&#34;#id124496741422157271397253292&#34;&gt;<br/>
+    \         &lt;ds:Transforms&gt;<br/>            &lt;ds:Transform Algorithm=&#34;http://www.w3.org/2000/09/xmldsig#enveloped-signature&#34;
+    /&gt;<br/>            &lt;ds:Transform Algorithm=&#34;http://www.w3.org/2001/10/xml-exc-c14n#&#34;&gt;<br/>
+    \             &lt;ec:InclusiveNamespaces PrefixList=&#34;xs&#34;<br/>                                      xmlns:ec=&#34;http://www.w3.org/2001/10/xml-exc-c14n#&#34;
+    /&gt;<br/><br/>            &lt;/ds:Transform&gt;<br/>          &lt;/ds:Transforms&gt;<br/>
+    \         &lt;ds:DigestMethod Algorithm=&#34;http://www.w3.org/2001/04/xmlenc#sha256&#34;
+    /&gt;<br/>          &lt;ds:DigestValue&gt;redacted&lt;/ds:DigestValue&gt;<br/>
+    \       &lt;/ds:Reference&gt;<br/>      &lt;/ds:SignedInfo&gt;<br/>      &lt;ds:SignatureValue&gt;<br/>redacted<br/>&lt;/ds:SignatureValue&gt;<br/><br/>
+    \     &lt;ds:KeyInfo&gt;<br/>        &lt;ds:X509Data&gt;<br/>          &lt;ds:X509Certificate&gt;<br/>&lt;/ds:X509Certificate&gt;<br/>
+    \       &lt;/ds:X509Data&gt;<br/>      &lt;/ds:KeyInfo&gt;<br/>    &lt;/ds:Signature&gt;<br/><br/>
+    \   &lt;saml2:Subject xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;<br/>
+    \     &lt;saml2:NameID Format=&#34;urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified&#34;&gt;redacted&lt;/saml2:NameID&gt;<br/>
+    \     &lt;saml2:SubjectConfirmation Method=&#34;urn:oasis:names:tc:SAML:2.0:cm:bearer&#34;&gt;<br/>
+    \       &lt;saml2:SubjectConfirmationData InResponseTo=&#34;z4de3af65-f858-4471-b9a3-6d4e92624f8c&#34;<br/>
+    \                                      NotOnOrAfter=&#34;2020-08-03T16:46:31.328Z&#34;<br/>
+    \                                      Recipient=&#34;https://app.harness.io/gateway/api/users/saml-login?accountId=UtTa95tnQqWxGByLkXlp6Q&#34;
+    /&gt;&lt;/saml2:SubjectConfirmation&gt;<br/>    &lt;/saml2:Subject&gt;<br/><br/>
+    \   &lt;saml2:Conditions NotBefore=&#34;2020-08-03T16:36:31.328Z&#34;<br/>                      NotOnOrAfter=&#34;2020-08-03T16:46:31.328Z&#34;<br/>
+    \                     xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;<br/><br/>
+    \     &lt;saml2:AudienceRestriction&gt;<br/>        &lt;saml2:Audience&gt;app.harness.io&lt;/saml2:Audience&gt;<br/>
+    \     &lt;/saml2:AudienceRestriction&gt;<br/>    &lt;/saml2:Conditions&gt;<br/><br/>
+    \   &lt;saml2:AuthnStatement AuthnInstant=&#34;2020-08-03T16:41:31.327Z&#34;<br/>
+    \                         SessionIndex=&#34;z4de3af65-f858-4471-b9a3-6d4e92624f8c&#34;<br/>
+    \                         xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;<br/><br/>
+    \     &lt;saml2:AuthnContext&gt;<br/>        &lt;saml2:AuthnContextClassRef&gt;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&lt;/saml2:AuthnContextClassRef&gt;<br/><br/>
+    \     &lt;/saml2:AuthnContext&gt;<br/>    &lt;/saml2:AuthnStatement&gt;<br/><br/>
+    \   &lt;saml2:AttributeStatement xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;<br/>
+    \     &lt;saml2:Attribute Name=&#34;groups&#34;<br/>                       NameFormat=&#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;&gt;<br/><br/>
+    \       &lt;saml2:AttributeValue xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;<br/>
+    \                             xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;<br/>
+    \                             xsi:type=&#34;xs:string&#34;&gt;redacted&lt;/saml2:AttributeValue&gt;<br/>
+    \       &lt;saml2:AttributeValue xmlns:xs=&#34;http://www.w3.org/2001/XMLSchema&#34;<br/>
+    \                             xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;<br/>
+    \                             xsi:type=&#34;xs:string&#34;&gt;redacted&lt;/saml2:AttributeValue&gt;<br/><br/>
+    \     &lt;/saml2:Attribute&gt;<br/>    &lt;/saml2:AttributeStatement&gt;<br/>
+    \ &lt;/saml2:Assertion&gt;<br/>&lt;/saml2p:Response&gt;</pre><p><strong>Provide
+    an SP-initiated SAML assertion example for the vendor below.</strong></p><pre>&lt;?xml
+    version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;<br/>&lt;saml2p:AuthnRequest
+    AssertionConsumerServiceURL=&#34;https://dev-274703.oktapreview.com/app/harnessiodev274703_admin_1/exksvbhw6anv5pTpy0h7/sso/saml&#34;
+    ID=&#34;zc89e6fa4-96b9-4149-91e8-0e026d318116&#34; <br/>IssueInstant=&#34;2020-08-27T16:54:30.976Z&#34;
+    <br/>ProtocolBinding=&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#34;
+    Version=&#34;2.0&#34; <br/>xmlns:saml2p=&#34;urn:oasis:names:tc:SAML:2.0:protocol&#34;&gt;<br/>&lt;saml2:Issuer
+    xmlns:saml2=&#34;urn:oasis:names:tc:SAML:2.0:assertion&#34;&gt;app.harness.io<br/>&lt;/saml2:Issuer&gt;<br/>&lt;saml2p:NameIDPolicy
+    Format=&#34;urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified&#34;/&gt;&lt;/saml2p:AuthnRequest&gt;</pre><h4>SAML
+    Attributes Questionnaire</h4><p><strong>What attribute will be used as the Unique
+    Identifier (Name ID) for the SAML assertion? (options are KXI, EMAIL, KASH, or
+    CALCULATED)</strong></p><p>Email.</p><p><strong>If CALCULATED for the previous
+    question, describe how the entity ID will be created.</strong></p><p>NA</p><p><strong>What
+    additional SiteMinder headers will need to be used or included with the SAML assertion?</strong></p><p>None.</p><p><strong>Will
+    there be any calculated attributes that will be used in the SAML assertion?</strong></p><p>Yes.</p><p><strong>If
+    Yes for the previous question, describe what attributes will be calculated and
+    how.</strong></p><p>Group Attribute and Group Claims</p><h4>Provisioning Questionnaire</h4><p><strong>Can
+    Harness support using JIT provisioning?</strong></p><p>No.</p><p><strong>If Yes
+    for the previous question, can Harness support automatic de-provisioning with
+    user inactivity?</strong></p><p>NA</p><p><strong>Can Harness support using a flat-file
+    provisioning method?</strong></p><p>No.</p><p><strong>Can Harness support using
+    an API Service provisioning method?</strong></p><p>No.</p><p><strong>Briefly describe
+    how the provisioning process will operate.</strong></p><p>SCIM.</p><p><strong>Briefly
+    describe how the DE-provisioning process will operate.</strong></p><p>SCIM.</p><h3>Ping
+    Identity</h3><p>When setting up SAML SSO using Ping Identity ( <a href=\"https://docs.pingidentity.com/\"
+    target=\"_blank\">PingFederate</a>), the metadata file has the following requirements:</p><ul><li>AuthnRequest
+    flag is turned off in your metadata.</li><li>Your metadata contains tags:</li></ul><pre>&lt;SingleSignOnService
+    Binding=&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect&#34; Location=&#34;location&#34;/&gt;<br/><br/>&lt;SingleSignOnService
+    Binding=&#34;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#34; Location=&#34;location&#34;/&gt;</pre><p>See
+    the following docs from PingFederate:</p><ul><li> <a href=\"https://docs.pingidentity.com/bundle/pingfederate-100/page/bdx1564002975039.html\"
+    target=\"_blank\">Metadata export</a></li><li> <a href=\"https://docs.pingidentity.com/bundle/integrations/page/dit1563994989559.html\"
+    target=\"_blank\">Exporting SAML metadata from PingFederate</a></li></ul><p></p><h3>Harness
+    Local Login</h3><p>To prevent lockouts or in the event of OAuth downtime, a User
+    in the Harness Administrators Group can use the <a href=\"http://app.harness.io/auth/#/local-login\"><strong>Local
+    Login</strong></a> URL (http://app.harness.io/auth/#/local-login) to log in and
+    update the OAuth settings.</p><p></p><figure><img src=\"https://files.helpdocs.io/i5nl071jo5/articles/rb33l4x893/1638374284838/screenshot-2021-12-01-at-9-27-06-pm.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><ol><li>Log
+    in using <strong>Harness Local Login</strong>.</li><li>Change the settings to
+    enable users to log in.</li></ol><h3>Notes</h3><ul><li>For <strong>Okta</strong>,
+    please use the Okta Administrator <strong>Classic UI</strong> Dashboard to add
+    an application and configure SAML settings. For more information, see <a href=\"https://developer.okta.com/standards/SAML/setting_up_a_saml_application_in_okta\"
+    target=\"_blank\">Setting Up a SAML Application in Okta</a>.</li><li>To migrate
+    from Okta SAML to Okta SCIM integration with Harness, see <a href=\"/article/8hwnfif0v1-scim-okta#migrating_to_okta_scim_from_okta_saml\">Migrating
+    to Okta SCIM from Okta SAML</a>.</li></ul><p></p>"
+  slug: single-sign-on-sso-with-saml
+  tags:
+  - SSO
+  - SAML
+  - SCIM
+  - Azure
+  - AD
+  - 'single sign-on '
+  - authentication
+  - authorization
+  - provisioning
+  - Active Directory
+  - gsuite
+  is_live: true

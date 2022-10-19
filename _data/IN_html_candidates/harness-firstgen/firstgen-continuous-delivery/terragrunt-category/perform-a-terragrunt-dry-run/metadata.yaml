@@ -1,0 +1,158 @@
+type: article
+article_id: rbw96hdr1c
+user_id: mfr0nxh4be
+category_id: noj782z9is
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Perform a Terragrunt Dry Run
+slug: perform-a-terragrunt-dry-run
+description: The Terragrunt Provision step in a Workflow can be executed as a dry
+  run, just like running the terragrunt plan command.
+short_version: The Terragrunt Provision step in a Workflow can be executed as a dry
+  run, just like running the terragrunt plan command.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-11-18T19:46:21.505282Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Perform a Terragrunt Dry Run
+  description: The Terragrunt Provision step in a Workflow can be executed as a dry
+    run, just like running the terragrunt plan command.
+  short_version: The Terragrunt Provision step in a Workflow can be executed as a
+    dry run, just like running the terragrunt plan command.
+  body: '<p>The Terragrunt Provision step in a Workflow can be executed as a dry run,
+    just like running the <code>terragrunt plan</code> command.</p><p>The dry run
+    will refresh the state file and generate a plan, but not apply the plan. You can
+    then set up an Approval step to follow the dry run, followed by the Terragrunt
+    Provision step to inherit and apply the plan.</p><p>This topic covers using the
+    Terragrunt Provision step for <u>dry runs</u> only. For steps on applying plans
+    without a dry run, see <a href="/article/jbzxpljhlo-provision-using-the-terragrunt-provision-step">Provision
+    using the Terragrunt Provision Step</a>.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#visual_summary">Visual Summary</a></li><li><a
+    href="#limitations">Limitations</a></li><li><a href="#step_1_set_terragrunt_step_as_plan">Step
+    1: Set Terragrunt Step as Plan</a></li><li><a href="#option_export_terragrunt_plan_to_next_terragrunt_provision_step">Option:
+    Export Terragrunt Plan to next Terragrunt Provision step</a></li><li><a href="#step_2_add_approval_step">Step
+    2: Add Approval Step</a></li><li><a href="#step_3_add_terragrunt_step_to_apply_plan">Step
+    3: Add Terragrunt Step to Apply Plan</a></li><li><a href="#step_4_deploy">Step
+    4: Deploy</a></li><li><a href="#next_steps">Next Steps</a></li></ul><h3>Before
+    You Begin</h3><p>This topic assumes you have read the following:</p><ul><li><a
+    href="/article/a6onutvbem-terragrunt-provisioning-with-harness">Terragrunt Provisioning
+    with Harness</a></li><li><a href="/article/ulhl7sjxva-set-up-your-harness-account-for-terragrunt">Set
+    Up Your Harness Account for Terragrunt</a></li><li><a href="/article/mkjxbkglih-add-terragrunt-configuration-files">Add
+    Terragrunt Configuration Files</a></li><li><a href="/article/tphb27opry-map-terragrunt-infrastructure">Map
+    Dynamically Provisioned Infrastructure using Terragrunt</a></li><li><a href="/article/jbzxpljhlo-provision-using-the-terragrunt-provision-step">Provision
+    using the Terragrunt Provision Step</a></li></ul><h3>Visual Summary</h3><p>The
+    following graphic shows a common use of a Terragrunt dry run in deployments.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rbw96hdr1c/1619469759440/image.png"/></figure><p></p><ol><li>The
+    dry run is used to verify the provisioning.</li><li>An Approval step to ensure
+    that the Terragrunt plan is working correctly.</li><li>The plan is run and the
+    infrastructure is provisioned.</li><li>The app is deployed to the provisioned
+    infrastructure.</li></ol><p>In a Harness Workflow it looks something like this:</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rbw96hdr1c/1619469925832/image.png"/></figure><p></p><h3>Limitations</h3><p>The
+    Terragrunt and Terraform Plans are stored in the default Harness Secrets Manager
+    as encrypted text. This is because plans often contain variables that store secrets.</p><p>The
+    plan size must not exceed the secret size limit for secrets in your default Secret
+    Manager. AWS Secrets Manager has a limitation of 64KB. Other supported Secrets
+    Managers support larger file size.</p><p>See <a href="https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager">Add
+    a Secrets Manager</a>.</p><h3>Step 1: Set Terragrunt Step as Plan</h3><p>This
+    step assumes you are familiar with adding the Terragrunt Provision step. See <a
+    href="/article/jbzxpljhlo-provision-using-the-terragrunt-provision-step">Provision
+    using the Terragrunt Provision Step</a>.</p><p>To perform a dry run of your Terragrunt
+    Provision step, you simply select the <strong>Set as Terragrunt Plan</strong>
+    option.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/rbw96hdr1c/1619470479702/image.png"/></figure><p>That&#39;s
+    it. Now this Terragrunt Provision step will run like a <code>terragrunt plan</code>
+    command.</p><p>The dry run will refresh the state file and generate a plan but
+    it is not applied. You can then set up an Approval step to follow the dry run,
+    followed by a Terragrunt Provision step to apply the plan.</p><p>In the subsequent
+    Terragrunt Provision step, you will select the <strong>Inherit configurations
+    from previous Terragrunt Provision step</strong> option to apply the plan.</p><p>This
+    is just like running the <code>terragrunt plan</code> command before a <code>terragrunt
+    apply</code> command.</p><h3>Option: Export Terragrunt Plan to next Terragrunt
+    Provision step</h3><div class="note-callout">This option supports modules with <a
+    href="https://www.terraform.io/upgrade-guides/0-12.html" target="_blank">Terraform
+    version 12</a> only.</div><p>When you use <strong>Set as Terragrunt Plan</strong> in
+    the Terragrunt Provision step and then use <strong>Inherit configurations from
+    previous Terragrunt Provision step</strong> in a subsequent Terragrunt Provision
+    step, Harness does the following:</p><ul><li>Harness runs the Terragrunt provision
+    again and points to the plan, runs a Terragrunt refresh, then a plan, and finally
+    executes the new plan.</li></ul><p>Technically, this is a different plan. If you
+    want use the <u>actual plan</u> because of security or audit requirements, use <strong>Export
+    Terragrunt Plan to next Terragrunt Provision step</strong> in the previous Terragrunt
+    Provision step along with <strong>Set as Terragrunt Plan</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rbw96hdr1c/1619470743292/image.png"/></figure><h5
+    id="undefined">Notes</h5><ul><li>If the <strong>Export Terragrunt Plan to next
+    Terragrunt Provision step</strong> option is enabled in two <u>consecutive</u> Terragrunt
+    Provision steps, the second Terragrunt Provision step overwrites the plan from
+    the first Terragrunt Provision step.</li><li>Harness uses the <a href="https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager">Harness
+    Secret Manager</a> you have selected as your default in the export process. As
+    a result, the size of the plan you can export is limited to the size of secret
+    that Secret Manager allows.</li></ul><h3>Step 2: Add Approval Step</h3><p>Harness
+    Workflow Approval steps can be done using Jira, ServiceNow, or the Harness UI.
+    You can even use custom shell scripts. See <a href="/article/0ajz35u2hy">Approvals</a>.</p><p>Add
+    the Approval step after the Terragrunt Provision where you selected the <strong>Set
+    as Terragrunt Plan</strong> option.</p><ol><li style="counter-increment:li 0"
+    start="1">To add the Approval step, click <strong>Add Step</strong>, and select
+    <strong>Approval</strong>.</li><li>In the <strong>Approval</strong> step, select
+    whatever approval options you want, and then click <strong>Submit</strong>.</li></ol><p>Next,
+    we&#39;ll add a Terragrunt Provision step after the Approval step to actually
+    run the Terragrunt Infrastructure Provisioner files.</p><div class="note-callout">If
+    the Approval step takes a long time to be approved there is the possibility that
+    a new commit occurs in the Git repo containing for Terragrunt or Terraform files.
+    To avoid a problem, when the Workflow performs the dry run, it saves the commit
+    ID of the script file. Later, after the approval, the Terragrunt Provision step
+    will use the commit ID to ensure that it executes the script that was dry run.</div><h3>Step
+    3: Add Terragrunt Step to Apply Plan</h3><p>For the Terragrunt Provision step
+    that actually runs the Terragrunt Infrastructure Provisioner script (<code>terragrunt</code>
+    <code>apply</code>), all you need to do is select the <strong>Inherit configurations
+    from previous Terragrunt Provision step</strong> option.</p><p>When you select
+    this option, the Terragrunt Provision step inherits the settings of the Terragrunt
+    Provision step that preceded it.</p><p>After the Approval step, click <strong>Add
+    Step</strong>.</p><p>Select or add a <strong>Terragrunt</strong> <strong>Provision</strong>
+    step.</p><p>In <strong>Name</strong>, enter a name for the step to indicate that
+    it will perform the provisioning. For example, <strong>Apply Terragrunt Provisioning</strong>.</p><p>In
+    <strong>Provisioner</strong>, select the Harness Terragrunt Infrastructure Provisioner
+    you want to run. This is the same Terragrunt Infrastructure Provisioner you selected
+    in the previous Terragrunt Provision step.</p><p>Select the <strong>Inherit configurations
+    from previous Terragrunt Provision step</strong> option.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rbw96hdr1c/1619471009577/image.png"/></figure><p>Click
+    <strong>Submit</strong>.</p><p>You do not need to enter any more settings. The
+    Terragrunt Provision step inherits the settings of the Terragrunt Provision step
+    that preceded it.</p><p>Your Workflow now looks something like this:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rbw96hdr1c/1619471105738/image.png"/></figure><p></p><h3>Step
+    4: Deploy</h3><p>Deploy your Workflow and see the <code>terragrunt plan</code> executed
+    in the first Terragrunt Provision step.</p><pre>Generating ************** plan
+    <br/><br/>terragrunt plan -out=tfplan -input=false   -var-file=&#34;/opt/harness-delegate/./terragrunt-working-dir/kmpySmUISimoRrJL6NL73w/235638175/terragrunt-script-repository/variables/local_variables/**************.tfvars&#34;  <br/>Refreshing
+    Terraform state in-memory prior to plan...<br/>The refreshed state will be used
+    to calculate this plan, but will not be<br/>persisted to local or remote state
+    storage.<br/><br/>...<br/><br/>This plan was saved to: tfplan<br/><br/>To perform
+    exactly these actions, run the following command to apply:<br/>    **************
+    apply &#34;tfplan&#34;<br/><br/><br/>Generating json representation of tfplan
+    <br/><br/>terragrunt show -json tfplan<br/><br/>Json representation of tfplan
+    is exported as a variable ${**************Apply.tfplan} <br/><br/>Finished terragrunt
+    plan task</pre><p></p><p>Next, approve the Approval step.</p><p>Finally, see the <code>terragrunt
+    apply</code> executed as part of the final Terragrunt Provision step.</p><pre>terragrunt
+    apply -input=false tfplan<br/>null_resource.delaymodule3: Creating...<br/>null_resource.delaymodule3:
+    Provisioning with &#39;local-exec&#39;...<br/>null_resource.delaymodule3 (local-exec):
+    Executing: [&#34;/bin/sleep&#34; &#34;5&#34;]<br/>null_resource.delaymodule3:
+    Creation complete after 5s [id=932665668643318315]<br/><br/>Apply complete! Resources:
+    1 added, 0 changed, 0 destroyed.<br/><br/>...<br/><br/>State path: **************.tfstate<br/><br/>Outputs:<br/><br/>clusterName
+    = us-central1-a/harness-test<br/>sleepoutputModule3 = 10<br/>versionModule3 =
+    5<br/>terragrunt output --json &gt; /opt/harness-delegate/./terragrunt-working-dir/kmpySmUISimoRrJL6NL73w/235638175/terragrunt-script-repository/prod-no-var-required/**************-235638175.tfvars<br/>Finished
+    terragrunt apply task</pre><p></p><h3>Next Steps</h3><p>Removing provisioned infrastructure
+    is a common Terragrunt and Terraform-related task. You can add this task to your
+    Harness Workflow and automate it. See <a href="/article/1zmz2vtdo2-remove-provisioned-infra-with-terragrunt-destroy">Remove
+    Provisioned Infra with Terragrunt Destroy</a> and <a href="/article/4egyxnse9r-terraform-destroy">Remove
+    Provisioned Infra with Terraform Destroy</a>.</p><p></p><p></p>'
+  slug: perform-a-terragrunt-dry-run
+  tags: []
+  is_live: true

@@ -1,0 +1,14 @@
+type: category
+category_id: ak4v1iorl3
+parent_category_id: wywpilryhu
+title: Access Control
+description: ""
+slug: access-control
+is_featured: false
+icon: ""
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Access Control
+  description: ""
+  slug: access-control

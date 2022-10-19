@@ -1,0 +1,16 @@
+type: category
+category_id: ybt5fg9mch
+parent_category_id: ll7h8ktlwe
+title: Add Collaboration Providers
+description: Use your SMTP server, Jira, or ServiceNow for deployment notifications,
+  approvals, and tracking.
+slug: add-collaboration-providers
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1589566189566/icons-8-jira-96.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Collaboration Providers
+  description: Use your SMTP server, Jira, or ServiceNow for deployment notifications,
+    approvals, and tracking.
+  slug: add-collaboration-providers

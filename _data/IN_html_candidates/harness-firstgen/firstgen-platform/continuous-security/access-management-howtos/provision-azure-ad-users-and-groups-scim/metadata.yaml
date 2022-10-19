@@ -1,0 +1,52 @@
+type: article
+article_id: aios86yiyk
+user_id: wz6xkfcc9i
+category_id: 49yov609ez
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Provision Azure AD Users and Groups (SCIM)
+slug: provision-azure-ad-users-and-groups-scim
+description: Use Harness' SCIM integration with Azure Active Directory (AD) to automatically
+  provision users and/or groups.
+short_version: Use Harness' SCIM integration with Azure Active Directory (AD) to automatically
+  provision users and/or groups.
+tags:
+- SCIM
+- Azure Active Directory
+- provision users
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:25.569127Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Provision Azure AD Users and Groups (SCIM)
+  description: Use Harness' SCIM integration with Azure Active Directory (AD) to automatically
+    provision users and/or groups.
+  short_version: Use Harness' SCIM integration with Azure Active Directory (AD) to
+    automatically provision users and/or groups.
+  body: '<p>You can use Harness&#39;  <a href="https://en.wikipedia.org/wiki/System_for_Cross-domain_Identity_Management"
+    target="_blank">SCIM</a> integration with Azure Active Directory (AD) to automatically
+    provision users and/or groups in Harness based on their assignments in Azure AD.</p><p>For
+    setup instructions, see Microsoft&#39;s  <a href="https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-provisioning-tutorial">Tutorial:
+    Configure Harness for Automatic User Provisioning</a>.</p><h3>Assigning Permissions
+    Post-Provisioning</h3><p>Permissions can be assigned manually or via the Harness
+    API:</p><ul><li><a href="/article/ven0bvulsj-users-and-permissions">Managing Users
+    and Groups (RBAC)</a></li><li><a href="/article/p9ssx4cv5t-sample-queries-create-users-user-groups-and-assign-permissions">Use
+    Users and Groups API</a></li></ul><h3>Limitations</h3><p>Harness uses email addresses
+    for SCIM provisioning. If you change the email address in AD, Harness sees this
+    as a new user. Harness cannot sync email address changes.</p><p></p>'
+  slug: provision-azure-ad-users-and-groups-scim
+  tags:
+  - SCIM
+  - Azure Active Directory
+  - provision users
+  is_live: true

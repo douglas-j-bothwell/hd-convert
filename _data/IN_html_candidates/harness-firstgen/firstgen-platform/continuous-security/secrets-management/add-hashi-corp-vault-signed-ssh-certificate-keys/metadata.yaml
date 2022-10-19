@@ -1,0 +1,127 @@
+type: article
+article_id: 8y73f4o4ph
+user_id: wz6xkfcc9i
+category_id: o9x167at52
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Add HashiCorp Vault Signed SSH Certificate Keys
+slug: add-hashi-corp-vault-signed-ssh-certificate-keys
+description: Currently, this feature is behind a Feature Flag. Contact Harness Support
+  to enable the feature. Feature Flags can only be removed for Harness Professional
+  and Essentials editions. Once the feature i…
+short_version: Currently, this feature is behind a Feature Flag. Contact Harness Support
+  to enable the feature. Feature Flags can only be removed for Harness Professional
+  and Essentials editions. Once the feature i…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:20:47.98565Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add HashiCorp Vault Signed SSH Certificate Keys
+  description: ""
+  short_version: ""
+  body: '<p></p><div class="note-callout">Currently, this feature is behind a Feature
+    Flag. Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a>
+    to enable the feature. Feature Flags can only be removed for Harness Professional
+    and Essentials editions. Once the feature is released to a general audience, it&#39;s
+    available for Trial and Community Editions.</div><p></p><p>You can use Vault Secrets
+    Engine Signed SSH Certificates in Harness.</p><p>Vault Secrets Engine provides
+    signed public keys. SSH certificate authentication helps you avoid the common
+    challenges with SSH public key authentication (rekeying, scaling, etc).</p><p>The
+    setup process is simple. You add your private key to Harness as an encrypted key
+    file, specify the Vault SSH Engine to use, paste in the public key, and specify
+    the Vault role used for signing client keys.</p><div class="note-callout">This
+    topic assumes you are familiar with creating Signed SSH Certificates in Vault
+    and have a running HashiCorp Secrets Engine. For more information, see <a href="https://www.vaultproject.io/docs/secrets/ssh/signed-ssh-certificates"
+    target="_blank">Signed SSH Certificates</a> from Vault.</div><p>In this topic:</p><ul><li><a
+    href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#undefined">Supported
+    Platforms and Technologies</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#visual_summary">Visual
+    Summary</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_1_add_a_harness_vault_secrets_engine_secrets_manager">Step
+    1: Add a Harness Vault Secrets Engine Secrets Manager</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_2_create_ssh_key">Step
+    2: Create SSH Key</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_3_credentials">Step
+    3: Credentials</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_4_select_encrypted_ssh_key_files">Step
+    4: Select Encrypted SSH key Files</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#option_select_encrypted_passphrase">Option:
+    Select Encrypted Passphrase</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_5_ssh_port">Step
+    5: SSH Port</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_6_select_hashi_corp_vault_ssh_engine">Step
+    6: Select HashiCorp Vault SSH Engine</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_7_fetch_public_key">Step
+    7: Fetch Public Key</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_8_add_role">Step
+    8: Add Role</a></li><li><a href="https://docs.harness.io/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys#step_9_test_and_submit">Step
+    9: Test and Submit</a></li></ul><p></p><h3>Before You Begin</h3><ul><li><a href="https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a></li><li><a href="https://docs.harness.io/article/au38zpufhr-secret-management">Secrets
+    Management Overview</a></li><li><a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager">Add
+    a HashiCorp Vault Secrets Manager</a></li><li><a href="/article/ehovbje4p1-use-hashi-corp-vault-secrets-manager-api">Use
+    HashiCorp Vault Secrets Manager API</a></li></ul><h3 id="undefined">Supported
+    Platforms and Technologies</h3><p>See <a href="/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h3>Visual Summary</h3><p>With Vault Secrets
+    Engine Signed SSH Certificates, a Vault server acts as the SSH CA.</p><p>You add
+    the trusted public key to all target host&#39;s SSH configuration (and restart
+    the SSH service to pick up the changes). This process can be manual or automated
+    using a configuration management tool.</p><p>When you SSH into a host machine
+    using the signed key, you supply both the signed public key from Vault <strong>and</strong> the
+    corresponding private key as authentication to the SSH call. For example:</p><pre>$
+    ssh -i signed-cert.pub -i ~/.ssh/id_rsa username@10.0.23.5 </pre><p></p><p>In
+    Harness, you are simply providing the same information in the Harness SSH Key
+    settings:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/8y73f4o4ph/1616536901338/image.png"/></figure><p>Next,
+    you use the SSH key in a Harness Infrastructure Definition as the target host(s)
+    connection method.</p><p>During deployment, the Harness Delegate connects to the
+    Vault server and exchanges the public key for a new certificate.</p><p>Since both
+    the target host(s) and Harness trust the Vault server certificates, the Delegate
+    uses the certificate to successfully create an SSH session with the target host(s).</p><h3>Step
+    1: Add a Harness Vault Secrets Engine Secrets Manager</h3><p>Follow the steps
+    in <a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager">Add a
+    HashiCorp Vault Secrets Manager</a> to add the Vault Secrets Engine for SSH Certificate
+    Keys.</p><p>In <strong>Configure Secrets Manager</strong>, you simply select <strong>HashiCorp
+    Vault Secrets Engine - SSH</strong>.</p><p>The rest of the setting are described
+    in <a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager">Add a
+    HashiCorp Vault Secrets Manager</a>.</p><p>You will enter the Vault URL for the
+    Vault server running the Secrets Engine.</p><p>Ensure you select the Secrets Engine
+    that will validate the public key from Vault and your corresponding private key.</p><p>When
+    you are done, the Secrets Manager will look something like this:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/8y73f4o4ph/1616526122315/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    2: Create SSH Key</h3><p>In <strong>Secrets Management</strong>, click <strong>SSH</strong>,
+    and then click <strong>Add SSH Key</strong>. The <strong>SSH Configuration</strong>
+    settings appear.</p><p>Enter a name that identifies the SSH key in <strong>Display
+    Name</strong>.</p><p>In <strong>Auth Scheme</strong>, select <strong>SSH Key/Password</strong>.</p><p>In
+    <strong>User Name</strong>, enter the name of the user specified when generating
+    the public key (for example, <code>ssh-keygen -t rsa -C &#34;user@example.com&#34;</code>).</p><p>Users
+    are mapped to roles. They can be mapped many to one.</p><h3>Step 3: Credentials</h3><p>In
+    <strong>Credentials</strong>, select <strong>Vault SSH</strong>. The setting will
+    change for HashiCorp Vault SSH Engine.</p><h3>Step 4: Select Encrypted SSH key
+    Files</h3><p>In <strong>Select Encrypted SSH key Files</strong>, select or create
+    a new Harness Encrypted File using your private key.</p><p>For details on Harness
+    Encrypted Files, see <a href="/article/nt5vchhka4-use-encrypted-file-secrets">Use
+    Encrypted File Secrets</a>.</p><h3>Option: Select Encrypted Passphrase</h3><p>In <strong>Select
+    Encrypted Passphrase</strong>, select the SSH key <a href="https://www.ssh.com/ssh/passphrase"
+    target="_blank">passphrase</a> from the drop down if one is required.</p><p>It
+    is <strong>not</strong> required by default for HashiCorp Vault SSH Engine.</p><h3>Step
+    5: SSH Port</h3><p>In <strong>SSH Port</strong>, leave the default 22 or enter
+    in a different port if needed.</p><h3>Step 6: Select HashiCorp Vault SSH Engine</h3><p>Select
+    the <strong>HashiCorp Vault Secrets Engine - SSH</strong> Secrets Manager you
+    added earlier.</p><p>Ensure you select the Secrets Engine that will validate the
+    public key from Vault and your corresponding private key.</p><h3>Step 7: Fetch
+    Public Key</h3><p>Paste in the contents of the public key.</p><h3>Step 8: Add
+    Role</h3><p>Enter the role name of the Vault role used for signing client keys.</p><p>For
+    example, if you create a role with <code>vault write ssh-client-signer/roles/my-role</code>,
+    enter <strong>my-role</strong> in the Role setting in Harness.</p><h3>Step 9:
+    Test and Submit</h3><p>Click <strong>Test</strong>.</p><p>Enter the public address
+    the host you want to connect to use the SSH key.</p><p>Click <strong>Run</strong>.</p><p>Harness
+    should show a successful test of the SSH key. If you have errors, check <a href="https://www.vaultproject.io/docs/secrets/ssh/signed-ssh-certificates#troubleshooting"
+    target="_blank">Troubleshooting</a> from Vault.</p><p>Click <strong>Submit</strong>.</p><p>Now
+    you can use this SSH key in Harness Infrastructure Definition Connection Attributes
+    settings when defining connection setting to a target hosts.</p><p>See <a href="/article/v3l3wqovbe-infrastructure-definitions">Add
+    an Infrastructure Definition</a>.</p><p></p>'
+  slug: add-hashi-corp-vault-signed-ssh-certificate-keys
+  tags: []
+  is_live: true

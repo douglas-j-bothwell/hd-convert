@@ -1,0 +1,115 @@
+type: article
+article_id: ng6yaxqi2r
+user_id: slcpusem6b
+category_id: wywpilryhu
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Manage Access Control for CCM Dashboards
+slug: manage-access-control-for-ccm-dashboards
+description: This topic describes how to add and manage access control for CCM Dashboards.
+short_version: This topic describes how to add and manage access control for CCM Dashboards.
+tags:
+- Dashboards
+- Access Control
+- 'RBAC '
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-15T17:14:42.476754Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Manage Access Control for CCM Dashboards
+  description: This topic describes how to add and manage access control for CCM Dashboards.
+  short_version: This topic describes how to add and manage access control for CCM
+    Dashboards.
+  body: '<p>Harness provides Role-Based Access Control (RBAC) that enables you to
+    control user and group access to Harness Resources according to their Role assignment.</p><p>This
+    topic describes how to add and manage access control for CCM Dashboards.</p><p>In
+    this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards#undefined">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards#undefined">Review
+    CCM Dashboards Roles and Permissions</a></li><li><a href="https://ngdocs.harness.io/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards#step_add_and_manage_dashboard_static_editor_role">Step:
+    Add and Manage Dashboard - Static Editor Role</a></li><li><a href="https://ngdocs.harness.io/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards#step_add_and_manage_dashboard_all_view_role">Step:
+    Add and Manage Dashboard - All View Role</a></li><li><a href="https://ngdocs.harness.io/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards#undefined">Step:
+    Add and Manage Access Control for Resource Groups</a></li><li><a href="https://ngdocs.harness.io/article/ng6yaxqi2r-manage-access-control-for-ccm-dashboards#step_add_and_manage_access_control_for_users">Step:
+    Add and Manage Access Control for Users</a></li></ul><h3 id="undefined">Before
+    You Begin</h3><ul><li><a href="https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness">Access
+    Management (RBAC) Overview</a></li></ul><h3 id="undefined">Review CCM Dashboards
+    Roles and Permissions</h3><p>The following roles are needed for CCM Dashboards:
+    </p><ul><li><strong>Dashboard - Static Editor</strong>: To add, edit, and delete
+    CCM Dashboards</li><li><strong>Dashboard - All View</strong>: To view all the
+    <strong>By Harness</strong> and <strong>Custom</strong> dashboards</li></ul><p></p><table><tbody><tr><td><p><strong>Roles</strong></p></td><td><p><strong>Scope</strong></p></td><td><p><strong>Permissions</strong></p></td></tr><tr><td><p>Dashboard
+    - Static Editor</p></td><td><p>Folder</p></td><td><ul><li>Add Dashboard</li><li>Add
+    Tile</li><li>Edit Dashboard</li><li>Delete Dashboard</li></ul></td></tr><tr><td><p>Dashboard
+    - All View</p></td><td><p>Folder</p></td><td><ul><li>View CCM Dashboards</li></ul></td></tr></tbody></table><p></p><h3>Step:
+    Add and Manage Dashboard - Static Editor Role</h3><p>Perform the following steps
+    to add and manage permissions <strong>Dashboard - Static Editor</strong> role.</p><ol><li>In
+    <strong>Harness</strong>, click <strong>Account Settings</strong>, and then click
+    <strong>Access Control</strong>.</li><li>Click <strong>Roles</strong>.</li><li>Click
+    <strong>New Role</strong>. The New Role settings appear.</li><li>In <strong>Name</strong>,
+    enter <strong>Dashboard - Static Editor</strong> and click <strong>Save</strong>.<br/><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1629906863193/screenshot-2021-08-25-at-9-24-07-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure></li><li>Click
+    <strong>Shared Resources</strong> for the role that you created.</li><li>Select
+    the <strong>View</strong> and <strong>Manage</strong> checkbox. This will allow
+    you to add dashboards, add tiles, edit dashboards, and delete dashboards.<br/><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1629907311437/screenshot-2021-08-25-at-9-31-14-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li><li>Click
+    <strong>Apply Changes</strong>.</li></ol><h3>Step: Add and Manage Dashboard -
+    All View Role</h3><p>Perform the following steps to add and manage permissions
+    <strong>Dashboard - All View</strong> role.</p><ol><li>In <strong>Harness</strong>,
+    click <strong>Account Settings</strong>, and then click <strong>Access Control</strong>.</li><li>Click
+    <strong>Roles</strong>.</li><li>Click <strong>New Role</strong>. The New Role
+    settings appear.</li><li>In <strong>Name</strong>, enter <strong>Dashboard - All
+    View</strong> and click <strong>Save</strong>.<br/><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1629907446670/screenshot-2021-08-25-at-9-33-42-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure></li><li>Click
+    <strong>Shared Resources</strong> for the role that you created.</li><li>Select
+    the <strong>View</strong> checkbox. This will allow you to view all the dashboards.<br/><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1629907508930/screenshot-2021-08-25-at-9-34-54-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li><li>Click
+    <strong>Apply Changes</strong>.</li></ol><h3 id="undefined">Step: Add and Manage
+    Access Control for Resource Groups</h3><p>Perform the following steps to limit
+    access to specific Dashboards.</p><ol><li>In <strong>Harness</strong>, click <strong>Account
+    Settings</strong>, and then click <strong>Access Control</strong>.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1626373534560/screenshot-2021-07-15-at-11-55-08-pm.png"
+    style="max-height:20%;max-width:20%" data-hd-height="20%" data-hd-width="20%"/></figure></li><li>In
+    <strong>Resource Groups</strong>, click your Resource Group. For more information
+    on adding and managing resource groups, see <a href="https://ngdocs.harness.io/article/yp4xj36xro-add-resource-groups">Add
+    and Manage Resource Groups</a>.<br/><br/>This section uses <strong>Dashboard -
+    All</strong> as an example.</li><li>In <strong>Shared Resources</strong>, select
+    <strong>Dashboards</strong>.<br/><br/>By default, <strong>All Dashboards</strong>
+    is selected.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1626759172270/screenshot-2021-07-20-at-10-53-46-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click
+    <strong>Add Dashboards</strong>.</li><li>In <strong>Add Dashboards</strong>, select
+    the folders for which you want to limit the access.<br/><br/>The selected folder
+    may have more than one dashboard. All the dashboards in the selected folders will
+    have the same access.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1626759377508/screenshot-2021-07-20-at-11-04-02-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>Apply Changes</strong>.</li></ol><h3>Step: Add and Manage Access Control
+    for Users</h3><p>Perform the following steps to limit the access to specific Dashboards
+    for different users.</p><ol><li>In <strong>Harness</strong>, click <strong>Access
+    Control</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1626373534560/screenshot-2021-07-15-at-11-55-08-pm.png"
+    style="max-height:20%;max-width:20%" data-hd-height="20%" data-hd-width="20%"/></figure></li><li>In
+    <strong>User</strong>, in <strong>New User</strong>, select the User for which
+    you want to add or modify the access control. For more information on adding and
+    managing resource groups, see <a href="https://ngdocs.harness.io/article/hyoe7qcaz6-add-users">Add
+    and Manage Users</a>.</li><li>In <strong>Assign Roles</strong>, select the <strong>Role</strong>
+    from the drop-down list. You can select either <strong>Dashboard - Static Editor</strong>
+    or <strong>Dashboard - All View</strong>.</li><li>In <strong>Resource Groups</strong>,
+    select the resource group for which you want to add or modiy the access control.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ng6yaxqi2r/1626771149381/screenshot-2021-07-20-at-2-22-02-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>Save</strong>.</li></ol><p></p>'
+  slug: manage-access-control-for-ccm-dashboards
+  tags:
+  - Dashboards
+  - Access Control
+  - 'RBAC '
+  is_live: true

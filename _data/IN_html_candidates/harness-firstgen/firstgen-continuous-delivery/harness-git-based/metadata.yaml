@@ -1,0 +1,14 @@
+type: category
+category_id: goyudf2aoh
+parent_category_id: 1qtels4t8p
+title: Harness Git-based How-tos
+description: Use Git across Harness components
+slug: harness-git-based
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1570215406245/gitop.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Git-based How-tos
+  description: Use Git across Harness components
+  slug: harness-git-based

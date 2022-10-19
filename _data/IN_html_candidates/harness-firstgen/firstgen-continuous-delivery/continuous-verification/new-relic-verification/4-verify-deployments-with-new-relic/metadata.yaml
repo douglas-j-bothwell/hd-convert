@@ -1,0 +1,276 @@
+type: article
+article_id: 9rc6pryw97
+user_id: mfr0nxh4be
+category_id: 1nci5420c8
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Verify Deployments with New Relic
+slug: 4-verify-deployments-with-new-relic
+description: How to add New Relic to a Harness Workflow, where Harness can analyze
+  New Relic metrics to verify, rollback, and improve deployments.
+short_version: Harness can analyze New Relic data to verify, rollback, and improve
+  deployments.
+tags:
+- New Relic
+- Deployment Verification
+- Verification Provider
+- verification
+- Workflow
+- APM
+- application performance monitoring
+- Workflow variable
+- template
+- templatize
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:46.788208Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Verify Deployments with New Relic
+  description: How to add New Relic to a Harness Workflow, where Harness can analyze
+    New Relic metrics to verify, rollback, and improve deployments.
+  short_version: Harness can analyze New Relic data to verify, rollback, and improve
+    deployments.
+  body: '<p></p><p>The following procedure describes how to add New Relic as a verification
+    step in a Harness workflow. For more information about workflows, see <a href="/article/m220i1tnia-workflow-configuration">Add
+    a Workflow</a>.</p><p>Once you run a deployment and New Relic preforms verification,
+    Harness machine-learning verification analysis will assess the risk level of the
+    deployment.</p><div class="tip-callout">In order to obtain the names of the host(s),
+    pod(s), or container(s) where your service is deployed, the verification provider
+    should be added to your workflow <em>after</em> you have run at least one successful
+    deployment.</div><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#visual_summary">Visual Summary</a></li><li> <a
+    href="#simple_slug">Step 1: Title</a></li><li> <a href="#step_2_new_relic_server">Step
+    2: New Relic Server</a></li><li> <a href="#step_3_application_name">Step 3: Application
+    Name</a></li><li> <a href="#step_4_custom_thresholds">Step 4: Custom Thresholds</a></li><li>
+    <a href="#step_5_expression_for_host_container_name">Step 5: Expression for Host/Container
+    Name</a></li><li> <a href="#step_6_analysis_time_duration">Step 6: Analysis Time
+    Duration</a></li><li> <a href="#step_7_baseline_for_risk_analysis">Step 7: Baseline
+    for Risk Analysis</a></li><li> <a href="#step_8_execute_with_previous_steps">Step
+    8: Execute with previous steps</a></li><li> <a href="#step_9_include_instances_from_previous_phases">Step
+    9: Include instances from previous phases</a></li><li> <a href="#step_10_wait_interval_before_execution">Step
+    10: Wait interval before execution</a></li><li> <a href="#review_guide_from_example">Review:
+    Guide from Example</a></li><li> <a href="#review_templatize_new_relic_verification">Review:
+    Templatize New Relic Verification</a></li><li> <a href="#review_harness_expression_support_in_cv_settings">Review:
+    Harness Expression Support in CV Settings</a></li><li> <a href="#step_11_view_verification_results">Step
+    11: View Verification Results</a></li><li> <a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li>See the <a href="/article/ht3amzjvle-new-relic-verification-overview">New
+    Relic Verification Overview</a>.</li><li>See <a href="/article/iz45kpa10u-1-new-relic-connection-setup">Connect
+    to New Relic</a>.</li></ul><p></p><h3>Visual Summary</h3><p>[embedded video, diagram,
+    or animated gif]</p><p></p><h3>Step 1: Set Up the Deployment Verification</h3><p>To
+    verify your deployment with New Relic, do the following:</p><ol><li>Ensure that
+    you have added New Relic as a verification provider, as described in <a href="/article/iz45kpa10u-1-new-relic-connection-setup">Connect
+    to New Relic</a>.</li><li>In your workflow, under <strong>Verify Service</strong>,
+    click <strong>Add Verification</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535478536625/image.png"/></figure></li><li>In
+    the resulting <strong>Add Step</strong> settings, select <strong>Performance Monitoring</strong> &gt; <strong>New Relic</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1580453163434/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>Click
+    <strong>Next</strong>. The <strong>Configure </strong><strong>New Relic</strong>
+    settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1588148025391/newrelic-vd.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p></p><h3>Step
+    2: New Relic Server</h3><p>In <strong>Harness</strong>, click <strong>Setup</strong>,
+    click <strong>Connectors</strong>, click <strong>Verification Providers</strong>.
+    The New Relic verification provider(s) are listed. The New Relic logo is next
+    to each New Relic provider.</p><p>Select the server you added when you set up
+    the New Relic verification provider.</p><p>You can also enter variable expressions,
+    such as: <code>${serviceVariable.new_relic_connector_name}</code></p><div class="note-callout">If
+    the <strong>New Relic Server</strong> field contains an expression, the <strong>Application
+    Name</strong> field must also use an expression.</div><h3>Step 3: Application
+    Name</h3><p>Select the application to use for this verification step.</p><p>If
+    your New Relic account contains hundreds or thousands of applications, Harness
+    requests that you enter in the application name. You can just paste in the application
+    name as it appears in the New Relic Applications page <strong>Name</strong> column.</p><p>This
+    is the application name used to aggregate data in the New Relic UI. You set both
+    the license and the app name as part of the New Relic installation process.</p><p>You
+    can also enter variable expressions, such as: <code>${app.name}</code></p><div
+    class="note-callout">If the <strong>New Relic Server</strong> field contains an
+    expression, the <strong>Application Name</strong> field must also use an expression.</div><p>To
+    find your application, in <strong>New Relic</strong>, click Applications. The
+    list of applications is displayed on the <strong>Applications</strong> page.</p><figure><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535484951894/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535484951894/image.png"/></a></figure><h3>Step
+    4: Custom Thresholds</h3><p>In the <strong>Custom Thresholds</strong> section,
+    define two types of rules that override normal verification behavior:</p><ul><li><strong>Ignore
+    Hints</strong> instruct Harness to skip certain metrics/value combinations from
+    verification analysis.</li><li><strong>Fast-Fail Hints</strong> cause a Workflow
+    to promptly enter a failed state.</li></ul><p>You can configure the following
+    metric types as part of Custom Thresholds: Apdex Score, Average Response Time,
+    Error, and Requests Per Minute (in Workflow).</p><p>To configure these rules,
+    see  <a href="https://docs.harness.io/article/z2n6mnf7u0-custom-thresholds">Apply
+    Custom Thresholds to Deployment Verification</a>.</p><h3>Step 5: Expression for
+    Host/Container Name</h3><p>The expression entered here should resolve to a host/container
+    name in your deployment environment. For instructions on how to the <strong>Guide
+    From Example</strong> feature, see <a href="#guide_from_example">Guide From Example</a>.</p><p>When
+    you are setting up the workflow for the first time, Harness will not be able to
+    help you create an expression in the <strong>Guide From Example</strong> feature
+    because there has not been a host/container deployed yet. For this reason, you
+    should add the Verify Step <strong>after</strong> you have done one successful
+    deployment.</p><p></p><div class="note-callout">For AWS EC2 hostnames, use the
+    expression <code>${instance.hostName</code>}.</div><p>To ensure that you pick
+    the right name when using <strong>Guide From Example</strong>, you can use a host
+    name in New Relic as a guide. In <strong>New Relic</strong>, click your application,
+    click the left menu, and then click <strong>JVMs</strong>. The host names are
+    listed in the first column of the table.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535490975718/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535490975718/image.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></a></figure><p>The
+    expression that you provide in <strong>Expression for Host/Container Name</strong>
+    should evaluate to the names here.</p><h3>Step 6: Analysis Time Duration</h3><p>You
+    can use integers and expressions in the <strong>Analysis Time Duration</strong>
+    field.</p><p>See <a href="/article/9dvxcegm90-variables">Harness Variable Expression</a>
+    and <a href="/article/0avzb5255b-cv-strategies-and-best-practices#analysis_time_duration">Analysis
+    Time Duration</a>.</p><h3>Step 7: Baseline for Risk Analysis</h3><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV
+    Strategies, Tuning, and Best Practices</a>.</p><h3>Step 8: Execute with previous
+    steps</h3><p>Check this checkbox to run this verification step in parallel with
+    the previous steps in <strong>Verify Service</strong>.</p><h3>Step 9: Include
+    instances from previous phases</h3><p>If you are using this verification step
+    in a multi-phase deployment, select this checkbox to include instances used in
+    previous phases when collecting data. Do not apply this setting to the first phase
+    in a multi-phase deployment.</p><h3>Step 10: Wait interval before execution</h3><p>Set
+    how long the deployment process should wait before executing the verification
+    step.</p><h3>Review: Guide from Example</h3><div class="note-callout">This section
+    explains how to use the <strong>Guide From Example</strong> option next to the
+    <strong>Expression for Host/Container name</strong> field, but the same information
+    applies to when the <strong>Guide From Example</strong> option is next any other
+    field, such as a <strong>Message</strong> field.</div><p>In the New Relic verification
+    step&#39;s settings, you can see the <strong>Guide From Example</strong> option
+    next to the <strong>Expression for Host/Container name</strong> field. This option
+    lets you select the host(s), pod(s), or container(s) for Harness to use when performing
+    verification.</p><p>You select the host, pod, or container in <strong>Guide From
+    Example</strong>, and an expression is added to the <strong>Expression for Host/Container
+    name</strong> field. The default expression is <strong>${instance.host.hostName}</strong>.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1620840166548/os-faw-swpvf-mft-lwy-msu-pz-rkbh-5-cvtkzxw-6-h-zcj-ze-1-vkg-p-4-bk-r-2-zd-4-ap-rmzta-wrj-fy-liew-8-lrqfke-a-86-pt-yjy-ehot-0-qhjf-2-s-skh-1-lma-r-5-qn-kay-bpo-lei-2-bff-a-4-y-1-jc-c-8-jh-d-0-d-o-b"/></figure><div
+    class="tip-callout">In order to obtain the names of the host(s) pod(s), or container(s)
+    where your service is deployed, the verification provider should be added to your
+    workflow <strong>after</strong> you have run at least one successful deployment.
+    Then the <strong>Guide From Example</strong> feature can display the host or container
+    name(s) for you to select.</div><p>To ensure that you pick the right name when
+    using <strong>Guide From Example</strong>, you can use a host name in New Relic
+    as a guide.</p><p>To use <strong>Guide From Example</strong> for a host or container
+    name expression, do the following:</p><ol><li>In <strong>New Relic</strong>, click
+    your application, click the left menu, and then click <strong>JVMs</strong>. The
+    host names are listed in the first column of the table.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535490975718/image.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure>The
+    expression that you provide in <strong>Expression for Host/Container Name</strong>
+    should evaluate to the names here.</li><li>In your Harness Workflow&#39;s <strong>Configure </strong><strong>New
+    Relic</strong> settings, click <strong>Guide From Example</strong>. The <strong>Expression
+    for Host Name</strong> popover appears.<br/>The dialog shows the Service, Environment,
+    and Service Infrastructure used for this Workflow.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1580455137783/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>In
+    <strong>Host</strong>, click the name of the host to use when testing verification.
+    Match the hostname from the New Relic JVMs to the hostname in the Expression for
+    Host Name popover:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535494414538/image.png"/></figure></li><li>Click
+    <strong>SUBMIT</strong>. The YAML for the host appears. Look for the <strong>host</strong>
+    section.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1620840166659/b-3-lm-uswo-g-8-jm-i-2-juqt-irxe-bnwyvs-na-px-wbie-0-rc-ldi-6-wlu-wkw-es-wu-5-umvp-tgm-u-7-x-xpl-uw-0-kf-5-ws-q-0-vy-sa-j-z-9-r-wc-4-ne-b-6-nvm-55-vi-sa-pl-8-yls-7-vlrk-7-gye-1-ks-5-fw-y-4-z-f-7-qh-zp-3-d"/></figure>You
+    want to use a <strong>hostName</strong> label in the <strong>host</strong> section.
+    Do not use a <strong>hostName</strong> label outside of that section.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535494951865/image.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>To
+    identify which label to use to build the expression, compare the host/container
+    names in the YAML with the host names in the New Relic <strong>JVMs</strong> page.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535495217998/image.png"/></figure></li><li>Locate
+    the host/pod/container to use, and click the <strong>label</strong> to select
+    the expression. For example, if you clicked the <strong>hostName</strong> label,
+    the expression <strong>${host.hostName}</strong> is added to the <strong>Expression
+    for Host/Container name</strong> field. Click back in the main dialog to close
+    the <strong>Guide From Example</strong>.</li><li>At the bottom of the New Relic
+    dialog, click <strong>TEST</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535495384949/image.png"
+    style="max-height:20%;max-width:20%" data-hd-height="20%" data-hd-width="20%"/></figure>A
+    new <strong>Expression for Host Name</strong> popover appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535495480597/image.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>In
+    <strong>Host</strong>, select the same host you selected last time, and then click
+    <strong>RUN</strong>. Verification for the host is found.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535495597549/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>If
+    you have errors, see <a href="#troubleshooting">Troubleshooting</a>.</li><li>Click
+    back in the <strong>New Relic</strong> dialog and click <strong>SUBMIT</strong>.
+    The New Relic verification step is added to your workflow.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535495686313/image.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><p>Using
+    <strong>Guide From Example</strong> for other dialog fields is the same process
+    as above.</p><h3>Review: Templatize New Relic Verification</h3><p>Once you have
+    created a New Relic verification step, you can templatize certain settings. This
+    enables you to use the New Relic verification step in the Workflow (and multiple
+    Pipelines) without having to provide settings until runtime.</p><p>You templatize
+    settings by click the <strong>[T]</strong> icon next to the setting.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1574463364511/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    settings are replaced by Workflow variables:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1574463406988/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    will now see them in the <strong>Workflow Variables</strong> section of the Workflow:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1574463446835/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>When
+    you deploy the Workflow, <strong>Start New Deployment</strong> prompts you to
+    enter values for templatize settings:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9rc6pryw97/1574463484362/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can select the necessary settings and deploy the Workflow.</p><p>You can also
+    pass variables into a Workflow from a Trigger that can be used for templatized
+    values. For more information, see <a href="/article/revc37vl0f-passing-variable-into-workflows">Passing
+    Variables into Workflows and Pipelines from Triggers</a>.</p><h3>Review: Harness
+    Expression Support in CV Settings</h3><p>You can use expressions (<code>${...}</code>)
+    for <a href="/article/7bpdtvhq92-workflow-variables-expressions">Harness built-in
+    variables</a> and custom <a href="/article/eb3kfl8uls-service-configuration">Service</a>
+    and <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow</a>
+    variables in the settings of Harness Verification Providers.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1586812006289/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p>Expression support lets
+    you template your Workflow verification steps. You can add custom expressions
+    for settings, and then provide values for those settings at deployment runtime.
+    Or you can use Harness built-in variable expressions and Harness will provide
+    values at deployment runtime automatically.</p><h3>Step 11: View Verification
+    Results</h3><p>Once you have deployed your workflow (or pipeline) using the New
+    Relic verification step, you can automatically verify cloud application and infrastructure
+    performance across your deployment.</p><div class="note-callout">New Relic APIs
+    will return transactions with and without data, so Harness checks for load. Harness
+    gets all the web transactions and then fetches metric data to find out if they
+    have load. If load exists, then Harness fetches node level data. In cases where
+    none of the web transactions have load Harness doesn&#39;t collect anything. In
+    cases where there is no load, Harness can&#39;t create a baseline.</div><h4>Workflow
+    Verification</h4><p>To see the results of Harness machine-learning evaluation
+    of your New Relic verification, in your workflow or pipeline deployment you can
+    expand the <strong>Verify Service</strong> step and then click the <strong>New
+    Relic</strong> step.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535496366736/image.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h4>Continuous
+    Verification</h4><p>You can also see the evaluation in the <strong>Continuous
+    Verification</strong> dashboard. The workflow verification view is for the DevOps
+    user who developed the workflow. The <strong>Continuous Verification</strong>
+    dashboard is where all future deployments are displayed for developers and others
+    interested in deployment analysis.</p><p>To learn about the verification analysis
+    features, see the following sections.</p><h4>Transaction Analysis</h4><table><tbody><tr><td><p><strong>Execution
+    details</strong>See the details of verification execution. Total is the total
+    time the verification step took, and Analysis duration is how long the analysis
+    took.</p><p><strong>Risk level analysis</strong>Get an overall risk level and
+    view the cluster chart to see events.</p><p><strong>Transaction-level summary</strong>See
+    a summary of each transaction with the query string, error values comparison,
+    and a risk analysis summary.</p></td><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497174879/image.png"/></figure></td></tr></tbody></table><h4>Execution
+    Analysis</h4><table><tbody><tr><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497249316/image.png"/></figure></td><td><p><strong>Event
+    type</strong>Filter cluster chart events by Unknown Event, Unexpected Frequency,
+    Anticipated Event, Baseline Event, and Ignore Event.</p><p><strong>Cluster chart</strong>View
+    the chart to see how the selected event contrast. Click each event to see its
+    log details.</p></td></tr></tbody></table><h4>Event Management</h4><table><tbody><tr><td><p><strong>Event-level
+    analysis</strong>See the threat level for each event captured.</p><p><strong>Tune
+    event capture</strong>Remove events from analysis at the service, workflow, execution,
+    or overall level.</p><p><strong>Event distribution</strong>Click the chart icon
+    to see an event distribution including the measured data, baseline data, and event
+    frequency.</p></td><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497306015/image.png"/></figure></td></tr></tbody></table><h3>Next
+    Steps</h3><ul><li><a href="/article/3d5sv5p9pf-5-troubleshooting-new-relic">Troubleshoot
+    Deployment Verification with New Relic</a></li></ul><p></p>'
+  slug: 4-verify-deployments-with-new-relic
+  tags:
+  - New Relic
+  - Deployment Verification
+  - Verification Provider
+  - verification
+  - Workflow
+  - APM
+  - application performance monitoring
+  - Workflow variable
+  - template
+  - templatize
+  is_live: true

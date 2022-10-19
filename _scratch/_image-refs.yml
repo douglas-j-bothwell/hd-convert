@@ -1,0 +1,7 @@
+image_refs : 
+    - ref :
+         helpdocs-url: myURL
+         markdown-ref: myRef
+         md-files-with-refs: 
+             - "this.md"
+             - "that.md"

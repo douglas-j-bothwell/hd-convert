@@ -1,0 +1,56 @@
+type: article
+article_id: 5ww21ewdt8
+user_id: mfr0nxh4be
+category_id: 9i5thr0ot2
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Configure Delegate Proxy Settings
+slug: configure-delegate-proxy-settings
+description: All of the Delegates include proxy settings you can use to change how
+  the Delegate connects to the Harness Manager. By default, the Harness Delegate uses
+  HTTP and HTTPS in its Proxy Scheme settings.…
+short_version: All of the Delegates include proxy settings you can use to change how
+  the Delegate connects to the Harness Manager. By default, the Harness Delegate uses
+  HTTP and HTTPS in its Proxy Scheme settings.…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-13T19:21:20.848419Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Configure Delegate Proxy Settings
+  description: ""
+  short_version: ""
+  body: '<p>All of the Delegates include proxy settings you can use to change how
+    the Delegate connects to the Harness Manager.</p><div class="note-callout">By
+    default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.</div><h3>Kubernetes
+    Proxy Settings</h3><p>The proxy settings are in the <strong>harness-delegate.yaml</strong>
+    file:</p><pre>...<br/>        - name: PROXY_HOST<br/>          value: &#34;&#34;<br/>        -
+    name: PROXY_PORT<br/>          value: &#34;&#34;<br/>        - name: PROXY_SCHEME<br/>          value:
+    &#34;&#34;<br/>        - name: NO_PROXY<br/>          value: &#34;&#34;<br/>        -
+    name: PROXY_MANAGER<br/>          value: &#34;true&#34;<br/>        - name: PROXY_USER<br/>          valueFrom:<br/>            secretKeyRef:<br/>              name:
+    doc-example-proxy<br/>              key: PROXY_USER<br/>        - name: PROXY_PASSWORD<br/>          valueFrom:<br/>            secretKeyRef:<br/>              name:
+    doc-example-proxy<br/>              key: PROXY_PASSWORD<br/>...</pre><p></p><p>The
+    <code>PROXY_MANAGER</code> setting determines whether the Delegate bypasses proxy
+    settings to reach the Harness Manager in the cloud. If you want to bypass, enter
+    <code>false</code>.</p><h4>In-Cluster Kubernetes Delegate with Proxy</h4><p>If
+    an in-cluster Kubernetes Delegate has a proxy configured, then <code>NO_PROXY</code>
+    must contain the cluster master IP. This enables the Delegate to skip the proxy
+    for in-cluster connections.</p><h3>Subnet Masks not Supported</h3><p>You cannot
+    use Delegate proxy settings to specify the Cluster Service Network CIDR notation
+    and make the Delegate bypass the proxy to talk to the K8s API.</p><p>Harness does
+    not allow any methods of representing a subnet mask.</p><p>The mask should be
+    set in the cluster itself. For example:</p><pre>kubectl -n default get service
+    kubernetes -o json | jq -r &#39;.spec.clusterIP&#39;</pre><p></p>'
+  slug: configure-delegate-proxy-settings
+  tags: []
+  is_live: true

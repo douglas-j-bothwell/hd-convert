@@ -1,0 +1,127 @@
+type: article
+article_id: gdob5gvyco
+user_id: 2te4j9f9g7
+category_id: sy6sod35zi
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Authentication Overview
+slug: authentication-overview
+description: An overview of how to control access to your organization's Harness account
+  by SSO (single sign-on) provider, email domain, 2FA (two-factor authentication),
+  and password policies (strength, expiration, and lockout).
+short_version: An overview of how to control access to your organization's Harness
+  account by SSO (single sign-on) provider, email domain, 2FA (two-factor authentication),
+  and password policies (strength, expiration, and lockout).
+tags:
+- AccessManagement
+- Authentication
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-18T20:43:23.065204Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Authentication Overview
+  description: An overview of how to control access to your organization's Harness
+    account by SSO (single sign-on) provider, email domain, 2FA (two-factor authentication),
+    and password policies (strength, expiration, and lockout).
+  short_version: An overview of how to control access to your organization's Harness
+    account by SSO (single sign-on) provider, email domain, 2FA (two-factor authentication),
+    and password policies (strength, expiration, and lockout).
+  body: '<p>This topic provides an overview of Authentication in Harness. It describes
+    various ways to authenticate users.</p><h3>Before You Begin</h3><ul><li>See <a
+    href="/article/vz5cq0nfg2-rbac-in-harness">Access Management (RBAC) Overview</a>.</li><li>Make
+    sure you have permissions to <strong>Create/Edit, Delete</strong> Authentication
+    Settings.</li></ul><h3>Review: authentication Settings</h3><p>Harness Access control
+    includes:</p><ul><li>Authentication — This checks who the user is.</li><li>Authorization
+    — This checks what the user can do.</li><li>Auditing — This logs what the user
+    does.</li></ul><p>This topic focuses on Authentication. For more on Authorization,
+    see <a href="/article/vz5cq0nfg2-rbac-in-harness">Access Management (RBAC) Overview</a>.</p><p>Users
+    in Administrator groups can use Authentication Settings to restrict access to
+    an organization&#39;s Harness account. The options you choose will apply to all
+    your account&#39;s users. These options include:</p><ul><li><a href="https://ngdocs.harness.io/article/gdob5gvyco-authentication-overview#enable_public_o_auth_providers">Enable
+    Public OAuth Providers</a></li><li><a href="/article/gdob5gvyco-authentication-overview#enable_security_assertion_markup_language_saml_providers">Enable
+    SAML Providers</a></li><li><a href="https://ngdocs.harness.io/article/gdob5gvyco-authentication-overview#enforce_password_policies">Enforce
+    Password Policies</a><ul><li><a href="https://ngdocs.harness.io/article/gdob5gvyco-authentication-overview#enforce_password_strength">Enforce
+    Password Strength</a></li><li><a href="https://ngdocs.harness.io/article/gdob5gvyco-authentication-overview#enforce_password_expiration">Enforce
+    Password Expiration</a></li><li><a href="https://ngdocs.harness.io/article/gdob5gvyco-authentication-overview#enforce_lockout_after_failed_logins">Enforce
+    Lockout After Failed Logins</a></li></ul></li><li><a href="https://ngdocs.harness.io/article/gdob5gvyco-authentication-overview#enforce_two_factor_authentication">Enforce
+    Two Factor Authentication</a></li><li><a href="https://ngdocs.harness.io/article/gdob5gvyco-authentication-overview#restrict_email_domains">Restrict
+    Email Domains</a></li></ul><h3>Configure Authentication</h3><ul><li>In <strong>Home</strong>,
+    Click <strong>Authentication</strong> under <strong>ACCOUNT SETUP.</strong></li><li>The
+    <strong>Authentication: Configuration</strong> page appears.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1624603497308/screenshot-2021-06-25-at-12-14-01-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>You
+    can choose one of the below as the default Authentication method:<ul><li>Login
+    via a Harness Account or Public OAuth Providers</li><li>SAML Provider</li></ul><h4>Enable
+    Public OAuth Providers</h4>In the <strong>Use Public OAuth Providers</strong> section,
+    you can enable Harness logins via a range of single sign-on mechanisms. Enable
+    this slider to expose sliders for enabling individual OAuth partners.<br/>For
+    more on OAuth Providers, see <a href="/article/rb33l4x893">Single Sign-On with
+    OAuth</a>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1623222405229/screenshot-2021-06-09-at-12-35-56-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Enable
+    Security Assertion Markup Language (SAML) Providers</h4>Select <strong>SAML Provider</strong>
+    to enable a SAML Provider. To do this, you should first disable any configured
+    public OAuth providers.<br/>For more on adding a SAML Provider, see <a href="/article/mlpksc7s6c">Single
+    Sign-On with SAML</a>.<h3>Enforce Password Policies</h3>You&#39;ll see specific
+    controls to govern the following password requirements:<ul><li>Enforce password
+    strength</li><li>Periodically expire passwords</li><li>Enforce Two Factor Authentication</li></ul><h4>Enforce
+    Password Strength</h4>Select <strong>Enforce password strength</strong> to open
+    the dialog shown below.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1623216912411/screenshot-2021-06-09-at-11-04-26-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Here
+    you can specify and enforce any or all of the below options:<ul><li>Minimum password
+    length.</li><li>Include at least one uppercase letter.</li><li>Include at least
+    one lowercase letter.</li><li>Include at least one digit.</li><li>Include at least
+    one special character.</li></ul></li></ul><p>If you enforce <strong>Have at least
+    one special character</strong>, each password must include one (or more) of the
+    following characters: <code>~!@#$%^&amp;*_-+=`|\(){}[]:;&#34;&#39;&lt;&gt;,.?/</code></p><h4>Enforce
+    Password Expiration</h4><p>Select <strong>Periodically expire passwords</strong>
+    to set an interval at which users must refresh their Harness passwords. In the
+    same dialog, you can also set an advance notification interval.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1623218272636/screenshot-2021-06-09-at-11-03-02-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Enforce
+    Lockout After Failed Logins</h4><p>Select <strong>Enforce lockout policy</strong>
+    to open the dialog shown below. It offers independent controls over the lockout
+    trigger (how many failed logins), lockout time (in days), and notifications to
+    locked-out users and to Harness user groups.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1623219026871/screenshot-2021-06-09-at-11-39-31-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can see a summary on the main Authentication page:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1631231029350/clean-shot-2021-09-09-at-16-42-23.png"/></figure><h3>Enforce
+    Two Factor Authentication</h3><p>Select <strong>Enforce Two Factor Authentication</strong>
+    to enforce 2FA for all users in Harness. This option will govern all logins —
+    whether through SSO providers or Harness username/password combinations. For more
+    information on Two-Factor Authentication see <a href="/article/ipsux8n7gm">Two-Factor
+    Authentication</a>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1623222096803/screenshot-2021-06-09-at-11-03-29-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Set
+    Up Vanity URL</h3><p>You can access <code>app.harness.io</code> using your own
+    unique subdomain URL.</p><p>The subdomain URL will be in the following format,
+    with <code>{company}</code> being the name of your account:</p><p> <code>https://{company}.harness.io</code></p><div
+    class="note-callout">Contact <a href="mailto:support@harness.io" target="_blank">Harness
+    Support</a> to set up your Account&#39;s subdomain URL. The subdomain URL cannot
+    be changed later.</div><p>Harness automatically detects your Account ID from the
+    subdomain URL and redirects you to the Account&#39;s login mechanism.</p><h3>Restrict
+    Email Domains</h3><p>Select <strong>Only allow users with the following email
+    domains:</strong> to allow (whitelist) only certain domains as usable in login
+    credentials. In the dialog shown below, build your allowlist by simply typing
+    your chosen domains into the <strong>Domains</strong> multi-select field.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1624613232161/screenshot-2021-06-25-at-2-53-25-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>Click
+    <strong>Save</strong>. You can see the success message - <strong>Domain restrictions
+    have been updated successfully</strong> displayed on top of the page and the domains
+    you have whitelisted in the panel.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1624613670643/screenshot-2021-06-25-at-3-00-22-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><div
+    class="note-callout">Your resulting allowlist will impose a further filter on
+    logins to Harness via both SSO providers and Harness username/passwords.</div><p>You
+    can modify your domain selections by clicking the Edit icon.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gdob5gvyco/1624613842576/screenshot-2021-06-25-at-3-06-10-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p></p>'
+  slug: authentication-overview
+  tags:
+  - AccessManagement
+  - Authentication
+  is_live: true

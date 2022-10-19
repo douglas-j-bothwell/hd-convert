@@ -1,0 +1,221 @@
+type: article
+article_id: ikxjmkqi03
+user_id: slcpusem6b
+category_id: v9cx3iwwtq
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Optimize Kubernetes Costs with Resource Recommendations
+slug: recommendations
+description: Harness Continuous Efficiency (CE) provides resource optimization recommendations
+  for your Kubernetes clusters.
+short_version: Harness Continuous Efficiency (CE) provides resource optimization recommendations
+  for your Kubernetes clusters.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:20.857647Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Optimize Kubernetes Costs with Resource Recommendations
+  description: Harness Continuous Efficiency (CE) provides resource optimization recommendations
+    for your Kubernetes clusters.
+  short_version: Harness Continuous Efficiency (CE) provides resource optimization
+    recommendations for your Kubernetes clusters.
+  body: '<p></p><p>Harness Cloud Cost Management (CCM) provides recommendations for
+    your Kubernetes clusters. These recommendations show you resource optimization
+    opportunities to potentially reduce your monthly spending.</p><p>The recommendations
+    are computed by analyzing the past utilization of CPU and memory of your workload.
+    The implementation uses a histogram method to compute the recommendations.</p><div
+    class="note-callout">Before using recommendations in your cluster environment,
+    ensure that you evaluate their impact thoroughly. The person reviewing the recommendations
+    should be able to understand the impacts identified in the recommendations, as
+    well as the impact on the infrastructure and business.<br/><br/>Using recommendations
+    without proper assessment could result in unexpected changes, such as issues with
+    system performance or poor reliability.</div><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/ikxjmkqi03-recommendations#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/ikxjmkqi03-recommendations#how_are_recommendations_computed">How
+    are Recommendations Computed?</a></li><li><a href="https://docs.harness.io/article/ikxjmkqi03-recommendations#viewing_sizing_recommendations">View
+    Recommendations</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/rr85306lq8-continuous-efficiency-overview">Continuous
+    Efficiency Overview</a></li><li><a href="/article/eeekdk75q2-cost-explorer-walkthrough">Cost
+    Explorer Walkthrough</a></li><li><a href="/article/4rq26sszja-analyze-cost-trends-across-clusters">Analyze
+    Cost for Kubernetes</a></li></ul><h3>How are Recommendations Computed?</h3><p>In
+    Harness CCM, the recommendations are computed by analyzing the past utilization
+    of CPU and memory of your workload. The implementation uses a histogram method
+    to compute the recommendations. The computation also adds a 15% buffer to the
+    recommended resources. The recommendations are categorized as the following:</p><ul><li>Cost
+    Optimized</li><li>Performance Optimized</li><li>Custom</li></ul><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616517549592/screenshot-2021-03-23-at-10-08-30-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Cost
+    Optimized</h4><p>The cost-optimized recommendations are computed as the following:</p><ul><li>The
+    lower bound is based on the 50th percentiles of CPU samples and memory peaks.</li><li>There
+    is no upper bound for CPU samples and memory peaks are based on the 95th percentile.
+    It is recommended not to set the upper bound for the CPU samples, because the
+    CPU is considered a compressible resource. If your application starts hitting
+    the CPU limits, Kubernetes starts throttling the pods.</li><li>There is no limit
+    set for the CPU. This is to avoid the throttling of the workloads when there is
+    a spike in CPU usage. The usage of the CPU may go up in certain conditions, for
+    example during the pod start. In such a scenario, the CPU can burst and get the
+    required additional resources.</li></ul><p>Since the recommendations are computed
+    using the 50th percentile of the CPU samples and memory peaks, this may potentially
+    lead to system performance issues. Before using cost-optimized recommendations,
+    ensure that you evaluate the recommendation&#39;s impact thoroughly.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616575017544/screenshot-2021-03-24-at-2-06-37-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h4>Performance
+    Optimized</h4><p>The performance-optimized recommendations are computed using
+    the 95th percentile of CPU samples and memory peaks. Because of which the probability
+    of having any effect on the performance is minimum. However, the cost may go high
+    for the resources that are optimized using this method.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616575586296/screenshot-2021-03-24-at-2-15-37-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Custom</h4><p>The
+    custom option allows you to customize your recommendations by selecting the percentile
+    for CPU and memory sample requests and limit. You can increase or decrease the
+    request and limit coverage of the CPU and memory samples.</p><p>Simply drag the
+    slider to adjust the percentile. The slider indicates the percentile of all the
+    CPU and memory samples that are covered to compute the resource recommendations.</p><p>Based
+    on your selection, the recommendations for your workload are made.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616576484317/screenshot-2021-03-24-at-2-31-05-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h4>Examples</h4><p>Let&#39;s
+    try to understand how the recommendations are computed using the following examples:</p><h5>Example
+    A: Cost Optimized</h5><p>The following example illustrates how the resources can
+    be optimized using the cost-optimized recommendations:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616699385356/screenshot-2021-03-26-at-12-35-34-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p></p><pre>Workload
+    Name:  mongodb-replicaset<br/> Current Resources:<br/>  limits:<br/>    memory:
+    8Gi<br/>    cpu: &#39;4&#39;<br/>   requests:<br/>     memory: 8Gi<br/>     cpu:
+    &#39;4&#39;<br/> <br/> Recommended Resources:<br/>  limits:<br/>    memory: 2Gi<br/>  requests:<br/>    memory:
+    415Mi<br/>    cpu: 32m </pre><p></p><p>The current resources are provisioned using
+    <code>8Gi memory</code> and <code>4 CPU</code>, but the recommended resources
+    require only <code>415Mi memory</code> and <code>32m CPU</code> for requests.</p><p></p><p>The
+    cost-optimized recommendations are made by covering 0.025 of all CPU samples and
+    about 400m requests and 1400m limits of memory samples. The coverage is indicated
+    by the position of the slider and the resulting samples are displayed in the histogram
+    distribution.</p><h5>Example B: Performance Optimized</h5><p>The following example
+    illustrates how the resources can be optimized using the performance-optimized
+    recommendations:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616700423927/screenshot-2021-03-26-at-12-56-32-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p></p><pre>Workload
+    Name:  mongodb-replicaset<br/> Current Resources:<br/>  limits:<br/>    memory:
+    8Gi<br/>    cpu: &#39;4&#39;<br/>   requests:<br/>     memory: 8Gi<br/>     cpu:
+    &#39;4&#39;<br/> <br/> Recommended Resources:<br/>  limits:<br/>    memory: 2Gi<br/>  requests:<br/>    memory:
+    2Gi<br/>    cpu: 56m </pre><p></p><p>The current resources are provisioned using
+    <code>8Gi memory</code> and <code>4 CPU</code>, but the recommended resources
+    require only <code>2Gi memory</code> and <code>56m CPU</code> for requests.</p><p>The
+    performance-optimized recommendations are made by covering about 0.06 CPU samples
+    and about 400m requests and 1400m limits of memory samples. The coverage is indicated
+    by the position of the slider and the resulting samples are displayed in the histogram
+    distribution.</p><h5>Example C: Custom</h5><p>In Custom you can drag the slider
+    to adjust the request and limit coverage of the CPU and memory samples.</p><p>For
+    example, you set the histogram to cover 64th percentile of CPU, 25th percentile
+    of the memory request, and 100th percentile of memory limit sample:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616701064823/screenshot-2021-03-26-at-12-59-28-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><pre
+    class="hljs nohighlight">Workload Name:  mongodb-replicaset<br/> Current Resources:<br/>  limits:<br/>    memory:
+    8Gi<br/>    cpu: &#39;4&#39;<br/>   requests:<br/>     memory: 8Gi<br/>     cpu:
+    &#39;4&#39;<br/>  Recommended Resources<br/>   limits:<br/>     memory: 2Gi<br/>   requests:<br/>     memory:
+    386Mi<br/>     cpu: 44m</pre><p></p><p>The current resources are provisioned using
+    <code>8Gi memory</code> and <code>4 CPU</code>, but the recommended resources
+    require only <code>386Mi memory</code> and <code>44m CPU</code> for requests.</p><p>The
+    custom recommendations are made by covering about 0.04 CPU samples and about 400m
+    requests and 1400m limits of memory samples. The coverage is indicated by the
+    position of the slider and the resulting samples are displayed in the histogram
+    distribution.</p><h3 id="viewing_sizing_recommendations">View Recommendations</h3><p>You
+    can view recommendations for your cluster from the Cost Explorer <strong>Overview</strong>
+    and <strong>Cluster</strong> tab. Cost Explorer makes recommendations to optimize
+    your workloads to potentially reduce your monthly cloud cost.</p><div class="note-callout">Once
+    you enable CCM, it may take up to 48 hours for the recommendations to appear in
+    the Cost Explorer. It depends on the time at which CCM receives the utilization
+    data for the workload.</div><h4>Step: View Recommendations From the Overview Tab</h4><p>The
+    <strong>Overview</strong> page displays the top recommendations for your Kubernetes
+    clusters. To view recommendations from the <strong>Overview</strong> tab, perform
+    the following steps:</p><ol><li>In <strong>Cloud Cost Management</strong>, click <strong>Explorer</strong>.</li><li>In
+    <strong>Overview</strong>, click <strong>TOP RECOMMENDATIONS</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1606394548670/screenshot-2020-11-26-at-6-12-15-pm.png"/></figure>The
+    top <strong>Recommended Actions</strong> are listed. The list is sorted based
+    on the highest potential savings.<div class="note-callout">The Overview page lists
+    the recommendations only if the monthly cost-saving is greater than 20$. However,
+    you can view all the recommendations for that workload in the workloads detail
+    view under the <a href="/article/ikxjmkqi03-recommendations#step_view_recommendations_from_the_cluster_tab">Cluster</a>
+    tab.</div><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616567657160/screenshot-2021-03-24-at-12-03-35-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    on the Recommended Action for which you want to view the details. You can also
+    use the right arrow button.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616564891551/screenshot-2021-03-24-at-11-17-48-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>The
+    <strong>Recommended Actions</strong> are displayed. In this example, the recommendation
+    engine has analyzed 4 days of data. Based on the analysis the recommended actions
+    are provided to optimize your resources to potentially save $292.98 on the monthly
+    bill.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616565280995/screenshot-2021-03-24-at-11-20-56-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    on the <strong>Workload</strong> to view further granular details. Alternatively,
+    click <strong>&lt;-</strong> arrow to go back.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616565532795/screenshot-2021-03-24-at-11-28-24-am.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure>The
+    root cost analysis for the selected workload is displayed. For more information,
+    see <a href="/article/v7eaaq98vo-perform-root-cause-analysis#option_3_root_cost_analysis_for_workloads">Root
+    Cost Analysis for Workloads</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616565917166/screenshot-2021-03-24-at-11-34-52-am.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li></ol><p>You
+    can use this information to optimize your resources to potentially reduce your
+    monthly cloud costs.</p><h5>Cost Optimized</h5><p>Perform the following steps
+    to view the <a href="/article/ikxjmkqi03-recommendations#cost_optimized">cost-optimized</a>
+    recommendations:</p><ol><li>In <strong>Recommended Actions</strong>, select <strong>Cost
+    Optimized</strong>.</li><li>In <strong>Recommended Resources</strong>, the recommended
+    CPU and memory limits and requests are listed.<br/><br/>Since the recommendations
+    are computed using the 50th percentile of the CPU samples and memory peaks, this
+    may lead to system performance issues. Before using cost-optimized recommendations,
+    ensure that you evaluate the recommendation&#39;s impact thoroughly.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616578892655/screenshot-2021-03-24-at-3-10-39-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>The
+    graph displays the number of CPU and memory samples and the percentile at which
+    the recommendations are computed. Drag the slider to increase or decrease the
+    request and limit coverage of the CPU and memory samples. The slider indicates
+    the percentile of all the CPU and memory samples that are covered to compute the
+    resource recommendations.<br/><br/>As you drag the slider in <strong>Cost Optimized</strong>
+    to change the percentile of CPU and memory request and limit, you will view the
+    <a href="/article/ikxjmkqi03-recommendations#custom">Custom recommendations</a>.</li></ol><h5>Performance
+    Optimized</h5><p>Perform the following steps to view the <a href="/article/ikxjmkqi03-recommendations#performance_optimized">performance-optimized</a>
+    recommendations:</p><ol><li>In <strong>Recommended Actions</strong>, select Performance
+    <strong>Optimized</strong>.</li><li>In <strong>Recommended Resources</strong>,
+    the recommended CPU and memory limits and requests are listed.<br/><br/>The performance-optimized
+    recommendations are computed using the 95th percentile of CPU samples and memory
+    peaks. Because of which the probability of having any performance issue is minimum.
+    However, the cost may go high for the resources that are optimized using this
+    method.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616579047474/screenshot-2021-03-24-at-3-13-46-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p></p><p></p><ol><li
+    style="counter-increment:li 2" start="3">The graph displays the number of CPU
+    and memory samples and the percentile at which the recommendations are computed.
+    Drag the slider to increase or decrease the request and limit coverage of the
+    CPU and memory samples. The slider indicates the percentile of all the CPU and
+    memory samples that are covered to compute the resource recommendations.<br/><br/>As
+    you drag the slider in <strong>Performance Optimized</strong> to change the percentile
+    request and limit, you will view the <a href="/article/ikxjmkqi03-recommendations#custom">Custom
+    recommendations</a>.</li></ol><h5>Custom</h5><p>The <strong>Custom</strong> option
+    allows you to customize your recommendations by selecting the CPU and memory sample
+    requests. Perform the following steps to view the <a href="/article/ikxjmkqi03-recommendations#custom">custom</a>
+    recommendations:</p><ol><li>In <strong>Recommended Actions</strong>, select <strong>Custom</strong>.</li><li>Drag
+    the slider to increase or decrease the percentile of request and limit. The recommended
+    CPU and memory limits and requests are listed.</li></ol><h4>Step: View Recommendations
+    From the Cluster Tab</h4><p>To view recommendations from the <strong>Cluster</strong>
+    tab, perform the following steps:</p><ol><li>In <strong>Cloud Cost Management</strong>,
+    click <strong>Explorer</strong> and then click <strong>Cluster</strong>.</li><li>Select
+    the <strong>date range</strong> for the costs you want to analyze.</li><li>In <strong>Group
+    by</strong>, select <strong>Workload </strong>to list all the workloads. Use the <strong>Filter</strong> settings
+    to select a specific workload. You can also use the search option to search from
+    the available workloads.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616567354023/screenshot-2021-03-24-at-11-48-54-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click
+    on the workload for which you want to view the recommendations and click <strong>VIEW
+    RECOMMENDATIONS</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616566380964/screenshot-2021-03-24-at-11-42-24-am.png"/></figure>The
+    <strong>Recommended Actions</strong> are displayed. See <a href="/article/ikxjmkqi03-recommendations#cost_optimized_2">Cost
+    Optimized</a>, <a href="/article/ikxjmkqi03-recommendations#performance_optimized_2">Performance
+    Optimized</a>, and <a href="/article/ikxjmkqi03-recommendations#custom_2">Custom</a>.<br/><br/>In
+    this example, the recommendation engine has analyzed 4 days of data. Based on
+    the analysis the recommended actions are provided to optimize your resources to
+    potentially save $292.98 on the monthly bill.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ikxjmkqi03/1616567504850/screenshot-2021-03-24-at-11-20-56-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>You
+    can use this information to optimize your resources to potentially reduce your
+    monthly cloud costs.</li></ol><p></p>'
+  slug: recommendations
+  tags: []
+  is_live: true

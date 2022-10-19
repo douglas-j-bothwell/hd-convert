@@ -1,0 +1,666 @@
+type: article
+article_id: fq90yjdeqd
+user_id: slcpusem6b
+category_id: h4k144tv5t
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Harness SaaS Release Notes Archive (2020)
+slug: harness-saa-s-release-notes-archive-2020
+description: This document contains release notes for Harness SaaS.
+short_version: This document contains release notes for Harness SaaS.
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-31T19:45:49.879932Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness SaaS Release Notes Archive (2020)
+  description: This document contains release notes for Harness SaaS.
+  short_version: This document contains release notes for Harness SaaS.
+  body: '<p>This document contains release notes for Harness SaaS.</p><div class="note-callout">For
+    Harness On-Prem releases, see <a href="/article/e505ialj5s-harness-on-premise-release-notes">Harness
+    On-Prem Release Notes</a>.</div><p>Release notes are displayed with the most recent
+    release first.</p><div class="note-callout">If you do not see a new feature or
+    enhancement in your Harness account, it might be behind a Feature Flag. Contact
+    <a href="mailto:support@harness.io" target="_blank">Harness Support</a> to enable
+    the feature.</div><h3>Minor Release 62301</h3><p>Release Date: December 24, 2020</p><p>Nothing
+    new in this release.</p><h4>Component Versions</h4><p>The following table lists
+    the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>62301</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.63304</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.63304</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.63304</p></td></tr><tr><td><p>Learning</p></td><td><p>58300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>63304</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.63304</p></td></tr></tbody></table><h3>Minor
+    Release 62200</h3><p>Release Date: December 22, 2020</p><p>We are pleased to present
+    Harness SaaS Release 62200.</p><h4>New Features and Enhancements</h4><p>The following
+    new features are added to the Harness SaaS components:</p><ul><li>Delegate Selector
+    is Added for <strong>Fetch Instances</strong>. The <strong>Fetch Instances</strong> step
+    runs the script in your Custom Deployment Template&#39;s <strong>Fetch Instances
+    Command Script</strong> Setting. (CDP-14613)<ul><li>See <a href="/article/g7m5a380kl-create-a-custom-deployment#step_7_fetch_instances">Fetch
+    Instances</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>None
+    this release.</li></ul><h4>Component Versions</h4><p>The following table lists
+    the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>62000</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.63201</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.63201</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.63201</p></td></tr><tr><td><p>Learning</p></td><td><p>58200</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>63200</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.63201</p></td></tr></tbody></table><h3>Minor
+    Release 62000</h3><p>Release Date: December 18, 2020</p><p>Nothing new in this
+    release.</p><h4>Component Versions</h4><p>The following table lists the component
+    versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>62000</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.63000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.63000</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.63000</p></td></tr><tr><td><p>Learning</p></td><td><p>58000</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>63000</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.63000</p></td></tr></tbody></table><h3>Minor
+    Release 61900</h3><p>Release Date: December 16, 2020</p><p>We are pleased to present
+    Harness SaaS Release 61900.</p><h4>New Features and Enhancements</h4><ul><li>None
+    this release.</li></ul><h4>Issues Fixed in the Release</h4><ul><li>Issues With
+    Helm Chart Name (CDP-15703)<ul><li>When Selecting Helm Chart Repo Or Chart URL
+    in a Native Helm Service or a Kubernetes Service, Ensure That the Chart Name is
+    Entered Without Any Prefix.<br/><br/>For Example, If You Are Deploying a Chart
+    <code>foo</code>, Chartname Should be <code>foo</code> Without Any Prefix Such
+    As <code>stable/foo</code>.</li></ul></li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>61900</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.62902</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.62902</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.62902</p></td></tr><tr><td><p>Learning</p></td><td><p>57900</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>62900</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.62902</p></td></tr></tbody></table><h3>Minor
+    Release 61800</h3><p>Release Date: December 10, 2020</p><p>We are pleased to present
+    Harness SaaS Release 61800.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Terraform Plan
+    File Enhancements (CDP-15354):<ul><li>Support For All <a href="https://docs.harness.io/article/uuer539u3l-add-a-secrets-manager">Harness
+    Secrets Manager</a> for Storing Terraform Plan File Is Added. In <strong>Terraform
+    Plan Storage Configuration</strong>, Select the Harness Secrets Manager for Encrypting/Decrypting
+    and Saving the Terraform Plan File.</li><li>Terraform Plan is Passed as an Encrypted
+    File Using a Harness Secrets Manager Between the Harness Manager and Delegate.
+    A Terraform Plan is a Sensitive File That Could be Misused to Alter Cloud Provider
+    Resources if Someone Has Access to it.</li><li>See <a href="/article/ux2enus2ku-add-terraform-scripts#step_4_select_secret_manager_for_terraform_plan">Select
+    Secret Manager for Terraform Plan</a>.</li></ul></li></ul><h4>Issues Fixed in
+    the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>61800</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.62802</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.62802</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.62802</p></td></tr><tr><td><p>Learning</p></td><td><p>57800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>62800</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.62802</p></td></tr></tbody></table><h3>Minor
+    Release 61700</h3><p>Release Date: December 8, 2020</p><p>Nothing new in this
+    release.</p><h4>Component Versions</h4><p>The following table lists the component
+    versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>61700</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.62700</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.62700</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.62700</p></td></tr><tr><td><p>Learning</p></td><td><p>57700</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>62601</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.62700</p></td></tr></tbody></table><h3>Minor
+    Release 61600</h3><p>Release Date: December 8, 2020</p><p>We are pleased to present
+    Harness SaaS Release 61600.</p><h4>New Features and Enhancements</h4><p>The following
+    new feature is added to the Harness SaaS components:</p><ul><li>Support for <a
+    href="/article/jr8rhn5bk5-run-an-ecs-task">ECS Run Task</a> Exit Code Check is
+    Added. (CDP-15493)</li></ul><h4>Issues Fixed in the Release</h4><ul><li>None this
+    release.</li></ul><h4>Component Versions</h4><p>The following table lists the
+    component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>61600</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.62602</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.62602</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.62602</p></td></tr><tr><td><p>Learning</p></td><td><p>57600</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>62601</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.62602</p></td></tr></tbody></table><h3>Minor
+    Release 61400</h3><p>Release Date: December 3, 2020</p><p>Nothing new in this
+    release.</p><h4>Component Versions</h4><p>The following table lists the component
+    versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>61400</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.62400</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.62400</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.62400</p></td></tr><tr><td><p>Learning</p></td><td><p>57400</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>62100</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.62400</p></td></tr></tbody></table><h3>Minor
+    Release 61300</h3><p>Release Date: December 2, 2020</p><p>We are pleased to present
+    Harness SaaS Release 61300.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>The Input Values
+    includes the Use tfvar files option for using a variable definitions file instead
+    of using the variables from the Terraform Infrastructure Provisioner.<br/>You
+    can now use remote tfvar files also. (CDP-14993)<ul><li>See <a href="/article/uxwih21ps1-terraform-provisioner-step#remote_tfvar_files">Remote
+    tfvar Files</a> in Provision using the Terraform Provision Step and <a href="/article/4egyxnse9r-terraform-destroy#remote_tfvar_files">Remote
+    tfvar Files</a> in Remove Provisioned Infra with Terraform Destroy.</li></ul></li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>61300</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.62300</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.62300</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.62300</p></td></tr><tr><td><p>Learning</p></td><td><p>57300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61806</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.62300</p></td></tr></tbody></table><h3>Minor
+    Release 61101</h3><p>Release Date: December 1, 2020</p><p>We are pleased to present
+    Harness SaaS Release 61101.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>You Can Now
+    Map Delegate Task Categories to Selectors, And Then Apply the Selector to One
+    Or More Delegates. (DEL-604)<ul><li>See <a href="/article/nzuhppobyg-map-tasks-to-delegates-and-profiles">Delegate
+    Task Category Mapping</a>.</li></ul></li><li>Harness Supports WinRM Authentication
+    Using Kerberos, But There Are Some Corner Use Cases Which Harness Does Not Support
+    Because of How Java and Python Interact, And As a Result of Limitations in Windows.
+    (CDP-15536, ZD-12361)<ul><li>The equals character (=) is not supported in the
+    name of a Harness Service Config Variable or Environment Service Variable Override.
+    See <a href="https://docs.harness.io/article/q78p7rpx9u-add-service-level-config-variables">Add
+    Service Config Variables</a> and <a href="https://docs.harness.io/article/4m2kst307m-override-service-files-and-variables-in-environments">Override
+    a Service Configuration in an Environment</a>.</li><li>The underscore character
+    (_) is not supported in the working directory for Service Commands and their shell
+    scripts. See <a href="https://docs.harness.io/article/lgg12f0yry-set-default-application-directories-as-variables">Create
+    Default Application Directories and Variables</a> and <a href="https://docs.harness.io/article/1329n00z5e-use-script-based-service">Use
+    Script Based Services</a>.</li><li>Harness has the same limitations as Windows
+    environment variables. Harness treats all Service Config Variables and Environment
+    Service Variable Overrides as Windows environment variables.</li><li>Non-UTF8
+    characters are not supported in Service Config Variables and Environment Service
+    Variable Overrides. For example, <code>äöü!ÖÜÄéÊêÈèç</code>.</li><li>Harness has
+    limited support for quotes in Service Config Variables and Environment Service
+    Variable Overrides. A simple use such as <code>foo&#39;bar</code> will work, but
+    a complex combination of single quotes and other characters such as backslash
+    (\) might not work.</li><li>Harness does support variable values ending in three
+    or more slashes.</li></ul></li><li>Error Messages Are Enhanced For The Following
+    Scenarios: (CDC-10318, ZD-12228)<ul><li>Delete an Application When the Workflow/Pipeline
+    is Getting Executed</li><li>Delete a Templatized Entity (Service, Infrastructure,
+    or an Environment) When the Execution Is Running</li></ul></li><li>Artifact History
+    Was Missing in the Pipeline Deployment (CDC-10407, ZD-12384)</li><li>Service Config
+    Files (Non-Encrypted) Were Failing During Git-Sync ( <strong>Git → Harness</strong>)
+    (CDC-9921, ZD-11790, ZD-11975)</li><li><strong>Execute on Delegate</strong> Option
+    is Added For Service Commands Linked Via Service (CDC-10283)<ul><li>See <a href="/article/kbmz9uc7q9-create-a-service-command-template#step_run_service_commands_from_a_template_library_in_a_workflow">Run
+    Service Commands From a Template Library</a>.</li></ul></li><li>Enhancements Are
+    Made to the Delegate to Reduce the Number of Calls Made to the Custom Secrets
+    Manager for Fetching Secrets During the Artifact Collection (CDC-9838, ZD-11693)</li><li><strong>Execute
+    on Delegate</strong> Option is Added For Service Commands (CDC-9168)<ul><li>See
+    <a href="/article/1329n00z5e-use-script-based-service#run_service_commands_in_a_workflow">Run
+    Service Commands in a Workflow</a>.</li></ul></li></ul><h4>Issues Fixed in the
+    Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>61101</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.62103</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.62103</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.62103</p></td></tr><tr><td><p>Learning</p></td><td><p>57100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61806</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.62103</p></td></tr></tbody></table><h3>Minor
+    Release 60801</h3><p>Release Date: November 26, 2020</p><p>We are pleased to present
+    Harness SaaS Release 60801.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Helm Steady State Check Issue With Native Helm
+    Deployments and K8s 1.16 Or Greater (CDP-15540, ZD-11980)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>60801</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.61808</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.61808</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.61808</p></td></tr><tr><td><p>Learning</p></td><td><p>56800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61806</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.61808</p></td></tr></tbody></table><h3>Minor
+    Release 60700</h3><p>Release Date: November 24, 2020</p><p>Nothing new in this
+    release.</p><h4>Component Versions</h4><p>The following table lists the component
+    versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>60700</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.61702</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.61702</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.61702</p></td></tr><tr><td><p>Learning</p></td><td><p>56700</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61702</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.61702</p></td></tr></tbody></table><h3>Minor
+    Release 60601</h3><p>Release Date: November 23, 2020</p><p>Nothing new in this
+    release.</p><h4>Component Versions</h4><p>The following table lists the component
+    versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>60601</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.61604</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.61604</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.61604</p></td></tr><tr><td><p>Learning</p></td><td><p>56500</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61501</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.61604</p></td></tr></tbody></table><h3>Minor
+    Release 60501</h3><p>Release Date: November 19, 2020</p><p>We are pleased to present
+    Harness SaaS Release 60501.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>To Send an
+    Email From Your Workflow, You Can Only Use Email Addresses That Are Registered
+    to Harness User Accounts. This Helps to Ensure Secure Communication From Your
+    Workflow. If the Email Step Uses an Unregistered Email Address, the Email Will
+    Not Be Sent.<ul><li>See <a href="/article/q1xblriy6d-send-an-email-in-your-workflow#limitations">Send
+    an Email from Your Workflow</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>None
+    this release.</li></ul><h4>Component Versions</h4><p>The following table lists
+    the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>60501</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.61503</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.61302</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.61503</p></td></tr><tr><td><p>Learning</p></td><td><p>56500</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61501</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.61503</p></td></tr></tbody></table><h3>Minor
+    Release 60300</h3><p>Release Date: November 17, 2020</p><p>We are pleased to present
+    Harness SaaS Release 60300.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li><code>Kubernetes.io/change-cause</code> Was Getting
+    Overwritten (CDP-15043, ZD-11733)</li></ul><h4>Component Versions</h4><p>The following
+    table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>60300</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.61302</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.61302</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.61302</p></td></tr><tr><td><p>Learning</p></td><td><p>56300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61301</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.61302</p></td></tr></tbody></table><h3>Minor
+    Release 60202</h3><p>Release Date: November 11, 2020</p><p>We are pleased to present
+    Harness SaaS Release 60202.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Error When Assigning Permissions to the Users
+    and User Groups Using GraphQL API (DX-2212)</li><li>Custom Dashboard Fails to
+    Update When Chart Type Changes (DX-1138)</li><li>Error When Executing Pipeline
+    Using GraphQL API (CDC-10383, ZD-12373)</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>60202</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.61202</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.61202</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.61202</p></td></tr><tr><td><p>Learning</p></td><td><p>56200</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>61200</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.61202</p></td></tr></tbody></table><h3>Minor
+    Release 60100</h3><p>Release Date: November 6, 2020</p><p>We are pleased to present
+    Harness SaaS Release 60100.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Jira Integration
+    Support Variables for Required Fields (CDC-5759)<ul><li>See <a href="/article/077hwokrpr-jira-integration#jira_custom_fields">Jira
+    Custom Fields</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>None
+    this release.</li></ul><h4>Component Versions</h4><p>The following table lists
+    the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>60100</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.61100</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.61100</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.61100</p></td></tr><tr><td><p>Learning</p></td><td><p>56100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>60900</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.61100</p></td></tr></tbody></table><h3>Minor
+    Release 59900</h3><p>Release Date: November 4, 2020</p><p>Nothing new in this
+    release.</p><h4>Component Versions</h4><p>The following table lists the component
+    versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>59900</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.60900</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.60900</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.60900</p></td></tr><tr><td><p>Learning</p></td><td><p>55900</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>60601</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.60900</p></td></tr></tbody></table><h3>Minor
+    Release 59800</h3><p>Release Date: November 4, 2020</p><p>We are pleased to present
+    Harness SaaS Release 59800.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Custom Dashboard Was Not Able to Display Data
+    When the Number of Environment Was More than 50 (DX-1953, ZD-11836)<br/><br/>When
+    you use <strong>Group By</strong> in your Widget and select <strong>Environment</strong>,
+    Harness limits the data available to the graph to 50 Environments. You can apply
+    filters on Environments and split the data into multiple reports to view the results.</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>59800</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.60800</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.60800</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.60800</p></td></tr><tr><td><p>Learning</p></td><td><p>55800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>60601</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.60800</p></td></tr></tbody></table><h3>Minor
+    Release 59701</h3><p>Release Date: November 3, 2020</p><p>We are pleased to present
+    Harness SaaS Release 59701.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>59701</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.60700</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.60700</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.60700</p></td></tr><tr><td><p>Learning</p></td><td><p>55700</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>60601</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.60700</p></td></tr></tbody></table><h3>Minor
+    Release 59601</h3><p>Release Date: November 2, 2020</p><p>We are pleased to present
+    Harness SaaS Release 59601.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Rollback Production
+    Deployment Now Supports the Following Platforms and Strategies (CDP-14104):<ul><li><strong>Kubernetes</strong> Deployments:
+    Basic, Blue/Green, Canary, Rolling Workflows.</li><li><strong>SSH</strong> Deployments:
+    Blue/Green, Canary, and Basic Workflows.</li><li><strong>PCF (Pivotal Cloud Foundry)</strong> Deployments:
+    Blue/Green, Canary, and Basic Workflows.</li><li><strong>WinRM (IIS and .NET)</strong> Deployments:
+    Blue/Green, Canary, and Basic Workflows.</li><li><strong>ECS</strong> Deployments:
+    all Workflow types, and both EC2 and Fargate clusters.</li><li><strong>AMI/ASG</strong> Deployments:
+    Blue/Green, Canary, and Basic Workflows.<ul><li>See <a href="/article/2f36rsbrve-post-deployment-rollback#review_platform_and_workflow_support">Platform
+    and Workflow Support</a>.</li></ul></li></ul></li><li>New RBAC Permissions (PL-12407):<ul><li>Manage
+    Authentication Settings</li><li>Manage API Keys</li><li>Manage Alert Notification
+    Rules</li><li>Manage IP Whitelist</li><li>Manage Application Stacks<ul><li>See <a
+    href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a>.</li></ul></li></ul></li><li>RBAC Permissions for
+    Account and Application User Groups Are Updated (DX-1833, DX-1951, ZD-5607, ZD-7311,
+    ZD-7941, ZD-8734, ZD-10806)<ul><li>See <a href="/article/ven0bvulsj-users-and-permissions#account_permissions">Account
+    Permissions</a>, <a href="/article/6mr74fm55h-harness-application-level-sync#requirements">Application-Level
+    Requirements</a>, and <a href="/article/apiwdqngvz-harness-account-level-sync#requirements">Account-Level
+    Requirements</a>.</li></ul></li><li>Support for ECS Run Task Step is Added (CDP-14412)<ul><li>See
+    <a href="/article/jr8rhn5bk5-run-an-ecs-task">Run an ECS Task</a>.</li></ul></li><li>Support
+    Workflow Variables for CloudFormation Parameters Files (CDP-10449)<ul><li>See
+    <a href="/article/5wdb3r765g-provision-cloudformation-create-stack#option_1_enter_input_values_from_parameter_files">Enter
+    Input Values from Parameter Files</a>.</li></ul></li><li>Kubernetes Custom Resources
+    Deployment Using Custom Resource Definitions (CRDs) (CDP-11907)<ul><li>See <a
+    href="/article/pmmfqqo1uh-create-kubernetes-crd-deployments">Deploy Kubernetes
+    Custom Resources using CRDs</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Creating
+    New Application Using Account-Level Git Sync Was Having Issues (DX-1962, ZD-11917)</li><li>Jira
+    Text Fields Were Rejecting Variables (CDC-10284, ZD-12122, ZD-12125, ZD-12130)</li><li>Jira/ServiceNow
+    Approval Was Failing With the <code>Failed to fetch jira issue for XXX</code>
+    Error (CDC-10109, ZD-11597)</li><li>Failed to Remove Config File Override Via
+    Git (CDC-10070, ZD-11975)</li><li>Template Variables Were Getting Overwritten
+    With Defaults (CDC-10024, ZD-11867)</li><li>Jenkins Poll Task Was Timing Out And
+    The Jenkins URL Was Getting Changed to Use Connector URL Only (CDC-9873)</li><li>HTTP
+    Step Was Failing Due to Delegate Running Check With Query String Removed From
+    the URL (CDC-9651)</li><li>Link Duplicate Service Command With Variables From
+    Template Library WasThrowing an Invalid Error Message (CDC-9296, ZD-10103)</li><li>Improved
+    Error Message When Modifying AppStack Through UI YAML Editor (CDC-10031, ZD-11860)</li><li>Custom
+    Secrets Manager Was Making Excessive Number of Calls to the Third Party Secrets
+    Manager (CDC-9838, ZD-11693)</li></ul><h4>Component Versions</h4><p>The following
+    table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>59601</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.60601</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.60601</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.60601</p></td></tr><tr><td><p>Learning</p></td><td><p>55600</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>60600</p></td></tr><tr><td><p>Batch Process</p></td><td><p>60601</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.60601</p></td></tr></tbody></table><h3>Minor
+    Release 59302</h3><p>Release Date: October 23, 2020</p><p>We are pleased to present
+    Harness SaaS Release 59302.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Terraform Environment
+    Variables are Added For Terraform (CDP-14949)<ul><li>See <a href="/article/uxwih21ps1-terraform-provisioner-step#option_5_add_environment_variables">Add
+    Environment Variables</a>.</li></ul></li><li>Commit ID is Supported for Terraform
+    Provisioner (CDP-14922)<ul><li>See <a href="/article/ux2enus2ku-add-terraform-scripts#step_2_select_your_terraform_script_repo">Select
+    Your Terraform Script Repo</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Option
+    to Reset Git Repository Was Available Even When Manage Config as Code Permission
+    Was Disabled (DX-1924)</li><li>Label in Git Sync UI is Updated (DX-1889)</li><li>Clicking
+    On Artifact Source Was Logging Out Of The Session (CDC-9633, ZD-11584)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>59302</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.60304</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.60304</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.60304</p></td></tr><tr><td><p>Learning</p></td><td><p>55100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59905</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.60304</p></td></tr></tbody></table><h3>Minor
+    Release 59100</h3><p>Release Date: October 19, 2020</p><p>We are pleased to present
+    Harness SaaS Release 59100.</p><h4>New Features and Enhancements</h4><p>The following
+    new feature was added to the Harness SaaS components:</p><ul><li>Enhancements
+    Made to The Expired Trial Accounts (PL-12353)</li></ul><h4>Issues Fixed in the
+    Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>59100</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.60000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.60000</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.60000</p></td></tr><tr><td><p>Learning</p></td><td><p>55100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59905</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.60000</p></td></tr></tbody></table><h3>Minor
+    Release 58900</h3><p>Release Date: October 15, 2020</p><p>We are pleased to present
+    Harness SaaS Release 58900.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Error Message
+    Is Improved For Jira Exception Issues (CDC-8993, ZD-11597)</li><li>Workflows With
+    Running Executions Can Not Be Deleted (CDC-8319, ZD-10955, ZD-10958)</li><li>Users
+    are now Prevented from using Hyphens (dashes) in Variable Names (CDC-6006, ZD-5062,
+    ZD-6551, ZD-8900, ZD-8903, ZD-11215).<ul><li>For more information, see <a href="/article/9dvxcegm90-variables">What
+    is a Harness Variable Expression?</a>.</li></ul></li></ul><h4>Issues Fixed in
+    the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>58900</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.59905</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.59905</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.59905</p></td></tr><tr><td><p>Learning</p></td><td><p>54900</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59095</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.59905</p></td></tr></tbody></table><h3>Minor
+    Release 58801</h3><p>Release Date: October 12, 2020</p><p>We are pleased to present
+    Harness SaaS Release 58801.</p><h4>New Features and Enhancements</h4><p>The following
+    new feature was added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>58801</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.59800</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.59800</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.59800</p></td></tr><tr><td><p>Learning</p></td><td><p>54800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59800</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.59800</p></td></tr></tbody></table><h3>Minor
+    Release 58600</h3><p>Release Date: October 9, 2020</p><p>We are pleased to present
+    Harness SaaS Release 58600.</p><h4>New Features and Enhancements</h4><p>The following
+    new feature was added to the Harness SaaS components:</p><ul><li>Enable Git Sync
+    for an Application is Updated to Use Repository Name<ul><li>See <a href="/article/0wmvn5dgzn-use-harness-applications-api#enable_git_sync_for_an_application">Enable
+    Git Sync for an Application</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Add
+    Cloud Provider Button Not Working (CDP-14577)</li><li>Cloning a Service With Config
+    Variables And Config Files Was Throwing An Exception Error (CDC-4550, ZD-11528)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>58600</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.59600</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.59600</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.59600</p></td></tr><tr><td><p>Learning</p></td><td><p>54600</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59502</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.59600</p></td></tr></tbody></table><h3>Minor
+    Release 58500</h3><p>Release Date: October 9, 2020</p><p>We are pleased to present
+    Harness SaaS Release 58500.</p><h4>New Features and Enhancements</h4><p>The following
+    new feature was added to the Harness SaaS components:</p><ul><li>Jira Time Tracking
+    Support<ul><li>You can update the time tracking setting of a Jira Issue in the
+    Jira step. See <a href="/article/077hwokrpr-jira-integration#jira_time_tracking_support">Jira
+    Time Tracking Support</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>None
+    this release.</li></ul><h4>Component Versions</h4><p>The following table lists
+    the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>58500</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.59501</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.59501</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.59501</p></td></tr><tr><td><p>Learning</p></td><td><p>54500</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59502</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.59501</p></td></tr></tbody></table><h3>Minor
+    Release 58300</h3><p>Release Date: October 7, 2020</p><p>We are pleased to present
+    Harness SaaS Release 58300.</p><h4>New Features and Enhancements</h4><p>The following
+    new feature was added to the Harness SaaS components:</p><ul><li>Jira Resolution
+    Support<ul><li>You can update the resolution setting of a Jira Issue in the Jira
+    step. See <a href="/article/077hwokrpr-jira-integration#jira_resolution_support">Jira
+    Resolution Support</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>In
+    Resource Restrictions, Resource Constraint Was Not Listing Current Usage (CDC-9337)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>58300</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.59300</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.59300</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.59300</p></td></tr><tr><td><p>Learning</p></td><td><p>54300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59301</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.59300</p></td></tr></tbody></table><h3>Minor
+    Release 58103</h3><p>Release Date: October 6, 2020</p><p>We are pleased to present
+    Harness SaaS Release 58103.</p><h4>New Features and Enhancements</h4><p>The following
+    new feature was added to the Harness SaaS components:</p><ul><li>Use Configure
+    Jenkins URL (CDC-9460, ZD-10903, ZD-11586)<ul><li>See <a href="/article/qa7lewndxq-add-jenkins-artifact-servers#option_use_this_url_for_job_execution">Option:
+    Use this URL for Job Execution</a>.</li></ul></li></ul><h4>Issues Fixed in the
+    Release</h4><ul><li>Tool Tips Were Missing in the Add Encrypted Text (CDP-14567)</li><li>Fix
+    Abort/Stuck Issues in Workflow Executions (CDC-8534, ZD-10774, ZD-10852, ZD-10875,
+    ZD-11040)</li></ul><h4>Component Versions</h4><p>The following table lists the
+    component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>58103</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.59100</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.59100</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.59100</p></td></tr><tr><td><p>Learning</p></td><td><p>54100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59101</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.59100</p></td></tr></tbody></table><h3>Minor
+    Release 58000</h3><p>Release Date: October 1, 2020</p><p>We are pleased to present
+    Harness SaaS Release 58000.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Nexus Artifact
+    Source API (CDC-9046)<ul><li>You can now create, remove, update, and delete Nexus
+    Artifact Source using Harness GraphQL APIs. See <a href="/article/103heofz7o-nexus-artifact-source-using-api">Add
+    a Nexus Artifact Source Using API</a>.</li></ul></li><li>Support for Encrypted
+    and Inline Username for Kubernetes/PCF Cloud Providers (CDP-14204)<ul><li>See <a
+    href="https://docs.harness.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#username_and_password">Username
+    and Password</a> and <a href="https://docs.harness.io/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider#step_3_username_password">Username
+    / Password</a>.</li></ul></li><li>Permission for <code>tags.yaml</code> is Updated
+    (CDC-9557)</li><li>Variable Support for Jira Custom Field is Added (CDC-9242)<ul><li>See
+    <a href="/article/077hwokrpr-jira-integration#jira_custom_fields">Jira Custom
+    Fields</a>.</li></ul></li><li>CloudFormation Region Field Can Now be Templatized
+    (CDP-13632)</li><li>UI: Jenkins Job Execution Can Use URL Configured in the Connector
+    and Checkbox is Added on the Connector Form (CDC-9561)<ul><li>See <a href="/article/qa7lewndxq-add-jenkins-artifact-servers#option_use_this_url_for_job_execution">Option:
+    Use this URL for Job Execution</a>.</li></ul></li><li>Nexus Artifact Source Supports
+    Parameters (CDC-6048)<ul><li>See <a href="/article/rdhndux2ab-nexus-artifact-sources#parameterized_nexus_settings">Parameterized
+    Nexus Settings</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Nexus
+    Artifact Timeout Issue (CDC-9303, ZD- 11235, ZD-11247)</li><li>Trigger Referenced
+    to a Templatized New Relic Server Was Throwing an Error (CDC-9461, ZD-11254)</li><li>Deployment
+    Was Failing If the First Shell Script Had <code>.</code> In The Name (CDC-9269,
+    ZD-11177)</li><li>Conditional Execution Configurations Were Ignored If Phase Was
+    Copied (CDC-9189, ZD-11171)</li><li>Git Connector Via API Now Supports SSH Key
+    Credentials (CDP-14873, ZD-11503)</li></ul><h4>Component Versions</h4><p>The following
+    table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>58000</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.59003</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.59003</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.59003</p></td></tr><tr><td><p>Learning</p></td><td><p>54000</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>59004</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.59003</p></td></tr></tbody></table><h3>Minor
+    Release 57800</h3><p>Release Date: September 25, 2020</p><p>We are pleased to
+    present Harness SaaS Release 57800.</p><h4>New Features and Enhancements</h4><p>The
+    following new features were added to the Harness SaaS components:</p><ul><li>Feature
+    Flag for INFRA_MAPPING_REFACTOR is Removed (CDP-14774)</li></ul><h4>Issues Fixed
+    in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>57800</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.58801</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.58801</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.58801</p></td></tr><tr><td><p>Admin
+    UI</p></td><td><p>harness/adminui:1.11.0</p></td></tr><tr><td><p>Learning</p></td><td><p>53800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>58700</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.58801</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 57602</h3><p>Release Date: September 22, 2020</p><p>We are pleased to
+    present Harness SaaS Release 57602.</p><h4>New Features and Enhancements</h4><p>The
+    following new features were added to the Harness SaaS components:</p><ul><li>Missing
+    Dry Run Icon In Terraform Destroy Plan (CDP-14740)</li></ul><h4>Issues Fixed in
+    the Release</h4><ul><li>Metadata-only Property Error When Setting Up Artifact
+    Source for Artifactory Docker (CDC-9478, ZD-11441, ZD-11449, ZD-11458)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>57602</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.58702</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.58702</p></td></tr><tr><td><p>Watcher</p></td><td><p>58501</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.58702</p></td></tr><tr><td><p>Learning</p></td><td><p>53700</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>58700</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.58702</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 57500</h3><p>Release Date: September 17, 2020</p><p>We are pleased to
+    present Harness SaaS Release 57500.</p><h4>New Features and Enhancements</h4><p>The
+    following new features were added to the Harness SaaS components:</p><ul><li>Metadata-Only
+    Artifact Source Now the Default (CDC-9005)<ul><li>Harness Services allows you
+    to identify artifacts using their metadata only. Artifact Sources without metadata
+    were supported previously, but all new Artifact Sources are metadata only.<br/>At
+    deployment runtime, Harness uses the metadata to copy or download the artifact
+    to the target hosts/containers. Here is an illustration of how metadata is used
+    by the Download Artifact and Copy Artifact steps:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/xacpxeyioo/1601326563792/image.png"/></figure>See
+    <a href="/article/qluiky79j8-service-types-and-artifact-sources">Service Types
+    and Artifact Sources</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Issue
+    With UserGroups Using GraphQL API (PL-12495)</li><li> <code>${ami.newAsgName}</code>
+    and <code>${ami.oldAsgName}</code> Variables Were Not Getting Evaluated (CDP-14773,
+    ZD-11375)</li><li>Error When Creating PCF Cloud Provider (CDP-14738, ZD-11211)</li><li>Secrets
+    Were Visible in the UI (CDC-9355, ZD-113294)</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>57500</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.58501</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.58501</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.58501</p></td></tr><tr><td><p>Learning</p></td><td><p>53500</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>58500</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.58501</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 57401</h3><p>Release Date: September 16, 2020</p><p>We are pleased to
+    present Harness SaaS Release 57401.</p><h4>New Features and Enhancements</h4><p>The
+    following new features were added to the Harness SaaS components:</p><ul><li>None
+    this release.</li></ul><h4>Issues Fixed in the Release</h4><ul><li>ClassCastException:
+    PCF Deployment Fails with UNKNOWN_ERROR. (CDC-9330, ZD-11061)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>57401</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.58401</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.58401</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.58401</p></td></tr><tr><td><p>Learning</p></td><td><p>53400</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>58300</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.58401</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 57301</h3><p>Release Date: September 11, 2020</p><p>We are pleased to
+    present Harness SaaS Release 57301.</p><h4>New Features and Enhancements</h4><p>The
+    following new features were added to the Harness SaaS components:</p><ul><li>FetchUserByEmail
+    API Now Available (PL-12430, ZD-11026)<ul><li>Using the <strong>FetchUserByEmail</strong>
+    API, you can now search for users with their email addresses.</li></ul></li><li>Terraform
+    Plan Available Outside Of Terraform Provisioner (CDP-14334, ZD-10671)<ul><li>You
+    can now apply Terraform Plan outside of the Terraform Provisioner using the variables
+    <code>${terraformApply.tfplan</code>￼ in Terraform Plan and Apply Steps and￼ <code>${terraformDestroy.tfplan</code>
+    ￼in Terraform Destroy Step.</li></ul></li><li>HTTP Template Now Supports PATCH
+    Method (CDC-9182)<ul><li>The <strong>Configure HTTP</strong> step in the Workflow
+    and the <strong>Add HTTP Template</strong> now include the PATCH method as the
+    new option.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Second
+    Group By Should Not Show First Group By (DX-1142)</li><li>Notification Strategy
+    User Expression Config is Getting Auto Deleted (CDC-9092, ZD-10845, ZD-11048)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>57301</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.58304</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.58304</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.58304</p></td></tr><tr><td><p>Learning</p></td><td><p>53300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>58300</p></td></tr><tr><td><p>Batch Process</p></td><td><p>58300</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.58304</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 57200</h3><p>Release Date: September 9, 2020</p><p>We are pleased to present
+    Harness SaaS Release 57200.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Delegates Details
+    are Now Available in Three Tabs (DEL-687)<ul><li>You can now view the details
+    of Delegates in three tabs: Delegates, Delegate Profiles, and Delegate Scopes.<br/>See
+    <a href="/article/h9tkwmkrm7-delegate-installation">Harness Delegate Overview</a>.</li></ul></li><li>ASG
+    Policy Attached During Deployment (CDP-14442, ZD-10904)<ul><li>During a deployment,
+    if the current ASG is upgrading due to a policy Trigger, the ASG policy is now
+    created and re-attached as part of the deployment.</li></ul></li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Unable to Access Freemium Account (PL-12447)</li><li>LDAP
+    is Not Working (PL-12418, ZD-11066, ZD-11192)</li><li>Same Day Delegate Log Files
+    Are Getting Deleted (DEL-951)</li><li>Intermittent Failures Occur When Testing/Saving
+    PCF Cloud Providers (CDP-14589)</li><li>Unable to Update The Template Library
+    (CDC-8979, ZD-10824)</li></ul><h4>Component Versions</h4><p>The following table
+    lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>57200</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.58206</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.58206</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.58206</p></td></tr><tr><td><p>Learning</p></td><td><p>53200</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>58200</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.58206</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 56901</h3><p>Release Date: September 1, 2020</p><p>We are pleased to present
+    Harness SaaS Release 56901.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>56901</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.57903</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.57903</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.57903</p></td></tr><tr><td><p>Learning</p></td><td><p>52900</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>57902</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.57903</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 56803</h3><p>Release Date: August 31, 2020</p><p>We are pleased to present
+    Harness SaaS Release 56803.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Increased the
+    Config File Size to Handle Larger Files for Interpretation While Evaluating Expression
+    (CDC-8706, ZD-10658)</li></ul><h4>Issues Fixed in the Release</h4><ul><li>Custom
+    Dashboard-Custom Widgets: Minor Issues seen with &#34;Application name&#34; Field
+    in Tabular View (DX-1146)</li></ul><h4>Component Versions</h4><p>The following
+    table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>56803</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.57806</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.57806</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.57806</p></td></tr><tr><td><p>Learning</p></td><td><p>52800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>57804</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.57806</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 56601</h3><p>Release Date: August 26, 2020</p><p>We are pleased to present
+    Harness SaaS Release 56601.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>56601</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.57603</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.57603</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.57603</p></td></tr><tr><td><p>Learning</p></td><td><p>52600</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>57600</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.57603</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 56300</h3><p>Release Date: Aug 17, 2020</p><p>We are pleased to present
+    Harness SaaS Release 56300.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Separate Permissions
+    for Manage Secrets Manager (PL-11880)<ul><li>You can now manage which User Groups
+    can manage secrets and secret managers.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/xacpxeyioo/1597776485257/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>See
+    <a href="/article/ven0bvulsj-users-and-permissions#account_permissions">Account
+    Permissions</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Show
+    Loader while Fetching Artifact Variables in Triggers (CDC-8635)</li><li>Rerun
+    Pipeline Flickering (CDC-8957, ZD-10800, ZD-10822)</li><li>Trigger Saved Workflow
+    Variable Value Disappearing (CDC-8944)</li><li>Trigger Api Invalid Token Issue
+    (CDC-8897)</li><li>Entity Workflow Variable Created From UI (CDC-8832, ZD-10498)</li><li>Artifact
+    Source Blank Space Submissions Accepted (CDC-8141)</li><li>Triggers Env Name Empty
+    When Env Templated in Workflow And Deleted (CDC-2878)</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>56300</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.57306</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56609</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.57306</p></td></tr><tr><td><p>Learning</p></td><td><p>52300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>57307</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.57306</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 56202</h3><p>Release Date: Aug 12, 2020</p><p>We are pleased to present
+    Harness SaaS Release 56202.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Provide Skip
+    Validation Option in PCF Cloud Provider (CDP-13931, ZD-9146)<ul><li>If you do
+    not have a specific Endpoint URL or credentials available when you set up your
+    PCF Cloud Provider, you can skip validation and add the Cloud Provider as is.<br/>See
+    <a href="/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider">Add Pivotal
+    Cloud Foundry Cloud Provider</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>First
+    Editing of Canary Deployment Phase Error &#34;Cannot be less than 1 minute&#34;
+    (CDP-14282, ZD-10719)</li><li>PCF Command Step Outputting Incorrect Values (CDP-14254,
+    ZD-10679)</li></ul><h4>Component Versions</h4><p>The following table lists the
+    component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>56202</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.57201</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56609</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.57201</p></td></tr><tr><td><p>Learning</p></td><td><p>52200</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>57202</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.57201</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 56005</h3><p>Release Date: Aug 7, 2020</p><p>We are pleased to present
+    Harness SaaS Release 56005.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Separate Manage
+    Cloud Providers and Connectors Permissions (PL-11881)<ul><li>You can now control
+    who can add Cloud Providers and Connectors with the User Group Account Permissions
+    <strong>Manage Cloud Providers</strong> and <strong>Manage Connectors</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/xacpxeyioo/1596824706865/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul></li><li>Clear
+    Resource Constraint Queues in Abort and Expire Workflows (CDC-8504)<ul><li>Harness
+    lets you queue the number of resources Harness requests during a deployment. This
+    is to prevent multiple Workflows requesting the same deployment environment resources
+    at the same time.<br/>To improve this feature Harness has made clearly the queue
+    faster when Workflows are aborted or expire.<br/>See <a href="/article/nxtsta7d3t-resource-restrictions">Resource
+    Restrictions</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Git
+    Sync Skipped (DX-1828, ZD-10473)</li><li>Wrong Service Instance Count Displayed
+    (CDP-14152, ZD-10513, ZD-10676)</li><li>Not Able to Deploy the Pipeline with Templatized
+    User Group or Shell Script Variable (CDC-8819)</li><li>Infra list Empty While
+    Creating Trigger for a Templatized Pipeline (CDC-8698)</li><li>Trigger with InfraDef
+    Variable Gives Error if no Service Infrastructure Mapping (CDC-8690, ZD-10630)</li><li>User
+    Able to Deploy Templatized Workflow/Pipeline without Mandatory Artifacts (CDC-8046)</li><li>Jenkins
+    step Secrets used in Job Parameters (CDC-7623)</li><li>Dots not allowed in SSH
+    Connection Attribute (CDC-7487)</li><li>Able to Add Blank Key Value Pairs in AWS
+    tags in the Artifact Source - AMI Repository (CDC-6805)</li><li>Copy Command Unit
+    Default Destination Path Should be Based off Service Context (CDC-4492)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p></p></td></tr><tr><td><p>Portal</p></td><td><p></p></td></tr><tr><td><p>Delegate</p></td><td><p></p></td></tr><tr><td><p>Watcher</p></td><td><p></p></td></tr><tr><td><p>Verification</p></td><td><p></p></td></tr><tr><td><p>Learning</p></td><td><p></p></td></tr><tr><td><p>Event
+    Service</p></td><td><p></p></td></tr><tr><td><p>Batch Process</p></td><td><p></p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p></p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 55804</h3><p>Release Date: Aug 4th, 2020</p><p>We are pleased to present
+    Harness SaaS Release 55804.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Cannot Process Empty values.yaml (CDP-14131,
+    ZD-10468, ZD-10469, ZD-10486, ZD-10493)</li><li>Kubernetes Deployment Failing
+    With an Error in Delegates (CDP-14111, ZD-10508, ZD-10509, ZD-10510, ZD-10512)</li><li>Barriers
+    Not Working when Same Workflow Added Twice in Parallel Section (CDC-8607, ZD-10465,
+    ZD-10476)</li><li>Cannot Edit YAML for Pipeline &#34;user is not authorized&#34;
+    (CDC-8460, ZD-9947)</li><li>GraphQL filter NOT_IN not working (CDC-8362)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>55804</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.56806</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56609</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.56806</p></td></tr><tr><td><p>Learning</p></td><td><p>51800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>56800</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.56806</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 55602</h3><p>Release Date: July 28, 2020</p><p>We are pleased to present
+    Harness SaaS Release 55602.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Failed to Fetch Helm Chart (CDP-13617, ZD-10016,
+    ZD-10018)</li><li>Overlap of HTTP Template Variables and &#34;Execute in parallel
+    with previous step&#34; and &#34;Use Delegate Proxy&#34; Options (CDC-8473)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>55602</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.56609</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56609</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.56609</p></td></tr><tr><td><p>Learning</p></td><td><p>51600</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>56605</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.56609</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 55503</h3><p>Release Date: Jul 25, 2020</p><p>We are pleased to present
+    Harness SaaS Release 55503.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Hitting Rollback in Upgrade Containers Results
+    in Rollback with &#34;No context found for rollback. Skipping (CDP-13918, ZD-10293)</li><li>GraphQL
+    filter NOT_IN is Not Working (CDC-8362, ZD-10197)</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>55503</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.56507</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56507</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.56507</p></td></tr><tr><td><p>Learning</p></td><td><p>51500</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>56101</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.56507</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 55303</h3><p>Release Date: July 21, 2020</p><p>We are pleased to present
+    Harness SaaS Release 55303.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Support New
+    Relic EU Region (CV-5527)<ul><li>New Relic Native integration support for EU endpoint
+    of the New Relic server (in addition to the US endpoint). New Relic EU endpoint:
+    https://api.eu.newrelic.com.<br/>See <a href="/article/ht3amzjvle-new-relic-verification-overview">New
+    Relic Verification Overview</a>.</li></ul></li><li>CloudFormation Create Stack
+    Workflow step available in all Workflow sections (CDP-13521)<ul><li>The CloudFormation
+    Create Stack Workflow step was only available in Pre- and Post-deployment sections
+    of Workflows (Canary and AMI Blue/Green). It is now available in all sections
+    for ad hoc provisioning. If CloudFormation Create Stack is put outside of the
+    Pre- and Post-deployment sections of Workflow, then it is not rolled back as part
+    of the Workflow failure.<br/>To delete the ad hoc provisioned infrastructure in
+    the case of a Workflow failure, add the CloudFormation Delete Stack to the Workflow <strong>Rollback
+    Steps</strong> section. See  <a href="https://docs.harness.io/article/i1agf0s6h4-cloudformation-delete-stack">Remove
+    Provisioned Infra with CloudFormation Delete Stack</a>.<br/>See <a href="/article/78g32khjcu-cloud-formation-provisioner">CloudFormation
+    How-tos</a>.</li></ul></li></ul><h4>Issues Fixed in the Release</h4><ul><li>Deployment
+    Logs Export Error (CDC-8392)</li><li>Historical Deployments not Available (CDC-8390)</li><li>RBAC
+    controls for Executing Production Pipelines applied after Resolving Variables
+    (CDC-7473)</li></ul><h4>Component Versions</h4><p>The following table lists the
+    component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>55303</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.56309</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56309</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.56309</p></td></tr><tr><td><p>Learning</p></td><td><p>51300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>56307</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.56309</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 55200</h3><p>Release Date: July 17, 2020</p><p>We are pleased to present
+    Harness SaaS Release 55200.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>CloudFormation Deploys with UNKNOWN ERROR (CDP-13880)</li><li>Rolling
+    Deployment State takes Full Timeout Specified without Indication (CDP-13872, ZD-10220)</li><li>ConfigMap
+    are Deleted Though Not Versioned (CDP-13615, ZD-9070, ZD-9941)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>55200</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.56203</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56203</p></td></tr><tr><td><p>Watcher</p></td><td><p>56203</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.56203</p></td></tr><tr><td><p>Learning</p></td><td><p>51200</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>56109</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.56203</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 55102</h3><p>Release Date: Jul 14, 2020</p><p>We are pleased to present
+    Harness SaaS Release 55102.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>Update Lambda
+    Frameworks list (CDP-13802)<ul><li>When you define your Lambda function in the
+    Harness Lambda Service, you can select from all of the runtimes supported by Lambda:<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/xacpxeyioo/1594745832254/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>See
+    <a href="/article/wy1rjh19ej-aws-lambda-deployments">AWS Lambda Quickstart</a>.</li></ul></li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>55102</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.56107</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56107</p></td></tr><tr><td><p>Watcher</p></td><td><p>51401</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.56107</p></td></tr><tr><td><p>Learning</p></td><td><p>51100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>56101</p></td></tr><tr><td><p>Batch Process</p></td><td><p>56106</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.56107</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 55003</h3><p>Release Date: July 10, 2020</p><p>We are pleased to present
+    Harness SaaS Release 55003.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>ECS B/G Support
+    Multiple Listener Rules (CDP-11022)<ul><li>In an ECS Blue/Green Workflow using
+    ELB (the other option is DNS), in the <strong>ECS Blue Green Load Balancer Setup</strong>
+    step, if you are using  <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules"
+    target="_blank">Listener Rules</a> in your target groups, you can select them
+    in the new <strong>Production Listener Rule ARN</strong> and <strong>Stage Listener
+    Rule ARN</strong> settings.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/xacpxeyioo/1594400942874/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>See
+    <a href="/article/7qtpb12dv1-ecs-blue-green-workflows">ECS Blue/Green Workflows</a>.</li><li>RoleARN
+    Parameter for CloudFormation Infrastructure Provisioner (CDP-13019)<ul><li>In
+    the <strong>CloudFormation Create Stack</strong> Workflow step, in <strong>Role
+    ARN</strong>, you can enter the Amazon Resource Name (ARN) of an AWS IAM role
+    that CloudFormation assumes to create the stack. If you don&#39;t specify a value,
+    Harness uses the credentials you provided via <strong>AWS Cloud Provider</strong>.
+    This allows you to tune the step for provisioning a specific AWS resource. For
+    example, if you will only provision AWS S3, then you can use a role that is limited
+    to S3.<br/>See <a href="/article/5wdb3r765g-provision-cloudformation-create-stack">Provision
+    using CloudFormation Create Stack</a>.</li></ul></li></ul></li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>None this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>55003</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.56005</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.56005</p></td></tr><tr><td><p>Watcher</p></td><td><p>56005</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.56005</p></td></tr><tr><td><p>Learning</p></td><td><p>50900</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>55700</p></td></tr><tr><td><p>Batch Process</p></td><td><p>55700</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.56005</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 54802</h3><p>Release Date: July 7, 2020</p><p>We are pleased to present
+    Harness SaaS Release 54802.</p><h4>New Features and Enhancements</h4><p>The following
+    new features were added to the Harness SaaS components:</p><ul><li>None this release.</li></ul><h4>Issues
+    Fixed in the Release</h4><ul><li>Failed to fetch helm chart (CDP-13617)</li><li>WF
+    Deploy step returns variable name instead of value - worked ok a few hours ago
+    (CDP-13561)</li><li>Service / Workflow variables not working in Values YAML Overrides
+    (CDP-13556)</li><li>Tooltips are missing in Infra Definition when looking at the
+    Infra def config from the Service Infrastructure Mapping (CDP-13545)</li><li>POC-
+    Powershell script output variable not being collected (CDC-8017)</li><li>Unable
+    to list artifact selection in trigger when using workflow variables in pipeline
+    (CDC-7967)</li><li>Metadata-Only option is getting selected on its own even when
+    it was not selecting while configuring an artifact source (CDC-7933)</li><li>Delegate
+    selector field is not editable when using a bash script template (CDC-7590)</li><li>Artifactory
+    - First time executing a flow on a newly created service it gives kubernetes a
+    spurious image path (CDC-7491)</li><li>Search filters are lost on continuous deployment
+    page (CDC-6982)</li></ul><h4>Component Versions</h4><p>The following table lists
+    the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>54802</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.55805</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.55805</p></td></tr><tr><td><p>Watcher</p></td><td><p>51401</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.55805</p></td></tr><tr><td><p>Learning</p></td><td><p>50800</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>55700</p></td></tr><tr><td><p>Batch Process</p></td><td><p>55700</p></td></tr><tr><td><p>Command
+    Library Service</p></td><td><p>1.0.55805</p></td></tr></tbody></table><p></p><p></p><p></p>'
+  slug: harness-saa-s-release-notes-archive-2020
+  tags: []
+  is_live: true

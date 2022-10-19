@@ -1,0 +1,194 @@
+type: article
+article_id: 6kefu7s7ne
+user_id: x5amubrz4l
+category_id: aa3bkrzgqi
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Pipeline Skip Conditions
+slug: skip-conditions
+description: Skip Pipeline stages based on conditions and variable expressions.
+short_version: Skip Pipeline stages based on conditions and variable expressions.
+tags:
+- assertion
+- expression
+- Option to skip execution
+- approval
+- Execution stage
+- Skip Always
+- input variable
+- Publish Variable Name
+- Additional Input Variables
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-09-02T17:41:04.974378Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Pipeline Skip Conditions
+  description: Skip Pipeline stages based on conditions and variable expressions.
+  short_version: Skip Pipeline stages based on conditions and variable expressions.
+  body: '<p>You might want to skip the execution of specific Pipeline Stages based
+    on different conditions, such as a script output, a specific Git branch, or a
+    specific release.</p><p>You can use skip conditions to control how Pipeline stages
+    execute. For example, you could evaluate a branch name to determine which Stage
+    to run. If the branch name is not <strong>master</strong>, you could skip a Workflow
+    that deploys from the master branch.</p><p>This topic covers:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#limitations">Limitations</a></li><li> <a href="#review_skip_conditions">Review:
+    Skip Conditions</a><ul><li> <a href="#skip_always_and_workflow_variables">Skip
+    Always and Workflow Variables</a></li></ul></li><li> <a href="#skip_based_on_assertion_expression">Skip
+    Based on Assertion Expression</a><ul><li> <a href="#step_1_create_input_variable">Step
+    1: Create Input Variable</a></li><li> <a href="#step_2_modify_value_during_deployment">Step
+    2: Modify Value During Deployment</a></li><li> <a href="#step_3_evaluate_assertion_expression">Step
+    3: Evaluate Assertion Expression</a></li></ul></li><li><a href="#review_skip_condition_info_in_deployments_page">Review:
+    Skip Condition Info In Deployments Page</a></li><li><a href="#notes">Notes</a></li><li>
+    <a href="#see_also">See Also</a></li></ul><div class="note-callout">You can also
+    apply skip conditions to steps in a Workflow. See <a href="/article/02i1k7nvsj-skip-workflow-steps">Skip
+    Workflow Steps</a>.</div><h3>Before You Begin</h3><ul><li> <a href="/article/zc1u96u6uj-pipeline-configuration">Pipelines</a></li><li>
+    <a href="/article/0ajz35u2hy-approvals">Approvals</a></li></ul><h3>Limitations</h3><ul><li>Harness
+    does not support the Ternary conditional <code>?:</code> operator from <a href="http://commons.apache.org/proper/commons-jexl/reference/syntax.html#Operators"
+    target="_blank">JEXL</a>.</li><li>You can use the following variable expressions
+    in <strong>Assertion Expression</strong>:<ul><li>Approval input variables from
+    earlier Approval Stages. This is described below.</li><li>Published output variables
+    from Workflow <a href="/article/1fjrjbau7x-capture-shell-script-step-output">Shell
+    Script</a> and <a href="/article/m8ksas9f71-using-the-http-command">HTTP</a> steps
+    that are scoped to <strong>Pipeline</strong>.</li><li> <a href="/article/9dvxcegm90-variables">Built-in
+    Harness Application and Pipeline variable expressions</a>. These are available
+    because they are readable before deploying the Pipeline.</li></ul></li><li>In
+    <strong>Assertion Expression</strong>, you can only use variable expressions that
+    Harness can resolve <u>before</u> Workflow deployment. Pipeline Skip Conditions
+    are evaluated <u>before</u> the Workflow is deployed. <br/>For example, artifact
+    information is only readable when you select, or Harness pulls, the artifact at
+    Workflow deployment runtime. Therefore, artifact expressions should not be used
+    in the <strong>Assertion Expression</strong>.</li><li>The <strong>Assertion Expression</strong>
+    setting allows you to test using multiple operators, not just equality. For example,
+    <code>${release.test} &gt; 1</code> would also be a valid <strong>Assertion Expression</strong>
+    entry.</li></ul><h3>Review: Skip Conditions</h3><p>Skip conditions enable you
+    to disable the execution of individual Pipeline Stages (such as Workflows).</p><p>You
+    can set a Stage to be skipped or conditionally execute Stages based on expressions
+    evaluated when the Pipeline runs. You can use them in scenarios like these:</p><ul><li>Set
+    a Stage to never execute. This is useful when you want to add new Stages to a
+    Pipeline’s structure, but prevent those Stages from executing while they are still
+    under development.</li><li>Set a Stage to execute conditionally, based on the
+    value assigned to a variable in an earlier stage of the same Pipeline.</li></ul><p>Use
+    the <strong>Option to Skip Step</strong> setting to select the condition under
+    which this Pipeline Stage should execute:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kefu7s7ne/1594922801994/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    options are:</p><ul><li><strong>Do not skip</strong> — This is the default behavior.
+    Harness will not override execution. The Stage will simply execute.</li><li><strong>Skip
+    always</strong> — The stage will never execute. With this option, you can maintain
+    a Stage within a Pipeline, but disable it temporarily or indefinitely.</li><li><strong>Skip
+    based on assertion expression</strong> — This option enables you to specify an
+    expression that determines whether the Stage should execute.</li></ul><p>The Do
+    not skip and Skip always options are easy to understand. The rest of this topic
+    will focus on the <strong>Skip based on assertion expression</strong> option.</p><h4>Skip
+    Always and Workflow Variables</h4><p>Normally, when you execute a Pipeline containing
+    a Workflow that uses <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow
+    variables</a>, such as a <a href="/article/bov41f5b7o-templatize-a-workflow-new-template">templated
+    Workflow</a>, the Workflow variables are mandatory: values for the variables must
+    be provided in order to deploy the Pipeline.</p><p>If you select the <strong>Skip
+    always</strong> option in <strong>Option to skip execution</strong> for a Workflow
+    in a Pipeline, then Workflow variables in the skipped Workflow are no longer mandatory.
+    The Pipeline may be deployed without providing variables.</p><h3>Skip Based on
+    Assertion Expression</h3><p>Use the <strong>Skip based on assertion expression</strong>
+    option to conditionally skip a Pipeline stage based on an expression.</p><p>Harness
+    supports the <a href="https://commons.apache.org/proper/commons-jexl/reference/syntax.html"
+    target="_blank">Java Expression Language (JEXL)</a>. You can use JEXL operators
+    and regex in your expressions.</p><p>To enable this option, you can define a new
+    variable in an Approval stage, or use the variables listed in <a href="#limitations">Limitations</a>
+    above.</p><p>Next, in any subsequent stage, you evaluate the expression to determine
+    whether to execute the stage.</p><div class="note-callout">Remember when an assertion
+    evaluates to <strong>false</strong>, the Stage is <u>not skipped</u>. When it
+    evaluates to <strong>true</strong>, it <u>is skipped</u>.</div><p>For example,
+    let&#39;s look at a Pipeline with a variable defined in Stage 1 and then evaluated
+    in Stage 3:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kefu7s7ne/1583260094877/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    the following image, you can see the variable defined in Stage 1, and then in
+    Stage 3 you can see an expression using the variable:</p><p></p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1571888412035/image.png" style="max-height:100%;max-width:100%"
+    data-hd-height="100%" data-hd-width="100%"/></figure><p>Let&#39;s walk through
+    the steps of setting up this variable and using it in <strong>Skip based on assertion
+    expression</strong>.</p><h4>Step 1: Create Input Variable</h4><p>In an <a href="/article/0ajz35u2hy-approvals">Approval</a>
+    stage within a Pipeline, you define an input variable as follows:</p><ol><li>Click
+    <strong>Advanced Settings</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1571809582421/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>In
+    <strong>Additional Input Variables</strong>, click <strong>Add</strong>.</li><li>Give
+    your new variable a <strong>Name</strong> and <strong>Default Value</strong>.
+    You will use the name to reference the variable in one or more <u>subsequent</u>
+    Execution or Approval Stages in the Pipeline. You will use the value in an expression
+    to determine whether the Stage should execute.</li></ol><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1571810033136/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure><ol><li
+    style="counter-increment:li 3" start="4">In <strong>Publish Variable Name</strong>,
+    enter a parent name for the <strong>Additional Input Variables</strong>. The parent
+    name helps to avoid conflicts when referencing variables of the same name within
+    the same Pipeline.<br/><br/>In this example, the parent name is set to <code>releaseInfo</code>,
+    and the input variable&#39;s name is <code>releaseTarget</code>. So, in subsequent
+    Pipeline Stages, you can reference this variable as <code>releaseInfo.releaseTarget</code>.
+    Its default value is set as <code>PROD</code>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1571811517294/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li></ol><div
+    class="note-callout">If you use multiple Approval Steps, ensure that the names
+    entered in <strong>Publish Variable Name</strong> are unique in each Approval
+    Step. If you use the same name in <strong>Publish Variable Name</strong> in multiple
+    Approval Steps, and error will occur and the step will fail.</div><ol><li style="counter-increment:li
+    4" start="5">To add more input variables, click <strong>Add Variable</strong>.<br/>All
+    variables defined in this Stage share the same parent name, prepended from the
+    <strong>Publish Variable Name</strong> field.</li><li>Click <strong>Submit</strong>
+    to save this Stage, along with its variables. Now you can use these variables
+    in assertion expressions within Execution and Approval stages, or modify the variables,
+    as described below.</li></ol><h4>Step 2: Modify Value During Deployment</h4><p>When
+    you deploy this Pipeline, the Approval Stage lets authorized approvers modify
+    the variable value. Authorized approvers are members of User Groups selected in
+    the Approval Stage&#39;s <strong>User Group(s)</strong> setting.</p><p>In the
+    example below, the <code>releaseTarget</code> variable appears with its <strong>Default
+    Value</strong> of <code>PROD</code>. Approvers can change the value here before
+    clicking <strong>Approve</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kefu7s7ne/1594926385631/image.png"/></figure><h4>Step
+    3: Evaluate Assertion Expression</h4><p>To use the variable value to determine
+    whether a Stage executes, in a subsequent Stage in the same Pipeline, in <strong>Option to
+    skip execution</strong>, select <strong>Skip based on assertion expression</strong>.</p><p>In
+    <strong>Assertion Expression</strong>, reference the <code>releaseInfo.releaseTarget</code>
+    variable that we defined earlier in the Approval Stage using the expression <code>${releaseInfo.releaseTarget}</code>.</p><p>In
+    this example, the value <code>QA</code> is used in the assertion:</p><p></p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1571812895610/image.png" style="max-height:75%;max-width:75%"
+    data-hd-height="75%" data-hd-width="75%"/></figure><p>When we first created this
+    input variable, we set its value to <code>PROD</code>.</p><p>During deployment,
+    if we assume that this value has not been changed in any intermediate Stage—remember
+    that users change a variable&#39;s value in an Approval Stage—the assertion expression
+    will be evaluated as <em>false</em>.</p><p>In this case, this Pipeline stage will
+    <u><em>not</em></u> <u>be skipped</u>, because the skip condition (the assertion
+    expression) has not been met. Therefore, Harness will attempt to execute the stage.</p><div
+    class="note-callout">Remember when an assertion evaluates to <strong>false</strong>,
+    the Stage is <u>not skipped</u>. When it evaluates to <strong>true</strong>, it
+    <u>is skipped</u>.</div><h3>Review: Skip Condition Info In Deployments Page</h3><p>On
+    a Harness deployment&#39;s page, when you hover a Pipeline stage that uses a skip
+    condition, the skip conditions expressions are displayed:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kefu7s7ne/1614638805870/image.png"/></figure><p></p><h3>Notes</h3><p>If
+    a skip condition uses the templated variable of a User Groups or New Relic setting,
+    the condition should use the ID of the User Group and New Relic setting, and not
+    the name.</p><p>For example, in the following <a href="/article/9rc6pryw97-4-verify-deployments-with-new-relic#review_templatize_new_relic_verification">templated
+    New Relic Workflow step</a>, the <strong>New Relic Server</strong> (Harness Verification
+    Provider) and <strong>Application Name</strong> settings are templated:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kefu7s7ne/1614639056214/image.png"/></figure><p>If
+    you reference those settings in a Pipeline skip condition, you must use the ID
+    of the server (Harness Verification Provider) or Application in your condition
+    expression. Do not use the Harness Verification Provider or Application name.</p><h3>See
+    Also</h3><ul><li> <a href="/article/5pspec1apl-use-variables-for-workflow-approval">Using
+    Variables in Workflow Approvals</a></li></ul><p></p>'
+  slug: skip-conditions
+  tags:
+  - assertion
+  - expression
+  - Option to skip execution
+  - approval
+  - Execution stage
+  - Skip Always
+  - input variable
+  - Publish Variable Name
+  - Additional Input Variables
+  is_live: true

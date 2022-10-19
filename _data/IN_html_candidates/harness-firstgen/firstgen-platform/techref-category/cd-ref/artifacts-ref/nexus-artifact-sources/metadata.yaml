@@ -1,0 +1,180 @@
+type: article
+article_id: rdhndux2ab
+user_id: mfr0nxh4be
+category_id: r5npnj7dwx
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Nexus Artifact Sources
+slug: nexus-artifact-sources
+description: This topic provides settings and permissions for the Nexus Artifact Servers
+  and Sources. Nexus Permissions. Make sure the connected user account has the following
+  permissions in the Nexus Server. Rep…
+short_version: This topic provides settings and permissions for the Nexus Artifact
+  Servers and Sources. Nexus Permissions. Make sure the connected user account has
+  the following permissions in the Nexus Server. Rep…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-08-23T22:29:18.329876Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Nexus Artifact Sources
+  description: ""
+  short_version: ""
+  body: "<p>This topic provides settings and permissions for the Nexus Artifact Servers
+    and Sources.</p><h3>Nexus Permissions</h3><p>Make sure the connected user account
+    has the following permissions in the Nexus Server.</p><ul><li>Repo: All repositories
+    (Read)</li><li>Nexus UI: Repository Browser</li></ul><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/6y6b8pkm12/1589570434373/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p>If
+    used as a Docker Repo, the user needs:</p><ul><li>List images and tags</li><li>Pull
+    images</li></ul><p>See <a href=\"https://help.sonatype.com/display/NXRM2/Managing+Security\"
+    target=\"_blank\">Nexus Managing Security</a>.</p><h3>Artifact Type Support</h3><p>Legend:</p><ul><li><strong>M</strong> -
+    Metadata. This includes Docker image and registry information. For AMI, this means
+    AMI ID-only.</li><li><strong>Blank</strong> - Not supported.</li></ul><table><tbody><tr><td><p><strong>Docker
+    Image</strong></p><p>(Kubernetes/Helm)</p></td><td><p><strong>AWS</strong> <strong>AMI</strong></p></td><td><p><strong>AWS
+    CodeDeploy</strong></p></td><td><p><strong>AWS Lambda</strong></p></td><td><p><strong>JAR</strong></p></td><td><p><strong>RPM</strong></p></td><td><p><strong>TAR</strong></p></td><td><p><strong>WAR</strong></p></td><td><p><strong>ZIP</strong></p></td><td><p><strong>PCF</strong></p></td><td><p><strong>IIS</strong></p></td></tr><tr><td><p>M</p></td><td><p></p></td><td><p>M</p></td><td><p></p></td><td><p>M</p></td><td><p>M</p></td><td><p>M</p></td><td><p>M</p></td><td><p>M</p></td><td><p>M</p></td><td><p>M</p></td></tr></tbody></table><p></p><div
+    class=\"note-callout\">For any other types, you can use <a href=\"/article/jizsp5tsms-custom-artifact-source\">Custom
+    Artifact Sources</a>.</div><h3 id=\"undefined\">Docker Support</h3><p>Nexus 3
+    Artifact Servers only.</p><h3>Nexus Artifact Server</h3><p>The Harness Nexus Artifact
+    server connects your Harness account to your Nexus artifact resources. It has
+    the following settings.</p><h4>Nexus URL</h4><p>The URL of the Nexus server. For
+    example, <code>https://nexus2.dev.mycompany.io</code>.</p><h4>Version</h4><p>The <strong>Version</strong> field
+    in the dialog lists the supported Nexus versions, 2.x and 3.x.</p><p>For Nexus
+    2.x, Harness supports repository formats Maven, npm, and NuGet. See Sonatype&#39;s
+    website at <a href=\"https://help.sonatype.com/repomanager3/supported-formats\"
+    target=\"_blank\">Supported Formats</a>.</p><p>For Nexus 3.x, Harness supports
+    repository formats Docker 3.0 and greater, Maven, npm, NuGet, and raw.</p><h4>Credentials</h4><p>Enter
+    the username and select and encrypted password.</p><p>For secrets and other sensitive
+    settings, select or create a new <a href=\"https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets\">Harness
+    Encrypted Text secret</a>.</p><p>Usage Scope is determined by the secret you selected.</p><h3>Nexus
+    Artifact Source</h3><p>The settings displayed depend on the Harness Service Deployment
+    type. For example, a Kubernetes type displays Docker settings, and can only use
+    Nexus 3.</p><p>If you click <strong>Artifact History</strong> in a Harness Service<strong>,</strong>
+    you will see the build history that Harness pulled from the source server.</p><p>Here
+    is an example of the Nexus repo settings and how they are used in the Nexus Artifact
+    Source:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/gxv9gj6khz/1576106831688/image.png\"/></figure><p></p><h4>Source
+    Server</h4><p>Select the name of the artifact source server you added in <a href=\"/article/7dghbx1dbl-configuring-artifact-server#nexus\">Add
+    Artifact Servers</a>.</p><h4>Repository Format</h4><p>Select the Nexus format
+    for your repo, such as Maven.</p><h4>Repository</h4><p>Select the name of the
+    repository where the artifact is located. If you don&#39;t see it, the API might
+    have timed out. Enter its name and Harness will query for it.</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593118437981/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p>For
+    <strong>Nexus 2</strong>, you can enter a variable expression to parameterize
+    this setting.</p><h4>Group ID</h4><p>Select the repo group for your artifact.
+    If you don&#39;t see it, the API might have timed out. Enter its name and Harness
+    will query for it.</p><p>For <strong>Nexus 2</strong>, you can enter a variable
+    expression to parameterize this setting.</p><div class=\"note-callout\">If the
+    Feature Flag <code>USE_NEXUS3_PRIVATE_APIS</code> is enabled, this field is a
+    text field and not a drop-down. If you have a very large repo in can take a long
+    time to load Ids. You might want to enable this Feature Flag and manually enter
+    the Id.</div><p></p><h4>Artifact ID</h4><p>Select the artifact in the repository.
+    If you don&#39;t see it, the API might have timed out. Enter its name and Harness
+    will query for it.</p><p>For <strong>Nexus 2</strong>, you can enter a variable
+    expression to parameterize this setting.</p><div class=\"note-callout\">If the
+    Feature Flag <code>USE_NEXUS3_PRIVATE_APIS</code> is enabled, this field is a
+    text field and not a drop-down. If you have a very large repo in can take a long
+    time to load Ids. You might want to enable this Feature Flag and manually enter
+    the Id.</div><h4>Extension</h4><p>Filter the artifacts by extension, such as <code>war</code>.</p><h4>Classifier</h4><p>Filter
+    the artifact by classifier, such as <code>sources</code>.</p><h4>Docker Image
+    Name</h4><p>Click in <strong>Docker Image Name</strong> and select or enter the
+    name of the artifact you want to deploy. By default, Harness automatically populates
+    the field with the artifacts available from the source server.</p><h4>Docker Registry
+    URL</h4><p>Enter the URL for the Nexus Docker registry, known as the Docker Repository
+    Connector in Nexus. This is the same as the domain name and port you use for <code>docker
+    login hostname:port</code>. As a best practice, include the scheme and port, for
+    example <code>https://your-repo:443</code>. If you cannot locate the scheme, you
+    may omit it, for example <code>your-repo:18080</code>.</p><p>For more information,
+    see <a href=\"https://support.sonatype.com/hc/en-us/articles/115013153887-Docker-Repository-Configuration-and-Client-Connection\"
+    target=\"_blank\">Docker Repository Configuration and Client Connection</a> and
+    <a href=\"https://blog.sonatype.com/using-nexus-3-as-your-repository-part-3-docker-images\"
+    target=\"_blank\">Using Nexus 3 as Your Repository – Part 3: Docker Images</a>
+    from Sonatype.</p><p></p><h3>Parameterized Nexus Settings</h3><p>For <strong>Nexus
+    2</strong>, you can enter a variable expression to parameterize the following
+    settings:</p><ul><li>Repository</li><li>Group ID</li><li>Artifact ID</li></ul><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593119998355/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><p>When
+    you deploy a Workflow (or Pipeline containing the Workflow) using a Service with
+    a parameterized Nexus artifact source, you are notified that the Artifact Source
+    requires values:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593120403776/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p>This
+    is also true for the Artifact Collection step in a <a href=\"/article/wqytbv2bfd-ci-cd-with-the-build-workflow\">Build
+    Workflow</a>.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/rdhndux2ab/1593120615209/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p>For
+    Build Workflows, you are not prompted for artifact variables at deployment runtime
+    because you must provide them in the Artifact Collection step.</p><h4>Switching
+    Between Parameterized and Non-Parameterized</h4><p>In some cases, you might have
+    a non-parameterized Nexus Artifact Source and then later create a Build Workflow
+    that uses the artifact source (via its Service).</p><p>Later, if you change the
+    non-parameterized artifact source to parameterized, Harness does not mark the
+    Build Workflow as incomplete.</p><p>However, when you open the <strong>Artifact
+    Collection</strong> step in the Workflow, you will see the incomplete settings
+    and will not be allowed to submit the step without providing values for them.</p><h4>Trigger
+    cURL Command</h4><p>When you create a Trigger to run a Workflow that uses a parameterized
+    Service, the parameters are included in the Trigger cURL command. Below, two Service
+    Nexus Artifact Source settings (<code>repo</code>, <code>packageName</code>) are
+    parameterized in <code>artifactVariables</code>:</p><pre>{&#34;application&#34;:&#34;aL_kSmMJSQSHz_-6P8ZbcQ&#34;,&#34;artifacts&#34;:[{&#34;service&#34;:&#34;demo
+    svc&#34;,&#34;buildNumber&#34;:&#34;demo svc_BUILD_NUMBER_PLACE_HOLDER&#34;,&#34;artifactVariables&#34;:{&#34;repo&#34;:&#34;REPO_PLACE_HOLDER&#34;,&#34;packageName&#34;:&#34;PACKAGENAME_PLACE_HOLDER&#34;}}]}</pre><p>When
+    you run the cURL command, you simply provide values for the parameterized settings.</p><h4>Harness
+    API</h4><p>You can provide values for parameterized settings when querying and
+    executing using the Harness API.</p><h5>Service Query</h5><pre>query{<br/>  service(serviceId:&#34;ZWZ1TqvqQJKVE7Fw7beyfg&#34;)
+    {<br/>    id<br/>    name<br/>    artifactSources{<br/>      id<br/>      name<br/>
+    \     ... on NexusArtifactSource{<br/>        parameters<br/>      }<br/>    }<br/>
+    \ }<br/>}</pre><h5>Artifact Query</h5><pre>query{<br/>  artifact(artifactId:&#34;sDOTN0uhS-qFIKL1vQpKZg&#34;)
+    {<br/>    id<br/>  \tartifactSource{<br/>    \tid<br/>      name<br/>      ...
+    on NexusArtifactSource{<br/>        parameters<br/>      }<br/>    }<br/>    buildNo<br/>
+    \   collectedAt<br/>  }<br/>}</pre><h5>Workflow Execution Inputs</h5><p>Get required
+    inputs to start an execution of a Workflow or Pipeline.</p><pre>query {<br/>  executionInputs(entityId:
+    &#34;JNiccn7wT3mI8xD9VAmENw&#34;<br/>    applicationId: &#34;KRCKVPsVRO-US4WT3lBIvQ&#34;<br/>
+    \   executionType: WORKFLOW<br/>){<br/>  serviceInputs{<br/>    id<br/>    name<br/>
+    \   artifactType<br/>    artifactSources{<br/>     id<br/>     name<br/>      ...
+    on NexusArtifactSource { <br/>      \tparameters<br/>      }<br/>    }<br/>  }
+    \ <br/>  }<br/>}</pre><h5>Workflow Execution</h5><p>Here, <code>parameterizedArtifactSource</code>
+    is used to provide values for the Artifact Source.</p><pre>mutation {<br/>  startExecution
+    (input: {<br/>    entityId: &#34;JNiccn7wT3mI8xD9VAmENw&#34;<br/>    applicationId:
+    &#34;KRCKVPsVRO-US4WT3lBIvQ&#34;<br/>    executionType: WORKFLOW<br/>    notes:
+    &#34;Test deployment from graohql API&#34;<br/>    clientMutationId: &#34;123&#34;<br/>
+    \   serviceInputs: [<br/>      {<br/>        name: &#34;nexus 2 maven&#34;<br/>
+    \       artifactValueInput: {<br/>          valueType: PARAMETERIZED_ARTIFACT_SOURCE<br/>
+    \         parameterizedArtifactSource: {<br/>            buildNumber: &#34;1.0.0&#34;<br/>
+    \           artifactSourceName: &#34;npm params&#34;<br/>            parameterValueInputs:
+    [{<br/>              name:&#34;repo&#34;<br/>              value: &#34;npm-internal&#34;<br/>
+    \           },<br/>            {<br/>              name: &#34;package&#34;<br/>
+    \             value: &#34;npm-app1&#34;<br/>            }]<br/>          }<br/>
+    \       }<br/>      }<br/>    ]<br/>  }) {<br/>    clientMutationId<br/>    execution
+    {<br/>      id<br/>      status<br/>      startedAt<br/>      cause {<br/>        __typename<br/>
+    \     }<br/>      ... on WorkflowExecution {<br/>        artifacts {<br/>          id<br/>
+    \       }<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Pipeline Execution</h5><p>Here,
+    <code>parameterizedArtifactSource</code> is used to provide values for the Artifact
+    Source.</p><pre>mutation {<br/>  startExecution (input: {<br/>    entityId: &#34;xBuJSk3JQzyLfIrXMw2Z_A&#34;<br/>
+    \   applicationId: &#34;KRCKVPsVRO-US4WT3lBIvQ&#34;<br/>    executionType: PIPELINE<br/>
+    \   notes: &#34;Test deployment from graohql API&#34;<br/>    clientMutationId:
+    &#34;123&#34;<br/>    serviceInputs: [<br/>      {<br/>        name: &#34;nexus
+    2 maven&#34;<br/>        artifactValueInput: {<br/>          valueType: PARAMETERIZED_ARTIFACT_SOURCE<br/>
+    \         parameterizedArtifactSource: {<br/>            buildNumber: &#34;1.0.0&#34;<br/>
+    \           artifactSourceName: &#34;npm params&#34;<br/>            parameterValueInputs:
+    [{<br/>              name:&#34;repo&#34;<br/>              value: &#34;npm-internal&#34;<br/>
+    \           },<br/>            {<br/>              name: &#34;package&#34;<br/>
+    \             value: &#34;npm-app1&#34;<br/>            }]<br/>          }<br/>
+    \       }<br/>      }<br/>    ]<br/>  }) {<br/>    clientMutationId<br/>    execution
+    {<br/>      id<br/>      status<br/>      startedAt<br/>      cause {<br/>        __typename<br/>
+    \     }<br/>      ... on PipelineExecution {<br/>        Status<br/>      }<br/>
+    \   }<br/>  }<br/>}</pre><h4>Rollback</h4><p>If a Workflow deploying a parameterized
+    Service fails and performs rollback, the last successfully deployed artifact is
+    deployed.</p><h3>Notes</h3><p>If you use the same parameterized Service in multiple
+    Workflows in a Pipeline, when you deploy the Pipeline you are only prompted to
+    provide values for the Service once.</p><p>Consequently, you cannot provide different
+    values for the same parameter because you used the same parameterized Service
+    twice.</p><p></p><p></p>"
+  slug: nexus-artifact-sources
+  tags: []
+  is_live: true

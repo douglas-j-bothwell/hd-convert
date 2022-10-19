@@ -1,0 +1,159 @@
+type: article
+article_id: 0ajz35u2hy
+user_id: x5amubrz4l
+category_id: 4edbfn50l8
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Harness UI Approvals
+slug: approvals
+description: Add Approval steps to Workflows or Pipelines, so that deployments must
+  receive approval before they can proceed.
+short_version: Add Approval steps to Workflows or Pipelines, so that deployments must
+  receive approval before they can proceed.
+tags:
+- Jira
+- ServiceNow
+- Harness UI
+- Shell Script
+- Workflow variable
+- Pipeline
+- issueId
+- Ticketing System
+- Workflow
+- Publish Variable Name
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-09-02T16:35:24.047848Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness UI Approvals
+  description: Add Approval steps to Workflows or Pipelines, so that deployments must
+    receive approval before they can proceed.
+  short_version: Add Approval steps to Workflows or Pipelines, so that deployments
+    must receive approval before they can proceed.
+  body: '<p>You can specify Harness User Group(s) to approve or reject a Pipeline
+    or Workflow. During deployment, the User Group members use the Harness Manager
+    to approve or reject the deployment.</p><p>The other approval mechanisms are:</p><ul><li><a
+    href="/article/qxki6o7y31-jira-based-approvals">Jira Approvals</a></li><li><a
+    href="/article/9nkuhm8moo-service-now-ticketing-system">ServiceNow Approvals</a></li><li><a
+    href="/article/lf79ixw2ge-shell-script-ticketing-system">Custom Shell Script Approvals</a></li></ul><h3>Before
+    You Begin</h3><ul><li><a href="/article/m220i1tnia-workflow-configuration">Workflows</a></li><li><a
+    href="/article/zc1u96u6uj-pipeline-configuration">Pipelines</a></li><li><a href="/article/60j7391eyy-templatize-pipelines">Create
+    Pipeline Templates</a></li><li><a href="/article/kf828e347t-notification-groups">User
+    Notifications and Alert Settings</a></li><li><a href="/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a></li></ul><h3>Review: Approval Options</h3><p>When
+    you run a Workflow with an Approval step, there are three options available:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/0ajz35u2hy/1662136508020/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><ul><li><strong>Approve:</strong>
+    the step is marked as approved and the Workflow execution proceeds.</li><li><strong>Reject
+    and Follow Failure Strategy:</strong> initiates the Failure Strategy for the Workflow.
+    By default, any Workflow you create has rollback as the default Failure Strategy.
+    But in many cases you will have a different Failure Strategy.</li><li><strong>Reject
+    and Rollback:</strong> rolls back the Workflow regardless of the Workflow Failure
+    Strategy.</li></ul><p>See <a href="/article/vfp0ksdzg3-define-workflow-failure-strategy-new-template">Define
+    Workflow Failure Strategy</a> for details on <strong>Rollback Workflow</strong>
+    and <strong>Rollback Provisioners after Phases</strong> options.</p><div class="note-callout">Currently,
+    <strong>Rollback Provisioners after Phases</strong> is behind the feature flag
+    <code>ROLLBACK_PROVISIONER_AFTER_PHASES</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p></p><p></p><h3>Add
+    an Approval Step in a Pipeline</h3><p>In your Pipeline, in <strong>Pipeline Stages</strong>,
+    click <strong>+</strong>. The following settings appear.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qxki6o7y31/1588700333171/screenshot-2020-05-05-at-11-06-31-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Select
+    <strong>Approval Step</strong>.</p><p>Select <strong>Harness UI</strong> in the
+    <strong>Ticketing System</strong>.</p><p>Select one or more <strong>User Group(s)</strong>
+    to notify for the approval requests.</p><p>You can template this setting, turning
+    it into a parameter. Just click the template button:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/0ajz35u2hy/1594237908181/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    a Pipeline or Workflow Approval step, clicking this button creates a variable
+    named <code>${User_Group}</code>. This is the default variable, but you can edit
+    its name or replace the variable with a Service or Workflow variable, or even
+    an <a href="/article/lgg12f0yry-set-default-application-directories-as-variables">Application
+    Default</a> variable.</p><p>When you deploy the Pipeline or Workflow, you are
+    prompted to select a User Group:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/0ajz35u2hy/1594238539405/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    cannot pass in a value for this templated setting from another Workflow.</p><div
+    class="note-callout">Ensure that the User Groups you select have <strong>Action:</strong>
+    <strong>read</strong>, <strong>Permission Type: Deployments</strong>, and <strong>Application:</strong>
+    the current Application or <strong>All Applications</strong>.</div><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/0ajz35u2hy/1594239082569/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Enter
+    the time duration that Harness should wait for the approval or rejection before
+    killing the deployment process. You can use <code><strong>w</strong></code>  for
+    week, <code><strong>d</strong></code>  for day, <code><strong>h</strong></code>  for
+    hour, <code><strong>m</strong></code>  for minutes, <code><strong>s</strong></code>  for
+    seconds and <code><strong>ms</strong></code> for milliseconds. For example, 1d
+    for one day.</p><div class="note-callout">The maximum is 3w 3d 20h 30m.</div><p>Select <strong>Execute
+    in Parallel with Previous Step</strong> checkbox to execute the steps in parallel.</p><p>Click
+    <strong>Advanced Settings</strong> to set the additional settings.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/qfv84bqk0p/1588876374331/screenshot-2020-05-08-at-12-02-33-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Select
+    either <strong>Do not skip</strong>, <strong>Skip always</strong>, or <strong>Skip
+    Based on Assertion Expression</strong> for setting the skip option. For more information,
+    see <a href="/article/6kefu7s7ne-skip-conditions">Pipeline Skip Conditions</a>.</p><p>Click
+    <strong>Add Variable</strong>. These variables serve as inputs to later stages
+    of the same Pipeline, where they support conditional execution or user overrides.
+    See <a href="/article/6kefu7s7ne-skip-conditions">Pipeline Skip Conditions</a>
+    and <a href="/article/5pspec1apl-use-variables-for-workflow-approval">Using Variables
+    in Workflow Approvals</a>.</p><p>Select <strong>Auto-Reject previous deployments
+    paused in this stage on approval</strong> to reject previous deployments of this
+    Pipeline with the same Services before this approval stage. This will prohibit
+    older Pipelines from being approved and older builds from being deployed in the
+    Environment.</p><div class="note-callout">Currently, this feature is behind the
+    Feature Flag <code>AUTO_REJECT_PREVIOUS_APPROVALS</code>. Contact Harness Support
+    to enable the feature.</div><p>Click <strong>Submit</strong>.</p><p>Deploy the
+    Pipeline. When you deploy your Pipeline, the <strong>Approval Stage</strong> notifies
+    the selected User Group(s), via their configured <a href="/article/kf828e347t-notification-groups#notification_settings_for_user_groups">notification
+    settings</a> to approve or reject the deployment.</p><p></p><p>In <strong>Deployments</strong>
+    page, the <strong>Approval Stage</strong> displays the following information:</p><ul><li><strong>Started
+    At</strong>: The time at which the Pipeline was triggered.</li><li><strong>Time
+    Remaining</strong>: Time remaining to complete the Pipeline deployment.</li><li><strong>Approval
+    User Groups</strong>: The user group(s) that you have specified to notify for
+    the approval requests.</li><li><strong>Timeout</strong>: The time duration that
+    Harness should wait for the approval or rejection before killing the deployment
+    process.<div class="note-callout">The maximum timeout duration is 24 days.</div></li><li><strong>Will
+    Expire At</strong>: The time at which the Pipeline will expire.</li><li><strong>Triggered
+    By</strong>: The user who triggered the Pipeline deployment. It can be triggered
+    using a <a href="/article/zc1u96u6uj-pipeline-configuration">Pipeline</a> or <a
+    href="/article/xerirloz9a-add-a-trigger-2">Trigger</a> process.</li><li><strong>Variables</strong>:
+    Details of the variable inputs that you have specified for the conditional execution
+    of later Pipeline stages. For more information, see <a href="https://docs.harness.io/article/6kefu7s7ne-skip-conditions#skip_based_on_assertion_expression">Skip
+    Based on Assertion Expression</a>.<br/>You can also <strong>Approve</strong>,
+    <strong>Reject</strong>, or <strong>Approve/Reject with a note</strong> the Pipeline
+    deployment from this page.</li></ul><h3>Add an Approval Step in a Workflow</h3><p>You
+    can add UI Approval steps in a Workflow. Configuring the Workflow Approval step
+    is similar to Pipeline UI Approvals, although the Workflow Approval steps only
+    have the <strong>Additional Input Variables</strong> in <strong>Advanced Settings</strong>.</p><p>See
+    <a href="/article/5pspec1apl-use-variables-for-workflow-approval">Using Variables
+    in Workflow Approvals</a>.</p><p></p><h3>Needs Approval</h3><p>Here is an example
+    of a Pipeline Approval Stage:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qfv84bqk0p/1589212050537/screenshot-2020-05-11-at-9-15-25-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><p></p><h3>Auto-Reject
+    Previous Deployments</h3><div class="note-callout">Currently, this feature is
+    behind the Feature Flag <code>AUTO_REJECT_PREVIOUS_APPROVALS</code>. Contact Harness
+    Support to enable the feature. You will see this option only if there are other
+    Pipelines/Workflows queued for approval at the same stage.</div><p>While approving
+    a Workflow or Pipeline deployment, you can auto-reject previously paused deployments
+    of the same Pipeline/Workflow (for the same Service and Infrastructure Definition
+    combination) paused at the same approval stage.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/0ajz35u2hy/1656062500293/r-kz-x-9-ys-8-z-8-kt-5-jp-kum-lgfjcukl-sxmktph-ilo-blqk-iq-5-fva-jvoltlgk-ebd-0-q-mkf-2-wq-1-qh-xzp-ouatx-ma-7-sg-s-6-a-38-ibxdj-o-647-b-g-5-w-61-wb-la-turg-ez-0-vt-xz-0-eejivg-0-c-cy-qywd-ds-oddpy-74-h-5-lda"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><p></p><p></p><p></p><p></p><p></p>'
+  slug: approvals
+  tags:
+  - Jira
+  - ServiceNow
+  - Harness UI
+  - Shell Script
+  - Workflow variable
+  - Pipeline
+  - issueId
+  - Ticketing System
+  - Workflow
+  - Publish Variable Name
+  is_live: true

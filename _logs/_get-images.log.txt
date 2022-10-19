@@ -1,0 +1,1863 @@
+
+[DEBUG]  ------------------------ processing  continuous-delivery.md
+[DEBUG] ------------------------  end processing  continuous-delivery.md
+
+
+[DEBUG]  ------------------------ processing  security-testing-orchestration.md
+[DEBUG] ------------------------  end processing  security-testing-orchestration.md
+
+
+[DEBUG]  ------------------------ processing  platform.md
+[DEBUG] ------------------------  end processing  platform.md
+
+
+[DEBUG]  ------------------------ processing  filtering-flags-by-state.md
+[DEBUG] ------------------------  end processing  filtering-flags-by-state.md
+
+
+[DEBUG]  ------------------------ processing  gdpr-compliance.md
+[DEBUG] ------------------------  end processing  gdpr-compliance.md
+
+
+[DEBUG]  ------------------------ processing  manage-access-control.md
+[DEBUG] ------------------------  end processing  manage-access-control.md
+
+
+[DEBUG]  ------------------------ processing  delete-a-feature-flag.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/h4qn3szedc/1660563628196/2022-08-15-12-38-23.png
+[DEBUG] imgTarget =  ./static/delete-a-feature-flag-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/h4qn3szedc/1660569642238/2022-08-15-14-20-26.png
+[DEBUG] imgTarget =  ./static/delete-a-feature-flag-01.png
+[DEBUG] ------------------------  end processing  delete-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  enable-or-disable-a-feature-flag.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/0tlih9lee5/1660497799236/2022-08-14-18-18-05.png
+[DEBUG] imgTarget =  ./static/enable-or-disable-a-feature-flag-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/0tlih9lee5/1660498131563/2022-08-14-18-26-56.png
+[DEBUG] imgTarget =  ./static/enable-or-disable-a-feature-flag-03.png
+[DEBUG] ------------------------  end processing  enable-or-disable-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  manage-variations.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/8bf3us11kz/1657794955710/screenshot-2022-07-14-at-11-35-08.png
+[DEBUG] imgTarget =  ./static/manage-variations-04.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/8bf3us11kz/1657795766706/screenshot-2022-07-14-at-11-37-02.png
+[DEBUG] imgTarget =  ./static/manage-variations-05.png
+[DEBUG] ------------------------  end processing  manage-variations.md
+
+
+[DEBUG]  ------------------------ processing  edit-and-delete-a-feature-flag.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/u80hwpf1wq/1660572694398/2022-08-15-15-09-51.png
+[DEBUG] imgTarget =  ./static/edit-and-delete-a-feature-flag-06.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/u80hwpf1wq/1660572729308/2022-08-15-15-09-21.png
+[DEBUG] imgTarget =  ./static/edit-and-delete-a-feature-flag-07.png
+[DEBUG] ------------------------  end processing  edit-and-delete-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  harness-policy-engine.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/4vx27jqwv2/1651152284589/opa-p-1-1.png
+[DEBUG] imgTarget =  ./static/harness-policy-engine-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/4vx27jqwv2/1651155268645/opa-p-1-2.png
+[DEBUG] imgTarget =  ./static/harness-policy-engine-01.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/4vx27jqwv2/1651155323841/opa-p-1-3.png
+[DEBUG] imgTarget =  ./static/harness-policy-engine-02.png
+[DEBUG] ------------------------  end processing  harness-policy-engine.md
+
+
+[DEBUG]  ------------------------ processing  manage-featureflags-in-git-repos.md
+[DEBUG] ------------------------  end processing  manage-featureflags-in-git-repos.md
+
+
+[DEBUG]  ------------------------ processing  android-sdk-reference.md
+[DEBUG] ------------------------  end processing  android-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  react-native-sdk-reference.md
+[DEBUG] ------------------------  end processing  react-native-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  java-script-sdk-references.md
+[DEBUG] ------------------------  end processing  java-script-sdk-references.md
+
+
+[DEBUG]  ------------------------ processing  xamarin-sdk-reference.md
+[DEBUG] ------------------------  end processing  xamarin-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  flutter-sdk-reference.md
+[DEBUG] ------------------------  end processing  flutter-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  ios-sdk-reference.md
+[DEBUG] ------------------------  end processing  ios-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  cf-feature-flag-overview.md
+[DEBUG] ------------------------  end processing  cf-feature-flag-overview.md
+
+
+[DEBUG]  ------------------------ processing  build-feature-flag-pipeline.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/4r53zx73pv/1637064241461/screenshot-2021-11-16-at-4-23-04-pm.png
+[DEBUG] imgTarget =  ./static/build-feature-flag-pipeline-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/4r53zx73pv/1637064732210/screenshot-2021-11-16-at-4-29-24-pm.png
+[DEBUG] imgTarget =  ./static/build-feature-flag-pipeline-01.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/4r53zx73pv/1637064757276/screenshot-2021-11-16-at-4-29-40-pm.png
+[DEBUG] imgTarget =  ./static/build-feature-flag-pipeline-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/4r53zx73pv/1637307897098/screenshot-2021-11-19-at-1-14-37-pm.png
+[DEBUG] imgTarget =  ./static/build-feature-flag-pipeline-03.png
+[DEBUG] ------------------------  end processing  build-feature-flag-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  client-side-and-server-side-sdks.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/rvqprvbq8f/1638442275737/image.png
+[DEBUG] imgTarget =  ./static/client-side-and-server-side-sdks-00.png
+[DEBUG] ------------------------  end processing  client-side-and-server-side-sdks.md
+
+
+[DEBUG]  ------------------------ processing  sdk-version-policy.md
+[DEBUG] ------------------------  end processing  sdk-version-policy.md
+
+
+[DEBUG]  ------------------------ processing  communication-sdks-harness-feature-flags.md
+[DEBUG] ------------------------  end processing  communication-sdks-harness-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  integrate-feature-flag-with-java-sdk.md
+[DEBUG] ------------------------  end processing  integrate-feature-flag-with-java-sdk.md
+
+
+[DEBUG]  ------------------------ processing  net-sdk-reference.md
+[DEBUG] ------------------------  end processing  net-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  python-sdk-reference.md
+[DEBUG] ------------------------  end processing  python-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  php-sdk-reference.md
+[DEBUG] ------------------------  end processing  php-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  node-js-sdk-reference.md
+[DEBUG] ------------------------  end processing  node-js-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag-sdks-go-application.md
+[DEBUG] ------------------------  end processing  feature-flag-sdks-go-application.md
+
+
+[DEBUG]  ------------------------ processing  ruby-sdk-reference.md
+[DEBUG] ------------------------  end processing  ruby-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  add-targets.md
+[DEBUG] ------------------------  end processing  add-targets.md
+
+
+[DEBUG]  ------------------------ processing  add-target-groups.md
+[DEBUG] ------------------------  end processing  add-target-groups.md
+
+
+[DEBUG]  ------------------------ processing  targeting-users-with-flags.md
+[DEBUG] ------------------------  end processing  targeting-users-with-flags.md
+
+
+[DEBUG]  ------------------------ processing  relay-proxy.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/q0kvq8nd2o/1641815845703/screenshot-2022-01-10-at-5-26-46-pm.png
+[DEBUG] imgTarget =  ./static/relay-proxy-00.png
+[DEBUG] ------------------------  end processing  relay-proxy.md
+
+
+[DEBUG]  ------------------------ processing  deploy-relay-proxy.md
+[DEBUG] ------------------------  end processing  deploy-relay-proxy.md
+
+
+[DEBUG]  ------------------------ processing  update-your-billing-information.md
+[DEBUG] ------------------------  end processing  update-your-billing-information.md
+
+
+[DEBUG]  ------------------------ processing  view-your-current-subscriptions.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/9d9x7m8xw8/1663860087377/screenshot-2022-09-22-at-16-19-52.png
+[DEBUG] imgTarget =  ./static/view-your-current-subscriptions-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/9d9x7m8xw8/1663860144882/screenshot-2022-09-22-at-16-21-09.png
+[DEBUG] imgTarget =  ./static/view-your-current-subscriptions-01.png
+[DEBUG] ------------------------  end processing  view-your-current-subscriptions.md
+
+
+[DEBUG]  ------------------------ processing  available-plans-for-feature-flags.md
+[DEBUG] ------------------------  end processing  available-plans-for-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  access-your-subscription-invoices.md
+[DEBUG] ------------------------  end processing  access-your-subscription-invoices.md
+
+
+[DEBUG]  ------------------------ processing  create-a-new-subscription.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/0ft20zs6bm/1663859557758/screenshot-2022-09-22-at-16-11-22.png
+[DEBUG] imgTarget =  ./static/create-a-new-subscription-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/0ft20zs6bm/1663859649784/screenshot-2022-09-22-at-16-11-59.png
+[DEBUG] imgTarget =  ./static/create-a-new-subscription-03.png
+[DEBUG] ------------------------  end processing  create-a-new-subscription.md
+
+
+[DEBUG]  ------------------------ processing  cancel-a-subscription.md
+[DEBUG] ------------------------  end processing  cancel-a-subscription.md
+
+
+[DEBUG]  ------------------------ processing  add-a-billing-admin.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/8pks6zsg1o/1663861708441/screenshot-2022-09-22-at-16-45-55.png
+[DEBUG] imgTarget =  ./static/add-a-billing-admin-04.png
+[DEBUG] ------------------------  end processing  add-a-billing-admin.md
+
+
+[DEBUG]  ------------------------ processing  subscriptions-overview.md
+[DEBUG] ------------------------  end processing  subscriptions-overview.md
+
+
+[DEBUG]  ------------------------ processing  view-the-usage-of-your-subscriptions.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/ugsve8t4d9/1663860506491/screenshot-2022-09-22-at-16-27-27.png
+[DEBUG] imgTarget =  ./static/view-the-usage-of-your-subscriptions-05.png
+[DEBUG] ------------------------  end processing  view-the-usage-of-your-subscriptions.md
+
+
+[DEBUG]  ------------------------ processing  java-quickstart.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qym3qtrexy/1660144797203/screenshot-2022-08-10-at-16-19-38.png
+[DEBUG] imgTarget =  ./static/java-quickstart-00.png
+[DEBUG] ------------------------  end processing  java-quickstart.md
+
+
+[DEBUG]  ------------------------ processing  getting-started-with-feature-flags.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/0a2u2ppp8s/1660142458718/screenshot-2022-08-10-at-15-34-35.png
+[DEBUG] imgTarget =  ./static/getting-started-with-feature-flags-01.png
+[DEBUG] ------------------------  end processing  getting-started-with-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag-best-practices.md
+[DEBUG] ------------------------  end processing  feature-flag-best-practices.md
+
+
+[DEBUG]  ------------------------ processing  create-an-sdk-key.md
+[DEBUG] ------------------------  end processing  create-an-sdk-key.md
+
+
+[DEBUG]  ------------------------ processing  create-an-environment.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/nh1n5qtjmm/1658140835837/screenshot-2022-07-18-at-11-40-20.png
+[DEBUG] imgTarget =  ./static/create-an-environment-00.png
+[DEBUG] ------------------------  end processing  create-an-environment.md
+
+
+[DEBUG]  ------------------------ processing  create-a-feature-flag.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/1j7pdkqh7j/1657792368788/screenshot-2022-07-14-at-10-52-03.png
+[DEBUG] imgTarget =  ./static/create-a-feature-flag-01.png
+[DEBUG] ------------------------  end processing  create-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  create-a-project.md
+[DEBUG] ------------------------  end processing  create-a-project.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag.md
+[DEBUG] ------------------------  end processing  feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  view-activities-of-a-feature-flag.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/51gbk0d2zh/1625496360808/screenshot-2021-07-05-at-8-13-08-pm.png
+[DEBUG] imgTarget =  ./static/view-activities-of-a-feature-flag-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/51gbk0d2zh/1625498470649/screenshot-2021-07-05-at-8-49-31-pm.png
+[DEBUG] imgTarget =  ./static/view-activities-of-a-feature-flag-01.png
+[DEBUG] ------------------------  end processing  view-activities-of-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  anonymous-users-maus.md
+[DEBUG] ------------------------  end processing  anonymous-users-maus.md
+
+
+[DEBUG]  ------------------------ processing  view-metrics.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/wb2nmcpo9x/1625221291273/screenshot-2021-07-02-at-3-51-10-pm.png
+[DEBUG] imgTarget =  ./static/view-metrics-02.png
+[DEBUG] ------------------------  end processing  view-metrics.md
+
+
+[DEBUG]  ------------------------ processing  add-prerequisites-to-feature-flag.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/iijdahygdm/1657796522532/screenshot-2022-07-14-at-12-01-19.png
+[DEBUG] imgTarget =  ./static/add-prerequisites-to-feature-flag-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/iijdahygdm/1657796709480/screenshot-2022-07-14-at-12-04-25.png
+[DEBUG] imgTarget =  ./static/add-prerequisites-to-feature-flag-01.png
+[DEBUG] ------------------------  end processing  add-prerequisites-to-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  service-reliability-management.md
+[DEBUG] ------------------------  end processing  service-reliability-management.md
+
+
+[DEBUG]  ------------------------ processing  sample-docs.md
+[DEBUG] ------------------------  end processing  sample-docs.md
+
+
+[DEBUG]  ------------------------ processing  intro.md
+[DEBUG] ------------------------  end processing  intro.md
+
+
+[DEBUG]  ------------------------ processing  cloud-cost-management.md
+[DEBUG] ------------------------  end processing  cloud-cost-management.md
+
+
+[DEBUG]  ------------------------ processing  terms-of-use.md
+[DEBUG] ------------------------  end processing  terms-of-use.md
+
+
+[DEBUG]  ------------------------ processing  set-up-test-intelligence.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/428cs02e6u/1632153021466/image.png
+[DEBUG] imgTarget =  ./static/set-up-test-intelligence-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/428cs02e6u/1630602513018/ti-desc.png
+[DEBUG] imgTarget =  ./static/set-up-test-intelligence-01.png
+[DEBUG] ------------------------  end processing  set-up-test-intelligence.md
+
+
+[DEBUG]  ------------------------ processing  create-and-configure-a-codebase.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/lcn8vgt4di/1647624762563/create-codebase-connector.png
+[DEBUG] imgTarget =  ./static/create-and-configure-a-codebase-00.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/lcn8vgt4di/1647625160792/edit-codebase-confi.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/codebase-configuration/static/create-and-configure-a-codebase-01.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/codebase-configuration/create-and-configure-a-codebase.md', './OUT_markdown/MODULE_NAME/codebase-configuration/create-and-configure-a-codebase.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/lcn8vgt4di/1647625160792/edit-codebase-confi.png
+[DEBUG] imgTarget =  ./static/create-and-configure-a-codebase-01.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mozd8b49td/1648218382117/create-or-select-an-existing-connector-final.png
+[DEBUG] imgTarget =  ./static/create-and-configure-a-codebase-02.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/lcn8vgt4di/1647625160792/edit-codebase-confi.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/codebase-configuration/static/create-and-configure-a-codebase-03.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/codebase-configuration/create-and-configure-a-codebase.md', './OUT_markdown/MODULE_NAME/codebase-configuration/create-and-configure-a-codebase.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/lcn8vgt4di/1647625160792/edit-codebase-confi.png
+[DEBUG] imgTarget =  ./static/create-and-configure-a-codebase-03.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mozd8b49td/1648137632512/git-pull-merge-final.png
+[DEBUG] imgTarget =  ./static/create-and-configure-a-codebase-04.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mozd8b49td/1648137659281/git-pull-branch-final.png
+[DEBUG] imgTarget =  ./static/create-and-configure-a-codebase-05.png
+[DEBUG] ------------------------  end processing  create-and-configure-a-codebase.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-jfrog.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-jfrog.md
+
+
+[DEBUG]  ------------------------ processing  modify-and-override-build-settings-before-a-build.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/2hpamxaqf0/1637911150977/image.png
+[DEBUG] imgTarget =  ./static/modify-and-override-build-settings-before-a-build-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/2hpamxaqf0/1638287500076/image.png
+[DEBUG] imgTarget =  ./static/modify-and-override-build-settings-before-a-build-01.png
+[DEBUG] ------------------------  end processing  modify-and-override-build-settings-before-a-build.md
+
+
+[DEBUG]  ------------------------ processing  build-and-upload-an-artifact.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613427471797/image.png
+[DEBUG] imgTarget =  ./static/build-and-upload-an-artifact-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613427622397/image.png
+[DEBUG] imgTarget =  ./static/build-and-upload-an-artifact-03.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611614713927/image.png
+[DEBUG] imgTarget =  ./static/build-and-upload-an-artifact-04.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613430740639/image.png
+[DEBUG] imgTarget =  ./static/build-and-upload-an-artifact-05.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613428672695/image.png
+[DEBUG] imgTarget =  ./static/build-and-upload-an-artifact-06.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613430600476/image.png
+[DEBUG] imgTarget =  ./static/build-and-upload-an-artifact-07.png
+[DEBUG] ------------------------  end processing  build-and-upload-an-artifact.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-gcr.md
+[DEBUG] ------------------------  end processing  build-and-push-to-gcr.md
+
+
+[DEBUG]  ------------------------ processing  troubleshooting-ci.md
+[DEBUG] ------------------------  end processing  troubleshooting-ci.md
+
+
+[DEBUG]  ------------------------ processing  optimizing-ci-build-times.md
+[DEBUG] ------------------------  end processing  optimizing-ci-build-times.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-gcr-step-settings.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610058088594/image.png
+[DEBUG] imgTarget =  ./static/build-and-push-to-gcr-step-settings-00.png
+[DEBUG] ------------------------  end processing  build-and-push-to-gcr-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  restore-cache-from-gcs-settings.md
+[DEBUG] ------------------------  end processing  restore-cache-from-gcs-settings.md
+
+
+[DEBUG]  ------------------------ processing  run-step-settings.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/1i1ttvftm4/1628031232587/clean-shot-2021-08-03-at-15-53-30.png
+[DEBUG] imgTarget =  ./static/run-step-settings-01.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/1i1ttvftm4/1644602120778/clean-shot-2022-02-11-at-09-55-12.png
+[DEBUG] imgTarget =  ./static/run-step-settings-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/1i1ttvftm4/1611947065452/image.png
+[DEBUG] imgTarget =  ./static/run-step-settings-03.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/1i1ttvftm4/1626099541575/2021-06-28-17-45-23.png
+[DEBUG] imgTarget =  ./static/run-step-settings-04.png
+[DEBUG] ------------------------  end processing  run-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-docker-hub-step-settings.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1646943687916/ci-build-tags.png
+[DEBUG] imgTarget =  ./static/build-and-push-to-docker-hub-step-settings-05.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610058088594/image.png
+[DEBUG] imgTarget =  ./static/build-and-push-to-docker-hub-step-settings-06.png
+[DEBUG] ------------------------  end processing  build-and-push-to-docker-hub-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  ci-cluster-requirement.md
+[DEBUG] ------------------------  end processing  ci-cluster-requirement.md
+
+
+[DEBUG]  ------------------------ processing  ci-git-clone-step.md
+[DEBUG] ------------------------  end processing  ci-git-clone-step.md
+
+
+[DEBUG]  ------------------------ processing  ci-stage-settings.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/yn4x8vzw3q/1633076205057/caa-89-e-18-4-b-79-4983-804-b-e-552-d-3356-c-0-f.png
+[DEBUG] imgTarget =  ./static/ci-stage-settings-07.png
+[DEBUG] ------------------------  end processing  ci-stage-settings.md
+
+
+[DEBUG]  ------------------------ processing  plugin-step-settings-reference.md
+[DEBUG] ------------------------  end processing  plugin-step-settings-reference.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-jfrog-artifactory-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-jfrog-artifactory-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  configure-service-dependency-step-settings.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/vo4sjbd09g/1610057502164/image.png
+[DEBUG] imgTarget =  ./static/configure-service-dependency-step-settings-08.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/vo4sjbd09g/1610057413349/image.png
+[DEBUG] imgTarget =  ./static/configure-service-dependency-step-settings-09.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/vo4sjbd09g/1610057506099/image.png
+[DEBUG] imgTarget =  ./static/configure-service-dependency-step-settings-10.png
+[DEBUG] ------------------------  end processing  configure-service-dependency-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-to-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  save-cache-to-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  group-ci-steps-using-step-groups.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1657563608718/example-groups.png
+[DEBUG] imgTarget =  ./static/group-ci-steps-using-step-groups-11.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1659044944227/example-flow-data.png
+[DEBUG] imgTarget =  ./static/group-ci-steps-using-step-groups-12.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1659051055336/example-step-groups-parallel.png
+[DEBUG] imgTarget =  ./static/group-ci-steps-using-step-groups-13.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1659048956597/example-resource-usage.png
+[DEBUG] imgTarget =  ./static/group-ci-steps-using-step-groups-14.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631557621484/clean-shot-2021-09-13-at-11-26-49.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/ci-technical-reference/static/group-ci-steps-using-step-groups-15.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/cd-gen-ref-category/step-groups.md', './OUT_markdown/MODULE_NAME/ci-technical-reference/group-ci-steps-using-step-groups.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631557621484/clean-shot-2021-09-13-at-11-26-49.png
+[DEBUG] imgTarget =  ./static/group-ci-steps-using-step-groups-15.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631748494318/clean-shot-2021-09-15-at-16-28-05.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/ci-technical-reference/static/group-ci-steps-using-step-groups-16.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/cd-gen-ref-category/step-groups.md', './OUT_markdown/MODULE_NAME/ci-technical-reference/group-ci-steps-using-step-groups.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631748494318/clean-shot-2021-09-15-at-16-28-05.png
+[DEBUG] imgTarget =  ./static/group-ci-steps-using-step-groups-16.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631747551695/clean-shot-2021-09-15-at-16-12-12.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/ci-technical-reference/static/group-ci-steps-using-step-groups-17.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/cd-gen-ref-category/step-groups.md', './OUT_markdown/MODULE_NAME/ci-technical-reference/group-ci-steps-using-step-groups.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631747551695/clean-shot-2021-09-15-at-16-12-12.png
+[DEBUG] imgTarget =  ./static/group-ci-steps-using-step-groups-17.png
+[DEBUG] ------------------------  end processing  group-ci-steps-using-step-groups.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-gcs-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-gcs-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-ecr-step-settings.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610059179870/image.png
+[DEBUG] imgTarget =  ./static/build-and-push-to-ecr-step-settings-18.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610058088594/image.png
+[DEBUG] imgTarget =  ./static/build-and-push-to-ecr-step-settings-19.png
+[DEBUG] ------------------------  end processing  build-and-push-to-ecr-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  ci-build-image-updates.md
+[DEBUG] ------------------------  end processing  ci-build-image-updates.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-to-gcs-step-settings.md
+[DEBUG] ------------------------  end processing  save-cache-to-gcs-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  configure-run-tests-step-settings.md
+[DEBUG] ------------------------  end processing  configure-run-tests-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  harness-ci.md
+[DEBUG] ------------------------  end processing  harness-ci.md
+
+
+[DEBUG]  ------------------------ processing  built-in-cie-codebase-variables-reference.md
+[DEBUG] ------------------------  end processing  built-in-cie-codebase-variables-reference.md
+
+
+[DEBUG]  ------------------------ processing  restore-cache-from-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  restore-cache-from-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  run-a-drone-plugin-in-ci.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/qb73gci4kv/1648505390017/plugin-config-basic-final.png
+[DEBUG] imgTarget =  ./static/run-a-drone-plugin-in-ci-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/qb73gci4kv/1648505703024/plugin-config-confirm-results.png
+[DEBUG] imgTarget =  ./static/run-a-drone-plugin-in-ci-01.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/qb73gci4kv/1648589152500/plugin-step-nested-settings.png
+[DEBUG] imgTarget =  ./static/run-a-drone-plugin-in-ci-02.png
+[DEBUG] ------------------------  end processing  run-a-drone-plugin-in-ci.md
+
+
+[DEBUG]  ------------------------ processing  run-a-git-hub-action-in-cie.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/7kb90dkxw0/1644533671813/image.png
+[DEBUG] imgTarget =  ./static/run-a-git-hub-action-in-cie-03.png
+[DEBUG] ------------------------  end processing  run-a-git-hub-action-in-cie.md
+
+
+[DEBUG]  ------------------------ processing  sample-docs.md
+[DEBUG] ------------------------  end processing  sample-docs.md
+
+
+[DEBUG]  ------------------------ processing  set-up-a-kubernetes-cluster-build-infrastructure.md
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648478859173/ci-tut-02-delegate-01-setu.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/set-up-a-kubernetes-cluster-build-infrastructure-00.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648478859173/ci-tut-02-delegate-01-setu.png
+[DEBUG] imgTarget =  ./static/set-up-a-kubernetes-cluster-build-infrastructure-00.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648479234464/ci-tut-02-delegate-02-platform.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/set-up-a-kubernetes-cluster-build-infrastructure-01.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648479234464/ci-tut-02-delegate-02-platform.png
+[DEBUG] imgTarget =  ./static/set-up-a-kubernetes-cluster-build-infrastructure-01.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480695665/ci-tut-02-delegate-03-details.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/set-up-a-kubernetes-cluster-build-infrastructure-02.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480695665/ci-tut-02-delegate-03-details.png
+[DEBUG] imgTarget =  ./static/set-up-a-kubernetes-cluster-build-infrastructure-02.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480953258/ci-tut-02-delegate-04-download-yaml.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/set-up-a-kubernetes-cluster-build-infrastructure-03.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480953258/ci-tut-02-delegate-04-download-yaml.png
+[DEBUG] imgTarget =  ./static/set-up-a-kubernetes-cluster-build-infrastructure-03.png
+[DEBUG] ------------------------  end processing  set-up-a-kubernetes-cluster-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  define-a-macos-build-infrastructure.md
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655831247874/ci-build-infra-on-macos-v-2.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-macos-build-infrastructure-04.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655831247874/ci-build-infra-on-macos-v-2.png
+[DEBUG] imgTarget =  ./static/define-a-macos-build-infrastructure-04.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253313885/vm-setup-1-open-anka.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-macos-build-infrastructure-05.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253313885/vm-setup-1-open-anka.png
+[DEBUG] imgTarget =  ./static/define-a-macos-build-infrastructure-05.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253795901/vm-setup-2-select-delegate.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-macos-build-infrastructure-06.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253795901/vm-setup-2-select-delegate.png
+[DEBUG] imgTarget =  ./static/define-a-macos-build-infrastructure-06.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253835324/vm-setup-3-accept-docker-eula.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-macos-build-infrastructure-07.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253835324/vm-setup-3-accept-docker-eula.png
+[DEBUG] imgTarget =  ./static/define-a-macos-build-infrastructure-07.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655254499504/ec-2-setup-download-drone-runner-in-browser.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-macos-build-infrastructure-08.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655254499504/ec-2-setup-download-drone-runner-in-browser.png
+[DEBUG] imgTarget =  ./static/define-a-macos-build-infrastructure-08.png
+[DEBUG] ------------------------  end processing  define-a-macos-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  run-windows-builds-in-a-kubernetes-build-infrastructure.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/ud5rjfcp8h/1657464436534/windows-image-in-gke.png
+[DEBUG] imgTarget =  ./static/run-windows-builds-in-a-kubernetes-build-infrastructure-09.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/ud5rjfcp8h/1657465245784/node-selector-windows.png
+[DEBUG] imgTarget =  ./static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png
+[DEBUG] ------------------------  end processing  run-windows-builds-in-a-kubernetes-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  set-up-an-aws-vm-build-infrastructure.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qfq7fy4cz6/1657373921894/aws-build-farm-simplified.png
+[DEBUG] imgTarget =  ./static/set-up-an-aws-vm-build-infrastructure-11.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/z56wmnris8/1643917936569/clean-shot-2022-02-03-at-11-51-24.png
+[DEBUG] imgTarget =  ./static/set-up-an-aws-vm-build-infrastructure-12.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/z56wmnris8/1643759775208/clean-shot-2022-02-01-at-15-56-02.png
+[DEBUG] imgTarget =  ./static/set-up-an-aws-vm-build-infrastructure-13.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/z56wmnris8/1643759913082/clean-shot-2022-02-01-at-15-58-24.png
+[DEBUG] imgTarget =  ./static/set-up-an-aws-vm-build-infrastructure-14.png
+[DEBUG] ------------------------  end processing  set-up-an-aws-vm-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+[DEBUG] ------------------------  end processing  configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+
+
+[DEBUG]  ------------------------ processing  define-a-mac-os-build-infrastructure.md
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655831247874/ci-build-infra-on-macos-v-2.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-mac-os-build-infrastructure-15.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655831247874/ci-build-infra-on-macos-v-2.png
+[DEBUG] imgTarget =  ./static/define-a-mac-os-build-infrastructure-15.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253313885/vm-setup-1-open-anka.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-mac-os-build-infrastructure-16.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253313885/vm-setup-1-open-anka.png
+[DEBUG] imgTarget =  ./static/define-a-mac-os-build-infrastructure-16.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253795901/vm-setup-2-select-delegate.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-mac-os-build-infrastructure-17.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253795901/vm-setup-2-select-delegate.png
+[DEBUG] imgTarget =  ./static/define-a-mac-os-build-infrastructure-17.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253835324/vm-setup-3-accept-docker-eula.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-mac-os-build-infrastructure-18.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655253835324/vm-setup-3-accept-docker-eula.png
+[DEBUG] imgTarget =  ./static/define-a-mac-os-build-infrastructure-18.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655254499504/ec-2-setup-download-drone-runner-in-browser.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/set-up-build-infrastructure/static/define-a-mac-os-build-infrastructure-19.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-macos-build-infrastructure.md', './OUT_markdown/MODULE_NAME/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/mwzlb0x2mt/1655254499504/ec-2-setup-download-drone-runner-in-browser.png
+[DEBUG] imgTarget =  ./static/define-a-mac-os-build-infrastructure-19.png
+[DEBUG] ------------------------  end processing  define-a-mac-os-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  clone-and-process-multiple-codebases-in-the-same-pipeline.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/k8tz6mtiut/1651013481363/clone-multiple-codebases.png
+[DEBUG] imgTarget =  ./static/clone-and-process-multiple-codebases-in-the-same-pipeline-00.png
+[DEBUG] ------------------------  end processing  clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  run-a-script-in-a-ci-stage.md
+[DEBUG] ------------------------  end processing  run-a-script-in-a-ci-stage.md
+
+
+[DEBUG]  ------------------------ processing  run-docker-in-docker-in-a-ci-stage.md
+[DEBUG] ------------------------  end processing  run-docker-in-docker-in-a-ci-stage.md
+
+
+[DEBUG]  ------------------------ processing  saving-cache.md
+[DEBUG] ------------------------  end processing  saving-cache.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-in-gcs.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/v0agy0hlyj/1629116881353/save-to-cache-gcs.png
+[DEBUG] imgTarget =  ./static/save-cache-in-gcs-00.png
+[DEBUG] ------------------------  end processing  save-cache-in-gcs.md
+
+
+[DEBUG]  ------------------------ processing  share-ci-data-across-steps-and-stages.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/fbrgw2ixjr/1650559281095/shared-path.png
+[DEBUG] imgTarget =  ./static/share-ci-data-across-steps-and-stages-01.png
+[DEBUG] ------------------------  end processing  share-ci-data-across-steps-and-stages.md
+
+
+[DEBUG]  ------------------------ processing  ci-pipeline-basics.md
+[DEBUG] ------------------------  end processing  ci-pipeline-basics.md
+
+
+[DEBUG]  ------------------------ processing  ci-enterprise-concepts.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/rch2t8j1ay/1654543179504/harness-ci-architecture.png
+[DEBUG] imgTarget =  ./static/ci-enterprise-concepts-00.png
+[DEBUG] ------------------------  end processing  ci-enterprise-concepts.md
+
+
+[DEBUG]  ------------------------ processing  test-intelligence-concepts.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/vtu9k1dsfa/1630596895878/ti-desc.png
+[DEBUG] imgTarget =  ./static/test-intelligence-concepts-01.png
+[DEBUG] ------------------------  end processing  test-intelligence-concepts.md
+
+
+[DEBUG]  ------------------------ processing  drone-and-harness.md
+[DEBUG] ------------------------  end processing  drone-and-harness.md
+
+
+[DEBUG]  ------------------------ processing  ci-pipeline-quickstart.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611599684642/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648475895706/ci-tut-00-create-build-stage.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-03.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648477159106/ci-tut-01-connector-02-details.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-04.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648477552075/ci-tut-01-connector-03-credentials.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-05.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648478550361/ci-tut-01-connector-04-connectivity-mode.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-06.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648478859173/ci-tut-02-delegate-01-setu.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/ci-quickstarts/static/ci-pipeline-quickstart-07.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648478859173/ci-tut-02-delegate-01-setu.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-07.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648479234464/ci-tut-02-delegate-02-platform.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/ci-quickstarts/static/ci-pipeline-quickstart-08.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648479234464/ci-tut-02-delegate-02-platform.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-08.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480695665/ci-tut-02-delegate-03-details.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/ci-quickstarts/static/ci-pipeline-quickstart-09.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480695665/ci-tut-02-delegate-03-details.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-09.png
+-------------------------
+[WARNING] Image URL referenced in multiple topics:       https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480953258/ci-tut-02-delegate-04-download-yaml.png
+Image filename:       /Users/douglasbothwell/git_repos/__DEV_LED_PLATFORM/FORK/developer-hub/_docs_convert/STAGE_docs/docs/continuous-integration/ci-quickstarts/static/ci-pipeline-quickstart-10.png
+Topics list:
+['./OUT_markdown/MODULE_NAME/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md', './OUT_markdown/MODULE_NAME/ci-quickstarts/ci-pipeline-quickstart.md']
+-------------------------
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/jznnrb9tvz/1648480953258/ci-tut-02-delegate-04-download-yaml.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-10.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1625180234470/clean-shot-2021-07-01-at-15-57-04.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-11.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1625180326375/clean-shot-2021-07-01-at-15-58-38.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-12.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1648830767916/ci-tut-04-docker-connector-02-details.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-13.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611614713927/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-14.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1648831772922/ci-quickstart-06-integration-test-stage-00-about-your-stage.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-15.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611617833286/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-16.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611617876213/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-17.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618576440/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-18.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618619341/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-19.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618681950/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-20.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618862882/image.png
+[DEBUG] imgTarget =  ./static/ci-pipeline-quickstart-21.png
+[DEBUG] ------------------------  end processing  ci-pipeline-quickstart.md
+
+
+[DEBUG]  ------------------------ processing  viewing-tests.md
+[DEBUG] ------------------------  end processing  viewing-tests.md
+
+
+[DEBUG]  ------------------------ processing  ingesting-issues-from-other-scanners.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/ijkyokxrot/1661880426879/sto-pipeline-shared-path.png
+[DEBUG] imgTarget =  ./static/ingesting-issues-from-other-scanners-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/ymkcm5lypf/1662134060300/issue-details-raw-fields-grouped.png
+[DEBUG] imgTarget =  ./static/ingesting-issues-from-other-scanners-01.png
+[DEBUG] ------------------------  end processing  ingesting-issues-from-other-scanners.md
+
+
+[DEBUG]  ------------------------ processing  sto-workflows-overview.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/cjqnd71y07/1663798037496/orchestrated-pipeline-v-2.png
+[DEBUG] imgTarget =  ./static/sto-workflows-overview-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/x6jsoi0i4e/1662742101627/ingestion-only-pipeline.png
+[DEBUG] imgTarget =  ./static/sto-workflows-overview-03.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/cjqnd71y07/1663028453108/dataload-pipeline.png
+[DEBUG] imgTarget =  ./static/sto-workflows-overview-04.png
+[DEBUG] ------------------------  end processing  sto-workflows-overview.md
+
+
+[DEBUG]  ------------------------ processing  run-an-orchestrated-scan-in-sto.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/wk018r6x3g/1663026232234/orchestrated-scan-results.png
+[DEBUG] imgTarget =  ./static/run-an-orchestrated-scan-in-sto-05.png
+[DEBUG] ------------------------  end processing  run-an-orchestrated-scan-in-sto.md
+
+
+[DEBUG]  ------------------------ processing  ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/d24n34qdbk/1663169627027/ingestion-only-pipeline-trivy.png
+[DEBUG] imgTarget =  ./static/ingest-scan-results-into-an-sto-pipeline-06.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/ijkyokxrot/1661880426879/sto-pipeline-shared-path.png
+[DEBUG] imgTarget =  ./static/ingest-scan-results-into-an-sto-pipeline-07.png
+[DEBUG] ------------------------  end processing  ingest-scan-results-into-an-sto-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659137645262/02-tests-demo-001-failed-severity-low.png
+[DEBUG] imgTarget =  ./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-00.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659138631300/02-a-tests-demo-001-goto-previous-branch.png
+[DEBUG] imgTarget =  ./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-01.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659108419315/01-c-tests-demo-001-branch-ignore-issue.png
+[DEBUG] imgTarget =  ./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-02.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659108396757/01-d-tests-demo-001-branch-ignore-issue.png
+[DEBUG] imgTarget =  ./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-03.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659204960237/exemption-dev-001-results-with-critical-ignored.png
+[DEBUG] imgTarget =  ./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-04.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659290775295/integrated-workflow-pipeline.png
+[DEBUG] imgTarget =  ./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-05.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659295566043/integrated-workflow-scan-results.png
+[DEBUG] imgTarget =  ./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-06.png
+[DEBUG] ------------------------  end processing  sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[DEBUG]  ------------------------ processing  tutorial-1-standalone-workflows.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/yvy4pmt8bw/1661620474762/clone-pipeline.png
+[DEBUG] imgTarget =  ./static/tutorial-1-standalone-workflows-07.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/yvy4pmt8bw/1661620568451/sto-setup-run-step-settings.png
+[DEBUG] imgTarget =  ./static/tutorial-1-standalone-workflows-08.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659194816563/00-tests-master-branch.png
+[DEBUG] imgTarget =  ./static/tutorial-1-standalone-workflows-09.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1659037469899/01-a-tests-demo-001-select-baseline.png
+[DEBUG] imgTarget =  ./static/tutorial-1-standalone-workflows-10.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/t57yct5guh/1659417052038/01-tests-demo-001-branch-v-2.png
+[DEBUG] imgTarget =  ./static/tutorial-1-standalone-workflows-11.png
+[DEBUG] ------------------------  end processing  tutorial-1-standalone-workflows.md
+
+
+[DEBUG]  ------------------------ processing  set-up-harness-for-sto.md
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/qhgshfw3mg/1658601251263/00-add-secops-role.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-12.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661218671833/github-path-new-secret-text-01.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-13.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661218544429/github-path-new-secret-text-02.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-14.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661354922517/pipeline-stage-00.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-15.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661355636355/pipeline-stage-01.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-16.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661355649487/pipeline-stage-02-b.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-17.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661355932130/pipeline-stage-03.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-18.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/m2nmo0gzp9/1664915691352/setup-stage-00-overview-varru.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-19.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/m2nmo0gzp9/1664915724374/setup-stage-01-infra-tab.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-20.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/m2nmo0gzp9/1664915778513/setup-stage-03-config-dind.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-21.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661616083068/sto-setup-run-step-settings.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-22.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/rlbw5luj4h/1661431889676/clone-pipeline.png
+[DEBUG] imgTarget =  ./static/set-up-harness-for-sto-23.png
+[DEBUG] ------------------------  end processing  set-up-harness-for-sto.md
+
+
+[DEBUG]  ------------------------ processing  security-testing-orchestration-basics.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/ap7y94ap7h/1647988169396/clean-shot-2022-03-22-at-15-29-09.png
+[DEBUG] imgTarget =  ./static/security-testing-orchestration-basics-24.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/ap7y94ap7h/1647988618571/clean-shot-2022-03-22-at-15-36-03.png
+[DEBUG] imgTarget =  ./static/security-testing-orchestration-basics-25.png
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/ap7y94ap7h/1647974851933/image.png
+[DEBUG] imgTarget =  ./static/security-testing-orchestration-basics-26.png
+[DEBUG] imgURL =  https://files.helpdocs.io/kw8ldg1itf/articles/ap7y94ap7h/1660650807410/sto-overview-update.png
+[DEBUG] imgTarget =  ./static/security-testing-orchestration-basics-27.png
+[DEBUG] ------------------------  end processing  security-testing-orchestration-basics.md
+
+
+[DEBUG]  ------------------------ processing  bandit-scanner-reference.md
+[DEBUG] ------------------------  end processing  bandit-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  aqua-trivy-scanner-reference.md
+[DEBUG] ------------------------  end processing  aqua-trivy-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  sonarqube-sonar-scanner-reference.md
+[DEBUG] ------------------------  end processing  sonarqube-sonar-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  security-step-settings-reference.md
+[DEBUG] imgURL =  https://files.helpdocs.io/i5nl071jo5/articles/0k0iubnzql/1649889372492/clean-shot-2022-04-13-at-15-35-59-2-x.png
+[DEBUG] imgTarget =  ./static/security-step-settings-reference-00.png
+[DEBUG] ------------------------  end processing  security-step-settings-reference.md
+
+
+[DEBUG]  ------------------------ processing  filtering-flags-by-state.md
+[DEBUG] ------------------------  end processing  filtering-flags-by-state.md
+
+
+[DEBUG]  ------------------------ processing  gdpr-compliance.md
+[DEBUG] ------------------------  end processing  gdpr-compliance.md
+
+
+[DEBUG]  ------------------------ processing  manage-access-control.md
+[DEBUG] ------------------------  end processing  manage-access-control.md
+
+
+[DEBUG]  ------------------------ processing  delete-a-feature-flag.md
+[DEBUG] ------------------------  end processing  delete-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  enable-or-disable-a-feature-flag.md
+[DEBUG] ------------------------  end processing  enable-or-disable-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  manage-variations.md
+[DEBUG] ------------------------  end processing  manage-variations.md
+
+
+[DEBUG]  ------------------------ processing  edit-and-delete-a-feature-flag.md
+[DEBUG] ------------------------  end processing  edit-and-delete-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  harness-policy-engine.md
+[DEBUG] ------------------------  end processing  harness-policy-engine.md
+
+
+[DEBUG]  ------------------------ processing  manage-featureflags-in-git-repos.md
+[DEBUG] ------------------------  end processing  manage-featureflags-in-git-repos.md
+
+
+[DEBUG]  ------------------------ processing  android-sdk-reference.md
+[DEBUG] ------------------------  end processing  android-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  react-native-sdk-reference.md
+[DEBUG] ------------------------  end processing  react-native-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  java-script-sdk-references.md
+[DEBUG] ------------------------  end processing  java-script-sdk-references.md
+
+
+[DEBUG]  ------------------------ processing  xamarin-sdk-reference.md
+[DEBUG] ------------------------  end processing  xamarin-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  flutter-sdk-reference.md
+[DEBUG] ------------------------  end processing  flutter-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  ios-sdk-reference.md
+[DEBUG] ------------------------  end processing  ios-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  cf-feature-flag-overview.md
+[DEBUG] ------------------------  end processing  cf-feature-flag-overview.md
+
+
+[DEBUG]  ------------------------ processing  build-feature-flag-pipeline.md
+[DEBUG] ------------------------  end processing  build-feature-flag-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  client-side-and-server-side-sdks.md
+[DEBUG] ------------------------  end processing  client-side-and-server-side-sdks.md
+
+
+[DEBUG]  ------------------------ processing  sdk-version-policy.md
+[DEBUG] ------------------------  end processing  sdk-version-policy.md
+
+
+[DEBUG]  ------------------------ processing  communication-sdks-harness-feature-flags.md
+[DEBUG] ------------------------  end processing  communication-sdks-harness-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  integrate-feature-flag-with-java-sdk.md
+[DEBUG] ------------------------  end processing  integrate-feature-flag-with-java-sdk.md
+
+
+[DEBUG]  ------------------------ processing  net-sdk-reference.md
+[DEBUG] ------------------------  end processing  net-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  python-sdk-reference.md
+[DEBUG] ------------------------  end processing  python-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  php-sdk-reference.md
+[DEBUG] ------------------------  end processing  php-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  node-js-sdk-reference.md
+[DEBUG] ------------------------  end processing  node-js-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag-sdks-go-application.md
+[DEBUG] ------------------------  end processing  feature-flag-sdks-go-application.md
+
+
+[DEBUG]  ------------------------ processing  ruby-sdk-reference.md
+[DEBUG] ------------------------  end processing  ruby-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  add-targets.md
+[DEBUG] ------------------------  end processing  add-targets.md
+
+
+[DEBUG]  ------------------------ processing  add-target-groups.md
+[DEBUG] ------------------------  end processing  add-target-groups.md
+
+
+[DEBUG]  ------------------------ processing  targeting-users-with-flags.md
+[DEBUG] ------------------------  end processing  targeting-users-with-flags.md
+
+
+[DEBUG]  ------------------------ processing  relay-proxy.md
+[DEBUG] ------------------------  end processing  relay-proxy.md
+
+
+[DEBUG]  ------------------------ processing  deploy-relay-proxy.md
+[DEBUG] ------------------------  end processing  deploy-relay-proxy.md
+
+
+[DEBUG]  ------------------------ processing  update-your-billing-information.md
+[DEBUG] ------------------------  end processing  update-your-billing-information.md
+
+
+[DEBUG]  ------------------------ processing  view-your-current-subscriptions.md
+[DEBUG] ------------------------  end processing  view-your-current-subscriptions.md
+
+
+[DEBUG]  ------------------------ processing  available-plans-for-feature-flags.md
+[DEBUG] ------------------------  end processing  available-plans-for-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  access-your-subscription-invoices.md
+[DEBUG] ------------------------  end processing  access-your-subscription-invoices.md
+
+
+[DEBUG]  ------------------------ processing  create-a-new-subscription.md
+[DEBUG] ------------------------  end processing  create-a-new-subscription.md
+
+
+[DEBUG]  ------------------------ processing  cancel-a-subscription.md
+[DEBUG] ------------------------  end processing  cancel-a-subscription.md
+
+
+[DEBUG]  ------------------------ processing  add-a-billing-admin.md
+[DEBUG] ------------------------  end processing  add-a-billing-admin.md
+
+
+[DEBUG]  ------------------------ processing  subscriptions-overview.md
+[DEBUG] ------------------------  end processing  subscriptions-overview.md
+
+
+[DEBUG]  ------------------------ processing  view-the-usage-of-your-subscriptions.md
+[DEBUG] ------------------------  end processing  view-the-usage-of-your-subscriptions.md
+
+
+[DEBUG]  ------------------------ processing  java-quickstart.md
+[DEBUG] ------------------------  end processing  java-quickstart.md
+
+
+[DEBUG]  ------------------------ processing  getting-started-with-feature-flags.md
+[DEBUG] ------------------------  end processing  getting-started-with-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag-best-practices.md
+[DEBUG] ------------------------  end processing  feature-flag-best-practices.md
+
+
+[DEBUG]  ------------------------ processing  create-an-sdk-key.md
+[DEBUG] ------------------------  end processing  create-an-sdk-key.md
+
+
+[DEBUG]  ------------------------ processing  create-an-environment.md
+[DEBUG] ------------------------  end processing  create-an-environment.md
+
+
+[DEBUG]  ------------------------ processing  create-a-feature-flag.md
+[DEBUG] ------------------------  end processing  create-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  create-a-project.md
+[DEBUG] ------------------------  end processing  create-a-project.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag.md
+[DEBUG] ------------------------  end processing  feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  view-activities-of-a-feature-flag.md
+[DEBUG] ------------------------  end processing  view-activities-of-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  anonymous-users-maus.md
+[DEBUG] ------------------------  end processing  anonymous-users-maus.md
+
+
+[DEBUG]  ------------------------ processing  view-metrics.md
+[DEBUG] ------------------------  end processing  view-metrics.md
+
+
+[DEBUG]  ------------------------ processing  add-prerequisites-to-feature-flag.md
+[DEBUG] ------------------------  end processing  add-prerequisites-to-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  filtering-flags-by-state.md
+[DEBUG] ------------------------  end processing  filtering-flags-by-state.md
+
+
+[DEBUG]  ------------------------ processing  gdpr-compliance.md
+[DEBUG] ------------------------  end processing  gdpr-compliance.md
+
+
+[DEBUG]  ------------------------ processing  manage-access-control.md
+[DEBUG] ------------------------  end processing  manage-access-control.md
+
+
+[DEBUG]  ------------------------ processing  delete-a-feature-flag.md
+[DEBUG] ------------------------  end processing  delete-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  enable-or-disable-a-feature-flag.md
+[DEBUG] ------------------------  end processing  enable-or-disable-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  manage-variations.md
+[DEBUG] ------------------------  end processing  manage-variations.md
+
+
+[DEBUG]  ------------------------ processing  edit-and-delete-a-feature-flag.md
+[DEBUG] ------------------------  end processing  edit-and-delete-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  harness-policy-engine.md
+[DEBUG] ------------------------  end processing  harness-policy-engine.md
+
+
+[DEBUG]  ------------------------ processing  manage-featureflags-in-git-repos.md
+[DEBUG] ------------------------  end processing  manage-featureflags-in-git-repos.md
+
+
+[DEBUG]  ------------------------ processing  android-sdk-reference.md
+[DEBUG] ------------------------  end processing  android-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  react-native-sdk-reference.md
+[DEBUG] ------------------------  end processing  react-native-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  java-script-sdk-references.md
+[DEBUG] ------------------------  end processing  java-script-sdk-references.md
+
+
+[DEBUG]  ------------------------ processing  xamarin-sdk-reference.md
+[DEBUG] ------------------------  end processing  xamarin-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  flutter-sdk-reference.md
+[DEBUG] ------------------------  end processing  flutter-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  ios-sdk-reference.md
+[DEBUG] ------------------------  end processing  ios-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  cf-feature-flag-overview.md
+[DEBUG] ------------------------  end processing  cf-feature-flag-overview.md
+
+
+[DEBUG]  ------------------------ processing  build-feature-flag-pipeline.md
+[DEBUG] ------------------------  end processing  build-feature-flag-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  client-side-and-server-side-sdks.md
+[DEBUG] ------------------------  end processing  client-side-and-server-side-sdks.md
+
+
+[DEBUG]  ------------------------ processing  sdk-version-policy.md
+[DEBUG] ------------------------  end processing  sdk-version-policy.md
+
+
+[DEBUG]  ------------------------ processing  communication-sdks-harness-feature-flags.md
+[DEBUG] ------------------------  end processing  communication-sdks-harness-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  integrate-feature-flag-with-java-sdk.md
+[DEBUG] ------------------------  end processing  integrate-feature-flag-with-java-sdk.md
+
+
+[DEBUG]  ------------------------ processing  net-sdk-reference.md
+[DEBUG] ------------------------  end processing  net-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  python-sdk-reference.md
+[DEBUG] ------------------------  end processing  python-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  php-sdk-reference.md
+[DEBUG] ------------------------  end processing  php-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  node-js-sdk-reference.md
+[DEBUG] ------------------------  end processing  node-js-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag-sdks-go-application.md
+[DEBUG] ------------------------  end processing  feature-flag-sdks-go-application.md
+
+
+[DEBUG]  ------------------------ processing  ruby-sdk-reference.md
+[DEBUG] ------------------------  end processing  ruby-sdk-reference.md
+
+
+[DEBUG]  ------------------------ processing  add-targets.md
+[DEBUG] ------------------------  end processing  add-targets.md
+
+
+[DEBUG]  ------------------------ processing  add-target-groups.md
+[DEBUG] ------------------------  end processing  add-target-groups.md
+
+
+[DEBUG]  ------------------------ processing  targeting-users-with-flags.md
+[DEBUG] ------------------------  end processing  targeting-users-with-flags.md
+
+
+[DEBUG]  ------------------------ processing  relay-proxy.md
+[DEBUG] ------------------------  end processing  relay-proxy.md
+
+
+[DEBUG]  ------------------------ processing  deploy-relay-proxy.md
+[DEBUG] ------------------------  end processing  deploy-relay-proxy.md
+
+
+[DEBUG]  ------------------------ processing  update-your-billing-information.md
+[DEBUG] ------------------------  end processing  update-your-billing-information.md
+
+
+[DEBUG]  ------------------------ processing  view-your-current-subscriptions.md
+[DEBUG] ------------------------  end processing  view-your-current-subscriptions.md
+
+
+[DEBUG]  ------------------------ processing  available-plans-for-feature-flags.md
+[DEBUG] ------------------------  end processing  available-plans-for-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  access-your-subscription-invoices.md
+[DEBUG] ------------------------  end processing  access-your-subscription-invoices.md
+
+
+[DEBUG]  ------------------------ processing  create-a-new-subscription.md
+[DEBUG] ------------------------  end processing  create-a-new-subscription.md
+
+
+[DEBUG]  ------------------------ processing  cancel-a-subscription.md
+[DEBUG] ------------------------  end processing  cancel-a-subscription.md
+
+
+[DEBUG]  ------------------------ processing  add-a-billing-admin.md
+[DEBUG] ------------------------  end processing  add-a-billing-admin.md
+
+
+[DEBUG]  ------------------------ processing  subscriptions-overview.md
+[DEBUG] ------------------------  end processing  subscriptions-overview.md
+
+
+[DEBUG]  ------------------------ processing  view-the-usage-of-your-subscriptions.md
+[DEBUG] ------------------------  end processing  view-the-usage-of-your-subscriptions.md
+
+
+[DEBUG]  ------------------------ processing  java-quickstart.md
+[DEBUG] ------------------------  end processing  java-quickstart.md
+
+
+[DEBUG]  ------------------------ processing  getting-started-with-feature-flags.md
+[DEBUG] ------------------------  end processing  getting-started-with-feature-flags.md
+
+
+[DEBUG]  ------------------------ processing  feature-flag-best-practices.md
+[DEBUG] ------------------------  end processing  feature-flag-best-practices.md
+
+
+[DEBUG]  ------------------------ processing  create-an-sdk-key.md
+[DEBUG] ------------------------  end processing  create-an-sdk-key.md
+
+
+[DEBUG]  ------------------------ processing  create-an-environment.md
+[DEBUG] ------------------------  end processing  create-an-environment.md
+
+
+[DEBUG]  ------------------------ processing  create-a-feature-flag.md
+[DEBUG] ------------------------  end processing  create-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  create-a-project.md
+[DEBUG] ------------------------  end processing  create-a-project.md
+
+
+[DEBUG]  ------------------------ processing  view-activities-of-a-feature-flag.md
+[DEBUG] ------------------------  end processing  view-activities-of-a-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  anonymous-users-maus.md
+[DEBUG] ------------------------  end processing  anonymous-users-maus.md
+
+
+[DEBUG]  ------------------------ processing  view-metrics.md
+[DEBUG] ------------------------  end processing  view-metrics.md
+
+
+[DEBUG]  ------------------------ processing  add-prerequisites-to-feature-flag.md
+[DEBUG] ------------------------  end processing  add-prerequisites-to-feature-flag.md
+
+
+[DEBUG]  ------------------------ processing  sample-docs.md
+[DEBUG] ------------------------  end processing  sample-docs.md
+
+
+[DEBUG]  ------------------------ processing  cloud-cost-management.md
+[DEBUG] ------------------------  end processing  cloud-cost-management.md
+
+
+[DEBUG]  ------------------------ processing  terms-of-use.md
+[DEBUG] ------------------------  end processing  terms-of-use.md
+
+
+[DEBUG]  ------------------------ processing  set-up-test-intelligence.md
+[DEBUG] ------------------------  end processing  set-up-test-intelligence.md
+
+
+[DEBUG]  ------------------------ processing  create-and-configure-a-codebase.md
+[DEBUG] ------------------------  end processing  create-and-configure-a-codebase.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-jfrog.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-jfrog.md
+
+
+[DEBUG]  ------------------------ processing  modify-and-override-build-settings-before-a-build.md
+[DEBUG] ------------------------  end processing  modify-and-override-build-settings-before-a-build.md
+
+
+[DEBUG]  ------------------------ processing  build-and-upload-an-artifact.md
+[DEBUG] ------------------------  end processing  build-and-upload-an-artifact.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-gcr.md
+[DEBUG] ------------------------  end processing  build-and-push-to-gcr.md
+
+
+[DEBUG]  ------------------------ processing  troubleshooting-ci.md
+[DEBUG] ------------------------  end processing  troubleshooting-ci.md
+
+
+[DEBUG]  ------------------------ processing  optimizing-ci-build-times.md
+[DEBUG] ------------------------  end processing  optimizing-ci-build-times.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-gcr-step-settings.md
+[DEBUG] ------------------------  end processing  build-and-push-to-gcr-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  restore-cache-from-gcs-settings.md
+[DEBUG] ------------------------  end processing  restore-cache-from-gcs-settings.md
+
+
+[DEBUG]  ------------------------ processing  run-step-settings.md
+[DEBUG] ------------------------  end processing  run-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-docker-hub-step-settings.md
+[DEBUG] ------------------------  end processing  build-and-push-to-docker-hub-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  ci-cluster-requirement.md
+[DEBUG] ------------------------  end processing  ci-cluster-requirement.md
+
+
+[DEBUG]  ------------------------ processing  ci-git-clone-step.md
+[DEBUG] ------------------------  end processing  ci-git-clone-step.md
+
+
+[DEBUG]  ------------------------ processing  ci-stage-settings.md
+[DEBUG] ------------------------  end processing  ci-stage-settings.md
+
+
+[DEBUG]  ------------------------ processing  plugin-step-settings-reference.md
+[DEBUG] ------------------------  end processing  plugin-step-settings-reference.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-jfrog-artifactory-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-jfrog-artifactory-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  configure-service-dependency-step-settings.md
+[DEBUG] ------------------------  end processing  configure-service-dependency-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-to-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  save-cache-to-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  group-ci-steps-using-step-groups.md
+[DEBUG] ------------------------  end processing  group-ci-steps-using-step-groups.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-gcs-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-gcs-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-ecr-step-settings.md
+[DEBUG] ------------------------  end processing  build-and-push-to-ecr-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  ci-build-image-updates.md
+[DEBUG] ------------------------  end processing  ci-build-image-updates.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-to-gcs-step-settings.md
+[DEBUG] ------------------------  end processing  save-cache-to-gcs-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  configure-run-tests-step-settings.md
+[DEBUG] ------------------------  end processing  configure-run-tests-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  harness-ci.md
+[DEBUG] ------------------------  end processing  harness-ci.md
+
+
+[DEBUG]  ------------------------ processing  built-in-cie-codebase-variables-reference.md
+[DEBUG] ------------------------  end processing  built-in-cie-codebase-variables-reference.md
+
+
+[DEBUG]  ------------------------ processing  restore-cache-from-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  restore-cache-from-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  run-a-drone-plugin-in-ci.md
+[DEBUG] ------------------------  end processing  run-a-drone-plugin-in-ci.md
+
+
+[DEBUG]  ------------------------ processing  run-a-git-hub-action-in-cie.md
+[DEBUG] ------------------------  end processing  run-a-git-hub-action-in-cie.md
+
+
+[DEBUG]  ------------------------ processing  sample-docs.md
+[DEBUG] ------------------------  end processing  sample-docs.md
+
+
+[DEBUG]  ------------------------ processing  set-up-a-kubernetes-cluster-build-infrastructure.md
+[DEBUG] ------------------------  end processing  set-up-a-kubernetes-cluster-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  define-a-macos-build-infrastructure.md
+[DEBUG] ------------------------  end processing  define-a-macos-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  run-windows-builds-in-a-kubernetes-build-infrastructure.md
+[DEBUG] ------------------------  end processing  run-windows-builds-in-a-kubernetes-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  set-up-an-aws-vm-build-infrastructure.md
+[DEBUG] ------------------------  end processing  set-up-an-aws-vm-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+[DEBUG] ------------------------  end processing  configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+
+
+[DEBUG]  ------------------------ processing  define-a-mac-os-build-infrastructure.md
+[DEBUG] ------------------------  end processing  define-a-mac-os-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  clone-and-process-multiple-codebases-in-the-same-pipeline.md
+[DEBUG] ------------------------  end processing  clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  run-a-script-in-a-ci-stage.md
+[DEBUG] ------------------------  end processing  run-a-script-in-a-ci-stage.md
+
+
+[DEBUG]  ------------------------ processing  run-docker-in-docker-in-a-ci-stage.md
+[DEBUG] ------------------------  end processing  run-docker-in-docker-in-a-ci-stage.md
+
+
+[DEBUG]  ------------------------ processing  saving-cache.md
+[DEBUG] ------------------------  end processing  saving-cache.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-in-gcs.md
+[DEBUG] ------------------------  end processing  save-cache-in-gcs.md
+
+
+[DEBUG]  ------------------------ processing  share-ci-data-across-steps-and-stages.md
+[DEBUG] ------------------------  end processing  share-ci-data-across-steps-and-stages.md
+
+
+[DEBUG]  ------------------------ processing  ci-pipeline-basics.md
+[DEBUG] ------------------------  end processing  ci-pipeline-basics.md
+
+
+[DEBUG]  ------------------------ processing  ci-enterprise-concepts.md
+[DEBUG] ------------------------  end processing  ci-enterprise-concepts.md
+
+
+[DEBUG]  ------------------------ processing  test-intelligence-concepts.md
+[DEBUG] ------------------------  end processing  test-intelligence-concepts.md
+
+
+[DEBUG]  ------------------------ processing  drone-and-harness.md
+[DEBUG] ------------------------  end processing  drone-and-harness.md
+
+
+[DEBUG]  ------------------------ processing  ci-pipeline-quickstart.md
+[DEBUG] ------------------------  end processing  ci-pipeline-quickstart.md
+
+
+[DEBUG]  ------------------------ processing  viewing-tests.md
+[DEBUG] ------------------------  end processing  viewing-tests.md
+
+
+[DEBUG]  ------------------------ processing  set-up-test-intelligence.md
+[DEBUG] ------------------------  end processing  set-up-test-intelligence.md
+
+
+[DEBUG]  ------------------------ processing  create-and-configure-a-codebase.md
+[DEBUG] ------------------------  end processing  create-and-configure-a-codebase.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-jfrog.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-jfrog.md
+
+
+[DEBUG]  ------------------------ processing  modify-and-override-build-settings-before-a-build.md
+[DEBUG] ------------------------  end processing  modify-and-override-build-settings-before-a-build.md
+
+
+[DEBUG]  ------------------------ processing  build-and-upload-an-artifact.md
+[DEBUG] ------------------------  end processing  build-and-upload-an-artifact.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-gcr.md
+[DEBUG] ------------------------  end processing  build-and-push-to-gcr.md
+
+
+[DEBUG]  ------------------------ processing  troubleshooting-ci.md
+[DEBUG] ------------------------  end processing  troubleshooting-ci.md
+
+
+[DEBUG]  ------------------------ processing  optimizing-ci-build-times.md
+[DEBUG] ------------------------  end processing  optimizing-ci-build-times.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-gcr-step-settings.md
+[DEBUG] ------------------------  end processing  build-and-push-to-gcr-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  restore-cache-from-gcs-settings.md
+[DEBUG] ------------------------  end processing  restore-cache-from-gcs-settings.md
+
+
+[DEBUG]  ------------------------ processing  run-step-settings.md
+[DEBUG] ------------------------  end processing  run-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-docker-hub-step-settings.md
+[DEBUG] ------------------------  end processing  build-and-push-to-docker-hub-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  ci-cluster-requirement.md
+[DEBUG] ------------------------  end processing  ci-cluster-requirement.md
+
+
+[DEBUG]  ------------------------ processing  ci-git-clone-step.md
+[DEBUG] ------------------------  end processing  ci-git-clone-step.md
+
+
+[DEBUG]  ------------------------ processing  ci-stage-settings.md
+[DEBUG] ------------------------  end processing  ci-stage-settings.md
+
+
+[DEBUG]  ------------------------ processing  plugin-step-settings-reference.md
+[DEBUG] ------------------------  end processing  plugin-step-settings-reference.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-jfrog-artifactory-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-jfrog-artifactory-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  configure-service-dependency-step-settings.md
+[DEBUG] ------------------------  end processing  configure-service-dependency-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-to-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  save-cache-to-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  group-ci-steps-using-step-groups.md
+[DEBUG] ------------------------  end processing  group-ci-steps-using-step-groups.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-gcs-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-gcs-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  upload-artifacts-to-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  upload-artifacts-to-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  build-and-push-to-ecr-step-settings.md
+[DEBUG] ------------------------  end processing  build-and-push-to-ecr-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  ci-build-image-updates.md
+[DEBUG] ------------------------  end processing  ci-build-image-updates.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-to-gcs-step-settings.md
+[DEBUG] ------------------------  end processing  save-cache-to-gcs-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  configure-run-tests-step-settings.md
+[DEBUG] ------------------------  end processing  configure-run-tests-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  harness-ci.md
+[DEBUG] ------------------------  end processing  harness-ci.md
+
+
+[DEBUG]  ------------------------ processing  built-in-cie-codebase-variables-reference.md
+[DEBUG] ------------------------  end processing  built-in-cie-codebase-variables-reference.md
+
+
+[DEBUG]  ------------------------ processing  restore-cache-from-s-3-step-settings.md
+[DEBUG] ------------------------  end processing  restore-cache-from-s-3-step-settings.md
+
+
+[DEBUG]  ------------------------ processing  run-a-drone-plugin-in-ci.md
+[DEBUG] ------------------------  end processing  run-a-drone-plugin-in-ci.md
+
+
+[DEBUG]  ------------------------ processing  run-a-git-hub-action-in-cie.md
+[DEBUG] ------------------------  end processing  run-a-git-hub-action-in-cie.md
+
+
+[DEBUG]  ------------------------ processing  set-up-a-kubernetes-cluster-build-infrastructure.md
+[DEBUG] ------------------------  end processing  set-up-a-kubernetes-cluster-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  define-a-macos-build-infrastructure.md
+[DEBUG] ------------------------  end processing  define-a-macos-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  run-windows-builds-in-a-kubernetes-build-infrastructure.md
+[DEBUG] ------------------------  end processing  run-windows-builds-in-a-kubernetes-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  set-up-an-aws-vm-build-infrastructure.md
+[DEBUG] ------------------------  end processing  set-up-an-aws-vm-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+[DEBUG] ------------------------  end processing  configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+
+
+[DEBUG]  ------------------------ processing  define-a-mac-os-build-infrastructure.md
+[DEBUG] ------------------------  end processing  define-a-mac-os-build-infrastructure.md
+
+
+[DEBUG]  ------------------------ processing  clone-and-process-multiple-codebases-in-the-same-pipeline.md
+[DEBUG] ------------------------  end processing  clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  run-a-script-in-a-ci-stage.md
+[DEBUG] ------------------------  end processing  run-a-script-in-a-ci-stage.md
+
+
+[DEBUG]  ------------------------ processing  run-docker-in-docker-in-a-ci-stage.md
+[DEBUG] ------------------------  end processing  run-docker-in-docker-in-a-ci-stage.md
+
+
+[DEBUG]  ------------------------ processing  saving-cache.md
+[DEBUG] ------------------------  end processing  saving-cache.md
+
+
+[DEBUG]  ------------------------ processing  save-cache-in-gcs.md
+[DEBUG] ------------------------  end processing  save-cache-in-gcs.md
+
+
+[DEBUG]  ------------------------ processing  share-ci-data-across-steps-and-stages.md
+[DEBUG] ------------------------  end processing  share-ci-data-across-steps-and-stages.md
+
+
+[DEBUG]  ------------------------ processing  ci-pipeline-basics.md
+[DEBUG] ------------------------  end processing  ci-pipeline-basics.md
+
+
+[DEBUG]  ------------------------ processing  ci-enterprise-concepts.md
+[DEBUG] ------------------------  end processing  ci-enterprise-concepts.md
+
+
+[DEBUG]  ------------------------ processing  test-intelligence-concepts.md
+[DEBUG] ------------------------  end processing  test-intelligence-concepts.md
+
+
+[DEBUG]  ------------------------ processing  drone-and-harness.md
+[DEBUG] ------------------------  end processing  drone-and-harness.md
+
+
+[DEBUG]  ------------------------ processing  ci-pipeline-quickstart.md
+[DEBUG] ------------------------  end processing  ci-pipeline-quickstart.md
+
+
+[DEBUG]  ------------------------ processing  viewing-tests.md
+[DEBUG] ------------------------  end processing  viewing-tests.md
+
+
+[DEBUG]  ------------------------ processing  ingesting-issues-from-other-scanners.md
+[DEBUG] ------------------------  end processing  ingesting-issues-from-other-scanners.md
+
+
+[DEBUG]  ------------------------ processing  sto-workflows-overview.md
+[DEBUG] ------------------------  end processing  sto-workflows-overview.md
+
+
+[DEBUG]  ------------------------ processing  run-an-orchestrated-scan-in-sto.md
+[DEBUG] ------------------------  end processing  run-an-orchestrated-scan-in-sto.md
+
+
+[DEBUG]  ------------------------ processing  ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG] ------------------------  end processing  ingest-scan-results-into-an-sto-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG] ------------------------  end processing  sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[DEBUG]  ------------------------ processing  tutorial-1-standalone-workflows.md
+[DEBUG] ------------------------  end processing  tutorial-1-standalone-workflows.md
+
+
+[DEBUG]  ------------------------ processing  set-up-harness-for-sto.md
+[DEBUG] ------------------------  end processing  set-up-harness-for-sto.md
+
+
+[DEBUG]  ------------------------ processing  security-testing-orchestration-basics.md
+[DEBUG] ------------------------  end processing  security-testing-orchestration-basics.md
+
+
+[DEBUG]  ------------------------ processing  bandit-scanner-reference.md
+[DEBUG] ------------------------  end processing  bandit-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  aqua-trivy-scanner-reference.md
+[DEBUG] ------------------------  end processing  aqua-trivy-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  sonarqube-sonar-scanner-reference.md
+[DEBUG] ------------------------  end processing  sonarqube-sonar-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  security-step-settings-reference.md
+[DEBUG] ------------------------  end processing  security-step-settings-reference.md
+
+
+[DEBUG]  ------------------------ processing  ingesting-issues-from-other-scanners.md
+[DEBUG] ------------------------  end processing  ingesting-issues-from-other-scanners.md
+
+
+[DEBUG]  ------------------------ processing  sto-workflows-overview.md
+[DEBUG] ------------------------  end processing  sto-workflows-overview.md
+
+
+[DEBUG]  ------------------------ processing  run-an-orchestrated-scan-in-sto.md
+[DEBUG] ------------------------  end processing  run-an-orchestrated-scan-in-sto.md
+
+
+[DEBUG]  ------------------------ processing  ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG] ------------------------  end processing  ingest-scan-results-into-an-sto-pipeline.md
+
+
+[DEBUG]  ------------------------ processing  sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG] ------------------------  end processing  sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[DEBUG]  ------------------------ processing  tutorial-1-standalone-workflows.md
+[DEBUG] ------------------------  end processing  tutorial-1-standalone-workflows.md
+
+
+[DEBUG]  ------------------------ processing  set-up-harness-for-sto.md
+[DEBUG] ------------------------  end processing  set-up-harness-for-sto.md
+
+
+[DEBUG]  ------------------------ processing  security-testing-orchestration-basics.md
+[DEBUG] ------------------------  end processing  security-testing-orchestration-basics.md
+
+
+[DEBUG]  ------------------------ processing  bandit-scanner-reference.md
+[DEBUG] ------------------------  end processing  bandit-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  aqua-trivy-scanner-reference.md
+[DEBUG] ------------------------  end processing  aqua-trivy-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  sonarqube-sonar-scanner-reference.md
+[DEBUG] ------------------------  end processing  sonarqube-sonar-scanner-reference.md
+
+
+[DEBUG]  ------------------------ processing  security-step-settings-reference.md
+[DEBUG] ------------------------  end processing  security-step-settings-reference.md
+
+{}

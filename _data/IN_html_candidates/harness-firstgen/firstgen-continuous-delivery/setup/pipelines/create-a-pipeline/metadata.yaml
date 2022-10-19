@@ -1,0 +1,130 @@
+type: article
+article_id: 8j8yd7hky4
+user_id: slcpusem6b
+category_id: aa3bkrzgqi
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Create a Pipeline (Migrate)
+slug: create-a-pipeline
+description: Describes how to create a Pipeline.
+short_version: Describes how to create a Pipeline.
+tags:
+- pipeline
+- create
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:25.463815Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create a Pipeline (Migrate)
+  description: Describes how to create a Pipeline.
+  short_version: Describes how to create a Pipeline.
+  body: '<p></p><p>Pipelines define your release process using multiple Workflows
+    and Approvals in sequential and/or parallel stages. Pipelines can involve multiple
+    Services, Environments, and Workflows. A Pipeline can be triggered either manually
+    or using <a href="https://docs.harness.io/article/xerirloz9a-add-a-trigger-2">Triggers</a>.</p><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#step_1_add_a_pipeline">Step
+    1: Add a Pipeline</a></li><li><a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#step_2_deploy_a_pipeline">Step
+    2: Deploy a Pipeline</a></li><li><a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#step_3_abort_or_rollback_a_running_deployment">Step
+    3: Abort or Rollback a Running Deployment</a></li><li><a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#incomplete_pipelines">Incomplete
+    Pipelines</a></li><li><a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#review_rbac_for_pipelines">Review:
+    RBAC for Pipelines</a></li><li><a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/bucothemly-application-configuration">Create
+    an Application</a></li><li><a href="/article/eb3kfl8uls-service-configuration">Add
+    a Service</a></li><li><a href="/article/n39w05njjv-environment-configuration">Add
+    an Environment</a></li><li><a href="/article/m220i1tnia-workflow-configuration">Add
+    a Workflow</a></li></ul><h3>Visual Summary</h3><div class="hd--html"><figure><iframe
+    src="//fast.wistia.com/embed/iframe/46qa6qox0t" width="560" height="315" frameborder="0"
+    allowfullscreen=""></iframe></figure></div><h3>Step 1: Add a Pipeline</h3><p>To
+    add a Pipeline, perform the following steps:</p><ol><li>Click <strong>Setup</strong>
+    and then select the Application that you want to deploy.</li><li>In <strong>Application
+    Defaults</strong>, click <strong>Pipelines</strong> and then click <strong>Add
+    Pipeline</strong>. The <strong>Add Pipeline</strong> settings appear.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/8j8yd7hky4/1591290610823/screenshot-2020-06-04-at-10-39-05-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Enter
+    a <strong>Name</strong> for your Pipeline. This name is used for selecting the
+    Pipeline on the Deployments page.</li><li>Enter <strong>Description</strong> for
+    your Pipeline and click <strong>Submit</strong>. The following settings appear.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/8j8yd7hky4/1591291047158/screenshot-2020-06-04-at-10-47-15-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Select
+    the <strong>Execution Step</strong> to execute this stage when the Pipeline runs.<ol><li>In
+    <strong>Step Name</strong>, enter the name for this stage. This name acts as a
+    subheading to the stage name. You can also select the <strong>Auto Generate Name</strong>
+    checkbox to generate the name automatically.</li><li>In <strong>Execute Workflow</strong>,
+    select the Workflow to execute in this Pipeline. The Workflows in your Application
+    are listed.</li><li>Select <strong>Execute in Parallel with Previous Step</strong>
+    checkbox to execute steps in parallel.</li><li>Select <strong>Do not skip</strong>,
+    <strong>Skip always</strong>, or <strong>Skip based on assertion expression</strong>
+    for setting the skip option. For more information, see <a href="https://docs.harness.io/article/6kefu7s7ne-skip-conditions#skip_execution">Skip
+    Execution</a>.</li><li>Enter Assertion Expression. It enables you to specify an
+    expression that determines whether the stage should execute. For more information,
+    see <a href="https://docs.harness.io/article/6kefu7s7ne-skip-conditions#skip_based_on_assertion_expression">Assertion
+    Expression</a>.</li></ol></li><li>Select <strong>Approval Step</strong> to require
+    approval before the next stage executes. You can use Harness UI, Jira, Custom
+    Shell Script, or ServiceNow Approval mechanisms. For more information on Approvals,
+    see <a href="https://docs.harness.io/category/4edbfn50l8-approvals">Add Approvals</a>.</li><li>Click
+    <strong>Submit</strong>. The Pipeline Stage and its steps are added to the Pipeline.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/zc1u96u6uj/1533339861072/pipeline-overview.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>You
+    can add multiple Stages, and insert new Stages between the existing Stages. Pipelines
+    Stages can be Workflows or Approvals. To add another stage to the Pipeline, in <strong>Pipeline
+    Stages</strong>, click <strong>+</strong> and then follow the same <a href="https://docs.harness.io/article/8j8yd7hky4-create-a-pipeline#step_1_add_a_pipeline">Steps</a>.</li></ol><h3>Step
+    2: Deploy a Pipeline</h3><p>Once you have set up a Pipeline, you can deploy it,
+    running all the stages within the Pipeline.</p><ol><li>In your Application, select
+    the Pipeline that you want to deploy. The <strong>Pipeline Overview</strong> page
+    appears.</li><li>Click <strong>Deploy</strong> to run the Pipeline. The <strong>Start
+    New Deployment</strong> dialog appears.<br/><br/>When you set up the Pipeline
+    stage(s), you picked the Workflow(s) the Pipeline will execute. The Workflow you
+    selected is linked to a Service. The Start New Deployment dialog is configured
+    with the Services linked to the Workflows included in the Pipeline. The settings
+    are displayed based on your Workflow variables.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/8j8yd7hky4/1591298483010/screenshot-2020-06-04-at-11-28-38-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Click
+    <strong>Submit</strong>. The Pipeline is deployed and the deployment details are
+    displayed in the <strong>Deployments</strong> page. You can click each phase in
+    the process to see logs and other details of the process.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zc1u96u6uj/1533342093857/deployment-success.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><h3>Step
+    3: Abort or Rollback a Running Deployment</h3><p>If you deploy a Pipeline and
+    choose the <strong>Abort</strong> option during the running deployment, the <strong>Rollback
+    Steps</strong> for the Workflow(s) in the Pipeline are not executed. Abort stops
+    the deployment execution without rollback or clean up. To execute the <strong>Rollback
+    Steps</strong>, click the <strong>Rollback</strong> button.</p><p></p><table><tbody><tr><td><p><strong>Abort
+    Button</strong></p></td><td><p><strong>Rollback Button</strong></p></td></tr><tr><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/m220i1tnia/1536879749114/image.png"/></figure></td><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/m220i1tnia/1536879761225/image.png"/></figure></td></tr></tbody></table><p></p><h3>Incomplete
+    Pipelines</h3><p>If a Workflow in a Pipeline is incomplete (missing information
+    in a Workflow step), then the Pipeline Stage for that Workflow will indicate that
+    the Workflow is incomplete:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zc1u96u6uj/1590531311364/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Open
+    the incomplete Workflow, complete it, and then return to the Pipeline.</p><p>Another
+    example of an incomplete Workflow is a Workflow with Workflow variables that have
+    not been given default values.</p><p>If you try to deploy a Pipeline with an incomplete
+    Workflow, Harness will prevent you.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zc1u96u6uj/1590531550125/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Simply
+    fix the Workflow and then deploy the Pipeline.</p><h3>Review: RBAC for Pipelines</h3><p>Pipeline
+    follows standard Harness RBAC as described in <a href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a>.</p><p>Your ability to read, create, delete, and update
+    Pipelines depends on the <strong>Pipeline</strong> Application Permissions of
+    your User Group.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zc1u96u6uj/1579552043250/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Your
+    ability to deploy Pipelines also depends on your <strong>Deployments</strong>
+    Application Permissions.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zc1u96u6uj/1579552122714/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>Next
+    Steps</h3><ul><li><a href="/article/60j7391eyy-templatize-pipelines">Create Pipeline
+    Templates</a></li><li><a href="/article/4dvyslwbun-resume-a-pipeline-deployment">Resume
+    Pipeline Deployments</a></li><li><a href="/article/zhqccv0pff-pipeline-governance">Pipeline
+    Governance</a></li></ul><p></p>'
+  slug: create-a-pipeline
+  tags:
+  - pipeline
+  - create
+  is_live: true

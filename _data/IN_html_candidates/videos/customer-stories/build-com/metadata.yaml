@@ -1,0 +1,58 @@
+type: article
+article_id: 5tqdqremle
+user_id: ""
+category_id: 24eh32j7tn
+author:
+  name: ""
+  profile_image: ""
+title: Customer Case Studies
+slug: build-com
+description: 'See case-study video interviews with Harness customers, including: Home
+  Depot, iHerb, GoSpotCheck, Ibotta, SoulCycle, Vuclip, Jobvite, Build, and Advanced
+  Software.'
+short_version: See some of Harness' customer case studies.
+tags: []
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T18:03:56.605642Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Customer Case Studies
+  description: 'See case-study video interviews with Harness customers, including:
+    Home Depot, iHerb, GoSpotCheck, Ibotta, SoulCycle, Vuclip, Jobvite, Build, and
+    Advanced Software.'
+  short_version: See some of Harness' customer case studies.
+  body: <p>To see all of Harness&#39; customer case studies, visit our <a href="https://www.youtube.com/playlist?list=PLXsYHFsLmqf3GsJp4b1MIC6srjeIi0qpP">YouTube
+    channel</a>.</p><h3>iHerb</h3><div class="hd--html"><iframe width="560" height="315"
+    src="https://www.youtube.com/embed/wwfnpy9vuic" frameborder="0" allow="accelerometer;
+    autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h3>GoSpotCheck</h3><div
+    class="hd--html"><iframe width="560" height="315" src="https://www.youtube.com/embed/dlH7I_EBTUA"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><h3>Ibotta</h3><div class="hd--html"><iframe
+    width="560" height="315" src="https://www.youtube.com/embed/4hS-gvFYzx4" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><h3>SoulCycle</h3><div class="hd--html"><iframe
+    width="560" height="315" src="https://www.youtube.com/embed/Lt0kmfPWZT4" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><h3>Vuclip</h3><div class="hd--html"><iframe
+    width="560" height="315" src="https://www.youtube.com/embed/fs_KbbeqZSg" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><h3>Jobvite</h3><div class="hd--html"><iframe
+    width="560" height="315" src="https://www.youtube.com/embed/yG08MzI1vcU" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><h3>Build</h3><div class="hd--html"><iframe
+    width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLXsYHFsLmqf3GsJp4b1MIC6srjeIi0qpP"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><h3>Advanced</h3><p><a href="https://harness-1.wistia.com/medias/0egacmzitd?wvideo=0egacmzitd">Advanced
+    Software Onboards 700 Developers with Harness</a></p><p><br/></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+  slug: build-com
+  tags: []
+  is_live: true

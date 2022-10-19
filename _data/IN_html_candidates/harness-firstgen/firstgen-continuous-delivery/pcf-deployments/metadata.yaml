@@ -1,0 +1,16 @@
+type: category
+category_id: emle05cclq
+parent_category_id: 1qtels4t8p
+title: Tanzu Application Service (formerly Pivotal)
+description: Deploy your apps to your VMware Tanzu Application Service implementation
+  using Harness.
+slug: pcf-deployments
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1617037505116/tanzu.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Tanzu Application Service (formerly Pivotal)
+  description: Deploy your apps to your VMware Tanzu Application Service implementation
+    using Harness.
+  slug: pcf-deployments

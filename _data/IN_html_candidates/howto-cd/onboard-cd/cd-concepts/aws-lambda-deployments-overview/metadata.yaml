@@ -1,0 +1,118 @@
+type: article
+article_id: lumx9a0uj8
+user_id: znazf3hcp9
+category_id: dxej4ug0n5
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: AWS Lambda Deployments Overview
+slug: aws-lambda-deployments-overview
+description: The high-level steps involved in a Harness AWS Lambda deployment.
+short_version: The high-level steps involved in a Harness AWS Lambda deployment.
+tags:
+- Lambda deployment
+- serverless
+- lambda overview
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2020-12-21T23:52:15.041024Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: AWS Lambda Deployments Overview
+  description: The high-level steps involved in a Harness AWS Lambda deployment.
+  short_version: The high-level steps involved in a Harness AWS Lambda deployment.
+  body: '<p>This topic describes the concept of a Harness AWS Lambda deployment by
+    describing the high-level steps involved.</p><p>For a quick tutorial, see the&nbsp;
+    <a href="/article/4p9yr2gpoa-aws-lambda-deployments">AWS Lambda Deployments</a>&nbsp;tutorial.</p><p>For
+    detailed instructions on using AWS Lambda in Harness, see the&nbsp; <a href="/category/mc1qf0qux1-howtos-aws-lambda">AWS
+    Lambda How-tos</a>.</p><p>In this topic:</p><ul><li> <a href="/article/lumx9a0uj8-aws-lambda-deployments-overview#before_you_begin">Before
+    You Begin</a></li><li> <a href="/article/lumx9a0uj8-aws-lambda-deployments-overview#what_does_harness_need_before_you_start">What
+    Does Harness Need Before You Start?</a></li><li> <a href="/article/lumx9a0uj8-aws-lambda-deployments-overview#what_does_harness_deploy">What
+    Does Harness Deploy?</a></li><li> <a href="/article/lumx9a0uj8-aws-lambda-deployments-overview#what_does_a_harness_aws_lambda_deployment_involve">What
+    Does a Harness AWS Lambda Deployment Involve?</a></li><li> <a href="/article/lumx9a0uj8-aws-lambda-deployments-overview#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><p>Before learning about, you should
+    have an understanding of the following:</p><ul><li> <a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness'' Key Concepts</a></li></ul><h3>What Does Harness Need Before You Start?</h3><p>A
+    Harness AWS Lambda deployment requires the following:</p><ul><li>AWS account -
+    An AWS account you can connect to Harness.</li><li>Lambda function file stored
+    on an artifact server, typically AWS S3.</li></ul><h3>What Does Harness Deploy?</h3><p>Setting
+    up a Lambda deployment is as simple as adding your function zip file, configuring
+    function compute settings, and adding aliases and tags. Harness takes care of
+    the rest of the deployment, making it consistent, reusable, and safe with automatic
+    rollback.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/z24n8ut61d/1578087633031/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/z24n8ut61d/1578087633031/image.png"></a></figure><p>Basically,
+    the Harness setup for Lambda is akin to using the AWS CLI&nbsp; <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/index.html#cli-aws-lambda"
+    target="_blank">aws lambda</a>&nbsp; <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html"
+    target="_blank">create-function</a>,&nbsp; <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-code.html"
+    target="_blank">update-function-code</a>, and&nbsp; <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html"
+    target="_blank">update-function-configuration</a>&nbsp;commands, as well as the
+    many other commands that are needed.</p><p>The benefit with Harness is that you
+    can set up your Lambda deployment once, with no scripting, and then have your
+    Lambda functions deployed automatically as they are updated in your AWS S3 bucket.
+    You can even templatize the deployment Environment and Workflow for use by other
+    devops and developers in your team.</p><p>Furthermore, Harness manages Lambda
+    function versioning to perform rollback when needed.</p><h3>What Does a Harness
+    AWS Lambda Deployment Involve?</h3><p>The following list describes the major steps
+    of a Harness AWS Lambda deployment:</p><p></p><table><tbody><tr><td><p><strong>Step</strong></p></td><td><p><strong>Name</strong></p></td><td><p><strong>Description
+    and Links</strong></p></td></tr><tr><td><p>1</p></td><td><p>Install the Harness
+    Shell Script or ECS&nbsp;<strong>Delegate</strong>&nbsp;in AWS.</p></td><td><p>Typically,
+    the Shell Script or ECS Delegate is installed in the same AWS VPC as your Lambda
+    functions.</p><p>When you set up a Harness AWS Cloud Provider, you can use the
+    same IAM credentials as the installed Delegate.</p><p>The IAM role you assign
+    to the Delegate requires the standard Lambda Permissions.</p><p>See <a href="/article/2m0v9z5x7b-set-up-a-shell-script-delegate">Set
+    Up a Shell Script Delegate</a> and <a href="/article/tbjffip7rp-set-up-an-aws-ecs-delegate">Set
+    Up an AWS ECS Delegate</a>.</p><p>See <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html"
+    target="_blank">Lambda Permissions</a> from AWS.</p></td></tr><tr><td><p>2</p></td><td><p>Add
+    an <strong>AWS</strong>&nbsp;<strong>Cloud Provider</strong>.</p></td><td><p>An
+    AWS&nbsp;Cloud Provider is a connection to your AWS account.</p><p>If you use
+    AWS S3 to store your Lambda function files, the AWS&nbsp;Cloud Provider is used
+    to obtain the Lambda function file from AWS S3.</p><p>The AWS&nbsp;Cloud Provider
+    is also used to connect to Lambda and deploy your function.</p><p>When you set
+    up a Harness AWS Cloud Provider, you can use the same IAM credentials as the installed
+    Delegate.</p><p>See <a href="/article/bejr8ispzh-connect-to-amazon-web-services-aws-cloud">Connect
+    to Amazon Web Services (AWS) Cloud</a>.</p></td></tr><tr><td><p>3</p></td><td><p>Create
+    the Harness&nbsp;<strong>Application</strong>&nbsp;for your Lambda CD Pipeline.</p></td><td><p>The
+    Harness Application represents a group of microservices, their deployment pipelines,
+    and all the building blocks for those pipelines. Harness represents your release
+    process using a logical group of one or more entities: Services, Environments,
+    Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications
+    organize all of the entities and configurations in Harness CD.</p><p>See <a href="/article/wrtkikaksk-add-an-application">Add
+    an Application</a>.</p></td></tr><tr><td><p>4</p></td><td><p>Create the Harness&nbsp;<strong>Service</strong>&nbsp;using
+    the <strong>AWS Lambda</strong> Deployment Type.</p></td><td><p>Add a Lambda function
+    file as an artifact in a Harness Service, define a function specification, and
+    any config variables and files.</p><p>See <a href="/article/mp3etdiz5h-add-lambda-function-files">Add
+    Lambda Function Files</a> and <a href="/article/lh63zq1db4-define-a-lambda-function-specification">Define
+    a Lambda Function Specification</a>.</p></td></tr><tr><td><p>5</p></td><td><p>Create
+    the Harness&nbsp;<strong>Environment</strong>&nbsp;and Infrastructure Definition
+    for your deployment, and any overrides.</p></td><td><p>Using the Harness AWS Cloud
+    Provider you set up, you can select the IAM role, region, and other components
+    of the target environment for your deployment.</p><p>You can also override any
+    Service settings, such as config variables and files. This enables you to use
+    a single Service with multiple Harness Environments.</p><p>See <a href="/article/1vv2jr7n55-define-your-aws-lambda-target-infrastructure">Define
+    Your AWS Lambda Target Infrastructure</a>.</p></td></tr><tr><td><p>6</p></td><td><p>Create
+    the Basic deployment for Lambda in Harness&nbsp;<strong>Workflows</strong>.</p></td><td><p>The
+    Workflow deploys the Lambda function as defined in the Harness Service to the
+    AWS Lambda environment in the Harness Infrastructure Definition.</p><p>See <a
+    href="/article/07o2d99x7j-create-a-basic-lambda-deployment">Create a Basic Lambda
+    Deployment</a>.</p></td></tr><tr><td><p>7</p></td><td><p>Deploy the Workflow.</p></td><td><p>Once
+    you''ve deployed a Workflow, learn how to improve your AWS Lambda CD:</p><ul><li>
+    <a href="/article/yenenrhgcs-add-workflows-to-pipelines">Add Workflows to Pipelines</a></li><li>
+    <a href="/article/yupq093j6b-add-a-trigger">Add a Trigger</a></li><li> <a href="/category/8jtjs2i7e2-howtos-infrastructure-prov">Harness
+    Infrastructure Provisioners</a></li></ul></td></tr></tbody></table><h3>Next Steps</h3><p>Read
+    the following topics to build on what you''ve learned:</p><ul><li> <a href="/article/4p9yr2gpoa-aws-lambda-deployments">AWS
+    Lambda Deployments</a>&nbsp;tutorial</li><li> <a href="/category/mc1qf0qux1-howtos-aws-lambda">AWS
+    Lambda How-tos</a></li></ul><p></p>'
+  slug: aws-lambda-deployments-overview
+  tags:
+  - Lambda deployment
+  - serverless
+  - lambda overview
+  is_live: true

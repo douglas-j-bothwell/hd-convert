@@ -1,0 +1,35 @@
+type: article
+article_id: bpo4erm04r
+user_id: slcpusem6b
+category_id: xqczdwbofl
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Cost Explorer Overview
+slug: navigating-through-cost-explorer
+description: See an overview of Cost Explorer.
+short_version: To see all of Harness' videos, visit our YouTube channel..
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T18:03:56.707593Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Cost Explorer Overview
+  description: See an overview of Cost Explorer.
+  short_version: ""
+  body: <p>To see all of Harness&#39; videos, visit our <a href="https://www.youtube.com/channel/UCSs-WCBvdDdBi5QPX95B_Mw/videos">YouTube
+    channel</a>.</p><div class="hd--html"><iframe width="224" height="126" src="https://www.youtube.com/embed/sXftHXhSlo0"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><p></p>
+  slug: navigating-through-cost-explorer
+  tags: []
+  is_live: true

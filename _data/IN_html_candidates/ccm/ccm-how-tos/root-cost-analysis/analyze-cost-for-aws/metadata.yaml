@@ -1,0 +1,96 @@
+type: article
+article_id: 1nf0qcz4o0
+user_id: slcpusem6b
+category_id: jkwta6oexk
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Analyze Cost for AWS Using Perspectives
+slug: analyze-cost-for-aws
+description: This topic describes how to analyze costs for AWS using Perspectives.
+short_version: This topic describes how to analyze costs for AWS using Perspectives.
+tags:
+- perspectives
+- AWS
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-05-05T14:38:00.161337Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Analyze Cost for AWS Using Perspectives
+  description: This topic describes how to analyze costs for AWS using Perspectives.
+  short_version: This topic describes how to analyze costs for AWS using Perspectives.
+  body: '<p>Harness Cloud Cost Management (CCM) allows you to view your AWS costs
+    at a glance, understand what is costing the most, and analyze cost trends. CCM
+    Perspectives displays the data for all your Amazon Web Services (ECS, EC2, and
+    so on) and also helps you get details of:</p><ul><li>AWS cloud cost spending trend</li><li>AWS
+    service costing the most in the selected time range, for example, EC2 spent last
+    month</li><li>Primary cost contributor, for example, region, account, instance
+    type, or usage type</li><li>AWS spending by region, for example, US East or US
+    West</li></ul><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1nf0qcz4o0/1628001917245/screenshot-2021-08-03-at-8-14-46-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h3>Before
+    You Begin</h3><ul><li><a href="/article/80vbt5jv0q-set-up-cost-visibility-for-aws">Set
+    Up Cloud Cost Management for AWS</a></li></ul><h3>Step: Analyze AWS Cost</h3><p>The
+    Perspectives provides deep insights into your AWS costs. The cost includes all
+    the applicable credits and discounts.</p><ol><li>In <strong>Cloud Costs</strong>,
+    click <strong>Perspectives</strong>,<strong> </strong>and then click <strong>AWS</strong>.
+    The AWS services are displayed.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1nf0qcz4o0/1627976784816/screenshot-2021-08-03-at-12-54-49-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Select
+    the <strong>date range</strong> for the costs you want to analyze.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1nf0qcz4o0/1628002093381/screenshot-2021-08-03-at-8-17-59-pm.png"/></figure></li><li>You
+    can use the following options to Group By:<ul><li><strong>AWS</strong>: Under
+    AWS, you can Group by:<ul><li><strong>Service</strong>: Each of your active <a
+    href="https://aws.amazon.com/">AWS services</a> is displayed.</li><li><strong>Account</strong>:
+    Each AWS account you are using to connect Harness to AWS via a Harness AWS Cloud
+    Provider. This displays the Account Name along with the Account ID (if the Account
+    Name is available, else only the Account ID is displayed).<br/><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1nf0qcz4o0/1651761463647/screenshot-2022-05-05-at-8-07-26-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li><strong>I</strong><strong>nstance
+    Type</strong>: Each <a href="https://aws.amazon.com/ec2/instance-types/">Amazon
+    EC2 instance type</a> you are using.</li><li><strong>Usage Type</strong>: Usage
+    types are the units that each service uses to measure the usage of a specific
+    type of resource. For example, the BoxUsage:t2.micro(Hrs) usage type filters by
+    the running hours of Amazon EC2 t2.micro instances.</li></ul></li><li><strong>Region</strong>:
+    Each AWS region you are currently running services in.</li><li><strong>Product</strong>:
+    Each of your active products with its cloud costs.</li><li><strong>Label</strong>:
+    Each label that you assign to your AWS resources. You can select a label name
+    to get further granular details of your label.</li><li><strong>Tags</strong>:
+    Each <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">tag</a>
+    that you assign to your AWS resources. You can select a <strong>Tag name</strong>
+    to get further granular details of your tags.<div class="note-callout">For tags
+    to appear in the Perspective, you must activate the user-defined cost allocation
+    tags in the AWS Billing and Cost Management console. For more information, see
+    <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html">Activating
+    User-Defined Cost Allocation Tags</a>.</div>In CCM, the tag keys are updated as
+    the following:<ul><li>For the user-defined tags, <code>user_</code> prefix is
+    added.</li><li>For the AWS system tags, <code>aws_</code> prefix is added.</li><li>The
+    characters that do not follow regex <code>[a-zA-Z0-9_]</code> are changed to <code>_</code>.</li><li>The
+    tags are case-sensitive. If the tags are specified as <code>UserName</code> and
+    <code>username</code>, then the number suffix <code>_&lt;Number&gt;</code>is added
+    to the tag. For example, <code>UserName</code> and <code>username_1</code>.</li></ul></li></ul></li></ol><h3>Option:
+    Add Filter</h3><p>Perform the following steps to add filters.</p><ol><li>In <strong>Cloud
+    Costs</strong>, click <strong>Perspectives</strong>,<strong> </strong>and then
+    click <strong>AWS</strong>.</li><li>Click <strong>add filter</strong>.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1nf0qcz4o0/1628002479897/screenshot-2021-08-03-at-8-24-24-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure></li><li>Select
+    AWS, Region, Product, or Label.</li><li>Select the operator. The supported operators
+    are:<ul><li><strong>IN: The exact match operation is used to filter for the value
+    specified.</strong></li><li><strong>NOT IN: The exact match operation is used
+    to filter for the value that is not specified.</strong></li></ul></li><li>Select
+    value for your filter. You can select multiple values. You can also filter and
+    customize your result using the search option.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1nf0qcz4o0/1628002564030/screenshot-2021-08-03-at-8-25-48-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><h3>Next
+    Steps</h3><ul><li><a href="/article/dvspc6ub0v-create-cost-perspectives">Create
+    Cost Perspectives</a></li></ul><p></p>'
+  slug: analyze-cost-for-aws
+  tags:
+  - perspectives
+  - AWS
+  is_live: true

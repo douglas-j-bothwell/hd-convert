@@ -1,0 +1,97 @@
+type: article
+article_id: ljoofj2839
+user_id: 2te4j9f9g7
+category_id: qd6woyznd7
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Update ServiceNow Tickets in CD Stages
+slug: update-service-now-tickets-in-cd-stages
+description: This topic describes how to update Service Now Tickets in CD Stages.
+short_version: This topic describes how to update Service Now Tickets in CD Stages.
+tags:
+- ServiceNow
+- Approvals
+- CD
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-12T19:15:27.449233Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Update ServiceNow Tickets in CD Stages
+  description: This topic describes how to update Service Now Tickets in CD Stages.
+  short_version: This topic describes how to update Service Now Tickets in CD Stages.
+  body: '<p></p><p>Harness provides the ability to update <a href="https://docs.servicenow.com/bundle/rome-it-service-management/page/product/change-management/concept/c_ITILChangeManagement.html">ServiceNow
+    change requests</a> and <a href="https://docs.servicenow.com/bundle/rome-it-service-management/page/product/incident-management/concept/c_IncidentManagement.html">incident
+    tickets</a> from your Pipeline step using the <strong>ServiceNow Update</strong>
+    step.</p><p>You can add the Create ServiceNow step to a Harness CD stage or an
+    Approval stage and do the following:</p><ul><li>Automatically update change requests
+    in ServiceNow to track updates to your build, test, and production environments
+    by adding a <strong>ServiceNow Create</strong> step in your Pipeline.</li><li>Automatically
+    assign tickets in ServiceNow to triage and resolve incidents quickly in case of
+    Pipeline failures.</li></ul><h3>Before You Begin</h3><ul><li><a href="/article/illz8off8q-connect-to-service-now">Connect
+    to ServiceNow</a>: you can add a Harness ServiceNow Connector before or during
+    the Create ServiceNow step setup.</li><li>You must install the Harness Application
+    before using templates to updates ServiceNow tickets.​​</li><li>Make sure you
+    have the following roles:<ul><li><code>x_harne_harness_ap.integration_user_role​​</code></li><li><code>itil</code>​​</li></ul></li><li><a
+    href="/article/h1so82u9ub-service-now-approvals">Adding ServiceNow Approval Stages
+    and Steps</a></li></ul><h3>Review: ServiceNow User Roles</h3><p>You can install
+    the Harness app in your ServiceNow instance from the ServiceNow <a href="https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&amp;sl=sh">store</a>.
+    For more information, see <a href="https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba">Installation
+    Guide</a>.</p><p>To configure the Harness app in ServiceNow, you must have the
+    following roles:​</p><ul><li><code>x_harne_harness_ap.integration_user_role​​​</code>:
+    to access supported APIs, view Harness support details and access Templates.</li><li><code>itil</code>​:
+    for end-to-end integration with Harness platform.</li></ul><h3>UTC Timezone Only</h3><p>The
+    ServiceNow API only allows date time and time values in the UTC timezone. Consequently,
+    input for any datetime/time fields in Harness ServiceNow steps must be provided
+    in UTC format irrespective of time zone settings in your ServiceNow account.</p><p>The
+    timezone settings govern the <u>display value</u> of the settings not their <u>actual</u> value.</p><div
+    class="note-callout">The display values in the Harness UI depend on ServiceNow
+    timezone settings.</div><h3>Step 1: Add a ServiceNow Update Step</h3><p>In a Harness
+    CD or Approval stage, in <strong>Execution</strong>, click <strong>Add Step</strong>.</p><p>Click
+    <strong>ServiceNow Update</strong>. The ServiceNow Update settings appear.</p><p>In <strong>Name</strong>,
+    enter a name that describes the step.</p><p>In <strong>Timeout</strong>, enter
+    how long you want Harness to try to update the issue before failing (and initiating
+    the stage or step <a href="https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps">Failure
+    Strategy</a>).</p><p>In <strong>ServiceNow Connector</strong>, create or select
+    the <a href="/article/illz8off8q-connect-to-service-now">ServiceNow Connector</a>
+    to use.</p><p>In <strong>Ticket Type</strong>, select a ServiceNow ticket type
+    from the list.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/tjkyd945nh/1652104283702/screenshot-2022-05-09-at-7-20-39-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>Ticket Number</strong> enter the ServiceNow ticket number to update. You
+    can enter fixed values, provide runtime input, or provide an expression for this
+    field.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ljoofj2839/1652186450311/screenshot-2022-05-10-at-6-10-20-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Option:
+    Update Fields</h3><p>Select <strong>Update Fields</strong> to update specific
+    ServiceNow Fields in your ServiceNow ticket. This option enables you to access
+    multiple custom fields from your ServiceNow integration.</p><p>In <strong>Description</strong>,
+    enter a detailed description of the ticket.</p><p>In <strong>Short Description</strong>,
+    enter a summary of the ticket you are creating. This will be the title of the
+    ticket.</p><p>You can use Harness variables in the <strong>Short Description</strong> and <strong>Description</strong> fields.</p><p>Click
+    <strong>Fields</strong>. The <strong>Add ServiceNow Fields</strong> settings appear.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/tjkyd945nh/1652142934350/screenshot-2022-05-10-at-6-05-04-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can specify additional fields for the ticket by clicking <strong>Provide Field
+    List</strong>. The properties are specified as key-value pairs, the name being
+    the <strong>field name</strong> (not the label) in ServiceNow and a valid value.</p><h3>Option:
+    Apply From Template</h3><p>Select <strong>Apply From Template</strong> to update
+    a ticket using an existing template.</p><p>In <strong>Template Name</strong>,
+    enter the name of an existing template or provide an expression.</p><p>All the
+    fields corresponding to the Template are listed.</p><p>Click <strong>Apply Changes</strong>.</p><h3>See
+    Also</h3><ul><li><a href="/article/tjkyd945nh-create-service-now-tickets-in-cd-stages">Create
+    Service Now Tickets in CD Stages</a></li><li><a href="/article/ljoofj2839-update-service-now-tickets-in-cd-stages">Update
+    ServiceNow Tickets in CD Stages</a></li></ul><p></p>'
+  slug: update-service-now-tickets-in-cd-stages
+  tags:
+  - ServiceNow
+  - Approvals
+  - CD
+  is_live: true

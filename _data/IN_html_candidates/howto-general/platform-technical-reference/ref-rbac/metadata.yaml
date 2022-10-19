@@ -1,0 +1,14 @@
+type: category
+category_id: hqcewbahkx
+parent_category_id: akr4ga1dfq
+title: Users and Groups Reference
+description: ""
+slug: ref-rbac
+is_featured: false
+icon: https://files.helpdocs.io/i5nl071jo5/other/1576542554655/account.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Users and Groups Reference
+  description: ""
+  slug: ref-rbac

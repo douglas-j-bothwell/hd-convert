@@ -1,0 +1,271 @@
+type: article
+article_id: 8tsb75aldu
+user_id: mfr0nxh4be
+category_id: emle05cclq
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Install Cloud Foundry CLI Versions on the Harness Delegate
+slug: install-cloud-foundry-cli-6-and-7-on-harness-delegates
+description: The host running the Harness Delegate must run the Cloud Foundry CLI
+  in order to execute the CF commands used by Harness during a Tanzu Application Service
+  (TAS) deployment. You can follow the steps…
+short_version: The host running the Harness Delegate must run the Cloud Foundry CLI
+  in order to execute the CF commands used by Harness during a Tanzu Application Service
+  (TAS) deployment. You can follow the steps…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-02-03T21:08:11.61484Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Install Cloud Foundry CLI Versions on the Harness Delegate
+  description: ""
+  short_version: ""
+  body: '<p>The host running the Harness Delegate must run the Cloud Foundry CLI in
+    order to execute the CF commands used by Harness during a Tanzu Application Service
+    (TAS) deployment.</p><p>You can follow the steps in <a href="https://docs.pivotal.io/pivotalcf/2-3/cf-cli/install-go-cli.html"
+    target="_blank">Installing the cf CLI</a> from Tanzu to install the CLI, or you
+    can also use a Delegate Profile to install the CLI, as described in this topic.</p><p>The
+    version of the CF CLI you install on the Delegate should always match the TAS
+    features you are using in your Harness TAS deployment. For example, if you are
+    using <code>buildpacks</code> in your manifest.yml in your Harness Service, the
+    CLI you install on the Delegate should be version 3.6 or later.</p><p>This topic
+    provides examples of Delegate Profile scripts that install CF CLI 6 and 7:</p><ul><li><a
+    href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#review_using_cf_cli_versions">Review:
+    Using CF CLI Versions</a></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#review_delegate_capability_check_for_cf_cli">Review:
+    Delegate Capability Check for CF CLI</a><ul><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#limitations">Limitations</a></li></ul></li><li><a
+    href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#select_the_cf_cli_version_in_a_harness_service">Select
+    the CF CLI Version in a Harness Service</a></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#install_the_cf_cli_on_harness_delegates_using_a_package_manager">Install
+    the CF CLI on Harness Delegates using a Package Manager</a><ul><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#cf_cli_6">CF
+    CLI 6</a></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#cf_cli_7">CF
+    CLI 7</a></li></ul></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#install_the_cf_cli_on_harness_delegates_using_a_compressed_binary">Install
+    the CF CLI on Harness Delegates using a Compressed Binary</a><ul><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#cf_cli_6_2">CF
+    CLI 6</a></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#cf_cli_7_2">CF
+    CLI 7</a></li></ul></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#install_two_different_cf_cli_versions_using_a_compressed_binary">Install
+    Two Different CF CLI Versions using a Compressed Binary</a><ul><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#cf_cli_6_3">CF
+    CLI 6</a></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#cf_cli_7_3">CF
+    CLI 7</a></li><li><a href="https://docs.harness.io/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates#package_managers_take_precedence_over_compressed_binary">Package
+    Managers take Precedence over Compressed Binary</a></li></ul></li></ul><h3>Review:
+    Using CF CLI Versions</h3><p>Setting up Harness to use CF CLI versions involves
+    the following steps:</p><ol><li>Install the CF CLI version on a Delegate manually
+    or using a <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profile</a>.</li><li>Set the CF CLI version on the Harness Service(s) you are
+    using for TAS deployments.</li></ol><p>Details and options for these steps are
+    described below.</p><h3>Review: Delegate Capability Check for CF CLI</h3><p>Once
+    you have installed the CF CLI on a Delegate using a <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profile</a>, and set the CF CLI version on the Harness Services (both steps are
+    described below), the Harness Delegate performs the following capability check
+    at deployment runtime:</p><ol><li>When the Workflow starts, the Delegate capability
+    check determines whether a specific version is installed on available Delegates.<br/>The
+    required version is determined by whether or not the <strong>Enable CF CLI 7</strong>
+    option is selected in the Harness Service being deployed.<div class="note-callout">Currently,
+    the <strong>Enable CF CLI 7</strong> feature is behind the Feature Flag <code>CF_CLI7</code>.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a>
+    to enable the feature.</div></li><li>The Delegate capability check executes the
+    <code>cf --version</code> command on the Delegates to verify the required version.</li><li>If
+    the result of the version command is empty, the appropriate Delegate env variable
+    is examined: for CF 6 <code>CF_CLI6_PATH</code> and for CF 7 <code>CF_CLI6_PATH</code>.</li><li>If
+    there is no installed required version on the Delegate, the <code>No eligible
+    Delegate ….</code> error message appears in Harness.</li><li>If the capability
+    check finds a Delegate with the installed required version, the Delegate task
+    is sent to that Delegate and the capability check results are recorded and valid
+    for the next <strong>6 hours</strong>.</li></ol><h4>Limitations</h4><p>In some
+    cases, you might have uninstalled a CF CLI version and then installed a different
+    version within the 6 hour capability check window.</p><p>In these cases, the Delegate
+    might be looking for the old version. If so, you will see errors like: <code>Unable
+    to find CF CLI version on delegate, requested version: v6</code> or <code>Unable
+    to find CF CLI version on delegate, requested version: v7</code>.</p><h3>Select
+    the CF CLI Version in a Harness Service</h3><p>After you have installed the CF
+    CLI on a Delegate using a <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profile</a>, you must select the CF CLI version in the Harness Service you are
+    using for your TAS deployment.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/8tsb75aldu/1643395908566/clean-shot-2022-01-28-at-10-51-10.png"/></figure><ul><li><strong>CF
+    CLI 6:</strong> By default, Harness uses CF CLI 6. If you are using CF CLI 6,
+    then ensure that the <strong>Enable CF CLI 7</strong> setting is <u>not</u> selected.</li><li><strong>CF
+    CLI 7:</strong> To use CF CLI 7, select <strong>Enable CF CLI 7</strong>.</li></ul><div
+    class="note-callout">Currently, the <strong>Enable CF CLI 7</strong> feature is
+    behind the Feature Flag <code>CF_CLI7</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><h3>Install the
+    CF CLI on Harness Delegates using a Package Manager</h3><div class="note-callout">Two
+    different CF versions cannot be installed on the same Delegate using a package
+    manager, but it can be done using compressed binaries.</div><p>Create a <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profile</a>.</p><p>Add the following script to the Delegate Profile:</p><h4>CF
+    CLI 6</h4><p>This script installs CF CLI 6 and <code>autoscaler</code> and <code>Create-Service-Push</code>
+    plugins:</p><pre>apt-get install wget<br/>wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key
+    | apt-key add -<br/>echo &#34;deb https://packages.cloudfoundry.org/debian stable
+    main&#34; | tee /etc/apt/sources.list.d/cloudfoundry-cli.list<br/>apt-get update<br/>apt-get
+    install cf-cli<br/><br/># autoscaler plugin<br/># download and install pivnet<br/>wget
+    -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55
+    &amp;&amp; chmod +x pivnet &amp;&amp; mv pivnet /usr/local/bin;<br/>pivnet login
+    --api-token=&lt;replace with api token&gt;<br/><br/># download and install autoscaler
+    plugin by pivnet<br/>pivnet download-product-files --product-slug=&#39;pcf-app-autoscaler&#39;
+    --release-version=&#39;2.0.295&#39; --product-file-id=912441<br/>cf install-plugin
+    -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295<br/><br/># install Create-Service-Push
+    plugin from community<br/>cf install-plugin -r CF-Community &#34;Create-Service-Push&#34;<br/><br/>#
+    verify cf version<br/>cf --version<br/><br/># verify plugins<br/>cf plugins</pre><p></p><p>Apply
+    the Delegate Profile to the Delegate(s) that will be used for your TAS deployment.</p><p>The
+    output of <code>cf --version</code> should be:</p><pre>cf version 6.53.0+8e2b70a4a.2020-10-01</pre><p></p><p>The
+    output of <code>cf plugins</code> should be:</p><pre>App Autoscaler        2.0.295   autoscaling-apps              Displays
+    apps bound to the autoscaler<br/>App Autoscaler        2.0.295   autoscaling-events            Displays
+    previous autoscaling events for the app<br/>App Autoscaler        2.0.295   autoscaling-rules             Displays
+    rules for an autoscaled app<br/>App Autoscaler        2.0.295   autoscaling-slcs              Displays
+    scheduled limit changes for the app<br/>App Autoscaler        2.0.295   configure-autoscaling         Configures
+    autoscaling using a manifest file<br/>App Autoscaler        2.0.295   create-autoscaling-rule       Create
+    rule for an autoscaled app<br/>App Autoscaler        2.0.295   create-autoscaling-slc        Create
+    scheduled instance limit change for an autoscaled app<br/>App Autoscaler        2.0.295   delete-autoscaling-rule       Delete
+    rule for an autoscaled app<br/>App Autoscaler        2.0.295   delete-autoscaling-rules      Delete
+    all rules for an autoscaled app<br/>App Autoscaler        2.0.295   delete-autoscaling-slc        Delete
+    scheduled limit change for an autoscaled app<br/>App Autoscaler        2.0.295   disable-autoscaling           Disables
+    autoscaling for the app<br/>App Autoscaler        2.0.295   enable-autoscaling            Enables
+    autoscaling for the app<br/>App Autoscaler        2.0.295   update-autoscaling-limits     Updates
+    autoscaling instance limits for the app<br/>Create-Service-Push   1.3.2     create-service-push,
+    cspush   Works in the same manner as cf push, except that it will create services
+    defined in a services-manifest.yml file first before performing a cf push.</pre><p></p><h4>CF
+    CLI 7</h4><p>This script installs CF CLI 7 and <code>autoscaler</code> and <code>Create-Service-Push</code>
+    plugins:</p><pre>apt-get install wget<br/>wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key
+    | apt-key add -<br/>echo &#34;deb https://packages.cloudfoundry.org/debian stable
+    main&#34; | tee /etc/apt/sources.list.d/cloudfoundry-cli.list<br/>sudo apt-get
+    update<br/>sudo apt-get install cf7-cli<br/><br/># autoscaler plugin<br/># download
+    and install pivnet<br/>wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55
+    &amp;&amp; chmod +x pivnet &amp;&amp; mv pivnet /usr/local/bin;<br/>pivnet login
+    --api-token=&lt;replace with api token&gt;<br/><br/># download and install autoscaler
+    plugin by pivnet<br/>pivnet download-product-files --product-slug=&#39;pcf-app-autoscaler&#39;
+    --release-version=&#39;2.0.295&#39; --product-file-id=912441<br/>cf install-plugin
+    -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295<br/><br/># install Create-Service-Push
+    plugin<br/># unable to use Create-Service-Push from community repo due to following
+    error<br/># https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin/issues/13<br/>wget
+    https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin/releases/download/1.3.2/CreateServicePushPlugin.linux64<br/>cf
+    install-plugin CreateServicePushPlugin.linux64<br/><br/># verify cf version<br/>cf
+    --version<br/><br/># verify plugins<br/>cf plugins</pre><p></p><p>Apply the Delegate
+    Profile to the Delegate(s) that will be used for your TAS deployment.</p><p>The
+    output of <code>cf --version</code> should be:</p><pre>cf version 7.2.0+be4a5ce2b.2020-12-10</pre><p></p><p>The
+    output of <code>cf plugins</code> should be the same as the output for CF CLI
+    6.</p><h3>Install the CF CLI on Harness Delegates using a Compressed Binary</h3><div
+    class="note-callout">Two different CF versions cannot be installed on the same
+    Delegate using a package manager, but it can be done using compressed binaries.</div><p>Create
+    a <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profile</a>.</p><p>Add the following script to the Delegate Profile:</p><h4>CF
+    CLI 6</h4><p>This script installs the CF CLI 6 compressed binary and <code>autoscaler</code>
+    and <code>Create-Service-Push</code> plugins:</p><pre># download compressed binary<br/>curl
+    -L &#34;https://packages.cloudfoundry.org/stable?release=linux64-binary&amp;source=github&amp;version=v6&#34;
+    | tar -zx<br/><br/># ...move it to /usr/local/bin or a location you know is in
+    your $PATH<br/>mv cf /usr/local/bin<br/><br/># autoscaler plugin<br/># download
+    and install pivnet<br/>apt-get install wget<br/>wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55
+    &amp;&amp; chmod +x pivnet &amp;&amp; mv pivnet /usr/local/bin;<br/>pivnet login
+    --api-token=&lt;replace with api token&gt;<br/><br/># download and install autoscaler
+    plugin by pivnet<br/>pivnet download-product-files --product-slug=&#39;pcf-app-autoscaler&#39;
+    --release-version=&#39;2.0.295&#39; --product-file-id=912441<br/>cf install-plugin
+    -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295<br/><br/># install Create-Service-Push
+    plugin from community<br/>cf install-plugin -r CF-Community &#34;Create-Service-Push&#34;<br/><br/>#
+    verify cf version<br/>cf --version<br/><br/># verify plugins<br/>cf plugins</pre><p></p><p>If
+    there is a requirement to install a specific CLI version, update the <code>version</code>
+    path param in the above download URL with a specific version.</p><p>Let’s say
+    you want to install <code>version=6.52.0</code> . The download URL should be <code>https://packages.cloudfoundry.org/stable?release=linux64-binary&amp;source=github&amp;version=6.52.0</code>.</p><p>Apply
+    the Delegate Profile to the Delegate(s) that will be used for your Tanzu deployment.</p><p></p><h4>CF
+    CLI 7</h4><p>This script installs the CF CLI 7 compressed binary, <code>autoscaler</code>
+    and <code>Create-Service-Push</code> plugins:</p><pre># download compressed binary<br/>curl
+    -L &#34;https://packages.cloudfoundry.org/stable?release=linux64-binary&amp;version=v7&amp;source=github&#34;
+    | tar -zx<br/><br/># ...move it to /usr/local/bin or a location you know is in
+    your $PATH, (&#34;cf&#34; is symlink)<br/>mv cf7 /usr/local/bin<br/>mv cf /usr/local/bin<br/><br/>#
+    autoscaler plugin<br/># download and install pivnet to /tmp<br/>apt-get install
+    wget<br/>wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55
+    &amp;&amp; chmod +x pivnet &amp;&amp; mv pivnet /usr/local/bin;<br/>pivnet login
+    --api-token=&lt;replace with api token&gt;<br/><br/># download and install autoscaler
+    plugin by pivnet<br/>pivnet download-product-files --product-slug=&#39;pcf-app-autoscaler&#39;
+    --release-version=&#39;2.0.295&#39; --product-file-id=912441<br/>cf install-plugin
+    -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295<br/><br/># install Create-Service-Push
+    plugin<br/># unable to use Create-Service-Push from community repo due to following
+    error<br/># https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin/issues/13<br/>wget
+    https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin/releases/download/1.3.2/CreateServicePushPlugin.linux64<br/>cf
+    install-plugin CreateServicePushPlugin.linux64<br/><br/># verify cf version<br/>cf
+    --version<br/><br/># verify plugins<br/>cf plugins</pre><p></p><div class="note-callout">When
+    you download and extract the package, you will get the CF CLI 7 executable (<strong>cf7</strong>)
+    and its symlink (<strong>cf</strong>). The symlink must also be moved to the same
+    location as the executable as it is used in the <strong>CF CLI Command</strong> step
+    that use <code>cf</code>.</div><p>If there is a requirement to install a specific
+    CLI version, update the <code>version</code> path param from the above download
+    URL with a specific version.</p><p>Let’s say you want to install <code>version=7.2.0</code>
+    . The download URL should be <code>https://packages.cloudfoundry.org/stable?release=linux64-binary&amp;source=github&amp;version=7.2.0</code></p><p>Apply
+    the Delegate Profile to the Delegate(s) that will be used for your Tanzu deployment.</p><p></p><h3>Install
+    Two Different CF CLI Versions using a Compressed Binary</h3><p>Let&#39;s look
+    at a few use cases using two different CF CLI version compressed binaries:</p><ul><li>Install
+    one CLI version by package manager and another version using a compressed binary
+    on the same Delegate.</li><li>Install both versions using compressed binaries.</li><li>Install
+    a compressed binary where a security scan is done and included a security fix.</li></ul><p>In
+    order to satisfy the above cases, we can use the following approach.</p><p>Create
+    a <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profile</a>.</p><p>Add the following script to the Delegate Profile:</p><h4>CF
+    CLI 6</h4><p>This script installs the CF CLI 6 compressed binary and <code>autoscaler</code>
+    and <code>Create-Service-Push</code> plugins:</p><pre># download compressed binary,
+    provide url to compressed binary<br/>curl -L &#34;&lt;url-to-commpressed-cli6-binary&gt;&#34;
+    | tar -zx<br/><br/># ...move it to path on your file system<br/>mv cf /&lt;path-to-cli6-binary&gt;<br/><br/>#
+    autoscaler plugin<br/># download and install pivnet<br/>apt-get install wget<br/>wget
+    -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55
+    &amp;&amp; chmod +x pivnet &amp;&amp; mv pivnet /usr/local/bin;<br/>pivnet login
+    --api-token=&lt;replace with api token&gt;<br/><br/># download and install autoscaler
+    plugin by pivnet<br/>pivnet download-product-files --product-slug=&#39;pcf-app-autoscaler&#39;
+    --release-version=&#39;2.0.295&#39; --product-file-id=912441<br/>&lt;path-to-cli6-binary&gt;
+    install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295<br/><br/>#
+    install Create-Service-Push plugin from community<br/>&lt;path-to-cli6-binary&gt;
+    install-plugin -r CF-Community &#34;Create-Service-Push&#34;<br/><br/># verify
+    cf version<br/>&lt;path-to-cli6-binary&gt; --version<br/><br/># verify plugins<br/>&lt;path-to-cli6-binary&gt;
+    plugins</pre><p></p><div class="note-callout"><code>&lt;path-to-cli6-binary&gt;</code>
+    should include the full path to CF. For example, if you install <code>cf</code>
+    to the location <code>/home/cflibs/v6/</code>, then <code>&lt;path-to-cli6-binary&gt;</code>
+    should be replaced by <code>/home/cflibs/v6/cf</code>.</div><p>Apply the Delegate
+    Profile to the Delegate(s) that will be used for your TAS deployment.</p><p>Update
+    the <code>CF_CLI6_PATH</code> env variable in Delegate config file and start/restart
+    the Delegate.</p><p>The value of the <code>CF_CLI6_PATH</code> env variable should
+    be <code>&lt;path-to-binary-cf&gt;</code> , for example <code>CF_CLI6_PATH=/home/cflibs/v6/cf</code>.</p><p></p><h4>CF
+    CLI 7</h4><p>This script installs the CF CLI 7 compressed binary and <code>autoscaler</code>
+    and <code>Create-Service-Push</code> plugins:</p><pre># download compressed binary,
+    provide url to compressed binary<br/>curl -L &#34;&lt;url-to-commpressed-cli7-binary&gt;&#34;
+    | tar -zx<br/><br/># ...move it to path on your file system<br/>mv cf7 /&lt;path-to-cli7-binary&gt;<br/>mv
+    cf /&lt;path-to-cli7-binary&gt;<br/><br/># autoscaler plugin<br/># download and
+    install pivnet<br/>apt-get install wget<br/>wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55
+    &amp;&amp; chmod +x pivnet &amp;&amp; mv pivnet /usr/local/bin;<br/>pivnet login
+    --api-token=&lt;replace with api token&gt;<br/><br/># download and install autoscaler
+    plugin by pivnet<br/>pivnet download-product-files --product-slug=&#39;pcf-app-autoscaler&#39;
+    --release-version=&#39;2.0.295&#39; --product-file-id=912441<br/>&lt;path-to-cli7-binary&gt;
+    install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295<br/><br/>#
+    install Create-Service-Push plugin<br/># unable to use Create-Service-Push from
+    community repo due to following error<br/># https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin/issues/13<br/>wget
+    https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin/releases/download/1.3.2/CreateServicePushPlugin.linux64<br/>&lt;path-to-cli7-binary&gt;
+    install-plugin CreateServicePushPlugin.linux64<br/><br/># verify cf version<br/>&lt;path-to-cli7-binary&gt;
+    --version<br/><br/># verify plugins<br/>&lt;path-to-cli7-binary&gt; plugins</pre><p></p><div
+    class="note-callout">When you download and extract the package, you will get the
+    CF CLI 7 executable (<strong>cf7</strong>) and its symlink (<strong>cf</strong>).
+    The symlink must also be moved to the same location as the executable as it is
+    used in the <strong>CF CLI Command</strong> step that use <code>cf</code>.</div><div
+    class="note-callout"><code>&lt;path-to-cli7-binary&gt;</code> should include the
+    full path to CF. For example, if you install <code>cf</code> to the location <code>/home/cflibs/v7/</code>,
+    then <code>&lt;path-to-cli7-binary&gt;</code> should be replaced by <code>/home/cflibs/v7/cf</code>.</div><p>Apply
+    the Delegate Profile to the Delegate(s) that will be used for your TAS deployment.</p><p>Update
+    the <code>CF_CLI7_PATH</code> env variable in the Delegate config file and start/restart
+    the Delegate.</p><p>The value of the <code>CF_CLI7_PATH</code> env variable should
+    be <code>&lt;path-to-binary-cf&gt;</code> , for example <code>CF_CLI7_PATH=/home/cflibs/v7/cf</code>.</p><h4>Package
+    Managers take Precedence over Compressed Binary</h4><p>Two different CF versions
+    cannot be installed on the same Delegate by using a package manager, but it can
+    be done using compressed binaries.</p><p>If you install the same CF CLI versions
+    on the same Delegate, one by a package manager and another using a compressed
+    binary, the CF installed by CF package manager takes precedence over the compressed
+    binary during the Delegate capability check.</p><h4>Notes</h4><ul><li>The two
+    different binary versions should be installed in different folders and different
+    locations and the commands in the <strong>CF CLI Command</strong> step should
+    be updated for these.<br/>For example, if you install one version in <code>home/cfcli/cf</code>
+    and a different version in <code>home/cfcli/cf7</code>, when Harness tries to
+    execute CF CLI commands in the <strong>CF CLI Command</strong> step that simply
+    use <code>cf</code>, it will aways use the <code>home/cfcli/cf</code> version.</li><li>If
+    you install plugins for one version you do not need to install then for the second
+    version. Plugins should be compatible for both versions.</li></ul><p></p>'
+  slug: install-cloud-foundry-cli-6-and-7-on-harness-delegates
+  tags: []
+  is_live: true

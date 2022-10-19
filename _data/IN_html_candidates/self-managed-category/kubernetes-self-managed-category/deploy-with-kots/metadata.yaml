@@ -1,0 +1,14 @@
+type: category
+category_id: vu99714ib1
+parent_category_id: v313myup55
+title: Install with KOTS
+description: ""
+slug: deploy-with-kots
+is_featured: false
+icon: ""
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Install with KOTS
+  description: ""
+  slug: deploy-with-kots

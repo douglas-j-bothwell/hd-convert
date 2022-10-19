@@ -1,0 +1,102 @@
+type: article
+article_id: 35t1zwd5s5
+user_id: mfr0nxh4be
+category_id: qx7uza8xbv
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: ChaosCTL Reference
+slug: chaos-ctl-reference
+description: You can use chaosctl to create Harness Chaos Engineering Delegates, Projects,
+  and manage multiple accounts.
+short_version: You can use chaosctl to create Harness Chaos Engineering Delegates,
+  Projects, and manage multiple accounts.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-08T21:53:19.59156Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: ChaosCTL Reference
+  description: You can use chaosctl to create Harness Chaos Engineering Delegates,
+    Projects, and manage multiple accounts.
+  short_version: You can use chaosctl to create Harness Chaos Engineering Delegates,
+    Projects, and manage multiple accounts.
+  body: <p>The chaosctl command-line tool helps you manage Harness Chaos Engineering.
+    You can use chaosctl to create Harness Chaos Engineering Delegates, Projects,
+    and manage multiple accounts.</p><h3>Usage</h3><p>For detailed information on
+    using chaosctl, including a complete list of chaosctl operations, see the chaosctl
+    reference documentation.</p><ul><li><a href="https://github.com/chaosnative/chaosctl/blob/master/Usage.md"
+    target="_blank">Non-Interactive mode</a></li><li><a href="https://github.com/chaosnative/chaosctl/blob/master/Usage_interactive.md"
+    target="_blank">Interactive mode</a></li></ul><h3>Requirements</h3><p>The chaosctl
+    CLI requires the following:</p><ul><li><strong>kubeconfig:</strong> chaosctl needs
+    the kubeconfig of the Kubernetes cluster hosting Harness Chaos Engineering Delegates.
+    The CLI currently uses the default path of kubeconfig, <code>~/.kube/config</code>.</li><li><strong>kubectl:</strong>
+    chaosctl is using kubectl under the hood to apply manifests. To install kubectl,
+    go to <a href="https://kubernetes.io/docs/tasks/tools/#kubectl">kubectl</a>.</li></ul><p></p><h3>Compatibility
+    Matrix</h3><p>The following compatibility matrix displays chaosctl compatibility
+    with different Harness Chaos Engineering (HCE) versions:</p><p></p><table><tbody><tr><td><p><strong>Chaosctl
+    version</strong></p></td><td><p><strong>HCE On-Prem</strong></p></td><td><p><strong>HCE
+    SaaS</strong></p></td></tr><tr><td><p>0.2.0</p></td><td><p>2.8.0</p></td><td><p>Not
+    supported</p></td></tr><tr><td><p>0.3.1</p></td><td><p>Not supported</p></td><td><p>Supported</p></td></tr><tr><td><p>0.4.0</p></td><td><p>2.11.0
+    and above</p></td><td><p>Not supported</p></td></tr></tbody></table><p></p><p>For
+    the latest updates to this matrix, go to the <a href="https://github.com/chaosnative/chaosctl/blob/main/README.md"
+    target="_blank">chaosctl repo</a>.</p><h3>Installation</h3><p>To install the latest
+    version of chaosctl, follow the steps for your platform.</p><h4>Downloads</h4><table><tbody><tr><td><p><strong>Platforms</strong></p></td><td><p><strong>main
+    (Unreleased)</strong></p></td><td><p><strong>v0.2.0</strong></p></td><td><p><strong>v0.3.1</strong></p></td><td><p><strong>v0.4.0</strong></p></td></tr><tr><td><p>chaosctl-darwin-amd64
+    (MacOS)</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-darwin-amd64-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-darwin-amd64-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-darwin-amd64-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-darwin-amd64-v0.4.0.tar.gz">Click
+    here</a></p></td></tr><tr><td><p>chaosctl-linux-386</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-386-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-386-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-386-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-386-v0.4.0.tar.gz">Click
+    here</a></p></td></tr><tr><td><p>chaosctl-linux-amd64</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-amd64-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-amd64-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-amd64-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-amd64-v0.4.0.tar.gz">Click
+    here</a></p></td></tr><tr><td><p>chaosctl-linux-arm</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm-v0.4.0.tar.gz">Click
+    here</a></p></td></tr><tr><td><p>chaosctl-linux-arm64</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm64-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm64-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm64-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-linux-arm64-v0.4.0.tar.gz">Click
+    here</a></p></td></tr><tr><td><p>chaosctl-windows-386</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-386-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-386-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-386-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-386-v0.4.0.tar.gz">Click
+    here</a></p></td></tr><tr><td><p>chaosctl-windows-amd64</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-amd64-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-amd64-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-amd64-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-amd64-v0.4.0.tar.gz">Click
+    here</a></p></td></tr><tr><td><p>chaosctl-windows-arm</p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-arm-main.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-arm-v0.2.0.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-arm-v0.3.1.tar.gz">Click
+    here</a></p></td><td><p><a href="https://chaosctl.chaosnative.com/chaosctl-windows-arm-v0.4.0.tar.gz">Click
+    here</a></p></td></tr></tbody></table><p></p><h4>Installation Steps</h4><p>Follow
+    the steps for your operating system.</p><h5>Linux/MacOS</h5><ol><li>Extract the
+    binary:</li></ol><pre>tar -zxvf chaosctl-&lt;OS&gt;-&lt;ARCH&gt;-&lt;VERSION&gt;.tar.gz</pre><ol><li
+    style="counter-increment:li 1" start="2">Provide necessary permissions:</li></ol><pre>chmod
+    +x chaosctl</pre><ol><li style="counter-increment:li 2" start="3">Move the chaosctl
+    binary to /usr/local/bin/chaosctl.</li></ol><div class="note-callout">Make sure
+    to use root user or use sudo as a prefix.</div><pre>mv chaosctl /usr/local/bin/chaosctl</pre><ol><li
+    style="counter-increment:li 3" start="4">Run the chaosctl command in Linux/macOS:</li></ol><pre>chaosctl
+    &lt;command&gt; &lt;subcommand&gt; &lt;subcommand&gt; [options and parameters]</pre><h5>Windows</h5><ol><li>Extract
+    the binary from the zip file using any extraction tool.</li><li>Run the chaosctl
+    command in Windows:</li></ol><pre>chaosctl.exe &lt;command&gt; &lt;subcommand&gt;
+    &lt;subcommand&gt; [options and parameters]</pre><ol><li style="counter-increment:li
+    2" start="3">Check the version of the chaosctl:</li></ol><pre>chaosctl version</pre><p></p><p></p>
+  slug: chaos-ctl-reference
+  tags: []
+  is_live: true

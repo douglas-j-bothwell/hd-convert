@@ -1,0 +1,86 @@
+type: article
+article_id: 8p2ze4u25w
+user_id: mfr0nxh4be
+category_id: gkm7rtubpk
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Use Terraform Outputs in Workflow Steps
+slug: use-terraform-outputs-in-workflow-steps
+description: Use variable expressions to reference Terraform outputs.
+short_version: Use variable expressions to reference Terraform outputs.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-08-17T20:24:49.537838Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use Terraform Outputs in Workflow Steps
+  description: Use variable expressions to reference Terraform outputs.
+  short_version: Use variable expressions to reference Terraform outputs.
+  body: '<p>When you use a Terraform Provision or Terraform Apply step in a Workflow,
+    any of the Terraform script outputs in the Terraform script can be used in Workflow
+    settings that follow the step.</p><p>You reference a Terraform output with a Harness
+    variable expression in the format <code>${terraform.output_name}</code>.</p><div
+    class="note-callout">You can reference the output regardless of whether the Terraform
+    Infrastructure Provisioner is used in the Infrastructure Definition in the Workflow
+    settings.</div><p>This topic demonstrates how to use these expressions in other
+    Workflow steps.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#limitations">Limitations</a></li><li><a href="#step_1_add_a_workflow_step">Step
+    1: Add a Workflow Step</a></li><li><a href="#step_2_enter_the_output_variable_expression">Step
+    2: Enter the Output Variable Expression</a></li><li><a href="#notes">Notes</a></li></ul><h3>Before
+    You Begin</h3><p>This topic assumes you have read the following:</p><ul><li><a
+    href="/article/hh52ews03d-terraform-provisioning-with-harness">Terraform Provisioning
+    with Harness</a></li><li><a href="/article/llp7a6lr1c-terraform-delegates">Set
+    Up Your Harness Account for Terraform</a></li><li><a href="/article/ux2enus2ku-add-terraform-scripts">Add
+    Terraform Scripts</a></li><li><a href="/article/a2f2bh35el-mapgcp-kube-terraform-infra">Map
+    Dynamically Provisioned Infrastructure using Terraform</a></li><li><a href="/article/uxwih21ps1-terraform-provisioner-step">Provision
+    using the Terraform Provision Step</a></li><li><a href="/article/jaxppd8w9j-using-the-terraform-apply-command">Using
+    the Terraform Apply Command</a></li></ul><p></p><h3>Limitations</h3><ul><li>Terraform
+    outputs are limited to the Workflow where the Terraform plan is applied. You cannot
+    run a Terraform plan in one Workflow in a Pipeline and reference its outputs in
+    another Workflow in a Pipeline.<br/>You can, however, publish the values of the
+    output variables from a Shell Script step, and then scope that published variable
+    to the Pipeline. Now the output value can be passed to another Workflow in the
+    Pipeline. See <a href="/article/gkmgrz9shh-how-to-pass-variables-between-workflows">Pass
+    Variables between Workflows</a>.</li><li>You can only reference a Terraform output
+    once the Terraform plan has been applied in the same Workflow. If a Terraform
+    Provision or Terraform Apply step is set to run as a plan, you cannot reference
+    its outputs.<br/>Once the plan has been applied by another Terraform Provision
+    or Terraform Apply step, you can reference the Terraform script outputs. See <a
+    href="/article/xthfj92dys-terraform-dry-run">Perform a Terraform Dry Run</a>.</li></ul><h3>Step
+    1: Add a Workflow Step</h3><p>This topic assumes you have a Workflow that uses
+    a Terraform Provision or Terraform Apply step.</p><p>Add a Workflow step after
+    the Terraform Provision or Terraform Apply step where you want to use the Terraform
+    script outputs.</p><p>Typically, you add a <a href="/article/1fjrjbau7x-capture-shell-script-step-output">Shell
+    Script</a> step.</p><h3>Step 2: Enter the Output Variable Expression</h3><p>In
+    the Shell Script (or other) step, you can reference any Terraform output using
+    the variable expression in the format <code>${terraform.output_name}</code>.</p><p>For
+    example, let&#39;s say you have an output for a Kubernetes cluster name. You can
+    add a Shell Script step in your Workflow and use <code>echo ${terraform.clusterName}</code>
+    to print the value.</p><p>You can see the Terraform log display the output <code>clusterName
+    = us-central1-a/harness-test</code> in the following Terraform Provision step:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1570235858384/image.png"/></figure><p>Next,
+    you could add a Shell Script step that uses the Terraform output variable <code>${terraform.clusterName}</code>:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1570235776573/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p>In the Shell Script step
+    in the deployment, you can see the value <code>us-central1-a/harness-test</code>
+    printed:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1570235833279/image.png"/></figure><p></p><h3>Notes</h3><p>Terraform
+    output expressions cannot be evaluated or published under the following conditions:</p><ul><li>The
+    Shell Script step script uses <code>exit 0</code>. Bash exit prevents outputs
+    from being published.</li><li>No Terraform apply is performed by the Terraform
+    Provision or Terraform Apply steps. In some cases, a Terraform plan might be run
+    using the <a href="/article/xthfj92dys-terraform-dry-run">Set Terraform as Plan</a>
+    option, but no further step performs the Terraform apply. If there is no Terraform
+    apply, there are no output values.</li></ul><p></p>'
+  slug: use-terraform-outputs-in-workflow-steps
+  tags: []
+  is_live: true

@@ -1,0 +1,103 @@
+type: article
+article_id: cii3t8ra3v
+user_id: mfr0nxh4be
+category_id: o1zhrfo8n5
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add a Google Cloud Platform (GCP) Connector
+slug: connect-to-google-cloud-platform-gcp
+description: Add a Harness GCP Connector.
+short_version: Add a Harness GCP Connector.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-03T22:28:17.805451Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add a Google Cloud Platform (GCP) Connector
+  description: Add a Harness GCP Connector.
+  short_version: Add a Harness GCP Connector.
+  body: '<p>Google Cloud Platform (GCP) is integrated with Harness using a Harness
+    GCP Connector. You can use GCP with Harness for obtaining artifacts, communicating
+    with GCP services, provisioning infrastructure, and deploying microservices, and
+    other workloads.</p><p>This topic explains how to set up the GCP Connector.</p><div
+    class="note-callout"><strong>What IAM roles should my GCP account have?</strong>
+    What IAM roles and policies needed by the GCP account used in the Connector depend
+    on what GCP service you are using with Harness and what operations you want Harness
+    to perform in GCP. For a list of roles and policies, see <a href="/article/yykfduond6-gcs-connector-settings-reference">Google
+    Cloud Platform (GCP) Connector Settings Reference</a>.</div><h3>Before You Begin</h3><ul><li><a
+    href="https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li></ul><h3>Limitations</h3><p>Harness supports
+    GKE 1.19 and later.</p><p>If you use a version prior to GKE 1.19, please enable
+    Basic Authentication. If Basic authentication is inadequate for your security
+    requirements, use the <a href="/article/1gaud2efd4-add-a-kubernetes-cluster-connector">Kubernetes
+    Cluster Connector</a>.</p><h3>Supported Platforms and Technologies</h3><p>For
+    a list of the platforms and technologies supported by Harness, see <a href="/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h3>Review: Connecting to Kubernetes Clusters</h3><p>You
+    can connect to a Kubernetes cluster running in GCP using a GCP Connector or the
+    platform-agnostic Kubernetes Cluster Connector.</p><p>See <a href="/article/sjjik49xww-kubernetes-cluster-connector-settings-reference">Kubernetes
+    Cluster Connector Settings Reference</a>.</p><h3>Review: IAM Roles and Policies
+    for the Connector</h3><p>The IAM roles and policies needed by the GCP account
+    used in the Connector depend on what GCP service you are using with Harness and
+    what operations you want Harness to perform in GCP.</p><p>For a list of roles
+    and policies, see <a href="/article/yykfduond6-gcs-connector-settings-reference">Google
+    Cloud Platform (GCP) Connector Settings Reference</a>.</p><div class="note-callout">The
+    <a href="https://cloud.google.com/iam/docs/simulating-access" target="_blank">GCP Policy
+    Simulator</a> is a useful tool for evaluating policies and access.</div><h3>Review:
+    Switching IAM Policies</h3><p>If the IAM role used by your GCP Connector does
+    not have the policies required by the GCP service you want to access, you can
+    modify or switch the role.</p><p>You simply change the role assigned to the GCP
+    account or the Harness Delegate your GCP Connector is using.</p><p>When you switch
+    or modify the IAM role, it might take up to 5 minutes to take effect.</p><h3>Review:
+    GCP Workload Identity</h3><p>If you installed the Harness <a href="/article/4ax6q6dxa4-install-an-immutable-kubernetes-delegate">Kubernetes
+    Delegate</a> in a Kubernetes cluster (in GKE) that has <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster"
+    target="_blank">GCP Workload Identity</a> enabled and <u>uses the same service
+    account and node pool annotation</u>, the Google Cloud Platform (GCP) Connector
+    will inherit these credentials if it uses that Delegate.</p><h3>Step 1: Add a
+    GCP Connector</h3><p>Open a Harness Project.</p><p>In <strong>Project Setup</strong>,
+    click <strong>Connectors</strong>.</p><p>Click <strong>New Connector</strong>,
+    and click <strong>GCP</strong>. The GCP Connector settings appear.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/cii3t8ra3v/1631916603062/clean-shot-2021-09-17-at-15-09-54-2-x.png"/></figure><p>In <strong>Name</strong>,
+    enter a name for this connector.</p><p>Harness automatically creates the corresponding
+    Id (<a href="/article/li0my8tcz3-entity-identifier-reference">entity identifier</a>).</p><p>Click
+    <strong>Continue</strong>.</p><h3>Step 2: Enter Credentials</h3><p>There are two
+    options for authenticating with GCP:</p><ul><li><strong>Specify credentials here:</strong>
+    use a GCP Service Account Key.</li><li><strong>Use the credentials of a specific
+    Harness Delegate:</strong> have the Connector inherit the credentials used by
+    the Harness Delegate running in GCP. The GCP IAM role used when installing the
+    Delegate in GCP is used for authentication by the GCP Connector.<br/>For example,
+    you can add or select a Harness Kubernetes Delegate running in Google Kubernetes
+    Engine (GKE).</li></ul><p>All of the settings for these options are described
+    in detail in <a href="/article/yykfduond6-gcs-connector-settings-reference">Google
+    Cloud Platform (GCP) Connector Settings Reference</a>.</p><h3>Step 3: Set Up Delegates</h3><p>Harness
+    uses GCP Connectors at Pipeline runtime to authenticate and perform operations
+    with GCP. Authentications and operations are performed by Harness Delegates.</p><p>You
+    can select <strong>Any Available Harness Delegate</strong> and Harness will select
+    the Delegate. For a description of how Harness picks Delegates, see <a href="/article/2k7lnc7lvl-delegates-overview">Delegates
+    Overview</a>.</p><p>You can use Delegate Tags to select one or more Delegates.
+    For details on Delegate Tags, see <a href="/article/nnuf8yv13o-select-delegates-with-selectors">Select
+    Delegates with Tags</a>.</p><p>If you need to install a Delegate, see <a href="/article/re8kk0ex4k-delegate-installation-overview">Delegate
+    Installation Overview</a>.</p><p>Click <strong>Save and Continue</strong>.</p><p>Harness
+    tests the credentials you provided using the Delegates you selected.</p><p>If
+    the credentials fail, you&#39;ll see an error. Check your credentials by using
+    them with the GCP CLI or console.</p><div class="note-callout">The <a href="https://cloud.google.com/iam/docs/simulating-access"
+    target="_blank">GCP Policy Simulator</a> is a useful tool for evaluating policies
+    and access.</div><p>The credentials might work fine for authentication, but might
+    fail later when you use the Connector with a Pipeline because the IAM role the
+    Connector is using does not have the roles and policies needed for the Pipeline&#39;s
+    operations.</p><p>If you run into any error with a GCP Connector, verify that
+    the IAM roles and policies it using are correct.</p><p>For a list of roles and
+    policies, see <a href="/article/yykfduond6-gcs-connector-settings-reference">Google
+    Cloud Platform (GCP) Connector Settings Reference</a>.</p><p>Click <strong>Finish</strong>.</p><p></p>'
+  slug: connect-to-google-cloud-platform-gcp
+  tags: []
+  is_live: true

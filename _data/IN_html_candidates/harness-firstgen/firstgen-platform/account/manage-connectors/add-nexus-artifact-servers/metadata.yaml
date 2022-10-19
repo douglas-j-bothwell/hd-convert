@@ -1,0 +1,70 @@
+type: article
+article_id: 6y6b8pkm12
+user_id: wz6xkfcc9i
+category_id: ll7h8ktlwe
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Add Nexus Artifact Servers
+slug: add-nexus-artifact-servers
+description: Connect your Nexus artifact servers with Harness.
+short_version: Connect your Nexus artifact servers with Harness.
+tags:
+- Nexus
+- Artifact Server
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-23T22:29:53.663471Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Nexus Artifact Servers
+  description: Connect your Nexus artifact servers with Harness.
+  short_version: Connect your Nexus artifact servers with Harness.
+  body: '<p></p><p>Connect your Nexus artifact servers with Harness.</p><h3>Before
+    You Begin</h3><ul><li>See <a href="/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a>.</li></ul><p></p><h3>Visual Summary</h3><p>Here&#39;s an example
+    configuration of the Nexus Artifaction Source addition.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587761468278/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p></p><h3>Review:
+    Nexus Permissions</h3><p>Make sure the connected user account has the following
+    permissions in the Nexus Server.</p><ul><li>Repo: All repositories (Read)</li><li>Nexus
+    UI: Repository Browser</li></ul><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6y6b8pkm12/1589570434373/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>If
+    used as a Docker Repo, the user needs:</p><ul><li>List images and tags</li><li>Pull
+    images</li></ul><p>See <a href="https://help.sonatype.com/display/NXRM2/Managing+Security"
+    target="_blank">Nexus Managing Security</a>.</p><p></p><h3>Step 1: Select Nexus
+    Artifact Server</h3><p>To connect to an artifact server, do the following:</p><ol><li>Click
+    <strong>Setup</strong>.</li><li>Click <strong>Connectors</strong>.</li><li>Click
+    <strong>Artifact Servers</strong>.</li><li>Click <strong>Add Artifact Server</strong>.</li><li>In
+    <strong>Type</strong>, select <strong>Nexus</strong>.</li></ol><h3>Step 2: Nexus
+    URL</h3><p>In <strong>Nexus U</strong><strong>RL</strong>, enter the URL that
+    you use to connect to your Nexus server. For example, <code>https://nexus2.dev.mycompany.io</code>.</p><h3>Step
+    3: Version</h3><p>The <strong>Version</strong> field in the dialog lists the supported
+    Nexus versions, 2.x and 3.x.</p><p>For Nexus 2.x, Harness supports repository
+    formats Maven, npm, and NuGet. See Sonatype&#39;s website at <a href="https://help.sonatype.com/repomanager3/supported-formats"
+    target="_blank">Supported Formats</a>.</p><p>For Nexus 3.x, Harness supports repository
+    formats Docker 3.0 and greater, Maven, npm, NuGet, and raw.</p><h3>Step 4: Enter
+    the Credentials</h3><p>Enter the username and Select Encrypted Password.</p><p>For
+    secrets and other sensitive settings, select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a>.</p><p>Usage Scope is determined by the secret you selected.</p><h3>Step
+    5: Delegate Selector</h3><p>Select the Delegate Selector(s) of the Delegate(s)
+    you want this Connector to use.</p><p>When Harness needs to run a task, it makes
+    a connection to a resource via its Delegates. Harness selects the best Delegate
+    according to its history or it round-robins between Delegates. See <a href="https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates">How
+    Does Harness Manager Pick Delegates?</a>.</p><p>In a few cases, you might want
+    Harness to select specific Delegates. In these cases, you can use Delegate Selectors.</p><p>See
+    <a href="/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors">Select
+    Delegates with Selectors</a>.</p><p></p><p></p><p></p><p></p>'
+  slug: add-nexus-artifact-servers
+  tags:
+  - Nexus
+  - Artifact Server
+  is_live: true

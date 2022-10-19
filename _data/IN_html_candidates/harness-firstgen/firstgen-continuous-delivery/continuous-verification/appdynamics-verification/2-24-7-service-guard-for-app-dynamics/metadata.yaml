@@ -1,0 +1,64 @@
+type: article
+article_id: i6f2irsz9v
+user_id: mfr0nxh4be
+category_id: bpoqe48x7r
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Monitor Applications 24/7 with AppDynamics
+slug: 2-24-7-service-guard-for-app-dynamics
+description: Lists specific options for integrating AppDynamics with Harness 24/7
+  Service Guard. This feature monitors your live applications, catching problems that
+  surface minutes or hours following deployment.
+short_version: Combined with AppDynamics, Harness 24/7 Service Guard monitors your
+  live applications, catching problems that surface minutes or hours following deployment.
+tags:
+- AppDynamics
+- setup
+- Verification Provider
+- verification
+- APM
+- application performance monitoring
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:47.031161Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Monitor Applications 24/7 with AppDynamics
+  description: Lists specific options for integrating AppDynamics with Harness 24/7
+    Service Guard. This feature monitors your live applications, catching problems
+    that surface minutes or hours following deployment.
+  short_version: Combined with AppDynamics, Harness 24/7 Service Guard monitors your
+    live applications, catching problems that surface minutes or hours following deployment.
+  body: |-
+    <p>Enabling AppDynamics in Harness 24/7 Service Guard helps Harness monitor your live applications, catching problems that surface minutes or hours following deployment. This topic covers:</p><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a href="#add_verification">Step 1: Add AppDynamics Verification</a></li><li><a href="#display_name">Step 2: Display Name</a></li><li><a href="#service">Step 3: Service</a></li><li><a href="#appdynamics_server">Step 4: AppDynamics Server</a></li><li><a href="#application_name">Step 5: Application Name</a></li><li><a href="#tier_name">Step 6: Tier Name</a></li><li><a href="#sensitivity">Step 7: Algorithm Sensitivity</a></li><li><a href="#enable">Step 8: Enable 24/7 Service Guard</a></li><li><a href="#test_save">Step 9: Test and Save</a></li><li><a href="#results">Step 10: Check Verification Results</a></li><li><a href="#limitations">Limitations</a></li><li><a href="#next_steps">Next Step</a></li></ul><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;before_you_begin&#34;&gt;&lt;/span&gt;"><p><span id="before_you_begin"></span></p>
+    </div><h3>Before You Begin</h3><ul><li>See the <a href="/article/dajt54pyxd-24-7-service-guard-overview">24/7 Service Guard Overview</a>.</li><li>Set up a Harness Application, containing a Service and Environment. See <a href="/article/bucothemly-application-configuration">Create an Application</a>.<div class="tip-callout">For 24/7 Service Guard, you do not need to add an Artifact Source to the Service, nor configure its settings. You simply need to create a Service and name it. It will represent your application for 24/7 Service Guard.</div></li><li>Add AppDynamics monitoring to Harness 24/7 Service Guard in your Environment. See <a href="/article/cqy0jmm71h-1-app-dynamics-connection-setup">Add AppDynamics as a Verification Provider</a>.</li></ul><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;add_verification&#34;&gt;&lt;/span&gt;"><p><span id="add_verification"></span></p>
+    </div><h3>Step 1: Add AppDynamics Verification</h3><p>To set up 24/7 Service Guard for AppDynamics, do the following:</p><ol><li>In your Harness Application, click <strong>Environments</strong>.</li><li>In <strong>Environments</strong>, ensure that you have added an Environment for the Service you added. For steps on adding an Environment, see <a href="/article/n39w05njjv-environment-configuration">Environments</a>.</li><li>Click the Environment for your Service. Typically, the <strong>Environment Type</strong> is <strong>Production</strong>.</li><li>In the <strong>Environment</strong> page, locate <strong>24/7 Service Guard</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1553127693787/image.png" style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>In <strong>24/7 Service Guard</strong>, click <strong>Add Service Verification</strong>, and then click <strong>AppDynamics</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1552691622425/image.png" style="max-height:35%;max-width:35%" data-hd-height="35%" data-hd-width="35%"/></figure>The <strong>AppDynamics</strong> dialog appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uvv686yn25/1585941724627/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><div class="hd--md" data-hd-markdown="&lt;span id=&#34;display_name&#34;&gt;&lt;/span&gt;"><p><span id="display_name"></span></p>
+    </div><h3>Step 2: Display Name</h3><p>Enter a name that will identify this service on the <strong>Continuous Verification</strong> dashboard. Use a name that indicates the Environment and monitoring tool, such as <strong>AppDynamics Prod</strong>.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;service&#34;&gt;&lt;/span&gt;"><p><span id="service"></span></p>
+    </div><h3>Step 3: Service</h3><p>Select the Harness Service to monitor with 24/7 Service Guard.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;appdynamics_server&#34;&gt;&lt;/span&gt;"><p><span id="appdynamics_server"></span></p>
+    </div><h3>Step 4: AppDynamics Server</h3><p>Select the <a href="/article/cqy0jmm71h-1-app-dynamics-connection-setup">AppDynamics Verification Provider</a> to use.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;application_name&#34;&gt;&lt;/span&gt;"><p><span id="application_name"></span></p>
+    </div><h3>Step 5: Application Name</h3><p>Select the Application Name used by the monitoring tool. In <strong>AppDynamics</strong>, the applications are listed in the <strong>Applications</strong> tab.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1535566529455/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;tier_name&#34;&gt;&lt;/span&gt;"><p><span id="tier_name"></span></p>
+    </div><h3>Step 6: Tier Name</h3><p>The <strong>Tier Name</strong> drop-down is populated with tiers from the application you selected. Pick the tier from which you want usage metrics, code exceptions, error conditions, and exit calls. In <strong>AppDynamics</strong>, the tiers are displayed in the <strong>Tiers &amp; Nodes</strong> page.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1535566664385/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;sensitivity&#34;&gt;&lt;/span&gt;"><p><span id="sensitivity"></span></p>
+    </div><h3>Step 7: Algorithm Sensitivity</h3><p>Specify the sensitivity to determine what events are identified as anomalies. See <a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV Strategies, Tuning, and Best Practices</a>.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;enable&#34;&gt;&lt;/span&gt;"><p><span id="enable"></span></p>
+    </div><h3>Step 8: Enable 24/7 Service Guard</h3><p>Select this check box to turn on 24/7 Service Guard for AppDynamics.</p><div class="tip-callout">If you simply want to set up 24/7 Service Guard support, but not enable it, leave this check box empty.</div><p>The dialog will now look something like this:</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uvv686yn25/1585946071537/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><div class="hd--md" data-hd-markdown="&lt;span id=&#34;test_save&#34;&gt;&lt;/span&gt;"><p><span id="test_save"></span></p>
+    </div><h3>Step 9: Test and Save</h3><ol><li style="counter-increment:li 0" start="1">Click <strong>Test</strong>. Harness verifies the settings you entered.</li><li>Click <strong>Submit</strong>.</li></ol><p>AppDynamics is now configured for 24/7 Service Guard.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uvv686yn25/1585942815825/image.png" style="max-height:100%;max-width:100%" data-hd-height="100%" data-hd-width="100%"/></figure><p></p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;another_slug&#34;&gt;&lt;/span&gt;"><p><span id="another_slug"></span></p>
+    </div><h3>Step 10: Examine Verification Results</h3><p>To see the running 24/7 Service Guard analysis, click <strong>Continuous Verification</strong>.</p><p>The 24/7 Service Guard dashboard displays the production verification results.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1552692542741/image.png" style="max-height:100%;max-width:100%" data-hd-height="100%" data-hd-width="100%"/></figure><p>For information on using this dashboard, see the <a href="/article/dajt54pyxd-24-7-service-guard-overview">24/7 Service Guard Overview</a>.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;limitations&#34;&gt;&lt;/span&gt;"><p><span id="limitations"></span></p>
+    </div><h3>Limitations</h3><p>For 24/7 Service Guard, the queries you define to collect logs are specific to the Application or Service that you want monitored. (Verification is Application/Service level.) This is unlike Workflows, where verification is performed at the host/node/pod level.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;next_step&#34;&gt;&lt;/span&gt;"><p><span id="next_step"></span></p>
+    </div><h3>Next Step</h3><ul><li><a href="/article/ehezyvz163-3-verify-deployments-with-app-dynamics">Verify Deployments with AppDynamics</a></li></ul><p></p>
+  slug: 2-24-7-service-guard-for-app-dynamics
+  tags:
+  - AppDynamics
+  - setup
+  - Verification Provider
+  - verification
+  - APM
+  - application performance monitoring
+  is_live: true

@@ -1,0 +1,83 @@
+type: article
+article_id: amj1oz4x4k
+user_id: mfr0nxh4be
+category_id: fb16ljb8lu
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Entity Deletion Reference
+slug: entity-deletion-reference
+description: This topic covers the rules governing the deletion of Harness entities.
+  Entity Connections. Entities are connected. A Role entity is applied to User entities.
+  Deleting an entity, such as a Role, impa…
+short_version: This topic covers the rules governing the deletion of Harness entities.
+  Entity Connections. Entities are connected. A Role entity is applied to User entities.
+  Deleting an entity, such as a Role, impa…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:32:04.102375Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Entity Deletion Reference
+  description: ""
+  short_version: ""
+  body: <p>This topic covers the rules governing the deletion of Harness entities.</p><h3>Entity
+    Connections</h3><p>Entities are connected. A Role entity is applied to User entities.
+    Deleting an entity, such as a Role, impact Users.</p><p>As a result of the connection
+    between entities, deleting an entity can make another entity not able to do its
+    job.</p><p>Harness will warn you if you try to delete an entity that is used by
+    another entity or resource.</p><p>If you try to delete the following entity types,
+    Harness will warn you if the entity is used elsewhere:</p><ul><li>User groups</li><li>Connectors</li><li>Secrets</li><li>Templates</li><li>Infrastructures</li><li>Services</li></ul><p>If
+    the entity is used, Harness will show you where.</p><p>For example:</p><ul><li>A
+    Pipeline that uses a Connector.</li><li>A Connector that uses a Secret.</li></ul><p>Harness
+    provides you with the option to delete the entity from all dependent entities
+    (bulk removal).</p><h3>Permissions</h3><p>The ability to delete an entity depends
+    on the Role permissions you have. You can see the Delete permissions in any role:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/amj1oz4x4k/1626472209977/clean-shot-2021-07-16-at-14-49-48.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    some cases, you might try to delete an entity, but the entity is used by another
+    entity that you do not have permission to change.</p><p>Harness will identify
+    that you do not have permission to edit the other entity, and so you cannot delete
+    this entity.</p><h3 id="Deletion-of-Roles">Deletion of Roles</h3><p>When attempting
+    to delete a role, you will see all the Groups assigned to it.</p><p>Role Id has
+    the following deletion rules:</p><ul><li>The role’s Id can&#39;t be used until
+    it is completely removed from the database (based on the retention policy).</li><li>If
+    the deleted role effects active users, they are prevented from performing the
+    operations granted by the removed role’s permissions. <br/>For example, if a user
+    was assigned to a role that had the Create/Edit Pipeline permission, and the role
+    is removed, then the user can no longer create or edit Pipelines.</li></ul><h3
+    id="Deletion-of-Users">Deletion of Users</h3><p>A User entity is identified by
+    their Id. The Id is the email address used to invite and sign up the User:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/amj1oz4x4k/1626472338182/clean-shot-2021-07-16-at-14-51-32.png"/></figure><p>A
+    User and its Id can be deleted. </p><p>When a User is deleted, their Id (email
+    address) can’t be used until the User is completely removed from the system. See
+    <a href="/article/9i2kt42ztb-entity-retention-policy">Entity Retention Policy</a>.</p><h3
+    id="Deletion-of-Pipelines">Deletion of Pipelines</h3><p>When you delete a Pipeline,
+    Harness will list all the related entities that will be deleted from Harness.</p><p>Pipeline
+    deletion has the following rules:</p><ul><li>All runtime entities (deployments)
+    are deleted from the Harness and are not available in any reports.</li><li>When
+    there is a reference to a deleted deployment, such as in a report, there is an
+    indication that the deployment is deleted.</li><li>The Pipeline is removed from
+    Harness and is not available.</li><li>All <a href="/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays">Input
+    Sets and Overlays</a> in the deleted Pipeline are deleted also.</li></ul><h3 id="Deletion-of-Projects">Deletion
+    of Projects</h3><p>When you delete a Project, Harness will list all the related
+    entities that will be deleted from Harness.</p><p>Project deletion has the following
+    rules:</p><ul><li>All Project resources (Pipelines, Services, Environments, etc)
+    are deleted.</li><li>Project Delegates are deleted from Harness. You will have
+    to remove the Harness Delegate(s) from your environment.</li><li>All Project Users
+    are notified via email that the Project was deleted.</li></ul><h3>See Also</h3><ul><li><a
+    href="/article/tygjin99y9-harness-entity-reference">Harness Entity Reference</a></li><li><a
+    href="/article/9i2kt42ztb-entity-retention-policy">Entity Retention Policy</a></li><li><a
+    href="/article/li0my8tcz3-entity-identifier-reference">Entity Identifier Reference</a></li></ul><p></p><p></p><p></p>
+  slug: entity-deletion-reference
+  tags: []
+  is_live: true

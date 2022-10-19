@@ -1,0 +1,154 @@
+type: article
+article_id: wkp9blw8pf
+user_id: mfr0nxh4be
+category_id: iucs9fawif
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Recent YAML Schema Changes
+slug: recent-yaml-schema-changes
+description: As of August 2021 , the YAML schema for some Workflow, Pipeline, and
+  Trigger settings have changed. This document lists the changes. Customer Impact.
+  These changes are backward compatible. The fields…
+short_version: As of August 2021 , the YAML schema for some Workflow, Pipeline, and
+  Trigger settings have changed. This document lists the changes. Customer Impact.
+  These changes are backward compatible. The fields…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2021-08-25T19:39:48.285198Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Recent YAML Schema Changes
+  description: ""
+  short_version: ""
+  body: '<p>As of <strong>August 2021</strong>, the YAML schema for some Workflow,
+    Pipeline, and Trigger settings have changed.</p><p>This document lists the changes.</p><h3>Customer
+    Impact</h3><ul><li>These changes are backward compatible. The fields take both
+    Ids as well as names. If you have YAML that contains Ids and perform a Git sync,
+    Harness will honor it and change it to the corresponding name for the entity automatically.</li><li>Newly
+    created entities will use a name by default.</li></ul><h3>Recent YAML Schema Changes
+    Table</h3><p>Each row in the following table lists the changed YAML and provides
+    a snippet.</p><table><tbody><tr><td><p><strong>Step Type</strong></p></td><td><p><strong>Old</strong>
+    <strong>Yaml Snippet</strong></p></td><td><p><strong>New</strong> <strong>Yaml
+    Snippet</strong></p></td></tr><tr><td><p>Harness Approval</p></td><td><pre>userGroups:<br/>-
+    2Z4yiRojQq2jmMx1JO05Jw</pre><p></p><pre>userGroups:<br/>- 2Z4yiRojQq2jmMx1JO05Jw<br/>-
+    type: APPROVAL<br/>  name: Approval<br/>  properties:<br/>    approvalStateType:
+    USER_GROUP<br/>    timeoutMillis: 86400000<br/>    userGroups:<br/>    - 2Z4yiRojQq2jmMx1JO05Jw</pre><p></p></td><td><pre>userGroupNames:<br/>-
+    UserGroupName</pre><pre>userGroups:<br/>- UserGroupName<br/>- type: APPROVAL<br/>  name:
+    Approval<br/>  properties:<br/>    approvalStateType: USER_GROUP<br/>    timeoutMillis:
+    86400000<br/>    userGroupNames:<br/>    - UsergroupName</pre></td></tr><tr><td><p>Jira
+    Create and Update</p></td><td><pre>jiraConnectorId: Zb1C8qwMR3mny7kB8-qYig</pre><pre>-
+    type: JIRA_CREATE_UPDATE<br/>  name: Jira<br/>  properties:<br/>    customFields:
+    null<br/>    description: vas<br/>    issueType: Bug<br/>    jiraAction: CREATE_TICKET<br/>    jiraConnectorId:
+    Zb1C8qwMR3mny7kB8-qYig<br/>    labels:<br/>    - &#39;&#39;<br/>    priority:
+    Highest<br/>    project: CSET<br/>    publishAsVar: false<br/>    summary: blah</pre></td><td><pre>jiraConnectorName:
+    JiraConnectorName</pre><pre>- type: JIRA_CREATE_UPDATE<br/>  name: Jira<br/>  properties:<br/>    customFields:
+    null<br/>    description: vas<br/>    issueType: Bug<br/>    jiraAction: CREATE_TICKET<br/>    jiraConnector:
+    JiraConnectorName<br/>    labels:<br/>    - &#39;&#39;<br/>    priority: Highest<br/>    project:
+    CSET<br/>    publishAsVar: false<br/>    summary: blah</pre></td></tr><tr><td><p>ServiceNow</p></td><td><pre>snowConnectorId:
+    Lbt58fVmQC6WtjkgZJT1RA</pre><pre>- type: SERVICENOW_CREATE_UPDATE<br/>  name:
+    ServiceNow<br/>  properties:<br/>    publishAsVar: true<br/>    serviceNowCreateUpdateParams:<br/>      action:
+    CREATE<br/>      snowConnectorId: Lbt58fVmQC6WtjkgZJT1RA<br/>      ticketType:
+    INCIDENT<br/>      fields:<br/>        DESCRIPTION: test<br/>        SHORT_DESCRIPTION:
+    test<br/>      additionalFields: null<br/>    sweepingOutputName: as<br/>    sweepingOutputScope:
+    PIPELINE</pre></td><td><pre>snowConnectorName: SnowConnectorName</pre><pre>- type:
+    SERVICENOW_CREATE_UPDATE<br/>  name: ServiceNow<br/>  properties:<br/>    publishAsVar:
+    true<br/>    serviceNowCreateUpdateParams:<br/>      action: CREATE<br/>      ticketType:
+    INCIDENT<br/>      fields:<br/>        DESCRIPTION: test<br/>        SHORT_DESCRIPTION:
+    test<br/>      additionalFields: null<br/>      snowConnectorName: SnowConnectorName<br/>    sweepingOutputName:
+    as<br/>    sweepingOutputScope: PIPELINE</pre></td></tr><tr><td><p>Bamboo</p></td><td><pre>bambooConfigId:
+    d3ssZMQkThGzUxeZpVhBVg</pre><pre>- type: BAMBOO<br/>  name: Bamboo<br/>  properties:<br/>    bambooConfigId:
+    d3ssZMQkThGzUxeZpVhBVg<br/>    parameters: null<br/>    planName: TES-HIN<br/>    timeoutMillis:
+    600000<br/>    waitInterval: 0</pre></td><td><pre>bambooConfigName: BambooConfigName</pre><pre>-
+    type: BAMBOO<br/>  name: Bamboo<br/>  properties:<br/>    bambooConfigName: BambooConfigName<br/>    parameters:
+    null<br/>    planName: TES-HIN<br/>    timeoutMillis: 600000<br/>    waitInterval:
+    0</pre></td></tr><tr><td><p>Shell Script (SSH) and</p><p>Service Commands (SSH)</p></td><td><pre>sshKeyRef:
+    9F3ZT7sqQQSf-2I4Wie8-w</pre><pre>- type: SHELL_SCRIPT<br/>  name: Shell Script<br/>  properties:<br/>    commandPath:
+    tmp/<br/>    connectionAttributes: null<br/>    connectionType: SSH<br/>    executeOnDelegate:
+    false<br/>    host: localhost<br/>    outputVars: &#39;&#39;<br/>    publishAsVar:
+    false<br/>    scriptString: |-<br/>      #echo ${serviceVariable.test}<br/>      #echo
+    ${environmentVariable.test123}<br/>      #echo ${secrets.getValue(&#34;abc&#34;)}<br/>      #echo
+    ${workflow.variables.var12}<br/>      echo &#34;hi&#34;<br/>    scriptType: BASH<br/>    sshKeyRef:
+    9F3ZT7sqQQSf-2I4Wie8-w<br/>    timeoutMillis: 60000</pre></td><td><pre>sshKeyRefName:
+    SshKeyRefName</pre><pre>- type: SHELL_SCRIPT<br/>  name: Shell Script<br/>  properties:<br/>    commandPath:
+    tmp/<br/>    connectionAttributeName: null<br/>    connectionType: SSH<br/>    executeOnDelegate:
+    false<br/>    host: localhost<br/>    outputVars: &#39;&#39;<br/>    publishAsVar:
+    false<br/>    scriptString: |-<br/>      #echo ${serviceVariable.test}<br/>      #echo
+    ${environmentVariable.test123}<br/>      #echo ${secrets.getValue(&#34;abc&#34;)}<br/>      #echo
+    ${workflow.variables.var12}<br/>      echo &#34;hi&#34;<br/>    scriptType: BASH<br/>    sshKeyRefName:
+    SshKeyRefName<br/>    timeoutMillis: 60000</pre></td></tr><tr><td><p>Shell Script
+    (WinRM) and Service Command (WinRM)</p></td><td><pre>connectionAttributes: 9F3ZT7sqQQSf-2I4Wie8-w</pre><pre>-
+    type: SHELL_SCRIPT<br/>  name: Shell Script<br/>  properties:<br/>    commandPath:
+    tmp/<br/>    connectionAttributes: 9F3ZT7sqQQSf-2I4Wie8-w<br/>    connectionType:
+    SSH<br/>    executeOnDelegate: false<br/>    host: localhost<br/>    outputVars:
+    &#39;&#39;<br/>    publishAsVar: false<br/>    scriptString: |-<br/>      #echo
+    ${serviceVariable.test}<br/>      #echo ${environmentVariable.test123}<br/>      #echo
+    ${secrets.getValue(&#34;abc&#34;)}<br/>      #echo ${workflow.variables.var12}<br/>      echo
+    &#34;hi&#34;<br/>    scriptType: BASH<br/>    sshKeyRef: null<br/>    timeoutMillis:
+    60000</pre></td><td><pre>connectionAttributeName: connectionAttributeName</pre><pre>-
+    type: SHELL_SCRIPT<br/>  name: Shell Script<br/>  properties:<br/>    commandPath:
+    tmp/<br/>    connectionAttributeName: connectionAttributeName<br/>    connectionType:
+    SSH<br/>    executeOnDelegate: false<br/>    host: localhost<br/>    outputVars:
+    &#39;&#39;<br/>    publishAsVar: false<br/>    scriptString: |-<br/>      #echo
+    ${serviceVariable.test}<br/>      #echo ${environmentVariable.test123}<br/>      #echo
+    ${secrets.getValue(&#34;abc&#34;)}<br/>      #echo ${workflow.variables.var12}<br/>      echo
+    &#34;hi&#34;<br/>    scriptType: BASH<br/>    sshKeyRefName: null<br/>    timeoutMillis:
+    60000</pre></td></tr><tr><td><p>Resource Constraints</p></td><td><pre>resourceConstraintId:
+    mJU_JBqISUStVtC0KMx3SA</pre><pre>- type: RESOURCE_CONSTRAINT<br/>  name: Resource
+    Constraint<br/>  properties:<br/>    holdingScope: WORKFLOW<br/>    permits: 1<br/>    resourceConstraintId:
+    mJU_JBqISUStVtC0KMx3SA<br/>    timeoutMillis: 600000</pre></td><td><pre>resourceConstraintName:
+    resourceConstraintName</pre><pre>- type: RESOURCE_CONSTRAINT<br/>  name: Resource
+    Constraint<br/>  properties:<br/>    holdingScope: WORKFLOW<br/>    permits: 1<br/>    resourceConstraintName:
+    resourceConstraintName<br/>    timeoutMillis: 600000</pre></td></tr><tr><td><p>Notification
+    Strategy</p></td><td><pre>userGroupIds:<br/>- 2Z4yiRojQq2jmMx1JO05Jw</pre><pre>notificationRules:<br/>-
+    conditions:<br/>  - FAILED<br/>  executionScope: WORKFLOW<br/>  notificationGroupAsExpression:
+    false<br/>  userGroupAsExpression: false<br/>  userGroupIds:<br/>  - 2Z4yiRojQq2jmMx1JO05Jw</pre></td><td><pre>userGroupNames:<br/>-
+    UserGroupName</pre><pre>notificationRules:<br/>- conditions:<br/>  - FAILED<br/>  executionScope:
+    WORKFLOW<br/>  notificationGroupAsExpression: false<br/>  userGroupAsExpression:
+    false<br/>  userGroupNames:<br/>  - UserGroupName</pre></td></tr><tr><td><p>Jira
+    Approval in Workflow step and Pipeline stage</p></td><td><pre>jiraConnectorId:
+    Zb1C8qwMR3mny7kB8-qYig</pre><pre>- type: APPROVAL<br/>  name: Jira Approval<br/>  properties:<br/>    approvalStateParams:<br/>      jiraApprovalParams:<br/>        jiraConnectorId:
+    Zb1C8qwMR3mny7kB8-qYig<br/>        project: INC<br/>        approvalValue: To
+    Do<br/>        rejectionValue: &#39;&#39;<br/>        issueId: dasd<br/>        rejectionField:
+    &#39;&#39;<br/>        rejectionOperator: &#39;&#39;<br/>        approvalField:
+    status<br/>        approvalOperator: equalsTo<br/>    approvalStateType: JIRA<br/>    timeoutMillis:
+    86400000</pre></td><td><pre>jiraConnectorName: JiraConnectorName</pre><pre>- type:
+    APPROVAL<br/>  name: Jira Approval<br/>  properties:<br/>    approvalStateParams:<br/>      jiraApprovalParams:<br/>        project:
+    INC<br/>        approvalValue: To Do<br/>        rejectionValue: &#39;&#39;<br/>        issueId:
+    dasd<br/>        rejectionField: &#39;&#39;<br/>        rejectionOperator: &#39;&#39;<br/>        approvalField:
+    status<br/>        approvalOperator: equalsTo<br/>        jiraConnectorName: Harness
+    Jira<br/>    approvalStateType: JIRA<br/>    timeoutMillis: 86400000</pre></td></tr><tr><td><p>ServiceNow
+    Approval in Workflow step and Pipeline stage</p></td><td><pre>snowConnectorId:
+    Lbt58fVmQC6WtjkgZJT1RA</pre><pre>- type: APPROVAL<br/>  name: snow approval<br/>  properties:<br/>    approvalStateParams:<br/>      serviceNowApprovalParams:<br/>        approval:<br/>          conditions:<br/>            state:<br/>            -
+    Closed<br/>          operator: AND<br/>        rejection:<br/>          conditions:<br/>            state:<br/>            -
+    Canceled<br/>          operator: AND<br/>        snowConnectorId: Lbt58fVmQC6WtjkgZJT1RA<br/>        ticketType:
+    INCIDENT<br/>        changeWindowPresent: false<br/>        changeWindowStartField:
+    &#39;&#39;<br/>        changeWindowEndField: &#39;&#39;<br/>        issueNumber:
+    123<br/>    approvalStateType: SERVICENOW<br/>    timeoutMillis: 86400000</pre></td><td><pre>snowConnectorName:
+    SnowConnectorName</pre><pre>- type: APPROVAL<br/>  name: snow approval<br/>  properties:<br/>    approvalStateParams:<br/>      serviceNowApprovalParams:<br/>        approval:<br/>          conditions:<br/>            state:<br/>            -
+    Closed<br/>          operator: AND<br/>        rejection:<br/>          conditions:<br/>            state:<br/>            -
+    Canceled<br/>          operator: AND<br/>        ticketType: INCIDENT<br/>        changeWindowPresent:
+    false<br/>        changeWindowStartField: &#39;&#39;<br/>        changeWindowEndField:
+    &#39;&#39;<br/>        issueNumber: 123<br/>        snowConnectorName: SVN-1<br/>    approvalStateType:
+    SERVICENOW<br/>    timeoutMillis: 86400000</pre></td></tr><tr><td><p>Triggers</p></td><td><pre>gitConnectorId:
+    Lbt58fVmQC6WtjkgZJT1RA</pre><pre>harnessApiVersion: &#39;1.0&#39;<br/>type: TRIGGER<br/>continueWithDefaultValues:
+    false<br/>executionName: try-2<br/>executionType: Workflow<br/>triggerCondition:<br/>-
+    type: WEBHOOK<br/>  branchName: master<br/>  checkFileContentChanged: true<br/>  eventType:<br/>  -
+    push<br/>  filePaths:<br/>  - tmp/<br/>  gitConnectorId: Lbt58fVmQC6WtjkgZJT1RA<br/>  repositoryType:
+    GITHUB<br/></pre></td><td><pre>gitConnectorName: gitConnectorName</pre><pre>harnessApiVersion:
+    &#39;1.0&#39;<br/>type: TRIGGER<br/>continueWithDefaultValues: false<br/>executionName:
+    try-2<br/>executionType: Workflow<br/>triggerCondition:<br/>- type: WEBHOOK<br/>  branchName:
+    master<br/>  checkFileContentChanged: true<br/>  eventType:<br/>  - push<br/>  filePaths:<br/>  -
+    tmp/<br/>  gitConnectorName: local-git-sync<br/>  repositoryType: GITHUB<br/>   </pre></td></tr></tbody></table><p></p>'
+  slug: recent-yaml-schema-changes
+  tags: []
+  is_live: true

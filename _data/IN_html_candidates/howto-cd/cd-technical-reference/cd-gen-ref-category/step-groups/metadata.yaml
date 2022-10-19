@@ -1,0 +1,107 @@
+type: article
+article_id: ihnuhrtxe3
+user_id: mfr0nxh4be
+category_id: y9ixzx2x5y
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Group Steps using Step Groups
+slug: step-groups
+description: Add steps to Pipelines individually or as a step group. Steps in a step
+  group can be run serially or in parallel.
+short_version: Add steps to Pipelines individually or as a step group. Steps in a
+  step group can be run serially or in parallel.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-17T23:07:46.100478Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Group Steps using Step Groups
+  description: Add steps to Pipelines individually or as a step group. Steps in a
+    step group can be run serially or in parallel.
+  short_version: Add steps to Pipelines individually or as a step group. Steps in
+    a step group can be run serially or in parallel.
+  body: '<p>Steps can be added to Pipelines individually or as a step group.</p><p>Individual
+    steps and steps in step groups can be run serially or in parallel.</p><p>Unlike
+    individual steps, a step group can apply Conditional Execution (skip conditions),
+    Failure Strategy, and Rollback steps to all steps in the group.</p><div class="note-callout">You
+    can also run Pipeline <strong>stages</strong> in parallel. Deploy multiple services
+    simultaneously and perform flow control using Barriers. See <a href="/article/dmlf8w2aeh-synchronize-deployments-using-barriers">Synchronize
+    Deployments using Barriers</a>.</div><p>This topic describes how to add a Step
+    Group in a stage.</p><h3>Before You Begin</h3><ul><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a></li><li><a href="/article/2chyf1acil-add-a-stage">Add a Stage</a></li></ul><h3>Limitations</h3><ul><li>Currently,
+    Harness supports step groups in CD stages only. CI stage support is coming soon.</li></ul><h3>Visual
+    Summary</h3><p>This short video walks through step groups:</p><p></p><div class="hd--embed"
+    data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/J5eHYSbE8cg/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/J5eHYSbE8cg?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h3>Review: Common
+    Parallel Steps</h3><p>Running steps in parallel can be beneficial in many ways,
+    such as:</p><ul><li>Simulating load using multiple <a href="/article/0aiyvs61o5-using-http-requests-in-cd-pipelines">HTTP
+    steps</a>.</li><li>Running multiple <a href="/article/3xhqq9xllp-verify-deployments-with-the-verify-step">Verify
+    steps</a> for different providers (AppDynamics, Splunk, Prometheus, etc).</li><li>Running
+    independent steps that don&#39;t need to be run serially.</li><li>Running multiple
+    Kubernetes <a href="/article/xd6o61wp8u-kubernetes-apply-step">Apply</a> steps
+    to deploy multiple Kubernetes resources at once.</li><li><a href="/article/eaj0xuegln-delete-kubernetes-resources">Deleting</a>
+    multiple resources at once.</li><li>Creating or updating multiple Jira issues
+    using <a href="/article/yu40zr6cvm-create-jira-issues-in-cd-stages">Jira Create</a>
+    and <a href="/article/urdkli9e74-update-jira-issues-in-cd-stages">Jira Update</a>.</li><li>Provisioning
+    multiple resources using Terraform. See <a href="/article/hdclyshiho-run-a-terraform-plan-with-the-terraform-apply-step">Provision
+    with the Terraform Apply Step</a>.</li><li>Save time. You might have 5 steps but
+    you can run steps 2 and 3 in parallel because they are independent. Step 4 is
+    run once they have completed.</li></ul><h3>Step 1: Add and Name the Step Group</h3><p>In
+    your stage, in <strong>Execution</strong>, click <strong>Add Step</strong> and
+    then click <strong>Step Group</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631557621484/clean-shot-2021-09-13-at-11-26-49.png"/></figure><p>The
+    step group setting appear.</p><p>Enter a name for the step group.</p><h3>Option:
+    Conditional Execution</h3><p>A step group can have its own Conditional Execution
+    settings separate from the Conditional Execution settings for the Stage. The Conditional
+    Execution settings of the step group apply to all of its steps.</p><p>See <a href="/article/i36ibenkq2-step-skip-condition-settings">Step
+    Skip Condition Settings</a>.</p><p>The Conditional Execution settings of any step
+    in a step group overrides the Conditional Execution settings of the step group.</p><p>If
+    you do not use step group Conditional Execution settings, then the Stage&#39;s
+    Conditional Execution settings are used.</p><h3>Option: Step Group Failure Strategy</h3><p>A
+    step group can have its own Failure Strategy separate from the Failure Strategy
+    for the Stage.</p><p>The Failure Strategy can execute the Rollback steps for the
+    step group.</p><p>The step group Rollback steps are only run if the Failure Strategy
+    for the step group has <strong>Rollback Step Group</strong> selected.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631748494318/clean-shot-2021-09-15-at-16-28-05.png"/></figure><p>See
+    <a href="/article/htrur23poj-step-failure-strategy-settings">Step Failure Strategy
+    Settings</a>.</p><p>The Failure Strategy of any step in a step group overrides
+    the Failure Strategy of the step group.</p><p>If you do not use a step group Failure
+    Strategy, then the Stage&#39;s Failure Strategy is used.</p><h3>Step 2: Add Steps
+    to the Step Group</h3><p>Once the step group is added, in its <strong>Execution</strong>
+    section, in the new step group, click <strong>Add Step</strong>.</p><p>Add any
+    step and configure its <strong>Advanced</strong> settings.</p><p>A step&#39;s
+    <strong>Advanced</strong> settings override the <strong>Advanced</strong> settings
+    of the step group.</p><h3>Step 3: Add Rollback Steps</h3><p>A step group can have
+    its own Rollback steps separate from the Rollback steps for the Stage.</p><p>The
+    step group Rollback steps are only run if the Failure Strategy for the step group
+    has <strong>Rollback Step Group</strong> selected.</p><p>In the step group, click
+    the Execution/Rollback toggle:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631748275058/clean-shot-2021-09-15-at-16-24-13.png"/></figure><p>In
+    the Rollback view, click <strong>Add Step</strong> to add a rollback step.</p><p>For
+    example, you can use the Rolling Rollback step for a <a href="/article/rt449t1xhy-kubernetes-rollback">Kubernetes
+    Rollback</a>.</p><h3>Review: Reference Step Group Steps</h3><p>You reference steps
+    in step groups using the step group Id.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631747551695/clean-shot-2021-09-15-at-16-12-12.png"/></figure><p>The
+    FQN format is:</p><p><code>&lt;+pipeline.stages.[stage Id].spec.execution.steps.[step
+    group Id].steps.[step Id].[step setting name]&gt;</code></p><p>For example, to
+    reference the URL setting in an HTTP step in a step group with the Id <code>Group1</code>,
+    the FQN would be:</p><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.Group1.steps.OPTIONS.spec.url&gt;</code></p><h3>Notes</h3><ul><li>When
+    you run steps in parallel you cannot reference the outputs of one step in another
+    step. The output for one step might not be available when another step requests
+    it.</li><li>Delegate Selectors can be configured for each step in the step group.
+    You cannot configure a Delegate Selector at the group level.</li><li>Step groups
+    cannot have nested step groups, but you can put groups of steps next to each other
+    in a step group:<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631747908676/clean-shot-2021-09-15-at-16-18-22.png"/></figure></li></ul><p>The
+    steps <strong>in</strong> each group run in parallel but each group runs serially.</p><p></p><p></p>'
+  slug: step-groups
+  tags: []
+  is_live: true

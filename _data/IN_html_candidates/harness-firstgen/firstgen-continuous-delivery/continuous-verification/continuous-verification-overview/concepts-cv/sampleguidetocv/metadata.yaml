@@ -1,0 +1,40 @@
+type: article
+article_id: vtjd5to92p
+user_id: 2te4j9f9g7
+category_id: zxxvl8vahz
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Sample Article on CV
+slug: sampleguidetocv
+description: This would give beginners a fair idea of the Continuous Verification
+  concepts.
+short_version: Harness' Continuous Verification helps you to have a health check of
+  your newly deployed service instances. Continuous Verification For Beginners. Overview.
+  Harness
+tags:
+- '#verification '
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:20:48.112491Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Sample Article on CV
+  description: This would give beginners a fair idea of the Continuous Verification
+    concepts.
+  short_version: ""
+  body: <p>Harness&#39; Continuous Verification helps you to have a health check of
+    your newly deployed service instances.</p><h3>Continuous Verification For Beginners</h3><h3>Overview</h3><p>Harness
+    </p><p></p>
+  slug: sampleguidetocv
+  tags:
+  - '#verification '
+  is_live: true

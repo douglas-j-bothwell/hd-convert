@@ -1,0 +1,14 @@
+type: category
+category_id: 24eh32j7tn
+parent_category_id: vcwqzbkchr
+title: Customer Stories
+description: ""
+slug: customer-stories
+is_featured: false
+icon: fa-comment-o
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Customer Stories
+  description: ""
+  slug: customer-stories

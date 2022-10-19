@@ -1,0 +1,54 @@
+type: article
+article_id: r0eeviq7l6
+user_id: slcpusem6b
+category_id: deyiqtz8tf
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Fork and Edit a Command in the Command Library
+slug: fork-and-edit-a-command-in-the-command-library
+description: Describes how to fork and edit a command in the command library.
+short_version: Describes how to fork and edit a command in the command library.
+tags:
+- command library
+- Fork a command
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:12:07.251488Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Fork and Edit a Command in the Command Library
+  description: Describes how to fork and edit a command in the command library.
+  short_version: Describes how to fork and edit a command in the command library.
+  body: '<p></p><p>Your Services and Workflows can link to Service Commands in the
+    Command Library, but these commands are immutable. To edit them, you need to fork
+    them. Once a Command Library command is forked, it is treated just like a regular
+    Service Command template in the Template Library.</p><h3>Before You Begin</h3><ul><li><a
+    href="/article/115garkjsn-introduction-to-harness-command-library">Harness Command
+    Library Overview</a></li><li><a href="/article/l8bcqfbj4r-harness-command-library">Add
+    Commands from the Command Library</a></li></ul><h3>Step: Fork and Edit a Command</h3><p>To
+    fork and edit a command, do the following:</p><ol><li>Select the command that
+    you want to fork.</li><li>Select the <strong>Version</strong> of the command and
+    click <strong>Fork</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/l8bcqfbj4r/1592476294391/screenshot-2020-06-18-at-3-53-33-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li><li>Enter
+    the <strong>Command Name</strong>. Use a name that describes the purpose of the
+    command.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/l8bcqfbj4r/1592477518838/screenshot-2020-06-18-at-4-02-41-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>The
+    forked command is listed in <strong>All Templates</strong> in the <strong>Template
+    Library</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/l8bcqfbj4r/1592478696082/screenshot-2020-06-18-at-4-41-19-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li><li>Click
+    on the template to edit it.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/l8bcqfbj4r/1592497610776/screenshot-2020-06-18-at-9-56-30-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li></ol><p></p>'
+  slug: fork-and-edit-a-command-in-the-command-library
+  tags:
+  - command library
+  - Fork a command
+  is_live: true

@@ -1,0 +1,118 @@
+type: article
+article_id: 766iheu1bk
+user_id: slcpusem6b
+category_id: a8jhf8hizv
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Set Workflow Variables
+slug: add-workflow-variables-new-template
+description: Set variables in the Workflow Variables section, and use them in the
+  Workflow step commands and settings.
+short_version: Set variables in the Workflow Variables section, and use them in the
+  Workflow step commands and settings.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-08-03T22:08:02.053648Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Workflow Variables
+  description: Set variables in the Workflow Variables section, and use them in the
+    Workflow step commands and settings.
+  short_version: Set variables in the Workflow Variables section, and use them in
+    the Workflow step commands and settings.
+  body: '<p>You can set variables in the <strong>Workflow Variables</strong> section
+    of your Workflow, and use them in the Workflow step commands and settings.</p><div
+    class="note-callout">New to Harness Variables? See <a href="/article/9dvxcegm90-variables">What
+    is a Harness Variable Expression?</a></div><p>You can also use them in some Harness
+    Service settings in order to have their values replaced at the Workflow level.</p><p>You
+    provide values for Workflow variables at deployment runtime for the Workflow or
+    a Pipeline executing the Workflow.</p><h3>Before You Begin</h3><ul><li> <a href="/article/m220i1tnia-workflow-configuration">Workflows</a></li><li>
+    <a href="/article/9dvxcegm90-variables">What is a Harness Variable Expression?</a></li><li>
+    <a href="/article/benvea28uq-variable-override-priority">Variable Override Priority</a></li></ul><h3>Review:
+    Variable Types</h3><p>There are several different types of Workflow variables
+    you can add:</p><ul><li><strong>Entity</strong>—If you have parameterized a Workflow
+    Service, Environment, or Infrastructure Definition setting, it will appear in
+    Workflow Variables with the type <strong>ENTITY</strong>. See <a href="/article/bov41f5b7o-templatize-a-workflow-new-template">Templatize
+    a Workflow</a>.</li><li><strong>Text</strong>—A text-based variable.</li><li><strong>Email</strong>—Email
+    addresses.</li><li><strong>Number</strong>—Numeric variable.</li></ul><div class="note-callout">Only
+    <a href="/article/q78p7rpx9u-add-service-level-config-variables">Service Config
+    Variables</a> are added as environment variables and can be output with <code>env</code>.
+    Workflow and other variables are not added as environment variables.</div><h3>Review:
+    Multi-Select Values</h3><p></p><div class="note-callout">Currently, this feature
+    is behind a Feature Flag. Contact <a href="mailto:support@harness.io" target="_blank">Harness
+    Support</a> to enable the feature. Feature Flags can only be removed for Harness
+    Professional and Essentials editions. Once the feature is released to a general
+    audience, it&#39;s available for Trial and Community Editions.<br/><br/>See <a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a> and <a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access) for Feature Flag
+    information.</div><p></p><p>For <strong>Text</strong> and <strong>Email</strong>
+    types, in <strong>Allowed Values</strong>, you can enter multiple options by separating
+    them by commas.</p><p>For example:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/766iheu1bk/1623092025243/image.png"/></figure><p>When
+    you deploy the Workflow, the values appear as a dropdown, with the Default Value
+    already selected:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/766iheu1bk/1623092070324/image.png"/></figure><p>The
+    same options will be available when the Workflow is used in a Pipeline and Trigger.</p><p>You
+    can also search for values by simply entering the search values in the dropdown.</p><p>When
+    you type into the dropdown to search for Allowed Values, be sure to select one
+    or more values and not hit Enter. If you hit Enter, your search term will be used
+    and if it is not exactly the same as an Allowed Value, it will fail during execution.</p><h3>Review:
+    Using a Workflow Variable across Pipeline Stages</h3><p>If you use Workflow variables
+    with the same name across a Pipeline&#39;s stages, the Workflow variables will
+    always have the same value. The value is assigned when the first instance of the
+    variable is evaluated at runtime.</p><p>When Harness runs a Pipeline, it will
+    encounter the Workflow variable in the first stage where it is used. Harness will
+    resolve that variable to a value. Each subsequent use the a Workflow variable
+    with the same name in the same Pipeline will now also use that value.</p><p>It&#39;s
+    important to understand how Workflow variables with the same name work in a Pipeline
+    because you might want to change the value of the Workflow from stage to stage.
+    But Harness will not do this because it only resolves the variable once and then
+    uses that value for each instance of the Workflow variable with the same name.</p><h3>Step:
+    Add Workflow Variables</h3><p>To use Workflow variables, do the following:</p><ol><li>In
+    a Workflow, click the pencil icon next to <strong>Workflow Variables</strong>.
+    The <strong>Workflow Variables</strong> dialog appears.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/766iheu1bk/1589820316249/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p><strong>Workflow
+    Variables</strong> have the following settings.</p><p></p><table><tbody><tr><td><p><strong>Field</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><strong>Variable
+    Name</strong></p></td><td><p>Enter a name for the variable. When the variable
+    is referenced elsewhere in you Harness application, the variable name is used.</p></td></tr><tr><td><p><strong>Type</strong></p></td><td><p>Select
+    <strong>Text</strong>, <strong>Email</strong>, or <strong>Number</strong>.</p><p>If
+    you have parameterized a Workflow Service, Environment, or Infrastructure Definition
+    setting, it will appear in Workflow Variables with the type <strong>ENTITY</strong>.</p></td></tr><tr><td><p><strong>Allowed
+    Values</strong></p></td><td><p>Enter a comma-separated list of values that users
+    can select. The list will appear as a drop-down menu when the Workflow is deployed.</p><p>See
+    <a href="https://docs.harness.io/article/766iheu1bk-add-workflow-variables-new-template#review_multi_select_values">Review:
+    Multi-Select Values</a> above.</p><div class="note-callout">You cannot template
+    multi-value (drop-down) <strong>Allowed Values</strong> Workflow variables.</div></td></tr><tr><td><p><strong>Default
+    Value</strong></p></td><td><p>Enter a value for the variable. A value is not mandatory.</p></td></tr><tr><td><p><strong>Required</strong></p></td><td><p>Select
+    this option to enforce that a value for the variable is provided before the Workflow
+    is executed.</p></td></tr><tr><td><p><strong>Fixed</strong></p></td><td><p>Select
+    this option if the value of the variable specified here must not be changed.</p></td></tr><tr><td><p><strong>Description</strong></p></td><td><p>Provide
+    a description of the variable that lets others know its purpose and requirements.</p></td></tr></tbody></table><ol><li
+    style="counter-increment:li 1" start="2">In a Workflow step, use your variable
+    by typing a dollar sign ($) and the first letter of your variable. The syntax
+    for variable names is <strong>${workflow.variables.</strong><strong><em>name</em></strong><strong>}</strong>.</li></ol><p>Harness
+    will load matching variable names.</p><p>For example, if you created a variable
+    named <strong>Url</strong>, the variable name is <strong>${workflow.variables.Url}</strong>.</p><p>When
+    you deploy the Workflow, by itself or as part of a Pipeline, the variables are
+    displayed in the Workflow execution step.</p><p>If the variables require values,
+    you will enter the values when you add the Workflow to a Pipeline in the <strong>Stage</strong>
+    settings or in the <strong>New Deployment</strong> setting when you deploy the
+    Workflow individually.</p><h3>Notes</h3><p><strong>Workflow variable expressions
+    in Services</strong> — You can use Workflow variable expressions in a Harness
+    Service, but Harness does not autocomplete Workflow variables in a Service like
+    it does in a Workflow. You will need to manually enter the Workflow variable expression
+    in the Service: <strong>${workflow.variables.</strong><em><strong>name</strong></em><strong>}</strong>.</p><h3>Next
+    Steps</h3><ul><li> <a href="https://docs.harness.io/article/m220i1tnia-workflow-configuration">Workflows</a></li></ul><p></p>'
+  slug: add-workflow-variables-new-template
+  tags: []
+  is_live: true

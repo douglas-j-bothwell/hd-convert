@@ -1,0 +1,53 @@
+type: article
+article_id: mzcpqs3hrl
+user_id: wz6xkfcc9i
+category_id: 5havnl8qad
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Manage Tags
+slug: manage-tags
+description: Tags are used to provide metadata for organizing, searching, and filtering
+  components. This topic describes how to manage all the Tags used in your Harness
+  account.
+short_version: Tags are used to provide metadata for organizing, searching, and filtering
+  components. This topic describes how to manage all the Tags used in your Harness
+  account.
+tags:
+- Tags
+- tag
+- Manage Tag permission
+- Allowed Values
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:11:33.713652Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Manage Tags
+  description: Tags are used to provide metadata for organizing, searching, and filtering
+    components. This topic describes how to manage all the Tags used in your Harness
+    account.
+  short_version: Tags are used to provide metadata for organizing, searching, and
+    filtering components. This topic describes how to manage all the Tags used in
+    your Harness account.
+  body: |-
+    <p></p><p>Tags are used to provide metadata for organizing, searching, and filtering components. This topic describes how to manage all the Tags used in your Harness account.</p><p>To access all Tags for your Harness account, select <strong>Setup</strong> &gt; <strong>Tags Management</strong>. This displays the <strong>Tags Management</strong> page.</p><p>Here, all Harness users can:</p><ul><li>View Tags. (Note the <strong>Search by Tag Name</strong> field at the top right, which filters the display.)</li><li>View Tags&#39; usage in the <strong>Used Values</strong> column.</li><li>Click individual entries in the <strong>Tag Name</strong> or <strong>Used Values</strong> columns to display expanded usage details. (The <strong>Tag Usage Details</strong> modal expands the previous display&#39;s row for the <strong>owner</strong> Tag. Within this <strong>Tag Usage Details</strong> modal, you can click the linked components to view their configuration.)</li></ul><p>In this topic:</p><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a href="#create_tag_keys">Step: Create Tag Keys</a></li><li><a href="#update_tag_keys">Option 1: Update Tag Keys</a></li><li><a href="#restrict_values">Option 2: Restrict Allowed Values</a></li></ul><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;before_you_begin&#34;&gt;&lt;/span&gt;"><p><span id="before_you_begin"></span></p>
+    </div><p></p><h3>Before You Begin</h3><ul><li>See <a href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a>.</li><li>See <a href="/article/nrxfix3i58-tags">Assign Metadata Using Tags</a>.</li><li>See <a href="/article/nyxf7g8erd-apply-filters-using-tags">Apply Filters Using Tags</a>.</li></ul><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;create_tag_keys&#34;&gt;&lt;/span&gt;"><p><span id="create_tag_keys"></span></p>
+    </div><p></p><h3>Step: Create Tag Keys</h3><p>Users whose User Group includes the <strong>Manage Tag</strong> Account permission can create a new Tag, as follows:</p><ol><li>Select <strong>Setup</strong> &gt; <strong>Tags Management</strong> page &gt; <strong>Create Tag</strong> (upper-right corner).</li><li>In the resulting <strong>Create Tag</strong> dialog, assign a unique <strong>Tag Name</strong> as the key.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/mzcpqs3hrl/1586675348134/create-tags.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Optionally, you can restrict the new Tag to a set of <a href="#allowed_values">Allowed Values</a> before you click <strong>SUBMIT</strong>.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;update_tag_keys&#34;&gt;&lt;/span&gt;"><p><span id="update_tag_keys"></span></p>
+    </div><p></p><h3>Option 1: Update Tag Keys</h3><p>Users who have the <strong>Manage Tag</strong> Account permission can update an existing Tag on the Tags Management page, by clicking on that Tag row&#39;s More Options ⋮ menu.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564816373314/image.png" style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure><p></p><p>This menu provides the following options:</p><ul><li>Click <strong>Usage Details</strong> to open the same <a href="#usage_details"><strong>Tag Usage Details modal</strong></a> available by clicking in the <strong>Tag Name</strong> column.</li><li>Click <strong>Edit</strong> to open the <strong>Edit Tag</strong> dialog, where you can add or remove <strong>Allowed Values</strong>. (You cannot change the <strong>Tag Name</strong> here.)<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564870303445/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul><p></p><ul><li>Click <strong>Delete</strong> to delete the Tag key from Harness. (This also frees up its name for reuse.) You will see the confirmation message box below.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564870357541/image.png" style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ul><p></p><div class="warning-callout">There is no automatic undo. To restore a removed Tag key, you will need to manually re-enter it, along with any Allowed Values.</div><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;restrict_values&#34;&gt;&lt;/span&gt;"><p><span id="restrict_values"></span></p>
+    </div><p></p><h3>Option 2: Restrict Allowed Values</h3><p>To restrict the values that users can apply to a Tag, simply type your approved values into the <strong>Allowed Values</strong> field. Press <strong>Tab</strong> or <strong>Enter</strong> after each entry.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564816016528/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>After you click <strong>SUBMIT</strong> to create the Tag, it will appear on the <strong>Tags Management</strong> page with an <strong>R</strong>(estricted) icon. Hover over the icon to display the restrictions.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/nrxfix3i58/1564816054387/image.png" style="max-height:35%;max-width:35%" data-hd-height="35%" data-hd-width="35%"/></figure><p></p>
+  slug: manage-tags
+  tags:
+  - Tags
+  - tag
+  - Manage Tag permission
+  - Allowed Values
+  is_live: true

@@ -1,0 +1,260 @@
+type: article
+article_id: 4t14lqxljo
+user_id: mfr0nxh4be
+category_id: f6rh2cdvx9
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: AWS CodeDeploy Quickstart
+slug: aws-code-deploy-quickstart
+description: Deploy a sample Linux app to an AWS Auto Scaling Group (ASG) using CodeDeploy
+  and Harness.
+short_version: Deploy a sample Linux app to an AWS Auto Scaling Group (ASG) using
+  CodeDeploy and Harness.
+tags:
+- codedeploy
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T17:18:49.892828Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: AWS CodeDeploy Quickstart
+  description: Deploy a sample Linux app to an AWS Auto Scaling Group (ASG) using
+    CodeDeploy and Harness.
+  short_version: Deploy a sample Linux app to an AWS Auto Scaling Group (ASG) using
+    CodeDeploy and Harness.
+  body: '<p>This quickstart shows you how to deploy a sample Linux app to an AWS Auto
+    Scaling Group (ASG) using an existing CodeDeploy deployment and Harness.</p><p>If
+    you are somewhat new to CodeDeploy there are a number of AWS prerequisites to
+    set up, covered in <a href="#before_you_begin">Before You Begin</a>. Once those
+    are set up, the steps in Harness will only take a few minutes.</p><h3 id="objectives">Objectives</h3><p>You&#39;ll
+    learn how to:</p><ul><li>Set up the AWS IAM role and EC2 for the Harness Shell
+    Script Delegate.</li><li>Install the Harness Shell Script Delegate.</li><li>Connect
+    Harness with AWS.</li><li>Specify the CodeDeploy application source to use for
+    your new instances.</li><li>Define the CodeDeploy Application, Deployment Group,
+    and Deployment Configuration for your app.</li><li>Create and deploy a CodeDeploy
+    Basic Workflow.</li></ul><h3>Before You Begin</h3><p>Ensure you have the reviewed
+    and set up the following prerequisites before you proceed with this quickstart:</p><ul><li>Review
+    <a href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a> to
+    establish a general understanding of Harness.</li><li><strong>Existing CodeDeploy
+    Deployment</strong> — We will be using Harness to deploy a revision of an <u>existing</u>
+    CodeDeploy deployment.<br/>If you are new to CodeDeploy, follow <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/tutorials-auto-scaling-group.html"
+    target="_blank">Tutorial: Use CodeDeploy to Deploy an Application to an Amazon
+    EC2 Auto Scaling Group</a> from AWS. It is an excellent tutorial that will quickly
+    take you through a CodeDeploy deployment and show you how to create the IAM roles
+    and ASG required by CodeDeploy.<br/>We will be deploying the CodeDeploy deployment
+    created by this AWS tutorial. You can use a different CodeDeploy deployment you
+    have already set up and deployed.</li><li><strong>AWS IAM Roles and Policies</strong>
+    - Create the following roles:<ul><li><strong>Service Role for CodeDeploy</strong>
+    — Follow the steps in <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html">Step
+    3: Create a Service Role for CodeDeploy</a> from AWS to create a service role
+    named <strong>CodeDeployServiceRole</strong> for EC2/On-Premises deployments.</li><li><strong>IAM
+    Instance Profile</strong> — Follow the steps in <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-iam-instance-profile.html"
+    target="_blank">Create an IAM Instance Profile for Your Amazon EC2 Instances</a>
+    from AWS to create a policy named <strong>CodeDeployDemo-EC2-Permissions</strong>
+    and attach it to a new role named <strong>CodeDeployDemo-EC2-Instance-Profile</strong>.</li><li><strong>IAM
+    Role for the Delegate</strong> — Create an IAM role name <strong>CodeDeployDelegate</strong>
+    for the Harness Delegate with the following policies:<ul><li><strong>AmazonEC2FullAccess</strong></li><li><strong>AWSCodeDeployRole</strong></li><li><strong>AWSCodeDeployDeployerAccess</strong></li><li><strong>CodeDeployDemo-EC2-Permissions</strong>
+    — This is the IAM Instance Profile policy you created above. This is the policy
+    that provides Get and List permissions for AWS S3.</li></ul></li></ul></li><li><strong>Amazon
+    EC2 Auto Scaling Group</strong> — Follow the steps in <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/tutorials-auto-scaling-group-create-auto-scaling-group.html"
+    target="_blank">Step 1: Create and Configure the Amazon EC2 Auto Scaling Group</a>
+    from AWS to set up the Launch Configuration and ASG you&#39;ll need.</li><li><strong>EC2
+    Instance for Harness Shell Script Delegate</strong> — The EC2 instance for the
+    Harness Delegate must meet the following requirements:<ul><li>Linux/UNIX server.</li><li>​Minimum
+    1 CPU.</li><li>Minimum 8GB RAM. For example, an AWS EC2 instance type such as
+    <strong>m5a.xlarge</strong> has 16GB of RAM, 8 for the Delegate and 8 for the
+    remaining operations.</li><li>Minimum 6GB Disk space.</li><li>Create the EC2 Instance
+    in the same region, VPC, and subnet where you will be deploying your app.</li><li>Attach
+    the <strong>CodeDeployDelegate</strong> IAM role you created above to this instance.</li></ul></li></ul><h3>Visual
+    Summary</h3><p>The following diagram shows the very simple topology for this tutorial:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582845079776/image.png"/></figure><p>You
+    will install the Harness Shell Script Delegate on an EC2 instance in your AWS
+    account, select a CodeDeploy application revision from your S3 bucket, and then
+    deploy the app to the instances in the ASG.</p><h3>Step 1: Install and Launch
+    the Shell Script Delegate</h3><p>First we&#39;ll install the Harness Shell Script
+    Delegate on the EC2 instance you set up with the IAM role you created for Harness
+    CodeDeploy deployments. See <a href="#before_you_begin">Before You Begin</a>.</p><div
+    class="note-callout">Install the Delegate in the same subnet where you will be
+    deploying your app. It simplifies Harness deployments.</div><p>To install the
+    Delegate on your EC2 instance:</p><ol><li>Sign into the Harness Manager.</li><li>Click <strong>Setup</strong>,
+    and then click <strong>Harness Delegates</strong>.</li><li>Click <strong>Download
+    Delegate</strong>, and then click <strong>Shell Script</strong>.</li><li>Enter
+    a name for the Delegate, and select the <strong>Primary</strong> Profile.</li><li>Click
+    <strong>Copy Download Link</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/wfk9o0tsjb/1589494626430/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Log
+    into your EC2 instance, paste the Shell Script Delegate command, and hit <strong>Enter</strong>.</li><li>Once
+    the Delegate is downloaded, unzip it (<code>tar -zxvf harness-delegate.tar.gz</code>),
+    change directories into the <strong>harness-delegate</strong> folder and run the
+    start command: <code>./start.sh</code>. Ignore any warning about the ulimit.</li></ol><p>The
+    Delegate will start and in a few moments you will see it listed in the <strong>Harness
+    Delegates</strong> page.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582828699597/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p><strong>Delegate
+    Selector</strong> — Add a Delegate Selector to the Delegate so you can use this
+    Delegate when you create a Harness AWS Cloud Provider. This will ensure the IAM
+    role applied to the Delegate is used by your AWS Cloud Provider.</p><ol><li>In
+    the Delegate listing on the <strong>Harness Delegates</strong> page, click <strong>Edit</strong>
+    next to <strong>Selector</strong>.</li><li>Type in <strong>codedeploy-tutorial</strong>,
+    press <strong>Enter</strong>, and then click <strong>Submit</strong>.<br/><br/>The
+    Selector is added to the Delegate.</li></ol><h3>Step 2: Add an AWS Cloud Provider</h3><p>In
+    this section, we will add a Harness AWS Cloud Provider to your Harness account
+    to connect to AWS CodeDeploy, EC2, and S3.</p><div class="tip-callout">As Harness
+    provides first-class support for <a href="/article/q6ti811nck-cloud-watch-verification-overview">CloudWatch</a>,
+    you can also use the same AWS Cloud Provider for your CloudWatch connection.</div><p
+    id="permissions"><strong>Permissions:</strong> The AWS Cloud Provider will assume
+    the IAM Role associated with the EC2 host running the Delegate you installed in
+    your VPC.</p><ol><li>In the Harness Manager, click <strong>Setup</strong>, and
+    then click <strong>Cloud Providers</strong>.</li><li>Click <strong>Add Cloud Provider</strong>.
+    The <strong>Cloud Provider</strong> dialog appears. Enter the following settings:</li></ol><p></p><table><tbody><tr><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1585931758884/image.png"/></figure></td><td><ul><li><strong>Type:</strong>
+    Select <strong>Amazon Web Services</strong>.</li><li><strong>Display Name:</strong>
+    Enter <strong>CodeDeploy</strong>.</li><li><strong>Credentials:</strong> Select
+    <strong>Assume IAM Role on Delegate</strong>.</li><li><strong>Delegate Selector:</strong>
+    Select the Delegate Selector you added to your Delegate, <strong>codedeploy-tutorial</strong>.</li></ul></td></tr></tbody></table><ol><li
+    style="counter-increment:li 2" start="3">Click <strong>Test</strong> and then
+    <strong>Submit</strong>.</li></ol><p>Now that the hard part is done, you can quickly
+    set up your CodeDeploy deployment in just a few minutes.</p><p></p><h3>Step 3:
+    Add Your CodeDeploy App</h3><p>Next we&#39;ll add the Linux app to use when performing
+    the CodeDeploy deployment. We&#39;ll start by creating a Harness Application.</p><p>An
+    Application in Harness represents a logical group of one or more entities, including
+    Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners.
+    Applications organize all of the entities and configurations in Harness CD. For
+    more information, see <a href="/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a>.</p><ol><li>In Harness, click <strong>Setup</strong>, and then
+    click <strong>Add Application</strong>. The Application settings appear.</li><li>Enter
+    the name <strong>CodeDeploy Example</strong> and click <strong>Submit</strong>.
+    The new Application is added.</li><li>In your new Application, click <strong>Services</strong>.
+    The <strong>Services</strong> page appears.</li><li>In the <strong>Services</strong> page,
+    click <strong>Add Service</strong>. The <strong>Add</strong> <strong>Service</strong> settings
+    appear. Enter the following settings and then click <strong>Submit</strong>:</li></ol><p></p><table><tbody><tr><td><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582831175846/image.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Enter <strong>CodeDeploy Example</strong>.</li><li><strong>Deployment Type:</strong>
+    Select <strong>AWS CodeDeploy</strong>.</li></ul></td></tr></tbody></table><p>The
+    new Service is listed.</p><p>Next, we&#39;ll select the Linux app to use when
+    performing the CodeDeploy deployment.</p><p>First, you need to create a bucket
+    and add the app to it. As you know, no two S3 buckets can have the same name.
+    Create an S3 bucket named something similar to <strong>codedeploy-quickstart-sample</strong>.</p><p>Download
+    the Linux SampleApp from AWS. This sample contains the required appspec.yml and
+    scripts.</p><p>You can find a list of all the download locations in step 19 of
+    <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/tutorials-auto-scaling-group-create-deployment.html#tutorials-auto-scaling-group-create-deployment-console"
+    target="_blank">Step 2: Deploy the Application to the Amazon EC2 Auto Scaling
+    Group</a>. Here is an example:</p><p><a href="http://s3.amazonaws.com/aws-codedeploy-us-east-1/samples/latest/SampleApp_Linux.zip"
+    target="_blank">http://s3.amazonaws.com/aws-codedeploy-us-east-1/samples/latest/SampleApp_Linux.zip</a></p><p>Once
+    the file is downloaded, upload it to your S3 bucket. When you&#39;re done your
+    bucket will look something like this:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582831832351/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Now
+    we&#39;ll add that S3 bucket and file as an Artifact Source in our Harness Service.</p><ol><li>From
+    the <strong>Service Overview</strong> section, click <strong>Add Artifact Source</strong>,
+    then click <strong>Amazon S3</strong>.</li><li>In <strong>Artifact Source</strong>,
+    enter the following settings and click <strong>Submit</strong>.</li></ol><p></p><table><tbody><tr><td><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582831985760/image.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Enter <strong>SampleApp</strong>.</li><li><strong>Cloud Provider:</strong> Select
+    the AWS Cloud Provider you added, <strong>CodeDeploy</strong>.</li><li><strong>Bucket:</strong>
+    Select the S3 bucket you used for the SampleApp.</li><li><strong>Artifact Path:</strong>
+    Select the SampleApp zip file.</li></ul></td></tr></tbody></table><p>Next, you
+    can tell Harness what existing CodeDeploy deployment settings to use when it deploys
+    the SampleApp.</p><p></p><h3>Step 4: Define Your CodeDeploy Deployment</h3><p>Use
+    the breadcrumb navigation to jump to <strong>Environments</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582832837948/image.png"/></figure><p></p><ol><li>Click
+    <strong>Add Environment</strong>. The <strong>Environment</strong> settings appear.
+    Enter the following settings and click <strong>Submit</strong>:</li></ol><p></p><table><tbody><tr><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582832876238/image.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Enter <strong>CodeDeploy</strong>.</li><li><strong>Environment Type:</strong>
+    Select <strong>Non-Production</strong>.</li></ul></td></tr></tbody></table><p></p><p>One
+    you click <strong>Submit</strong>, the new Environment page appears. Next we will
+    add an Infrastructure Definition to identify the related CodeDeploy information.</p><p>An <a
+    href="https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition">Infrastructure
+    Definition</a> for a CodeDeploy deployment specifies the CodeDeploy Application
+    Name, Deployment Group, and Deployment Configuration.</p><p>When you create the
+    Harness Workflow later, you will pick this Infrastructure Definition to use for
+    deployment.</p><ol><li>Click <strong>Add Infrastructure Definition</strong>. The <strong>Infrastructure
+    Definition</strong> dialog appears. Enter the following settings and click <strong>Submit</strong>:</li></ol><p></p><table><tbody><tr><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582833652387/image.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Enter <strong>CodeDeployTutorial</strong>.</li><li><strong>Cloud Provider Type:</strong>
+    Select <strong>Amazon Web Services</strong>.</li><li><strong>Deployment Type:</strong>
+    Enter <strong>AWS CodeDeploy</strong>.</li><li><strong>Cloud Provider:</strong>
+    Select the AWS Cloud Provider you added earlier, <strong>CodeDeploy</strong>.</li><li><strong>Region:</strong>
+    Select the region where your ASG and target instances are located.</li><li><strong>Application
+    Name:</strong> Select your existing CodeDeploy Application Name.</li><li><strong>Deployment
+    Group:</strong> Select your existing Deployment Group.</li><li><strong>Deployment
+    Configuration:</strong> Select <strong>CodeDeployDefault.OneAtATime</strong>.</li><li><strong>Host
+    Name Convention:</strong> Leave the default setting.</li></ul></td></tr></tbody></table><p></p><p>These
+    settings correspond to your exiting CodeDeploy Deployment details:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582837639789/image.png"/></figure><p>This
+    is the last required step to set up the deployment Environment in Harness. With
+    both the Service and Environment set up, you can now proceed to creating a deployment
+    Workflow.</p><h3>Step 5: Build a CodeDeploy Basic Deployment</h3><p>Next, we&#39;ll
+    create a Harness Basic Workflow using the Service, Environment, and Infrastructure
+    Definition you created.</p><div class="note-callout">Only Harness Basic deployment
+    strategies are supported for CodeDeploy. See <a href="/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</div><ol><li>Use the breadcrumb navigation to
+    jump to <strong>Workflows</strong>, and then click <strong>Add Workflow</strong>.
+    The Workflow settings appear. Enter the following settings and click <strong>Submit</strong>.</li></ol><p></p><table><tbody><tr><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582835654096/image.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Enter <strong>CodeDeployTutorial</strong>.</li><li><strong>Workflow Type:</strong>
+    Select <strong>Basic Deployment</strong>.</li><li><strong>Environment:</strong>
+    Select the Environment you created, <strong>CodeDeploy</strong>.</li><li><strong>Service:</strong>
+    Select the Service you created, <strong>CodeDeploy Example</strong>.</li><li><strong>Infrastructure
+    Definition:</strong> Select the Infrastructure Definition you created, <strong>CodeDeployTutorial</strong>.</li></ul></td></tr></tbody></table><p>The
+    new Basic Workflow appears with its steps pre-configured.</p><p>Click the <strong>AWS
+    CodeDeploy</strong> step. This step corresponds to several CodeDeploy deployment
+    settings:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582846503768/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>See
+    <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-create-console.html"
+    target="_blank">Create an EC2/On-Premises Compute Platform Deployment</a> from
+    AWS for details.</p><p>Review the following settings and click <strong>Submit</strong>.</p><p></p><table><tbody><tr><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582838564959/image.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Use <strong>AWS CodeDeploy</strong>.</li><li><strong>Bucket:</strong> The variables
+    expression here gets the bucket name from the Harness Service.</li><li><strong>Key:</strong>
+    The variables expression here gets the artifact URL from the Harness Service.</li><li><strong>Bundle
+    Type:</strong> Select <strong>zip</strong>.</li><li><strong>Content Options:</strong>
+    Select <strong>Overwrite the content</strong>.</li><li><strong>Enable Rollbacks:</strong>
+    Leave this setting empty for this quickstart.</li><li><strong>Steady State Timeout:</strong>
+    Harness considers steady state a successful deployment. You can control how long
+    Harness waits.</li><li><strong>Ignore ApplicationStop lifecycle event failure:</strong>
+    Enable this if you want a deployment to an instance to succeed if the ApplicationStop
+    lifecycle event fails.</li></ul><p></p></td></tr></tbody></table><p>Your CodeDeploy
+    Basic Workflow is complete. You can run the Workflow to deploy your app to the
+    ASG.</p><h3>Step 6: Deploy and Review</h3><p>Now that the Basic Workflow for CodeDeploy
+    is set up, you can click <strong>Deploy</strong> in the Workflow to deploy it.</p><ol><li>Click
+    the <strong>Deploy</strong> button. The Deploy settings appear. Enter the following
+    settings:</li></ol><p></p><table><tbody><tr><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582842480341/image.png"/></figure></td><td><p><strong>Artifacts</strong>
+    &gt; <strong>CodeDeploy Example</strong>: Select <strong>Build# SampleApp_Linux.zip</strong>.</p><p><strong>Send
+    notification to me only:</strong> Enable this setting if you are doing this quickstart
+    using your corporate Harness account. Enabling this setting will ensure that other
+    users won&#39;t be notified on this deployment.</p></td></tr></tbody></table><p>Here&#39;s
+    a example of what the deployment looks like typically:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582843887438/quickstart-deploy.gif"/></figure><p>To
+    see the completed deployment, log into your AWS CodeDeploy console, and click
+    the Refresh button to view the latest deployment.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582843970372/image.png"/></figure><p>Click
+    the <strong>Deployment Id</strong>.</p><p>Scroll to the bottom of the details
+    page to the <strong>Deployment lifecycle events</strong> section.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582844039791/image.png"/></figure><p>Click
+    the <strong>Instance ID</strong> to launch EC2.</p><p>In EC2, the instance is
+    selected. Copy the <strong>Public DNS (IPv4)</strong>, paste it in a browser tab,
+    and then press <strong>Enter</strong>. The <strong>Congratulations</strong> page
+    appears.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4t14lqxljo/1582844177253/image.png"/></figure><div
+    class="tip-callout">If the page doesn&#39;t appear, ensure that the <strong>Inbound
+    rules</strong> for the security group used by the instance has HTTP open.</div><p>Congratulations!
+    You have completed the quickstart.</p><h3>Next Steps</h3><p>In this quickstart,
+    you learned how to:</p><ul><li>Set up the AWS IAM role and EC2 for the Harness
+    Shell Script Delegate.</li><li>Install the Harness Shell Script Delegate.</li><li>Connect
+    Harness with AWS.</li><li>Specify the CodeDeploy application source to use for
+    your new instances.</li><li>Define the CodeDeploy Application, Deployment Group,
+    Deployment Configuration for your app.</li><li>Create and deploy a CodeDeploy
+    Basic Workflow.</li></ul><p>Read the following related How-tos:</p><ul><li><a
+    href="/article/xerirloz9a-add-a-trigger-2">Triggers</a> show you how to automate
+    deployments in response to different events.</li><li><a href="/article/78g32khjcu-cloud-formation-provisioner">CloudFormation
+    Provisioner</a> will show you how to add provisioning as part of your Workflow.</li></ul><p></p>'
+  slug: aws-code-deploy-quickstart
+  tags:
+  - codedeploy
+  is_live: true

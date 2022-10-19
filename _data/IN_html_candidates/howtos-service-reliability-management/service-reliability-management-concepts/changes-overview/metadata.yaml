@@ -1,0 +1,74 @@
+type: article
+article_id: vjan20dgn4
+user_id: 2c4rk0cied
+category_id: mcgm7l7rha
+author:
+  name: Renu Bhaskaran
+  profile_image: https://www.gravatar.com/avatar/7d21186ef4e85110a0bd60a931c90361?d=mm&s=150
+title: Changes Overview
+slug: changes-overview
+description: The Changes overview page in the Harness Change Intelligence module provides
+  at a glance summary of change events by consolidating and analyzing data from multiple
+  Change Sources. You can drill-down…
+short_version: The Changes overview page in the Harness Change Intelligence module
+  provides at a glance summary of change events by consolidating and analyzing data
+  from multiple Change Sources. You can drill-down…
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-01-07T09:39:04.871527Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Changes Overview
+  description: ""
+  short_version: ""
+  body: '<p>The Changes overview page in the Harness Change Intelligence module provides
+    at a glance summary of change events by consolidating and analyzing data from
+    multiple Change Sources. You can drill-down each event in the Change list to gain
+    more insights on the following:</p><ul><li>Deployments such as ECS, Kubernetes,
+    and Helm from Harness CD Nextgen and Harness CD.</li><li>Infrastructure changes
+    such as <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#event-v1-events-k8s-io">Kubernetes
+    events</a>, <a href="https://www.terraform.io/docs/enterprise/admin/logging.html#audit-logs">Terraform
+    audit logs</a>, <a href="https://docs.mongodb.com/manual/reference/audit-message/#system-event-audit-messages">MongoDB
+    audit events</a>, AWS CloudTrail, GCP audit logs, and Azure audit logs.</li><li>Alerts
+    from PagerDuty</li></ul><h3>Changes Timeline</h3><p>The Changes Timeline displays
+    all the change events associated with deployments, infrastructure changes, and
+    alerts.  Each change event type is encoded in a specific color. You can spot click
+    anywhere on the timeline  to gain insights about the time, date, and number of
+    events for the selected window as shown in the following image.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/vjan20dgn4/1641365406137/screenshot-2022-01-05-at-12-14-45-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>You
+    can click the <strong>Reset</strong> option to return to the initial state of
+    the timeline. </p><h3>Change Event Filters</h3><p>You can use the following filters
+    to retrieve data related to change events.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/vjan20dgn4/1640581254714/screenshot-2021-12-27-at-10-30-40-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><table><tbody><tr><td><p><strong>Filter</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>Time</p></td><td><p>Filters
+    the change events based on the selected time range.</p></td></tr><tr><td><p>Services</p></td><td><p>Filters
+    the change events based on specific services. You can select any number of services.</p></td></tr><tr><td><p>Environment</p></td><td><p>Filters
+    the change events based on an environment. You can select any number of environments.</p></td></tr><tr><td><p>Change
+    Types</p></td><td><p>Filters the change events based on the type of change event.</p><ul><li>Deployment</li><li>Infrastructure</li><li>Alert</li></ul></td></tr><tr><td><p>Sources</p></td><td><p>Filters
+    the change events based on the sources.</p><ul><li>Harness CD Nextgen</li><li>Harness
+    CD</li><li>Kubernetes</li><li>PagerDuty</li></ul></td></tr></tbody></table><h3>Changes
+    </h3><p>The Changes section displays the list of change events that impact your
+    Monitored Services. </p><p>You can view the following information for each change
+    event:</p><ul><li>Time: Date and time at which the event ocuured</li><li>Name:
+    Displays the name of the event</li><li>Impact: Displays the name of the impacted
+    Monitored Service</li><li>Source: Indicates the name of the source where the change
+    originated</li><li>Type: Displays the change event type</li></ul><p>You can click
+    an event from the list to drill down for more details. You can see the following
+    example of an infrastructure event.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1640325731729/screenshot-2021-12-24-at-11-31-43-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can see a summarised view of infrastructure event displaying details like:</p><ul><li>Name
+    of the Service, Environment, and Source</li><li>Time and date at which the event
+    was triggered</li><li>View the YAML file of the event</li><li>Compare the current
+    and previous YAML file</li><li>Health score timeline</li></ul><p></p>'
+  slug: changes-overview
+  tags: []
+  is_live: true

@@ -1,0 +1,114 @@
+type: article
+article_id: m4x6pukeix
+user_id: slcpusem6b
+category_id: z4lta2vnfk
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Use Workload Recommendation APIs
+slug: workload-recommendations-api
+description: This topic describes how to use Workload Recommendations APIs.
+short_version: This topic describes how to use Workload Recommendations APIs.
+tags:
+- Workload Recommendations
+- cloud cost management
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:20:48.158488Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use Workload Recommendation APIs
+  description: This topic describes how to use Workload Recommendations APIs.
+  short_version: This topic describes how to use Workload Recommendations APIs.
+  body: '<p>This topic describes how to use workload recommendations APIs.</p><p>Harness
+    Continuous Efficiency (CE) provides recommendations for your Kubernetes clusters.
+    These recommendations show you resource optimization opportunities to potentially
+    reduce your monthly spend.</p><div class="note-callout">The <code>!</code> following
+    the type means that this field is <em>required</em>.</div><h3 id="undefined">Before
+    You Begin</h3><ul><li><a href="https://docs.harness.io/article/tm0w6rruqv-harness-api">​Introduction
+    to Harness GraphQL API</a></li><li><a href="https://docs.harness.io/article/2rmd5i0e0h-harness-api-explorer">Harness
+    API Explorer</a></li><li><a href="/article/ikxjmkqi03-recommendations">Optimize
+    Kubernetes Costs with Resource Recommendations</a></li></ul><h3>Fetch Resource
+    Recommendations</h3><p>This sample query returns recommendations for your Kubernetes
+    clusters. </p><p></p><p>The recommendation APIs allow you to customize your recommendations
+    by selecting the percentile for CPU and memory sample requests and limit.  You
+    can select any of the following percentiles:</p><ul><li>Percentile 50</li><li>Percentile
+    80</li><li>Percentile 90</li><li>Percentile 95</li><li>Percentile 99</li></ul><p></p><p>This
+    sample query computes the recommendations at the 99th percentile of CPU and memory
+    samples.</p><h4>Request</h4><pre>query ($filters: [WorkloadFilter], $limit: Int!)
+    {<br/>  k8sWorkloadRecommendations(filters: $filters, limit: $limit) {<br/>    nodes
+    {<br/>      estimatedSavings<br/>      namespace<br/>      workloadName<br/>      clusterName<br/>      clusterId<br/>      workloadType<br/>      containerRecommendations
+    {<br/>        containerName<br/>        current {<br/>          requests {<br/>            name<br/>            quantity<br/>          }<br/>          limits
+    {<br/>            name<br/>            quantity<br/>          }<br/>        }<br/>        recommended
+    {<br/>          requests {<br/>            name<br/>            quantity<br/>          }<br/>          limits
+    {<br/>            name<br/>            quantity<br/>          }<br/>        }<br/>        p99
+    {<br/>          requests {<br/>            name<br/>            quantity<br/>          }<br/>          limits
+    {<br/>            name<br/>            quantity<br/>          }<br/>        }<br/>      }<br/>    }<br/>  }<br/>}<br/></pre><p></p><h4>Variables</h4><p>Here
+    are sample query variables for the above operation. The <code>limit</code> variable
+    requires a value.</p><p></p><pre>{<br/>    &#34;filters&#34;: [<br/>      {<br/>        &#34;cluster&#34;:
+    {<br/>          &#34;operator&#34;: &#34;IN&#34;,<br/>          &#34;values&#34;:
+    [&#34;1235d36e4d9f4fa89ce12ab&#34;, &#34;12345678e4d9f4fa89ca1a2b&#34;]<br/>        },<br/>        &#34;namespace&#34;:
+    {<br/>          &#34;operator&#34;: &#34;EQUALS&#34;,<br/>          &#34;values&#34;:
+    [&#34;default&#34;]<br/>        },<br/>        &#34;workloadType&#34;: {<br/>          &#34;operator&#34;:
+    &#34;IN&#34;,<br/>          &#34;values&#34;: [&#34;Deployment&#34;]<br/>        },<br/>        &#34;workloadName&#34;:
+    {<br/>          &#34;operator&#34;: &#34;IN&#34;,<br/>          &#34;values&#34;:
+    [&#34;harness-example-deployment&#34;, &#34;harness-test&#34;]<br/>        }<br/>      }<br/>    ],<br/>    &#34;limit&#34;:
+    10<br/>}</pre><h4>Response</h4><pre>{<br/>  &#34;data&#34;: {<br/>    &#34;k8sWorkloadRecommendations&#34;:
+    {<br/>      &#34;nodes&#34;: [<br/>        {<br/>          &#34;estimatedSavings&#34;:
+    11.14,<br/>          &#34;namespace&#34;: &#34;default&#34;,<br/>          &#34;workloadName&#34;:
+    &#34;harness-test&#34;,<br/>          &#34;clusterName&#34;: &#34;test-target-clone&#34;,<br/>          &#34;clusterId&#34;:
+    &#34;12345678e4d9f4fa89ca1a2b&#34;,<br/>          &#34;workloadType&#34;: &#34;Deployment&#34;,<br/>          &#34;containerRecommendations&#34;:
+    [<br/>            {<br/>              &#34;containerName&#34;: &#34;harness-test-mock&#34;,<br/>              &#34;current&#34;:
+    {<br/>                &#34;requests&#34;: [<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;cpu&#34;,<br/>                    &#34;quantity&#34;: &#34;1&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;1536Mi&#34;<br/>                  }<br/>                ],<br/>                &#34;limits&#34;:
+    [<br/>                  {<br/>                    &#34;name&#34;: &#34;cpu&#34;,<br/>                    &#34;quantity&#34;:
+    &#34;1&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;1536Mi&#34;<br/>                  }<br/>                ]<br/>              },<br/>              &#34;recommended&#34;:
+    {<br/>                &#34;requests&#34;: [<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;cpu&#34;,<br/>                    &#34;quantity&#34;: &#34;25m&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;324M&#34;<br/>                  }<br/>                ],<br/>                &#34;limits&#34;:
+    [<br/>                  {<br/>                    &#34;name&#34;: &#34;memory&#34;,<br/>                    &#34;quantity&#34;:
+    &#34;324M&#34;<br/>                  }<br/>                ]<br/>              },<br/>              &#34;p99&#34;:
+    {<br/>                &#34;requests&#34;: [<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;cpu&#34;,<br/>                    &#34;quantity&#34;: &#34;623m&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;281M&#34;<br/>                  }<br/>                ],<br/>                &#34;limits&#34;:
+    [<br/>                  {<br/>                    &#34;name&#34;: &#34;cpu&#34;,<br/>                    &#34;quantity&#34;:
+    &#34;623m&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;281M&#34;<br/>                  }<br/>                ]<br/>              }<br/>            }<br/>          ]<br/>        },<br/>        {<br/>          &#34;estimatedSavings&#34;:
+    11.05,<br/>          &#34;namespace&#34;: &#34;default&#34;,<br/>          &#34;workloadName&#34;:
+    &#34;<span class="hljs-string" style="box-sizing:inherit;color:rgb(223, 80, 0)"
+    data-hd-color="rgb(223, 80, 0)">harness-example-deployment</span>&#34;,<br/>          &#34;clusterName&#34;:
+    &#34;test-target-clone&#34;,<br/>          &#34;clusterId&#34;: &#34;1235d36e4d9f4fa89ce12ab1&#34;,<br/>          &#34;workloadType&#34;:
+    &#34;Deployment&#34;,<br/>          &#34;containerRecommendations&#34;: [<br/>            {<br/>              &#34;containerName&#34;:
+    &#34;harness-test-mock1&#34;,<br/>              &#34;current&#34;: {<br/>                &#34;requests&#34;:
+    [<br/>                  {<br/>                    &#34;name&#34;: &#34;cpu&#34;,<br/>                    &#34;quantity&#34;:
+    &#34;1&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;1536Mi&#34;<br/>                  }<br/>                ],<br/>                &#34;limits&#34;:
+    [<br/>                  {<br/>                    &#34;name&#34;: &#34;cpu&#34;,<br/>                    &#34;quantity&#34;:
+    &#34;1&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;1536Mi&#34;<br/>                  }<br/>                ]<br/>              },<br/>              &#34;recommended&#34;:
+    {<br/>                &#34;requests&#34;: [<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;cpu&#34;,<br/>                    &#34;quantity&#34;: &#34;93m&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;351M&#34;<br/>                  }<br/>                ],<br/>                &#34;limits&#34;:
+    [<br/>                  {<br/>                    &#34;name&#34;: &#34;memory&#34;,<br/>                    &#34;quantity&#34;:
+    &#34;351M&#34;<br/>                  }<br/>                ]<br/>              },<br/>              &#34;p99&#34;:
+    {<br/>                &#34;requests&#34;: [<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;cpu&#34;,<br/>                    &#34;quantity&#34;: &#34;623m&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;305M&#34;<br/>                  }<br/>                ],<br/>                &#34;limits&#34;:
+    [<br/>                  {<br/>                    &#34;name&#34;: &#34;cpu&#34;,<br/>                    &#34;quantity&#34;:
+    &#34;623m&#34;<br/>                  },<br/>                  {<br/>                    &#34;name&#34;:
+    &#34;memory&#34;,<br/>                    &#34;quantity&#34;: &#34;305M&#34;<br/>                  }<br/>                ]<br/>              }<br/>            }<br/>          ]<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><p></p>'
+  slug: workload-recommendations-api
+  tags:
+  - Workload Recommendations
+  - cloud cost management
+  is_live: true

@@ -1,0 +1,54 @@
+type: article
+article_id: jttcdmfo3o
+user_id: xwmdbyp4x8
+category_id: rg8mrhqm95
+author:
+  name: Doug Bothwell
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: DRAFT Update Build Containers CI-3578
+slug: draft-update-build-containers-ci-3578
+description: Harness publishes updates for CI build containers as described below.
+  CI build images are updated twice a month, and each image is backwards-compatible
+  with the previous two releases. This provides a…
+short_version: Harness publishes updates for CI build containers as described below.
+  CI build images are updated twice a month, and each image is backwards-compatible
+  with the previous two releases. This provides a…
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-03-07T15:02:29.281865Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DRAFT Update Build Containers CI-3578
+  description: ""
+  short_version: ""
+  body: '<p>Harness publishes updates for CI build containers as described below.
+    CI build images are updated twice a month, and each image is backwards-compatible
+    with the previous two releases. This provides a one-month window if you want to
+    run security scans or other tests on new images before deploying them in your
+    infrastructure.</p><h3>CI Build Image Updates</h3><p>Harness updates <code>harness/ci-*</code>
+    images such as <code>harness/ci-addon</code> and <code>harness/ci-lite-engine</code>
+    as follows:</p><ul><li>Harness publishes updates of all CI images on the second
+    and fourth Monday of each month.</li><li>Version numbers use an x.y.z format:
+    x = major release, y = minor release, z = patch release.</li><li>All images are
+    supported for the latest three releases: latest, latest-1, and latest-2. Each
+    image release is backward-compatible with the previous two releases.</li><li>You
+    can choose to deploy the latest containers immediately upon release, or download
+    and scan them before deploying.</li><li>If your builds use containers that are
+    more than two releases old, the UI shows a warning that the image versions are
+    no longer supported. The builds won&#39;t fail automatically.</li><li>If a hot
+    fix or security fix is required for a specific image, Harness will create hotfixes
+    for the latest three images. <span style="color:#d33115" data-hd-color="#d33115"><strong>TBD</strong>
+    --  How will customers know when a patch or hotfix has been released?      </span></li><li></li></ul><h3>Drone
+    Plugins</h3><p></p><p></p>'
+  slug: draft-update-build-containers-ci-3578
+  tags: []
+  is_live: true

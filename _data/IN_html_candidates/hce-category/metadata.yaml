@@ -1,0 +1,14 @@
+type: category
+category_id: kl0mxwpfw1
+parent_category_id: ""
+title: Chaos Engineering
+description: ""
+slug: hce-category
+is_featured: false
+icon: https://files.helpdocs.io/i5nl071jo5/other/1649959444413/hce.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Chaos Engineering
+  description: ""
+  slug: hce-category

@@ -1,0 +1,207 @@
+type: article
+article_id: dfwoqnacnw
+user_id: slcpusem6b
+category_id: 2yrql0zhj0
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Create a Kubernetes Connector for AutoStopping Rules
+slug: k8s-connector-autostopping
+description: This topic describes how to create a Kubernetes connector for AutoStopping
+  Rules.
+short_version: This topic describes how to create a Kubernetes connector for AutoStopping
+  Rules.
+tags:
+- kubernetes
+- cloud cost management
+- Autostopping rules
+- Connectors
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-15T08:40:48.324364Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create a Kubernetes Connector for AutoStopping Rules
+  description: This topic describes how to create a Kubernetes connector for AutoStopping
+    Rules.
+  short_version: This topic describes how to create a Kubernetes connector for AutoStopping
+    Rules.
+  body: '<p></p><div class="note-callout">Currently, this feature is in Beta.</div><p></p><p>Connectors
+    allow Harness to connect to your deployment environments, such as Kubernetes Clusters,
+    AWS, Google Cloud Platform, Azure, etc. To create an AutoStopping Rule for your
+    Kubernetes clusters, you first need to connect Harness to your cluster.</p><p>This
+    topic describes how to connect your Kubernetes cluster to Harness for creating
+    AutoStopping Rules.</p><p>In this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#review_kubernetes_coverage">Review:
+    Kubernetes Coverage</a></li><li><a href="https://newdocs.helpdocs.io/article/dfwoqnacnw-k8s-connector-autostopping#review_kuberenetes_cluster_connector_options">Review:
+    Kuberenetes Cluster Connector Options</a></li><li><a href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#connect_your_kubernetes_cluster_connector_to_ccm_for_auto_stopping_rules">Connect
+    Your Kubernetes Cluster Connector to CCM for AutoStopping Rules</a></li><li><a
+    href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#step_1_overview">Step
+    1: Overview</a></li><li><a href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#step_2_select_features">Step
+    2: Select Features</a></li><li><a href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#step_3_create_a_secret">Step
+    3: Create a Secret</a></li><li><a href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#step_4_provide_permissions">Step
+    4: Provide Permissions</a></li><li><a href="https://ngdocs.harness.io/article/dfwoqnacnw-k8s-connector-autostopping#next_step">Next
+    Step</a></li></ul><h3>Before You Begin</h3><p>Make sure you have the following
+    set up before you create a Kubernetes connector for AutoStopping Rules:</p><ul><li>Ensure
+    that you have access to your Kubernetes cluster.</li><li>Ensure that you&#39;ve
+    added a cloud provider connector depending on the type of Kubernetes cluster for
+    which you want to create an AutoStopping Rules:<br/><ul><li>EKS (AWS): <a href="https://newdocs.helpdocs.io/article/hiyi6xvj36-connect-to-an-aws-connector">Create
+    an AWS Connector for AutoStopping Rules</a></li><li>AKS (Azure): <a href="https://newdocs.helpdocs.io/article/e7yidxmtmj-add-azure-connector">Create
+    an Azure Connector for AutoStopping Rules</a></li><li>GKE (GCP): <a href="https://newdocs.helpdocs.io/article/cfojlhnf8s-create-a-gcp-connector-for-auto-stopping-rules">Create
+    a GCP Connector for AutoStopping Rules</a></li></ul></li></ul><p></p><ul><li>Ensure
+    that you have added a <strong>Kubernetes Cluster</strong> in <strong>Cloud Providers
+    Connector.</strong> See <a href="/article/1gaud2efd4-add-a-kubernetes-cluster-connector">Add
+    a Kubernetes Cluster Connector</a>.<br/><details><summary>Set up your Kubernetes
+    Cluster</summary><div><p>You&#39;ll need a target Kubernetes cluster for the Harness
+    Delegate and deployment. Ensure your cluster meets the following requirements:</p><ul><li><strong>Number
+    of nodes:</strong> 2.</li><li><strong>vCPUs, Memory, Disk Size:</strong> 4vCPUs,
+    16GB memory, 100GB disk.</li><li><strong>Networking:</strong> outbound HTTPS for
+    the Harness connection to <strong>app.harness.io</strong>, <strong>github.com</strong>,
+    and <strong>hub.docker.com</strong>. Allow TCP port 22 for SSH.</li><li>A <strong>Kubernetes
+    service account</strong> with permission to create entities in the target namespace
+    is required. The set of permissions should include <code>list</code>, <code>get</code>, <code>create</code>,
+    and <code>delete</code> permissions. In general, the cluster-admin permission
+    or namespace admin permission is enough.<br/>For more information, see <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles"
+    target="_blank">User-Facing Roles</a> from Kubernetes.</li></ul></div></details><br/><details><summary>Delegate
+    Size</summary><div><p>Your Kubernetes cluster must have unallocated resources
+    required to run the Harness Delegate workload:</p><ul><li>Laptop - 1.6GB memory,
+    0.5CPU</li><li>Small - 3.3GB memory, 1CPU</li><li>Medium - 6.6GB memory, 2CPU</li><li>Large
+    - 13.2GB memory, 4CPU</li></ul><div class="note-callout"><strong>Important:</strong> these
+    sizing requirements are for the Delegate only. Your cluster will require more
+    memory for Kubernetes, the operating system, and other services. Ensure that the
+    cluster has enough memory, storage, and CPU for all of its resource consumers.</div></div></details></li></ul><p></p><p></p><ul><li>Make
+    sure you are a member of the Harness Administrator Group in the Harness FirstGen
+    version. This is required to <a href="/article/dfwoqnacnw-k8s-connector-autostopping#step_3_create_a_secret">create
+    an API key</a>.</li><li><strong>Metrics Server</strong>: Metrics Server must be
+    running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed.
+    Before enabling CCM for Kubernetes, you must ensure the utilization data for pods
+    and nodes is available.<div class="note-callout">Metrics Server is installed by
+    default on GKE and AKS clusters, however, you need to install it on the AWS EKS
+    cluster.</div>Metrics Server is a cluster-wide aggregator of resource usage data.
+    It collects resource metrics from kubelets and exposes them in the Kubernetes
+    API server through Metrics API. CCM polls the utilization data every minute on
+    the Delegate. The metrics are aggregated for 20 minutes and then CCM keeps one
+    data point per 20 minutes. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html"
+    target="_blank">Installing the Kubernetes Metrics Server</a> from AWS.<br/><br/>To
+    install a metrics server on your EKS clusters, run the following command:<br/><br/><pre
+    class="hljs apache">kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml</pre></li></ul><p></p><h3>Review:
+    Kubernetes Coverage</h3><p>The following section lists the support for Kubernetes
+    clusters for AutoStopping Rules:</p><ul><li>EKS (AWS)</li><li>GKE (GCP)</li><li>AKS
+    (Azure)</li><li>kOps</li></ul><h3>Review: Kuberenetes Cluster Connector Setup
+    Options</h3><p>There are two ways to add a Kubernetes cluster connector:</p><ul><li><strong>When
+    Setting Up the Connectors</strong>: You can create Connectors from the Account
+    Resources option in the Account Setup. See <a href="/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes#step_connect_your_kubernetes_cluster_to_ccm">Connect
+    Your Kuberenetes Cluster to CCM</a>.</li><li><strong>When Creating an AutoStopping
+    Rule</strong>: You can also add a Connector inline when creating an AutoStopping
+    Rule. If you&#39;ve added a Kubernetes Connector already as described in the <a
+    href="/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes#step_connect_your_kubernetes_cluster_to_ccm">Connect
+    Your Kuberenetes Cluster to CCM</a>, you can simply select your Kubernetes Connector
+    for which you want to create AutoStopping Rules. This topic explains how to add
+    a Kuberenetes cluster inline when creating an AutoStopping Rule.<br/><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/dfwoqnacnw/1648552153026/screenshot-2022-03-29-at-4-38-24-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ul><p></p><h3>Connect
+    Your Kubernetes Cluster Connector to CCM for AutoStopping Rules</h3><p>Perform
+    the following steps to connect your Kubernetes cluster connector inline when creating
+    AutoStopping Rules:</p><ol><li>In <strong>Cloud Costs</strong>, in <strong>AutoStopping
+    Rules</strong>, click <strong>New AutoStopping Rule</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hiyi6xvj36/1627917097777/screenshot-2021-08-02-at-8-40-48-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>In
+    <strong>AutoStopping Rules</strong>, select the cloud account. It is the cloud
+    account in which your workloads are running that you want to manage using AutoStopping
+    Rules.<br/><br/>You can select any of the following cloud account types:<br/>-
+    AWS<br/>- Azure<br/>- GCP<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hiyi6xvj36/1633498726320/screenshot-2021-10-06-at-11-08-02-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p></p><ol><li
+    style="counter-increment:li 2" start="3">Click <strong>Connect to your</strong>
+    <em><strong>Cloud Account</strong></em> drop-down list. The name of the drop-down
+    list depends on the cloud account type selection. For example, if you select AWS,
+    then the label reads as <strong>Connect to your AWS account</strong>.</li><li>In
+    <strong>Create or Select an Existing Connector</strong> page, select your Conenctor
+    from the list.<br/><br/>If you have not created a cloud provider connector already,
+    click <strong>New Connector</strong>. Refer to the following topics to add your
+    cloud account Connector (depending on the type of cloud account you have selected):<br/><ul><li>AWS:
+    <a href="/article/hiyi6xvj36-connect-to-an-aws-connector">Create an AWS Connector
+    for AutoStopping Rules</a></li><li>Azure: <a href="/article/e7yidxmtmj-add-azure-connector">Create
+    an Azure Connector for AutoStopping Rules</a></li><li>GCP: <a href="/article/cfojlhnf8s-create-a-gcp-connector-for-auto-stopping-rules">Create
+    a GCP Connector for AutoStopping Rules</a><br/><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/dfwoqnacnw/1646452284485/screenshot-2022-03-05-at-9-21-07-am.png"/></figure></li></ul></li><li>Once
+    you&#39;ve created your cloud account type Connector, select the Connector, and
+    click <strong>Apply Selected</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/dfwoqnacnw/1646452660948/screenshot-2022-03-05-at-9-27-12-am.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>In
+    <strong>Let&#39;s get you started</strong> page, click <strong>Next</strong>.</li><li>In
+    <strong>Configurations</strong>, in <strong>Define your AutoStopping rule</strong>,
+    in <strong>Name your Rule</strong>, enter a name for your rule. This is the name
+    of your AutoStopping rule.</li><li>In <strong>Idle time</strong>, enter the idle
+    time in minutes. This is the time that the AutoStopping rule will wait before
+    stopping the idle instances.</li><li>In <strong>Resources to be managed by the
+    AutoStopping rules</strong> step, select <strong>Kubernetes Cluster</strong> and
+    then click <strong>Add a cluster</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/dfwoqnacnw/1633588288644/screenshot-2021-10-07-at-12-01-09-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click
+    <strong>Create a new connector</strong>.</li></ol><h3>Step 1: Overview</h3><ol><li
+    style="counter-increment:li 0" start="1">In <strong>Kubernetes Connector</strong>,
+    in <strong>Overview</strong>, enter the <strong>Name</strong> for your connector.
+    The name will appear in <a href="/article/ehmi6kiynl-autostopping-dashboard">AutoStopping
+    Dashboard</a> to identify this cluster.</li><li>In <strong>Reference an existing
+    connector</strong>, select your Kubernetes cluster connector from the drop-down
+    list. See <a href="/article/1gaud2efd4-add-a-kubernetes-cluster-connector">Add
+    a Kubernetes Cluster Connector</a>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/dfwoqnacnw/1633678412639/screenshot-2021-10-08-at-1-03-12-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click
+    <strong>Save and Continue</strong>.</li></ol><h3>Step 2: Select Features</h3><ol><li>In
+    <strong>Choose Requirements</strong>, select the Cloud Cost Management features
+    that you would like to enable for your Kubernetes clusters. Based on your selection
+    Harness requires specific permissions.<br/><div class="note-callout">To create
+    AutoStopping Rules for your Kubernetes connector, ensure that you have selected
+    Cost Visibility and AutoStopping both.</div><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ltt65r6k39/1627543037017/screenshot-2021-07-29-at-12-45-15-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure>You
+    need to provide different permissions depending on the features that you enable
+    for your Kubernetes clusters. CCM offers the following features:<br/><table><tbody><tr><td><p><strong>Cost
+    Visibility (Required)</strong></p></td><td><p>This feature is available by default
+    and provides the following capabilities:</p><ul><li>Insights into cluster costs
+    by pods, namespace, workloads, etc.</li><li>Idle and unallocated cluster costs</li><li>Workload
+    recommendations</li><li>Root cost analysis using cost perspectives</li><li>Cost
+    anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert
+    users using Email and Slack notification</li></ul></td></tr><tr><td><p><strong>Kubernetes
+    optimization using AutoStopping rules (Required for AutoStopping Rules)</strong></p></td><td><p>This
+    feature allows you to enable Intelligent Cloud AutoStopping for Kubernetes. For
+    more information, see <a href="/article/7025n9ml7z-create-autostopping-rules-aws">Create
+    AutoStopping Rules for AWS</a>.</p><ul><li>Works for custom resources, EKS, AKS,
+    GKE, etc.</li><li>Orchestrate VMs based on idleness</li><li>Provides granular
+    savings visibility</li></ul></td></tr></tbody></table></li><li>Click <strong>Continue</strong>.</li></ol><h3>Step
+    3: Create a Secret</h3><p>The secret creation settings appear only if you have
+    selected <strong>Kubernetes Optimization by AutoStopping</strong> feature in the
+    <strong>Feature Selection</strong> step. In this step, you are providing permissions
+    for intelligent cloud AutoStopping rules. For more information, see <a href="/article/1r80jdz2f9-create-auto-stopping-rules-for-kubernetes">Create
+    AutoStopping Rules for Kubernetes</a>.</p><ol><li>In <strong>Secret creation</strong>,
+    click create an API key here and create an API key. See <a href="https://docs.harness.io/article/smloyragsm-api-keys">Create
+    an API Key</a>.<div class="note-callout">You must be logged into the Harness FirstGen
+    version as a member of the Administrators User Group to create an API key. For
+    details about Harness&#39; role-based access control, see <a href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a>.</div></li><li>Run the following commands in your
+    Kubernetes cluster:<ol><li> Create a namespace.<br/><pre>kubectl create namespace
+    harness-autostopping</pre></li><li>In the following YAML, add the API token that
+    you created (in step 1) and run the command in your K8s cluster.<br/><pre>apiVersion:
+    v1<br/>data:<br/>    token: &lt;<em>paste token here</em>&gt;<br/>kind: Secret<br/>metadata:<br/>    name:
+    harness-api-key<br/>    namespace: harness-autostopping<br/>type: Opaque</pre></li><li>
+    Run the following command:<br/><pre>kubectl apply -f secret.yaml</pre></li></ol></li><li>Click
+    <strong>Continue</strong>.</li></ol><h3>Step 4: Provide Permissions</h3><ol><li>In
+    <strong>Provide Permissions</strong>, click <strong>Download YAML</strong>.</li><li>Copy
+    the downloaded YAML to a machine where you have <code>kubectl</code>installed
+    and have access to your Kubernetes cluster.</li><li>Run the following command
+    to apply the Harness Delegate to your Kubernetes Cluster.<br/><pre>kubectl apply
+    -f ccm-kubernetes.yaml</pre></li><li>Click <strong>Done</strong> and <strong>Continue</strong>.</li><li>In
+    <strong>Verify connection</strong>, once the Test Connection succeeds, click <strong>Finish</strong>.<br/><br/>The
+    Connector is now listed in <strong>Connectors</strong>.</li></ol><h3>Next Step</h3><ul><li><a
+    href="/article/1r80jdz2f9-create-autostopping-rules-for-kubernetes">Create AutoStopping
+    Rules for a Kubernetes Cluster</a></li></ul><p></p>'
+  slug: k8s-connector-autostopping
+  tags:
+  - kubernetes
+  - cloud cost management
+  - Autostopping rules
+  - Connectors
+  is_live: true

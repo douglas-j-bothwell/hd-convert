@@ -1,0 +1,162 @@
+type: article
+article_id: z3kpdn6vcb
+user_id: 2c4rk0cied
+category_id: 9mefqceij0
+author:
+  name: Renu Bhaskaran
+  profile_image: https://www.gravatar.com/avatar/7d21186ef4e85110a0bd60a931c90361?d=mm&s=150
+title: Verify Deployments with Datadog
+slug: verify-deployments-with-datadog
+description: 'Harness CV integrates with Splunk to: Verify that the deployed service
+  is running safely and performing automatic rollbacks. Apply machine learning to
+  every deployment to identify and flag anomalies…'
+short_version: 'Harness CV integrates with Splunk to: Verify that the deployed service
+  is running safely and performing automatic rollbacks. Apply machine learning to
+  every deployment to identify and flag anomalies…'
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-31T17:11:55.115023Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Verify Deployments with Datadog
+  description: 'Harness CV integrates with Splunk to: Verify that the deployed service
+    is running safely and performing automatic rollbacks. Apply machine learning to
+    every deployment to identify and flag anomalies…'
+  short_version: 'Harness CV integrates with Splunk to: Verify that the deployed service
+    is running safely and performing automatic rollbacks. Apply machine learning to
+    every deployment to identify and flag anomalies…'
+  body: '<p>Harness CV integrates with Datadog to:</p><ul><li>Verify if the deployed
+    service is running safely and performing automatic rollbacks.</li><li>Apply machine
+    learning to every deployment to identify and flag anomalies in future deployments.</li></ul><p>This
+    topic covers how to add and configure Datadog as a Health Source for the Verify
+    step.</p><h3>Before You Begin</h3><p><a href="/article/g21fb5kfkg-connect-to-monitoring-and-logging-systems#step_add_datadog">Add
+    Datadog as a verification provider</a></p><h3>Review: CV Setup Options</h3><p>To
+    use the Verify step, you will need a Harness Service Reliability Management Monitored
+    Service. In the simplest terms, a Monitored Service is basically a mapping of
+    a Harness Service to a service monitored by your APM or logging tool.</p><p>You
+    can set up a Monitored Service in the Service Reliability Management module or
+    in the Verify step in a CD stage. The process is the same.</p><p>No matter where
+    you set up the Monitored Service, once it&#39;s set up, it&#39;s available to
+    both Service Reliability Management and CD modules.</p><p>In this topic we&#39;ll
+    set up the Monitored Service as part of the <strong>Verify</strong> step.</p><h3>Step
+    1: Add Verify Step</h3><p>There are two ways to add the Verify step:</p><ul><li><strong>When
+    selecting the stage deployment strategy:</strong><br/>The <strong>Verify</strong> step
+    can be enabled in a CD stage the first time you open the <strong>Execution</strong> settings
+    and select the deployment strategy. When you select the deployment strategy you
+    want to use, there is also an <strong>Enable Verification</strong> option. Select
+    the <strong>Enable Verification</strong> option.<br/>Harness will automatically
+    add the <strong>Verify</strong> step. For example, here is a stage where Canary
+    strategy and the <strong>Enable Verification</strong> option were selected.<figure><a
+    href="https://files.helpdocs.io/i5nl071jo5/articles/3xhqq9xllp/1629841311860/clean-shot-2021-08-24-at-14-41-30.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/3xhqq9xllp/1629841311860/clean-shot-2021-08-24-at-14-41-30.png"/></a></figure></li><li><strong>Add
+    the Verify step to an existing Execution setup:</strong> You can also add the
+    Verify step to the Execution section of a CD stage in a Pipeline you previously
+    created. Simply click <strong>Add Step</strong> after the deployment step, and
+    then select <strong>Verify</strong>.<figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/3xhqq9xllp/1629841332662/clean-shot-2021-08-24-at-14-42-00.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/3xhqq9xllp/1629841332662/clean-shot-2021-08-24-at-14-42-00.png"/></a></figure></li></ul><h3>Step
+    2: Enter Name and Timeout</h3><p>In <strong>Name</strong>, enter a name for the
+    step.</p><p>In <strong>Timeout</strong>, enter a timeout value for the step.</p><p>You
+    can use:</p><ul><li><code>w</code> for weeks</li><li><code>d</code> for days</li><li><code>h</code> for
+    hours</li><li><code>m</code> for minutes</li><li><code>s</code> for seconds</li><li><code>ms</code> for
+    milliseconds</li></ul><p>The maximum is <code>53w</code>.Timeouts can be set at
+    the Pipeline level also.</p><h3>Step 3: Select a Continuous Verification Type</h3><p>In
+    <strong>Continuous Verification Type</strong>, select a type that matches your
+    <a href="/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_3_select_a_continuous_verification_type">deployment
+    strategy</a>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/916vrl4l76/1630648542919/screenshot-2021-09-03-at-11-25-26-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    4: Create a Monitored Service</h3><p>In <strong>Monitored Service</strong>, click <strong>Click
+    to autocreate a monitored service</strong>.</p><p>Harness automatically creates
+    a Monitored Service using a concatenation of the Service and Environment names.
+    For example, a Service named <code>todolist</code> and an Environment named <code>dev</code> will
+    result in a Monitored Service named <code>todolist_dev</code>.</p><p>If the stage
+    Service or Environment settings are <a href="https://ngdocs.harness.io/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a>, the Monitored Service and Health Sources settings will show up in
+    the <strong>Runtime Input</strong> settings when you run the Pipeline.</p><h3>Step
+    5: Add Health Sources</h3><p>A Health Source is basically a mapping of a Harness
+    Service to the service in a deployment environment monitored by an APM or logging
+    tool.</p><p>In <strong>Health Sources</strong>, click <strong>Add</strong>. The <strong>Add
+    New Health Source</strong> settings appear.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/z3kpdn6vcb/1641279221128/screenshot-2022-01-04-at-12-23-07-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>In
+    <strong>Select health source type</strong>, select Datadog.</p><p>In <strong>Health
+    Source Name</strong>, enter a name for the Health Source.</p><p>Under <strong>Connect
+    Health Source</strong>, click <strong>Select Connector</strong>.</p><p>In <strong>Connector</strong> settings,
+    you can either <span style="color:#333333" data-hd-color="#333333">choose an existing
+    connector or click <strong>New Connector.</strong></span></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/z3kpdn6vcb/1641440884518/screenshot-2022-01-06-at-9-17-52-am.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>Click <strong>Apply
+    Selected</strong>. <span style="color:#333333" data-hd-color="#333333">The Connector
+    is added to the Health Source.</span></p><p>In <strong>Select Feature</strong>,
+    select the Datadog feature to be used. You can choose <strong>Cloud Metrics</strong>
+    or <strong>Cloud Logs</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/z3kpdn6vcb/1641441163378/screenshot-2022-01-06-at-9-19-50-am.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>Click
+    <strong>Next</strong>.</p><div class="note-callout">The subsequent settings in <strong>Customize
+    Health Source</strong> depend on the Health Source Type you selected. </div><h3>Option:
+    Cloud Metrics</h3><p>If you select <strong>Cloud Metrics</strong>, the <strong>Select
+    Dashboards</strong> settings appear. It displays a list of Datadog dashboards.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/z3kpdn6vcb/1641441875945/screenshot-2022-01-06-at-9-33-45-am.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>Click
+    the dashboards of your choice. If you don&#39;t have any preexisting dashboards
+    or don&#39;t want to select the ones in the displayed result, click <strong>Manually
+    input query.</strong></p><p>Click <strong>Next</strong> and the <strong>Customize
+    Health Source</strong> settings appear.</p><p>Select a query from the options
+    displayed on the left side of setting panel. The specification of the selected
+    query auto-populates in the fields under <strong>Query Specifications</strong>.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/z3kpdn6vcb/1641442240631/screenshot-2022-01-06-at-9-40-16-am.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>Click
+    <strong>Submit</strong>. The Health Source is displayed in the Verify step.</p><h3>Option:
+    Cloud Logs</h3><p>Select Cloud Logs and click <strong>Next.</strong> The <strong>Customize
+    Health Source</strong> settings appear.</p><p>You can customize the metrics to
+    map the Harness Service to the monitored environment in <strong>Query Specifications
+    and Mapping</strong> settings.</p><p>Click <strong>Map Queries to Harness Services</strong> drop
+    down.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/z3kpdn6vcb/1641442690817/screenshot-2022-01-06-at-9-47-18-am.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>Enter
+    a name for the query in <strong>Name your Query</strong>.</p><p>In <strong>Log
+    Indexes</strong>, select a log index from the list.</p><p>In <strong>Service Instance
+    Identifier</strong>, click the drop-down to select the path of the service instance.</p><p>Click
+    <strong>Submit</strong>. The Health Source is displayed in the Verify step.</p><h3>Step
+    6: Select Sensitivity</h3><p>In <strong>Sensitivity</strong>, select <strong>High</strong>,
+    <strong>Medium</strong>, or <strong>Low</strong> based on the risk level used
+    as failure criteria during the deployment.</p><h3>Step 7: Select Duration</h3><p>Select
+    how long you want Harness to analyze and monitor the logs/APM data points. Harness
+    waits for 2-3 minutes to allow enough time for the data to be sent to the APM/logging
+    tool before it analyzes the data. This wait time is a standard with monitoring
+    tools.</p><div class="note-callout">The recommended <strong>Duration</strong> is <strong>10
+    min</strong> for logging providers and <strong>15 min</strong> for APM and infrastructure
+    providers.</div><h3>Step 8: Specify Artifact Tag</h3><p>In <strong>Artifact Tag</strong>,
+    use a <a href="https://newdocs.helpdocs.io/article/lml71vhsim-harness-variables">Harness
+    expression</a> to reference the artifact in the stage Service settings.</p><p>The
+    expression <code>&lt;+serviceConfig.artifacts.primary.tag&gt;</code> refers to
+    the primary artifact.</p><h3>Option: Advanced Settings</h3><p>In <strong>Advanced</strong>,
+    you can select the following options:</p><ul><li><a href="/article/i36ibenkq2-step-skip-condition-settings">Step
+    Skip Condition Settings</a></li><li><a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    Failure Strategy Settings</a></li><li><a href="/article/nnuf8yv13o-select-delegates-with-selectors">Select
+    Delegates with Selectors</a></li></ul><p>See <a href="/article/3xhqq9xllp-verify-deployments-with-the-verify-step#option_advanced_settings">Advanced
+    Settings</a>.</p><h3>Step 9: Deploy and Review Results</h3><p>After setting up
+    the <strong>Verify</strong> step, click <strong>Apply Changes</strong>.</p><p>Click
+    <strong>Run</strong> to run the pipeline.</p><p>In <strong>Run Pipeline</strong>,
+    select the tag for the artifact if a tag was not added in the <strong>Artifact
+    Details</strong> settings.</p><p>Click <strong>Run Pipeline</strong>.</p><p>When
+    the Pipeline is running, click the <strong>Verify</strong> step. You can see that
+    the verification takes a few minutes.</p><p>Once verification is complete, the
+    Verify step shows the following:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/mvjds2f3hb/1631613049884/screenshot-2021-09-14-at-3-20-09-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>The
+    risk level might initially display a number of violations, but the red and orange
+    colored host often change to green over the duration.</p><h4>Summary</h4><p>The
+    <strong>Summary</strong> section shows the number of logs and metrics that are
+    in violation.</p><h4>Console View</h4><p>Click <strong>Console View</strong> or
+    simply click <strong>View Details</strong> in <strong>Summary</strong> to take
+    a deeper look at verification.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/mvjds2f3hb/1631613327113/screenshot-2021-09-14-at-3-24-54-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click
+    <strong>Filter by Cluster Type</strong> to drill down the metrics based on known
+    events, unknown events, or unexpected frequency.</p>'
+  slug: verify-deployments-with-datadog
+  tags: []
+  is_live: true

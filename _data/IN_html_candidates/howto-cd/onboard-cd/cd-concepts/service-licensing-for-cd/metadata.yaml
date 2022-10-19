@@ -1,0 +1,66 @@
+type: article
+article_id: ihboxj8xlz
+user_id: mfr0nxh4be
+category_id: dxej4ug0n5
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Service-based Licensing and Usage for CD
+slug: service-licensing-for-cd
+description: Harness uses a Service-based license model to charge Harness customers
+  using its Continuous Delivery module.
+short_version: Harness uses a Service-based license model to charge Harness customers
+  using its Continuous Delivery module.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-17T20:39:46.618347Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Service-based Licensing and Usage for CD
+  description: Harness uses a Service-based license model to charge Harness customers
+    using its Continuous Delivery module.
+  short_version: Harness uses a Service-based license model to charge Harness customers
+    using its Continuous Delivery module.
+  body: '<p>Harness uses a Service-based license model to charge Harness customers
+    using its Continuous Delivery module.</p><p>The CD License calculation uses the
+    Active Services count and the number of Service Instances each active Service&#39;s
+    deployment creates.</p><h3>Active Services</h3><p>Harness gets all Services that
+    are part of any Pipeline execution (deployment) over the past <strong>30 Days</strong>.
+    We call these a list of <strong>Active Services</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ihboxj8xlz/1658175095642/clean-shot-2022-07-18-at-13-11-06.png"/></figure><p>When
+    determining Active Services, the status of the deployments does not matter. A
+    Service is considered <u>Active</u> even if it was part of any failed deployments.</p><p>This
+    includes if the Step involving a Service was skipped during a Pipeline execution.</p><p>For
+    example, suppose a Pipeline has 4 different steps, each corresponding to a different
+    Service: service1, service2, service3, service4.</p><p>When the Pipeline is run,
+    Step 2 failed and the Pipeline skipped execution of Steps involving service3 and
+    service4.</p><p>Harness still counts service3 and service4 as <strong>Active Services</strong>
+    since they were part of a Pipeline execution (independent of the Pipeline execution
+    status).</p><p>Also, the number of instances deployed does not matter here. A
+    Service is considered Active even if the corresponding deployment(s) does not
+    create any instance.</p><h3>How Service-based Licensing is Calculated</h3><p>For
+    every Active Service found, Harness finds the <strong>95th Percentile</strong>
+    of the number of its Service Instances across a period of 30 days.</p><p>The active
+    CD License Usage is calculated as follows:</p><ul><li>Every Active Service consumes
+    a <strong>minimum of ONE license</strong>.</li><li>For every additional 20 Service
+    Instances (95th Percentile of Service Instances across a period of 30 days), Harness
+    adds another license for the corresponding Service.</li></ul><div class="note-callout">This
+    Service Instances count might or might not reflect the active instances as at
+    the present time. Instead, it might reflect the 95th percentile count over last
+    30 days.</div><p></p><h3>Example</h3><p>Here&#39;s an example using 4 different
+    Services.</p><table><tbody><tr><td><p><strong>Active Service</strong></p></td><td><p><strong>95th
+    Percentile Active Instances</strong></p></td><td><p><strong>Licenses Consumed</strong></p></td></tr><tr><td><p>Service
+    1</p></td><td><p>0</p></td><td><p>1</p></td></tr><tr><td><p>Service 2</p></td><td><p>17</p></td><td><p>1</p></td></tr><tr><td><p>Service
+    3</p></td><td><p>22</p></td><td><p>2</p></td></tr><tr><td><p>Service 4</p></td><td><p>41</p></td><td><p>3</p></td></tr></tbody></table><p></p>'
+  slug: service-licensing-for-cd
+  tags: []
+  is_live: true

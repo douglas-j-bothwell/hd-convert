@@ -1,0 +1,234 @@
+type: article
+article_id: 320domdle1
+user_id: 2te4j9f9g7
+category_id: y7j7dl46ua
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Harness Security FAQs
+slug: harness-security-faqs
+description: This article addresses some frequently asked questions about Harness
+  security features.
+short_version: This article addresses some frequently asked questions about Harness
+  security features.
+tags:
+- Platform
+- Security
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-07T22:52:16.430307Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Security FAQs
+  description: This article addresses some frequently asked questions about Harness
+    security features.
+  short_version: This article addresses some frequently asked questions about Harness
+    security features.
+  body: <p>This article addresses some frequently asked questions about Harness security
+    features.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before You
+    Begin</a></li><li><a href="#general">General</a><ul><li><a href="#what_security_features_does_harness_provide">What
+    security features does Harness provide?</a></li><li><a href="#are_delegate_communications_secure">Are
+    Delegate communications secure?</a></li><li><a href="#what_data_does_the_delegate_send_to_the_harness_manager">What
+    data does the Delegate send to the Harness Manager?</a></li></ul></li><li><a href="#harness_role_based_access_control_rbac">Harness
+    Role-based access control(RBAC)</a><ul><li><a href="#how_does_harness_implement_rbac">How
+    does Harness implement RBAC?</a></li><li><a href="#how_are_users_added">How are
+    users added?</a></li><li><a href="#can_users_be_added_dynamically">Can users be
+    added dynamically?</a></li><li><a href="#are_there_best_practices_for_setting_up_harness_users">Are
+    there best practices for setting up Harness users?</a></li></ul></li><li><a href="#harness_authentication">Harness
+    Authentication</a><ul><li><a href="#how_are_harness_users_authenticated">How are
+    Harness users authenticated?</a></li><li><a href="#how_is_saml_sso_supported">How
+    is SAML SSO supported?</a></li><li><a href="#can_i_adjust_password_policies">Can
+    I adjust password policies?</a></li><li><a href="#do_you_support_single_sign_on_sso">Do
+    you support Single Sign-On (SSO)?</a></li><li><a href="#do_you_support_two_factor_authentication_2fa">Do
+    you support Two-Factor Authentication (2FA)?</a></li></ul></li><li><a href="#secrets_management">Secrets
+    Management</a><ul><li><a href="#how_are_secrets_managed_in_harness">How are secrets
+    managed in Harness?</a></li><li><a href="#what_kind_of_secrets_are_supported">What
+    kind of secrets are supported?</a></li><li><a href="#where_can_i_use_a_secret">Where
+    can I use a secret?</a></li><li><a href="#how_do_i_create_a_secret">How do I create
+    a secret?</a></li><li><a href="#how_do_i_use_a_secret">How do I use a secret?</a></li><li><a
+    href="#are_my_secrets_exposed_in_logs">Are my secrets exposed in logs?</a></li></ul></li><li><a
+    href="#auditing">Auditing</a><ul><li><a href="#can_i_view_all_my_setup_events_and_changes_in_harness">Can
+    I view all my setup events and changes in Harness?</a></li><li><a href="#what_can_i_see_on_the_audit_trail">What
+    can I see on the audit trail?</a></li><li><a href="#can_i_set_a_date_range_for_an_audit">Can
+    I set a date range for an audit?</a></li><li><a href="#can_i_filter_audit_events">Can
+    I filter audit events?</a></li></ul></li><li><a href="/article/320domdle1-harness-security-faqs#governance">Governance</a><ul><li><a
+    href="/article/320domdle1-harness-security-faqs#does_harness_provide_governance_features">Does
+    Harness provide governance features?</a></li><li><a href="https://ngdocs.harness.io/article/320domdle1-harness-security-faqs#how_to_setup_governance">How
+    to setup governance?</a></li></ul></li><li><a href="#api_keys">API Keys</a><ul><li><a
+    href="#can_i_register_harness_with_third_party_apps">Can I register Harness with</a></li></ul></li></ul><h3>Before
+    You Begin</h3><ul><li><a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li><li><a href="/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a></li></ul><h3>General</h3><p>For an overview of
+    Harness&#39; support for platforms, methodologies, and related technologies, see <a
+    href="/article/1e536z41av-supported-platforms-and-technologies">Supported Platforms
+    and Technologies</a>.</p><h4>What security features does Harness provide?</h4><p>Harness
+    includes:</p><ul><li><a href="/article/hyoe7qcaz6-add-users">Users</a></li><li><a
+    href="/article/dfwuvmy33m-add-user-groups">User Groups</a></li><li><a href="/article/tsons9mu0v-add-manage-roles">Roles</a></li><li><a
+    href="/article/yp4xj36xro-add-resource-groups">Resource Groups</a></li><li><a
+    href="/article/vz5cq0nfg2-rbac-in-harness">Access Management (RBAC)</a></li><li><a
+    href="/article/gdob5gvyco-authentication-overview#enforce_password_policies">Password
+    Policies</a></li><li><a href="/article/ipsux8n7gm-two-factor-authentication">Two-Factor
+    Authentication</a></li><li><a href="/article/mlpksc7s6c-single-sign-on-saml#saml_sso_with_harness_overview">Single
+    Sign-On (SSO)</a></li><li><a href="/article/osfw70e59c-add-use-text-secrets">Encrypted
+    Text</a></li><li><a href="/article/77tfo7vtea-add-file-secrets">Encrypted File</a></li><li><a
+    href="/article/r5ytrnpcgr-audit-trail">Auditing</a></li></ul><p></p><h4>Are Delegate
+    communications secure?</h4><p>Yes. All network connections from the Delegate on
+    your local network or VPC to Harness SaaS are HTTPS outbound-only.</p><p>See <a
+    href="/article/2k7lnc7lvl-delegates-overview">Delegates Overview</a>.</p><h4>What
+    data does the Delegate send to the Harness Manager?</h4><p>The Delegate and the
+    Harness Manager (SaaS) establish a Secure WebSocket channel (WebSocket over TLS)
+    to send new Delegate task event notifications (not the tasks themselves) and exchange
+    connection heartbeats. In the case that the WebSocket connection is dropped, the
+    Harness Delegate falls back to outbound-only, polling-based task fetch.</p><ul><li><strong>Heartbeat</strong> -
+    The Delegate sends a <a href="https://en.wikipedia.org/wiki/Heartbeat_(computing)"
+    target="_blank">heartbeat</a> to let the Harness Manager know that it is running.</li><li><strong>Deployment
+    data</strong> - The information from the API executions the Delegate performs
+    is sent to the Manager for display on the <strong>Deployments</strong> page.</li><li><strong>Time
+    series and log data for Continuous Verification</strong> - The Delegate connects
+    to the verification providers you have configured and sends their data to the
+    Manager for display in Harness Continuous Verification.<br/>See <a href="/article/2k7lnc7lvl-delegates-overview">Delegates
+    Overview</a>.</li></ul><h3>Harness Role-based access control (RBAC)</h3><p>For
+    an overview of Harness&#39; support for platforms, methodologies, and related
+    technologies, see <a href="https://ngdocs.harness.io/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h4>How does Harness implement RBAC?</h4><p>Harness
+    provides Role-Based Access Control (RBAC) that enables you to control user and
+    group access to Harness Resources according to their Role assignment.</p><p>Here
+    is an overview of Harness RBAC. It shows user authentication via its User settings
+    and authorization via its <a href="https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness#defining_and_assigning_permissions">User
+    Group</a> and <a href="https://ngdocs.harness.io/article/vz5cq0nfg2/preview#role-assignment">Role
+    Assignment</a>.</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/vz5cq0nfg2/1623040040722/screenshot-2021-06-07-at-9-55-20-am.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/vz5cq0nfg2/1623040040722/screenshot-2021-06-07-at-9-55-20-am.png"
+    style="max-height:90%;max-width:90%" data-hd-height="90%" data-hd-width="90%"/></a></figure><p>See
+    <a href="/article/vz5cq0nfg2-rbac-in-harness">Access Management (RBAC)</a>.</p><h4>How
+    are users added?</h4><p>When you add Harness users manually, they are added using
+    email addresses. When a user is added, they receive an email invite to the Harness
+    account.</p><h4>Can users be added dynamically?</h4><p>Yes, you can leverage your
+    existing user management infrastructure by adding them using OAuth 2.0, LDAP,
+    SAML, and SCIM.</p><p>See:</p><ul><li><a href="/article/mlpksc7s6c-single-sign-on-saml">Single
+    Sign-On (SSO) with SAML</a></li><li><a href="/article/rb33l4x893-single-sign-on-sso-with-oauth">Single
+    Sign-On (SSO) with OAuth</a></li><li><a href="/article/umv2xdnofv-provision-users-with-okta-scim">Provision
+    Users with Okta (SCIM)</a></li><li><a href="/article/y402mpkrxq-provision-users-and-groups-with-one-login-scim">Provision
+    Users with OneLogin (SCIM)</a></li><li><a href="/article/6r8hin2z20-provision-users-and-groups-using-azure-ad-scim">Provision
+    Users with Azure AD (SCIM)</a></li></ul><h4>Are there best practices for setting
+    up Harness users?</h4><p>Yes, you can add users for the most common application
+    release scenario. This involves separate Harness User Groups for app devs, DevOps
+    engineers, and release approvers.</p><h3>Harness Authentication</h3><p>For an
+    overview of Harness&#39; support for platforms, methodologies, and related technologies,
+    see <a href="https://ngdocs.harness.io/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h4>How are Harness users authenticated?</h4><p>The
+    default method is email address and password.</p><p>You can use several other
+    methods:</p><ul><li><a href="/article/mlpksc7s6c-single-sign-on-saml">Single Sign-On
+    (SSO) with SAML</a></li><li><a href="/article/rb33l4x893-single-sign-on-sso-with-oauth">Single
+    Sign-On (SSO) with OAuth</a></li></ul><h4>How is SAML SSO supported?</h4><p>See
+    <a href="/article/mlpksc7s6c-single-sign-on-saml#saml_sso_with_harness_overview">SAML
+    SSO with Harness Overview</a>.</p><h4>Can I adjust password policies?</h4><p>Yes.
+    You can adjust:</p><ul><li><a href="/article/gdob5gvyco-authentication-overview#enforce_password_strength">Strength</a></li><li><a
+    href="/article/gdob5gvyco-authentication-overview#enforce_password_expiration">Expiration</a> (refresh)
+    period</li><li><a href="/article/gdob5gvyco-authentication-overview#enforce_lockout_after_failed_logins">Lockout Policy</a> after
+    failed logins</li></ul><h4>Do you support Single Sign-On (SSO)?</h4><p>Yes. You
+    can enable Harness logins via a range of single sign-on mechanisms. Enable the <strong>Allow login
+    via public OAuth providers</strong> slider to expose sliders for enabling individual <a
+    href="/article/rb33l4x893-single-sign-on-sso-with-oauth">OAuth</a> providers.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/rb33l4x893/1623430496791/screenshot-2021-06-11-at-10-23-51-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>See:</p><ul><li><a
+    href="/article/mlpksc7s6c-single-sign-on-saml">Single Sign-On (SSO) with SAML</a></li><li><a
+    href="/article/rb33l4x893-single-sign-on-sso-with-oauth">Single Sign-On (SSO)
+    with OAuth</a></li></ul><h4>Do you support Two-Factor Authentication (2FA)?</h4><p>Yes.
+    Two-Factor Authentication (2FA) can be managed in two ways:</p><ul><li><strong>Individual
+    user:</strong> You can set up 2FA for your own <strong>User Profile</strong> without
+    impacting other user accounts.</li><li><strong>All account users:</strong> If
+    you have <strong>Manage Account</strong> permissions, you can enforce 2FA for
+    all users in Harness. First, you set up 2FA for your own account, and then you
+    can enforce 2FA account-wide in the Harness account&#39;s <strong>Login Settings</strong>.</li></ul><p>See <a
+    href="/article/ipsux8n7gm-two-factor-authentication">Two-Factor Authentication</a>.</p><h3>Secrets
+    Management</h3><p>For an overview of Harness&#39; support for platforms, methodologies,
+    and related technologies, see <a href="https://ngdocs.harness.io/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h4>How are secrets managed in Harness?</h4><p>See
+    <a href="/article/hngrlb7rd6-harness-secret-manager-overview">Harness Secrets
+    Management Overview</a>.</p><p>Google Cloud Key Management Service is the default
+    Secrets Manager in Harness.</p><p>You can use your own secrets manager with Harness.
+    Harness integrates with all of the common secret managers:</p><ul><li><a href="https://ngdocs.harness.io/article/cyyym9tbqt-add-google-kms-secrets-manager">Add
+    Google KMS as a Harness Secrets Manager</a></li><li><a href="https://ngdocs.harness.io/article/a73o2cg3pe-add-an-aws-secret-manager">Add
+    an AWS Secret Manager</a></li><li><a href="https://ngdocs.harness.io/article/pt52h8sb6z-add-an-aws-kms-secrets-manager">Add
+    an AWS KMS Secrets Manager</a></li><li><a href="https://ngdocs.harness.io/article/53jrd1cv4i-azure-key-vault">Add
+    an Azure Key Vault Secrets Manager</a></li><li><a href="https://ngdocs.harness.io/article/s65mzbyags-add-hashicorp-vault">Add
+    a HashiCorp Vault Secrets Manager</a></li></ul><p>This diagram shows how Harness
+    handles secrets:</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/hngrlb7rd6/1618224217796/image.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hngrlb7rd6/1618224217796/image.png"/></a></figure><h4>What
+    kind of secrets are supported?</h4><p>Harness supports:</p><ul><li><a href="/article/osfw70e59c-add-use-text-secrets">Encrypted
+    text</a> (for passwords, etc)</li><li><a href="/article/77tfo7vtea-add-file-secrets">Encrypted
+    files</a> (for config files, etc)</li><li><a href="/article/xmp9j0dk8b-add-use-ssh-secrets">SSH
+    connection credentials</a></li></ul><h4>Where can I use a secret?</h4><p>You use
+    secrets in many places in Harness.</p><p>You use secrets for credentials for Harness
+    connections to third party integrations, such as cloud platforms, git repos, and
+    artifact servers.</p><p>You use secrets in Harness connections to target infrastructure,
+    such as SSH keys, and also when passing credentials as part of infrastructure
+    provisioning.</p><h4>How do I create a secret?</h4><p>In Harness Secrets Management,
+    you pick a type of secret, and then enter the secret or upload the file.</p><p>See:</p><ul><li><a
+    href="/article/osfw70e59c-add-use-text-secrets">Use Encrypted Text secrets</a></li><li><a
+    href="/article/77tfo7vtea-add-file-secrets">Use Encrypted File secrets</a></li></ul><h4>How
+    do I use a secret?</h4><p>In most cases, you select the encrypted text or file
+    secret you created as part of the credentials or value for a setting.</p><p>You
+    can also reference a secret using an expression.</p><p>You reference a text secret
+    in a script using the expression <code>&lt;+secrets.getValue(&#34;your_secret&#34;)&gt;</code>.</p><p>For
+    an Encrypted File secret at the Project scope, you reference the secret in a Resource
+    using the expression <code>&lt;+secrets.getValue(&#34;file-secret&#34;)&gt;</code>.</p><p>You
+    can reference a secret at the Org scope using the expression <code>&lt;+secrets.getValue(“org.file-secret”)&gt;</code>.</p><p>If
+    your secret is scoped at the Account level, you can refer it using the expression<code>&lt;+secrets.getValue(“account.platformSecret”)&gt;</code>.</p><p>See:</p><ul><li><a
+    href="/article/osfw70e59c-add-use-text-secrets">Use Encrypted Text secrets</a></li><li><a
+    href="/article/77tfo7vtea-add-file-secrets">Use Encrypted File secrets</a></li></ul><h4>Are
+    my secrets exposed in logs?</h4><p>No. Text secrets are not exposed. Harness sanitizes
+    logs and secrets are masked.</p><div class="note-callout">File secrets are not
+    masked in Harness logs. As noted above they can be encoded in different formats,
+    but they are not masked from users.</div><h3>Auditing</h3><p>For an overview of
+    Harness&#39; support for platforms, methodologies, and related technologies, see <a
+    href="https://ngdocs.harness.io/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h4>Can I view all my setup events and changes
+    in Harness?</h4><p>Yes. Harness provides auditing of events for Harness resources
+    within your account. The Audit Trail enables you to track and review all events
+    in one place.</p><p>See <a href="/article/r5ytrnpcgr-audit-trail">Audit Trail</a>.</p><h4>What
+    can I see on the audit trail?</h4><p>For each event, you can see details such
+    as:</p><ul><li>Date and time (<strong>Time</strong>).</li><li>The user who made
+    the change (<strong>User)</strong>.</li><li><strong>Action</strong> by the user
+    like create, update, delete.</li><li>Harness entity affected (<strong>Resource</strong>).</li><li><strong>Organization</strong> corresponding
+    to the affected entity.</li><li><strong>Project</strong> corresponding to the
+    affected entity.</li><li><strong>Module</strong> corresponding to the affected
+    entity.</li></ul><h4>Can I set a date range for an audit?</h4><p>Yes. You can
+    restrict the Audit Trail&#39;s displayed events by date and time, or define detailed
+    filters by these and other criteria.</p><h4>Can I filter audit events?</h4><p>Yes,
+    extensively. You can set multiple conditions on the events displayed.</p><p>You
+    can save your filters too.</p><h3>Governance</h3><p>For an overview of Harness&#39;
+    support for platforms, methodologies, and related technologies, see <a href="/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h4>Does Harness provide governance features?</h4><p>Yes.
+    Harness Pipeline Governance feature enables you to measure how conformant your
+    Pipelines are with your regulatory and operations standards.</p><p>See <a href="/article/1d3lmhv4jl-harness-governance-overview">Pipeline
+    Governance</a>.</p><h4>How to setup governance?</h4><p>Harness provides governance
+    using Open Policy Agent (OPA), Policy Management, and Rego policies. You can use
+    Harness Governance to ensure that Harness entities like Pipelines meet specific
+    compliance requirements when specific events happen (On Save, On Run, etc.).</p><p>The
+    Harness OPA server is an OPA server managed by Harness.</p><p>In Harness, you
+    add Rego policies to a Policy Set and select the Harness entities for evaluation
+    (e.g. Pipelines). At that point, policies are configured on the Harness OPA Server
+    via a Kubernetes ConfigMap.</p><p>When certain events happen (e.g. saving or running
+    a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action
+    using the Policy Set.</p><h3>API Keys</h3><p>For an overview of Harness&#39; support
+    for platforms, methodologies, and related technologies, see <a href="/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h4>Can I register Harness with third-party
+    apps?</h4><p>Yes, by using Harness API keys.</p><p>To integrate Harness with some
+    third-party apps, you need to register Harness with the app and then supply a
+    Harness API key.</p><p>The API key is a simple encrypted string that other applications
+    can use to access Harness without a private Harness account.</p><p>See <a href="/article/tdoad7xrh9-add-and-manage-api-keys">API
+    Keys</a>.</p>
+  slug: harness-security-faqs
+  tags:
+  - Platform
+  - Security
+  is_live: true

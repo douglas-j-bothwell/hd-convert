@@ -1,0 +1,159 @@
+type: article
+article_id: m0j49kz112
+user_id: wz6xkfcc9i
+category_id: 5mu8983wa0
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Verify Deployments with Stackdriver Metrics
+slug: verify-deployments-with-stackdriver-metrics
+description: Harness can analyze Stackdriver data and analysis to verify, rollback,
+  and improve deployments. To apply this analysis to your deployments, you set up
+  Stackdriver as a verification step in a Harness…
+short_version: Harness can analyze Stackdriver data and analysis to verify, rollback,
+  and improve deployments. Set up Stackdriver as a verification step in a Harness…
+tags:
+- Stackdriver
+- Verification Provider
+- verification
+- Deployment Verification
+- Workflow
+- APM
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:36.115366Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Verify Deployments with Stackdriver Metrics
+  description: ""
+  short_version: Harness can analyze Stackdriver data and analysis to verify, rollback,
+    and improve deployments. Set up Stackdriver as a verification step in a Harness…
+  body: '<p></p><p>Harness can analyze Stackdriver data and analysis to verify, rollback,
+    and improve deployments. To apply this analysis to your deployments, you set up
+    Stackdriver as a verification step in a Harness Workflow.</p><p>This topic covers
+    the process to set up Stackdriver Metrics in a Harness Workflow, and provides
+    a summary of Harness verification results.</p><div class="tip-callout">In order
+    to obtain the names of the host(s), pod(s), or container(s) where your service
+    is deployed, the verification provider should be added to your workflow <em>after</em> you
+    have run at least one successful deployment.</div><h3 id="deployment_verification_setup">In
+    this topic:</h3><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a
+    href="#visual_summary">Visual Summary</a></li><li><a href="#step_1_set_up_the_deployment_verification">Step
+    1: Set up the Deployment Verification</a></li><li><a href="#step_2_metrics_to_monitor">Step
+    2: Metrics to Monitor</a></li><li><a href="#step_3_metric_name_metric_type_and_group_name">Step
+    3: Metric Name, Metric Type, and Group Name</a></li><li><a href="#step_4_json_query">Step
+    4: JSON Query</a></li><li><a href="#step_5_analysis_time_duration">Step 5: Analysis
+    Time Duration</a></li><li><a href="#step_6_baseline_for_risk_analysis">Step 6:
+    Baseline for Risk Analysis</a></li><li><a href="#step_7_execute_with_previous_steps">Step
+    7: Execute with Previous Steps</a></li><li><a href="#step_8_verify_your_settings">Step
+    8: Verify Your Settings</a></li><li><a href="#review_harness_expression_support_in_cv_settings">Review:
+    Harness Expression Support in CV Settings</a></li><li><a href="#step_9_view_verification_results">Step
+    9: View Verification Results</a></li><li><a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li>Set up a Harness Application, containing a Service and Environment.
+    See <a href="/article/bucothemly-application-configuration">Create an Application</a>.</li><li>See
+    the <a href="/article/jn0axefdat-stackdriver-and-harness-overview">Stackdriver
+    Verification Overview</a>.</li></ul><p></p><h3>Visual Summary</h3><p>Here&#39;s
+    an overview of Stackdriver Metrics setup for verification.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/m0j49kz112/1590128813050/stackdriver-metrics.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p></p><h3>Step
+    1: Set up the Deployment Verification</h3><p></p><p>To verify your deployment
+    with Stackdriver, do the following:</p><ol><li>Ensure that you have added Google
+    Cloud Platform as a Cloud Provider provider, as described in <a href="/article/dysdvm3vo7-stackdriver-connection-setup">Connect
+    to Stackdriver</a>.</li><li>In your Workflow, under <strong>Verify Service</strong>,
+    click <strong>Add Step</strong>.</li><li>In the resulting <strong>Add Step</strong> settings,
+    select <strong>Performance Monitoring</strong> &gt; <strong>Stackdriver</strong>.</li><li>Click
+    <strong>Next</strong>. The <strong>Configure </strong><strong>Stackdriver</strong>
+    settings appear.</li><li>In <strong>GCP Cloud Provider</strong>, select the <a
+    href="/article/whwnovprrb-cloud-providers#google_cloud_platform_gcp">Google Cloud
+    Platform (GCP) Cloud Provider</a> you set up in Harness.</li><li>You can also
+    enter variable expressions, such as: <code>${serviceVariable.stackdriver_connector_name}</code>.</li></ol><h3>Step
+    2: Metrics to Monitor</h3><p>In this section you define the Stackdriver metrics
+    you want to monitor. For example, here is a Stackdriver Metrics Explorer configured
+    to monitor Kubernetes container restarts, filtered by a cluster name and grouped
+    by cluster.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1571956227865/image.png"/></figure><p></p><p>To
+    reproduce these settings in <strong>Metrics To Monitor</strong>, you simply copy
+    its filter and group by details via its JSON.</p><p></p><h3>Step 3: Metric Name,
+    Metric Type, and Group Name</h3><p>In <strong>Metric Name</strong>, enter a name
+    to identify the metric in Harness, such as <strong>Restarts</strong>. This is
+    not the Stackdriver-specific name of a metric.</p><p>In <strong>Metric Type</strong>,
+    select the type of metric to monitor, such as <strong>Infra</strong>.</p><p>In
+    <strong>Group Name</strong>, enter a name for grouping the metrics in Harness,
+    such as <strong>PodRestarts</strong>. The Group Name is useful when you want Harness
+    to monitor multiple metrics, and be able to group them.</p><p></p><h3>Step 4:
+    JSON Query</h3><p>Paste in the JSON query from Stackdriver Metrics Explorer.</p><p>Make
+    sure you provide <code>${host}</code> string for filtering in the query. For example:
+    <code>resource.label.\&#34;pod_name\&#34;=\&#34;${host}\&#34;&#34;</code>.</p><p>In
+    Stackdriver Metrics Explorer, once you have your metric query set up, click the
+    <strong>View as JSON</strong> option.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1571956384316/image.png"/></figure><p>Next,
+    click <strong>COPY JSON</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1571956423622/image.png"/></figure><p>In
+    Harness Stackdriver Metrics, in <strong>JSON Query</strong>, paste in the JSON.</p><p>Here
+    is an example using the <code>${host}</code> expression:</p><pre class="hljs json">  &#34;dataSets&#34;:
+    [<br/>    {<br/>      &#34;timeSeriesFilter&#34;: {<br/>        &#34;filter&#34;:
+    &#34;metric.type=\&#34;kubernetes.io/container/memory/limit_utilization\&#34;
+    resource.type=\&#34;k8s_container\&#34; resource.label.\&#34;cluster_name\&#34;=\&#34;harness_test\&#34;
+    resource.label.\&#34;pod_name\&#34;=\&#34;${host}\&#34;&#34;,<br/>        &#34;minAlignmentPeriod&#34;:
+    &#34;60s&#34;,<br/>        &#34;unitOverride&#34;: &#34;1&#34;,<br/>        &#34;aggregations&#34;:
+    [<br/>          {<br/>            &#34;perSeriesAligner&#34;: &#34;ALIGN_MEAN&#34;,<br/>            &#34;crossSeriesReducer&#34;:
+    &#34;REDUCE_SUM&#34;,<br/>            &#34;groupByFields&#34;: []<br/>          },<br/>          {<br/>            &#34;crossSeriesReducer&#34;:
+    &#34;REDUCE_NONE&#34;<br/>          }<br/>        ]<br/>      },<br/>      &#34;targetAxis&#34;:
+    &#34;Y1&#34;,<br/>      &#34;plotType&#34;: &#34;LINE&#34;<br/>    }<br/>  ],<br/>  &#34;options&#34;:
+    {<br/>    &#34;mode&#34;: &#34;COLOR&#34;<br/>  },<br/>  &#34;constantLines&#34;:
+    [],<br/>  &#34;timeshiftDuration&#34;: &#34;0s&#34;,<br/>  &#34;y1Axis&#34;: {<br/>    &#34;label&#34;:
+    &#34;y1Axis&#34;,<br/>    &#34;scale&#34;: &#34;LINEAR&#34;<br/>  }<br/>}</pre><h3>Step
+    5: Analysis Time Duration</h3><p>Set the duration for the verification step. If
+    a verification step exceeds the value, the workflow <a href="/article/m220i1tnia-workflow-configuration#failure_strategy">Failure
+    Strategy</a> is triggered. For example, if the Failure Strategy is <strong>Ignore</strong>,
+    then the verification state is marked <strong>Failed</strong> but the workflow
+    execution continues.</p><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices#analysis_time_duration">CV
+    Strategies, Tuning, and Best Practices</a>.</p><p></p><h3>Step 6: Baseline for
+    Risk Analysis</h3><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV
+    Strategies, Tuning, and Best Practices</a>.</p><p></p><h3>Step 7: Execute with
+    Previous Steps</h3><p>Check this checkbox to run this verification step in parallel
+    with the previous steps in <strong>Verify Service</strong>.</p><p></p><h3>Step
+    8: Verify Your Settings</h3><p>Click <strong>Test</strong> to confirm your settings.
+    In the testing assistant, select a host and click <strong>Run</strong>. When you
+    have confirmed your settings, click <strong>Submit</strong>.</p><p>The Stackdriver
+    verification step is added to your Workflow.</p><p></p><h3>Review: Harness Expression
+    Support in CV Settings</h3><p>You can use expressions (<code>${...}</code>) for
+    <a href="/article/7bpdtvhq92-workflow-variables-expressions">Harness built-in
+    variables</a> and custom <a href="/article/eb3kfl8uls-service-configuration">Service</a>
+    and <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow</a>
+    variables in the settings of Harness Verification Providers.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1586812006289/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p>Expression support lets
+    you template your Workflow verification steps. You can add custom expressions
+    for settings, and then provide values for those settings at deployment runtime.
+    Or you can use Harness built-in variable expressions and Harness will provide
+    values at deployment runtime automatically.</p><p></p><h3>Step 9: View Verification
+    Results</h3><p>Once you have deployed your Workflow (or Pipeline) using the Stackdriver
+    verification step, you can automatically verify performance across your deployment.
+    For more information, see <a href="/article/m220i1tnia-workflow-configuration">Add
+    a Workflow</a> and <a href="/article/zc1u96u6uj-pipeline-configuration">Add a
+    Pipeline</a>.</p><h4>Workflow Verification</h4><p>To see the results of Harness
+    machine-learning evaluation of your Stackdriver verification, in your workflow
+    or pipeline deployment you can expand the <strong>Verify Service</strong> step
+    and then click the <strong>Stackdriver</strong> step.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/g5l03na9zo/1557785647550/image.png"/></figure><h4>Continuous
+    Verification</h4><p>You can also see the evaluation in the <strong>Continuous
+    Verification</strong> dashboard. The Workflow verification view is for the DevOps
+    user who developed the workflow. The <strong>Continuous Verification</strong>
+    dashboard is where all future deployments are displayed for developers and others
+    interested in deployment analysis.</p><p></p><h3>Next Steps</h3><ul><li><a href="/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code</a></li><li><a href="/article/ven0bvulsj-users-and-permissions">Users
+    and Permissions</a></li><li><a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV
+    Strategies, Tuning, and Best Practices</a></li></ul><p></p>'
+  slug: verify-deployments-with-stackdriver-metrics
+  tags:
+  - Stackdriver
+  - Verification Provider
+  - verification
+  - Deployment Verification
+  - Workflow
+  - APM
+  is_live: true

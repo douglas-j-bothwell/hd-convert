@@ -1,0 +1,166 @@
+type: article
+article_id: v3l3wqovbe
+user_id: mfr0nxh4be
+category_id: 1eqg76ac72
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add an Infrastructure Definition
+slug: infrastructure-definitions
+description: Provide details on adding an Infrastructure Definition. When you create
+  a Harness Workflow, you pick the Infrastructure Definition you want to use as the
+  target deployment environment.
+short_version: Provide details on adding an Infrastructure Definition. When you create
+  a Harness Workflow, you pick the Infrastructure Definition you want to use as the
+  target deployment environment.
+tags:
+- Infrastructure Definition
+- Cloud Provider
+- Deployment type
+- Scope to specific Services
+- Service Infrastructure Mapping
+- expression
+- workflow.variables.namespace
+- Service variable
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:35.944696Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add an Infrastructure Definition
+  description: Provide details on adding an Infrastructure Definition. When you create
+    a Harness Workflow, you pick the Infrastructure Definition you want to use as
+    the target deployment environment.
+  short_version: Provide details on adding an Infrastructure Definition. When you
+    create a Harness Workflow, you pick the Infrastructure Definition you want to
+    use as the target deployment environment.
+  body: '<div class="note-callout">Infrastructure Definition replaces <a href="/article/mt3pt3gad5-service-infrastructures">Service
+    Infrastructures</a> as the method for defining your target infrastructure.</div><p>The
+    Infrastructure Definition is where you specify the target infrastructure for your
+    deployment. The target infrastructure can be an existing infrastructure or an
+    infrastructure provisioner, such as Terraform or CloudFormation, set up as a Harness
+    <a href="/article/o22jx8amxb-add-an-infra-provisioner">Infrastructure Provisioner</a>.</p><p>When
+    you create a Harness Workflow, you pick the Infrastructure Definition you want
+    to use as the target deployment environment.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/v3l3wqovbe/1620840155097/oi-fbhw-7-li-zvmh-uk-xn-4-o-4-ecfxe-vcy-bl-pme-wf-l-dcs-5-pmw-qix-0-zmb-7-jyueg-zud-l-pfkiehu-9-jtrx-jcnnm-l-6-df-vfpu-yyg-ll-612-q-ftk-uw-kvw-a-1-a-wo-scsi-tfv-hf-8-5-m-zjw-xvgdys-ir-g"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#step_add_an_infrastructure_definition">Step:
+    Add an Infrastructure Definition</a></li><li><a href="https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#option_1_scope_to_specific_services">Option
+    1: Scope to Specific Services</a></li><li><a href="https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#option_2_use_expressions_in_infrastructure_definitions">Option
+    2: Use Expressions in Infrastructure Definitions</a></li><li><a href="https://docs.harness.io/article/v3l3wqovbe-infrastructure-definitions#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li> <a href="https://docs.harness.io/article/n39w05njjv-environment-configuration">Add
+    Environment</a></li></ul><h3>Step: Add an Infrastructure Definition</h3><p>To
+    add an Infrastructure Definition, do the following:</p><ol><li>In your Harness
+    Application, open or create an Environment.</li><li>In the Environment, you can
+    see the <strong>Infrastructure Definitions</strong> section.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/v3l3wqovbe/1620840155247/y-kxfd-kc-4-lk-3-joc-mzx-vw-eeh-1-p-wdz-lg-amg-j-9-ip-5-m-mjagph-0-vu-ox-sjj-aog-wno-ay-v-7-wzt-9-r-dyi-jczqb-8-nqe-896-yht-bo-7-lt-nt-jl-ft-wjj-d-3-u-11-nx-7-mi-i-39-ck-2-l-57-m-s-zkv-c-8-a-wa-yqt"/></figure><p></p><ol><li
+    style="counter-increment:li 2" start="3">Click <strong>Add Infrastructure Definition</strong>.
+    The <strong>Infrastructure Definition</strong> settings appear.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/v3l3wqovbe/1620840155366/6-mscf-3-ot-kdjfn-5-pryxf-7-tvsvb-1-w-r-5-eov-3-jmdt-m-5-zz-qzm-1-r-nax-n-2-g-8-q-c-7-m-91-vnz-g-46-j-fibca-ft-1-u-kj-ntnmri-8-an-rriebnl-wo-qh-r-m-8-ehe-wda-q-26-y-5-dx-06-dul-1-r-sauq-y-64-g-4-ma-g"/></figure><ol><li
+    style="counter-increment:li 3" start="4">In <strong>Name</strong>, enter name
+    for the Infrastructure Definition.</li><li>In <strong>Cloud Provider Type</strong>,
+    select the type of Cloud Provider.<br/><div class="tip-callout"><strong>Which
+    Type do I Use?</strong> Pick the same type of Cloud Provider as the Cloud Provider
+    you want this Infrastructure Definition to use to connect to your target infrastructure.
+    For example, if the target infrastructure is in AWS, select Amazon Web Services.</div></li><li>In
+    <strong>Deployment Type</strong>, select the type of deployment that matches the
+    target infrastructure type. For example, if you are defining an infrastructure
+    for AWS Lambda, then your <strong>Deployment Type</strong> would be <strong>AWS
+    Lambda</strong>. If you are defining a Kubernetes cluster, then the <strong>Deployment
+    Type</strong> would be <strong>Kubernetes</strong>.</li></ol><p>That&#39;s the
+    initial configuration of the Infrastructure Definition. The remaining settings
+    depend on the Cloud Provider Type and Deployment Type you selected. If you selected
+    AWS-related types, the remaining settings are AWS-related. If you select Kubernetes-related
+    types, you will have Kubernetes cluster settings to provide.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/v3l3wqovbe/1620840155487/fipaj-pb-qr-6-td-1-c-9-f-en-zn-1-j-txsm-bpfj-5-d-bu-sjkvw-u-6-by-9-ih-7-p-ck-dyyij-zn-6-ag-svd-my-93-iu-52-gw-y-rbr-4-fp-7-keb-peh-rmp-1-jgxhe-1-vmf-xxu-uh-3-uz-7-vyk-21-cv-fvi-2-cf-yv-aa-vopom-q"/></figure><p></p><h3>Option
+    1: Scope to Specific Services</h3><p>The <strong>Scope to specific Services</strong>
+    setting in the Infrastructure Definition enables you to scope this Infrastructure
+    Definition to specific Harness Services.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/v3l3wqovbe/1620840155623/7-avq-zgc-4-z-1-fg-8-od-na-vs-9-dalqq-5-kn-sfjj-act-z-i-ipmkr-xs-6-vcfm-sp-512-t-6-iei-1-l-q-e-bd-13-c-xco-9-g-iw-4-n-9-v-gsr-si-ls-et-xrf-ah-8-tj-5-y-7-ysq-6-eg-e-6-eei-buqcgc-ocyo-2-g-yfe-sxk-o-1"/></figure><p>This
+    enables you to create one Infrastructure Definition and apply it to multiple Services.
+    This will make the Infrastructure Definition available whenever a Workflow (or
+    Phase) is set up for one of the Services.</p><p>For example, here is an Infrastructure
+    Definition named <strong>Lambda-QA</strong> scoped to the Service named <strong>AWS
+    Lambda</strong>. Next is a Workflow where the <strong>AWS Lambda</strong> Service
+    has been selected.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/v3l3wqovbe/1620840155733/qn-jmoe-op-1-se-14-l-l-u-hvyl-ng-tzm-ral-0-czyy-4-qn-a-3-u-ru-abv-tf-9-2-qf-dhwhu-yxewe-dkyw-qbca-3-pn-aymosv-pkrbi-22-kejk-wuvob-5-goe-l-0-ck-od-v-1-qp-j-61-p-0-xr-p-6-gc-vhpa-vbsyn-vb-03-a"/></figure><p>You
+    can see that since the <strong>AWS Lambda</strong> Service was selected in the
+    Workflow setup, the Infrastructure Definition <strong>Lambda-QA</strong> is available
+    in the Infrastructure Definition setting.</p><p>This is because the <strong>Lambda-QA</strong>
+    Infrastructure Definition is scoped to the <strong>AWS Lambda</strong> Service.</p><p>If
+    <strong>Scope to specific Services</strong> is not used, the Infrastructure Definition
+    is available to all Workflows using Services that match the Infrastructure Definition
+    <strong>Deployment Type</strong>.When you deploy a Workflow, its Service is added
+    to the <strong>Scope to specific Services</strong> setting in the Infrastructure
+    Definition.</p><div class="note-callout">To prevent conflicts with multiple Workflows
+    deploying to the same Infrastructure Definition <em><strong>simultaneously</strong></em>,
+    Harness uses Workflow queuing. For more information, see <a href="/article/hui1k7seo1-workflow-queuing">Workflow
+    Queuing</a>.</div><p>When creating Infrastructure Definitions, you might want
+    to simply leave the <strong>Scope to specific Services</strong> setting empty
+    until you have set up the Services you want to deploy to the Infrastructure Definition,
+    and then enter the Services in the <strong>Scope to specific Services</strong>
+    setting.</p><h4>Unscoped Infrastructure Definitions</h4><p>When <strong>Scope
+    to specific Services</strong> is not selected, you can use it with any Services.</p><p>When
+    you create a Workflow, any <em>unscoped</em> Infrastructure Definitions are available.
+    The Infrastructure Definitions that appear in the Workflow setup match the type
+    of Service you select.</p><p>In the following example, the Infrastructure Definition
+    is not scoped to a Service. In the <strong>Workflow Phase</strong> dialog, the
+    Infrastructure Definition is available because its <strong>Deployment Type</strong>
+    matches the Service selected in the Workflow Phase setup (Kubernetes).</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568757238416/image.png"/></figure><p>When
+    the Workflow is deployed, the Service is automatically added to the <strong>Service
+    Infrastructure Mapping</strong> of the Infrastructure Definition, regardless of
+    whether the deployment was successful:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568828927515/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>When
+    additional Workflows use the Infrastructure Definition and deploy, they will be
+    automatically added to the <strong>Service Infrastructure Mapping</strong> of
+    the Infrastructure Definition also. Their deployment status is also listed:</p><h4>Service
+    Infrastructure Mapping</h4><p>Once a Service has been deployed using an Infrastructure
+    Definition, the Service and its details are displayed in <strong>Service Infrastructure
+    Mapping</strong>.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568835388332/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure><p><strong>Service
+    Infrastructure Mapping</strong> helps you keep track of the Services using the
+    Infrastructure Definition.</p><p>Services are listed in <strong>Service Infrastructure
+    Mapping</strong> even if deployment fails because deployment infrastructure mapping
+    gets created before deployment proceeds.</p><h3>Option 2: Use Expressions in Infrastructure
+    Definitions</h3><p>You can use expressions for many Infrastructure Definition
+    settings. This enables you to use a single Infrastructure Definition in multiple
+    Workflows. In each Workflow, you can replace the expression with a specific value.</p><p>For
+    example, here is the Infrastructure Definition for a Kubernetes cluster. In the
+    <strong>Namespace</strong> field we have the expression <code>${workflow.variables.namespace}</code>:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568654020112/image.png"/></figure><p>In
+    each Workflow that uses this Infrastructure Definition, you can add a Workflow
+    variable that replaces the namespace expression with a hardcoded value:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568654091865/image.png"/></figure><p>You
+    could also have a non-fixed Workflow variable, and have the value entered during
+    deployment manually...</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568654143839/image.png"/></figure><p>...or
+    you can have the value passed in by a Trigger.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568654210905/image.png"/></figure><p></p><h4>Service
+    Variables</h4><p>Currently, Service variables cannot be automatically filled in
+    Infrastructure Definition fields. Typically, automatically-filled Service variables
+    appear when you begin typing <code>${</code> in a field. Until they are supported,
+    you can enter them manually by typing <code>${serviceVariable.var_name}</code>
+    where <code>var_name</code> is the Service variable name.</p><p>If an Infrastructure
+    Definition is scoped to specific Services, only use Service variables from those
+    Services.</p><p>If an Infrastructure Definition is not scoped, and therefore available
+    to any Service of the same type, you can use Service variables from any Service
+    of the same type.</p><h3>Next Steps</h3><ul><li><a href="https://docs.harness.io/category/a8jhf8hizv-workflows">Add
+    Workflows</a></li><li><a href="/article/bov41f5b7o-templatize-a-workflow-new-template">Templatize
+    a Workflow</a></li><li><a href="/article/bc65k2imoi-deploy-to-multiple-infrastructures">Deploy
+    a Workflow to Multiple Infrastructures Simultaneously</a></li></ul><p></p>'
+  slug: infrastructure-definitions
+  tags:
+  - Infrastructure Definition
+  - Cloud Provider
+  - Deployment type
+  - Scope to specific Services
+  - Service Infrastructure Mapping
+  - expression
+  - workflow.variables.namespace
+  - Service variable
+  is_live: true

@@ -1,0 +1,86 @@
+<h3>Minor Release 74969</h3>
+<p>Release Date: May 11, 2022</p>
+<p>We&#39;re pleased to present Harness Self-Managed Enterprise Edition Minor Release 74969.</p>
+<h4>New Features and Enhancements</h4>
+<p>The following new features are added to the Harness SaaS components:</p>
+<ul>
+  <li>Custom selector API for Delegate NG Token management is available now. (DEL-3558, ZD-21717, ZD-27515)<ul>
+      <li>See <a href="https://harness.io/docs/api/tag/Delegate-Token-Ng-Resource/">Delegate Token NG Source</a>.</li>
+    </ul>
+  </li>
+  <li>Harness can now send key Workflow and Pipeline deployment events to a URL endpoint as a JSON payload. This helps in analyzing how Workflows and Pipelines are performing, using other tools that consume and build dashboards for the events. This feature is now public and not behind the Feature Flag<code>FF APP_TELEMETRY</code>. (CDS-35193)<ul>
+      <li>See <a href="/article/okinra1xu2-publish-workflow-events-to-an-http-endpoint">Publish Workflow Events</a>.</li>
+      <li>See <a href="/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint">Publish Pipeline Events</a>.</li>
+    </ul>
+  </li>
+  <li>You can now filter out the desired application on the <strong>Deployments</strong> page using the search option in the <strong>Application</strong> dropdown. (CDS-34070)<ul>
+      <li>See <a href="/article/lbiv3zwwm0-filtering-deployments">Filtering Deployments</a>.</li>
+    </ul>
+  </li>
+  <li>We are reducing the heap size of Current Gen Delegate processes from 4gb to 1.5gb. We are also reducing the k8 memory requirement from 8gb to 4gb. This is behind a feature flag and will be rolled out with various accounts. (DEL-3365)</li>
+  <li>We now have the new application filter component that supports API-driven BE search as well as infinite scrolling. So we won&#39;t fetch all the applications at once, but instead fetch them in a batch size of 15 and relevant to the search text typed. (CDS-36365)</li>
+</ul>
+<h4>Issues Fixed​</h4>
+<ul>
+  <li>We have removed the Walkme integration from Harness. (PLG-988, ZD-30008)</li>
+  <li>When pasting the YAML definition in a Workflow, the Update failed. Reason: NullPointerException error message was thrown without any reason for the failure. (PL-24456, ZD-29097)</li>
+  <li>API Explorer wasn&#39;t using the API_URLenvironment variable. A special code was removing the “gateway” prefix from the API calls. (PL-24415, ZD-27919, ZD-29434)</li>
+  <li>Fixed issue: If cluster lacked IPv6 support, delegate-proxy and harness-ui crashloop due to being unable to bind to any IPv6 interfaces on port 8080 [::}:8080 (PL-24002, ZD-28675)</li>
+  <li>Fixed issue: GraphQL Deployment Stats missing (PL-22091, ZD-21917)</li>
+  <li>Fixed issue: Config-As-Code stopped syncing from On-Premise to Git. (PL-18485, ZD-17190, ZD-17744, ZD-18077, ZD-18312, ZD-20225)</li>
+  <li>The setup as code API for performing CRUD with YAMLs had a bug in which the YAML processing status wasn&#39;t correctly returned. This issue is being addressed in order to return the correct YAML processing status. (PL-17678, ZD-16868)</li>
+  <li>Config-As-Code YAML upsert API used to return 200 even if the zip was incorrect. In such cases, it will now return HTTP response code 400. (PL-17676, ZD-16868, ZD-16873)</li>
+  <li>AddDelegateScope output payload wasn&#39;t displayed correctly. (DEL-3757)</li>
+  <li>Unused column from datagrid has been removed and tooltip user experience has been improved​. (DEL-3742)</li>
+  <li>Fixed issue: Older Delegates were missing Name and selector after automatic restart. (DEL-3714, ZD-29353)</li>
+  <li>When querying the GraphQL API for Delegates, the lastHeartBeat field was a string instead of an integer. (DEL-3712)</li>
+  <li>Fixed issue: Delayed notifications for Delegate Down alert. (DEL-3696, ZE-28359)</li>
+  <li>Error message wasn&#39;t displaying the reason why a Delegate task failed. A Delegate task can fail to be assigned to a Delegate for various reasons, like incorrect Selectors, or Scope setup. (DEL-3686, ZD-28494, ZD-29304)</li>
+  <li>The Watcher program communicates with the Delegate using a local file-based channel. A NullPointerException was thrown while reading messages from this channel. (DEL-3623)</li>
+  <li>Ratio API for Delegate wasn&#39;t working as expected. (DEL-3603)</li>
+  <li>Fixed issue: Delegate Page wasn&#39;t loading​. (DEL-3571, ZD-28886, 28935)</li>
+  <li>The ECS Delegate alerts are not unless all Delegates associated with an ECS group become unavailable. (DEL-3565)</li>
+  <li>For on prem and oss installations, delegate and watcher jars are downloaded from the backend and hence CDN URLs don&#39;t need to be present in the YAML. (DEL-3126)​</li>
+  <li>GraphQL API had no method to list Delegate Scopes for an account. (DEL-2963)</li>
+  <li>Docker Delegate installation was failing whenever there was a space in the hostname. (DEL-2597)</li>
+  <li>Displayed the service artifact version and enhanced the design on hovering over the details. (CDS-36735)</li>
+  <li>Fixed issue: Unable fetch children Jenkins jobs in the Jenkins step of the workflow. (CDS-36701)</li>
+  <li>We have now added infinite scroll and search capability for the Triggers page in CD, similar to cloud providers (CDS-36625, ZD-30004)</li>
+  <li>The CloudWatch verification stage was failing because the instance IDs of the hosts were not properly rendered. (CDS-36609, ZD-30035)</li>
+  <li>The expressions <code>$ami.newAsgName</code> and <code>$ami.oldAsgName</code> for AMI Blue Green incrementally shift traffic workflows weren&#39;t set correctly. (CDS-36563, ZD-29905)</li>
+  <li>For Deployment Freeze, an empty description was getting saved in the database. (CDS-36562, ZD-29969)</li>
+  <li>Incorrect Delegate selection logs were getting displayed when a Step failed or was skipped. (CDS-36480, ZD-29628)</li>
+  <li> Approval step with slack had an issue in very corner case which was fixed​. (CDS-36429)</li>
+  <li>The users were not getting redirected to the Pipeline execution / Workflow execution page based on the Pipeline / Workflow. (CDS-36352, ZD-29800)</li>
+  <li>Error Message &#34;Duplicate State&#34; was not displaying &#34;Duplicate Step Name&#34; and was displaying an incomplete notification. (CDS-36298, ZD-29769)</li>
+  <li>Jira&#39;s issue metadata was not being fetched correctly. (CDS-36158, ZD-29622, ZD-29628, ZD-29775)</li>
+  <li>Pipeline Approval Step was throwing an error UNKNOWN_ERROR. (CDS-36152, ZD-29557)</li>
+  <li>Fixed UI issue in Deployment screen. (CDS-35976)</li>
+  <li>Audit Trail was not showing deleted Applications. (CDS-35910, ZD-29197)</li>
+  <li>An invalid parentheses character within the step name prior to the expression evaluation/resolution wasn&#39;t normalized. (CDS-35795, ZD-29253)</li>
+  <li>Jira Approval was failing with an unclear error message. (CDS-35786, ZD-29259))</li>
+  <li>Helm version 3.5 and above was not working with Native Helm Services as the URL name was changing and <code>force-updateflag</code> wasn&#39;t working. (CDS-35667, ZD-29165, ZD-29194)</li>
+  <li>An incorrect error message <code>Invalid argument(s): Task has expired</code> was being displayed when adding a Jenkins Provider. (CDS-35524, ZD-29044)</li>
+  <li>Some Workflows were not rendering dynamic Infrastructure Definition expressions for Terraform. This failure happens for Pipelines with multiple Terraform Workflows that use the same Service and Infrastructure Definition expressions. (CDS-35486, ZD-28977, ZD-28997, ZD-29166)</li>
+  <li>Concurrency issues were occurring when multiple processes execute <code>helm repo add, helm repo update, and helm repo pull</code> in parallel. (CDS-35483, ZD-27796)</li>
+  <li>Fixed issue: UI logs and trace blank for failed workflow (CDS-35343, ZD-28913)</li>
+  <li>Fixed issue: Can&#39;t find workflow when creating new filter (CDS-35342, ZD-28902)</li>
+  <li>The default failure and notification strategies are not added when a Workflow is created via Git Sync. Git Sync to Harness was adding notification rules into Workflows. (CDS-35112, ZD-28644)</li>
+  <li>Fixed issue: Failure Strategy in Rollback section wasn&#39;t working in Post Deployment Rollback (CDS-35099, ZD-28331)</li>
+  <li>Error message for “Delegate task timed out” in Workflow executions is enhanced. (CDS-34845, ZD-28496)</li>
+  <li>When a User Group is used in a Workflow Approval Step or a templatized User Group variable in a Pipeline stage, deletion of User Groups is blocked. (CDS-34698, ZD-28460)</li>
+  <li>When configuring Kubernetes Cloud Provider, <code>skipValidation</code> now works correctly with Custom Secret Managers. (CDS-34599, ZD-28345)</li>
+  <li>Fixed issue: User fails to adopt Shell Parameter Expansion (not JEXL) on Harness Shell Scrip Step. (CDS-34548, ZD-28271)</li>
+  <li>Fixed an issue with WinRM script execution ignoring timeout. (CDS-34168)</li>
+  <li>PCF perpetual tasks that has been failing for more than 7 days for any reason will now be deleted and we will not be executed any further. (CDS-33630)</li>
+  <li>Added pagination to the Cloud Providers page:<ul>
+      <li>We will now load only 50 CPs on opening the page</li>
+      <li>There will be search box that the user can use to look for the CP they want (search by name)</li>
+      <li>Added index on the BE to further improve the API search request. (CDS-25818, ZD-16352, ZD-18775, ZD-27387)</li>
+    </ul>
+  </li>
+  <li>Fixed the inconsistency in service name in services page. (CDS-25445, ZD-18756)</li>
+  <li>FIxed a bug when Kubernetes rollback wasn&#39;t skipped if execution failed before Kubernetes deployment step. (CDS-4025, ZD-15002)</li>
+  <li>Now the error HelmClientException is caught at an earlier stage. This avoids unnecessary execution and saves time for user. (CDS-2022)<br/>​</li>
+</ul>
+<p></p>

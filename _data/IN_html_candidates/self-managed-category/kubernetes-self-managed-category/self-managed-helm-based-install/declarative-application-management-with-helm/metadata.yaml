@@ -1,0 +1,42 @@
+type: article
+article_id: 7z9ux7r799
+user_id: u10w77i7vp
+category_id: 66qbyn7ugu
+author:
+  name: Katherine Enos
+  profile_image: https://www.gravatar.com/avatar/854cdb03d99ded9ecd30fa9cf06a5298?d=mm&s=150
+title: Declarative Application Management with Helm
+slug: declarative-application-management-with-helm
+description: This topic briefly describes the strategy of using Helm package manager
+  for declarative application management in Kubernetes.
+short_version: A brief description of declarative application management using Helm
+  package manager.
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-29T23:42:08.556617Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Declarative Application Management with Helm
+  description: This topic briefly describes the strategy of using Helm package manager
+    for declarative application management in Kubernetes.
+  short_version: A brief description of declarative application management using Helm
+    package manager.
+  body: <p>Helm package manager provides a declarative approach to Kubernetes application
+    management in which software packages are specified as “charts.” A Helm chart
+    is a collection of files that declaratively describe a configuration of Kubernetes
+    resources. Helm charts can include templates for reuse and customization from
+    deployment to deployment, and across development, staging, and production environments.
+    For more information, see the <a href="https://helm.sh/docs/" target="_blank">Helm</a>
+    documentation.</p><h3></h3><p></p>
+  slug: declarative-application-management-with-helm
+  tags: []
+  is_live: true

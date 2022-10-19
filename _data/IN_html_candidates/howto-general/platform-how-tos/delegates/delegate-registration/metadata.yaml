@@ -1,0 +1,58 @@
+type: article
+article_id: 39tx85rekj
+user_id: mfr0nxh4be
+category_id: 9i5thr0ot2
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Delegate Registration and Verification
+slug: delegate-registration
+description: To set up a Harness Delegate, you install the Delegate in your environment
+  and the Delegate automatically registers with your Harness account. The Delegate
+  config file (for example, Kubernetes Delega…
+short_version: To set up a Harness Delegate, you install the Delegate in your environment
+  and the Delegate automatically registers with your Harness account. The Delegate
+  config file (for example, Kubernetes Delega…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:49:34.212387Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Delegate Registration and Verification
+  description: ""
+  short_version: ""
+  body: '<p>To set up a Harness Delegate, you install the Delegate in your environment
+    and the Delegate automatically registers with your Harness account.</p><p>The
+    Delegate config file (for example, Kubernetes Delegate YAML file) contains your
+    Harness account Id. That&#39;s how the Delegate knows where to register.</p><h3>Installing
+    and Registering Delegates</h3><p>To install a Delegate, follow the steps in the
+    relevant Delegate installation topic, such as <a href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Kubernetes Delegate</a> or <a href="/article/cya29w2b99-install-a-docker-delegate">Install
+    a Docker Delegate</a>.</p><p>Once you have installed the Delegate in your environment,
+    click <strong>Verify</strong> in the Delegate wizard and Harness will verify that
+    it is receiving heartbeats from the Delegate.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/39tx85rekj/1645743199994/clean-shot-2022-02-24-at-14-53-07-2-x.png"/></figure><p>This
+    means Harness is waiting for the Delegate you installed to register.</p><p>Registration
+    can take a few minutes. </p><p>Once the Delegate registers, the <strong>Verify</strong>
+    screen will indicate that the Delegate is running.</p><h3>Verifying Delegate Registration
+    Manually</h3><p>The Verify screen also includes troubleshooting steps. </p><p>Here
+    are a few of the steps for the Kubernetes Delegate.</p><p>Check the status of
+    the Delegate on your cluster:</p><pre class="hljs csharp">kubectl describe pod
+    &lt;your-delegate-pod&gt; -n harness-delegate</pre><p>Check the Delegate logs:</p><pre
+    class="hljs csharp">kubectl logs -f &lt;harness-delegate&gt; -n harness-delegate</pre><p>If
+    the pod isn&#39;t up, you might see the following error in your cluster:</p><pre
+    class="hljs graphql">CrashLoopBackOff: Kubernetes Cluster Resources are not available.</pre><p>Make
+    sure the Kubernetes Cluster Resources (CPU, Memory) are enough.</p><p>If the Delegate
+    didn’t reach a healthy state, try this:</p><pre class="hljs csharp">kubectl describe
+    pod &lt;your-delegate-pod&gt; -n harness-delegate</pre><p></p>'
+  slug: delegate-registration
+  tags: []
+  is_live: true

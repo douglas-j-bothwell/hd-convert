@@ -1,0 +1,16 @@
+type: category
+category_id: 1nci5420c8
+parent_category_id: gurgsl2gqt
+title: New Relic Verification
+description: Verify your deployments and live production applications using Harness
+  machine-learning and New Relic.
+slug: new-relic-verification
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1564606680522/new-relic.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: New Relic Verification
+  description: Verify your deployments and live production applications using Harness
+    machine-learning and New Relic.
+  slug: new-relic-verification

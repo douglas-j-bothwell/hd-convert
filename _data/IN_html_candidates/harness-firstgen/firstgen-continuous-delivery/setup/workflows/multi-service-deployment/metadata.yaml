@@ -1,0 +1,50 @@
+type: article
+article_id: 5m1otmefom
+user_id: ""
+category_id: a8jhf8hizv
+author:
+  name: ""
+  profile_image: ""
+title: Set Up Multi-Service Deployment
+slug: multi-service-deployment
+description: Multi-Service deployment allows you to deploy multiple services in the
+  same workflow, to one or more infrastructures. Similar to a Canary deploy, this
+  type of deployment comprised of multiple phases.…
+short_version: Multi-Service deployment allows you to deploy multiple services in
+  the same workflow, to one or more infrastructures. Similar to a Canary deploy, this
+  type of deployment comprised of multiple phases.…
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:23:30.739357Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Multi-Service Deployment
+  description: ""
+  short_version: ""
+  body: |-
+    <p><span style="font-weight: 400;">Multi-Service deployment allows you to deploy multiple services in the same workflow, to one or more infrastructures. Similar to a Canary deploy, this type of deployment comprised of multiple phases. Each phase is essentially similar to a single basic deployment, where Harness deploys a service (or services) to a defined number of nodes. Combined together, several phases allow you to deploy your service(s) in a controlled, gradual, and verified process. Since each phase is independent, you can add verification and custom commands before moving on to the next phase. </span></p>
+    <p> </p>
+    <ol>
+    <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Pre-deployment Steps:</strong> You can add pre-deployment steps prior to deploying your code. This is similar to the Add Command option. </span></li>
+    <li style="font-weight: 400;">
+    <strong>Deployment phases: </strong> <span style="font-weight: 400;">Click on “Add Phase” in order to configure your first batch. Then choose which service you’d like to deploy during this phase, and to which infrastructure. You can also add variables under the “Service Variable Overrides” section, and these variables will override any other variables that were previously configured for this service. Next, in order to configure the phase itself, follow the instructions for configuring Basic Deployment.</span>
+    </li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;"><strong>Post-deployment Steps:</strong> Similar to the Pre-deployment steps, you can add additional commands after your code was deployed.</span></li>
+    </ol>
+    <p> </p>
+    <p><span style="font-weight: 400;"><span class="wysiwyg-underline"><strong>Additional configuration options:</strong></span></span></p>
+    <p><a href="https://support.harness.io/hc/en-us/articles/115005103254-Additional-Workflow-Configurations#Notification_Strategy"><span style="font-weight: 400;">Notification Strategy</span></a></p>
+    <p><span style="font-weight: 400;"><a href="https://support.harness.io/hc/en-us/articles/115005103254-Additional-Workflow-Configurations#Failure_Strategy">Failure Strategy</a><br/></span></p>
+    <p><a href="https://support.harness.io/hc/en-us/articles/115005103254-Additional-Workflow-Configurations#Workflow_Variables"><span style="font-weight: 400;">Workflow Variables</span></a></p>
+  slug: multi-service-deployment
+  tags: []
+  is_live: true

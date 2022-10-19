@@ -1,0 +1,134 @@
+type: article
+article_id: o6w4vvzgdg
+user_id: x5amubrz4l
+category_id: ll7h8ktlwe
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Add a CodeCommit Repo
+slug: add-a-code-commit-repo
+description: This topic outlines how to use AWS CodeCommit as a source repo with your
+  Harness account and Applications. You can pull source files, such as manifests,
+  specs, and config files, from your Source Repo…
+short_version: This topic outlines how to use AWS CodeCommit as a source repo with
+  your Harness account and Applications. You can pull source files, such as manifests,
+  specs, and config files, from your Source Repo…
+tags:
+- CodeCommit
+- Git sync
+- Post Webhooks
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-12T18:10:40.334807Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add a CodeCommit Repo
+  description: ""
+  short_version: ""
+  body: '<p>This topic outlines how to use <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html"
+    target="_blank">AWS CodeCommit</a> as a source repo with your Harness account
+    and Applications. You can pull source files, such as manifests, specs, and config
+    files, from your Source Repo as part of setting up your Harness Service and other
+    entities.</p><div class="note-callout">CodeCommit is supported as a Source Repo
+    only. It cannot be used with <a href="/article/htvzryeqjw-configuration-as-code">Harness
+    Git Sync</a>.</div><p></p><h3>Before You Begin</h3><div class="note-callout">Ensure
+    your Git repo is initialized (<code>git init</code>) before connecting Harness
+    to it.</div><p></p><h3>Limitations</h3><ul><li>Harness performs a <code>git clone</code>
+    to fetch files. If the fetch is timing out, it can be because the repo is too
+    large for the network connection to fetch it before timing out. To fetch very
+    large repos, enable the feature flag <code>OPTIMIZED_GIT_FETCH_FILES</code>. When
+    this feature flag is enabled, Harness will use provider-specific APIs to improve
+    performance.<div class="note-callout">If you enable <code>OPTIMIZED_GIT_FETCH_FILES</code>,
+    you must use a <u><strong>token</strong></u> for authentication. Passwords are
+    not supported.</div><div class="note-callout">Currently, this feature is behind
+    the feature flag <code>OPTIMIZED_GIT_FETCH_FILES</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div></li></ul><h3>Step:
+    Add Source Repo Provider</h3><p>To add a source repo, do the following:</p><ol><li>Click
+    <strong>Setup</strong>.</li><li>Click <strong>Connectors</strong>.</li><li>Click
+    <strong>Source Repo Providers</strong>, and then click <strong>Add Source Repo
+    Provider</strong>. The <strong>Git Connector</strong> settings appear.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/o6w4vvzgdg/1600710254200/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step:
+    Display Name</h3><p>Enter a name for the repo connection. This is the name you
+    will select when you sync your Harness account and applications in <a href="/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code</a>.You could create a Source Repo Provider for the Harness admin account,
+    such as <strong>Admin_CodeCommit</strong>. Later, you can create a Source Repo
+    account for each Harness user, such as <strong>J_User_CodeCommit</strong>.</p><h3>Step:
+    Provider</h3><div class="note-callout">Currently, this feature is behind the Feature
+    Flag <code>OPTIMIZED_GIT_FETCH_FILES</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p>In <strong>Provider</strong>,
+    select <strong>Git</strong>.</p><h3>Step: Git Repo or Git Account</h3><div class="note-callout">Currently,
+    Git Account is in Beta and behind the Feature Flag <code>GIT_ACCOUNT_SUPPORT</code>.
+    Contact <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p></p><p>You
+    can add a connection to your entire Git account (org) or just a repo in the account.
+    Selecting a Git account (org) enables you to use one Source Repo Connector for
+    all of your subordinate repos.</p><p>Later when you test this connection, you
+    will use a repo in the account.</p><p>In either case, when you use the Connector
+    later in Harness, you will specify which repo to use.</p><h3>Step: HTTPS/SSH</h3><p>Select
+    <strong>HTTPS</strong> or <strong>SSH</strong> for the connection. You will need
+    to provide the protocol-relevant URL in <strong>URL</strong>. If you use Two-Factor
+    Authentication for your Git repo, connect over <strong>HTTPS</strong> or <strong>SSH</strong>.</p><div
+    class="note-callout">For SSH, ensure that the key is not OpenSSH, but rather RSA
+    or another algorithm. To generate an SSHv2 key, use: <br/><code>ssh-keygen -t
+    rsa -m PEM</code> <br/>The <code>rsa</code> and <code>-m PEM</code> ensure that
+    the key is RSA.<br/>Next, follow the prompts to create the PEM key. For more information,
+    see the  <a href="https://linux.die.net/man/1/ssh-keygen" target="_blank">ssh-keygen
+    man page</a> and <a href="https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh"
+    target="_blank">Connecting to GitHub with SSH</a>.</div><p></p><h3>Step: URL</h3><p>Enter
+    the URL for your Git repo. Ensure that it matches the option you selected in <a
+    href="#https_ssh">HTTPS/SSH</a>.</p><div class="note-callout">Currently, <strong>Git
+    Account</strong> is in Beta and behind a Feature Flag. Contact <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p>If you selected
+    <strong>Git Repo</strong> in <strong>Type</strong>, enter the full URL for the
+    repo, such as <code>https://github.com/account-name/repo-name</code>.</p><p>If
+    you selected <strong>Git Account</strong> in <strong>Type</strong>, enter the
+    URL without the repo name, like <code>https://github.com/account-name</code>.
+    When you use this Source Repo Provider in a Harness setting you will be prompted
+    to provide a repo name.</p><h3>Step: Username and Password/Token</h3><p>In <strong>Select
+    Encrypted Password/Token</strong>, select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a> for the credentials of your CodeCommit user account.</p><div
+    class="note-callout">If you have set up Two-Factor Authentication in your Git
+    repo, then you need to generate a personal access token in your repo and enter
+    that token in the <strong>Password/Token</strong> field.</div><div class="note-callout">If
+    you enable <code>OPTIMIZED_GIT_FETCH_FILES</code>, you must use a <u><strong>token</strong></u>
+    for authentication. Passwords are not supported.</div><h3>Step: SSH Key</h3><p>If
+    you selected <strong>SSH</strong> as the connection protocol, you must add the
+    <strong>SSH Key</strong> for use with the connection.</p><p>In <strong>SSH Key</strong>,
+    select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a>.</p><p>If you added a key in Harness Secrets Management,
+    you can select it here. To add a new key, click the drop-down and select <strong>Add
+    New SSH Key</strong>. The <strong>SSH Configuration</strong> dialog appears.</p><p>In
+    <strong>User Name</strong>, enter the <strong>SSH Key ID</strong> that was generated
+    when you uploaded your SSH public key to CodeCommit.</p><p>In <strong>Credentials</strong>,
+    paste in the key or key file path, enter a display name, and then click <strong>Submit</strong>.</p><h3>Step:
+    Branch Name</h3><p>If you selected <strong>Git Repo</strong> in <strong>Type</strong>,
+    enter the branch name to sync with Harness, such as <strong>master</strong>, <strong>dev</strong>,
+    or <strong>myAppName</strong>. Do not enter the full URL to the branch.</p><div
+    class="note-callout">Names may not contain characters from the Emoticons unicode
+    block.</div><h3>Step: Customize Commit Attributes</h3><p>Do not use this option
+    with CodeCommit.</p><div class="note-callout">CodeCommit is supported as a Source
+    Repo only. It cannot be used with <a href="/article/htvzryeqjw-configuration-as-code">Harness
+    Git Sync</a>.</div><p></p><h3>Step: Usage Scope</h3><p>For HTTPS connections,
+    usage scope is inherited from the secret you entered in <strong>Select Encrypted
+    Password/Token</strong>.</p><p>For SSH, connections, select the Harness Applications
+    and Environments where the connection may be used.</p><p></p><h3>Step: Test and
+    Save</h3><p>To finish configuring this Source Repo Provider:</p><ol><li style="counter-increment:li
+    0" start="1">Click <strong>Test</strong>. Harness verifies the settings you entered.
+    If you selected <strong>Git Account</strong> in <strong>Type</strong>, you need
+    to provide a subordinate repo to test with.</li><li>When testing is successful,
+    click <strong>Submit</strong>. This Source Repo Provider is now added to Harness.</li></ol><p></p><p></p>'
+  slug: add-a-code-commit-repo
+  tags:
+  - CodeCommit
+  - Git sync
+  - Post Webhooks
+  is_live: true

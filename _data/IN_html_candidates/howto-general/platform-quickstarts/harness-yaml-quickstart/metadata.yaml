@@ -1,0 +1,213 @@
+type: article
+article_id: 1eishcolt3
+user_id: mfr0nxh4be
+category_id: w6r9f17pk3
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness YAML Quickstart
+slug: harness-yaml-quickstart
+description: This quickstart shows you how to create a Harness Pipelines using YAML.
+  It's not an exhaustive reference for all of the YAML entries, but a quick procedure
+  to get you started with Harness Pipeline YA…
+short_version: This quickstart shows you how to create a Harness Pipelines using YAML.
+  It's not an exhaustive reference for all of the YAML entries, but a quick procedure
+  to get you started with Harness Pipeline YA…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T16:42:31.819896Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness YAML Quickstart
+  description: ""
+  short_version: ""
+  body: '<p>This quickstart shows you how to create a Harness Pipelines using YAML.
+    It&#39;s not an exhaustive reference for all of the YAML entries, but a quick
+    procedure to get you started with Harness Pipeline YAML.</p><p>Harness includes
+    visual and YAML editors for creating and editing Pipelines, Triggers, Connectors,
+    and other entities. Everything you can do in the visual editor you can also do
+    in YAML.</p><p>A quick run through on how to use the YAML builder will get you
+    up and coding Harness Pipelines in minutes. Let&#39;s get started.</p><div class="note-callout">For
+    details of the YAML schema, see <a href="/article/xs2dfgq7s2-yaml-reference-cd-pipeline">YAML
+    Reference: Pipelines</a>.</div><h3>Objectives</h3><p>You&#39;ll learn how to:</p><ol><li>View
+    a Pipeline in the YAML builder.</li><li>Review the Pipeline YAML schema structure.</li><li>Use
+    keyboard shortcuts for adding entries and selecting commands.</li><li>Find and
+    replace YAML.</li><li>Verify and resolve YAML errors with the YAML builder&#39;s
+    assistance.</li></ol><h3>Before You Begin</h3><ul><li>Review <a href="https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a> to establish a general understanding of Harness.</li><li>The
+    best way to get started with YAML is to do a CI or CD quickstart and then view
+    the YAML in Pipeline Studio. See ​<a href="/category/c9j6jejsws">CD Quickstarts</a>
+    and <a href="/category/pjovrkldfq">CI Quickstarts</a>.</li></ul><p></p><h3>Visual
+    Summary</h3><p>Here&#39;s a very quick video showing you how to build a Pipeline
+    using YAML:</p><p></p><div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/XzRGAdqIzPY/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/XzRGAdqIzPY?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h3>Step 1: Start
+    a New Pipeline</h3><p>In your Harness Project, click <strong>New Pipeline</strong>.</p><p>Enter
+    the name <strong>YAML Example</strong> for the Pipeline and click <strong>Start</strong>.</p><p>The
+    Pipeline is created.</p><p>Click <strong>YAML</strong> to view the YAML editor.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633386272377/clean-shot-2021-10-04-at-15-24-25.png"/></figure><p>You
+    can see the Pipeline YAML. Here&#39;s an example:</p><pre class="hljs yaml">pipeline:<br/>    name:
+    YAML Example<br/>    identifier: YAML_Example<br/>    projectIdentifier: CD_Examples<br/>    orgIdentifier:
+    default<br/>    tags: {}</pre><p></p><p>Place your cursor after <code>tags: {}</code>
+    and hit Enter.</p><p>Press <strong>Ctrl + Space</strong>. The major Pipeline sections
+    are displayed.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633718497552/clean-shot-2021-10-08-at-11-41-26.png"/></figure><p>Completing
+    the Pipeline in YAML is simply the process of filing out these sections.</p><p>Let&#39;s
+    look at the YAML structure of a Pipeline.</p><h3>Review: Basic Pipeline Structure</h3><p>The
+    following outline shows the basic hierarchy of the Pipeline YAML.</p><p>This outline
+    is shown to help you gain a general idea of the structure of a Pipeline and help
+    you know which entry to make next as you develop your Pipeline in YAML.</p><p>Here
+    are the Pipeline settings and major sections:</p><pre>pipeline:<br/>    name:
+    YAML Example<br/>    identifier: YAML_Example<br/>    projectIdentifier: CD_Examples<br/>    orgIdentifier:
+    default<br/>    tags: {}<br/>    description: <br/>    stages:<br/>        - <br/>    notificationRules:<br/>        -
+    <br/>    flowControl:<br/>        <br/>    properties:<br/>        <br/>    timeout:
+    <br/>    variables:<br/>        -    </pre><p></p><p>The following steps walk
+    through adding the YAML for the <code>stages</code> section of the Pipeline.</p><p>For
+    details of the YAML schema, see <a href="/article/xs2dfgq7s2-yaml-reference-cd-pipeline">YAML
+    Reference: Pipelines</a>.</p><h3>Step 2: Add a Stage</h3><p>The basic Stage YAML
+    looks like this:</p><pre>    stages:<br/>        - stage:<br/>              identifier:
+    <br/>              name: <br/>              type: <br/>              description:
+    <br/>              tags:<br/>              spec:<br/>                  serviceConfig:<br/>                      <br/>                  infrastructure:<br/>                      <br/>                  execution:<br/>                      steps:<br/>                          -
+    <br/>              variables:<br/>                  - <br/>              when:<br/>                  pipelineStatus:
+    <br/>              failureStrategies:<br/>                  - onFailure:<br/>                          errors:<br/>                              -
+    null </pre><p></p><p>In <code>identifier</code>, enter a unique Id for the stage,
+    such as <strong>mystage</strong>. In the Visual editor the Id is generated automatically.
+    In YAML, you have to enter an Id.</p><p>In <code>name</code>, enter a name for
+    the stage, such as <strong>mystage</strong>.</p><p>In <code>type</code>, you select
+    the type of Stage you want to add. This is the same as clicking Add Stage in the
+    Visual editor.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633720896967/clean-shot-2021-10-08-at-12-21-28.png"/></figure><p>For
+    details on each type, see:</p><ul><li><strong>Approval:</strong> <a href="/article/fkvso46bok-adding-harness-approval-stages">Using
+    Manual Harness Approval Stages</a>, <a href="/article/2lhfk506r8-adding-jira-approval-stages">Adding
+    Jira Approval Stages and Steps</a></li><li><strong>CI:</strong> <a href="/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></li><li><strong>Deployment:</strong> <a href="/category/c9j6jejsws">CD
+    Quickstarts</a></li></ul><p>For this quickstart, we&#39;re going to use the <strong>Deployment</strong>
+    type.</p><p>In <code>type</code>, select <strong>Deployment</strong>.</p><p>Next,
+    we&#39;ll add a <code>spec</code> that defines the Service, Environment, and Execution
+    for the stage.</p><h4>Stage Spec</h4><p>The Stage spec contains the three major
+    sections of the Stage:</p><pre class="hljs yaml">              spec:<br/>                  serviceConfig:<br/>                      ...<br/>                  infrastructure:<br/>                      ...<br/>                  execution:<br/>                      steps:<br/>                          -
+    ...</pre><p></p><p>These correspond to the Stage sections in the Visual editor:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633723440228/clean-shot-2021-10-08-at-13-03-43.png"/></figure><h4>Stage
+    Service</h4><p>In <code>serviceConfig</code>, press <code>Enter</code>, and then
+    <code>Ctrl + Space</code>.</p><p>You can see the <code>serviceConfig</code> options:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633723734822/clean-shot-2021-10-08-at-13-08-36.png"/></figure><p>For
+    this quickstart, we&#39;ll just use <code>service</code> and <code>serviceDefinition</code>.
+    We&#39;re just looking at the structure so we&#39;ll use <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a> wherever we can:</p><pre class="hljs yaml">              spec:<br/>                  serviceConfig:<br/>                      service:<br/>                          identifier:
+    myservice<br/>                          name: myservice<br/>                      serviceDefinition:<br/>                          type:
+    Kubernetes<br/>                          spec:<br/>                              manifests:<br/>                                  -
+    manifest:<br/>                                        identifier: &lt;+input&gt;<br/>                                        type:
+    K8sManifest<br/>                                        spec:<br/>                                            store:<br/>                                                type:
+    Github<br/>                                                spec:<br/>                                                    connectorRef:
+    &lt;+input&gt;<br/>                                                    gitFetchType:
+    Branch<br/>                                                    branch: &lt;+input&gt;<br/>                                                    folderPath:
+    &lt;+input&gt;<br/>                                                    repoName:
+    &lt;+input&gt;</pre><p></p><p>This stage simply adds a Service named <code>myservice</code>
+    and a Service Definition using Kubernetes manifests.</p><p>For details on adding
+    manifests to a Service Definition, see <a href="/article/ssbq0xh0hx-define-kubernetes-manifests">Add
+    Kubernetes Manifests</a>.</p><p>The <code>connectorRef</code> setting is for the
+    Harness Connector that connects to the Git repo where the manifests are located.
+    In the Visual editor you can create/select Connectors inline, but in the YAML
+    editor, you must use the name of an existing Connector. In this example, we simply
+    use a Runtime Input (<code>connectorRef: &lt;+input&gt;</code>) and we can add
+    the Connector later.</p><h4>Stage Infrastructure</h4><p>In <code>infrastructure</code>,
+    press <code>Enter</code>, and then <code>Ctrl + Space</code>.</p><p>You can see
+    the <code>infrastructure</code> options:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633729214432/clean-shot-2021-10-08-at-14-40-03.png"/></figure><p>For
+    this quickstart, we&#39;ll just use <code>environment</code> and <code>infrastructureDefinition</code>.
+    We&#39;re just looking at the structure so we&#39;ll use <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a> wherever we can:</p><pre class="hljs yaml">                  infrastructure:<br/>                      environment:<br/>                          identifier:
+    myinfra<br/>                          name: myinfra<br/>                          type:
+    PreProduction<br/>                      infrastructureDefinition:<br/>                          type:
+    KubernetesDirect<br/>                          spec:<br/>                              connectorRef:
+    &lt;+input&gt;<br/>                              namespace: &lt;+input&gt;<br/>                              releaseName:
+    &lt;+input&gt;</pre><p></p><p>In <code>infrastructureDefinition</code>, you can
+    see that we are using a <a href="/article/1gaud2efd4-add-a-kubernetes-cluster-connector">Kubernetes
+    Cluster Connector</a> for a platform-agnostic direct connection to the target
+    cluster.</p><h4>Stage Execution</h4><p>In <code>execution</code>, in <code>steps</code>,
+    press <strong>Enter</strong>, type <code>-</code>, and then press <strong>Space</strong>.</p><p>You
+    can see the <code>steps</code> options:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633730608709/clean-shot-2021-10-08-at-15-03-19.png"/></figure><p>Click
+    <code>step</code>. The step settings appear.</p><p>In <code>type</code>, press
+    <strong>Ctrl + Space</strong> to see the steps you can add.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633730676278/clean-shot-2021-10-08-at-15-04-28.png"/></figure><p>For
+    this quickstart, we&#39;ll just use <code>ShellScript</code>. Here&#39;s an example:</p><pre
+    class="hljs yaml">                          - step:<br/>                                identifier:
+    ssh<br/>                                name: ssh<br/>                                type:
+    ShellScript<br/>                                description: &lt;+input&gt;<br/>                                spec:<br/>                                    shell:
+    Bash<br/>                                    source:<br/>                                        type:
+    Inline<br/>                                        spec:<br/>                                            script:
+    echo &#34;hello world&#34;<br/>                                    timeout: &lt;+input&gt;<br/>                                    onDelegate:
+    false<br/>                                failureStrategies:<br/>                                    -
+    onFailure:<br/>                                            errors:<br/>                                                -
+    AllErrors<br/>                                            action:<br/>                                                type:
+    Abort<br/>                                when:<br/>                                    stageStatus:
+    Success</pre><p></p><p>The step Failure Strategy is set using <code>failureStrategies</code>
+    and the Conditional Execution is set using <code>when</code>.</p><h4>Stage Conditional
+    Execution</h4><p>You can add the Stage Conditional Execution settings before or
+    after <code>stage</code>. To add them after, make sure you indent to the same
+    depth as stage <code>identifier</code>. and then press <strong>Ctrl + Space</strong>.</p><p>You
+    can see the remaining options:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633731583508/clean-shot-2021-10-08-at-15-19-34.png"/></figure><p>Click
+    <code>when</code>. The <code>pipelineStatus</code> setting appears.</p><p>Press
+    <strong>Ctrl + Space</strong> and select <code>Success</code>.</p><h4>Stage Failure
+    Strategy</h4><p>Create a new line under <code>pipelineStatus: Success</code> ,
+    indent to the same level as <code>when</code>, and the remaining options appear.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633732009158/clean-shot-2021-10-08-at-15-26-43.png"/></figure><p>Click
+    <code>failureStrategies</code>. The Failure Strategy settings appear.</p><p>Here&#39;s
+    an example:</p><pre class="hljs yaml">              failureStrategies:<br/>                  -
+    onFailure:<br/>                          errors:<br/>                              -
+    AllErrors<br/>                          action:<br/>                              type:
+    Abort</pre><p></p><h4>Stage Variables</h4><p>Create a new line, indent to the
+    same level as <code>failureStrategies</code>, and the remaining options appear.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633732768431/clean-shot-2021-10-08-at-15-39-18.png"/></figure><p>Click
+    <code>variables</code>. On the new line, press <strong>Ctrl + Space</strong>.
+    The <code>variables</code> options appear.</p><p>Here&#39;s an example:</p><pre
+    class="hljs yaml">              variables: <br/>                  - name: myvar<br/>                    type:
+    String<br/>                    value: myval</pre><p></p><p>The Pipeline stage
+    is now complete.</p><p>Click <strong>Save</strong>.</p><p>For details of the YAML
+    schema, see <a href="/article/xs2dfgq7s2-yaml-reference-cd-pipeline">YAML Reference:
+    Pipelines</a>.</p><h3>Review: Autocomplete</h3><p>The YAML editor has an autocomplete
+    feature that makes it very easy to see what entries are available.</p><p>The keyboard
+    command for autocomplete is <code>Ctrl + Space</code>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/xs2dfgq7s2/1633374095047/clean-shot-2021-10-04-at-12-01-28.png"/></figure><p>If
+    an entry already has a value, the autocomplete will not show you other options.
+    You need to delete the value and then enter <code>Ctrl + Space</code>.</p><p>Let&#39;s
+    look at an example.</p><p>Navigate to <code>rollbackSteps: []</code> at the bottom
+    of the stage.</p><p>Delete the <code>[]</code>, press <code>Enter</code>, type
+    <code>-</code>, and press <code>Space</code>.</p><p>You can see the available
+    options:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633389688926/clean-shot-2021-10-04-at-16-21-16.png"/></figure><p>Click
+    <code>step</code>. The default step settings appear:</p><pre class="hljs yaml">                      rollbackSteps:
+    <br/>                          - step:<br/>                                identifier:
+    <br/>                                name: <br/>                                type:
+    </pre><p></p><p>In <code>type</code>, press <code>Ctrl + Space</code> to see the
+    options. You can see all of the available steps:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633389804995/clean-shot-2021-10-04-at-16-23-18.png"/></figure><p>This
+    shows you how easy it is to view settings with autocomplete.</p><h3>Review: Find
+    and Replace YAML</h3><p>Click <strong>Cmd/Ctrl + f</strong> to see the Find and
+    Replace settings.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633389927189/clean-shot-2021-10-04-at-16-25-20.png"/></figure><p>You
+    can quickly find and replace anything in the YAML.</p><h3>Review: Command Palette</h3><p>The
+    command palette keyboard command is <code>F1</code>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/xs2dfgq7s2/1633374117761/clean-shot-2021-10-04-at-12-01-51.png"/></figure><p>The
+    command palette displays all of the commands and the keyboard shortcuts for most
+    commands.</p><h3>Review: Validating YAML</h3><p>Ad you edit your YAML you will
+    see <span style="color:#f44e3b" data-hd-color="#f44e3b"><strong>Invalid</strong></span>
+    to highlight that your YAML is incomplete.</p><p>Hover over <span style="color:#f44e3b"
+    data-hd-color="#f44e3b"><strong>Invalid</strong></span> to see where the errors
+    are:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633390033436/clean-shot-2021-10-04-at-16-26-28.png"/></figure><p>You
+    can also hover over any incomplete entry to see what is expected:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633390084622/clean-shot-2021-10-04-at-16-27-46.png"/></figure><p>Click
+    <strong>Peek Problem</strong> to see suggestions and valid values also:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/1eishcolt3/1633390321208/clean-shot-2021-10-04-at-16-31-37.png"/></figure><p></p><h3>Next
+    Steps</h3><p>In this tutorial, you learned how to:</p><ol><li>View a Pipeline
+    in the YAML builder.</li><li>Review the Pipeline YAML schema structure.</li><li>Use
+    keyboard shortcuts for adding entries and selecting commands.</li><li>Find and
+    replace YAML.</li><li>Verify and resolve YAML errors with the YAML builder&#39;s
+    assistance.</li></ol><p></p><h3>See Also</h3><ul><li><a href="/article/xs2dfgq7s2-yaml-reference-cd-pipeline">YAML
+    Reference: Pipelines</a></li></ul><p></p>'
+  slug: harness-yaml-quickstart
+  tags: []
+  is_live: true

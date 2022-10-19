@@ -1,0 +1,58 @@
+type: article
+article_id: 9ob3r6v9tg
+user_id: mfr0nxh4be
+category_id: 9lw749jubn
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Variable Expression Limitations and Restrictions
+slug: variable-expression-name-restrictions
+description: 'The following limitations and restrictions apply to Harness variable
+  expressions. For general details about Harness variable expressions, see: What is
+  a Harness Variable Expression?. Built-in Variabl…'
+short_version: 'The following limitations and restrictions apply to Harness variable
+  expressions. For general details about Harness variable expressions, see: What is
+  a Harness Variable Expression?. Built-in Variabl…'
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2021-08-02T21:21:24.617249Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Variable Expression Limitations and Restrictions
+  description: ""
+  short_version: ""
+  body: <p>The following limitations and restrictions apply to Harness variable expressions.</p><p>For
+    general details about Harness variable expressions, see:</p><ul><li><a href="/article/9dvxcegm90-variables">What
+    is a Harness Variable Expression?</a></li><li><a href="/article/aza65y4af6-built-in-variables-list">Built-in
+    Variables List</a></li></ul><h3>Limitations</h3><ul><li>Harness does not support
+    the Ternary conditional <code>?:</code> operator from <a href="http://commons.apache.org/proper/commons-jexl/reference/syntax.html#Operators"
+    target="_blank">JEXL</a>.</li><li>Harness permits variables only within their
+    scope. You will not see a variable available in a field where it cannot be used.
+    For example, if you use a Service Config variable you cannot resolves its expression
+    in the <strong>Pre-deployment</strong> section of a Workflow because the Service
+    is not used in <strong>Pre-deployment</strong>.</li><li>Do not use hyphens (dashes)
+    in variable names, as some Linux distributions and deployment-related software
+    do not allow them.</li><li>A variable value (the evaluated expression) is limited
+    to 256 KB.</li></ul><h3>Variable Expression Name Restrictions</h3><p>A variable
+    name is the name in the variable expression, <code>${variable_name}</code>.</p><p>Variable
+    names may only contain <code>a-z, A-Z, 0-9, _</code>. They cannot contain hyphens
+    or dots.</p><div class="note-callout">Certain platforms and orchestration tools,
+    like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn&#39;t
+    allow underscores. Make sure that whatever expressions you use resolve to the
+    allowed values of your target platforms.</div><p>The following keywords are reserved,
+    and cannot be used as a variable name or property:</p><p><code>or and eq ne lt
+    gt le ge div mod not null true false new var return shellScriptProvisioner</code></p><p>See
+    <a href="https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html" target="_blank">JEXL
+    grammar details</a>.</p><p></p><p></p><p></p><p></p>
+  slug: variable-expression-name-restrictions
+  tags: []
+  is_live: true

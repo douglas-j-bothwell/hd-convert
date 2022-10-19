@@ -1,0 +1,32 @@
+type: article
+article_id: wh2f89bhsu
+user_id: 2c4rk0cied
+category_id: 7lvetjzo1m
+author:
+  name: Renu Bhaskaran
+  profile_image: https://www.gravatar.com/avatar/7d21186ef4e85110a0bd60a931c90361?d=mm&s=150
+title: untitled article
+slug: untitled-article
+description: ""
+short_version: ""
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: ""
+  triggered_at: null
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: untitled article
+  description: ""
+  short_version: ""
+  body: ""
+  slug: untitled-article
+  tags: []
+  is_live: true

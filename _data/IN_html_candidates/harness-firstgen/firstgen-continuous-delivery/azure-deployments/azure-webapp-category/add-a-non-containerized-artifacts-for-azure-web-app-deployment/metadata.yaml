@@ -1,0 +1,110 @@
+type: article
+article_id: rflkjqxod2
+user_id: mfr0nxh4be
+category_id: mfdyp6tf0v
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add Non-Containerized Artifacts for Azure Web App Deployment
+slug: add-a-non-containerized-artifacts-for-azure-web-app-deployment
+description: Add non-containerized artifacts for Azure Web App deployments.
+short_version: Add non-containerized artifacts for Azure Web App deployments.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-22T18:38:37.50213Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Non-Containerized Artifacts for Azure Web App Deployment
+  description: Add non-containerized artifacts for Azure Web App deployments.
+  short_version: Add non-containerized artifacts for Azure Web App deployments.
+  body: '<div class="note-callout">Currently, this feature is behind the Feature Flags
+    <code>AZURE_WEBAPP</code>. Contact <a href="mailto:support@harness.io" target="_blank">Harness
+    Support</a> to enable the feature.</div><p>Setting up a Harness Azure Web App
+    deployment is a simple process. You add your artifact&#39;s repo and settings
+    to a Harness Service, and then add any of the Web App&#39;s application settings
+    and connection strings.</p><p>These repo and settings are used when Harness deploys
+    your Web App.</p><div class="note-callout">This topic covers adding a non-containerized
+    artifact. For steps on adding a Docker image for Web App Deployment, see <a href="/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment">Add
+    Your Docker Image for Azure Web App Deployment</a>.</div><h3>Before You Begin</h3><ul><li><a
+    href="/article/lluikqw7q7-azure-web-app-deployments-overview">Azure Web App Deployments
+    Overview</a></li><li>Make sure that you have connected Harness to your Azure subscription
+    as described in <a href="/article/e9k7ngaqiu-connect-to-azure-for-web-app-deployments">Connect
+    to Azure and Artifact Repo for Your Web App Deployments</a>.</li></ul><h3 id="undefined">Supported
+    Platforms and Technologies</h3><p>See <a href="/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h3>Limitations</h3><p>The Harness Azure Web
+    Application Service type supports the following repos:</p><ul><li><strong>Docker
+    Registry:</strong> see <a href="/article/tdj2ghkqb0-add-docker-registry-artifact-servers">Add
+    Docker Registry Artifact Servers</a>.</li><li><strong>Artifactory:</strong> see
+    <a href="/article/nj3p1t7v3x-add-artifactory-servers">Add Artifactory Servers</a>.</li><li><strong>Amazon
+    S3:</strong> see <a href="/article/wt1gnigme7-add-amazon-web-services-cloud-provider">Add
+    Amazon Web Services (AWS) Cloud Provider</a>.</li><li><strong>Jenkins:</strong>
+    see <a href="/article/qa7lewndxq-add-jenkins-artifact-servers">Add Jenkins Artifact
+    Servers</a>.</li><li><strong>Azure Artifact:</strong> see <a href="/article/rbfjmko1og-add-an-azure-dev-ops-artifact-source">Add
+    an Azure DevOps Artifact Source</a>.<ul><li>You can use Maven and NuGet. If you
+    choose the Maven package type you can also use ZIP or WAR. If you use ZIP or WAR,
+    then select ZIP or WAR as the type in your Harness Service Artifact Type.</li></ul></li></ul><p>Harness
+    supports JAR files from the following repos:</p><ul><li>Artifactory</li><li>Amazon
+    S3</li><li>Azure Artifact</li></ul><p>Harness zips the JAR and then deploys it
+    and unzips it and installs the App.</p><h3>Step 1: Create the Harness Service</h3><p>The
+    Harness Service represents your Azure Web App.</p><p>You identify the artifact
+    for the app, configuration settings, and any secrets and configuration variables.</p><p>In
+    your Harness Application, click <strong>Services</strong>.</p><p>Click <strong>Add
+    Service</strong>. The Service settings appear.</p><p>Enter a name for your Service.
+    Typically, the same name as the Web App.</p><p>In <strong>Deployment Type</strong>,
+    select <strong>Azure Web Application</strong>.</p><p>In <strong>Artifact Type</strong>,
+    select a non-containerized type.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643233562131/clean-shot-2022-01-26-at-13-45-28-2-x.png"/></figure><p>Click
+    <strong>Submit</strong>. The Service is created.</p><h3>Step 2: Add the Artifact</h3><p>You
+    will add the same artifact you use in your Web App.</p><p>Ensure you have set
+    up a Harness Artifact Server or Cloud Provider (for Azure Container Registry or
+    AWS S3) that connects to the image&#39;s repo. See <a href="/article/e9k7ngaqiu-connect-to-azure-for-web-app-deployments">Connect
+    to Azure and Artifact Repo for Your Web App Deployments</a>.</p><p>In the Harness
+    Service, click <strong>Add Artifact Source</strong>.</p><p>Select the Artifact
+    Server type.</p><p>Fill out the Artifact Source settings.</p><div class="note-callout">For
+    <strong>Jenkins</strong>, you will select the job and artifact. Harness will run
+    the job and obtain the artifact metadata needed to pull the artifact at deployment
+    runtime.</div><p>For details on configuring the supported Artifact Source types,
+    see <a href="/article/qluiky79j8-service-types-and-artifact-sources">Service Types
+    and Artifact Sources</a>.</p><p>Here&#39;s an example of an Artifactory Artifact
+    Source used to pull a WAR file:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643233337237/clean-shot-2022-01-26-at-13-41-59-2-x.png"/></figure><p>When
+    you are done, click <strong>Submit</strong>.</p><p>Next, click <strong>Artifact
+    History</strong> to see the artifacts and builds Harness pulls from the repo.</p><h3>Option:
+    Startup Script</h3><p>You can use <strong>Script</strong> to add a startup script
+    for your app.</p><p>See <a href="https://docs.microsoft.com/en-us/azure/app-service/faq-app-service-linux#what-are-the-expected-values-for-the-startup-file-section-when-i-configure-the-runtime-stack-"
+    target="_blank">What are the expected values for the Startup File section when
+    I configure the runtime stack?</a> from Azure.</p><h3>Option: App Service Configuration</h3><p>In
+    Azure App Service, app settings are variables passed as environment variables
+    to the application code.</p><p>See <a href="https://docs.microsoft.com/en-us/azure/app-service/configure-common"
+    target="_blank">Configure an App Service app in the Azure portal</a> from Azure.</p><p>You
+    can set these using the Azure CLI:</p><pre>az webapp config appsettings set --resource-group
+    &lt;group-name&gt; --name &lt;app-name&gt; --settings DB_HOST=&#34;myownserver.mysql.database.azure.com&#34;</pre><p></p><p>Or
+    via the portal:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643234355363/clean-shot-2022-01-26-at-13-58-49-2-x.png"/></figure><p>You
+    can also set <strong>Application settings</strong> and <strong>Connection strings</strong>
+    in the Harness Service.</p><p>Here&#39;s an example of setting <strong>Application
+    settings</strong> in the Harness Service:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/rflkjqxod2/1643234385719/clean-shot-2022-01-26-at-13-59-35-2-x.png"/></figure><p>This
+    is the same as setting them in the Azure portal, in <strong>Configuration</strong>,
+    <strong>Application Settings</strong>, <strong>Advanced edit</strong>.</p><h4>Important
+    Note</h4><ul><li>If you add App Service Configuration settings in the Harness
+    Service, you must include a <strong>name</strong> (<code>&#34;name&#34;:</code>),
+    and the name must be unique. This is the same requirement in Azure App Services.</li></ul><p></p><h4>Using
+    Secrets and Variables Settings</h4><p>You can use Harness secrets and Service
+    or Workflow variables in the <strong>Application settings</strong> and <strong>Connection
+    strings</strong> in the Harness Service.</p><p>These settings use JSON, so ensure
+    that you use quotes around the variable or secret reference:</p><pre>  {<br/>    &#34;name&#34;:
+    &#34;PASSWORD&#34;,<br/>    &#34;value&#34;: &#34;${$secret.getValue(&#39;secret_key&#39;)}&#34;,<br/>    &#34;slotSetting&#34;:
+    false<br/>  },</pre><p></p><h3>Next Step</h3><ul><li><a href="/article/2n35dber6l-define-your-azure-web-app-infrastructure">Define
+    Your Azure Web App Infrastructure</a></li></ul><h3>Configure As Code</h3><p>To
+    see how to configure the settings in this topic using YAML, configure the settings
+    in the UI first, and then click the YAML editor button (<span style="color:#fb9e00"
+    data-hd-color="#fb9e00"><strong>&lt;/&gt;</strong></span>).</p><p></p>'
+  slug: add-a-non-containerized-artifacts-for-azure-web-app-deployment
+  tags: []
+  is_live: true

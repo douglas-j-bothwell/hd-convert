@@ -1,0 +1,72 @@
+type: article
+article_id: bn72tvbj6r
+user_id: mfr0nxh4be
+category_id: pm96bpz4kf
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Use the Harness REST API
+slug: harness-rest-api-reference
+description: Use the Harness REST API to automate Harness operations.
+short_version: Use the Harness REST API to automate Harness operations.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T18:53:29.27409Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use the Harness REST API
+  description: Use the Harness REST API to automate Harness operations.
+  short_version: Use the Harness REST API to automate Harness operations.
+  body: '<p>The Harness REST API lets you automate Harness operations, including your
+    builds, deployments, feature flags, etc.</p><p>The Harness REST API reference
+    docs are located at <a href="https://harness.io/docs/api/" target="_blank">https://harness.io/docs/api</a>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/bn72tvbj6r/1646331067659/clean-shot-2022-03-03-at-10-10-52.png"/></figure><p>You
+    can try the API within the reference docs, or anywhere else (Postman, etc), but
+    you&#39;ll need an API key from your Harness account first.</p><p>When using the
+    API key within the API reference docs, your credentials are saved until the end
+    of the browser session.</p><h3>Step 1: Create a Harness API Key and PAT</h3><p>The
+    Harness API uses API keys to authenticate requests. You create the API key in
+    your Harness Manager User Profile, add a Personal Access Token (PAT) to the key,
+    and then use the PAT in your API requests.</p><div class="note-callout">For an
+    overview of Harness API keys, see <a href="/article/tdoad7xrh9">Add and Manage
+    API Keys</a>.</div><p>Let&#39;s create the API key and its Personal Access Token.</p><p>Here&#39;s
+    a quick visual summary:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407720427/clean-shot-2021-11-08-at-13-37-44.gif"/></figure><h4
+    id="undefined">Create API Key</h4><p>In Harness, navigate to your <strong>Profile</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636406930993/clean-shot-2021-11-08-at-13-28-24-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>My API Keys</strong>, Click <strong>API Key</strong>. The API Key settings
+    appear.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407815962/clean-shot-2021-11-08-at-13-43-23-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Enter
+    <strong>Name, Description,</strong> and <strong>Tags</strong> for your API.</p><p>Click
+    <strong>Save</strong>. The new API Key is created.</p><h4 id="undefined">Create
+    Personal Access Token</h4><p>Next, we&#39;ll add the Personal Access Token (PAT)
+    that you will use when you make API requests.</p><p>Click <strong>Token</strong> below
+    the API Key you just created.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636408087557/clean-shot-2021-11-08-at-13-47-58-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    the <strong>New Token</strong> settings, enter a Name, Description, and Tags.</p><p>To
+    set an expiration date for this token, select <strong>Set Expiration Date</strong>
+    and enter the date in <strong>Expiration Date (mm/dd/yyyy)</strong>.</p><p>Click <strong>Generate
+    Token</strong>.</p><p>Your new token is generated.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636390414362/clean-shot-2021-11-08-at-08-53-10.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><div
+    class="warning-callout">Please copy and store your token value somewhere safe.
+    You won&#39;t be able to see it again.<br/><br/>Your API keys carry many privileges,
+    so be sure not to share them in publicly accessible areas. Make sure you always
+    use the updated API Key value after you rotate the token. For more details, see
+    <a href="https://ngdocs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#rotate_token">Rotate
+    Token</a>.</div><h4>Service Account Tokens</h4><p>You can also use a Service Account
+    Tokens instead of PAT. See <a href="/article/e5p4hdq6bd">Add and Manage Service
+    Accounts</a>.</p><h3>Step 2: Use the API</h3><p>Now you&#39;re ready to use the
+    Harness API in the reference docs or anywhere else.</p><p>See <a href="https://harness.io/docs/api/"
+    target="_blank">https://harness.io/docs/api</a>.</p>'
+  slug: harness-rest-api-reference
+  tags: []
+  is_live: true

@@ -1,0 +1,43 @@
+type: article
+article_id: vynj4hxt98
+user_id: mfr0nxh4be
+category_id: 31zj6kgnsg
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: CloudFormation How-tos
+slug: cloud-formation-how-tos
+description: 'Harness has first-class support for AWS CloudFormation as an infrastructure
+  provisioner. See the following CloudFormation How-tos: Provision Target Deployment
+  Infra Dynamically with CloudFormation. P…'
+short_version: 'Harness has first-class support for AWS CloudFormation as an infrastructure
+  provisioner. See the following CloudFormation How-tos: Provision Target Deployment
+  Infra Dynamically with CloudFormation. P…'
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-06-09T23:02:17.426445Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CloudFormation How-tos
+  description: ""
+  short_version: ""
+  body: <p>Harness has first-class support for AWS CloudFormation as an infrastructure
+    provisioner.</p><p>See the following CloudFormation How-tos:</p><ul><li><a href="/article/6jfl7i6a5u-provision-target-deployment-infra-dynamically-with-cloud-formation">Provision
+    Target Deployment Infra Dynamically with CloudFormation</a></li><li><a href="/article/pq58d0llyx-provision-with-the-cloud-formation-create-stack-step">Provision
+    with the CloudFormation Create Stack Step</a></li><li><a href="/article/mmzimok6vp-remove-provisioned-infra-with-the-cloud-formation-delete-step">Remove
+    Provisioned Infra with the CloudFormation Delete Step</a></li><li><a href="/article/5ooc4heyl4-rollback-provisioned-infra-with-the-cloud-formation-rollback-step">Rollback
+    Provisioned Infra with the CloudFormation Rollback Step</a></li></ul><p>For a
+    conceptual overview of Harness CloudFormation integration, see <a href="/article/vu2qi7dfzm-cloud-formation-provisioning-with-harness">CloudFormation
+    Provisioning with Harness</a>.</p>
+  slug: cloud-formation-how-tos
+  tags: []
+  is_live: true

@@ -1,0 +1,32 @@
+type: article
+article_id: aiuwxmwfe9
+user_id: mfr0nxh4be
+category_id: flam7377aq
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Viewing Execution Status
+slug: viewing-execution-status
+description: ""
+short_version: ""
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-04-08T22:03:55.080932Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Viewing Execution Status
+  description: ""
+  short_version: ""
+  body: ""
+  slug: viewing-execution-status
+  tags: []
+  is_live: true

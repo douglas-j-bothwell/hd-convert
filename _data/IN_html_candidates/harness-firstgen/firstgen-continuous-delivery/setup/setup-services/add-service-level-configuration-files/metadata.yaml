@@ -1,0 +1,110 @@
+type: article
+article_id: iwtoq9lrky
+user_id: wz6xkfcc9i
+category_id: u4eimxamd3
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Add Service Config Files
+slug: add-service-level-configuration-files
+description: As a part of managing the Services you created, add Service Config Files
+  to use throughout your configuration settings.
+short_version: As a part of managing the Services you created, add Service Config
+  Files to use throughout your configuration settings.
+tags:
+- Config Files
+- Copy Configs
+- getAsBase64
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-28T17:10:47.902595Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Service Config Files
+  description: As a part of managing the Services you created, add Service Config
+    Files to use throughout your configuration settings.
+  short_version: As a part of managing the Services you created, add Service Config
+    Files to use throughout your configuration settings.
+  body: '<p></p><p>On the Services page, as a part of managing the Services you created,
+    you can add Service Config Files that can be used throughout your configuration
+    settings.</p><div class="note-callout">For information about how configuration
+    files are used in a Kubernetes deployment, see <a href="/article/pc6qglyp5h-kubernetes-deployments-overview">Kubernetes
+    Deployments Overview</a>.</div><h4>In this topic:</h4><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#review_required_permissions">Review: Required
+    Permissions</a></li><li><a href="https://docs.harness.io/article/iwtoq9lrky-add-service-level-configuration-files#review_string_and_base64_options">Review:
+    String and Base64 Options</a></li><li><a href="https://docs.harness.io/article/iwtoq9lrky-add-service-level-configuration-files#review_use_base64_to_avoid_new_lines">Review:
+    Use Base64 to Avoid New Lines</a></li><li><a href="#step_1_add_config_files">Step
+    1: Add Config Files</a></li><li><a href="#step_2_use_copy_configs_command">Step
+    2: Use Copy Configs Command</a></li><li><a href="https://docs.harness.io/article/iwtoq9lrky-add-service-level-configuration-files#review_use_config_files_in_delegate_profiles">Review:
+    Use Config Files in Delegate Profiles</a></li></ul><p></p><h3>Before You Begin</h3><ul><li>Read
+    the <a href="/article/bucothemly-application-configuration">Create an Application</a>
+    topic to get an overview of how Harness organizes Services.</li><li>Read the <a
+    href="/article/eb3kfl8uls-service-configuration">Add a Service</a> topic to understand
+    the process to add a Service to an Application.</li><li>Read <a href="/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code</a> to see how you can quickly configure your Harness Service using your
+    existing YAML in Git.</li></ul><p></p><h3>Limitations</h3><p>Files must be 1MB
+    or less.</p><p>All file types are supported.</p><h3>Review: Required Permissions</h3><p>Make
+    sure you have the <strong>update</strong> permission on the Service before you
+    try to add the Service Config File. See <a href="/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a> for more information about assigning permissions.</p><p></p><h3>Review:
+    String and Base64 Options</h3><p>Harness can encode your file as a string or Base64.</p><p>When
+    selecting an option, consider the content of the file and which encoding method
+    will work best.</p><p>Base64 encoding schemes are commonly used when there is
+    a need to encode binary data (credentials are a common example), but they are
+    also preferable when the file content contains special characters which cannot
+    be parsed as a string.</p><p>If you try string encoding and receive an error like
+    the following, try Base64:</p><pre>Invalid values file. Error tokenizing YAML.
+    Line 6, column 15: Found a mapping value where it is not allowed</pre><p></p><h3>Review:
+    Use Base64 to Avoid New Lines</h3><p>If you are going to use a Config File in
+    a spec or manifest, be aware that <code>${configFile.getAsString()}</code> can
+    cause problems by adding new lines to your spec or manifest (unless you have formatted
+    the file very carefully).</p><p>Instead, use <code>${configFile.getAsBase64()}</code>.
+    This will ensure that the contents of the file are rendered as a single line.</p><h3>Step
+    1: Add Config Files</h3><p>Files added in the <strong>Config Files</strong> section
+    are referenced using the <code>configFile.getAsString(&#34;fileName&#34;)</code>
+    Harness functor:</p><ul><li><code>${configFile.getAsString(&#34;fileName&#34;)}</code>
+    – standard text string.</li><li><code>${configFile.getAsBase64(&#34;fileName&#34;)}</code>
+    – Base64 encoded.</li></ul><p>For example, let&#39;s add a <strong>Config Files</strong>
+    file named <strong>config-file-example.txt</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550187126235/image.png"/></figure><p>You
+    would reference this file in a Workflow that uses this Service like this:</p><pre>${configFile.getAsString(&#34;config-file-example.txt&#34;)}</pre><p>For
+    example, here is an a config file named <strong>example.txt</strong> containing
+    the string <code>This is a config file from the Service</code> added to a Service
+    and then referenced in the Workflow that uses the Service. Finally, in the completed
+    Workflow deployment, you can see the contents of the file output.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/eb3kfl8uls/1565111487837/image.png"/></figure><p></p><h3>Step
+    2: Use Copy Configs Command</h3><p>In most cases, use the <strong>Copy Configs</strong>
+    command to copy the Config Files to your target hosts. You can add Copy Configs
+    from the command menu in the Service:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/eb3kfl8uls/1565115402493/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>
+    In Copy Configs, you can change the location on the target host(s) where the files
+    are added:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/eb3kfl8uls/1565115462173/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>By
+    default, it uses the <a href="https://docs.harness.io/article/9dvxcegm90-variables#application_default_variables">Application
+    Defaults</a> path <code>$WINGS_RUNTIME_PATH</code>.</p><p>When the Workflow using
+    this Service is deployed, the Copy Configs command copies the Service Config File
+    to the target host:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/eb3kfl8uls/1565116420656/image.png"/></figure><h3>Review:
+    Use Config Files in Delegate Profiles</h3><p>The <code>${configFile.getAsString(&#34;fileName&#34;)}</code>
+    and <code>${configFile.getAsBase64(&#34;fileName&#34;)}</code> expressions are
+    not supported in <a href="/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles">Delegate
+    Profiles</a>.</p><p>Instead, encode the file in base64 and then add the file to
+    Harness as an <a href="/article/nt5vchhka4-use-encrypted-file-secrets">Encrypted
+    File Secret</a>.</p><p>Next, in the Delegate Profile script, reference the secret,
+    pipe it to base64 and output it to the path where you need it:</p><pre>echo ${secrets.getValue(&#34;secret_name&#34;)}
+    | base64 -d &gt; /path/to/file</pre><h3>Notes</h3><ul><li>If you sync your Harness
+    Application as described in <a href="/article/6mr74fm55h-harness-application-level-sync">Harness
+    Application-Level Git Sync</a>, the Config Files are also synched to your remote
+    repo.</li></ul><p></p>'
+  slug: add-service-level-configuration-files
+  tags:
+  - Config Files
+  - Copy Configs
+  - getAsBase64
+  is_live: true

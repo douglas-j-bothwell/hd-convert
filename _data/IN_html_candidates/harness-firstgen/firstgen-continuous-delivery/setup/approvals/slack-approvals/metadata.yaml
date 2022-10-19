@@ -1,0 +1,122 @@
+type: article
+article_id: mtr398a9cl
+user_id: x5amubrz4l
+category_id: 4edbfn50l8
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Slack Approvals in Workflows and Pipelines
+slug: slack-approvals
+description: Approve or reject Workflows and Pipelines directly from Slack.
+short_version: Approve or reject Workflows and Pipelines directly from Slack.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:43.179534Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Slack Approvals in Workflows and Pipelines
+  description: Approve or reject Workflows and Pipelines directly from Slack.
+  short_version: Approve or reject Workflows and Pipelines directly from Slack.
+  body: '<p></p><div class="note-callout">Currently, this feature is behind a Feature
+    Flag. Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a>
+    to enable the feature. Feature Flags can only be removed for Harness Professional
+    and Essentials editions. Once the feature is released to a general audience, it&#39;s
+    available for Trial and Community Editions.</div><p>Harness users can approve
+    or reject Workflows and Pipelines directly from Slack.</p><p>In this topic:</p><ul><li><a
+    href="https://docs.harness.io/article/mtr398a9cl-slack-integration#step_1_create_slack_app">Step
+    1: Create Slack App</a></li><li><a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#step_2_configure_harness_api_endpoint_in_slack">Step
+    2: Configure Harness API Endpoint in Slack</a></li><li><a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#step_3_configure_harness_user_notifications_for_slack">Step
+    3: Configure Harness User Notifications for Slack</a></li><li><a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#option_approve_workflows_via_slack">Option:
+    Approve ​Workflows via Slack</a></li><li><a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#option_approve_pipelines_via_slack">Option:
+    Approve Pipelines via Slack</a></li><li><a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#see_also">See
+    Also</a></li></ul><div class="tip-callout">To configure Harness notifications
+    to Slack <em>without</em> enabling deployment approvals from Slack, see <a href="/article/4blpfqwfdc-send-notification-using-slack">Send
+    Notifications Using Slack</a> and <a href="/article/4zd81qhhiu-slack-notifications">Send
+    Slack Messages from Workflows</a>.</div><p></p><h3>Step 1: Create Slack App</h3><p>Create
+    and configure an app in your Slack developer account at <a href="https://api.slack.com/">https://api.slack.com</a>.</p><p>For details
+    on these steps, see Slack&#39;s <a href="https://api.slack.com/incoming-webhooks">Incoming Webhooks</a>
+    documentation.</p><p>When you create the app, do the following:</p><ol><li>Name
+    your app, assign it to a Workspace, and select <strong>Create App</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1566245934700/image.png" style="max-height:40%;max-width:40%"
+    data-hd-height="40%" data-hd-width="40%"/></figure></li><li>Select <strong>Incoming
+    Webhooks</strong>.</li><li>Enable the <strong>Activate Incoming Webhooks</strong>
+    slider:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1566246040956/image.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Click
+    <strong>Add New Webhook to Workspace</strong>.</li><li>At the <strong>Confirm
+    your identity</strong> challenge, select the Slack channel to receive approval
+    notifications. (To select an appropriate channel, see <a href="#configure_notifications">Configure
+    Harness User Notifications</a> below.)<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1566246262333/image.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure></li><li>Click
+    <strong>Install</strong> (or <strong>Authorize</strong>) to confirm this setup.</li></ol><p></p><h3>Step
+    2: Configure Harness API Endpoint in Slack</h3><p>Configure the API endpoint from
+    Harness for interactivity.</p><div class="note-callout">For details, see Slack&#39;s
+    <a href="https://api.slack.com/interactive-messages">Making Messages Interactive</a>
+    documentation.</div><ol><li>In Slack, select <strong>Interactive Components</strong>.</li><li>Enable
+    the <strong>Interactivity</strong> slider:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1566282304120/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>Enter
+    the <strong>Request URL</strong>, as either <code>http</code> or <code>https</code>.
+    The <strong>Request URL</strong> is independent of the approval channel that we&#39;ll
+    configure <a href="#configure_notifications">below</a>.<br/><br/>Harness SaaS
+    users should enter a URL of the form shown above:<br/><code>https://app.harness.io/gateway/api/slack/approval?accountId=&lt;accountID&gt;</code><br/><br/>On-prem
+    users will instead have a URL of the form:<br/><code>https://&lt;your-domain-name&gt;.harness.io/gateway/api/slack/approval?accountId=&lt;accountID&gt;</code></li><li>Click
+    <strong>Save</strong>.</li><li>Return to the Slack app&#39;s <strong>Incoming
+    Webhooks</strong> tab.</li><li>From the resulting app settings, copy the <strong>Webhook
+    URL</strong> to your clipboard.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1566281769902/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li></ol><p></p><p></p><p>You&#39;ve
+    configured API endpoints in both your Slack app and Harness.</p><p>Now, you&#39;re
+    ready to set up notifications for the Harness User Group, and the Slack channel,
+    where you want to enable approvals.</p><h3>Step 3: Configure Harness User Notifications
+    for Slack</h3><p>Enabling Slack notifications in Harness is straightforward, but
+    there are some important considerations:</p><ul><li>Select a Harness User Group
+    that has appropriate permissions. These permissions must include <strong>Application: Execute
+    Workflow</strong> and <strong>Execute Pipeline</strong> permissions for all relevant
+    Applications.<br/>See <a href="/article/ven0bvulsj#application_permissions">Application
+    Permissions</a> in <a href="/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a>.</li><li>You must create a Slack channel that has
+    the same members as the User Group.</li><li>You must manually keep the Slack channel&#39;s
+    membership synchronized with the User Group&#39;s membership.</li><li>You should
+    normally configure this as a private Slack channel.</li></ul><p></p><div class="note-callout">Any
+    member of the Slack channel that you configure will be able to approve or reject
+    deployments. This is why Harness emphasizes the importance of using a private
+    channel, and of manually maintaining synchronization between your Harness User
+    Group&#39;s membership and the Slack channel&#39;s membership.</div><p>Once you
+    have selected the appropriate User Group and Slack channel to use:</p><ol><li>Open
+    the User Group&#39;s notification settings. See <a href="/article/kf828e347t#step_add_notification_settings_for_user_groups">Add
+    Notification Settings for User Groups</a>.</li><li>In <strong>Notification Settings</strong>,
+    specify the <strong>Slack Channel Name</strong>.</li><li>Paste in the <strong>Slack
+    Webhook URL</strong> you copied above in <a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#step_2_configure_harness_api_endpoint_in_slack">Step
+    2: Configure Harness API Endpoint in Slack</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1566277910566/image.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li></ol><h3>Option:
+    Approve ​Workflows via Slack</h3><p>Once you&#39;ve configured the URLs and channel
+    notification settings above, members of the configured channel can approve or reject
+    Workflow and Pipeline deployments directly from that channel.</p><p>To set up
+    Slack approval within a Workflow:</p><ol><li>Within a Workflow section, select <strong>Add
+    Step</strong>.</li><li>Click <strong>Approval.</strong></li><li>In <strong>Ticketing
+    System</strong>, select <strong>Harness UI</strong>.</li><li>In the <strong>User
+    Groups</strong> drop-down, select the group you enabled above in <a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#step_3_configure_harness_user_notifications_for_slack">Step
+    3: Configure Harness User Notifications for Slack</a>.</li><li>Click <strong>Submit.</strong></li></ol><p>To
+    see how approval of this step works in practice, see <a href="/article/0ajz35u2hy-approvals">Harness
+    UI Approvals</a>.</p><h3>Option: Approve Pipelines via Slack</h3><p>To set up
+    Slack approval within a Pipeline:</p><ol><li>Add a stage to the Pipeline.</li><li>Click
+    <strong>Approval Step</strong>.</li><li>In <strong>Ticketing System</strong>,
+    select <strong>Harness UI</strong>.</li><li>Select the User Group you enabled
+    above in <a href="https://docs.harness.io/article/mtr398a9cl-slack-integration#step_3_configure_harness_user_notifications_for_slack">Step
+    3: Configure Harness User Notifications for Slack</a></li><li>Set a <strong>Timeout</strong>
+    and click <strong>Submit</strong>.</li></ol><p>To see how approval of this step
+    works in practice, see <a href="/article/0ajz35u2hy-approvals">Harness UI Approvals</a>.</p><h3>See
+    Also</h3><ul><li><a href="/article/4blpfqwfdc-send-notification-using-slack">Send
+    Notifications Using Slack</a></li><li><a href="/article/4zd81qhhiu-slack-notifications">Send
+    Slack Messages from Workflows</a></li><li><a href="/article/5xiwejal3p-set-up-slack-notifications">Set
+    Up Slack Notifications for CE</a></li></ul><p></p>'
+  slug: slack-approvals
+  tags: []
+  is_live: true

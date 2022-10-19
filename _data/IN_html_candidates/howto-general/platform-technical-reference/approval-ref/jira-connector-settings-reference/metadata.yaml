@@ -1,0 +1,69 @@
+type: article
+article_id: ud8rysntnz
+user_id: mfr0nxh4be
+category_id: r8mi3j15it
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Jira Connector Settings Reference
+slug: jira-connector-settings-reference
+description: This topic describes the settings and permissions for the Jira Connector.
+short_version: This topic describes the settings and permissions for the Jira Connector.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:40:30.872475Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Jira Connector Settings Reference
+  description: This topic describes the settings and permissions for the Jira Connector.
+  short_version: This topic describes the settings and permissions for the Jira Connector.
+  body: <p>This topic describes the settings and permissions for the Jira Connector.</p><p>You
+    can connect Harness to Jira using a Harness Jira Connector. This Connector allows
+    you to create and update Jira issues, and to use Jira issues in Approval steps.</p><p>For
+    instructions on how to set up this Connector, see <a href="/article/e6s32ec7i7-connect-to-jira">Connect
+    to Jira</a>.</p><div class="note-callout">Looking for How-tos? See <a href="/article/yu40zr6cvm-create-jira-issues-in-cd-stages">Create
+    Jira Issues in CD Stages</a>, <a href="https://newdocs.helpdocs.io/article/urdkli9e74-update-jira-issues-in-cd-stages">Update
+    Jira Issues in CD Stages</a>, and <a href="/article/2lhfk506r8-adding-jira-approval-stages">Adding
+    Jira Approval Stages and Steps</a>.</div><p>In this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/ud8rysntnz-jira-connector-settings-reference#limitations">Limitations</a></li><li><a
+    href="https://ngdocs.harness.io/article/ud8rysntnz-jira-connector-settings-reference#name">Name</a></li><li><a
+    href="https://ngdocs.harness.io/article/ud8rysntnz-jira-connector-settings-reference#url">URL</a></li><li><a
+    href="https://ngdocs.harness.io/article/ud8rysntnz-jira-connector-settings-reference#credentials">Credentials</a></li><li><a
+    href="https://ngdocs.harness.io/article/ud8rysntnz-jira-connector-settings-reference#see_also">See
+    Also</a></li></ul><h3>Limitations</h3><p>Your Jira REST API account must have
+    permissions to create and edit issues in the relevant Jira projects. The <strong>Administer Jira</strong> permission
+    includes all relevant permissions (as does the <strong>Administrator</strong> or <strong>Member</strong> permission
+    on <a href="https://confluence.atlassian.com/jirasoftwarecloud/overview-of-permissions-in-next-gen-projects-959283605.html"
+    target="_blank">Jira next-gen</a>).</p><p>For details, see Atlassian&#39;s documentation
+    on <a href="https://developer.atlassian.com/cloud/jira/platform/rest/v3/?utm_source=%2Fcloud%2Fjira%2Fplatform%2Frest%2F&amp;utm_medium=302#permissions"
+    target="_blank">Operation Permissions</a>, <a href="https://developer.atlassian.com/cloud/jira/platform/rest/v3/?utm_source=%2Fcloud%2Fjira%2Fplatform%2Frest%2F&amp;utm_medium=302#api-group-Issues"
+    target="_blank">Issues</a>, and <a href="https://confluence.atlassian.com/adminjiracloud/managing-project-permissions-776636362.html#Managingprojectpermissions-Projectpermissionsoverview"
+    target="_blank">Managing Project Permissions</a>.</p><h3>Name</h3><p>Enter a name
+    for this Connector. You will use this name to select the Connector in Pipeline
+    steps and settings.</p><h3>URL</h3><p>Enter the base URL by which your users access
+    your Jira applications. For example: <code>https://mycompany.atlassian.net</code>.</p><div
+    class="tip-callout">In Jira, the base URL is set to the same URL that Web browsers
+    use to view your Jira instance. For details, see <a href="https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html"
+    target="_blank">Configuring the Base URL</a> from Atlassian.</div><div class="note-callout">If
+    you are using the on-premises Jira server with HTTPS redirects enabled, use the
+    HTTPS URL to ensure the <a href="https://confluence.atlassian.com/adminjiraserver/running-jira-applications-over-ssl-or-https-938847764.html#:~:text=If%20you%20want%20to%20only,to%20the%20corresponding%20HTTPS%20URLs."
+    target="_blank">JIRA client follows redirects</a>.</div><h3>Credentials</h3><p>Enter
+    your credentials. For <strong>API Key</strong>, use a Harness <a href="/article/osfw70e59c-add-use-text-secrets">Text
+    Secret</a>. See <a href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/"
+    target="_blank">Manage API tokens for your Atlassian account</a> from Atlassian.</p><h3>See
+    Also</h3><ul><li><a href="/article/yu40zr6cvm-create-jira-issues-in-cd-stages">Create
+    Jira Issues in CD Stages</a></li><li><a href="/article/urdkli9e74-update-jira-issues-in-cd-stages">Update
+    Jira Issues in CD Stages</a></li><li><a href="https://newdocs.helpdocs.io/article/urdkli9e74-update-jira-issues-in-cd-stages">Using
+    Jira Approval Steps in CD Stages</a></li><li><a href="/article/2lhfk506r8-adding-jira-approval-stages">Adding
+    Jira Approval Stages</a></li></ul><p></p>
+  slug: jira-connector-settings-reference
+  tags: []
+  is_live: true

@@ -1,0 +1,43 @@
+type: article
+article_id: bov41f5b7o
+user_id: slcpusem6b
+category_id: a8jhf8hizv
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Templatize a Workflow
+slug: templatize-a-workflow-new-template
+description: Turn a Workflow into a Workflow template ("templatize it") by using variables
+  for important settings such as Environment, Service, and Infrastructure Definition.
+short_version: Turn a Workflow into a Workflow template ("templatize it") by using
+  variables for important settings such as Environment, Service, and Infrastructure
+  Definition.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:37.187026Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Templatize a Workflow
+  description: Turn a Workflow into a Workflow template ("templatize it") by using
+    variables for important settings such as Environment, Service, and Infrastructure
+    Definition.
+  short_version: Turn a Workflow into a Workflow template ("templatize it") by using
+    variables for important settings such as Environment, Service, and Infrastructure
+    Definition.
+  body: |-
+    <p>You can turn a Workflow into a Workflow template (&#34;templatize it&#34;) by using variables for important settings such as Environment, Service, and Infrastructure Definition.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before You Begin</a></li><li> <a href="#turn_workflow_into_template">Step: Turn a Workflow into a Template</a></li><li> <a href="#next_steps">Next Steps</a></li></ul><div class="hd--md" data-hd-markdown="&lt;span id=&#34;before_you_begin&#34;&gt;&lt;/span&gt;"><p><span id="before_you_begin"></span></p>
+    </div><h3>Before You Begin</h3><ul><li><a href="/article/o86qyexcab-tags-how-tos">Add a Workflow</a></li></ul><div class="hd--md" data-hd-markdown="&lt;span id=&#34;turn_workflow_into_template&#34;&gt;&lt;/span&gt;"><p><span id="turn_workflow_into_template"></span></p>
+    </div><h3>Step: Turn a Workflow into a Template</h3><p>To turn a Workflow into a template, do the following:</p><ol><li>In a Workflow, click the More Options ⋮ menu next to the <strong>Deploy</strong> button, and click <strong>Edit</strong>. The <strong>Workflow</strong> settings appear. The Workflow settings that may be turned into variables have a <strong>[T]</strong> button in their fields.</li><li>For each setting you want to turn into a variable, click the <strong>[T]</strong> button in its field. The field values are replaced by variables.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568240542515/image.png"/></figure><div class="note-callout">You can pass in variables from Triggers to set values for these Workflow variables. For more information, see <a href="/article/revc37vl0f-passing-variable-into-workflows">Passing Variables into Workflows and Pipelines from Triggers</a>.</div></li><li>Click <strong>SUBMIT</strong>. The new variables are displayed under <strong>Workflow Variables</strong>.</li><li>To see how the Workflow variables are used, click <strong>Deploy</strong>. The <strong>Start New Deployment</strong> dialog appears, displaying the variables you created in the <strong>Workflow Variables</strong> section.</li></ol><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568240636745/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>When this deployment is run, users can select from the options for each setting from the <strong>Value</strong> drop-down. Now the Workflow is a template that can be used by multiple services.</p><p>In the <strong>Workflows</strong> page, Workflow templates are identified with a template icon.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/m220i1tnia/1533940860351/workflow-template-ico.png"/></figure><div class="note-callout">The template option for Workflow settings is available in the main Workflow settings in all Workflow types. In multi-phase deployment types (Canary), some settings may also be templated in the Phase settings.</div><div class="hd--md" data-hd-markdown="&lt;span id=&#34;next_steps&#34;&gt;&lt;/span&gt;"><p><span id="next_steps"></span></p>
+    </div><h3>Next Steps</h3><ul><li> <a href="/article/m220i1tnia-workflow-configuration#template_a_workflow">Template a Workflow</a></li></ul><p></p>
+  slug: templatize-a-workflow-new-template
+  tags: []
+  is_live: true

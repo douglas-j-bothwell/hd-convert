@@ -1,0 +1,59 @@
+type: article
+article_id: cwav0g490u
+user_id: xwmdbyp4x8
+category_id: m01pu2ubai
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: DRAFT DOC-1921 Global Scanners Reference
+slug: container-scanner-settings-test
+description: 'All Scan Types. The following settings apply to all scanners. scan_type
+  accepted values: container , repository , instance , configuration.. Repository
+  Scan Type Settings. The following settings appl…'
+short_version: 'All Scan Types. The following settings apply to all scanners. scan_type
+  accepted values: container , repository , instance , configuration.. Repository
+  Scan Type Settings. The following settings appl…'
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-31T21:08:30.939673Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DRAFT DOC-1921 Global Scanners Reference
+  description: ""
+  short_version: ""
+  body: '<p></p><p></p><h3>All Scan Types</h3><p>The following settings apply to all
+    scanners.</p><ul><li><code>scan_type</code><ul><li>accepted values: <code>container</code>,
+    <code>repository</code>, <code>instance</code>, <code>configuration</code>.</li></ul></li></ul><h3>Repository
+    Scan Type Settings</h3><p>The following settings apply to all scanners where the
+    <code>scan_type</code> is <code>repository</code>.</p><ul><li><code>repository_project</code>
+    (required)</li><li><code>repository_branch</code> (required)</li></ul><h3>Container
+    Scan Type Settings</h3><p>The following settings apply to all scanners where the
+    <code>scan_type</code> is <code>containerImage</code>.</p><ul><li><code>container_project</code>
+    (required)</li><li><code>container_tag</code> (required)</li><li><code>container_type</code><ul><li>accepted
+    value(s): <code>local_image</code>, <code>docker_v2</code>, <code>jfrog_artifactory</code>, <code>aws_ecr</code><ul><li>for <code>container_type</code> set
+    to <code>local</code><ul><li><code>None</code></li></ul></li><li>for <code>container_type</code> set
+    to <code>docker_v2</code><ul><li><code>container_access_id</code>: Username</li><li><code>container_access_token</code>:
+    Password/Token</li></ul></li><li>for <code>container_type</code> set to <code>jfrog_artifactory</code><ul><li><code>container_access_id</code>:
+    Username</li><li><code>container_access_token</code>: Password/Token</li></ul></li><li>for <code>container_type</code> set
+    to <code>aws_ecr</code><ul><li><code>container_access_id</code>: Username</li><li><code>container_access_token</code>:
+    Password/Token</li><li><code>container_region</code>: AWS default region</li></ul></li></ul></li></ul></li><li><code>container_domain</code></li></ul><h3>Instance
+    Scan Type Settings</h3><p>The following settings apply to all scanners where the
+    <code>scan_type</code> is <code>instance</code>.</p><ul><li><code>instance_identifier</code>
+    (required)</li><li><code>instance_environment</code> (required)</li><li><code>instance_domain</code></li><li><code>instance_path</code></li><li><code>instance_protocol</code></li><li><code>instance_port</code></li><li><code>instance_type</code><ul><li>accepted
+    value(s): <code>website</code></li></ul></li></ul><h3>Configuration Scan Type
+    Settings</h3><p>The following settings apply to all scanners where the <code>scan_type</code>
+    is <code>configuration</code>.</p><ul><li><code>configuration_type</code><ul><li>accepted
+    value(s)s: <code>aws_account</code></li></ul></li><li><code>configuration_region</code></li><li><code>configuration_environment</code></li><li><code>configuration_access_id</code></li><li><code>configuration_access_token</code></li></ul><p></p>'
+  slug: container-scanner-settings-test
+  tags: []
+  is_live: true

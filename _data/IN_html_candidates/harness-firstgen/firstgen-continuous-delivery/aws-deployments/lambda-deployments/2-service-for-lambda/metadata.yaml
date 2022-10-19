@@ -1,0 +1,148 @@
+type: article
+article_id: qp8hk4nzbo
+user_id: mfr0nxh4be
+category_id: 3pyb3kmkbs
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add Lambda Functions
+slug: 2-service-for-lambda
+description: Create a Harness Service to define your Lambda functions.
+short_version: Create a Harness Service to define your Lambda functions.
+tags:
+- Lambda
+- Service
+- function file
+- Artifact Source
+- function specification
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:23:18.906583Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Lambda Functions
+  description: Create a Harness Service to define your Lambda functions.
+  short_version: Create a Harness Service to define your Lambda functions.
+  body: '<div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/5fnx4hgwsa">NextGen</a>.</div><p></p><p>This topic
+    describes how to create a Harness Application and adds a Service that uses a function
+    file, runtime, and handler information to define the Lambda function to deploy.</p><p>In
+    this topic:</p><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a
+    href="#review_artifact_source_support">Review: Artifact Source Support</a></li><li><a
+    href="#step_1_create_a_harness_lambda_service">Step 1: Create a Harness Lambda
+    Service</a></li><li><a href="#step_2_add_lambda_functions">Step 2: Add Lambda
+    Functions</a></li><li><a href="#step_3_lambda_function_specification">Step 3:
+    Lambda Function Specification</a></li><li><a href="#option_lambda_environment_variables_using_service_config_variables">Option:
+    Lambda Environment Variables using Service Config Variables</a></li><li><a href="#next_steps">Next
+    Steps</a></li></ul><p></p><h3>Before You Begin</h3><ul><li><a href="/article/lo9taq0pze-1-delegate-and-connectors-for-lambda">Connect
+    to AWS for Lambda Deployments</a></li></ul><p></p><h3>Review: Artifact Source
+    Support</h3><p>Harness supports the following artifact sources with Lambda:</p><ul><li><a
+    href="/article/qa7lewndxq-add-jenkins-artifact-servers">Jenkins</a></li><li><a
+    href="/article/nj3p1t7v3x-add-artifactory-servers">Artifactory</a></li><li><a
+    href="/article/lo9taq0pze-1-delegate-and-connectors-for-lambda">AWS S3</a></li><li><a
+    href="/article/rdhndux2ab-nexus-artifact-sources">Nexus</a></li><li><a href="/article/jizsp5tsms-custom-artifact-source">Custom
+    Artifact Source</a></li></ul><h3>Step 1: Create a Harness Lambda Service</h3><p>To
+    add the Lambda Service, do the following:</p><ol><li>In your new Application,
+    click <strong>Services</strong>. The <strong>Services</strong> page appears.</li><li>In
+    the <strong>Services</strong> page, click <strong>Add Service</strong>. The <strong>Service</strong>
+    dialog appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x57jag22jf/1592907577534/add-service.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Name</strong>, enter a name for your Service, such as <strong>aws-lambda</strong>.
+    You will use this name to select this Service when you set up a Harness Environment
+    and Workflow.</li><li>In <strong>Description</strong>, enter a description for
+    your Service.</li><li>In <strong>Deployment Type</strong>, select <strong>AWS
+    Lambda</strong>.</li><li>Click <strong>SUBMIT</strong>. The new Service is displayed.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/d89x75yp05/1561669907983/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>Step
+    2: Add Lambda Functions</h3><p>An Artifact Source in a Lambda Service is the Lambda
+    function file you want to deploy. The Artifact Source uses the AWS Cloud Provider
+    you set up for your Harness account, as described in <a href="/article/lo9taq0pze-1-delegate-and-connectors-for-lambda">Delegate
+    and Connectors for Lambda</a>.</p><p>To add an Artifact Source to this Service,
+    do the following:</p><ol><li>In your Lambda Service, click <strong>Add Artifact
+    Source</strong>, and then click <strong>Amazon S3</strong>. For information on
+    using a Custom Artifact Source, see <a href="/article/jizsp5tsms-custom-artifact-source">Custom
+    Artifact Source</a>. The <strong>Amazon S3 Artifact Source</strong> dialog appears.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/d89x75yp05/1561671450172/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Cloud Provider</strong>, select the AWS Cloud Provider you set up in <a
+    href="/article/lo9taq0pze-1-delegate-and-connectors-for-lambda">Delegate and Connectors
+    for Lambda</a>.</li><li>In <strong>Bucket</strong>, select the S3 bucket containing
+    the Lambda function zip file you want.</li><li>In <strong>Artifact Path</strong>,
+    select the Lambda function zip file containing your functions. Here is how your
+    S3 bucket and file relate to the Artifact Source dialog:</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/d89x75yp05/1561672533990/image.png"/></figure><p>The
+    <strong>Meta-data Only</strong> option is selected by default. Harness will not
+    copy the actual zip file. During runtime, Harness passes the metadata to Lambda
+    where it is used to obtain the file.</p><ol><li style="counter-increment:li 4"
+    start="5">Click <strong>SUBMIT</strong>. The Lambda function file is added as
+    an Artifact Source.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/d89x75yp05/1561672745320/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>Step
+    3: Lambda Function Specification</h3><p>In <strong>Lambda Function Specification</strong>,
+    you provide details about the Lambda functions in the zip file in Artifact Source.</p><p>Click
+    <strong>Lambda Function Specification</strong>. The <strong>AWS Lambda Function
+    Specifications</strong> dialog appears.</p><p>The details you provide are very
+    similar to the options in the AWS CLI <code>aws lambda create-function</code>
+    command. For more information, see <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html"
+    target="_blank">create-function</a> from AWS.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/d89x75yp05/1561673530749/image.png"/></figure><p>Some
+    of the options are specified in Harness Environments and Workflows to help you
+    reuse the Service with multiple Environments and Workflows.</p><p>By default,
+    the <strong>AWS Lambda Function Specifications</strong> dialog displays a function.
+    If you have multiple Lambda functions in the zip file in Artifact Source, click
+    <strong>Add Function</strong> and provide details for each function.</p><p>For
+    each function in the <strong>Functions</strong> section, enter the following function
+    information:</p><ul><li><strong>Runtime</strong> - The <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html">Lambda
+    runtime</a> that executes your function. This is the runtime for all functions
+    in this spec. AWS can change its runtime version support. For example, AWS no
+    longer supports <strong>nodejs6.10</strong>.</li><li><strong>Function Name</strong>
+    - The name of your function. This name will become part of the function ARN in
+    Lambda.<br/>Harness uses default variables for the name that include your Harness
+    Application, Service, and Environment names (<code>${app.name}_${service.name}_${env.name}</code>).
+    If you use these, you need to append a unique suffix to each function name, for
+    example <code>${app.name}_${service.name}_${env.name}_my-function</code>. Or you
+    can replace the entire name.</li><li><strong>Handler</strong> - The method that
+    the runtime executes when your function is invoked. The format for this value
+    varies per language. See <a href="https://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html">Programming
+    Model</a> for more information.</li></ul><p>For example, let&#39;s look at a Node.js
+    function in a file named <strong>index.js</strong>:</p><pre>exports.handler =  async
+    function(event, context) {<br/>  console.log(&#34;EVENT: \n&#34; + JSON.stringify(event,
+    null, 2))<br/>  return context.logStreamName<br/>}</pre><p>The value of the <strong>Handler</strong>
+    setting is the file name (<strong>index</strong>) and the name of the exported
+    handler module, separated by a dot. In our example, the handler is <strong>index.handler</strong>.
+    This indicates the handler module that&#39;s exported by index.js.</p><ul><li><strong>Memory
+    Size</strong> - The amount of memory available to the function during execution.
+    Choose an amount <a href="https://docs.aws.amazon.com/lambda/latest/dg/limits.html">between
+    128 MB and 3,008 MB</a> in 64 MB increments. There are two Execution Timeout settings.
+    A default setting and a function-specific setting.</li><li><strong>Execution Timeout</strong>
+    - The amount of time that Lambda allows a function to run before stopping it.
+    The default is 3 seconds. The maximum allowed value is 900 seconds. There are
+    two Execution Timeout settings. A default setting and a function-specific setting.</li></ul><p>When
+    you are done, the <strong>AWS Lambda Function Specifications</strong> dialog will
+    look something like this:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/d89x75yp05/1561675575487/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>When
+    you are done, click <strong>Submit</strong>. Your function is added to the Service.</p><h3>Option:
+    Lambda Environment Variables using Service Config Variables</h3><p>You can use
+    <a href="/article/q78p7rpx9u-add-service-level-config-variables">Config Variables</a>
+    in your Service to create <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html"
+    target="_blank">Lambda Environment Variables</a>.</p><p>Encrypted Config Variables
+    will appear as plaintext Environment Variables in Lambda.</p><p>When you deploy
+    your function, Harness replaces any existing Environment variables with the variables
+    you added as Service Config Variables.</p><h3>Next Steps</h3><ul><li><a href="/article/45dm9z3m2h-3-lambda-environments">Define
+    your Lambda Target Infrastructure</a></li><li><a href="/article/491a6etr7a-4-lambda-workflows-and-deployments">Create
+    a Basic Lambda Deployment</a></li><li><a href="/article/g9o2g5jbye-troubleshooting-harness#aws_lambda">Troubleshooting
+    AWS Lambda Deployments</a></li></ul><p></p>'
+  slug: 2-service-for-lambda
+  tags:
+  - Lambda
+  - Service
+  - function file
+  - Artifact Source
+  - function specification
+  is_live: true

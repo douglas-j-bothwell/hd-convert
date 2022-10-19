@@ -1,0 +1,97 @@
+type: article
+article_id: oiy5fxawzq
+user_id: mfr0nxh4be
+category_id: gyd73rp7np
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Install the Harness ECS Delegate
+slug: install-ecs-delegate
+description: The Harness Delegate is a service you run in your deployment target environment,
+  such as your local network, VPC, or cluster. The Delegate connects all of your artifact,
+  infrastructure, collaboration…
+short_version: The Harness Delegate is a service you run in your deployment target
+  environment, such as your local network, VPC, or cluster. The Delegate connects
+  all of your artifact, infrastructure, collaboration…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T18:58:21.642819Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Install the Harness ECS Delegate
+  description: ""
+  short_version: ""
+  body: |-
+    <p>The Harness Delegate is a service you run in your deployment target environment, such as your local network, VPC, or cluster. The Delegate connects all of your artifact, infrastructure, collaboration, verification and other providers with the Harness Manager.</p><p>Most importantly, the Delegate performs all deployment operations.</p><p>There are several types of Delegates. This topic describes how to install the ECS Delegate.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before You Begin</a></li><li> <a href="#visual_summary">Visual Summary</a></li><li> <a href="#review_ecs_requirements">Review: ECS Requirements</a></li><li> <a href="#review_ecs_task_spec">Review: ECS Task Spec</a></li><li> <a href="#step_1_install_and_launch_the_ecs_delegate">Step 1: Install and Launch the ECS Delegate</a></li><li> <a href="#step_2_register_the_ecs_task_spec_in_aws">Step 2: Register the ECS Task Spec in AWS</a></li><li> <a href="#step_3_create_the_ecs_service_for_ecs_delegate">Step 3: Create the ECS Service for ECS Delegate</a></li><li> <a href="#delegate_groups">Delegate Groups</a></li><li> <a href="#see_also">See Also</a></li></ul><h3>Before You Begin</h3><ul><li> <a href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a></li><li> <a href="/article/h9tkwmkrm7-delegate-installation">Harness Delegate Overview</a></li><li> <a href="/article/lwynqsgxt9-delegate-requirements-and-limitations">Delegate Requirements and Limitations</a></li></ul><h3>Visual Summary</h3><p>The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/8o4cwqj1kv/1596840107816/image.png"/></figure><p></p><h3>Review: ECS Requirements</h3><p>Ensure that your AWS account and the ECS cluster that will host the Delegate meet the following requirements:</p><ul><li>​<strong>ecsInstanceRole</strong> — Ensure this role exists. See  <a href="https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html" target="_blank">Amazon ECS Instance Role</a> from AWS.</li><li><strong>ECS Role for Delegate:</strong> The Harness ECS Delegate requires an IAM role and policies to execute its deployment tasks (API calls, etc). Create a new IAM role named <strong>ECSDelegate</strong> that contains: <strong>AmazonEC2ContainerServiceforEC2Role</strong> and <strong>AmazonEC2ContainerServiceRole</strong> from AWS.<ul><li><strong>Customer Managed Policy</strong> named <strong>HarnessECS</strong> you create for using Application Auto Scaling:</li></ul><div class="hd--md" data-hd-markdown="&lt;details&gt;
+                &lt;summary style=&#34;font-size: 16px;outline: none;border: none; color: #000000; margin-bottom:20px; text-indent:40px&#34;&gt;Policy JSON&lt;/summary&gt;
+              &lt;pre style=&#34;margin-left:40px&#34;&gt;{
+                &#34;Version&#34;: &#34;2012-10-17&#34;,
+                &#34;Statement&#34;: [
+                  {
+                    &#34;Effect&#34;: &#34;Allow&#34;,
+                    &#34;Action&#34;: [
+                      &#34;ecr:DescribeRepositories&#34;,
+                      &#34;ecs:ListClusters&#34;,
+                      &#34;ecs:ListServices&#34;,
+                      &#34;ecs:DescribeServices&#34;,
+                      &#34;ecr:ListImages&#34;,
+                      &#34;ecs:RegisterTaskDefinition&#34;,
+                      &#34;ecs:CreateService&#34;,
+                      &#34;ecs:ListTasks&#34;,
+                      &#34;ecs:DescribeTasks&#34;,
+                      &#34;ecs:DeleteService&#34;,
+                      &#34;ecs:UpdateService&#34;,
+                      &#34;ecs:DescribeContainerInstances&#34;,
+                      &#34;ecs:DescribeTaskDefinition&#34;,
+                      &#34;application-autoscaling:DescribeScalableTargets&#34;,
+                      &#34;iam:ListRoles&#34;,
+                      &#34;iam:PassRole&#34;
+                    ],
+                    &#34;Resource&#34;: &#34;*&#34;
+                  }
+                ]
+              }
+              &lt;/pre&gt;
+              &lt;/details&gt;"><details>
+                <summary style="font-size: 16px;outline: none;border: none; color: #000000; margin-bottom:20px; text-indent:40px">Policy JSON</summary>
+              <pre style="margin-left:40px">{<br/>
+                &#34;Version&#34;: &#34;2012-10-17&#34;,<br/>
+                &#34;Statement&#34;: [<br/>
+                  {<br/>
+                    &#34;Effect&#34;: &#34;Allow&#34;,<br/>
+                    &#34;Action&#34;: [<br/>
+                      &#34;ecr:DescribeRepositories&#34;,<br/>
+                      &#34;ecs:ListClusters&#34;,<br/>
+                      &#34;ecs:ListServices&#34;,<br/>
+                      &#34;ecs:DescribeServices&#34;,<br/>
+                      &#34;ecr:ListImages&#34;,<br/>
+                      &#34;ecs:RegisterTaskDefinition&#34;,<br/>
+                      &#34;ecs:CreateService&#34;,<br/>
+                      &#34;ecs:ListTasks&#34;,<br/>
+                      &#34;ecs:DescribeTasks&#34;,<br/>
+                      &#34;ecs:DeleteService&#34;,<br/>
+                      &#34;ecs:UpdateService&#34;,<br/>
+                      &#34;ecs:DescribeContainerInstances&#34;,<br/>
+                      &#34;ecs:DescribeTaskDefinition&#34;,<br/>
+                      &#34;application-autoscaling:DescribeScalableTargets&#34;,<br/>
+                      &#34;iam:ListRoles&#34;,<br/>
+                      &#34;iam:PassRole&#34;<br/>
+                    ],<br/>
+                    &#34;Resource&#34;: &#34;*&#34;<br/>
+                  }<br/>
+                ]<br/>
+              }<br/>
+              </pre>
+              </details></div>Attach all of these policies to one IAM role, or attach them all to ecsInstanceRole, and apply that to your ECS cluster as the <strong>Container instance IAM role</strong> when you create it.<br/>Once you have your role set up, you can create your clusters.</li><li><strong>ECS Cluster for Harness Delegate:</strong> You will need an existing ECS cluster to run the Harness ECS Delegate. The cluster for the Harness ECS Delegate must meet the following requirements:<ul><li><strong>EC2 Linux + Networking</strong> cluster.</li><li>The ECS Cluster must have a minimum of 8GB memory for the Delegate. A <strong>m5.xlarge</strong> minimum is suggested.</li><li>1 registered container instance.</li><li>AWS IAM Role containing the required policies, described above. Apply the role you created to this cluster.</li></ul></li></ul><h3>Review: ECS Task Spec</h3><p>As you have seen, the Harness ECS Delegate is downloaded as an ECS Task Spec that you can run as an ECS service in your ECS cluster.</p><div class="note-callout">Although it can help simplify deployments, the Harness ECS Delegate service does not need to be installed in the same cluster or VPC as the target ECS cluster (the cluster where Harness will deploy your container and image). The Harness ECS Delegate you use only needs to be able to connect to the target ECS cluster.</div><p>Here is an example of a task definition that creates a Harness ECS Delegate as a service in your ECS cluster:</p><pre>{<br/>  &#34;containerDefinitions&#34;: [<br/>    {<br/>      &#34;portMappings&#34;: [<br/>        {<br/>          &#34;hostPort&#34;: 8080,<br/>          &#34;protocol&#34;: &#34;tcp&#34;,<br/>          &#34;containerPort&#34;: 8080<br/>        }<br/>      ],<br/>      &#34;cpu&#34;: 1,<br/>      &#34;environment&#34;: [<br/>        {<br/>          &#34;name&#34;: &#34;ACCOUNT_ID&#34;,<br/>          &#34;value&#34;: &#34;xxxx&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;ACCOUNT_SECRET&#34;,<br/>          &#34;value&#34;: &#34;xxxx&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;DELEGATE_CHECK_LOCATION&#34;,<br/>          &#34;value&#34;: &#34;delegateprod.txt&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;DELEGATE_STORAGE_URL&#34;,<br/>          &#34;value&#34;: &#34;https://app.harness.io/storage/wingsdelegates&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;DELEGATE_TYPE&#34;,<br/>          &#34;value&#34;: &#34;ECS&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;DELEGATE_GROUP_NAME&#34;,<br/>          &#34;value&#34;: &#34;example-ecs-delegate&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;DELEGATE_PROFILE&#34;,<br/>          &#34;value&#34;: &#34;&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;DEPLOY_MODE&#34;,<br/>          &#34;value&#34;: &#34;KUBERNETES&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;MANAGER_HOST_AND_PORT&#34;,<br/>          &#34;value&#34;: &#34;https://app.harness.io&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;POLL_FOR_TASKS&#34;,<br/>          &#34;value&#34;: &#34;false&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;WATCHER_CHECK_LOCATION&#34;,<br/>          &#34;value&#34;: &#34;watcherprod.txt&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;WATCHER_STORAGE_URL&#34;,<br/>          &#34;value&#34;: &#34;https://app.harness.io/storage/wingswatchers&#34;<br/>        }<br/>      ],<br/>      &#34;memory&#34;: 6144,<br/>      &#34;image&#34;: &#34;harness/delegate:latest&#34;,<br/>      &#34;essential&#34;: true,<br/>      &#34;hostname&#34;: &#34;Harness-ECS-Delegate&#34;,<br/>      &#34;name&#34;: &#34;ecs-delegate&#34;<br/>    }<br/>  ],<br/>  &#34;memory&#34;: &#34;6144&#34;,<br/>  &#34;requiresCompatibilities&#34;: [<br/>    &#34;EC2&#34;<br/>  ],<br/>  <br/>  &#34;cpu&#34;: &#34;1024&#34;,<br/>  &#34;family&#34;: &#34;harness-delegate-task-spec&#34;<br/>}</pre><p>The cluster must have a minimum of 8GB of memory (t2.large minimum). Run the above command and the ECS Delegate will install as a service in your cluster. The Delegate will appear in the <strong>Setup</strong> &gt; <strong>Harness Delegates</strong> page in a few minutes.</p><div class="note-callout">If you are using Fargate, follow the steps in the README.</div><h3>Step 1: Install and Launch the ECS Delegate</h3><ol><li style="counter-increment:li 0" start="1">Click <strong>Setup</strong>., and then click <strong>Harness Delegates</strong>.</li><li>In the <strong>Delegate</strong> tab, click <strong>Install Delegate</strong>.</li><li>In <strong>Download Type</strong>, select <strong>ECS Task Spec</strong>.</li><li>In <strong>Delegate Group Name</strong>, enter the name for the Delegate group. For more information, see <a href="#delegate_groups">Delegate Groups</a> below.</li><li>In <strong>Profile</strong>, select a Delegate Profile. See <a href="/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles">Run Scripts on the Delegate using Profiles</a>.</li></ol><div class="note-callout">A Delegate Profile is mandatory. The <strong>Primary</strong> Profile is the default and contains no script. You can add a script to it, or create and apply new Profiles for your Delegate.</div><ol><li style="counter-increment:li 5" start="6">If you are installing the Delegate in an ECS cluster, do not select <strong>Use AWS VPC Mode</strong>. <strong>Use AWS VPC Mode</strong> runs the ECS Delegate task with a <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">FARGATE launch type</a>.</li><li>You can leave <strong>Hostname</strong> empty. ECS will use the default hostname <strong>Harness-ECS-Delegate</strong>.</li><li>Click <strong>Download</strong>. The ECS Task Spec is downloaded. Next, you will use the AWS CLI to register the ECS Task Spec and then create the ECS service for the ECS Delegate.</li></ol><h3>Step 2: Register the ECS Task Spec in AWS</h3><ol><li>Open a Terminal and navigate to the folder where you downloaded the ECS Task Spec.</li></ol><p></p><pre>cd /Users/johnsmith/Desktop/delegates/ECS</pre><ol><li style="counter-increment:li 1" start="2">Extract the ECS Task Spec download.</li></ol><p></p><pre>tar -zxvf harness-delegate-ecs.tar.gz</pre><ol><li style="counter-increment:li 2" start="3">Navigate to the extracted folder: <code>cd harness-delegate-ecs</code>.</li><li>Log into AWS using your AWS Access Key ID and AWS Secret Key ID.</li></ol><p></p><p></p><pre>aws configure<br/><br/>AWS Access Key ID [****************LPAA]: XXXXXXX<br/><br/>AWS Secret Access Key [****************4z52]: XXXXXXX</pre><ol><li style="counter-increment:li 4" start="5">Register the ECS task definition using the Harness ECS Task Spec.</li></ol><p></p><pre>aws ecs register-task-definition --cli-input-json file://ecs-task-spec.json</pre><p>The JSON for the task is output.</p><ol><li style="counter-increment:li 5" start="6">View the completed task.</li></ol><p></p><p></p><pre>aws ecs list-task-definitions</pre><p>The <code>taskDefinitionArns</code> is output.</p><p>Using the name of the ECS cluster for the Delegate, you will create the ECS service using the Task Definition. The cluster must have a minimum of 8GB of memory (m5ad.xlarge minimum).</p><h3>Step 3: Create the ECS Service for ECS Delegate</h3><ol><li>Create the ECS service using the task definition, providing the service name in <code>--service-name</code>, cluster name in <code>--cluster</code>, and the desired number of tasks in <code>--desired-count</code>. The cluster will need a minimum of 8GB of memory per task.<br/><br/><pre>aws ecs create-service --service-name ecs-tutorial --task-definition harness-delegate-task-spec --cluster ecs-tutorial --desired-count 1</pre>The output will display the JSON for the new service.<br/><br/><pre>{<br/>    &#34;service&#34;: {<br/>        &#34;status&#34;: &#34;ACTIVE&#34;, <br/>        &#34;serviceRegistries&#34;: [], <br/>        &#34;pendingCount&#34;: 0, <br/>        &#34;launchType&#34;: &#34;EC2&#34;, <br/>        &#34;schedulingStrategy&#34;: &#34;REPLICA&#34;, <br/>        &#34;loadBalancers&#34;: [], <br/>        &#34;placementConstraints&#34;: [], <br/>        &#34;createdAt&#34;: 1579134813.18, <br/>        &#34;desiredCount&#34;: 1, <br/>        &#34;serviceName&#34;: &#34;ecs-tutorial&#34;, <br/>...<br/>}</pre></li><li>View the new service.<br/><br/><pre>aws ecs list-services --cluster ecs-tutorial</pre>The output will display the new service:<br/><br/><pre>{<br/>    &#34;serviceArns&#34;: [<br/>        &#34;arn:aws:ecs:us-east-1:XXXXX:service/ecs-tutorial&#34;<br/>    ]<br/>}</pre></li><li>Wait 5 to 10 minutes for ECS to allocate resources for the service.</li></ol><p>When ECS is ready, the new service is running in the cluster:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/j39azkrevm/1587071124739/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>View the new ECS Delegate in Harness Manager.</p><ol><li style="counter-increment:li 3" start="4">In <strong>Harness Manager</strong>, in the <strong>Harness</strong> <strong>Delegates</strong> page. When the ECS Delegate connects to the Harness Manager, it is listed with a status of <strong>Connected</strong>.<br/>Congratulations! You are done installing and running the ECS Delegate.</li></ol><h3>Delegate Groups</h3><p>ECS Delegates can be grouped to make it easier to manage multiple ECS Delegates.</p><p>To group ECS Delegates, you enter a name in the <strong>Delegate Group Name</strong> setting when you create each Delegate. You use the same name for each new Delegate you add.</p><p>The Delegate group is displayed in a single expand/collapse (accordion) panel.</p><p>All Delegates in this group use the same Task Definition, and share the same Delegate settings, including <a href="/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors">Selectors</a>, <a href="/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles">Profiles</a>, and <a href="/article/hw56f9nz7q-scope-delegates-to-harness-components-and-commands">Scopes</a>.</p><p>When you change a Selector, Profile, or Scope for a Delegate in the group, the change is applied to all Delegates running under that group.</p><p>Individual Delegates that are not grouped are called autonomous and are managed as individual Delegates.</p><h4>Delegate Disappear?</h4><p>When an ECS Delegate is stopped or offline, it will disappear from the Delegate list.</p><h3>See Also</h3><ul><li>For all the topics related to the Harness Delegate, see <a href="/category/gyd73rp7np-manage-delegates">Manage Harness Delegates</a>.</li><li>Delegate are used to provide credentials for some Harness <a href="/article/whwnovprrb-cloud-providers">Cloud Providers</a>.</li></ul><p></p>
+  slug: install-ecs-delegate
+  tags: []
+  is_live: true

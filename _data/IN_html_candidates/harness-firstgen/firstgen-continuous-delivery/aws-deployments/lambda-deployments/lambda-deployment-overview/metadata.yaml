@@ -1,0 +1,45 @@
+type: article
+article_id: z24n8ut61d
+user_id: mfr0nxh4be
+category_id: 3pyb3kmkbs
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: AWS Lambda How-tos
+slug: lambda-deployment-overview
+description: Overview of deploying functions to AWS Lambda using Harness.
+short_version: Overview of deploying functions to AWS Lambda using Harness.
+tags:
+- Lambda
+- AWS Lambda
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:22:19.7882Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: AWS Lambda How-tos
+  description: Overview of deploying functions to AWS Lambda using Harness.
+  short_version: Overview of deploying functions to AWS Lambda using Harness.
+  body: <p></p><div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/5fnx4hgwsa">NextGen</a>.</div><p>Harness has first-class
+    support for AWS Lambda deployments, enabling you to deploy your functions without
+    having to worry about compute constraints or complexity.</p><p>See the How-tos
+    for connecting AWS Lambda and creating AWS Lambda deployments.</p><ul><li><a href="/article/lo9taq0pze-1-delegate-and-connectors-for-lambda">Connect
+    to AWS for Lambda Deployments</a></li><li><a href="/article/qp8hk4nzbo-2-service-for-lambda">Add
+    Lambda Functions</a></li><li><a href="/article/45dm9z3m2h-3-lambda-environments">Define
+    your Lambda Target Infrastructure</a></li><li><a href="/article/491a6etr7a-4-lambda-workflows-and-deployments">Create
+    a Basic Lambda Deployment</a></li><li><a href="/article/idal1erfiv-view-lamba-deployments-in-the-serverless-functions-dashboard">View
+    Lamba Deployments in the Serverless Functions Dashboard</a></li></ul><p></p>
+  slug: lambda-deployment-overview
+  tags:
+  - Lambda
+  - AWS Lambda
+  is_live: true

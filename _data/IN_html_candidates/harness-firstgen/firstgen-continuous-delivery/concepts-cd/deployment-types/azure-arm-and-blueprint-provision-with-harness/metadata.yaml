@@ -1,0 +1,135 @@
+type: article
+article_id: c7bzn7vjwn
+user_id: mfr0nxh4be
+category_id: vbcmo6ltg7
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Azure ARM and Blueprint Provisioning with Harness
+slug: azure-arm-and-blueprint-provision-with-harness
+description: Harness has first-class support for Azure Resource Manager (ARM) templates
+  and Azure Blueprints as infrastructure provisioners. You can use ARM templates to
+  provision the deployment target environmen…
+short_version: Harness has first-class support for Azure Resource Manager (ARM) templates
+  and Azure Blueprints as infrastructure provisioners. You can use ARM templates to
+  provision the deployment target environmen…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-07T00:00:16.073879Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Azure ARM and Blueprint Provisioning with Harness
+  description: ""
+  short_version: ""
+  body: '<p>Harness has first-class support for <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview"
+    target="_blank">Azure Resource Manager (ARM) templates</a> and Azure <a href="https://docs.microsoft.com/en-us/azure/governance/blueprints/overview"
+    target="_blank">Blueprints</a> as infrastructure provisioners.</p><p>You can use
+    ARM templates to provision the deployment target environment in Azure, or to simply
+    provision any Azure infrastructure.</p><p>You can use Blueprints to provision
+    Azure resources that adhere to your organization&#39;s standards, patterns, and
+    requirements. You can package ARM templates, resource groups, policy and role
+    assignments, and much more into a Blueprint. See <a href="https://www.youtube.com/watch?v=cQ9D-d6KkMY"
+    target="_blank">this video</a> from Microsoft Developer for more details.</p><p>This
+    topic provides a high-level summary of how to use Harness to provision a target
+    environment using ARM, or to simply provision resources using ARM or Blueprint.</p><div
+    class="note-callout">Looking for How-tos? See <a href="/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos">Azure
+    Resource Management (ARM) How-tos</a>.</div><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#provision_and_deploy_to_the_same_infrastructure_using_arm">Provision
+    and Deploy to the Same Infrastructure using ARM</a></li><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#general_provisioning_using_arm_and_blueprint">General
+    Provisioning using ARM and Blueprint</a></li><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#limitations">Limitations</a></li><li><a
+    href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#azure_roles_required">Azure
+    Roles Required</a></li><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#permissions_summary">Permissions
+    Summary</a><ul><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#harness_user_group_permissions_required">Harness
+    User Group Permissions Required</a></li></ul></li><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#no_artifact_required">No
+    Artifact Required</a></li><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#service_instances_s_is_consumption">Service
+    Instances (SIs) Consumption</a></li><li><a href="https://docs.harness.io/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness#next_steps">Next
+    Steps</a></li></ul><h3>Provision and Deploy to the Same Infrastructure using ARM</h3><p>Here&#39;s
+    a short video showing how to provision and deploy to the same Azure infrastructure
+    using ARM and Harness:</p><div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/WfPE9wk4tM0/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p><p>Here&#39;s
+    a visual summary of how you use your Azure ARM templates in Harness to provision
+    infra and then deploy to it:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/c7bzn7vjwn/1615332844702/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><ol><li><strong>ARM
+    Infrastructure Provisioner</strong>: add your Azure ARM template as a Harness
+    Infrastructure Provisioner. You add it by connecting to the Git repo for the ARM
+    template. You also set the scope (Resource group, Tenant, etc). You can also enter
+    the ARM template inline without connecting to a Git repo.</li><li><strong>​Infrastructure
+    Definition</strong>: define a Harness Infrastructure Definition using the Infrastructure
+    Provisioner. This setup identifies the ARM template&#39;s resources as a deployment
+    target.</li><li><strong>Workflow Setup:</strong> when you create your Workflow,
+    you select the Infrastructure Definition you created, identifying it as the target
+    infrastructure for the Workflow deployment.</li><li><strong>Workflow Provisioner
+    Step:</strong> in the Workflow pre-deployment section, you add a <strong>ARM/Blueprint
+    Create Resource</strong> step that uses the ARM Infrastructure Provisioner you
+    set up. The Workflow will build the infrastructure according to your ARM template.</li><li><strong>Pre-deployment</strong>:
+    the pre-deployment steps are executed and provision the infrastructure using the <strong>ARM/Blueprint
+    Create Resource</strong> step.</li><li><strong>Deployment:</strong> the Workflow
+    deploys to the provisioned infrastructure defined as its target Infrastructure
+    Definition.</li></ol><h3>General Provisioning using ARM and Blueprint</h3><p>Here&#39;s
+    a short video showing how to provision Azure infrastructure using ARM and Harness:</p><p></p><div
+    class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/_thro1sA6ek/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p><p>Here&#39;s
+    a short video showing how to provision Azure infrastructure using Blueprint and
+    Harness:</p><p></p><div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/cGjZCoz3HrY/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/cGjZCoz3HrY?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p>You can use
+    Azure ARM templates/Blueprint definitions in Harness for general Azure provisioning.</p><ol><li><strong>ARM/Blueprint
+    Infrastructure Provisioner</strong>: add your Azure ARM template or Blueprint
+    definition as a Harness Infrastructure Provisioner.</li><li><strong>Workflow Provisioner
+    Step</strong>: create a Workflow and add an <strong>ARM/Blueprint Create Resource</strong>
+    step in its pre-deployment section that uses the Infrastructure Provisioner. You
+    can use the rest of the Workflow to deploy services, or just omit any further
+    phases and steps.</li><li><strong>Deploy:</strong> the Workflow will build the
+    Azure resources according to your ARM template/Blueprint definition.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/c7bzn7vjwn/1615334078509/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Limitations</h3><p>For
+    ARM, see <a href="/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos">Azure Resource
+    Management (ARM) How-tos</a>.</p><h3>Azure Roles Required</h3><p>See <strong>Azure
+    Resource Management (ARM)</strong> in <a href="/article/4n3595l6in-add-microsoft-azure-cloud-provider">Add
+    Microsoft Azure Cloud Provider</a>.</p><p>See <strong>Azure Blueprint</strong> in <a
+    href="https://docs.harness.io/article/4n3595l6in-add-microsoft-azure-cloud-provider">Add
+    Microsoft Azure Cloud Provider</a>.</p><h3>Permissions Summary</h3><p>You need
+    to give Harness permissions in your Azure subscription so Harness can provision
+    using ARM/Blueprint. These are the same permissions you&#39;d need to grant Harness
+    for existing static infrastructures.</p><p>As a summary, you&#39;ll need to manage
+    the following permissions:</p><ul><li><strong>Delegate</strong> - The Harness
+    Delegate will require permissions to create resources in Azure. It&#39;ll use
+    the credentials you provide in the Harness Azure Cloud Provider.</li><li><strong>Azure</strong>
+    <strong>Cloud Provider</strong> - The Harness Azure Cloud Provider must have permissions
+    for the resources you are planning to provision using ARM/Blueprint.<br/>See <a
+    href="/article/4n3595l6in-add-microsoft-azure-cloud-provider">Add Microsoft Azure
+    Cloud Provider</a>.</li><li><strong>Git Repo</strong> - You&#39;ll add the Git
+    repo where the ARM templates or Blueprints are located to Harness as a Source
+    Repo Provider. For more information, see  <a href="https://docs.harness.io/article/ay9hlwbgwa-add-source-repo-providers">Add
+    Source Repo Providers</a>.</li></ul><h4>Harness User Group Permissions Required</h4><p>To
+    set up a Harness ARM/Blueprint Provisioner, your Harness User account must belong
+    to a User Group with the following Application Permissions:</p><ul><li><strong>Permission
+    Type:</strong> <code>Provisioners</code>.</li><li><strong>Application:</strong>
+    one or more Applications.</li><li><strong>Filter:</strong> <code>All Provisioners</code>.</li><li><strong>Action:</strong>
+    <code>Create, Read, Update, Delete</code>.</li></ul><h3>No Artifact Required</h3><p>You
+    don&#39;t need to deploy artifacts via Harness Services to use Azure ARM/Blueprint
+    provisioning in a Workflow.</p><p>You can simply set up an Azure ARM/Blueprint
+    Provisioner and use it in a Workflow to provision infrastructure without deploying
+    any artifact.</p><h3>Service Instances (SIs) Consumption</h3><p>Harness Service
+    Instances (SIs) aren&#39;t consumed and no other licensing is required when a
+    Harness Workflow uses Azure ARM/Blueprint to provision resources.</p><p>When Harness
+    deploys artifacts via Harness Services to the provisioned infrastructure in the
+    same Workflow or Pipeline, SIs licensing is consumed.</p><h3>Next Steps</h3><ul><li><a
+    href="/article/qhnnq1mks3-azure-arm-and-blueprint-how-tos">Azure ARM and Blueprint
+    How-tos</a></li></ul><p></p>'
+  slug: azure-arm-and-blueprint-provision-with-harness
+  tags: []
+  is_live: true

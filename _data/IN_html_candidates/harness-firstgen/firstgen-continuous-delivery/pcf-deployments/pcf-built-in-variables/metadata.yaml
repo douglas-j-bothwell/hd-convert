@@ -1,0 +1,319 @@
+type: article
+article_id: ojd73hseby
+user_id: wz6xkfcc9i
+category_id: emle05cclq
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Tanzu Built-in Variables
+slug: pcf-built-in-variables
+description: Harness includes some variables to help you output PCF deployment information
+  in your Workflows.
+short_version: Harness includes some variables to help you output PCF deployment information
+  in your Workflows.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-02-16T00:44:08.727305Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Tanzu Built-in Variables
+  description: Harness includes some variables to help you output PCF deployment information
+    in your Workflows.
+  short_version: Harness includes some variables to help you output PCF deployment
+    information in your Workflows.
+  body: '<div class="note-callout">TAS was formerly Pivotal Cloud Foundry (PCF). The
+    variables in this topic use <code>pcf</code> as a result. The variables work the
+    same as before. There is no need to change any existing implementations.</div><p>Harness
+    includes the following variables to help you output TAS deployment information
+    in your Workflows, such as in the <a href="https://docs.harness.io/article/xai5fs8gko-run-cf-cli-commands-and-scripts-in-a-workflow#step_run_the_cf_cli_command">CF
+    Command</a> or the <a href="/article/1fjrjbau7x-capture-shell-script-step-output">Shell
+    Script command</a>.</p><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/ojd73hseby-pcf-built-in-variables#variables_list">Variables
+    List</a></li><li><a href="https://docs.harness.io/article/ojd73hseby-pcf-built-in-variables#harness_tas_environment_variables">Harness
+    TAS Environment Variables</a></li><li><a href="https://docs.harness.io/article/ojd73hseby-pcf-built-in-variables#app_name_variables_and_blue_green_deployments">App
+    Name Variables and Blue Green Deployments</a></li></ul><h3>Variables List</h3><div
+    class="note-callout">In Blue/Green deployments, the outputs for the <code>${pcf.finalRoutes}</code>,
+    <code>${pcf.oldAppRoutes}</code> and <code>${pcf.tempRoutes}</code> variables
+    do not change, but the outputs for <code>${pcf.newAppRoutes}</code> change as
+    the routes are swapped in the <strong>Swap Routes</strong> or <strong>Rollback</strong>
+    step. Simply put, <code>${pcf.newAppRoutes}</code> reflects the routes at a point
+    in time (after the <strong>Swap Routes</strong> or <strong>Rollback</strong> step).</div><table><tbody><tr><td><p><strong>Variable</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><code>${service.manifest}</code></p></td><td><p>Refers
+    to the folder containing your manifest files. See <a href="https://docs.harness.io/article/xai5fs8gko-run-cf-cli-commands-and-scripts-in-a-workflow#option_scripts_and_variables">Scripts
+    and Variables</a>.</p></td></tr><tr><td><p><code>${service.manifest.repoRoot}</code></p></td><td><p>Refers
+    to the remote Git repo root folder containing your manifest files. See <a href="https://docs.harness.io/article/xai5fs8gko-run-cf-cli-commands-and-scripts-in-a-workflow#option_scripts_and_variables">Scripts
+    and Variables</a>.</p></td></tr><tr><td><p><code>${pcf.newAppRoutes}</code></p></td><td><p>An
+    array of all the routes defined in your manifest.yml in your Harness Service.</p><p>You
+    can reference any route in the array using its index, such as <code>${pcf.newAppRoutes[0]}</code>.</p><p>You
+    can use the route to create a URL in a script, such as <code>http://${pcf.newAppRoutes[0]}</code>.</p><p>In
+    a Blue/Green deployment, <code>${pcf.newAppRoutes}</code> are the same as <code>${pcf.tempRoutes}</code>
+    until the Swap Routes step is run, after which <code>${pcf.newAppRoutes}</code>
+    is the same as <code>${pcf.finalRoutes}</code>.</p><div class="note-callout">This
+    variable expression should be used after the <strong>App Setup</strong> step.</div></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>New
+    app name.</p><div class="note-callout">This variable expression should be used
+    after the <strong>App Setup</strong> step.</div></td></tr><tr><td><p><code>${pcf.newAppGuid}</code></p></td><td><p>New
+    app GUID.</p><div class="note-callout">This variable expression should be used
+    after the <strong>App Setup</strong> step.</div></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>Old
+    app name. This is the app that is replaced by your newly deployed app.</p><div
+    class="note-callout">This variable expression should be used after the <strong>App
+    Setup</strong> step.</div></td></tr><tr><td><p><code>${pcf.activeAppName}</code>
+    and <code>${pcf.inActiveAppName}</code></p></td><td><p></p><p>See <a href="https://docs.harness.io/article/ojd73hseby-pcf-built-in-variables#app_name_variables_and_blue_green_deployments">App
+    Name Variables and Blue Green Deployments</a> below.</p></td></tr><tr><td><p><code>${pcf.oldAppGuid}</code></p></td><td><p>Old
+    app GUID.</p><div class="note-callout">This variable expression should be used
+    after the <strong>App Setup</strong> step.</div></td></tr><tr><td><p><code>${pcf.oldAppRoutes}</code></p></td><td><p>An
+    array of the routes that were used for the old app.</p><p>You can reference any
+    route in the array using its index, such as <code>${pcf.oldAppRoutes[0]}</code>.</p><p>You
+    can use the route to create a URL in a script, such as <code>http://${pcf.oldAppRoutes[0]}</code>.</p><div
+    class="note-callout">This variable expression should be used after the <strong>App
+    Setup</strong> step.</div></td></tr><tr><td><p><code>${pcf.finalRoutes}</code></p></td><td><p>An
+    array of the active routes once deployment is successful.</p><div class="note-callout">This
+    variable expression should be used after the <strong>App Setup</strong> step.</div></td></tr><tr><td><p><code>${pcf.tempRoutes}</code></p></td><td><p>An
+    array of the temporary routes used for Blue/Green deployments.</p><div class="note-callout">This
+    variable expression should be used after the <strong>App Setup</strong> step.</div></td></tr><tr><td><p><code>${infra.pcf.cloudProvider.name}</code></p></td><td><p>The
+    Cloud Provider name used in the Infrastructure Definition set up in the Workflow.</p></td></tr><tr><td><p><code>${infra.pcf.organization}</code></p></td><td><p>The
+    Organization name used in the Infrastructure Definition set up in the Workflow.</p></td></tr><tr><td><p><code>${infra.pcf.space}</code></p></td><td><p>The
+    Space name used in the Infrastructure Definition set up in the Workflow.</p></td></tr><tr><td><p><code>${host.pcfElement.applicationId}</code></p></td><td><p>Shows
+    the TAS app ID <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#view-env"
+    target="_blank">Environment variable</a>. Such as you would see in a cf env command:</p><pre>...<br/>{<br/>
+    &#34;VCAP_APPLICATION&#34;: {<br/>  &#34;application_id&#34;: &#34;fa05c1a9-0fc1-4fbd-bae1-139850dec7a3&#34;,<br/>  &#34;application_name&#34;:
+    &#34;my-app&#34;,<br/>...</pre></td></tr><tr><td><p><code>${host.pcfElement.displayName}</code></p></td><td><p>Shows
+    the TAS app name (<code>&#34;application_name&#34;: &#34;my-app&#34;</code> in
+    the example above).</p></td></tr><tr><td><p><code>${host.pcfElement.instanceIndex}</code></p></td><td><p>Shows
+    the <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#CF-INSTANCE-INDEX"
+    target="_blank">CF_INSTANCE_INDEX</a>.</p></td></tr></tbody></table><p></p><p>Here
+    is a script that outputs some of the variables:</p><pre>echo ${pcf.newAppRoutes[0]}<br/><br/>echo
+    New App Name: ${pcf.newAppName}<br/>echo New App GUID:  ${pcf.newAppGuid}<br/>echo
+    New App Routes:  ${pcf.newAppRoutes}<br/><br/>echo &#34;\n\n&#34;<br/>echo Old
+    App Name: ${pcf.oldAppName}<br/>echo Old App GUID:  ${pcf.oldAppGuid}<br/>echo
+    Old App Routes:  ${pcf.oldAppRoutes}<br/><br/>echo activeRoute: ${pcf.finalRoutes}<br/>echo
+    inActiveRoute: ${pcf.tempRoutes}<br/><br/>echo ${infra.pcf.cloudProvider.name}<br/>echo
+    ${infra.pcf.organization}<br/>echo ${infra.pcf.space}</pre><p>Here is an example
+    of the output:</p><pre>Executing command ...<br/><br/>Basic__demo__pcf__service__DEMO__0-meditating-foo-ii.bar.net<br/><br/>New
+    App Name: Basic__demo__pcf__service__DEMO__0<br/>New App GUID: ae7269df-9521-409e-b79e-167ee03c46d0<br/>New
+    App Routes: [Basic__demo__pcf__service__DEMO__0-meditating-foo-ii.bar.net]<br/><br/>\n\n<br/>Old
+    App Name: null<br/>Old App GUID: null<br/>Old App Routes: null<br/><br/>activeRoute:
+    [Basic__demo__pcf__service__DEMO__0-meditating-foo-ii.bar.net]<br/>inActiveRoute:
+    null<br/><br/>ibmcloud cf<br/>john.doe@example.com<br/>dev<br/><br/>Command completed
+    with ExitCode (0)</pre><h3>Harness TAS Environment Variables</h3><p>For Blue/Green
+    Workflow deployments only, Harness uses the TAS user-provided <a href="https://docs.pivotal.io/application-service/2-9/devguide/deploy-apps/environment-variable.html"
+    target="_blank">environment variable</a> <code>HARNESS_STATUS_IDENTIFIER</code>
+    to identify new and old (active) apps.</p><p>When a new app is deployed, the variable
+    is <code>HARNESS_STATUS_IDENTIFIER : STAGE</code>.</p><p>When Harness swaps route,
+    the variable is updated to <code>HARNESS_STATUS_IDENTIFIER : ACTIVE</code> for
+    the new app, and the old app variable becomes <code>HARNESS_STATUS_IDENTIFIER
+    : STAGE</code>.</p><p>If rollback occurs, Harness restores routes and environment
+    variables for old and new apps.</p><p>You can view this <code>HARNESS_STATUS_IDENTIFIER</code>
+    variable in the TAS app in the TAS console.</p><h3>App Name Variables and Blue
+    Green Deployments</h3><p>Some Tanzu variables display different information as
+    the <a href="/article/52muxcsr1v-create-a-blue-green-pcf-deployment">Blue Green
+    deployment</a> progresses through its steps:</p><ul><li><code>${pcf.oldAppName}</code></li><li><code>${pcf.newAppName}</code></li><li><code>${pcf.activeAppName}</code></li><li><code>${pcf.inActiveAppName}</code></li></ul><p>Some
+    of these variables can only be resolved after certain steps in the Blue Green
+    deployment, and their resolved values will change based on whether a step was
+    successful.</p><p>The variables resolution and changes discussed here apply to
+    when the <strong>App Name with Version History</strong> setting is enabled in
+    the the <strong>App Setup</strong> step, in <strong>Version Management</strong>.</p><p>See
+    <a href="https://docs.harness.io/article/hzyz7oc5k9-tanzu-app-naming-with-harness#app_name_with_version_history"
+    target="_blank">App Name with Version History</a> for details on the setting before
+    proceeding.</p><p>There are possible 3 app versioning paths in a deployment with
+    <strong>App Name with Version History</strong> enabled:</p><ul><li>Version to
+    Non-Version</li><li>Non-Version to Non-Version</li><li>Non-Version to Version</li></ul><p>In
+    each of the above paths, there could be 4 possible outcomes which Harness encounters:</p><ul><li>Deployment
+    was successful.</li><li>Deployment failed for one of the following reasons:<ul><li>Failure
+    happened during App Setup</li><li>Failure happened during App Resize</li><li>Failure
+    happened during or after Swap Route</li></ul></li></ul><p>Let&#39;s look at the
+    3 app versioning paths and how each deployment outcome changes the resolution
+    of the Tanzu variables for each Blue Green Workflow step.</p><h4>Version to Non-Version</h4><p>Let&#39;s
+    look at a successful deployment of this use case:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644967149462/image.png"/></figure><p>As
+    you can see, the new successful app version has no version suffix in its name
+    and the previous version app has the suffix <code>_INACTIVE</code> added.</p><p>Let&#39;s
+    look at variable resolution during successful and failed deployments.</p><h5>Variable
+    Resolution during Successful Deployments</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    App Setup step</strong></p></td><td><p><strong>After App Resize step</strong></p></td><td><p><strong>After
+    Swap Route step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp_2(UUID
+    = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td><td><p>OrderApp_INACTIVE(UUID
+    = 2)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 3)</p></td><td><p>OrderApp_INACTIVE(UUID = 3)</p></td><td><p>OrderApp(UUID =
+    3)</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp_2(UUID
+    = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 3)</p></td><td><p>OrderApp_INACTIVE(UUID = 3)</p></td><td><p>OrderApp_INACTIVE(UUID
+    = 2)</p></td></tr></tbody></table><p></p><h5>Failure during App Setup or App Resize</h5><p>If
+    deployment fails during the App Setup or App Resize step, the following actions
+    are taken:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644967287236/image.png"/></figure><p>The
+    new app version is deleted and the previous app version is restored.</p><div class="note-callout">For
+    the previous inactive application (<strong>OrderApp_1</strong>), the temp routes
+    and environment variable (<strong>STAGE</strong>) are not restored. To restore
+    these, enable the <a href="https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option">Upsize
+    inactive Service Option</a> in the Rollback step.</div><h5>Variable Resolution
+    during App Resize Step Failure</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    App Resize step</strong></p></td><td><p><strong>After Swap Rollback step</strong></p></td><td><p><strong>After
+    App Rollback step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp_2(UUID
+    = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 3)</p></td><td><p>OrderApp_interim(UUID = 3)</p></td><td><p>NULL</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp_2(UUID
+    = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 3)</p></td><td><p>OrderApp_1(UUID = 1)</p></td><td><p>OrderApp_1(UUID = 1)</p></td></tr></tbody></table><p></p><h5>Failure
+    during Swap Route Step</h5><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644967881360/image.png"/></figure><p>If
+    deployment fails during the Swap Route step, the following actions are taken:</p><ul><li>The
+    new application is deleted.</li><li>The previous active app (UUID = 2) is renamed
+    back to its original name in version mode (OrderApp_2).</li><li>The prod routes
+    are attached to the active app and temp routes are removed. The environment variable
+    <strong>ACTIVE</strong> is set on the active app.</li></ul><div class="note-callout">For
+    the previous inactive application (<strong>OrderApp_1</strong>), the temp routes
+    and environment variable (<strong>STAGE</strong>) are not restored. To restore
+    these, enable the <a href="https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option">Upsize
+    inactive Service Option</a> in the Rollback step.</div><h5>Variables Resolution
+    during Swap Route Step Failure</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    Swap Route step</strong></p></td><td><p><strong>After Swap Rollback step</strong></p></td><td><p><strong>After
+    App Rollback step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp_interim(UUID = 3)</p></td><td><p>NULL</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp_2(UUID = 2)</p></td><td><p>OrderApp_2(UUID = 2)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 2)</p></td><td><p>OrderApp_1(UUID = 1)</p></td><td><p>OrderApp_1(UUID = 1)</p></td></tr></tbody></table><p></p><h4>Non-Version
+    to Non-Version</h4><p>First, let&#39;s look at a successful deployment:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644968096805/image.png"/></figure><p>You
+    can see the previous version OverApp (v3) is given the suffix <strong>INACTIVE</strong>
+    and the new version OrderApp (v4) is not given any suffix.</p><p>During the App
+    Setup step:</p><ul><li>Temp routes and the environment variable are removed from
+    the inactive application (<strong>OrderApp_INACTIVE</strong>).</li><li>The new
+    application is created with suffix <strong>__INACTIVE</strong> in the App Setup
+    step and temp routes are attached to it. The environment variable is set to STAGE.</li></ul><p>During
+    the Swap Route step the following actions are taken:</p><ul><li>Prod routes are
+    attached and temp routes are removed from the new application (<strong>OrderApp_INACTIVE</strong>).
+    The environment variable is set to <strong>ACTIVE</strong>.</li><li>Temp routes
+    are attached and prod routes are removed from the current active application<br/>(<strong>OrderApp</strong>,
+    <strong>UUID = 3</strong>). The environment variable is set to STAGE.</li><li>New
+    active application is renamed from <strong>OrderApp_INACTIVE</strong> to <strong>OrderApp</strong><br/>(this
+    is in non-versioning mode).</li><li>The current active application is renamed
+    from <strong>OrderApp</strong> to <strong>OrderApp_INACTIVE</strong>.</li></ul><h5>Variables
+    Resolution during Successful Deployments</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    App Setup step</strong></p></td><td><p><strong>After App Resize step</strong></p></td><td><p><strong>After
+    Swap Route step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp_INACTIVE(UUID =
+    3)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 4)</p></td><td><p>OrderApp_INACTIVE(UUID = 4)</p></td><td><p>OrderApp(UUID =
+    4)</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 4)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 4)</p></td><td><p>OrderApp_INACTIVE(UUID = 4)</p></td><td><p>OrderApp_INACTIVE(UUID
+    = 3)</p></td></tr></tbody></table><p></p><h5>Failure during the App Setup or App
+    Resize Steps</h5><p>If deployments fails during App Setup or App Resize steps,
+    the following actions are taken:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644968634617/image.png"/></figure><p>The
+    state of the previous active application (OrderApp) was not changed and there
+    is nothing to restore. The new application is deleted. The previous inactive application
+    name is restored.</p><div class="note-callout">For the previous inactive application
+    (<strong>OrderApp_INACTIVE</strong>, <strong>UUID = 2</strong>), the temp routes
+    and environment variable (<strong>STAGE</strong>) are not restored. To restore
+    these, enable the <a href="https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option">Upsize
+    inactive Service Option</a> in the Rollback step.</div><h5>Variables Resolution
+    during App Setup or App Resize Failure</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    App Resize step</strong></p></td><td><p><strong>After Swap Rollback step</strong></p></td><td><p><strong>After
+    App Rollback step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 4)</p></td><td><p>OrderApp_interim(UUID = 4)</p></td><td><p>NULL</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 4)</p></td><td><p>OrderApp_INACTIVE(UUID = 2)</p></td><td><p>OrderApp_INACTIVE(UUID
+    = 2)</p></td></tr></tbody></table><p></p><h5>Failure during the Swap Route Step</h5><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644968817408/image.png"/></figure><p></p><p>If
+    deployment fails during the Swap Route step, the following actions are taken:</p><ul><li>The
+    new app is deleted.</li><li>The previous active app (UUID = 3) is renamed back
+    to its original name, <strong>OrderApp</strong>.</li><li>The prod routes are attached
+    and temp routes are removed from the previous app. The environment variable <strong>ACTIVE</strong>
+    is set to the previous app.</li><li>The inactive application (UUID = 2) is renamed
+    to <strong>OrderApp_INACTIVE</strong>.</li></ul><div class="note-callout">For
+    the previous inactive application (<strong>OrderApp_INACTIVE</strong>, <strong>UUID
+    = 2</strong>), the temp routes and environment variable (<strong>STAGE</strong>)
+    are not restored. To restore these, enable the <a href="https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option">Upsize
+    inactive Service Option</a> in the Rollback step.</div><h5>Variables Resolution
+    during Swap Route Failure</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    Swap Route step</strong></p></td><td><p><strong>After Swap Rollback step</strong></p></td><td><p><strong>After
+    App Rollback step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp(UUID
+    = 4)</p></td><td><p>OrderApp_interim(UUID = 4)</p></td><td><p>NULL</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp(UUID
+    = 4)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 3)</p></td><td><p>OrderApp_INACTIVE(UUID = 2)</p></td><td><p>OrderApp_INACTIVE(UUID
+    = 2)</p></td></tr></tbody></table><p> </p><h4>Non-Version to Version</h4><p>First,
+    let&#39;s look at a successful deployment:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644969019767/image.png"/></figure><p></p><p>During
+    the App Setup step, the following actions are taken:</p><ul><li>Temp routes and
+    the environment variable are removed from inactive application (<strong>OrderApp_INACTIVE</strong>,
+    <strong>UUID = 2</strong>).</li><li>The new app is created with the suffix <strong>__INACTIVE</strong>
+    in the App Setup step and temp routes are attached to it. The environment variable
+    is set to <strong>STAGE</strong>.</li></ul><p>During the Swap Route step, the
+    following actions are taken:</p><ul><li>Prod routes are attached and temp routes
+    are removed from the new app (<strong>OrderApp_INACTIVE</strong>). The environment
+    variable is set to <strong>ACTIVE</strong>.</li><li>Temp routes are attached and
+    prod routes are removed from the current active application (<strong>OrderApp</strong>).
+    The environment variable is set to <strong>STAGE</strong>.</li><li>The current
+    active application (<strong>UUID = 3</strong>) is renamed from <strong>OrderApp</strong>
+    to <strong>OrderApp_3</strong><br/>(this is in non-versioning mode).</li><li>New
+    active app is renamed from <strong>OrderApp_INACTIVE</strong> to <strong>OrderApp_4</strong>.</li></ul><p>If
+    you change from non-version to version, in the next deployment the new app is
+    created with the suffix <strong>__INACTIVE</strong>. All the apps will be renamed
+    to version mode during the Swap Route step. Harness follows this method to avoid
+    renaming the active app while it is still in use. From the subsequent deployment,
+    the new app will be created in version mode. For example, in above example the
+    new app will be created with name <strong>OrderApp_5</strong>.</p><h5>Variables
+    Resolution during a Successful Deployment</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    App Setup step</strong></p></td><td><p><strong>After App Resize step</strong></p></td><td><p><strong>After
+    Swap Route step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp_3(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 4)</p></td><td><p>OrderApp_INACTIVE(UUID = 4)</p></td><td><p>OrderApp_4(UUID
+    = 4)</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp_4(UUID = 4)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 4)</p></td><td><p>OrderApp_INACTIVE(UUID = 4)</p></td><td><p>OrderApp_3(UUID
+    = 3)</p></td></tr></tbody></table><p></p><h5>Failures during the App Setup or
+    App Resize Steps</h5><p>If deployment fails during App Setup or App Resize step,
+    the following actions are taken:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644969403587/image.png"/></figure><p>The
+    state of the previous active app (<strong>OrderApp</strong>) was not changed so
+    there is nothing to restore. The new app is deleted. The previous inactive app
+    name is restored.</p><div class="note-callout">For the previous inactive application
+    (<strong>OrderApp_INACTIVE</strong>, <strong>UUID = 2</strong>), the temp routes
+    and environment variable (<strong>STAGE</strong>) are not restored. To restore
+    these, enable the <a href="https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option">Upsize
+    inactive Service Option</a> in the Rollback step.</div><h5>Variables Resolution
+    during App Setup or App Resize Failure</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    App Resize step</strong></p></td><td><p><strong>After Swap Rollback step</strong></p></td><td><p><strong>After
+    App Rollback step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp_INACTIVE(UUID
+    = 4)</p></td><td><p>OrderApp_interim(UUID = 4)</p></td><td><p>NULL</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p></p></td><td><p></p></td><td><p></p></td></tr></tbody></table><p></p><h5>Failure
+    during the Swap Route Step</h5><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ojd73hseby/1644969540227/image.png"/></figure><p>If
+    there failures during the Swap Route step, the following actions are taken:</p><ul><li>The
+    new app is deleted.</li><li>The previous active app (<strong>UUID = 3</strong>)
+    is renamed back to its original name, <strong>OrderApp</strong>.</li><li>The prod
+    routes are attached and temp routes are removed from previous app. The environment
+    variable ACTIVE is set to it.</li><li>The inactive application (<strong>UUID =
+    2</strong>) is renamed to <strong>OrderApp_INACTIVE</strong>.</li></ul><div class="note-callout">For
+    the previous inactive application (<strong>OrderApp_INACTIVE</strong>, <strong>UUID
+    = 2</strong>), the temp routes and environment variable (<strong>STAGE</strong>)
+    are not restored. To restore these, enable the <a href="https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option">Upsize
+    inactive Service Option</a> in the Rollback step.</div><h5>Variables Resolution
+    during the Swap Route Step Failure</h5><p></p><table><tbody><tr><td><p><strong>Variables</strong></p></td><td><p><strong>After
+    Swap Route step</strong></p></td><td><p><strong>After Swap Rollback step</strong></p></td><td><p><strong>After
+    App Rollback step</strong></p></td></tr><tr><td><p><code>${pcf.oldAppName}</code></p></td><td><p>OrderApp_3(UUID
+    = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.newAppName}</code></p></td><td><p>OrderApp_4(UUID
+    = 4)</p></td><td><p>OrderApp_interim(UUID = 4)</p></td><td><p>NULL</p></td></tr><tr><td><p><code>${pcf.activeAppName}</code></p></td><td><p>OrderApp_4(UUID
+    = 4)</p></td><td><p>OrderApp(UUID = 3)</p></td><td><p>OrderApp(UUID = 3)</p></td></tr><tr><td><p><code>${pcf.inActiveAppName}</code></p></td><td><p>OrderApp_3(UUID
+    = 3)</p></td><td><p>OrderApp_INACTIVE(UUID = 2)</p></td><td><p>OrderApp_INACTIVE(UUID
+    = 2)</p></td></tr></tbody></table><p></p><h4>Notes</h4><ul><li>During rollback,
+    the new app is always deleted in every scenario.</li><li>The variables <code>${pcf.activeAppName}</code>
+    and <code>${pcf.inActiveAppName}</code> are available only in Blue Green deployments
+    after the App Setup step.</li><li>If deployment fails during the Swap Routes step,
+    then the variables <code>${pcf.activeAppName}</code> and <code>${pcf.inActiveAppName}</code>
+    might be in inconsistent state.<ul><li>These variables will hold the right value
+    after the Swap Routes rollback and hence must be used after Swap Routes rollback step.</li></ul></li><li>If
+    the <a href="https://docs.harness.io/article/52muxcsr1v-create-a-blue-green-pcf-deployment#upsize_inactive_service_option">Upsize
+    inactive Service Option</a> in not enabled then the environment variable <strong>HARNESS__STAGE__IDENTIFIER
+    = STAGE</strong> will not be set to the inactive app during rollback.<ul><li>In
+    next deployment, the <code>${pcf.inActiveApp}</code> variable may not resolve
+    to the correct name as <strong>STAGE</strong> is used to identify inactive app.</li></ul></li><li>During
+    rollback, the new app name will be changed to <code>&lt;AppName&gt;__interim</code>
+    and later deleted. Consequently, <code>${pcf.newAppName}</code> will be updated
+    and resolve accordingly.</li></ul><p></p><p></p>'
+  slug: pcf-built-in-variables
+  tags: []
+  is_live: true

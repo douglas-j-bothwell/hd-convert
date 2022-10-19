@@ -1,0 +1,94 @@
+type: article
+article_id: 64hhfpbgbj
+user_id: mfr0nxh4be
+category_id: y9ixzx2x5y
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: HTTP Step Reference
+slug: http-step
+description: This topic describes the settings for the HTTP step.
+short_version: This topic describes the settings for the HTTP step.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-14T16:03:35.868396Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: HTTP Step Reference
+  description: This topic describes the settings for the HTTP step.
+  short_version: This topic describes the settings for the HTTP step.
+  body: '<p>You can use the HTTP step to run HTTP methods containing URLs, methods,
+    headers, assertions, and variables.</p><p>This topic describes the settings for
+    the HTTP step.</p><p>In this topic:</p><ul><li><a href="#name">Name</a></li><li><a
+    href="#timeout">Timeout</a></li><li><a href="#url">URL</a></li><li><a href="#method">Method</a></li><li><a
+    href="#request_body">Request Body</a></li><li><a href="#assertion">Assertion</a></li><li><a
+    href="#headers">Headers</a></li><li><a href="#output">Output</a></li><li><a href="#step_execution_inputs_and_outputs">Step
+    Execution Inputs and Outputs</a><ul><li><a href="#inputs">Inputs</a></li><li><a
+    href="#outputs">Outputs</a></li></ul></li><li><a href="#advanced_settings">Advanced
+    Settings</a></li><li><a href="#header_capability_check">Header Capability Check</a></li><li><a
+    href="#see_also">See Also</a></li></ul><h3>Name</h3><p>The name of the step. You&#39;ll
+    use this name when you reference this step&#39;s settings.</p><p>For example,
+    if the step name is HTTP and you want to reference the URL entered in its <strong>URL</strong>
+    setting, you would use:</p><p><code>&lt;+pipeline.stages.tooltips.spec.execution.steps.HTTP.spec.url&gt;</code></p><h3>Timeout</h3><p>The
+    timeout for this step. You can use:</p><ul><li><code>w</code> for weeks</li><li><code>d</code> for
+    days</li><li><code>h</code> for hours</li><li><code>m</code> for minutes</li><li><code>s</code> for
+    seconds</li><li><code>ms</code> for milliseconds</li></ul><p>The maximum is <code>53w</code>.</p><p>Timeouts
+    can be set at the Pipeline level also.</p><h3>URL</h3><p>The URL for the HTTP
+    call.</p><h3>Method</h3><p>The <a href="https://restfulapi.net/http-methods/#summary"
+    target="_blank">HTTP method</a> to use in the step.</p><h3>Request Body</h3><p>The
+    message body of the HTTP message.</p><h3>Assertion</h3><p>The assertion is used
+    to validate the incoming response. For example, if you wanted to check the health
+    of an HTTP connection, you could use the assertion <code>&lt;+httpResponseCode&gt;
+    == 200</code>.</p><p>The expression <code>&lt;+httpResponseCode&gt; == 200</code>
+    will evaluate to true if the HTTP call returns a 200 code.</p><p>Expressions can
+    use the following aliases to refer to the HTTP responses, URL, and method:</p><ul><li><code>&lt;+httpResponseCode&gt;</code></li><li><code>&lt;+httpResponseBody&gt;</code></li></ul><h3>Headers</h3><p>Enter
+    the media type for the message. For example, if you are using the GET method,
+    the headers are used to specify the GET response body message type Harness will
+    check for.</p><p>For example, in <strong>Key</strong>, enter <code>Token</code>
+    .</p><p>In <strong>Value</strong>, enter <code>&lt;+secrets.getValue(&#34;aws-playground_AWS_secret_key&#34;)&gt;</code>.</p><p>Another
+    example:</p><ul><li><strong>Key</strong>: <code>variable:</code></li><li><strong>Value</strong>:
+    <code>var1,var2:var3</code></li></ul><h3>Output</h3><p>Create output variables
+    to be used by other steps in the stage. The <strong>Value</strong> setting can
+    contain any HTTP step input, output, or response information.</p><p>You can also
+    use ​JSON and XML functors in the values for the output variable. For example,
+    <code>&lt;+json.select(&#34;data.attributes.version_pins.mvn-service://new-construction-api&#34;,
+    httpResponseBody)&gt;</code>.</p><p>See <a href="/article/9ir9geteqc-json-and-xml-functors">JSON
+    and XML Functors</a>.</p><h3>Step Execution Inputs and Outputs</h3><p>Once you
+    execute your Pipeline, the step displays its inputs and outputs and their values.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/64hhfpbgbj/1631131084760/clean-shot-2021-09-08-at-12-57-55.png"/></figure><p>You
+    can reference these anywhere in your Pipeline.</p><h4>Inputs</h4><p></p><table><tbody><tr><td><p><strong>Input
+    Name</strong></p></td><td><p><strong>Input Reference Example</strong></p><p><strong>Step
+    name: HTTP</strong></p></td><td><p><strong>Input Value Example</strong></p></td></tr><tr><td><p>identifier</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.identifier&gt;</code></p></td><td><p>check_response</p></td></tr><tr><td><p>name</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.name&gt;</code></p></td><td><p>check
+    response</p></td></tr><tr><td><p>timeout</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.timeout&gt;</code></p></td><td><p>10s</p></td></tr><tr><td><p>type</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.type&gt;</code></p></td><td><p>Http</p></td></tr><tr><td><p>url</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.url&gt;</code></p></td><td><p>https://www.google.com/search?q=</p></td></tr><tr><td><p>method</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.method&gt;</code></p></td><td><p>GET</p></td></tr><tr><td><p>requestBody</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.requestBody&gt;</code></p></td><td><p>current+date</p></td></tr><tr><td><p>assertion</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.assertion&gt;</code></p></td><td><p><code>&lt;+httpResponseCode&gt;
+    == 200</code></p></td></tr></tbody></table><h4>Outputs</h4><p></p><table><tbody><tr><td><p><strong>Output</strong></p></td><td><p><strong>Output
+    Reference Example</strong></p><p><strong>Step Name: HTTP</strong></p></td><td><p><strong>Output
+    Value Example</strong></p></td></tr><tr><td><p>httpUrl</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpUrl&gt;</code></p></td><td><p><code>https://www.google.com/search?q=</code></p></td></tr><tr><td><p>httpMethod</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpMethod&gt;</code></p></td><td><p><code>GET</code></p></td></tr><tr><td><p>httpResponseCode</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseCode&gt;</code></p></td><td><p><code>200</code></p></td></tr><tr><td><p>httpResponseBody</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseBody&gt;</code></p></td><td><p><code>Hello</code></p></td></tr><tr><td><p>status</p></td><td><p><code>&lt;+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.status&gt;</code></p></td><td><p><code>SUCCESS</code></p></td></tr></tbody></table><h3>Advanced
+    Settings</h3><p>In Advanced, you can use the following options:</p><ul><li><a
+    href="/article/i36ibenkq2-step-skip-condition-settings">Step Skip Condition Settings</a></li><li><a
+    href="/article/htrur23poj-step-failure-strategy-settings">Step Failure Strategy
+    Settings</a></li><li><a href="/article/nnuf8yv13o-select-delegates-with-selectors">Select
+    Delegates with Selectors</a></li></ul><h3>Header Capability Check</h3><p>When
+    Harness runs an HTTP step and connects to a service, it checks to make sure that
+    an HTTP connection can be established.</p><p>Some services require that HTTP headers
+    are included in connections. Without the headers, the HTTP connections fail and
+    simple HTTP verification cannot be performed.</p><p>Harness performs an HTTP header
+    capability check for any header requirements on the target service.</p><p>If the
+    target host server requires headers and you do not include headers in the <strong>Headers</strong> setting
+    of the HTTP step, the Harness Delegate will fail the deployment with the error <code>No
+    eligible Delegates could perform this task</code> (<code>error 400</code>).</p><p>Simply
+    add the required headers in <strong>Headers</strong>, and then run the deployment.
+    Adding the headers will prevent the 400 error.</p><h3>See Also</h3><ul><li><a
+    href="/article/o0gj1upg2p-shell-script-step">Shell Script Step Reference</a></li><li><a
+    href="/article/9ir9geteqc-json-and-xml-functors">JSON and XML Functors</a></li></ul><p></p>'
+  slug: http-step
+  tags: []
+  is_live: true

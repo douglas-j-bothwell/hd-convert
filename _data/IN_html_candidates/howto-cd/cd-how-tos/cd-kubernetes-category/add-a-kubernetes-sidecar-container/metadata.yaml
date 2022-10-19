@@ -1,0 +1,147 @@
+type: article
+article_id: fnzak5qp3y
+user_id: znazf3hcp9
+category_id: qfj6m1k2c4
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Add a Kubernetes Sidecar Container
+slug: add-a-kubernetes-sidecar-container
+description: You can use Harness to deploy instances where Harness does not deploy
+  the underlying infrastructure, such as sidecar workloads.
+short_version: You can use Harness to deploy instances where Harness does not deploy
+  the underlying infrastructure, such as sidecar workloads.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-14T20:34:49.349163Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add a Kubernetes Sidecar Container
+  description: You can use Harness to deploy instances where Harness does not deploy
+    the underlying infrastructure, such as sidecar workloads.
+  short_version: You can use Harness to deploy instances where Harness does not deploy
+    the underlying infrastructure, such as sidecar workloads.
+  body: '<p>You can use Harness to deploy both primary and sidecar Kubernetes workloads.
+    Sidecar containers are common where you have multiple colocated containers that
+    share resources.</p><div class="note-callout">For details on what workloads you
+    can deploy, see <a href="/article/efnlvytc6l-what-can-i-deploy-in-kubernetes">What
+    Can I Deploy in Kubernetes?</a>.</div><p>Harness treats primary and sidecar workloads
+    the same. We simply provide ways of identifying the workloads as primary and sidecar.</p><p>In
+    the Harness Service, in addition to the manifest(s) for the primary artifact used
+    by Harness, you simply add manifests for however many sidecar containers you need.
+    Or you can add one manifest that includes the specs for both primary and sidecar
+    workloads.</p><p>The containers in the manifest can be hardcoded or you can add
+    artifact streams to Harness as Artifacts and reference them in your manifests
+    using the <code>&lt;+artifacts.sidecars.[sidecar_identifier].imagePath&gt;</code>
+    expression.</p><p>This topic provides an example of a simple sidecar deployment.</p><h3>Before
+    You Begin</h3><ul><li><a href="/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments">Add
+    Container Images as Artifacts for Kubernetes Deployments</a>: review how to add
+    container images as Artifacts for Kubernetes Deployments. Sidecar artifact are
+    described there also.</li><li><a href="/article/f9bd10b3nj">Install a Kubernetes
+    Delegate</a>: you must have a Harness Kubernetes Delegate running in your target
+    Kubernetes cluster.</li><li><a href="/article/u29v1uc1mh">Kubernetes Deployments
+    Overview</a></li><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a></li><li><a href="/article/efnlvytc6l-what-can-i-deploy-in-kubernetes">What
+    Can I Deploy in Kubernetes?</a></li></ul><p></p><h3>Option: Use Harness Artifacts</h3><p>You
+    can hardcode the image location in your sidecar manifests or use the the <strong>Artifacts</strong> settings
+    in the Harness Service Definition to connect Harness to an artifact stream (for
+    example, a Docker registry).</p><p>When you use <strong>Artifacts</strong>, your
+    sidecar manifest refers to the sidecar artifact you added in <strong>Artifacts</strong>
+    using the expression <code>&lt;+artifacts.sidecars.[sidecar_identifier].imagePath&gt;</code>.</p><p>The <code>[sidecar_identifier]</code> path
+    is the <strong>Sidecar Identifier</strong> you specified when you added the sidecar
+    artifact.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/fnzak5qp3y/1626198037106/clean-shot-2021-07-13-at-10-40-19.png"/></figure><p>Once
+    your artifact is added, you can see the Id in <strong>Artifacts</strong>. For
+    example, the Id here is <strong>sidecar</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/fnzak5qp3y/1626129358637/clean-shot-2021-07-12-at-15-35-36.png"/></figure><p>To
+    add a sidecar artifact, open your Harness stage.</p><p>In <strong>Service</strong>,
+    in <strong>Artifacts</strong>, click <strong>Add Sidecar</strong>.</p><p>Select
+    an artifact repository type. In this example, we&#39;ll use Docker Registry.</p><p>Select <strong>Docker
+    Registry</strong>, and click <strong>Continue</strong>.</p><p>The <strong>Docker
+    Registry</strong> settings appear.</p><p>Select a <a href="https://ngdocs.harness.io/article/u9bsd77g5a-docker-registry-connector-settings-reference">Docker
+    Registry Connector</a> or create a new one.</p><p>Click <strong>Continue</strong>.</p><p>In
+    <strong>Sidecar Identifier</strong>, give a name to identify this artifact. As
+    mentioned earlier, this is the name you will use to refer to this artifact in
+    your manifest using the expression <code>&lt;+artifacts.sidecars.[sidecar_identifier].imagePath&gt;</code>.</p><p>In <strong>Image
+    path</strong>, the name of the artifact you want to deploy, such as <strong>library/nginx</strong>.
+    You can also use a <a href="https://ngdocs.harness.io/article/f6yobn7iq0-runtime-inputs">runtime
+    input</a> (<code>&lt;+input&gt;</code>) or Harness variable expression.</p><p>In <strong>Tag</strong>,
+    add the Docker tag of the image you want to deploy. If you leave this as <code>&lt;+input&gt;</code>
+    you are prompted for the tag at runtime. Harness pulls the available tags, and
+    you simply select one.</p><p>Click <strong>Save</strong>.</p><p>The artifact is
+    added to <strong>Artifacts</strong>.</p><h3>Step 1: Prepare the Sidecar Manifest</h3><p>If
+    you are using Harness <strong>Artifacts</strong>, in the deployment manifest or
+    values.yaml file for this deployment, you reference this artifact using the expression
+    <code>&lt;+artifacts.sidecars.[sidecar_identifier].imagePath&gt;</code>.</p><p>Using
+    the earlier example of the Id <strong>sidecar</strong>, the reference is <code>&lt;+artifacts.sidecars.sidecar.imagePath&gt;</code>.
+    Here&#39;s the values.yaml:</p><pre>name: harness-example<br/>replicas: 1<br/><br/>image:
+    &lt;+artifacts.sidecars.sidecar.imagePath&gt;<br/>dockercfg: &lt;+artifacts.sidecars.sidecar.imagePullSecret&gt;<br/><br/>createNamespace:
+    true<br/>namespace: &lt;+infra.namespace&gt;<br/>...</pre><p></p><p>Other sidecar
+    expressions are:</p><ul><li><code>&lt;+artifacts.sidecars.sidecar.imagePullSecret&gt;</code></li><li><code>&lt;+artifacts.sidecars.[sidecar_identifier].imagePath&gt;</code></li><li><code>&lt;+artifacts.sidecars.[sidecar_identifier].type&gt;</code></li><li><code>&lt;+artifacts.sidecars.[sidecar_identifier].tag&gt;</code></li></ul><p>Now
+    that you have your sidecar manifests set up, you can add them to Harness.</p><h3>Review:
+    Primary and Sidecar Manifest and Values Files</h3><p>If your stage deploys both
+    primary and sidecar resources, you add one <strong>K8s Manifest</strong> in the
+    <strong>Manifests</strong> section that points to the folder(s) containing the
+    primary and sidecar manifests.</p><p>Next, you add one or separate <strong>Values
+    YAML</strong> files for the primary and sidecar resources.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/fnzak5qp3y/1626997418269/clean-shot-2021-07-22-at-16-43-30.png"/></figure><p>If
+    you are using Harness <strong>Artifacts</strong>, you reference Primary and Sidecar
+    <strong>Artifacts</strong> using different expressions:</p><ul><li><strong>Primary:</strong>
+    <code>&lt;+artifact.image&gt;</code></li><li><strong>Sidecar:</strong> <code>&lt;+artifacts.sidecars.[sidecar_identifier].imagePath&gt;</code></li></ul><p>For
+    example, here is a single values.yaml for one primary artifact and two sidecars:</p><pre>...<br/>image1:
+    &lt;+artifact.image&gt;<br/>dockercfg1: &lt;+artifact.imagePullSecret&gt;<br/><br/>image2:
+    &lt;+artifacts.sidecars.sidecar1.image&gt;<br/>dockercfg2: &lt;+artifacts.sidecars.sidecar1.imagePullSecret&gt;<br/><br/>image3:
+    &lt;+artifacts.sidecars.sidecar2.image&gt;<br/>dockercfg3: &lt;+artifacts.sidecars.sidecar2.imagePullSecret&gt;<br/>...</pre><p></p><p>The
+    corresponding manifest would also need entries for image1, image2, and image3.</p><p></p><p></p><details><summary>Manifest
+    sample</summary><div><pre>...<br/>apiVersion: apps/v1<br/>kind: Deployment<br/>metadata:<br/>  name:
+    {{ template &#34;todolist.fullname&#34; . }}<br/>  namespace: {{ .Values.namespace
+    }}<br/>  labels:<br/>    app: {{ template &#34;todolist.name&#34; . }}<br/>    chart:
+    {{ template &#34;todolist.chart&#34; . }}<br/>    release: &#34;{{ .Release.Name
+    }}&#34;<br/>    harness.io/release: {{ .Release.Name }}<br/>    heritage: {{ .Release.Service
+    }}<br/>spec:<br/>  replicas: {{ .Values.replicaCount }}<br/>  selector:<br/>    matchLabels:<br/>      app:
+    {{ template &#34;todolist.name&#34; . }}<br/>      release: {{ .Release.Name }}<br/>  template:<br/>    metadata:<br/>      labels:<br/>        app:
+    {{ template &#34;todolist.name&#34; . }}<br/>        release: {{ .Release.Name
+    }}<br/>        harness.io/release: {{ .Release.Name }}<br/>    spec:<br/>      {{-
+    if .Values.dockercfg1}}<br/>      imagePullSecrets:<br/>      - name: {{.Values.name}}-dockercfg1<br/>      -
+    name: {{.Values.name}}-dockercfg2<br/>      - name: {{.Values.name}}-dockercfg3<br/>      {{-
+    end}}<br/>      containers:<br/>        - name: {{ .Chart.Name }}-1<br/>          image:
+    {{.Values.image1}}<br/>          imagePullPolicy: {{ .Values.pullPolicy }}<br/>          {{-
+    if or .Values.env.config .Values.env.secrets}}<br/>          envFrom:<br/>          {{-
+    if .Values.env.config}}<br/>          - configMapRef:<br/>              name:
+    {{.Values.name}}<br/>          {{- end}}<br/>          {{- if .Values.env.secrets}}<br/>          -
+    secretRef:<br/>              name: {{.Values.name}}<br/>          {{- end}}<br/>          {{-
+    end}}<br/>        - name: {{ .Chart.Name }}-2<br/>          image: {{.Values.image2}}<br/>          imagePullPolicy:
+    {{ .Values.pullPolicy }}<br/>          {{- if or .Values.env.config .Values.env.secrets}}<br/>          envFrom:<br/>          {{-
+    if .Values.env.config}}<br/>          - configMapRef:<br/>              name:
+    {{.Values.name}}<br/>          {{- end}}<br/>          {{- if .Values.env.secrets}}<br/>          -
+    secretRef:<br/>              name: {{.Values.name}}<br/>          {{- end}}<br/>          {{-
+    end}}<br/>        - name: {{ .Chart.Name }}-3<br/>          image: {{.Values.image3}}<br/>          imagePullPolicy:
+    {{ .Values.pullPolicy }}<br/>          {{- if or .Values.env.config .Values.env.secrets}}<br/>          envFrom:<br/>          {{-
+    if .Values.env.config}}<br/>          - configMapRef:<br/>              name:
+    {{.Values.name}}<br/>          {{- end}}<br/>          {{- if .Values.env.secrets}}<br/>          -
+    secretRef:<br/>              name: {{.Values.name}}<br/>          {{- end}}<br/>          {{-
+    end}}</pre></div></details><p></p><h3>Step 2: Add the Sidecar Manifest and Values
+    YAML</h3><p>Whether you hardcoded the image location in your manifest files or
+    used <strong>Artifacts</strong>, simply add the manifests and values.yaml to the
+    <strong>Manifests</strong> section, as described in <a href="/article/ssbq0xh0hx-define-kubernetes-manifests">Add
+    Kubernetes Manifests</a>.</p><p>When you&#39;re done your values.yaml file is
+    added and refers to the sidecar artifact:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/fnzak5qp3y/1626997645842/clean-shot-2021-07-22-at-16-47-09.png"/></figure><h3>Step
+    3: Deploy the Sidecar</h3><p>Sidecars are deployed, rolled back, and have their
+    releases versioned the same as primary containers.</p><p>If you are using <strong>Artifacts</strong>,
+    when you deploy a Pipeline with a sidecar Artifact, you are prompted to select
+    the sidecar artifact tag as well as the primary artifact tag:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/fnzak5qp3y/1626997761928/clean-shot-2021-07-22-at-16-49-09.png"/></figure><p></p><p>For
+    examples of standard deployments, see:</p><ul><li><a href="/article/xsla71qg8t-create-a-kubernetes-rolling-deployment">Create
+    a Kubernetes Rolling Deployment</a></li><li><a href="/article/i5p4feil89-create-a-kubernetes-canary-deployment">Create
+    a Kubernetes Canary Deployment</a></li><li><a href="/article/mog5tnk5pi-create-a-kubernetes-blue-green-deployment">Create
+    a Kubernetes Blue Green Deployment</a></li></ul><p></p><p></p>'
+  slug: add-a-kubernetes-sidecar-container
+  tags: []
+  is_live: true

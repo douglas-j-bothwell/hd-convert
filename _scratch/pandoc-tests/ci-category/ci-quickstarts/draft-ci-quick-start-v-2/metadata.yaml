@@ -1,0 +1,293 @@
+type: article
+article_id: lnttltwy0k
+user_id: xwmdbyp4x8
+category_id: pjovrkldfq
+author:
+  name: Doug Bothwell
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: DRAFT DOC-1484 CI Pipeline QuickStart
+slug: draft-ci-quick-start-v-2
+description: This quickstart shows you how to build a simple, two-stage CI Pipeline
+  in Harness. Setting up and running the Pipeline will take about 30 minutes. The
+  Pipeline will build and run a unit test on a cod…
+short_version: This quickstart shows you how to build a simple, two-stage CI Pipeline
+  in Harness. Setting up and running the Pipeline will take about 30 minutes. The
+  Pipeline will build and run a unit test on a cod…
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-03-25T02:12:20.170038Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DRAFT DOC-1484 CI Pipeline QuickStart
+  description: ""
+  short_version: ""
+  body: '<p>This quickstart shows you how to build a simple, two-stage CI Pipeline
+    in Harness. Setting up and running the Pipeline will take about 30 minutes.</p><p>The
+    Pipeline will build and run a unit test on a codebase, upload the artifact to
+    Docker Hub, and then run integration tests.</p><p>You will use publicly-available
+    code, images, and your Github and Docker Hub accounts.</p><h3>Objectives</h3><p>You&#39;ll
+    learn how to create a CI Pipeline that does the following:</p><ol><li>Clone a
+    code repo for an app.</li><li>Use a Kubernetes cluster build farm.</li><li>Build
+    the code and run unit tests in the build farm.</li><li>Package the app as a Docker
+    image and upload it to Docker Hub.</li><li>Pull the uploaded image to the build
+    farm as a service dependency.</li><li>Run an integration test against the app.</li></ol><p></p><h3>Before
+    You Begin</h3><p>Make sure you have the following set up before you begin this
+    quickstart:</p><ul><li><strong>Github account:</strong> This quickstart clones
+    a codebase from a Github repo. You will need a Github account so Harness can connect
+    to Github.</li><li><strong>Docker Hub account and repo:</strong> You will need
+    to push and pull the image you build to Docker Hub. You can use any repo you want,
+    or create a new one for this quickstart.</li><li><strong>Kubernetes cluster for
+    Harness Delegate and build farm:</strong><ul><li>You&#39;ll need a Kubernetes
+    cluster for Harness to use for the Harness Delegate and as a build farm. Ensure
+    you have a cluster that meets the following requirements:<ul><li><strong>Number
+    of pods:</strong> 3 (two pods for the Harness Delegate, the remaining pod for
+    the build farm).</li><li><strong>Machine type:</strong> 4vCPU</li><li><strong>Memory:</strong> 16GB
+    RAM. The build farm and Delegate requirements are low but the remaining memory
+    is for Kubernetes, the Docker container, and other default services.</li><li><strong>Networking:</strong> Outbound
+    HTTPS for the Harness connection, and to connect to Docker Hub. Allow TCP port
+    22 for SSH.</li><li><strong>Namespace:</strong> When you install the Harness Delegate,
+    it will create the <code>harness-delegate</code> namespace. You&#39;ll use the
+    same namespace for the build farm.</li></ul></li></ul></li></ul><div class="note-callout">Google
+    Kubernetes Engine (GKE) <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview"
+    target="_blank">Autopilot</a> is not supported at this time.</div><ul><li>A <strong>Kubernetes
+    service account</strong> with permission to create entities in the target namespace
+    is required. The set of permissions should include <code>list</code>, <code>get</code>,
+    <code>create</code>, and <code>delete</code> permissions. In general, the cluster-admin
+    permission or namespace admin permission is enough.<br/>For more information,
+    see <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles"
+    target="_blank">User-Facing Roles</a> from Kubernetes.</li></ul><h3>Visual Summary</h3><p>Here&#39;s
+    an architecture diagram of the very simple setup we use for Harness CI:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611599684642/image.png"/></figure><p>You
+    will install the Harness Delegate in the same cluster you use for the build farm.
+    The Delegate will create the namespace <code>harness-delegate</code>. You&#39;ll
+    use that namespace for both the Delegate and build farm. You can change it if
+    you like.</p><h4>Video Overview</h4><p>Here&#39;s a quick video that provides
+    an overview of Harness CI Enterprise:</p><p></p><div class="hd--embed" data-provider="Wistia"
+    data-thumbnail=""><iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true"
+    frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen=""
+    mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen=""
+    width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js"
+    async=""></script></div><h3>Option: Use Your Own Code Repo</h3><p>For this quickstart,
+    we use a codebase located at:</p><p><code>https://github.com/keen-software/goHelloWorldServer</code></p><p>All
+    steps in this quickstart work with any git repo, so you can use your own code
+    repo instead.</p><h3>Step 1: Start a New Pipeline</h3><p>Pipelines are a collection
+    of one or more stages. They manage and automate builds, testing, deployments,
+    and other important build and release stages.</p><ul><li>In Harness, click <strong>Projects</strong>
+    and create a new Project with the following settings:<ul><li><strong>Name:</strong>
+    CI Quickstart</li><li><strong>Organization:</strong> default</li><li><strong>Invite
+    People to Collaborate:</strong> You don&#39;t need to add yourself.</li></ul></li><li>Select
+    the new project. In the Modules page, click <strong>Continuous Integration</strong>.</li><li>Click
+    <strong>Pipelines</strong> and then <strong>Create a Pipeline</strong>.</li><li>Enter
+    the name <strong>CI Pipeline</strong> and click <strong>Start</strong>.</li></ul><p></p><div
+    class="note-callout">As you enter a name for the Pipeline, the ID for the Pipeline
+    is created. A Pipeline name can change, but an ID is permanent. The ID is how
+    you can reference subordinate elements of a Pipeline, such as the names of variables
+    within the Pipeline.</div><h3>Step 2: Clone the Codebase</h3><p>You are now in
+    the Pipeline Studio. Now you&#39;ll add a stage to the Pipeline to clone a codebase.
+    In the process, you&#39;ll create a Connector between Harness and your GitHub
+    repo. You&#39;ll also install a Delegate to communicate between Harness and your
+    Kubernetes infrastructure.</p><ul><li>In Pipeline Studio, click <strong>Add Stage</strong>
+    and enter the following:<ul><li>Stage Type = <strong>Build</strong></li><li>Stage
+    Name = <strong>Build Test and Push</strong></li></ul></li><li>In About your stage
+    &gt; Configure Codebase &gt; Connector, click <strong>Select Connector</strong>.<br/>You&#39;ll
+    now create a new Connector that specifies the GitHub codebase to use for this
+    Pipeline.</li></ul><h4>Codebase Connector Wizard</h4><ul><li>Click <strong>New
+    Connector</strong> and select <strong>GitHub Connector</strong>.</li><li>Specify
+    the following in the GitHub Connector wizard:<ul><li>Overview &gt; Name = <strong>CI
+    QuickStart</strong></li><li>Details &gt; URL Type = <strong>Repository</strong></li><li>Details
+    &gt; Connection Type = <strong>HTTP</strong></li><li>Details &gt;GitHub Account
+    URL = <code>https://github.com/keen-software/goHelloWorldServer.git</code></li><li>Credentials
+    &gt; Username = The username for your GitHub account.</li><li>Credentials &gt;
+    Password: Create a Harness Secret for the Personal Access Token you use for your
+    GitHub repo.<br/>Harness secrets are safe. They are stored in the <a href="/article/hngrlb7rd6-harness-secret-manager-overview">Harness
+    Secret Manager</a>. You can also use your own Secret Manager with Harness.</li><li>Connect
+    to the provider = <strong>Connect through a Harness Delegate</strong>. You should
+    now be in the Delegates Setup screen of the GitHub Connector wizard.<br/>The Harness
+    Delegate is a local service that connects your artifacts and your infrastructure,
+    collaboration, verification, and other providers with the Harness Manager. For
+    this quickstart, you&#39;ll install a Delegate in your Kubernetes cluster.<ul><li>In
+    the Delegates Setup screen, click <strong>Install New Delegate</strong> and specify
+    the following in the Delegate Wizard:<ul><li>Delegate type = <strong>Kubernetes</strong></li><li>Delegate
+    name = <strong>quickstart</strong></li><li>Delegate size = <strong>Small</strong></li></ul></li><li>Click
+    <strong>Download Script</strong>. This downloads the YAML file for the Kubernetes
+    Delegate.</li><li>Open a terminal and navigate to where the Delegate file is located.
+    You will connect to your cluster using the terminal so you can simply run the
+    YAML file on the cluster.</li><li>In the same terminal, log into your Kubernetes
+    cluster. In most platforms, you select the cluster, click <strong>Connect</strong>,
+    and copy the access command.</li><li>Install the Harness Delegate using the <strong>harness-delegate.yaml</strong> file
+    you just downloaded. Click Next in the Harness UI, then run the command shown.
+    For example:<pre class="hljs bash">kubectl apply -f harness-delegate.yaml</pre>You
+    should see output similar to this:<pre class="hljs cpp">% kubectl apply -f harness-delegate.yaml<br/>namespace/harness-delegate-ng
+    created<br/>clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin
+    created<br/>secret/ci-quickstart created<br/>statefulset.apps/ci-quickstart created<br/>service/delegate-service
+    created</pre></li><li>Return to the Harness UI. It might take a few minutes to
+    verify the Delegate. Once it is verified, close the wizard.</li></ul></li></ul></li><li>Back
+    in <strong>Delegates Setup</strong>, you can select the new Delegate:<ul><li>In
+    the list of Delegates, you can see your new Delegate and its tags.</li><li>Select
+    the <strong>Connect using Delegates with the following Tags</strong> option.</li><li>Enter
+    the tag of the new Delegate and click <strong>Save and Continue</strong>.</li><li>Wait
+    for the connection test to complete and then click <strong>Finish</strong>.</li></ul></li></ul><ul><li>Back
+    in <strong>About Your Stage</strong>, the Connector and repo are displayed.</li></ul><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1625180234470/clean-shot-2021-07-01-at-15-57-04.png"/></figure><ul><li>Click
+    <strong>Set Up Stage</strong>. The new stage is added to the Pipeline.</li></ul><h3>Step
+    3: Define the Build Farm Infrastructure</h3><p>Here you&#39;ll define the build
+    farm infrastructure and the stage steps.</p><ul><li>In the Build Test and Push
+    stage &gt; Infrastructure tab &gt; Select a Kubernetes Cluster field, click <strong>Select</strong>.</li></ul><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1625180326375/clean-shot-2021-07-01-at-15-58-38.png"/></figure><ul><li>Click
+    <strong>New Connector</strong> and set up the new Connector as follows:<ul><li>Overiew
+    &gt; Name = <strong>cidelegate</strong></li><li>Details: Select <strong>Use the
+    credentials of a specific Harness Delegate</strong>. You&#39;ll add this Delegate
+    next.</li><li>Delegates Setup: Select the Kubernetes Delegate you added earlier
+    using its Tags.</li><li>Connection Test: Wait for the test to finish and then
+    click <strong>Finish</strong>. The new Connector is added to the Kubernetes Cluster
+    field.</li></ul></li><li>In <strong>Namespace</strong>, enter the namespace <code>harness-delegate-ng</code>.
+    Click <strong>Next</strong> to proceed to the Execution tab.</li></ul><p>Now that
+    the build farm infrastructure is set up, you can run unit tests against your code.</p><h3>Step
+    4: Build and Run Unit Tests</h3><p>Next, we&#39;ll add a Run step to the stage
+    that will build the code and run a unit test.</p><ul><li>You should now be in
+    the Execution tab. Click <strong>Add step</strong> and then select <strong>Run</strong>
+    (under Build).</li><li>The Run step executes one or more commands on a container
+    image. Configure the step as follows:<ul><li>Name = <strong>Run Unit Tests</strong>.</li><li>Container
+    Registry: Click <strong>Select</strong> and then <strong>+New Connector</strong>.
+    You will now create a new Connector your DockerHub account as follows:<ul><li>Connector
+    type = <strong>Docker Registry</strong></li><li>Overview &gt; Name = <strong>Docker
+    Quickstart</strong></li><li>Details &gt; Docker Registry URL = <code>https://index.docker.io/v1/</code></li><li>Details
+    &gt; Provider Type = <strong>Docker Hub</strong></li><li>Details &gt; Username
+    = The username for your Docker Hub account</li><li>Details &gt; Password = Create
+    a Harness Secret for the Personal Access Token you use with your Docker Hub account.
+    You can also use your own Secret Manager.</li><li>Delegates Setup: Select the
+    new Delegate you installed previously using its Tags.</li><li>Wait for the Connector
+    test to complete and then click <strong>Finish</strong>.</li></ul></li></ul></li><li>You
+    should now be in the Configure Run Step pane, with the new Connector in the Container
+    Registry setting. Configure the step as follows:<ul><li>Name = <strong>Run Unit
+    Tests</strong></li><li>Container Registry: This should show the Docker Hub Connector
+    you just created.</li><li>Image = <code>golang:1.15</code></li><li>Command:<pre>go
+    get gotest.tools/gotestsum<br/>gotestsum --format=standard-verbose --junitfile
+    unit-tests.xml || true<br/>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags
+    netgo</pre>The last line contains the <code>go build</code> command to compile
+    the package, along with its dependencies.</li><li>Report Paths (Optional Configuration)
+    = <code>*.xml</code></li><li>Click <strong>Apply Changes</strong>.</li></ul></li></ul><p>This
+    <strong>Run</strong> step will intentionally fail the test. It will be useful
+    to see how a test failure is recorded in Harness.</p><h3>Step 5: Build and Push
+    Image to Docker Hub</h3><p>Next, you&#39;ll add a step to build your container
+    and push it to your Docker Hub repo. You&#39;ll need a repo in your Docker Hub
+    account to receive the artifact.</p><ul><li>You should be in the Execution tab
+    of the Pipeline Studio. Click <strong>Add step</strong>, then click <strong>Build
+    and Push an Image to Docker Registry</strong>.</li><li>Configure the step as follows:<ul><li>Name
+    = <strong>Build and push image to Docker Hub</strong></li><li>Docker Connector:
+    Select the Docker Hub Connector you set up previously.</li><li>Docker Repository
+    = <code>&lt;your_repo&gt;/ciquickstart</code><br/>Replace <em><code>&lt;your_repo&gt;</code></em>
+    with the name of the Docker Hub repo you are using for this quickstart.</li><li>Tags
+    = <code>&lt;+pipeline.sequenceId&gt;</code><br/>This tag is a built-in Harness
+    variable that represents the Build ID number, for example <code>Build ID: 9</code>.
+    The pipeline uses the Build ID to tag the image that it pushes in stage 1 and
+    pulls in stage 2. You will see the the Build ID when you run the pipeline. You
+    will also this variable to identify the image location when you set up the <a
+    href="/article/vo4sjbd09g-configure-service-dependency-step-settings">Configure
+    Service Dependency</a> step in the next stage.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611614713927/image.png"/></figure></li><li>Click
+    <strong>Apply Changes</strong> to return to the Pipeline Studio.</li></ul></li><li>Click
+    <strong>Save</strong> to save the Pipeline. You can run the Pipeline now, or you
+    can continue and add the Integration Test stage.</li></ul><h3>Step 6: Create the
+    Integration Test Stage</h3><p>Now you have a stage to clone, test, build, containerize,
+    and then push your image to Docker Hub. In this step you&#39;ll add a stage to
+    pull that image, run it in a container, and run integration tests on it.</p><ul><li>Click
+    <strong>Add Stage</strong>, and select <strong>Build</strong>.</li><li>Enter the
+    name <strong>Run Integration Test</strong>, <u>disable</u> <strong>Clone Codebase</strong>,
+    and then click <strong>Set Up Stage</strong>.</li></ul><h4>Define Stage Infrastructure</h4><p>Here
+    you configure the stage to use the same infrastructure as the previous stage.</p><ul><li>Click
+    <strong>Infrastructure</strong>.</li><li>Select <strong>Propagate from an existing
+    stage</strong>.</li><li>Select the previous stage. This will use the same Kubernetes
+    cluster and namespace as the first stage.</li><li>Click <strong>Next</strong>.</li></ul><h4>Add
+    Built Image from Stage 1 as a Service Dependency</h4><p>In the Build Test and
+    Push stage, you built your code and pushed your built image to Docker Hub. Now,
+    in Run Integration Test, you will identify the image as a Service Dependency for
+    your test stage. Harness will pull the image onto the container in your infrastructure.
+    Next, it will start the Hello World Server in the image.</p><ul><li>In the Run
+    Integration Test stage &gt; Execution tab, click <strong>Add Service Dependency</strong>.</li><li>Configure
+    the dependency:<ul><li>Name = <strong>Run Hello World Server</strong></li><li>Container
+    Registry = The same Docker Hub Connector you used in the Build Test and Push stage.</li><li>Image
+    = <code>&lt;your_repo&gt;/ciquickstart:&lt;+pipeline.sequenceId&gt;</code><br/>Replace
+    <code>&lt;your_repo&gt;</code> with the name of the Docker Hub repo you are using
+    for this quickstart.</li></ul></li></ul><p>Notice that the Image field uses the
+    same variable <code>&lt;+pipeline.sequenceId&gt;</code> for the Image that you
+    used in the previous stage. This tells Harness to pull the image with the same
+    tag as the image pushed previously. Here&#39;s an example:</p><table><tbody><tr><td><p>Build
+    and Test and Push (stage 1)</p><p>Build and Push to Docker Hub step</p></td><td><p>Run
+    Integration Test (stage 2)</p><p>Configure Service Dependency step</p></td></tr><tr><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/lnttltwy0k/1645819266209/ciqs-pipeline-sequence-id-stage-1.png"/></figure></td><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/lnttltwy0k/1645819282177/ciqs-pipeline-sequence-id-stage-2.png"/></figure></td></tr></tbody></table><h4>Add
+    Integration Test Step</h4><p>Next, we can run an integration test. We&#39;ll simply
+    test the connection to the server.</p><ul><li>Click <strong>Add Step</strong>,
+    and then click <strong>Run</strong>.</li><li>Configure the step as follows:<ul><li>Name
+    = <strong>test connection to server</strong></li><li>Container Registry = The
+    Docker Hub Connector you&#39;ve been using.</li><li>Image = <code>curlimages/curl:7.73.0</code></li><li>Command:<pre>sleep
+    10<br/>curl localhost:8080<br/>curl localhost:8080?Hello!_I_am_a_nice_demo!</pre></li><li>Click
+    <strong>Apply Changes</strong>.</li></ul></li></ul><p></p><h3>Step 7: Run the
+    Pipeline</h3><p>The Build Pipeline is complete. You can now run it.</p><ul><li>Click
+    <strong>↑Save</strong>.</li><li>Click <strong>Run</strong>. The Pipeline Inputs
+    settings appear.</li><li>In CI Codebase, click <strong>Git branch</strong>.</li><li>In
+    Git Branch, enter the name of the branch where the codebase is, such as <strong>main</strong>.</li><li>Click
+    <strong>Run</strong> <strong>Pipeline</strong>.</li></ul><h3>Step 8: View the
+    Results</h3><p>Click each stage&#39;s steps to see the logs in real time.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611617833286/image.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></figure><p></p><p>Click
+    <strong>Console View</strong> to see more details.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611617876213/image.png"/></figure><p></p><p>You
+    can see the build number in the <strong>Build and push image to Docker Hub</strong>
+    step used as an image tag. For example, 11:</p><pre>--destination=myrepo/ciquickstart:11</pre><p></p><p>In
+    the Initialize step of the <strong>Run Integration Test</strong> stage, you can
+    see the image with the same tag pulled from your Docker Hub repo:</p><pre>   8
+    Pulling image &#34;myrepo/ciquickstart:11&#34;<br/>   9 Successfully pulled image
+    &#34;myrepo/ciquickstart:11&#34;</pre><p></p><p>Now look in your Docker Hub repo.
+    You can see the image and tag:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618576440/image.png"/></figure><p>Click
+    <strong>Tests</strong>. You can see the failed test from stage 1.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618619341/image.png"/></figure><p>Click
+    <strong>Builds</strong>. Your build appears.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618681950/image.png"/></figure><p></p><p>Congratulations!
+    You have a CI Pipeline that builds and tests your code.</p><h3>Using YAML</h3><p>The
+    entire Pipeline is available as YAML, also.</p><ul><li>In <strong>Builds</strong>,
+    click more options (︙) and select <strong>Edit Pipeline</strong>.</li><li>Click
+    <strong>YAML</strong>.</li></ul><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611618862882/image.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></figure><p>You
+    can see the entire Pipeline as YAML. You can edit anything in the Pipeline and
+    run it again.</p><pre class="hljs yaml">pipeline:<br/>    name: CI Pipeline<br/>    identifier:
+    CI_Pipeline<br/>    allowStageExecutions: false<br/>    projectIdentifier: dsharma_CI_QuickStart<br/>    orgIdentifier:
+    default<br/>    tags: {}<br/>    properties:<br/>        ci:<br/>            codebase:<br/>                connectorRef:
+    CI_QuickStart<br/>                build: &lt;+input&gt;<br/>    stages:<br/>        -
+    stage:<br/>              name: Build Test and Push<br/>              identifier:
+    Build_Test_and_Push<br/>              type: CI<br/>              spec:<br/>                  cloneCodebase:
+    true<br/>                  infrastructure:<br/>                      type: KubernetesDirect<br/>                      spec:<br/>                          connectorRef:
+    cidelegate2<br/>                          namespace: harness-delegate-ng<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                type: Run<br/>                                name:
+    Run Unit Tests<br/>                                identifier: Run_Unit_Tests<br/>                                spec:<br/>                                    connectorRef:
+    Docker_Quickstart<br/>                                    image: golang:1.15<br/>                                    command:
+    |-<br/>                                        go get gotest.tools/gotestsum<br/>                                        gotestsum
+    --format=standard-verbose --junitfile unit-tests.xml || true<br/>                                        CGO_ENABLED=0
+    GOOS=linux GOARCH=amd64 go build -a -tags netgo<br/>                                    reports:<br/>                                        type:
+    JUnit<br/>                                        spec:<br/>                                            paths:<br/>                                                -
+    &#34;*.xml&#34;<br/>                          - step:<br/>                                type:
+    BuildAndPushDockerRegistry<br/>                                name: Build and
+    push image to Docker Hub<br/>                                identifier: Build_and_push_image_to_Docker_Hub<br/>                                spec:<br/>                                    connectorRef:
+    Docker_Quickstart<br/>                                    repo: dsharma/ciquickstart<br/>                                    tags:<br/>                                        -
+    &lt;+pipeline.sequenceId&gt;<br/>        - stage:<br/>              name: Run
+    Integration Test<br/>              identifier: Run_Integration_Test<br/>              type:
+    CI<br/>              spec:<br/>                  cloneCodebase: false<br/>                  infrastructure:<br/>                      useFromStage:
+    Build_Test_and_Push<br/>                  serviceDependencies:<br/>                      -
+    identifier: Run_Hello_World_Server<br/>                        name: Run Hello
+    World Server<br/>                        type: Service<br/>                        spec:<br/>                            connectorRef:
+    Docker_Quickstart<br/>                            image: dsharma/ciquickstart:&lt;+pipeline.sequenceId&gt;<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                type: Run<br/>                                name:
+    test connection to server<br/>                                identifier: test_connection_to_server<br/>                                spec:<br/>                                    connectorRef:
+    Docker_Quickstart<br/>                                    image: curlimages/curl:7.73.0<br/>                                    command:
+    |-<br/>                                        sleep 10<br/>                                        curl
+    localhost:8080<br/>                                        curl localhost:8080?Hello!_I_am_a_nice_demo!</pre><p></p><p></p>'
+  slug: draft-ci-quick-start-v-2
+  tags: []
+  is_live: true

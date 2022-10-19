@@ -1,0 +1,177 @@
+type: article
+article_id: f0aqiv3td7
+user_id: 2te4j9f9g7
+category_id: pm96bpz4kf
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Harness API Quickstart
+slug: api-quickstart
+description: This document explains the steps to get started with Harness NG APIs.
+short_version: This document explains the steps to get started with Harness NG APIs.
+tags:
+- API
+- Platform
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T18:53:29.266919Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness API Quickstart
+  description: This document explains the steps to get started with Harness NG APIs.
+  short_version: This document explains the steps to get started with Harness NG APIs.
+  body: '<p>Everything you can create in the Harness Manager you can create using
+    our REST APIs.</p><p>This quickstart shows how to onboard Harness resources using
+    the APIs. We&#39;ll add a new Project, Connector, and Pipeline using curl and
+    the APIs.</p><div class="note-callout"><strong>Looking for the API reference docs?</strong>
+    See <a href="https://harness.io/docs/api/" target="_blank">Harness API Reference
+    Docs</a>.</div><h3>Objectives</h3><p>You&#39;ll learn how to:</p><ul><li>Authenticate
+    with Harness via API using API keys.</li><li>Onboard Harness Projects, Connectors,
+    and Pipelines using the Harness API.</li></ul><div class="note-callout">The API
+    requests in this topic use curl, but Harness supports multiple languages, such
+    as Go, Java, and Node.js. The <a href="https://harness.io/docs/api/" target="_blank">Harness
+    API Reference Docs</a> provides examples for all supported languages.</div><h3>Before
+    You Begin</h3><ul><li><a href="https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a></li><li><a href="/article/vz5cq0nfg2">Access Management(RBAC)
+    Overview</a></li><li>This quickstart walks you through adding the Harness API
+    keys needed to authenticate with the API. To review Harness API keys, see <a href="https://ngdocs.harness.io/article/tdoad7xrh9">Add
+    and Manage API Keys</a>.</li><li>Make sure your Harness account has the required
+    permissions to Create, Edit, Delete, and View the Harness resources you are creating
+    via API. Any of the following default roles are sufficient: Account Administrator,
+    Organization Admin, Project Admin. For more, see <a href="https://ngdocs.harness.io/article/yaornnqh0z">Permissions
+    Reference</a>.</li></ul><h3>Step 1: Create a Harness API Key and PAT</h3><p>The
+    Harness API uses API keys to authenticate requests. You create the API key in
+    your Harness Manager User Profile, add a Personal Access Token (PAT) to the key,
+    and then use the PAT in your API requests.</p><div class="note-callout">For an
+    overview of Harness API keys, see <a href="/article/tdoad7xrh9">Add and Manage
+    API Keys</a>.</div><p>Let&#39;s create the API key and its Personal Access Token.</p><p>Here&#39;s
+    a quick visual summary:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407720427/clean-shot-2021-11-08-at-13-37-44.gif"/></figure><h4
+    id="undefined">Create API Key</h4><p>In Harness, navigate to your <strong>Profile</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636406930993/clean-shot-2021-11-08-at-13-28-24-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>My API Keys</strong>, Click <strong>API Key</strong>. The API Key settings
+    appear.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407815962/clean-shot-2021-11-08-at-13-43-23-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Enter
+    <strong>Name, Description,</strong> and <strong>Tags</strong> for your API.</p><p>Click
+    <strong>Save</strong>. The new API Key is created.</p><h4 id="undefined">Create
+    Personal Access Token</h4><p>Next, we&#39;ll add the Personal Access Token (PAT)
+    that you will use when you make API requests.</p><p>Click <strong>Token</strong> below
+    the API Key you just created.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636408087557/clean-shot-2021-11-08-at-13-47-58-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    the <strong>New Token</strong> settings, enter a Name, Description, and Tags.</p><p>To
+    set an expiration date for this token, select <strong>Set Expiration Date</strong>
+    and enter the date in <strong>Expiration Date (mm/dd/yyyy)</strong>.</p><p>Click <strong>Generate
+    Token</strong>.</p><p>Your new token is generated.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636390414362/clean-shot-2021-11-08-at-08-53-10.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><div
+    class="warning-callout">Please copy and store your token value somewhere safe.
+    You won&#39;t be able to see it again.<br/><br/>Your API keys carry many privileges,
+    so be sure not to share them in publicly accessible areas. Make sure you always
+    use the updated API Key value after you rotate the token. For more details, see
+    <a href="https://ngdocs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#rotate_token">Rotate
+    Token</a>.</div><h4>Service Account Tokens</h4><p>You can also use a Service Account
+    Tokens instead of PAT. See <a href="/article/e5p4hdq6bd">Add and Manage Service
+    Accounts</a>.</p><h3>Step 2: Create a Project via API</h3><p>Now that we have
+    our token, we can create a Harness Project. A Harness <a href="/article/hv2758ro4e-learn-harness-key-concepts#organizations_and_projects">Project</a>
+    is a group of Harness modules and their Pipelines.</p><p>To send the API request,
+    you will need your Harness account Id and the token you created.</p><p>The account
+    Id can be found in every URL when using Harness following <code>account</code>:</p><pre>https://app.harness.io/ng/#/account/{accountid}/home/get-started</pre><p></p><p>Open
+    a terminal to run the API request.</p><p>We&#39;re going to create this Project
+    in the built-in <strong>default</strong> Organization. If you want to use a different
+    Org, just replace the instances of <strong>default</strong> in the command.</p><p>Copy
+    the following curl command and paste it into a text editor:</p><pre>curl --location
+    --request POST &#39;https://app.harness.io/gateway/ng/api/projects?accountIdentifier={accountIdentifier}&amp;orgIdentifier=default&#39;
+    \<br/>--header &#39;Content-Type: application/yaml&#39; \<br/>--header &#39;x-api-key:
+    {api-key}&#39; \<br/>--data-raw &#39;project:<br/>  name: APISample<br/>  orgIdentifier:
+    default<br/>  color: &#34;#0063F7&#34;<br/>  description: &#39;&#39;<br/>  identifier:
+    APISample<br/>  tags: {}<br/>  modules: []&#39;</pre><p></p><p>Replace <code>{accountidentifier}</code>
+    with your Harness account Id and <code>{api-key}</code> with the PAT you created.</p><p>Paste
+    the updated curl command into a terminal and run it.</p><p>The successful response
+    will be something like this:</p><pre>{&#34;status&#34;:&#34;SUCCESS&#34;,&#34;data&#34;:{&#34;project&#34;:{&#34;orgIdentifier&#34;:&#34;default&#34;,&#34;identifier&#34;:&#34;APISample&#34;,&#34;name&#34;:&#34;APISample&#34;,&#34;color&#34;:&#34;#0063F7&#34;,&#34;modules&#34;:[&#34;CD&#34;,&#34;CI&#34;,&#34;CV&#34;,&#34;CF&#34;,&#34;CE&#34;,&#34;CORE&#34;,&#34;PMS&#34;,&#34;TEMPLATESERVICE&#34;],&#34;description&#34;:&#34;&#34;,&#34;tags&#34;:{}},&#34;createdAt&#34;:1636410020671,&#34;lastModifiedAt&#34;:1636410020671},&#34;metaData&#34;:null,&#34;correlationId&#34;:&#34;3aa01bdd-e45c-4eb2-a65d-7673ec287fcc&#34;}</pre><p></p><p>Open
+    Harness to see your new Project (you might need to refresh the Project page):</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636410188051/clean-shot-2021-11-08-at-14-22-53-2-x.png"/></figure><p></p><h3>Step
+    3: Create a Connector via API</h3><p>A Harness Connector contains the information
+    necessary to integrate and work with 3rd party tools.</p><p>Harness uses Connectors
+    at Pipeline runtime to authenticate and perform operations with a 3rd party tool.</p><p>Let&#39;s
+    create a <a href="/article/u9bsd77g5a-docker-registry-connector-settings-reference">Docker
+    Registry Connector</a> that connects to DockerHub anonymously.</p><p>Copy the
+    following curl command:</p><pre>curl --location --request POST &#39;https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&#39;
+    \<br/>--header &#39;Content-Type: text/yaml&#39; \<br/>--header &#39;x-api-key:
+    pat.6186f434cce56f2962ae9bbf.HpGoIx7O4ZvFSE4rEuuF&#39; \<br/>--data-raw &#39;connector:<br/>  name:
+    dockerhub<br/>  identifier: dockerhub<br/>  description: &#34;&#34;<br/>  tags:
+    {}<br/>  orgIdentifier: default<br/>  projectIdentifier: APISample<br/>  type:
+    DockerRegistry<br/>  spec:<br/>    dockerRegistryUrl: https://index.docker.io/v2/<br/>    providerType:
+    DockerHub<br/>    auth:<br/>      type: Anonymous&#39;</pre><p></p><p>Replace
+    <code>{accountidentifier}</code> with your Harness account Id and <code>{api-key}</code>
+    with the PAT you created.</p><p>Paste the updated curl command into a terminal
+    and run it.</p><p>The successful response will be something like this:</p><pre>{&#34;status&#34;:&#34;SUCCESS&#34;,&#34;data&#34;:{&#34;connector&#34;:{&#34;name&#34;:&#34;dockerhub&#34;,&#34;identifier&#34;:&#34;dockerhub&#34;,&#34;description&#34;:&#34;&#34;,&#34;orgIdentifier&#34;:&#34;default&#34;,&#34;projectIdentifier&#34;:&#34;APISample&#34;,&#34;tags&#34;:{},&#34;type&#34;:&#34;DockerRegistry&#34;,&#34;spec&#34;:{&#34;dockerRegistryUrl&#34;:&#34;https://index.docker.io/v2/&#34;,&#34;providerType&#34;:&#34;DockerHub&#34;,&#34;auth&#34;:{&#34;type&#34;:&#34;Anonymous&#34;},&#34;delegateSelectors&#34;:[]}},&#34;createdAt&#34;:1636476303660,&#34;lastModifiedAt&#34;:1636476303657,&#34;status&#34;:null,&#34;activityDetails&#34;:{&#34;lastActivityTime&#34;:1636476303657},&#34;harnessManaged&#34;:false,&#34;gitDetails&#34;:{&#34;objectId&#34;:null,&#34;branch&#34;:null,&#34;repoIdentifier&#34;:null,&#34;rootFolder&#34;:null,&#34;filePath&#34;:null},&#34;entityValidityDetails&#34;:{&#34;valid&#34;:true,&#34;invalidYaml&#34;:null}},&#34;metaData&#34;:null,&#34;correlationId&#34;:&#34;fab579bc-bc6f-46d1-95be-d6ed02844cd4&#34;}</pre><p></p><p>Take
+    a look at your new Connector in Harness:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636476384956/clean-shot-2021-11-09-at-08-46-17-2-x.png"/></figure><h3>Step
+    4: Create a Pipeline</h3><p>A CD Pipeline is an end-to-end process that delivers
+    a new version of your software.</p><p>Let&#39;s create a simple CD Pipeline that
+    contains a Shell Script step that echoes &#34;hello world!&#34;.</p><div class="note-callout">The
+    Pipeline uses <a href="/article/f6yobn7iq0-runtime-inputs">Runtime Inputs</a>
+    (<code>&lt;+input&gt;</code>) for most settings.</div><p>Copy the following curl
+    command:</p><pre>curl --location --request POST &#39;https://app.harness.io/gateway/pipeline/api/pipelines?accountIdentifier={accountidentifier}&amp;orgIdentifier=default&amp;projectIdentifier=APISample&#39;
+    \<br/>--header &#39;Content-Type: application/yaml&#39; \<br/>--header &#39;x-api-key:
+    {api-key}&#39; \<br/>--data-raw &#39;pipeline:<br/>    name: apiexample<br/>    identifier:
+    apiexample<br/>    projectIdentifier: APISample<br/>    orgIdentifier: default<br/>    tags:
+    {}<br/>    stages:<br/>        - stage:<br/>              name: demo<br/>              identifier:
+    demo<br/>              description: &#34;&#34;<br/>              type: Deployment<br/>              spec:<br/>                  serviceConfig:<br/>                      serviceRef:
+    &lt;+input&gt;<br/>                      serviceDefinition:<br/>                          type:
+    Kubernetes<br/>                          spec:<br/>                              variables:
+    []<br/>                  infrastructure:<br/>                      environmentRef:
+    &lt;+input&gt;<br/>                      infrastructureDefinition:<br/>                          type:
+    KubernetesDirect<br/>                          spec:<br/>                              connectorRef:
+    &lt;+input&gt;<br/>                              namespace: &lt;+input&gt;<br/>                              releaseName:
+    release-&lt;+INFRA_KEY&gt;<br/>                      allowSimultaneousDeployments:
+    false<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                type: ShellScript<br/>                                name:
+    shell<br/>                                identifier: shell<br/>                                spec:<br/>                                    shell:
+    Bash<br/>                                    onDelegate: true<br/>                                    source:<br/>                                        type:
+    Inline<br/>                                        spec:<br/>                                            script:
+    echo &#34;hello world!&#34;<br/>                                    environmentVariables:
+    []<br/>                                    outputVariables: []<br/>                                    executionTarget:
+    {}<br/>                                timeout: 10m<br/>                      rollbackSteps:
+    []<br/>              tags: {}<br/>              failureStrategies:<br/>                  -
+    onFailure:<br/>                        errors:<br/>                            -
+    AllErrors<br/>                        action:<br/>                            type:
+    StageRollback&#39;</pre><p></p><div class="note-callout">This sample using <a
+    href="/article/f6yobn7iq0-runtime-inputs">Runtime Inputs</a> for many settings.</div><p>Replace
+    <code>{accountidentifier}</code> with your Harness account Id and <code>{api-key}</code>
+    with the PAT you created.</p><p>Paste the updated curl command into a terminal
+    and run it.</p><p>The successful response will be something like this:</p><pre>{&#34;status&#34;:&#34;SUCCESS&#34;,&#34;data&#34;:&#34;apiexample&#34;,&#34;metaData&#34;:null,&#34;correlationId&#34;:&#34;6375a5cc-f1ce-4a82-9428-0cf6ead6140c&#34;}</pre><p></p><p>Take
+    a look at your new Pipeline in Harness:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636412672147/clean-shot-2021-11-08-at-15-04-19-2-x.png"/></figure><p>You&#39;re
+    all done.</p><p>In this tutorial, you learned how to:</p><ul><li>Authenticate
+    with Harness via API using API keys.</li><li>Onboard Harness Projects, Connectors,
+    and Pipelines using the Harness API.</li></ul><p>To explore the Harness API, see
+    <a href="https://harness.io/docs/api/" target="_blank">Harness API Reference Docs</a>.</p><h3>Notes</h3><ul><li><strong>Rate
+    Limiting:</strong> the Harness API does not impose any rate limits per account.
+    Harness reserves the right to change these limits, to optimize performance for
+    all API consumers.</li><li><strong>Cross-origin Resource Sharing (CORS):</strong>
+    Harness APIs support CORS. This allows interactions between resources from different
+    origins, which is normally prohibited to prevent malicious behavior. Each request
+    must provide credentials (personal access tokens and service access tokens are
+    both supported options).</li><li><strong>Errors:</strong> Harness uses conventional
+    HTTP response codes to indicate the success or failure of an API request.</li></ul><p></p><table><tbody><tr><td><p><strong>HTTPS
+    Status Code</strong></p></td><td><p><strong>Summary</strong></p></td></tr><tr><td><p>200
+    - OK</p></td><td><p>The request has been processed successfully on the server.</p></td></tr><tr><td><p>400
+    - Bad Request</p></td><td><p>The request was not processed successfully due to
+    incorrect syntax or missing parameters.</p></td></tr><tr><td><p>401 - Unauthorized</p></td><td><p>The
+    request was unauthorized due to an invalid API Key.</p></td></tr><tr><td><p>402
+    - Request Failed</p></td><td><p>The request cannot be processed.</p></td></tr><tr><td><p>403
+    - Forbidden</p></td><td><p>The API Key does not have permission to perform the
+    request.</p></td></tr><tr><td><p>404 - Not Found</p></td><td><p>The requested
+    resource does not exist.</p></td></tr><tr><td><p>500, 502, 503, 504 - Server Errors</p></td><td><p>The
+    Harness server encountered an unexpected error.</p></td></tr></tbody></table><p></p><p></p>'
+  slug: api-quickstart
+  tags:
+  - API
+  - Platform
+  is_live: true

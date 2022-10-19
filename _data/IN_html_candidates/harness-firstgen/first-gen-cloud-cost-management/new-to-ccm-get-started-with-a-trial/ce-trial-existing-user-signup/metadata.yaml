@@ -1,0 +1,215 @@
+type: article
+article_id: lu6yuqg40y
+user_id: slcpusem6b
+category_id: hnt1d9epg8
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: CCM Trial Existing User Signup (formerly CE)
+slug: ce-trial-existing-user-signup
+description: Harness Cloud Cost Management (CCM) is a solution that provides engineers
+  and DevOps granular detail of their resource consumption hourly. CCM is designed
+  to bring cloud cost analysis and management…
+short_version: Harness Cloud Cost Management (CCM) is a solution that provides engineers
+  and DevOps granular detail of their resource consumption hourly. CCM is designed
+  to bring cloud cost analysis and management…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:01.835332Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CCM Trial Existing User Signup (formerly CE)
+  description: ""
+  short_version: ""
+  body: '<p></p><p>Harness Cloud Cost Management (CCM) is a solution that provides
+    engineers and DevOps granular detail of their resource consumption hourly. CCM
+    is designed to bring cloud cost analysis and management into the hands of the
+    engineers consuming cloud resources.</p><p>Harness CCM trial edition is a free
+    15-day trial of almost all Harness Professional features. During the trial period,
+    you can enable Cloud Cost Management for a maximum of two clusters and one cloud
+    account (AWS or GCP).</p><p>Once the trial period ends, it provides an additional
+    15-days grace period. However, during the grace period, you will not be able to
+    drill down into the details of your costs.</p><p>Whether you are <a href="/article/c01cf8twvb-setup-ce-harness-editions#new_user">new</a>
+    to Harness or an <a href="/article/lu6yuqg40y-ce-trial-existing-user-signup#existing_user">existing</a>
+    Harness user, feel free to take Harness CCM out for a spin.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/lu6yuqg40y/1619507155302/screenshot-2021-04-27-at-11-01-30-am.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><p></p><h3>Before
+    You Begin</h3><ul><li> <a href="https://docs.harness.io/article/rr85306lq8-continuous-efficiency-overview">Cloud
+    Cost Management Overview</a></li><li> <a href="/article/y1t8hhz4y5-harness-editions">Harness
+    Products and Editions</a></li><li> <a href="https://docs.harness.io/article/lu6yuqg40y-ce-trial-existing-user-signup#is_harness_delegate_running_in_your_kubernetes_cluster">Is
+    Harness Delegate Running in Your Kubernetes Cluster?</a></li></ul><h3>Existing
+    User</h3><div class="note-callout">You need to have Harness Account Administrator
+    permissions to sign up for the CCM trial edition.</div><p>If you are an existing
+    Harness user and want to sign up for the CCM trial edition, perform the following
+    steps:</p><ol><li>In <strong>Cloud Cost Management</strong>, click <strong>Settings</strong>.</li><li>In
+    <strong>Cloud Integration</strong>, select the Kubernetes cluster or cloud account
+    for which you want to enable Cloud Cost Management. You can add the following:<ol><li><strong>Kubernetes</strong>:
+    In your Kubernetes cluster the Harness Delegate may or may not be installed.<ol><li>If
+    you do not have a Delegate installed in your target infrastructure, see <a href="https://docs.harness.io/article/lu6yuqg40y-ce-trial-existing-user-signup#set_up_cost_visibility_for_kubernetes">Set
+    Up Cost Visibility for Kubernetes</a>.</li><li>If the Delegate is already running
+    in the Kubernetes cluster that you want to monitor, see <a href="https://docs.harness.io/article/lu6yuqg40y-ce-trial-existing-user-signup#is_harness_delegate_running_in_your_kubernetes_cluster">Is
+    Harness Delegate Running in Your Kubernetes Cluster?</a>.</li></ol></li><li><strong>AWS</strong>:
+    For detailed instructions, see <a href="https://docs.harness.io/article/lu6yuqg40y-ce-trial-existing-user-signup#set_up_cost_visibility_for_aws">Set
+    Up Cost Visibility for AWS</a>.</li><li><strong>GCP</strong>: For detailed instructions,
+    see <a href="https://docs.harness.io/article/lu6yuqg40y-ce-trial-existing-user-signup#set_up_cost_visibility_for_gcp">Set
+    Up Cost Visibility for GCP</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lu6yuqg40y/1619508832664/screenshot-2021-04-27-at-1-02-59-pm.png"
+    style="max-height:90%;max-width:90%" data-hd-height="90%" data-hd-width="90%"/></figure></li></ol></li></ol><h3>Set
+    Up Cost Visibility for Kubernetes</h3><p>Harness Cloud Cost Management (CCM) monitors
+    the cloud costs of your Kubernetes clusters, namespaces, nodes, workloads, and
+    labels.</p><div class="note-callout">Once you enable CCM, for the first cluster
+    the data is available within a few minutes for viewing and analysis. However,
+    you will not see the idle cost because of the lack of utilization data. CCM generates
+    the last 30 days of the cost data based on the first events.<br/><br/>From the
+    second cluster onwards, it takes about 2–3 hours for the data to be available
+    for viewing and analysis.</div><ol><li>In <strong>Cloud Cost Management</strong>,
+    click <strong>Settings</strong>.</li><li>In <strong>Cloud Integration</strong>,
+    click <strong>Add a Kubernetes cluster</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/c01cf8twvb/1606245305003/screenshot-2020-11-24-at-12-13-54-pm.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>In
+    <strong>Download Delegate</strong>, enter the name that will appear in CCM Explorer
+    to identify this cluster.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/hrdw3foy2r/1604054772380/screenshot-2020-10-30-at-4-15-53-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click
+    <strong>Download YAML file</strong>.<br/><div class="note-callout">The YAML file
+    has all the access defined to enable the Harness Kubernetes Delegate to monitor
+    your cluster costs. It also has the Service account details to install and run
+    the Harness Kubernetes Delegate with ClusterRole to access resource metrics.</div></li><li>In
+    the Terminal you used to connect to the Kubernetes cluster, run the following
+    command:<br/><br/><code>kubectl apply -f ~/Downloads/harness-delegate-kubernetes.yaml</code><br/><div
+    class="note-callout">Ensure that you are connected to the Kubernetes cluster.</div></li><li>Click
+    <strong>Done</strong>.<br/><br/>Once the Delegate is connected to your Kubernetes
+    cluster, the status turns green.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/kuiuc6x257/1603965307289/screenshot-2020-10-29-at-11-18-14-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click
+    <strong>Finish</strong>.<br/><br/>The Kubernetes cluster is now listed under <strong>Added
+    Kubernetes Clusters</strong>. Once CCM has data, the cluster is listed in <strong>Cost
+    Explorer</strong>.</li></ol><h3>Is Harness Delegate Running in Your Kubernetes
+    Cluster?</h3><p>Harness Cloud Cost Management (CCM) monitors the cloud costs of
+    your Kubernetes clusters, namespaces, nodes, workloads, and labels. This topic
+    describes how to enable Cloud Cost Management (CCM) for Kubernetes using an existing
+    Harness Delegate.</p><ul><li><strong>Provide</strong> <strong>CCM Permissions
+    to Harness Delegate</strong>: If the Delegate is already running in the Kubernetes
+    cluster that you want to monitor, the Service account you used to install and
+    run the Harness Kubernetes Delegate is granted a special <code>ClusterRole</code> for
+    accessing the resource metrics. For more information, see <a href="/article/kuiuc6x257-enable-continuous-efficiency-for-kubernetes#step_2_provide_ccm_permissions_to_harness_delegate">Provide
+    CCM Permissions to Harness Delegate</a>.</li><li><strong>Use Single Harness Delegate
+    to Access Multiple Kubernetes Clusters</strong>: You can use a single Harness
+    Delegate to access multiple Kubernetes clusters. To do so, you need to enter specific
+    credentials manually. For more information, see <a href="https://harness.helpdocs.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#option_2_enter_manually">Enter
+    manually</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/kuiuc6x257/1606977710944/screenshot-2020-12-03-at-12-11-05-pm.png"
+    style="max-height:55%;max-width:55%" data-hd-height="55%" data-hd-width="55%"/></figure></li></ul><h4>Prerequisites</h4><ul><li>Each
+    Kubernetes cluster you want to monitor must have a Harness Delegate and Cloud
+    Provider associated with it.</li><li>Before enabling CCM for Kubernetes, you must
+    ensure the utilization data for pods and nodes is available. To do so, perform
+    the following steps:</li></ul><h5>Step 1: Install Kubernetes Metrics Server</h5><p>Metrics
+    Server must be running on the Kubernetes cluster where your Harness Kubernetes
+    Delegate is installed.</p><p>Metrics Server is a cluster-wide aggregator of resource
+    usage data. It collects resource metrics from kubelets and exposes them in the
+    Kubernetes API server through Metrics API. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html"
+    target="_blank">Installing the Kubernetes Metrics Server</a> from AWS.</p><div
+    class="note-callout">Metrics Server is installed by default on GKE and AKS clusters,
+    however, you need to install it on the AWS EKS cluster.</div><p>To install metrics
+    server on your EKS clusters, run the following command:</p><p></p><pre>kubectl
+    apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml</pre><p></p><h5>Step
+    2: Provide CCM Permissions to Harness Delegate</h5><p>Bind the cluster-admin ClusterRole
+    to a user account. Next, you will use this user account to create a ClusterRole
+    and bind it to the Service account used by the Delegate.</p><ol><li>Bind a user
+    account to the user in cluster-admin ClusterRole. You will use this user account
+    to create a ClusterRole and bind it to the Harness Kubernetes Delegate Service
+    account later.<br/><br/><pre>kubectl create clusterrolebinding cluster-admin-binding
+    \<br/>--clusterrole cluster-admin \<br/>--user &lt;firstname.lastname@example.com&gt;</pre></li><li>Obtain
+    the Service account name and namespace used by the Harness Kubernetes Delegate.
+    By default, when you installed the Kubernetes Delegate, the following were used:<br/><br/><pre>name:
+    default<br/>namespace: harness-delegate</pre>If you have changed these, obtain
+    the new name and namespace.</li><li>Download the <a href="https://raw.githubusercontent.com/harness/continuous-efficiency/master/config/ce-default-k8s-cluster-role.yaml">ce-default-k8s-cluster-role.yaml</a>
+    file from Harness.<br/><br/>The <code>Subjects</code> section of the ClusterRoleBinding
+    is configured with the default Delegate Service account name (<code>default</code>)
+    and namespace (<code>harness-delegate</code>).<br/><br/>If you have changed these
+    defaults, update the ce-default-k8s-cluster-role.yaml file before running it.</li><li>Once
+    you have downloaded the file, connect to your Kubernetes cluster and run the following
+    command in your Kubernetes cluster:<br/><br/><pre>kubectl apply -f ce-default-k8s-cluster-role.yaml</pre></li><li>Verify
+    that you have all the required permissions for the Service account using the following
+    commands:<br/><pre>kubectl auth can-i watch pods <br/>--as=system:serviceaccount:&lt;your-namespace&gt;:&lt;your-service-account&gt;
+    <br/>--all-namespaces<br/>kubectl auth can-i watch nodes <br/>--as=system:serviceaccount:&lt;your-namespace&gt;:&lt;your-service-account&gt;
+    <br/>--all-namespaces</pre><br/><pre>kubectl auth can-i get nodemetrics <br/>--as=system:serviceaccount:&lt;your-namespace&gt;:&lt;your-service-account&gt;
+    <br/>--all-namespaces<br/>kubectl auth can-i get podmetrics <br/>--as=system:serviceaccount:&lt;your-namespace&gt;:&lt;your-service-account&gt;
+    <br/>--all-namespaces</pre><br/>Here is an example showing the commands and output
+    using the default Delegate Service account name and namespace:<br/><br/><pre>$
+    kubectl auth can-i watch pods --as=system:serviceaccount:harness-delegate:default
+    --all-namespaces<br/>yes<br/>$ kubectl auth can-i watch nodes --as=system:serviceaccount:harness-delegate:default
+    --all-namespaces                                                                    <br/>yes<br/>$
+    kubectl auth can-i watch nodemetrics --as=system:serviceaccount:harness-delegate:default
+    --all-namespaces                                                              <br/>yes<br/>$
+    kubectl auth can-i watch podmetrics --as=system:serviceaccount:harness-delegate:default
+    --all-namespaces <br/>yes</pre></li></ol><h4>Step: Enable Cloud Cost Management</h4><p>To
+    enable CCM in your cloud environment, you simply need to enable it on the Harness
+    Kubernetes Cloud Provider that connects to your target cluster.</p><div class="note-callout">Once
+    you enable CCM, for the first cluster the data is available immediately for viewing
+    and analysis. However, you will not see the idle cost because of the lack of utilization
+    data. CCM generates the last 30 days of the cost data based on the first events.<br/><br/>From
+    the second cluster onwards, it takes about 2-3 hours for the data to be available
+    for viewing and analysis.</div><ol><li>In <strong>Cloud Cost Management</strong>,
+    click <strong>Settings</strong>.</li><li>In <strong>Cloud Integration</strong>,
+    in <strong>Added Kubernetes Clusters</strong>, select the Kubernetes cluster for
+    which you want to enable Cloud Cost Management.<br/>You can also click <strong>Enable
+    Cloud Cost Management</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lu6yuqg40y/1619511445508/screenshot-2021-04-27-at-1-46-58-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li><li>In
+    <strong>Display Name</strong>, enter the name that will appear in CCM Explorer
+    to identify this cluster. Typically, this is the cluster name.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lu6yuqg40y/1619511911826/screenshot-2021-04-27-at-1-52-42-pm.png"
+    style="max-height:55%;max-width:55%" data-hd-height="55%" data-hd-width="55%"/></figure></li><li>In
+    <strong>Cluster Details</strong>, select:<ol><li><strong>Inherit from selected
+    Delegate</strong>: (Recommended) Select this option if the Kubernetes cluster
+    is the same cluster where the Harness delegate was installed. <ol><li><strong>Delegate
+    Name</strong>: Select the Delegate.</li></ol></li><li><strong>Enter manually</strong>:
+    In this option, the Cloud Provider uses the credentials that you enter manually.
+    The Delegate uses these credentials to send deployment tasks to the cluster. The
+    Delegate can be outside or within the target cluster.<div class="note-callout">Use
+    this option, if you wish to use a single Delegate to access multiple Kubernetes
+    clusters. To do so, you need to enter specific credentials manually. For more
+    information, see <a href="https://harness.helpdocs.io/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider#option_2_enter_manually">Enter
+    manually</a>.</div><ol><li><strong>Master Url</strong>: The Kubernetes master
+    node URL. The easiest method to obtain the master URL is using kubectl:<br/><code>kubectl
+    cluster-info</code></li></ol></li></ol></li><li>Click <strong>Next</strong>.</li><li>Select
+    the checkbox <strong>Enable Cloud Cost Management</strong> and click <strong>Submit</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/lu6yuqg40y/1619511819845/screenshot-2021-04-27-at-1-49-11-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><br/>The
+    Kubernetes Cloud Provider is now listed under <strong>Efficiency Enabled</strong>.<br/><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/lu6yuqg40y/1619512576701/screenshot-2021-04-27-at-2-03-47-pm.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li></ol><p></p><p>Once
+    CCM has data, the cluster is listed in <strong>Cost Explorer</strong>. The cluster
+    is identified by the <strong>Display Name</strong> you used in the Kubernetes
+    Cloud Provider.</p><h3>Set Up Cost Visibility for GCP</h3><p>Harness Cloud Cost
+    Management (CCM) monitors cloud costs using your GCP products, projects, SKUs,
+    and location. As a first step, you connect Harness to your GCP account to get
+    insights into your cloud infrastructure and GCP services, Compute Engine Cloud
+    Storage, BigQuery, etc. </p><ol><li>In <strong>Cloud Cost Management</strong>,
+    click <strong>Settings</strong>.</li><li>In <strong>Cloud Integration</strong>,
+    click <strong>Add a GCP billing account</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/c01cf8twvb/1606236506594/screenshot-2020-11-24-at-10-18-05-pm.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>For
+    detailed instructions on how to enable CCM for your GCP account, see <a href="/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp">Set
+    Up Cost Visibility for GCP</a>.</li></ol><h3>Set Up Cost Visibility for AWS</h3><p>Harness
+    Cloud Cost Management (CCM) monitors cloud costs using your Amazon Web Services
+    (AWS). Connect your AWS account to Harness to get insights into your expenses
+    across your cloud infrastructure and AWS services, such as EC2, S3, RDS, Lambda,
+    and so on.</p><ol><li>In <strong>Cloud Cost Management</strong>, click <strong>Settings</strong>.</li><li>In
+    <strong>Cloud Integration</strong>, click <strong>Add a AWS billing account</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/c01cf8twvb/1606236528521/screenshot-2020-11-24-at-10-18-12-pm.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>For
+    detailed instructions on how to enable CCM for your AWS services (such as EC2,
+    S3, RDS, Lambda, and so on), see <a href="/article/5ql31pdjcm-enable-continuous-efficiency-for-aws">Set
+    Up Cost Visibility for AWS</a>.</li></ol><h3 id="undefined">Next Steps</h3><ul><li><a
+    href="https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough">Cost Explorer
+    Walkthrough</a></li><li><a href="/article/4rq26sszja-analyze-cost-trends-across-clusters">Analyze
+    Cost for Kubernetes</a></li><li><a href="/article/244q2uv4or-analyze-cost-trends-for-aws">Analyze
+    Cost for AWS</a></li><li><a href="/article/oo4vs4exhz-analyze-cost-for-gcp">Analyze
+    Cost for GCP</a></li><li><a href="https://docs.harness.io/article/v7eaaq98vo-perform-root-cause-analysis">Perform
+    Root Cost Analysis</a></li></ul><p></p>'
+  slug: ce-trial-existing-user-signup
+  tags: []
+  is_live: true

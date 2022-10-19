@@ -1,0 +1,151 @@
+type: article
+article_id: nxhlbmbgkj
+user_id: mfr0nxh4be
+category_id: 2p8b4otu10
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Common Delegate Scripts
+slug: common-delegate-profile-scripts
+description: Learn about Delegate Profile script availability and some common Delegate
+  Profile scripts.
+short_version: Learn about Delegate Profile script availability and some common Delegate
+  Profile scripts.
+tags:
+- Profiles
+- Delegate Profile
+- Delegate Profile script
+- Terraform
+- Helm
+- AWS CLI
+- Git CLI
+- Cloud Foundry
+- Docker
+- TLS certificate
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-06-08T18:13:00.867351Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Common Delegate Scripts
+  description: Learn about Delegate Profile script availability and some common Delegate
+    Profile scripts.
+  short_version: Learn about Delegate Profile script availability and some common
+    Delegate Profile scripts.
+  body: <p>A Delegate <code>INIT</code> environment variable enables you to run a
+    startup script on the host/container/pod for a Harness Delegate when the Delegate
+    is installed or restarted.</p><p>For information on Delegate INIT, see <a href="/article/ul6qktixip-run-initialization-scripts-on-delegates">Run
+    Initialization Scripts on Delegates</a>.</p><p>This topic provides information
+    on script availability and some common Delegate INIT scripts.</p><h3>Terraform</h3><p></p><pre>#
+    Install TF<br/>curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip<br/>unzip
+    terraform_0.12.25_linux_amd64.zip<br/>yes | mv ./terraform /usr/bin/<br/># Check
+    TF install<br/>terraform --version</pre><p></p><h4>Upgrade to Terraform_0.13.3</h4><pre>##terraform
+    update<br/>set +x<br/>apt-get update<br/>apt-get install wget<br/>apt-get -y install
+    git<br/>wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip
+    apt-get install unzip<br/>unzip terraform_0.13.3_linux_amd64.zip<br/>cp terraform
+    /usr/bin/<br/>terraform --version</pre><p></p><h4>Install Terraform_0.13.3 and
+    Terragrunt</h4><pre>#Terraform<br/>curl -O -L  https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip<br/>unzip
+    terraform_0.13.3_linux_amd64.zip<br/>yes | mv ./terraform /usr/bin/<br/># Check
+    TF install<br/>terraform --version<br/><br/>#Terragrunt<br/>wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.28.0/terragrunt_linux_amd64<br/>yes
+    | mv terragrunt_linux_amd64 terragrunt<br/>chmod u+x terragrunt<br/>yes | mv terragrunt
+    /usr/local/bin/terragrunt<br/>terragrunt --version</pre><h3>Helm 2</h3><p>Installing
+    Helm and Tiller in the Delegate&#39;s cluster:</p><div class="note-callout">If
+    you are using remote Helm charts in your Harness Kubernetes Service, you can use
+    the <code>helm init --client-only</code> option, as Tiller is not needed. See
+    <a href="/article/t6zrgqq0ny-kubernetes-services#helm_charts">Helm charts</a>
+    for more information.</div><pre># Add the Helm version that you want to install<br/>HELM_VERSION=v2.14.0<br/>#
+    v2.13.0<br/># v2.12.0<br/># v2.11.0<br/><br/>export DESIRED_VERSION=${HELM_VERSION}<br/><br/>echo
+    &#34;Installing Helm $DESIRED_VERSION ...&#34;<br/><br/>curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get
+    | bash<br/><br/># If Tiller is already installed in the cluster <br/>helm init
+    --client-only<br/><br/># If Tiller is not installed in the cluster<br/># helm
+    init</pre><div class="note-callout"><code>DESIRED_VERSION</code> is used by a
+    function in the <a href="https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get"
+    target="_blank">Helm install script</a>.</div><p>If Helm is being installed in
+    a cluster outside of the Delegate&#39;s cluster ensure that the <strong>kubeconfig</strong>
+    in the Delegate cluster is pointing to the correct cluster using:</p><pre>kubectl
+    config current-context cluster_name</pre><div class="note-callout">If you are
+    using TLS for communication between Helm and Tiller, ensure that you use the <code>--tls</code> parameter
+    with your commands. For more information, see <strong>Command Flags</strong> in <a
+    href="/article/m8ra49bqd5-4-helm-workflows">Helm Deploy step</a> in the Helm Deployment
+    guide, and see  <a href="https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller"
+    target="_blank">Using SSL Between Helm and Tiller</a> from Helm, and the section <strong>Securing
+    your Helm Installation</strong> in that document.</div><p>Here is an example of
+    how to add a Helm chart from a private repo using secrets <code>repoUsername</code>
+    and <code>repoPassword</code> from Harness <a href="/article/au38zpufhr-secret-management">Secrets
+    Management</a>.</p><pre># Other installation method<br/># curl https://raw.githubusercontent.com/helm/helm/master/scripts/get
+    &gt; get_helm.sh<br/># chmod 700 get_helm.sh<br/># ./get_helm.sh<br/><br/>curl
+    https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash<br/><br/>helm
+    init --client-only<br/><br/>helm repo add --username ${secrets.getValue(&#34;repoUsername&#34;)}
+    --password ${secrets.getValue(&#34;repoPassword&#34;)} nginx https://charts.bitnami.com/bitnami<br/><br/>helm
+    repo update</pre><h3>Helm 3</h3><p>You do not need to add a Delegate INIT for
+    Helm 3. Harness includes Helm 3 support in any Delegate that can connect to the
+    target Kubernetes cluster.</p><p>For more information, see <a href="/article/lk57k7irla-upgrade-to-helm-3-charts-in-kubernetes-services">Upgrade
+    to Helm 3 Charts in Kubernetes Services</a> and <a href="/article/cqidzwbzaa-upgrade-native-helm-2-deployments-to-helm-3">Upgrade
+    Native Helm 2 Deployments to Helm 3</a>.</p><h3>Pip</h3><div class="note-callout">Ensure
+    that you run <code>apt-get update</code> before running any <code>apt-get</code>
+    commands.</div><pre>apt-get update<br/># Install pip<br/>apt-get -y install python-pip<br/>#
+    Check pip install<br/>pip -v</pre><h3>Unzip</h3><div class="note-callout">Ensure
+    that you run <code>apt-get update</code> before running any <code>apt-get</code>
+    commands.</div><pre>apt-get update<br/># Install Unzip<br/>apt-get install unzip</pre><h3>AWS
+    CLI</h3><p>The following script installs the <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html"
+    target="_blank">AWS CLI version 2</a> on the Delegate host.</p><pre># Install
+    AWS CLI<br/>curl &#34;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&#34;
+    -o &#34;awscliv2.zip&#34;<br/>unzip awscliv2.zip<br/>./awscli-bundle/install -b
+    ~/bin/aws<br/># install<br/>sudo ./aws/install<br/># Check AWS CLI install<br/>aws
+    --version</pre><h3>AWS Describe Instance</h3><p>The following script describes
+    the EC2 instance based on its private DNS hostname, which is also the name in
+    the Delegate&#39;s Hostname field:</p><pre>aws ec2 describe-instances --filters
+    &#34;Name=network-interface.private-dns-name,Values=ip-10-0-0-205.ec2.internal&#34;
+    --region &#34;us-east-1&#34;</pre><p>The value for the <code>Values</code> parameter
+    is simply the Hostname of the Delegate.</p><h3>AWS List All Instances in a Region</h3><p>The
+    following script will list all of the EC2 instances in the region you supply:</p><pre>aws
+    ec2 describe-instances --query &#39;Reservations[*].Instances[*].[InstanceId,State.Name,InstanceType,PrivateIpAddress,PublicIpAddress,Tags[?Key==`Name`].Value[]]&#39;
+    --region &#34;us-east-1&#34; --output json | tr -d &#39;\n[] &#34;&#39; | perl
+    -pe &#39;s/i-/\ni-/g&#39; | tr &#39;,&#39; &#39;\t&#39; | sed -e &#39;s/null/None/g&#39;
+    | grep &#39;^i-&#39; | column -t</pre><h3>Git CLI</h3><div class="note-callout">Ensure
+    that you run <code>apt-get update</code> before running any <code>apt-get</code>
+    commands.</div><pre>apt-get update<br/># Install Git with auto approval<br/>yes
+    | apt-get install git<br/># Check git install<br/>git --version</pre><h3>Cloud
+    Foundry CLI</h3><div class="tip-callout">Harness supports Cloud Foundry CLI version
+    6 only. Support for version 7 is pending.</div><p>See <a href="/article/8tsb75aldu-install-cloud-foundry-cli-6-and-7-on-harness-delegates">Install
+    Cloud Foundry CLI Versions on the Harness Delegate</a>.</p><h3>Docker Installation</h3><p>To
+    install Docker on the Delegate, use the following script:</p><pre>apt-get update<br/>apt-get
+    install -y apt-utils dnsutils docker</pre><div class="note-callout">Ensure that
+    you run <code>apt-get update</code> before running any <code>apt-get</code> commands.</div><h3>PowerShell</h3><p>You
+    can run PowerShell scripts on a Harness Delegate, even though the Delegate must
+    be run on Linux. Linux supports PowerShell using <a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7"
+    target="_blank">PowerShell core</a>.</p><p>For steps on creating your script,
+    see <a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-7"
+    target="_blank">Installing PowerShell on Linux</a> from Microsoft.</p><p>Whatever
+    scripts you run must be supported by the version of PowerShell you install.</p><p>Here
+    is an example for Ubuntu 16.04:</p><pre># Download the Microsoft repository GPG
+    keys<br/>wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb<br/><br/>#
+    Register the Microsoft repository GPG keys<br/>sudo dpkg -i packages-microsoft-prod.deb<br/><br/>#
+    Update the list of products<br/>sudo apt-get update<br/><br/># Install PowerShell<br/>sudo
+    apt-get install -y powershell<br/><br/># Start PowerShell<br/>pwsh</pre><p>If
+    apt-get is not installed on your Delegate host, you can use snap (<code>snap install
+    powershell --classic</code>). See <a href="http://ubuntuhandbook.org/index.php/2018/07/install-powershell-snap-ubuntu-18-04/"
+    target="_blank">Install PowerShell Easily via Snap in Ubuntu 18.04</a>.</p><h3>Import
+    a Self-Signed Certificate</h3><p>See <a href="/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections">Add
+    Self-Signed Certificates for Delegate Connections</a>.</p><p></p>
+  slug: common-delegate-profile-scripts
+  tags:
+  - Profiles
+  - Delegate Profile
+  - Delegate Profile script
+  - Terraform
+  - Helm
+  - AWS CLI
+  - Git CLI
+  - Cloud Foundry
+  - Docker
+  - TLS certificate
+  is_live: true

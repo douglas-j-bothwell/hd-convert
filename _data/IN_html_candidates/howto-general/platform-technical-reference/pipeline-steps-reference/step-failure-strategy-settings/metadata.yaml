@@ -1,0 +1,155 @@
+type: article
+article_id: htrur23poj
+user_id: mfr0nxh4be
+category_id: lussbhnyjt
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Step and Stage Failure Strategy References
+slug: step-failure-strategy-settings
+description: 'This topic provides settings and permissions for the [context]. In this
+  topic: [Name of Entity] [Setting label name]. [Setting label name]. [Setting label
+  name].. Related Reference Material. [Name of…'
+short_version: 'This topic provides settings and permissions for the [context]. In
+  this topic: [Name of Entity] [Setting label name]. [Setting label name]. [Setting
+  label name].. Related Reference Material. [Name of…'
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:33:55.25836Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Step and Stage Failure Strategy References
+  description: 'This topic provides settings and permissions for the [context]. In
+    this topic: [Name of Entity] [Setting label name]. [Setting label name]. [Setting
+    label name].. Related Reference Material. [Name of…'
+  short_version: 'This topic provides settings and permissions for the [context].
+    In this topic: [Name of Entity] [Setting label name]. [Setting label name]. [Setting
+    label name].. Related Reference Material. [Name of…'
+  body: '<p>This topic describes the failure strategy settings for Pipeline steps
+    and stages.</p><p>In this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#where_can_i_add_failure_strategies">Where
+    Can I add Failure Strategies?</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#error_types">Error
+    Types</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#error_scope">Error
+    Scope</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#rollback_stage_only">Rollback
+    Stage Only</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#failure_strategy_settings">Failure
+    Strategy Settings</a></li><li><a href="#review_failure_strategy_takes_precedence_over_conditional_execution">Review:
+    Failure Strategy takes Precedence over Conditional Execution</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#review_stage_and_step_priority">Review:
+    Stage and Step Priority</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#review_multiple_failure_strategies_in_a_stage">Review:
+    Multiple Failure Strategies in a Stage</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#review_failure_strategy_conflicts">Review:
+    Failure Strategy Conflicts</a><ul><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#undefined">Same
+    level</a></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#undefined">Different
+    levels</a></li></ul></li><li><a href="https://ngdocs.harness.io/article/htrur23poj-step-failure-strategy-settings#related_reference_material">Related
+    Reference Material</a></li></ul><h3>Where Can I add Failure Strategies?</h3><p>You
+    can apply a failure strategy to the following:</p><ul><li><strong>Step:</strong>
+    this failure strategy overrides (or enhances) the stage failure strategy.</li><li><strong>Step
+    Group:</strong> you can set up a failure strategy for all steps in the group.
+    Individual steps in the group will not have a failure strategy.</li><li><strong>Stage:</strong>
+    the failure strategy for all steps and step groups in the stage. It is overridden
+    by step and step group failure strategies, if present.</li></ul><p>See <a href="/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps">Define
+    a Failure Strategy on Stages and Steps</a>.</p><h3>Error Types</h3><p>The following
+    types of errors can be selected in a failure strategy.</p><div class="note-callout">Currently,
+    only <strong>All Errors</strong> is supported.</div><p></p><table><tbody><tr><td><p><strong>Error
+    Type</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>Authentication</p></td><td><p>Credentials
+    provided in a Connector are not valid. Typically, the Harness secret used for
+    one of the credentials is incorrect.</p><p>If Harness cannot determine if an error
+    is Authentication and Authorization, then it is treated as an Authentication Error.</p></td></tr><tr><td><p>Authorization</p></td><td><p>The
+    credentials are valid but the user permissions needed to access the resource are
+    not sufficient.</p><p>If Harness cannot determine if an error is Authentication
+    and Authorization, then it is treated as an Authentication Error.</p></td></tr><tr><td><p>Connectivity</p></td><td><p>A
+    Harness Delegate cannot connect to a specific resource. For example, the Delegate
+    cannot connect to repo or a VM or a Secrets Manager.</p></td></tr><tr><td><p>Timeout</p></td><td><p>A
+    Harness Delegate failed to complete a task within the timeout setting in the stage
+    or step.</p><p>For example, if the Kubernetes workload you are deploying fails
+    to reach steady state within the step timeout.</p></td></tr><tr><td><p>Delegate
+    Provisioning</p></td><td><p>No available Delegate can accomplish the task or the
+    task is invalid.</p><p>For example, if an HTTP step attempts to connect to a URL
+    but there is no available Delegate to perform the task.</p></td></tr><tr><td><p>Verification</p></td><td><p>A
+    Harness Continuous Verification step failed.</p></td></tr><tr><td><p>All Errors</p></td><td><p>An
+    error whether defined by the other error types or not.</p></td></tr></tbody></table><p></p><h3>Error
+    Scope</h3><p>The scope of a failure strategy is confined to where it is set.</p><p>For
+    example, a failure strategy set on a step does not impact the failure strategy
+    set on a stage. Likewise, the failure strategy set at the stage does not override
+    any failure strategies on its steps.</p><h3>Rollback Stage Only</h3><p>Both step
+    and stage failure strategies include the <strong>Rollback Stage</strong> action
+    option. There is no rollback step option.</p><h3>Failure Strategy Settings</h3><p>The
+    follow tables lists the failure strategy actions and how they work at the step,
+    step group, and stage levels.</p><p>These actions can be applied to the failure
+    strategy as the primary action and as the timeout action.</p><table><tbody><tr><td><p><strong>Action</strong></p></td><td><p><strong>Step</strong></p></td><td><p><strong>Step
+    Group</strong></p></td><td><p><strong>Stage</strong></p></td></tr><tr><td><p><strong>Manual
+    Intervention</strong></p></td><td><p>A Harness User will perform a manual intervention
+    when the error type occurs.</p><p>There are several options to select from:</p><ul><li>Mark
+    as Success</li><li>Ignore Failure</li><li>Retry</li><li>Abort</li><li>Rollback
+    Stage</li></ul><p>Harness pauses the pipeline execution while waiting for manual
+    intervention. The state of the Pipeline execution is displayed as <strong>Paused</strong>.</p></td><td><p>Same
+    as step.</p></td><td><p>Same as step, but applies to all steps.</p></td></tr><tr><td><p><strong>Mark
+    as Success</strong></p></td><td><p>The step is marked as <strong>Successful</strong>
+    and the stage execution continues.</p></td><td><p>Same as step.</p></td><td><p>The
+    step that failed is marked as <strong>Successful</strong> and the Pipeline execution
+    continues.</p></td></tr><tr><td><p><strong>Ignore Failure</strong></p></td><td><p>The
+    stage execution continues. The step is marked as <strong>Failed</strong>, but
+    no rollback is triggered.</p></td><td><p>Same as step.</p></td><td><p>Same as
+    step.</p></td></tr><tr><td><p><strong>Retry</strong></p></td><td><p>Harness will
+    retry the execution of the failed step automatically.</p><p>You can set <strong>Retry
+    Count</strong> and <strong>Retry Intervals</strong>.</p></td><td><p>Same as step.</p></td><td><p>Same
+    as step.</p></td></tr><tr><td><p><strong>Abort</strong></p></td><td><p>Pipeline
+    execution is aborted. If you select this option, no Timeout is needed.</p></td><td><p>Same
+    as step.</p></td><td><p>Same as step.</p></td></tr><tr><td><p><strong>Rollback
+    Stage</strong></p></td><td><p>The stage is rolled back to the state prior to stage
+    execution. How the stage rolls back depends on the type of build or deployment
+    it was performing.</p></td><td><p>Same as step.</p></td><td><p>Same as step.</p></td></tr><tr><td><p><strong>Rollback
+    Step Group</strong></p></td><td><p>N/A</p></td><td><p>The step group is rolled
+    back to the state prior to step group execution. How the step group rolls back
+    depends on the type of build or deployment it was preforming.</p></td><td><p>N/A</p></td></tr></tbody></table><p></p><h3>Review:
+    Failure Strategy takes Precedence over Conditional Execution</h3><p>Harness Pipeline
+    stages and steps both include <strong>Conditional Execution</strong> and <strong>Failure
+    Strategy</strong> settings:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/i36ibenkq2/1642460921687/clean-shot-2022-01-17-at-15-08-32.png"/></figure><p></p><p>Using
+    these settings together in multiple stages requires some consideration.</p><p>Let&#39;s
+    say you have a Pipeline with two stages: <strong>stage 1</strong> followed by
+    <strong>stage 2</strong>. </p><p>Stage 2&#39;s <strong>Conditional Execution</strong>
+    is set to <strong>Execute this step only if prior stage or step failed</strong>.
+    Stage 1&#39;s <strong>Failure Strategy</strong> is set to <strong>Rollback Stage
+    on All Errors</strong>.</p><p>If stage 1 has any error it is rolled back and so
+    it is not considered a failure. Hence, the stage 2&#39;s <strong>Conditional Execution</strong>
+    is not executed.</p><p>In order to get stage 2 to execute, you can set the stage
+    1 <strong>Failure Strategy</strong> to <strong>Ignore Failure</strong>. Rollback
+    will not occur and stage 2&#39;s <strong>Conditional Execution</strong> is executed.</p><p>In
+    general, if you want to run particular steps on a stage failure, you should add
+    them to stage&#39;s <strong>Rollback</strong> section.</p><h3>Review: Stage and
+    Step Priority</h3><p>The stage failure strategy applies to all steps that do not
+    have their own failure strategy. A step&#39;s failure strategy overrides (or extends)
+    its stage&#39;s failure strategy.</p><p>Step failure strategies are evaluated
+    before their stage&#39;s failure strategy. The order of the steps determines which
+    failure strategy is evaluated first.</p><p>If the first step in the Execution
+    does not have a failure strategy, the stage&#39;s failure strategy is used. If
+    the second step has its own failure strategy, it is used. And so on.</p><h3>Review:
+    Multiple Failure Strategies in a Stage</h3><p>A stage can have multiple failure
+    strategies.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/0zvnn5s1ph/1626475905896/clean-shot-2021-07-16-at-15-50-27.png"/></figure><p>When
+    using multiple failure strategies in a stage, consider the following:</p><ul><li>For
+    failure strategies that do not overlap (different types of failures selected),
+    they will behave as expected.</li><li>Two failures cannot occur at the same time.
+    So, whichever error occurs first, that failure strategy will be used.</li></ul><h3>Review:
+    Failure Strategy Conflicts</h3><p>Conflicts might arise between failure strategies
+    on the same level or different levels. By level, we mean the step level or the
+    stage level.</p><h4 id="undefined">Same level</h4><p>If there is a conflict between
+    multiple failures in strategies on the same level, the first applicable strategy
+    is used, and the remaining strategies are ignored.</p><p>For example, consider
+    these two strategies:</p><ol><li>Abort on Verification Failure or Authentication
+    Failure.</li><li>Ignore on Verification Failure or Connectivity Error.</li></ol><p>Here&#39;s
+    what will happen:</p><ul><li>On a verification failure, the stage is aborted.</li><li>On
+    an authentication failure, the stage is aborted.</li><li>On a connectivity error,
+    the error is ignored.</li></ul><h4 id="undefined">Different levels</h4><p>If there
+    is a clash between selected errors in strategies on different levels, the step-level
+    strategy is used and the stage level strategy is ignored.</p><h3>Related Reference
+    Material</h3><ul><li><a href="/article/i36ibenkq2-step-skip-condition-settings">Stage
+    and Step Execution Condition Settings</a></li></ul><p></p>'
+  slug: step-failure-strategy-settings
+  tags: []
+  is_live: true

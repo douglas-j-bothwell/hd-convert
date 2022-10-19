@@ -1,0 +1,140 @@
+type: article
+article_id: 5qz1qrugyk
+user_id: vt9reb71i4
+category_id: xw2hz815l8
+author:
+  name: Clare Wilkinson
+  email: clare.wilkinson@harness.io
+  profile_image: https://www.gravatar.com/avatar/0ff8d5897ddf326bd94ba0e62e7d2841?d=mm&s=150
+title: Add or Exclude a Target in a Target Group
+slug: add-target-groups
+description: While we refer to targeting users, when you create a Target you give
+  it a name and a unique identifier, so a Target can be anything that can be uniquely
+  identified. For example, a Target can be a use…
+short_version: While we refer to targeting users, when you create a Target you give
+  it a name and a unique identifier, so a Target can be anything that can be uniquely
+  identified. For example, a Target can be a use…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-17T09:20:22.772231Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add or Exclude a Target in a Target Group
+  description: ""
+  short_version: ""
+  body: '<div class="note-callout">While we refer to targeting users, when you create
+    a Target you give it a name and a unique identifier, so a Target can be anything
+    that can be uniquely identified. For example, a Target can be a user, an application,
+    a system, a machine, or any resource uniquely identified by an IP address, email
+    ID, user ID, etc.</div><p>Target Groups are a collection of <a href="/article/dbk9uoaid3-add-targets"
+    target="_blank">Targets</a> that allow you to serve Feature Flag Variations to
+    a list of users in bulk. You can group Targets into a group either by picking
+    individual Targets or by defining rules that automatically map Targets to a Target
+    Group. For example, you can add individual Targets <code>joe@harness.io</code>
+    and <code>jane@harness.io</code> to the QA internal users group or you can define
+    a rule that all the emails ending with <code>@harness.io</code> are added to the
+    QA internal users group.</p><p>You can also do the opposite and exclude specific
+    Targets from a Target Group.  </p><p>This topic describes how to add a Target
+    Group to your Environment, add Targets to the group, and apply the Target Group
+    to a Feature Flag. </p><h3>Before you begin</h3><p>Make sure you&#39;ve <a href="/article/dbk9uoaid3-add-targets"
+    target="_blank">created Targets to add to the Target Group</a>.</p><h3>Create
+    a Target Group and add Targets</h3><p>To create a Target Group:</p><ol><li>In
+    <strong>Feature Flags</strong>, click <strong>Target Management</strong>, then
+    click <strong>Target Groups</strong>.</li><li>Click <strong>+ New Target Group</strong>.</li><li>In
+    <strong>Create a Target Group</strong>, enter a Name for your group and click
+    <strong>Create</strong>.</li><li>(Optional) In <strong>Description</strong>, add
+    a description of the group.</li></ol><p>After you have created a Target Group,
+    you need to add Targets to it. You can add Targets to a Target Group by selecting
+    them individually or by setting conditions to add all Targets that meet those
+    criteria. </p><h4>Add Targets from the Target Group page</h4><p>You can add individual
+    Targets from the Targets page or the Target Groups page. </p><ol><li>In <strong>Target
+    Management</strong>, in <strong>Target Groups</strong>, select the Target Group
+    you want to add Targets to. </li></ol><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5qz1qrugyk/1660640966178/mc-5-n-7-vdm-0-o-9-j-9-qpr-wr-61-uz-09-ez-k-2-p-5-ndg-t-tjv-klau-1-omo-mxi-7-wam-fxtzp-p-d-1-hzgjo-ei-b-70-ws-uil-1-tl-2-qms-w-9-i-9-yedr-c-3-hyx-vne-3-qx-8-k-p-0-fzx-vvynz-la-9-krdf-y-9-ntoj-68-sovfh-mwbzi-6-j-4-g"
+    style="display:block;margin-left:0;margin-right:auto" alt="A screenshot of the
+    Target Management page with a Target Group highlighted" data-hd-align="left"/></figure><p><em>Figure
+    1: The Target Management page with the Target Groups tab selected</em></p><ol><li
+    style="counter-increment:li 1" start="2">In <strong>Criteria</strong>, click <strong>Edit</strong>. </li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5qz1qrugyk/1658507048170/v-cx-995-q-a-2-vd-z-0-lie-qgbbaby-qeakz-mi-jzqou-1-f-3-q-ur-0-ellfydr-fp-4-d-8-rbs-v-5-dju-3-y-272-mujkx-hfb-wct-r-12-jbh-ee-2-ljm-pk-96-sq-8-js-tax-tglw-1-w-xt-gt-2-xvjg-4-sf-dn-6-q-3-u-2-nrse-4-pt-bandisb-w-6-nq"
+    style="max-height:40%;max-width:40%;display:block;margin-left:0;margin-right:auto"
+    alt="The edit button next to Criteria. " data-hd-height="40%" data-hd-width="40%"
+    data-hd-align="left"/></figure><p><em>Figure 2: Editing a Target Group</em></p><p>You
+    can include or exclude specific Targets, or you can set rules to add Targets based
+    on conditions you set. </p><h5>Add or exclude specific Targets</h5><ul><li>To
+    add specific Targets, in <strong>Include the following</strong>, select the Targets.</li><li>To
+    exclude Targets, in <strong>Exclude the following</strong>, select the Targets.</li></ul><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5qz1qrugyk/1658507117889/b-skzqa-1-wz-qm-7-o-4-dv-1-flyyx-u-1-ar-fwm-sfu-oc-6-ue-2-f-pscxfdz-5-kz-28-bh-65-z-g-6-hvwje-jju-dorh-kk-6-yke-kd-xnaszwz-sds-wukpa-rk-l-0-xm-tiv-0-jkps-ofsu-8-ku-md-t-autvty-8-t-n-75-awlosyk-cw-msj-2-w"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    alt="A screenshot of Targets added to the Target Group Criteria. " data-hd-height="50%"
+    data-hd-width="50%" data-hd-align="left"/></figure><p><em>Figure 3: Adding Targets
+    to a Target Group</em></p><h5>Add Targets based on conditions</h5><div class="note-callout">When
+    you create a Target based on Conditions, on the Target overview page the Group
+    isn&#39;t displayed under the <strong>Target Groups</strong> column.</div><p>In
+    addition to targeting individual users, Harness Feature Flags also allows you
+    to target a group based on the conditions you set. You can add conditions by constructing
+    rules using the following:</p><ul><li>The name or identifier of the Target.</li><li>An
+    operator.</li><li>Text that must match the Target name or identifier.</li></ul><p>The
+    following operators are supported:</p><table><tbody><tr><td><p><strong>Operator</strong></p></td><td><p><strong>Attribute
+    Type</strong></p></td><td><p><strong>Definition</strong></p></td></tr><tr><td><p><strong>starts
+    with</strong></p></td><td><p>String</p></td><td><p>Matches the prefix of a string.
+    If you enter multiple string values, only the first is matched.</p></td></tr><tr><td><p><strong>ends
+    with</strong></p></td><td><p>String</p></td><td><p>Matches the suffix of a string.
+    If you enter multiple string values, only the first is matched.</p></td></tr><tr><td><p><strong>contains</strong></p></td><td><p>String</p></td><td><p>Matches
+    a part of a string. If you enter multiple string values, only the first is matched.</p></td></tr><tr><td><p><strong>equals</strong></p></td><td><p>Number
+    or string</p></td><td><p>Matches the string or number. If you enter multiple string
+    values, only the first is matched.</p></td></tr><tr><td><p><strong>equals (sensitive)</strong></p></td><td><p>Number
+    or string</p></td><td><p>Matches the number or string and is case-sensitive. If
+    you enter multiple string values, only the first is matched.</p><p>For example, 
+    the string HELLO is different from the string hello. </p></td></tr><tr><td><p><strong>in</strong></p></td><td><p>Number
+    or string</p></td><td><p>Acts as an “or” operator, so you can add multiple values
+    at once.</p></td></tr></tbody></table><p> </p><p>For example, you could set a
+    rule to add all Targets whose identifiers end in <code>@harness.io</code>. </p><p>To
+    add Targets based on conditions:</p><ol><li>In <strong>T</strong><strong>arget
+    Group Criteria</strong>, click <strong>+ Add Rule</strong>.</li><li>In the first
+    drop-down menu, select whether the condition applies to the Target Name or Identifier.</li><li>In
+    the second drop-down menu, select the operator to apply to the Target Name or
+    Identifier. </li><li>In the search bar, enter the value you want the Target Name
+    or Identifier to match and click the <strong>+</strong> button to add it. The
+    following shows an example of a rule that adds all Targets with a Target Identifier
+    ending in harness.io to the Target Group.</li></ol><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5qz1qrugyk/1658507144015/k-n-8-jkn-m-0-mnlud-ec-5-g-wzi-yargn-fyu-p-tnumr-wfx-139-erilrfn-w-6-h-jh-an-hr-2-etk-c-2-h-82-k-xls-gdggc-st-zdmldfq-t-4-s-47-d-zybc-duepwgg-hbpp-4-hov-x-5-i-ppb-5-nig-are-0-js-7-ipd-5-lqud-rsym-9-e-gm-ry-q"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    alt="An example of the Target Group Criteria page with a condition added." data-hd-height="50%"
+    data-hd-width="50%" data-hd-align="left"/></figure><p><em>Figure 5: Adding Targets
+    based on a condition</em></p><ol><li style="counter-increment:li 4" start="5">Click
+    <strong>Save</strong>. Targets that meet the criteria are now included in the
+    Target Group.</li></ol><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5qz1qrugyk/1658507164912/mbz-va-wj-sif-ko-6-tpg-doehr-53-ku-kd-6-ph-0-m-80-k-6-mf-w-37-z-fe-0-h-88039-pi-dfa-rk-ln-hl-79-l-19-qz-s-506-jjcos-1-eubr-ykv-qoi-ko-lt-8-y-3-ongxax-xlx-8-icl-st-f-3-p-lvni-u-6-tq-7-igtq-4-msvg-8-a-qfwvy-mq"
+    style="max-height:40%;max-width:40%;display:block;margin-left:0;margin-right:auto"
+    alt="The Target Group page with the new condition displayed." data-hd-height="40%"
+    data-hd-width="40%" data-hd-align="left"/></figure><p><em>Figure 6: Viewing the
+    condition for adding a Target</em></p><div class="note-callout">When you add Targets
+    based on conditions, on the <strong>Target Management:Targets</strong> page, the
+    Target Group is <strong>not</strong> displayed in the <strong>Target Groups</strong>
+    column.</div><h3>Add or exclude Targets from Target settings</h3><p>You can use
+    Target Settings to include or exclude Targets from a Target Group. Complete the
+    following steps to include or exclude Targets using the Target Settings:</p><ol><li>In
+    <strong>Target Management</strong>, in <strong>Targets</strong>, click the Target
+    you want to add to a group.</li><li>Click <strong>Target Groups</strong>, then
+    <strong>Add to Target Groups</strong> to add a specific Target, or click <strong>Exclude
+    from Target Groups</strong> to exclude a specific Target. You can add or exclude
+    the Target to multiple groups at once.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5qz1qrugyk/1658507195650/59-v-6-y-k-3-d-nxs-1-lr-gbg-jnpccp-uyxon-rl-i-6-tp-iedw-d-7-nr-tr-a-snsb-0-nv-dd-wb-wn-pzg-s-7-d-pb-7-c-ov-vanf-btf-8-s-tjaga-r-42-h-6-e-hm-6-tc-t-9-dgd-tj-9-zi-fl-mej-vkq-tdehb-g-9-li-0-b-wz-6-r-uft-2-qwvkm-iomzw"
+    style="max-height:40%;max-width:40%;display:block;margin-left:0;margin-right:auto"
+    alt="A screenshot of a Target with the Target Groups tab opened." data-hd-height="40%"
+    data-hd-width="40%" data-hd-align="left"/></figure><p><em>Figure 7: Adding and
+    excluding Targets from the Target&#39;s settings</em></p><ol><li style="counter-increment:li
+    2" start="3">Select the Group(s) to add the Target to or to exclude a Target from,
+    then click <strong>Add to (1) Target Group</strong>, or <strong>Exclude from (1)
+    Target Group</strong>.</li><li>The Targets are now added to the Target Group.</li></ol><h3>Next
+    step</h3><p>After you have added the Targets and Target Groups, you can then <a
+    href="/article/xf3hmxbaji-targeting-users-with-flags" target="_blank">use them
+    on your Feature Flags.</a></p><p></p>'
+  slug: add-target-groups
+  tags: []
+  is_live: true

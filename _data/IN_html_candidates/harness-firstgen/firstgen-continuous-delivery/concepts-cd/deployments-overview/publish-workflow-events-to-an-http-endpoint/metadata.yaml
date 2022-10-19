@@ -1,0 +1,147 @@
+type: article
+article_id: okinra1xu2
+user_id: 2te4j9f9g7
+category_id: cwefyz0jos
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Publish Workflow Events to an HTTP Endpoint
+slug: publish-workflow-events-to-an-http-endpoint
+description: Send key Workflow deployment events to a URL endpoint as a JSON payload.
+short_version: Send key Workflow deployment events to a URL endpoint as a JSON payload.
+tags:
+- Events
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-06-01T03:33:53.371153Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Publish Workflow Events to an HTTP Endpoint
+  description: Send key Workflow deployment events to a URL endpoint as a JSON payload.
+  short_version: Send key Workflow deployment events to a URL endpoint as a JSON payload.
+  body: '<p>To help you analyze how Workflows are performing, Harness can send key
+    Workflow deployment events to a URL endpoint as a JSON payload. Next, you can
+    use other tools to consume and build dashboards for the events.</p><p>This topic
+    explains how to publish Workflow events. For information on how to publish Pipeline
+    events, see <a href="/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint">Publish
+    Pipeline Events to an Http Endpoint</a>.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#supported_platforms_and_technologies">Supported
+    Platforms and Technologies</a></li><li><a href="#review_events_published">Review:
+    Events Published</a></li><li><a href="#step_1_add_event_rule">Step 1: Add Event
+    Rule</a><ul><li><a href="#option_send_me_everything">Option: Send Me Everything</a></li><li><a
+    href="#option_workflow">Option: Workflow</a></li><li><a href="#option_pipeline">Option:
+    Pipeline</a></li></ul></li><li><a href="#step_2_select_events">Step 2: Select
+    Events</a></li><li><a href="#step_3_enter_the_webhook_url">Step 3: Enter the Webhook
+    URL</a></li><li><a href="#step_4_add_headers">Step 4: Add Headers</a></li><li><a
+    href="#step_5_delegate_selector">Step 5: Delegate Selector</a></li><li><a href="#step_6_enable_the_rule">Step
+    6: Enable the Rule</a></li><li><a href="#step_7_test_the_event_rule">Step 7: Test
+    the Event Rule</a></li><li><a href="#notes">Notes</a></li></ul><h3>Before You
+    Begin</h3><ul><li><a href="/article/o86qyexcab-tags-how-tos">Create a Workflow</a></li><li><a
+    href="/article/220d0ojx5y-supported-platforms">Supported Platforms and Technologies</a></li></ul><h3>Review:
+    Events Published</h3><p>Currently, Harness publishes the following events:</p><ul><li>WORKFLOW
+    START</li><li>WORKFLOW COMPLETE</li><li>WORKFLOW PAUSE</li><li>WORKFLOW CONTINUE</li></ul><p>Harness
+    will be adding more events soon.</p><h3>Step 1: Add Event Rule</h3><p>In your
+    Application, in <strong>Event Rules</strong>, click <strong>Add</strong>.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644922924708/screenshot-2022-02-15-at-4-31-13-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    <strong>Rule Configuration</strong> settings appear.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644922818472/screenshot-2022-02-15-at-4-29-35-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Enter
+    a name for the event rule.</p><h4>Option: Send Me Everything</h4><p>Select <strong>Send
+    me everything</strong> to send all the events that Harness currently publishes.</p><h4>Option:
+    Workflow</h4><p>Select <strong>Workflow</strong> to send events for specific Workflows.
+    In <strong>Workflows</strong>, select the Workflows you want events for, or select <strong>All
+    Workflows</strong>.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644927550893/screenshot-2022-02-15-at-5-47-17-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Option:
+    Pipeline</h4><p>Select <strong>Pipeline</strong> to send events for specific Pipelines.
+    For more information, see <a href="/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint">Publish
+    Pipeline Events to an HTTP Endpoint</a>.</p><h3>Step 2: Select Events</h3><p>In <strong>Events</strong>,
+    select the event types you want to publish or select <strong>All Events</strong>.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644927679936/screenshot-2022-02-15-at-5-49-53-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    3: Enter the Webhook URL</h3><p>In <strong>Webhook URL</strong>, enter the HTTP
+    endpoint URL where Harness will publish the events for this rule.</p><p>This is
+    the URL you will use to consume events.</p><h3>Step 4: Add Headers</h3><p>Add
+    any HTTP headers that you want to send with the events.</p><h3>Step 5: Delegate
+    Selector</h3><p>By default, Harness will select any available Delegate. You might
+    want to use a specific Delegate because you know it has access to the endpoint
+    URL.</p><p>In <strong>Delegate Selector</strong>, select the Selector for the
+    Delegate(s) you want to use.</p><p>You add Selectors to Delegates to make sure
+    that they&#39;re used to execute the command. For more information, see <a href="/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors">Select
+    Delegates with Selectors</a>.</p><p>Harness will use Delegates matching the Selectors
+    you add.</p><p>If you use one Selector, Harness will use any Delegate that has
+    that Selector.</p><p>If you select two Selectors, a Delegate must have both Selectors
+    to be selected. That Delegate might also have other Selectors, but it must have
+    the two you selected.</p><div class="note-callout">You can use expressions for
+    Harness built-in variables or Account Default variables in <strong>Delegate Selectors</strong>.
+    When the variable expression is resolved at deployment runtime, it must match
+    an existing Delegate Selector.</div><p>Click <strong>Submit</strong>.</p><h3>Step
+    6: Enable the Rule</h3><p>By default, the Rule you just created is disabled. You
+    can enable the rule using the toggle button.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/okinra1xu2/1644929069545/screenshot-2022-02-15-at-6-13-49-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    7: Test the Event Rule</h3><p>You can test an event rule to see if the rule is
+    enabled or disabled.</p><p>To test the rule, click <strong>Test</strong>.</p><p>Here
+    is a Workflow Start event payload example:</p><pre class="hljs graphql">{<br/>                    &#34;id&#34;:
+    &#34;86afca34-4cb1-4859-b1c6-11f398f55a4b&#34;,<br/>                    &#34;eventType&#34;:
+    &#34;workflow_start&#34;,<br/>                    &#34;data&#34;: {<br/>                        &#34;pipeline&#34;:
+    {<br/>                            &#34;name&#34;: &#34;K8s Prod Pipeline&#34;,<br/>                            &#34;id&#34;:
+    &#34;T4XKvdmXRM-zjyfyMHBlxg&#34;<br/>                        },<br/>                        &#34;application&#34;:
+    {<br/>                            &#34;name&#34;: &#34;Harness Sample App&#34;,<br/>                            &#34;id&#34;:
+    &#34;V9DxliUiS_SVzmNPkkR5Ow&#34;<br/>                        },<br/>                        &#34;workflow&#34;:
+    {<br/>                            &#34;name&#34;: &#34;To-Do List K8s Rolling&#34;,<br/>                            &#34;id&#34;:
+    &#34;smcCVuvCT4SCyayxG85U8w&#34;<br/>                        },<br/>                        &#34;environments&#34;:
+    [<br/>                            {<br/>                                &#34;id&#34;:
+    &#34;5Rx44pB4RC-eAt2SB10l_A&#34;<br/>                            }<br/>                        ],<br/>                        &#34;workflowExecution&#34;:
+    {<br/>                            &#34;id&#34;: &#34;Ji0GRNDvSKCaiNmrLT8Fmg&#34;<br/>                        },<br/>                        &#34;pipelineExecution&#34;:
+    {<br/>                            &#34;id&#34;: &#34;j_V2nAroRbCdy8tmiy6eoA&#34;<br/>                        },<br/>                        &#34;startedAt&#34;:
+    1644938260133,<br/>                        &#34;infraDefinitions&#34;: [<br/>                            {<br/>                                &#34;id&#34;:
+    &#34;MfxXXKPdRjysPEE_KZCaHA&#34;<br/>                            }<br/>                        ],<br/>                        &#34;services&#34;:
+    [<br/>                            {<br/>                                &#34;id&#34;:
+    &#34;2U9X2Z3YTBmQOvUMaWDy-Q&#34;<br/>                            }<br/>                        ],<br/>                        &#34;triggeredBy&#34;:
+    {<br/>                            &#34;name&#34;: &#34;Admin&#34;,<br/>                            &#34;uuid&#34;:
+    &#34;lv0euRhKRCyiXWzS7pOg6g&#34;,<br/>                            &#34;email&#34;:
+    &#34;admin@harness.io&#34;<br/>                        }<br/>                    },<br/>                    &#34;version&#34;:
+    &#34;v1&#34;<br/>                },<br/>                &#34;query&#34;: {}<br/>            },<br/>            &#34;eventName&#34;:
+    &#34;wfEvents&#34;,<br/>            &#34;createdAt&#34;: 1644938267179,<br/>            &#34;expiry&#34;:
+    1647530267,<br/>            &#34;id&#34;: &#34;1644938267179-LU/fwFNTueqnFVx315rU7A==&#34;<br/>        }</pre><p></p><p>Here
+    is a Workflow Complete event payload example:</p><pre class="hljs graphql">{<br/>                    &#34;id&#34;:
+    &#34;0c3eecb7-e9cf-400a-b3b1-be6ce9d2bf9f&#34;,<br/>                    &#34;eventType&#34;:
+    &#34;workflow_end&#34;,<br/>                    &#34;data&#34;: {<br/>                        &#34;pipeline&#34;:
+    {<br/>                            &#34;name&#34;: &#34;K8s Prod Pipeline&#34;,<br/>                            &#34;id&#34;:
+    &#34;T4XKvdmXRM-zjyfyMHBlxg&#34;<br/>                        },<br/>                        &#34;completedAt&#34;:
+    1644938268018,<br/>                        &#34;application&#34;: {<br/>                            &#34;name&#34;:
+    &#34;Harness Sample App&#34;,<br/>                            &#34;id&#34;: &#34;V9DxliUiS_SVzmNPkkR5Ow&#34;<br/>                        },<br/>                        &#34;workflow&#34;:
+    {<br/>                            &#34;name&#34;: &#34;To-Do List K8s Rolling&#34;,<br/>                            &#34;id&#34;:
+    &#34;smcCVuvCT4SCyayxG85U8w&#34;<br/>                        },<br/>                        &#34;environments&#34;:
+    [<br/>                            {<br/>                                &#34;id&#34;:
+    &#34;5Rx44pB4RC-eAt2SB10l_A&#34;<br/>                            }<br/>                        ],<br/>                        &#34;workflowExecution&#34;:
+    {<br/>                            &#34;id&#34;: &#34;Ji0GRNDvSKCaiNmrLT8Fmg&#34;<br/>                        },<br/>                        &#34;pipelineExecution&#34;:
+    {<br/>                            &#34;id&#34;: &#34;j_V2nAroRbCdy8tmiy6eoA&#34;<br/>                        },<br/>                        &#34;startedAt&#34;:
+    1644938260133,<br/>                        &#34;infraDefinitions&#34;: [<br/>                            {<br/>                                &#34;id&#34;:
+    &#34;MfxXXKPdRjysPEE_KZCaHA&#34;<br/>                            }<br/>                        ],<br/>                        &#34;services&#34;:
+    [<br/>                            {<br/>                                &#34;id&#34;:
+    &#34;2U9X2Z3YTBmQOvUMaWDy-Q&#34;<br/>                            }<br/>                        ],<br/>                        &#34;triggeredBy&#34;:
+    {<br/>                            &#34;name&#34;: &#34;Admin&#34;,<br/>                            &#34;uuid&#34;:
+    &#34;lv0euRhKRCyiXWzS7pOg6g&#34;,<br/>                            &#34;email&#34;:
+    &#34;admin@harness.io&#34;<br/>                        },<br/>                        &#34;status&#34;:
+    &#34;FAILED&#34;<br/>                    },<br/>                    &#34;version&#34;:
+    &#34;v1&#34;<br/>                },<br/>                &#34;query&#34;: {}<br/>            },<br/>            &#34;eventName&#34;:
+    &#34;wfEvents&#34;,<br/>            &#34;createdAt&#34;: 1644938276855,<br/>            &#34;expiry&#34;:
+    1647530276,<br/>            &#34;id&#34;: &#34;1644938276855-zy4xu3CNdCFbm/gn9QCJog==&#34;<br/>        }</pre><p></p><p>You
+    can see various Workflow event details in both payload examples. The Ids correspond
+    to Harness entities in the Harness Application such as Services and Environments.</p><p>To
+    perform analysis on Workflow performance, you can use the <code>startedAt</code> and <code>completedAt</code> timestamps
+    (in milliseconds).</p><h3>Notes</h3><ul><li>The Event Rules do not appear in the
+    Configure As Code YAML.</li><li>If you delete an Application, its Event Rules
+    are also deleted.</li></ul><p></p>'
+  slug: publish-workflow-events-to-an-http-endpoint
+  tags:
+  - Events
+  is_live: true

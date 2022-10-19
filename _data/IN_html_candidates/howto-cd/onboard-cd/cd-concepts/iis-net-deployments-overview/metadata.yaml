@@ -1,0 +1,126 @@
+type: article
+article_id: 775l8jirqy
+user_id: znazf3hcp9
+category_id: dxej4ug0n5
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: IIS (.NET) Deployments Overview
+slug: iis-net-deployments-overview
+description: The high-level steps involved in a Harness IIS (.NET) deployment.
+short_version: The high-level steps involved in a Harness IIS (.NET) deployment.
+tags:
+- IIS overview
+- .NET overview
+- IIS deployments
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2020-12-21T23:52:15.082785Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: IIS (.NET) Deployments Overview
+  description: The high-level steps involved in a Harness IIS (.NET) deployment.
+  short_version: The high-level steps involved in a Harness IIS (.NET) deployment.
+  body: '<p>This topic describes the concept of a Harness IIS (.NET) deployment by
+    describing the high-level steps involved.</p><p>For a quick tutorial, see the
+    <a href="/article/tu0g8ffu9b-iis-net-deployments">IIS Deployments</a> tutorial.</p><p>For
+    detailed instructions on using IIS (.NET) in Harness, see the <a href="/category/146mlscwkw-howtos-iis-net">IIS
+    (.NET)</a> How-tos.</p><p>In this topic:</p><ul><li> <a href="/article/775l8jirqy-iis-net-deployments-overview#before_you_begin">Before
+    You Begin</a></li><li> <a href="/article/775l8jirqy-iis-net-deployments-overview#video_summary">Video
+    Summary</a></li><li> <a href="/article/775l8jirqy-iis-net-deployments-overview#what_does_harness_need_before_you_start">What
+    Does Harness Need Before You Start?</a></li><li> <a href="/article/775l8jirqy-iis-net-deployments-overview#what_does_harness_deploy">What
+    Does Harness Deploy?</a></li><li> <a href="/article/775l8jirqy-iis-net-deployments-overview#what_does_a_harness_iis_net_deployment_involve">What
+    Does a Harness IIS (.NET) Deployment Involve?</a></li><li> <a href="/article/775l8jirqy-iis-net-deployments-overview#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><p>Before learning about, you should
+    have an understanding of the following:</p><ul><li> <a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness'' Key Concepts</a></li></ul><h3>Video Summary</h3><p>Here is a quick primer
+    on deploying Microsoft IIS .NET applications and Microsoft .NET Core container
+    applications using Harness Continuous Deployment.</p><div class="hd--html"><iframe
+    width="560" height="315" src="https://www.youtube.com/embed/udWD4LoG_R4" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><p></p><h3>What Does Harness Need Before You
+    Start?</h3><p>A Harness IIS (.NET) deployment requires the following:</p><ul><li>Templates:
+    IIS website, application, or virtual directory. Harness automatically creates
+    the Deployment Specifications for these templates, which you can customize.</li><li>Target
+    infrastructure: For example, an AWS region and load balancer or an Azure subscription
+    and resource group.</li></ul><div class="note-callout">It is important to note
+    that a site contains one or more applications, an application contains one or
+    more virtual directories, and a virtual directory maps to a physical directory
+    on a computer. To use Harness to deploy IIS sites, applications, and virtual directories,
+    the IIS structural requirements (site &gt; application &gt; virtual directory)
+    must be established on the Windows instances.</div><h3>What Does Harness Deploy?</h3><p>Harness
+    takes the IIS website, application, or virtual directory templates and deployment
+    specifications you provide, and creates an IIS website, application, or virtual
+    directory in your target infrastructure.</p><p>You can create a Harness Pipeline
+    that runs three Workflows to deploy the IIS website, application, or virtual directory
+    in succession.</p><h3>What Does a Harness IIS (.NET) Deployment Involve?</h3><p>The
+    following list describes the major steps of a Harness IIS (.NET) deployment:</p><p></p><table><tbody><tr><td><p><strong>Step</strong></p></td><td><p><strong>Name</strong></p></td><td><p><strong>Description
+    and Links</strong></p></td></tr><tr><td><p>1</p></td><td><p>Install the Harness
+    <strong>Delegate</strong>&nbsp;in your target infrastructure, such as an EC2 subnet.</p></td><td><p>Typically,
+    the Shell Script or ECS Delegate is installed in the same subnet where you will
+    deploy your application(s).</p><p>For Azure deployments, you can run the Delegate
+    on a Linux VM in your Azure VPC (such as Ubuntu) or simply ensure that the Delegate
+    has network access to resources in your Azure VPC</p><p>See <a href="/article/2m0v9z5x7b-set-up-a-shell-script-delegate">Set
+    Up a Shell Script Delegate</a> and <a href="/article/tbjffip7rp-set-up-an-aws-ecs-delegate">Set
+    Up an AWS ECS Delegate</a>.</p></td></tr><tr><td><p>2</p></td><td><p>Add a Harness&nbsp;<strong>Artifact
+    Server</strong>.</p></td><td><p>Add a connection to the Artifact Server where
+    Harness can pull the IIS website, application, or virtual directory template.</p><p>If
+    you are using the same Cloud Provider as artifact server, then you can skip this
+    step.</p><p>See&nbsp; <a href="https://newdocs.helpdocs.io/category/0ctql7wycs-howtos-artifact-servers">Artifact
+    Servers</a>.</p></td></tr><tr><td><p>3</p></td><td><p>Add a&nbsp;<strong>Cloud
+    Provider</strong>.</p></td><td><p>A&nbsp;Cloud Provider is a connection to your
+    cloud platform account, such as AWS or Azure. You can also connect to a physical
+    server.</p><p>For example, an AWS&nbsp;Cloud Provider can be used to connect to
+    S3 and obtain the IIS templates Harness will use to create new website, application,
+    or virtual directory templates.</p><p>See <a href="/category/inwn0bqngb-howto-cloudproviders">Cloud
+    Platforms and Physical Servers</a>.</p></td></tr><tr><td><p>4</p></td><td><p>Create
+    the Harness&nbsp;<strong>Application</strong>&nbsp;for your IIS (.NET) CD Pipeline.</p></td><td><p>The
+    Harness Application represents a group of microservices/apps, their deployment
+    pipelines, and all the building blocks for those pipelines. Harness represents
+    your release process using a logical group of one or more entities: Services,
+    Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners.
+    Applications organize all of the entities and configurations in Harness CD.</p><p>See
+    <a href="/article/wrtkikaksk-add-an-application">Add an Application</a>.</p></td></tr><tr><td><p>5</p></td><td><p>Create
+    the Harness&nbsp;<strong>Service</strong>&nbsp;using the <strong>Windows Remote
+    Management (WinRM)</strong> Deployment Type.</p></td><td><p>Add an IIS website,
+    application, or virtual directory template in a Harness Service, revise the Deployment
+    Specification, and any config variables and files.</p><p>See:</p><ul><li> <a href="/article/c4rw0ismbc-add-your-iis-website">Add
+    Your IIS Website</a></li><li> <a href="/article/ny6degvymt-add-your-iis-application">Add
+    Your IIS Application</a></li><li> <a href="/article/l7ekhkjykf-add-your-iis-virtual-directory">Add
+    Your IIS Virtual Directory</a></li></ul></td></tr><tr><td><p>6</p></td><td><p>Create
+    the Harness&nbsp;<strong>Environment</strong>&nbsp;and Infrastructure Definition
+    for your deployment, and any overrides.</p></td><td><p>Using the Harness Cloud
+    Provider you set up, you can select the target environment for your deployment.</p><p>You
+    can also override any Service settings. This enables you to use a single Service
+    with multiple Harness Environments.</p><p>See:</p><ul><li> <a href="/article/dt5ulji324-define-to-your-iis-target-environment-in-aws">Define
+    to Your IIS Target Environment in AWS</a></li><li> <a href="/article/99myumak6h-define-to-your-iis-target-environment-in-azure">Define
+    to Your IIS Target Environment in Azure</a></li></ul></td></tr><tr><td><p>7</p></td><td><p>Create
+    the Website, Application, and Virtual Directory deployments in Harness Basic&nbsp;<strong>Workflows</strong>.</p></td><td><p>The
+    Workflow deploys the Website, Application, and Virtual Directory templates defined
+    in the Harness Service to the environment in the Harness Infrastructure Definition.</p><p>See:</p><ul><li>
+    <a href="/article/njflzfk1uf-create-an-iis-website-basic-deployment">Create an
+    IIS Website Deployment</a></li><li> <a href="/article/nx618akpo2-create-an-iis-application-basic-deployment">Create
+    an IIS Application Deployment</a></li><li> <a href="/article/krbgqrt2xa-create-an-iis-virtual-directory-basic-deployment">Create
+    an IIS Virtual Directory Deployment</a></li></ul></td></tr><tr><td><p>8</p></td><td><p>Deploy
+    the Workflow.</p></td><td><p>Once you''ve deployed a Workflow, learn how to improve
+    your IIS (.NET) CD:</p><ul><li> <a href="/article/yenenrhgcs-add-workflows-to-pipelines">Add
+    Workflows to Pipelines</a></li><li> <a href="/article/yupq093j6b-add-a-trigger">Add
+    a Trigger</a></li><li> <a href="/category/8jtjs2i7e2-howtos-infrastructure-prov">Harness
+    Infrastructure Provisioners</a></li></ul></td></tr></tbody></table><h3>Next Steps</h3><p>Read
+    the following topics to build on what you''ve learned:</p><ul><li> <a href="/article/tu0g8ffu9b-iis-net-deployments">IIS
+    (.NET) Deployments</a> tutorial</li><li> <a href="/category/146mlscwkw-howtos-iis-net">IIS
+    (.NET)</a> How-tos</li></ul><p></p>'
+  slug: iis-net-deployments-overview
+  tags:
+  - IIS overview
+  - .NET overview
+  - IIS deployments
+  is_live: true

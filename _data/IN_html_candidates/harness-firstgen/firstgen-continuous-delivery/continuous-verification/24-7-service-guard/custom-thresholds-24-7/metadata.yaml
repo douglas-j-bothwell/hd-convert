@@ -1,0 +1,51 @@
+type: article
+article_id: 53t35yit8p
+user_id: x5amubrz4l
+category_id: kam4aj3pd4
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Apply Custom Thresholds to 24/7 Service Guard
+slug: custom-thresholds-24-7
+description: Define Ignore Hints rules, which instruct Harness to remove certain metrics/value
+  combinations from 24/7 Service Guard analysis.
+short_version: Define Ignore Hints rules, which instruct Harness to remove certain
+  metrics/value combinations from 24/7 Service Guard analysis.
+tags:
+- 24/7 Service Guard
+- APM
+- application performance monitoring
+- verification
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:37.322949Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Apply Custom Thresholds to 24/7 Service Guard
+  description: Define Ignore Hints rules, which instruct Harness to remove certain
+    metrics/value combinations from 24/7 Service Guard analysis.
+  short_version: Define Ignore Hints rules, which instruct Harness to remove certain
+    metrics/value combinations from 24/7 Service Guard analysis.
+  body: |-
+    <p>Use Custom Thresholds to define <strong>Ignore Hints</strong> rules that instruct Harness to remove certain metrics/value combinations from 24/7 Service Guard analysis. This topic covers:</p><p></p><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a href="#invoke">Step 1: Invoke Custom Thresholds</a></li><li><a href="#define_rule">Step 2: Define a Rule</a></li><li><a href="#select_criteria">Step 3: Select Criteria</a></li><li><a href="#repeat_save">Step 4: Add Rules and Save</a></li><li><a href="#next_steps">Next Steps</a></li></ul><div class="hd--md" data-hd-markdown="&lt;span id=&#34;before_you_begin&#34;&gt;&lt;/span&gt;"><p><span id="before_you_begin"></span></p>
+    </div><h3>Before You Begin</h3><ul><li>See <a href="/article/zrwsldxn94-set-up-service-guard">24/7 Service Guard Overview</a>.</li><li>In your Application&#39;s Environment, select <strong>24/7 Service Guard</strong> &gt; <strong>Add Service Verification</strong>.</li><li>Select a verification provider compatible with Custom Thresholds.<div class="tip-callout">Harness currently supports Custom Thresholds with <a href="/article/i9d01kf32g-2-24-7-service-guard-for-prometheus">Prometheus</a> and <a href="/article/e87u8c63z4-custom-verification-overview">Custom APMs</a>.</div><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/53t35yit8p/1585722519414/image.png" style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>Configure at least one Metrics Collection for this verification provider.</li></ul><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;invoke&#34;&gt;&lt;/span&gt;"><p><span id="invoke"></span></p>
+    </div><h3>Step 1: Invoke Custom Thresholds</h3><p>To begin defining one or more Ignore Hints:</p><ol><li>In the configuration dialog for your selected 24/7 Service Guard verification provider, click the pencil icon shown below.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/aat5m8p6ss/1583135410835/image.png" style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>In the resulting dialog, click <strong>Add Threshold</strong> to begin defining a rule, as shown below.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ceo02luigu/1583183961923/image.png" style="max-height:100%;max-width:100%" data-hd-height="100%" data-hd-width="100%"/></figure></li></ol><div class="hd--md" data-hd-markdown="&lt;span id=&#34;define_rule&#34;&gt;&lt;/span&gt;"><p><span id="define_rule"></span></p>
+    </div><h3>Step 2: Define a Rule</h3><p>Use the drop-downs to select a desired <strong>Transaction Name</strong> and <strong>Metric Name</strong> from your defined Metrics Collections.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;select_criteria&#34;&gt;&lt;/span&gt;"><p><span id="select_criteria"></span></p>
+    </div><h3>Step 3: Select Criteria</h3><p>Select the <strong>Criteria</strong> for this rule, and enter a corresponding <strong>Value</strong>. (Depending on your <strong>Criteria</strong> selection, the <strong>Value</strong> field&#39;s label will change to <strong>Less than</strong> and/or <strong>Greater than</strong>.)</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ceo02luigu/1583183997045/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Here are the <strong>Criteria</strong> and <strong>Value</strong> options available for the metric you&#39;ve selected.</p><p></p><table><tbody><tr><td><p><strong>Criteria</strong></p></td><td><p><strong>Value</strong></p></td></tr><tr><td><p>Absolute Value</p></td><td><p>Enter literal values of the selected metric in the <strong>Greater than</strong> and <strong>Less than</strong> fields. Observed values between these two threshold boundaries will be removed from 24/7 Service Guard analysis.</p></td></tr><tr><td><p>Percentage Deviation</p></td><td><p>Enter a threshold percentage at which to remove the metric from 24/7 Service Guard analysis. Units here are percentages, so entering <strong>Less than:</strong> <code>3</code> will instruct Harness to ignore anomalies less 3% away from the norm.</p></td></tr><tr><td><p>Deviation</p></td><td><p>This also sets a threshold deviation from the norm. But here, the units are not percentages, but literal values of the selected metric. Observed anomalies <strong>Less than</strong> the threshold you enter will be removed from analysis.</p></td></tr></tbody></table><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;repeat_save&#34;&gt;&lt;/span&gt;"><p><span id="repeat_save"></span></p>
+    </div><h3>Step 4: Add Rules and Save</h3><ol><li>If you want to define additional rules, click <strong>Add Threshold</strong>, then repeat Steps 2–3.</li><li>Click <strong>Submit</strong> to save your rules and apply them to 24/7 Service Guard verification for this Service.</li></ol><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;next_steps&#34;&gt;&lt;/span&gt;"><p><span id="next_steps"></span></p>
+    </div><h3>Next Steps</h3><ul><li>In Harness&#39; Continuous Verification dashboard, the <a href="/article/zrwsldxn94-set-up-service-guard#setup_overview">24/7 Service Guard heat map</a> for this Service and verification provider will show no risk indicators for events that fall within your Ignore Hints.</li></ul><p></p>
+  slug: custom-thresholds-24-7
+  tags:
+  - 24/7 Service Guard
+  - APM
+  - application performance monitoring
+  - verification
+  is_live: true

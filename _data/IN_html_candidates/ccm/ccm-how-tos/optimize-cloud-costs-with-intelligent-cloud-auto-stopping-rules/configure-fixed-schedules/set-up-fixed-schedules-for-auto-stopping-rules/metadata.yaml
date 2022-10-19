@@ -1,0 +1,40 @@
+type: article
+article_id: rxf5zg01s5
+user_id: slcpusem6b
+category_id: gwofg1l460
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Set Up Fixed Schedules for AutoStopping Rules
+slug: set-up-fixed-schedules-for-auto-stopping-rules
+description: In certain scenarios, you would not want your resources to go down or
+  up. For example, every Friday at 5 p.m. you want your ABC resource to go down. AutoStopping
+  Rules make this very simple. You can…
+short_version: In certain scenarios, you would not want your resources to go down
+  or up. For example, every Friday at 5 p.m. you want your ABC resource to go down.
+  AutoStopping Rules make this very simple. You can…
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-01-17T15:54:57.199146Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Fixed Schedules for AutoStopping Rules
+  description: ""
+  short_version: ""
+  body: <p>In certain scenarios, you would not want your resources to go down or up.
+    For example, every Friday at 5 p.m. you want your ABC resource to go down. AutoStopping
+    Rules make this very simple. You can schedule downtime for your ABC resource.
+    During this window, the resource will be forced to go down regardless of the defined
+    rule. Similarly, you can set Up time as well for your resources.</p>
+  slug: set-up-fixed-schedules-for-auto-stopping-rules
+  tags: []
+  is_live: true

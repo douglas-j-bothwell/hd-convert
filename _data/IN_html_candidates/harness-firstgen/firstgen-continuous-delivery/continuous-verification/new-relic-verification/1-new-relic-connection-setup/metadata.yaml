@@ -1,0 +1,86 @@
+type: article
+article_id: iz45kpa10u
+user_id: mfr0nxh4be
+category_id: 1nci5420c8
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Connect to New Relic
+slug: 1-new-relic-connection-setup
+description: Connect Harness to New Relic and verify the success of your deployments
+  and live microservices.
+short_version: Connect Harness to New Relic and verify the success of your deployments
+  and live microservices.
+tags:
+- New Relic
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:46.859469Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Connect to New Relic
+  description: Connect Harness to New Relic and verify the success of your deployments
+    and live microservices.
+  short_version: Connect Harness to New Relic and verify the success of your deployments
+    and live microservices.
+  body: '<p></p><p>The first step in using New Relic with Harness is to set up an
+    New Relic Verification Provider in Harness.</p><p>A Harness Verification Provider
+    is a connection to monitoring tools such as New Relic. Once Harness is connected,
+    you can use Harness 24/7 Service Guard and Deployment Verification with your New
+    Relic data and analysis.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#step_1_add_new_relic_verification_provider">Step
+    1: Add New Relic Verification Provider</a></li><li> <a href="#step_2_encrypted_api_key">Step
+    2: Encrypted API Key</a></li><li> <a href="#step_3_account_id">Step 3: Account
+    ID</a></li><li> <a href="#step_4_display_name">Step 4: Display Name</a></li><li>
+    <a href="#step_5_usage_scope">Step 5: Usage Scope</a></li><li> <a href="#next_steps">Next
+    Steps</a></li></ul><p></p><h3>Before You Begin</h3><ul><li>See the <a href="/article/ht3amzjvle-new-relic-verification-overview">New
+    Relic Verification Overview</a>.</li></ul><p></p><h3>Step 1: Add New Relic Verification
+    Provider</h3><p>To connect a verification provider, do the following:</p><ol><li>Click <strong>Setup</strong>.</li><li>Click <strong>Connectors</strong>,
+    and then click <strong>Verification Providers</strong>.</li><li>Click <strong>Add
+    Verification Provider</strong>, and select <strong>New Relic</strong>. The <strong>Add
+    New Relic Verification Provider</strong> dialog appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/iz45kpa10u/1587769306037/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete
+    the following fields of the <strong>Add New Relic Verification Provider</strong>
+    dialog.</li></ol><p></p><h3>Step 2: Encrypted API Key</h3><div class="note-callout">For
+    secrets and other sensitive settings, select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a>.</div><p>Enter the API key needed to connect with the
+    server. For information on API keys, see <a href="https://docs.newrelic.com/docs/apis/getting-started/intro-apis/access-rest-api-keys"
+    target="_blank">Access to REST API keys</a> from New Relic.</p><ol><li>Log into
+    New Relic.</li><li>On the home page, click your account name, and then click <strong>Account
+    Settings</strong>.<figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535477303148/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535477303148/image.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></a></figure></li><li>Click
+    the left menu, under <strong>Integrations</strong>, click <strong>API keys</strong>.<figure><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535477357119/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535477357119/image.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></a></figure>The
+    API keys are displayed.<figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535477480225/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535477480225/image.png"/></a></figure>An
+    index of Admin user&#39;s API keys appears below the account&#39;s REST API key.
+    The list includes the Admin&#39;s full name and the date their key was last used.
+    You can view your own Admin user&#39;s API key: From the Admin index, select <strong>(Show
+    key)</strong> for your name.</li></ol><h3>Step 3: Account ID</h3><p>To get the
+    account ID for your New Relic account, in the New Relic Dashboard, copy the number
+    after the <strong>/accounts/</strong> portion of the URL.</p><h3>Step 4: Display
+    Name</h3><p>Enter a display name for the provider. If you are going to use multiple
+    providers of the same type, ensure you give each provider a different name.</p><h3>Step
+    5: Usage Scope</h3><p>Usage scope is inherited from the secrets used in the settings.</p><div
+    class="note-callout">Pro or higher subscription level needed. For more information,
+    see <a href="https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer"
+    target="_blank">Introduction to New Relic&#39;s REST API Explorer</a> from New
+    Relic.</div><h3>Next Steps</h3><ul><li><a href="/article/eke3rf093v-2-24-7-service-guard-for-new-relic">Monitor
+    Applications 24/7 with New Relic</a></li><li><a href="/article/5zh0ijlupr-3-new-relic-deployment-marker">New
+    Relic Deployment Marker</a></li><li><a href="/article/9rc6pryw97-4-verify-deployments-with-new-relic">Verify
+    Deployments with New Relic</a></li></ul><p></p>'
+  slug: 1-new-relic-connection-setup
+  tags:
+  - New Relic
+  is_live: true

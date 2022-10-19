@@ -1,0 +1,77 @@
+type: article
+article_id: 3d1awjkw57
+user_id: wz6xkfcc9i
+category_id: ll7h8ktlwe
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Add SFTP Artifact Servers
+slug: add-sftp-artifact-servers
+description: Connect your SFTP artifact servers with Harness.
+short_version: Connect your SFTP artifact servers with Harness.
+tags:
+- SFTP
+- Artifact Server
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:01:47.928843Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add SFTP Artifact Servers
+  description: Connect your SFTP artifact servers with Harness.
+  short_version: Connect your SFTP artifact servers with Harness.
+  body: '<p></p><p>You can share files and folders on your network and use them for
+    an SFTP Artifact Server connection.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#visual_summary">Visual Summary</a></li><li><a
+    href="#step_1_select_sftp_artifact_server">Step 1: Select SFTP Artifact Server</a></li><li><a
+    href="#step_2_display_name">Step 2: Display Name</a></li><li><a href="#step_3_sftp_url">Step
+    3: SFTP URL</a></li><li><a href="#step_4_domain">Step 4: Domain</a></li><li><a
+    href="#step_5_username_and_password">Step 5: Username and Password</a></li><li><a
+    href="#review_adding_sftp_artifact_source_in_a_service">Review: Adding SFTP Artifact
+    Source in a Service</a></li><li><a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li>See <a href="/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a>.</li></ul><p></p><h3>Visual Summary</h3><p>Here&#39;s an example
+    configuration of SFTP Artifact Source.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1587762357577/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    SFTP dialog has the following fields.</p><p></p><h3>Step 1: Select SFTP Artifact
+    Server</h3><p>To connect to an artifact server, do the following:</p><ol><li>Click
+    <strong>Setup</strong>.</li><li>Click <strong>Connectors</strong>.</li><li>Click
+    <strong>Artifact Servers</strong>.</li><li>Click <strong>Add Artifact Server</strong>.</li><li>In
+    <strong>Type</strong>, click <strong>SFTP</strong>.</li></ol><h3>Step 2: Display
+    Name</h3><p>Enter a name for the SFTP Server. This is the name you will use to
+    identify this connection when adding an Artifact Source to a Harness Service.</p><p></p><h3>Step
+    3: SFTP URL</h3><p>Ensure that the value contains the <code>sftp:\\</code> scheme
+    followed by the hostname or IP address. For example, <code>sftp:\\23.100.87.22</code>.</p><p>If
+    you want to specify a folder in the URL, you can enter the folder using the <code>\myFolder</code>
+    format, such as <code>sftp:\\23.100.87.22\myFolder</code>. Typically, you will
+    specify the folder when you use the SFTP Artifact Server as an Artifact Source
+    for a Service.</p><h3>Step 4: Domain</h3><p>Enter the domain where the SFTP server
+    is located.</p><h3>Step 5: Username and Password</h3><p>Use a user account that
+    has permissions to access the SFTP server.</p><p>For secrets and other sensitive
+    settings, select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a>.</p><p>Usage Scope is determined by the secret you selected.</p><p>Click
+    <strong>Submit</strong>.</p><h3>Review: Adding SFTP Artifact Source in a Service</h3><p>When
+    you use the SFTP Artifact Server as an Artifact Source for a Service, you can
+    specify a file or a folder for the artifact. This allows a folder to be copied
+    to the deployment target host by the Harness Delegate. Here is the SFTP Artifact
+    Source dialog:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1547593762735/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>In
+    <strong>Artifact Path</strong>, you can specify a file or folder by name or using
+    wildcards. The following are example for different files and folders:</p><ul><li>todo-*zip
+    - All matching files, such todo-1.0.zip, todo-2.0.zip.</li><li>test/*zip - All
+    zip files under <strong>test</strong> folder.</li><li>test/1* - All folders under
+    <strong>test</strong> folder starting with 1.</li><li>test/* - All folders under
+    <strong>test</strong> folder.</li></ul><p></p><p></p>'
+  slug: add-sftp-artifact-servers
+  tags:
+  - SFTP
+  - Artifact Server
+  is_live: true

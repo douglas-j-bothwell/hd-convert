@@ -1,0 +1,157 @@
+type: article
+article_id: 2j2vi5oxrq
+user_id: mfr0nxh4be
+category_id: n03qfofd5w
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Define or Add Kubernetes Manifests
+slug: define-kubernetes-manifests
+description: A quick overview or some options and steps when using Kubernetes manifests.
+short_version: A quick overview or some options and steps when using Kubernetes manifests.
+tags:
+- kubernetes manifests
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:49:30.887925Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Define or Add Kubernetes Manifests
+  description: A quick overview or some options and steps when using Kubernetes manifests.
+  short_version: A quick overview or some options and steps when using Kubernetes
+    manifests.
+  body: '<div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/category/qfj6m1k2c4">NextGen</a>.</div><p></p><p>Harness provides
+    a simple and flexible way to use Kubernetes manifests. You can add new files or
+    upload existing manifests. You can work on your manifest inline, using the Go
+    templating and Expression Builder features of Harness, or simply link to remote
+    manifests in a Git repo.</p><p>This topics provides a quick overview or some options
+    and steps when using Kubernetes manifest, with links to more details.</p><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#review_what_workloads_can_i_deploy">Review:
+    What Workloads Can I Deploy?</a></li><li><a href="#limitations">Limitations</a></li><li><a
+    href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#step_1_create_the_harness_kubernetes_service">Step
+    1: Create the Harness Kubernetes Service</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#option_edit_inline_manifest_files">Option:
+    Edit Inline Manifest Files</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#option_add_or_upload_local_manifest_files">Option:
+    Add or Upload Local Manifest Files</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#step_2_use_go_templating_and_harness_variables">Step
+    2: Use Go Templating and Harness Variables</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#step_3_expression_builder">Step
+    3: Expression Builder</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#option_use_remote_manifests_and_charts">Option:
+    Use Remote Manifests and Charts</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#option_deploy_helm_charts">Option:
+    Deploy Helm Charts</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#best_practice_use_readiness_probes">Best
+    Practice: Use Readiness Probes</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#secrets_in_values_yaml">Secrets
+    in values.yaml</a></li><li><a href="https://docs.harness.io/article/2j2vi5oxrq-define-kubernetes-manifests#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/wnr5n847b1-kubernetes-overview">Kubernetes
+    Deployments Overview</a></li><li><a href="/article/6ib8n1n1k6-add-container-images-for-kubernetes-deployments">Add
+    Container Images for Kubernetes Deployments</a></li></ul><h3>Review: What Workloads
+    Can I Deploy?</h3><p>See <a href="/article/6ujb3c70fh">What Can I Deploy in Kubernetes?</a>.</p><h3>Limitations</h3><p>A
+    values.yaml file can use <a href="https://helm.sh/docs/chart_best_practices/values/#flat-or-nested-values"
+    target="_blank">flat or nested values</a>. Harness supports nested values only.</p><h3>Step
+    1: Create the Harness Kubernetes Service</h3><ol><li>In Harness, click <strong>Setup</strong>,
+    and then click <strong>Add Application</strong>.</li><li>Enter a name for the
+    Application and click <strong>Submit</strong>.</li><li>Click <strong>Services</strong>,
+    and then click <strong>Add Service</strong>. The <strong>Add Service</strong>
+    settings appear.</li></ol><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/4ifq51cp0i/1580881851308/image.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure><ol><li
+    style="counter-increment:li 3" start="4">In <strong>Name</strong>, enter a name
+    for the Service.</li><li>In <strong>Deployment Type</strong>, select <strong>Kubernetes</strong>,
+    and then ensure <strong>Enable Kubernetes V2</strong> is selected.</li><li> Click
+    <strong>Submit</strong>. The new Harness Kubernetes Service is created.</li></ol><h3>Option:
+    Edit Inline Manifest Files</h3><p>When you create your Harness Kubernetes Service,
+    several default files are added.</p><p>For example, the <strong>Manifests</strong>
+    section has the following default files:</p><ul><li><strong>values.yaml</strong> -
+    This file contains the data for templated files in <strong>Manifests</strong>,
+    using the <a href="https://godoc.org/text/template">Go text template package</a>.
+    This is described in greater detail below.</li></ul><div class="note-callout">The
+    only mandatory file and folder requirement in <strong>Manifests</strong> is that <strong>values.yaml</strong> is
+    located at the directory root. The values.yaml file is required if you want to
+    use Go templating. It must be named <strong>values.yaml</strong> and it must be
+    in the directory root.</div><ul><li><strong>deployment.yaml</strong> - This manifest
+    contains three API object descriptions, ConfigMap, Secret, and Deployment. These
+    are standard descriptions that use variables in the values.yaml file.</li></ul><div
+    class="note-callout">Manifest files added in <strong>Manifests</strong> are freeform.
+    You can add your API object descriptions in any order and Harness will deploy
+    them in the correct order at runtime.</div><ol><li>Add or edit the default files
+    with your own Kubernetes objects.</li></ol><p></p><h3>Option: Add or Upload Local
+    Manifest Files</h3><p>You can add manifest files in the following ways:</p><ul><li>Manually
+    add a file using the Manifests Add File dialog.</li><li>Uploading local files.</li></ul><p>See
+    <a href="/article/2vcxg26xiu-upload-kubernetes-resource-files">Upload Kubernetes
+    Resource Files</a>.</p><h3>Step 2: Use Go Templating and Harness Variables</h3><p>You
+    can use <a href="https://godoc.org/text/template" target="_blank">Go templating</a>
+    and Harness built-in variables in combination in your <strong>Manifests</strong> files.</p><p>See
+    <a href="/article/mwy6zgz8gu-use-go-templating-in-kubernetes-manifests">Use Go
+    Templating in Kubernetes Manifests</a>.</p><div class="note-callout">The <u>inline</u>
+    values.yaml file used in a Harness Service does not support Helm templating, only
+    Go templating. Helm templating is fully supported in the <u>remote</u> Helm charts
+    you add to your Harness Service.</div><div class="tip-callout">Harness <a href="/article/9dvxcegm90-variables">variable
+    expressions</a> may be added to values.yaml, not the manifests themselves. This
+    provides more flexibility.</div><h3>Step 3: Expression Builder</h3><p>When you
+    edit manifests in the Harness Service, you can enter expressions by entering <code>{{.</code>
+    and Harness will fetch the values available in the values.yaml file.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/t6zrgqq0ny/1562973484332/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>This
+    expression builder helps to ensure that you do not accidentally enter an incorrect
+    value in your manifests.</p><h3>Option: Use Remote Manifests and Charts</h3><p>You
+    can use your Git repo for the configuration files in <strong>Manifests</strong> and
+    Harness uses them at runtime. You have the following options for remote files:</p><ul><li><strong>Kubernetes
+    Specs in YAML format</strong> - These files are simply the YAML manifest files
+    stored on a remote Git repo. See <a href="/article/yjkkwi56hl-link-resource-files-or-helm-charts-in-git-repos">Link
+    Resource Files or Helm Charts in Git Repos</a>.</li><li><strong>Helm Chart from
+    Helm Repository</strong> - Helm charts files stored in standard Helm syntax in
+    YAML on a remote Helm repo. See <a href="/article/hddm3rgf1y-use-a-helm-repository-with-kubernetes">Use
+    a Helm Repository with Kubernetes</a>.</li><li><strong>Helm Chart Source Repository</strong> -
+    These are Helm chart files stored in standard Helm syntax in YAML on a remote
+    Git repo or Helm repo. See <a href="/article/yjkkwi56hl-link-resource-files-or-helm-charts-in-git-repos">Link
+    Resource Files or Helm Charts in Git Repos</a>.</li><li><strong>Kustomization
+    Configuration</strong> — kustomization.yaml files stored on a remote Git repo.
+    See <a href="/article/zrz7nstjha-use-kustomize-for-kubernetes-deployments">Use
+    Kustomize for Kubernetes Deployments</a>.</li><li><strong>OpenShift Template</strong> —
+    OpenShift params file from a Git repo. See <a href="/article/p756zrn9vc-using-open-shift-with-harness-kubernetes">Using
+    OpenShift with Harness Kubernetes</a>.</li><li><strong>Files in a packaged archive</strong>
+    — In some cases, your manifests, templates, etc are in a packaged archive and
+    you simply wish to extract then and use then at runtime. You can use a packaged
+    archive with the <strong>Custom Remote Manifests</strong> setting in a Harness
+    Kubernetes Service. See <a href="/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts">Add
+    Packaged Kubernetes Manifests</a>.</li></ul><div class="note-callout">Remote files
+    can also use Go templating.</div><h3>Option: Deploy Helm Charts</h3><p>In addition
+    to the Helm options above, you can also simply deploy the Helm chart without adding
+    your artifact to Harness.</p><p>Instead, the Helm chart identifies the artifact.
+    Harness installs the chart, gets the artifact from the repo, and then installs
+    the artifact. We call this a <em>Helm chart deployment</em>.</p><p>See <a href="/article/p5om530pe0-deploy-a-helm-chart-as-an-artifact">Deploy
+    Helm Charts</a>.</p><h3>Best Practice: Use Readiness Probes</h3><p>Kubernetes
+    readiness probes indicate when a container is ready to start accepting traffic.
+    If you want to start sending traffic to a pod only when a probe succeeds, specify
+    a readiness probe. For example:</p><pre>...<br/>    spec:<br/>      {{- if .Values.dockercfg}}<br/>      imagePullSecrets:<br/>      -
+    name: {{.Values.name}}-dockercfg<br/>      {{- end}}<br/>      containers:<br/>      -
+    name: {{.Values.name}}<br/>        image: {{.Values.image}}<br/>        {{- if
+    or .Values.env.config .Values.env.secrets}}<br/>       readinessProbe:<br/>         httpGet:<br/>           path:
+    /<br/>           port: 3000<br/>         timeoutSeconds: 2<br/>        envFrom:<br/>        {{-
+    if .Values.env.config}}<br/>        - configMapRef:<br/>            name: {{.Values.name}}<br/>        {{-
+    end}}<br/>        {{- if .Values.env.secrets}}<br/>        - secretRef:<br/>            name:
+    {{.Values.name}}<br/>        {{- end}}<br/>        {{- end}}<br/>...</pre><p>See
+    <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#when-should-you-use-a-readiness-probe"
+    target="_blank">When should you use a readiness probe?</a> from <a href="https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes"
+    target="_blank">Kubernetes and Kubernetes best practices: Setting up health checks
+    with readiness and liveness probes</a> from GCP.</p><p>In this example. kubelet
+    will not restart the pod when the probe exceeds two seconds. Instead, it cancels
+    the request. Incoming connections are routed to other healthy pods. Once the pod
+    is no longer overloaded, kubelet will start routing requests back to it (as the
+    GET request now does not have delayed responses).</p><h3>Secrets in values.yaml</h3><p>If
+    you use <a href="/article/au38zpufhr-secret-management">Harness secrets</a> in
+    a values.yaml and the secret cannot be resolved by Harness during deployment,
+    Harness will throw an exception.</p><div class="tip-callout">An exception is thrown
+    regardless of whether the secret is commented out.</div><h3>Next Steps</h3><ul><li><a
+    href="/article/mwy6zgz8gu-use-go-templating-in-kubernetes-manifests">Use Go Templating
+    in Kubernetes Manifests</a></li></ul><p></p>'
+  slug: define-kubernetes-manifests
+  tags:
+  - kubernetes manifests
+  is_live: true

@@ -1,0 +1,280 @@
+type: article
+article_id: k726i6gdfa
+user_id: znazf3hcp9
+category_id: ujh4aicx40
+author:
+  name: Michael Cretzman
+  email: michael.cretzman+docs@harness.io
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: STO Stage Quickstart
+slug: security-testing-orchestration-quickstart-sma
+description: Use Harness Security Testing Orchestration (STO) to perform code and
+  container security scanning on a CI Pipeline.
+short_version: Use Harness Security Testing Orchestration (STO) to perform code and
+  container security scanning on a CI Pipeline.
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-31T19:37:52.179063Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: STO Stage Quickstart
+  description: Use Harness Security Testing Orchestration (STO) to perform code and
+    container security scanning on a CI Pipeline.
+  short_version: Use Harness Security Testing Orchestration (STO) to perform code
+    and container security scanning on a CI Pipeline.
+  body: '<p>This quickstart shows you how to use the Harness Security Testing Orchestration
+    (STO) Stage to perform code and container security scanning in a Harness Pipeline.</p><p>You
+    can also use Security Testing Orchestration <u>steps</u> within a CI stage as
+    part of your build process. For information on using Security Testing Orchestration
+    steps with CI, see <a href="/article/b5jv0vlrvf-security-testing-orchestration-quickstart">Security
+    Testing Orchestration Steps Quickstart</a>.</p><div class="note-callout">Currently
+    Harness STO is in <strong>Public Preview</strong>. You will need some credentials
+    from Harness to use STO (JSON Web Token, etc). Consequently, this quickstart isn&#39;t
+    intended for you to set up STO without assistance from Harness. Once you have
+    the necessary information from Harness, you can use this quickstart to set up
+    STO in your Pipelines.</div><h3>Objectives</h3><p>You&#39;ll learn how to:</p><ol><li>Add
+    a STO Stage to a Pipeline.</li><li>Configure Security steps for different security
+    scanners: one for code scanning and one for container scanning.</li><li>Run the
+    Pipeline and scan the codebase and the container image.</li><li>View the normalized
+    and deduplicated security results in the Security dashboard.</li></ol><p></p><h3>Before
+    You Begin</h3><p>Make sure you have the following set up before you begin this
+    quickstart:</p><ul><li><strong>Github account:</strong> this quickstart clones
+    a codebase from a Github repo. You will need a Github account with a username
+    and Personal Access Token (PAT) so Harness can connect to Github. The PAT scope
+    is covered below.</li><li><strong>Docker Hub account:</strong> the Pipeline pulls
+    the Docker in Docker <strong>docker:dind</strong> image from Docker Hub. <ul><li>The
+    Pipeline in this quickstart does not actually push a Docker image. You do not
+    need a Docker Hub repo, just an account.</li></ul></li><li><strong>Kubernetes
+    cluster for Harness Delegate and scanning infrastructure:</strong><ul><li>You&#39;ll
+    need a Kubernetes cluster for Harness to use for the Harness Delegate and as the
+    Security Testing Orchestration scanning infrastructure. Ensure you have a cluster
+    that meets the following requirements:<ul><li>Number of pods: 3 (two pods for
+    the Harness Delegate, the remaining pod for scanning infrastructure).</li><li>Machine
+    type: 4vCPU.</li><li>Memory: 16GB RAM. The scanning infrastructure and Delegate
+    requirements are low but the remaining memory is for Kubernetes, the Docker container,
+    and other default services.</li><li>Networking: outbound HTTPS for the Harness
+    connection, and to connect to Docker Hub. Allow TCP port 22 for SSH.</li><li>Namespace:
+    when you install the Harness Delegate, it will create the <strong>harness-delegate</strong>
+    namespace. You&#39;ll use the same namespace for the scanning infrastructure.</li><li>A
+    Kubernetes service account with permission to create entities in the target namespace
+    is required. The set of permissions should include <strong>list</strong>, <strong>get</strong>,
+    <strong>create</strong>, and <strong>delete permissions</strong>. In general,
+    the <strong>cluster-admin</strong> role or a namespace <em>admin</em> permission
+    is enough. For more information, see <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles">User-Facing
+    Roles</a> from Kubernetes.</li></ul></li></ul></li></ul><p></p><div class="note-callout">Google
+    Kubernetes Engine (GKE) <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview">Autopilot</a>
+    is not supported at this time.</div><p></p><h3>Review: Scanner Coverage</h3><p>See
+    <strong>Security Testing Orchestration</strong> in <a href="/article/1e536z41av-supported-platforms-and-technologies">Supported
+    Platforms and Technologies</a>.</p><h3>Step 1: Add the Pipeline using YAML</h3><p>For
+    this quickstart we&#39;ll add a STO stage with its steps to a Harness Pipeline.</p><p>You
+    don&#39;t need to create your own Pipeline. We will create one in this quickstart.</p><p>You
+    can create a Harness Pipeline using the Visual Editor or YAML. For this quickstart,
+    we&#39;ll give you the YAML for the Pipeline and then take you through updating
+    it and then running it.</p><p>Let&#39;s get started!</p><p>Log into Harness.</p><p>If
+    you do not already have a Harness Project, click <strong>Projects</strong>, and
+    then click <strong>New Project</strong>.</p><p>Name the Project <strong>Security
+    Testing Orchestration</strong> and click <strong>Save and Continue</strong>.</p><p>In
+    <strong>Invite Collaborators</strong>, click <strong>Save and Continue</strong>.</p><p>In
+    <strong>Which Harness module would you like to start using for this project</strong>,
+    click <strong>Security Tests</strong>, and then <strong>Go to Module</strong>.</p><p>Your
+    new Project appears.</p><p>Click <strong>Pipelines</strong>, and then <strong>New
+    Pipeline</strong>.</p><p>In <strong>Name</strong>, enter <strong>STOLAB</strong>,
+    and click <strong>Start</strong>.</p><p>Your new Pipeline appears. Now let&#39;s
+    add the Pipeline settings using YAML.</p><p>Click <strong>YAML</strong>, and then
+    in YAML editor, click <strong>Edit YAML</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647895096886/clean-shot-2022-03-21-at-13-37-33.png"/></figure><p></p><p>Select
+    all the YAML, delete it, and then paste the following YAML:</p><div class="note-callout">We
+    use the Harness <strong>default</strong> Organization that is included in all
+    accounts. If you use a different Org, simply update <code>orgIdentifier: default</code>
+    with the other Org Id.</div><pre>pipeline:<br/>    name: STOLAB<br/>    identifier:
+    STOLAB<br/>    projectIdentifier: Security_Testing_Orchestration<br/>    orgIdentifier:
+    default<br/>    tags: {}<br/>    properties:<br/>        ci:<br/>            codebase:<br/>                connectorRef:
+    &lt;+input&gt;<br/>                build: &lt;+input&gt;<br/>    stages:<br/>        -
+    stage:<br/>              name: STOLAB<br/>              identifier: STOLAB<br/>              type:
+    SecurityTests<br/>              spec:<br/>                  cloneCodebase: true<br/>                  infrastructure:<br/>                      type:
+    KubernetesDirect<br/>                      spec:<br/>                          connectorRef:
+    Quickstart<br/>                          namespace: harness-delegate-ng<br/>                          automountServiceAccountToken:
+    true<br/>                          nodeSelector: {}<br/>                          os:
+    Linux<br/>                  sharedPaths:<br/>                      - /var/run<br/>                  serviceDependencies:<br/>                      -
+    identifier: dind<br/>                        name: dind<br/>                        type:
+    Service<br/>                        spec:<br/>                            connectorRef:
+    account.harnessImage<br/>                            image: docker:dind<br/>                            privileged:
+    true<br/>                            entrypoint:<br/>                                -
+    dockerd-entrypoint.sh<br/>                            imagePullPolicy: IfNotPresent<br/>                  execution:<br/>                      steps:<br/>                          -
+    parallel:<br/>                                - step:<br/>                                      type:
+    Security<br/>                                      name: bandit<br/>                                      identifier:
+    bandit<br/>                                      spec:<br/>                                          connectorRef:
+    account.harnessImage<br/>                                          privileged:
+    true<br/>                                          settings:<br/>                                              policy_type:
+    orchestratedScan<br/>                                              scan_type:
+    repository<br/>                                              repository_project:
+    dvpwa<br/>                                              repository_branch: &lt;+codebase.branch&gt;<br/>                                              product_name:
+    bandit<br/>                                              product_config_name:
+    bandit-default<br/>                                          imagePullPolicy:
+    IfNotPresent<br/>                                      failureStrategies: []<br/>                                -
+    step:<br/>                                      type: Security<br/>                                      name:
+    aqua-trivy<br/>                                      identifier: aqua_trivy_scan<br/>                                      spec:<br/>                                          connectorRef:
+    account.harnessImage<br/>                                          privileged:
+    true<br/>                                          settings:<br/>                                              policy_type:
+    orchestratedScan<br/>                                              scan_type:
+    container<br/>                                              product_name: aqua-trivy<br/>                                              product_config_name:
+    aqua-trivy<br/>                                              container_type: docker_v2<br/>                                              container_domain:
+    docker.io<br/>                                              container_project:
+    wwissemann/dvpwa<br/>                                              container_tag:
+    latest<br/>                                          imagePullPolicy: IfNotPresent<br/>                                      failureStrategies:
+    []</pre><p></p><p>Click <strong>Save</strong>. The Pipeline is updated. Click
+    <strong>Visual</strong> to see the Pipeline in the visual editor.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656351655668/clean-shot-2022-06-27-at-10-40-46.png"/></figure><p>Now
+    that you have a starter Security Testing Orchestration Pipeline, we can update
+    a few Connectors and you&#39;ll be reading to run your scans.</p><h3>Step 2: Update
+    the Codebase and Stage Overview</h3><p>We need to update the Stage&#39;s Codebase
+    to point to the public repo for our test code at <a href="https://github.com/williamwissemann/dvpwa"
+    target="_blank">https://github.com/williamwissemann/dvpwa</a>.</p><p>We&#39;ll
+    add a Harness Connector to GitHub using your own credentials, which Harness will
+    encrypt and store in the <a href="/article/hngrlb7rd6-harness-secret-manager-overview">Harness
+    Secret Manager</a> by default. You can also <a href="/article/hngrlb7rd6-harness-secret-manager-overview"
+    target="_blank">add your own Secret Manager to Harness</a>.</p><p>In your Stage,
+    click <strong>Codebase</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647903288544/clean-shot-2022-03-21-at-15-54-23.png"/></figure><p>In
+    <strong>Edit Codebase Configuration</strong>, click in <strong>Connector</strong>.</p><p>In
+    <strong>Create or Select an Existing Connector</strong>, click <strong>New Connector</strong>.</p><p>Enter
+    the following settings.</p><p></p><table><tbody><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647902673403/clean-shot-2022-03-21-at-15-44-27.png"/></figure></td><td><ul><li>Click
+    <strong>GitHub Connector</strong>.</li></ul></td></tr><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647902722434/clean-shot-2022-03-21-at-15-45-14.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    GitHub.</li></ul></td></tr><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647902766074/clean-shot-2022-03-21-at-15-45-58.png"/></figure></td><td><ul><li><strong>URL
+    Type:</strong> Repository.</li><li><strong>Connection Type:</strong> HTTP.</li><li><strong>GitHub
+    Repository URL:</strong> https://github.com/anxolerd/dvpwa.git.</li></ul></td></tr><tr><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647903105365/clean-shot-2022-03-21-at-15-51-35.png"/></figure></td><td><ul><li><strong>Username:</strong>
+    Enter your GitHub username.</li><li><strong>Personal Access Token:</strong> Create
+    a secret in Harness for a <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token"
+    target="_blank">GitHub PAT</a> that has the following scopes:<ul><li>repo</li><li>admin:repo_hook</li><li>user</li></ul></li></ul></td></tr><tr><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647903182658/clean-shot-2022-03-21-at-15-52-50.png"/></figure></td><td><ul><li>Click
+    <strong>Connect through Harness Platform</strong>.</li></ul></td></tr></tbody></table><p></p><p>When
+    you&#39;re done, click <strong>Save and Continue</strong>. Harness will test the
+    connection and credentials. Click <strong>Finish</strong>.</p><p>Select the Connector
+    and click <strong>Apply Selected</strong>.</p><p>In <strong>Edit Codebase Configuration</strong>,
+    click <strong>Apply Changes</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656352578695/clean-shot-2022-06-27-at-10-56-09.png"/></figure><p>Now
+    the codebase is ready.</p><p>Next, we will set up the scanning infrastructure
+    for the Stage.</p><h3>Step 3: Update the Infrastructure</h3><p>You set up the
+    <strong>Infrastructure</strong> for the Stage by adding a Kubernetes Cluster Connector
+    to connector to your Kubernetes cluster. A Kubernetes Cluster Connector is a platform
+    agnostic connection to any Kubernetes cluster.</p><p>You will also add a Harness
+    Delegate to your cluster as part of this process. This simply involves logging
+    into your cluster and applying a YAML file.</p><p>Click <strong>Infrastructure</strong>.</p><p>Click
+    <strong>Kubernetes</strong>.</p><p>Click in <strong>Kubernetes Cluster</strong>.</p><p>In
+    <strong>Create or Select an Existing Connector</strong>, click <strong>New Connector</strong>.</p><p>Enter
+    the following settings.</p><p></p><table><tbody><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647903661254/clean-shot-2022-03-21-at-16-00-53.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Quickstart.</li></ul></td></tr><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647903732952/clean-shot-2022-03-21-at-16-02-06.png"/></figure></td><td><ul><li>Click
+    <strong>Use the credentials of a specific Harness Delegate</strong>.</li></ul><p>If
+    you already have a Delegate set up in your Harness account, you can use the <strong>Specify
+    master URL and credentials</strong> option.</p><p>This quickstart assumes you
+    are new to Harness.</p></td></tr><tr><td><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647903894751/clean-shot-2022-03-21-at-16-04-39.png"/></figure></td><td><ul><li>Click
+    <strong>Install new Delegate</strong>.</li></ul><p>If you already have a Delegate
+    set up in your Harness account, you can use it.</p><p>This quickstart assumes
+    you are new to Harness.</p></td></tr><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647903970202/clean-shot-2022-03-21-at-16-06-03.png"/></figure></td><td><ul><li>Click
+    <strong>Kubernetes</strong>.</li></ul></td></tr><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647904099509/clean-shot-2022-03-21-at-16-08-11.png"/></figure></td><td><ul><li><strong>Delegate
+    Name:</strong> sto.</li><li><strong>Delegate Size:</strong> Small.</li></ul></td></tr><tr><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647904168967/clean-shot-2022-03-21-at-16-09-20.png"/></figure></td><td><ul><li>Download
+    the YAML file.</li><li>In a Terminal, navigate to the location of the file.</li><li>In
+    the same Terminal, log into your cluster and run the following:<br/><code>kubectl
+    apply -f harness-delegate.yml</code></li></ul></td></tr></tbody></table><p></p><p>Once
+    you apply the YAML file you will see an output like this:</p><pre>% kubectl apply
+    -f harness-delegate.yml<br/>namespace/harness-delegate-ng created<br/>clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin
+    created<br/>secret/sto-proxy created<br/>statefulset.apps/sto created<br/>service/delegate-service
+    created</pre><p></p><p>In the Harness Delegate setup, in <strong>Apply YAML and
+    verify connection</strong>, you will see the Delegate register with Harness. This
+    can take a few minutes.</p><div class="note-callout">If you encounter errors,
+    ensure your cluster can connect outbound to <strong>app.harness.io</strong>. See
+    <a href="/article/ooelo06uy5-whitelist-harness-domains-and-ips">Allowlist Harness
+    Domains and IPs</a>.</div><p>In <strong>Delegates Setup</strong>, select <strong>Only
+    use Delegates with all of the following tags</strong>, select the new Delegate,
+    and then click <strong>Save and Continue</strong>.</p><p>In <strong>Connection
+    Test</strong>, click <strong>Finish</strong>.</p><p>In the Infrastructure <strong>Namespace</strong>
+    setting, enter <strong>harness-delegate-ng</strong> or <strong>default</strong>
+    or whatever namespace you want to use.</p><p>Now that you have the scanning infrastructure
+    for the Stage set up, we can review the <strong>Execution</strong>.</p><h3>Step
+    4: Update the Service Dependency</h3><p>Harness STO uses Docker-in-Docker as a
+    dependency. You simply need to update <strong>dind</strong> in <strong>Dependencies</strong>
+    with a Connector to Docker Hub.</p><p>In the Stage <strong>Execution</strong>,
+    in <strong>Dependencies</strong>, click <strong>dind</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656353517634/clean-shot-2022-06-27-at-11-11-42.png"/></figure><p>Click
+    in <strong>Container Registry</strong>, and then click <strong>New Connector</strong>.</p><p>Enter
+    the following settings.</p><p></p><table><tbody><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647905837969/clean-shot-2022-03-21-at-16-37-12.png"/></figure></td><td><ul><li>Click
+    <strong>Docker Registry</strong></li></ul></td></tr><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647905870807/clean-shot-2022-03-21-at-16-37-44.png"/></figure></td><td><ul><li><strong>Name:</strong>
+    Docker Hub</li></ul></td></tr><tr><td><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647905962089/clean-shot-2022-03-21-at-16-39-14.png"/></figure></td><td><ul><li><strong>Docker
+    Registry URL:</strong> https://registry.hub.docker.com</li><li><strong>Provider
+    Type:</strong> DockerHub</li><li><strong>Authentication:</strong> Anonymous</li></ul></td></tr><tr><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647905989359/clean-shot-2022-03-21-at-16-39-35.png"/></figure></td><td><ul><li>Select
+    the Delegate you added earlier.</li><li>Click <strong>Finish</strong>, and then
+    in <strong>Create or Select an Existing Connector</strong>, click <strong>Apply
+    Selected</strong>.</li></ul></td></tr></tbody></table><p></p><p>Back in <strong>Configure
+    Service Dependency</strong>, in <strong>Image</strong>, enter <strong>docker:dind</strong>,
+    and click <strong>Apply Changes</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b5jv0vlrvf/1647906110259/clean-shot-2022-03-21-at-16-41-39.png"/></figure><p>Now
+    Harness will pull in the Docker-in-Docker image at runtime.</p><p>Let&#39;s review
+    the STO steps.</p><h3>Step 5: Review the Security Steps</h3><p>Let&#39;s look
+    at each STO step to see how they are configured to scan.</p><h4>Bandit Scan</h4><p>Click
+    the <strong>bandit</strong> step.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656353613881/clean-shot-2022-06-27-at-11-13-24.png"/></figure><p>Let&#39;s
+    review the settings.</p><p></p><table><tbody><tr><td><p><strong>Setting</strong></p></td><td><p><strong>Example</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>policy_type</p></td><td><p>orchestratedScan</p></td><td><p>Indicates
+    that this is an orchestrated scan as opposed to a manual scan (manualUpload).</p></td></tr><tr><td><p>scan_type</p></td><td><p>repository</p></td><td><p>Indicates
+    that this is a repo scan. A repo scan has certain requirements, which are provided
+    in the <strong>repository_*</strong> settings.</p></td></tr><tr><td><p>repository_project</p></td><td><p>dvpwa</p></td><td><p>Name
+    of the repo project.</p></td></tr><tr><td><p>repository_branch</p></td><td><p>&lt;+codebase.branch&gt;</p></td><td><p>This
+    Harness expression resolves to the branch selected in the Codebase (the default
+    branch).</p></td></tr><tr><td><p>product_name</p></td><td><p>bandit</p></td><td><p>The
+    name of the scan tool.</p></td></tr><tr><td><p>product_config_name</p></td><td><p>bandit-default</p></td><td><p>The
+    config to use with the tool.</p></td></tr></tbody></table><p></p><p>For this quickstart
+    we are <u>not</u> going to fail the Pipeline if scanning detects a vulnerability.
+    But, if you wanted to fail on detection, you would add another setting named <code>fail_on_severity</code>.</p><p>The
+    <code>fail_on_severity</code> setting determines the minimum criteria for failing
+    the step. For example, a <code>HIGH</code> vulnerability is found.</p><h4>Aqua-Trivy
+    Scan</h4><p>Next, we can scan the container using Aqua Trivy.</p><p>Click the
+    <strong>aqua-trivy</strong> step.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656353972021/clean-shot-2022-06-27-at-11-19-23.png"/></figure><p>Let&#39;s
+    review the settings.</p><p></p><table><tbody><tr><td><p><strong>Setting</strong></p></td><td><p><strong>Example</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>product_name</p></td><td><p>aqua-trivy</p></td><td><p>The
+    name of the scan tool.</p></td></tr><tr><td><p>product_config_name</p></td><td><p>aqua-trivy</p></td><td><p>The
+    config to use with the tool.</p></td></tr><tr><td><p>policy_type</p></td><td><p>orchestratedScan</p></td><td><p>Indicates
+    that this is an orchestrated scan as opposed to a manual scan (manualUpload).</p></td></tr><tr><td><p>scan_type</p></td><td><p>container</p></td><td><p>Indicates
+    that this is a container scan. A container scan has certain requirements, which
+    are provided in the <strong>container_*</strong> settings.</p></td></tr><tr><td><p>container_type</p></td><td><p>docker_v2</p></td><td><p>Scan
+    a Docker image.</p></td></tr><tr><td><p>container_domain</p></td><td><p>docker.io</p></td><td><p>The
+    default domain for the container.</p></td></tr><tr><td><p>container_project</p></td><td><p>wwissemann/dvpwa</p></td><td><p>Name
+    of the container project.</p></td></tr><tr><td><p>container_tag</p></td><td><p>latest</p></td><td><p>The
+    tag on the container.</p></td></tr></tbody></table><p></p><p>For this quickstart
+    we are <u>not</u> going to fail the Pipeline if scanning detects a vulnerability.
+    But, if you wanted to fail on detection, you would add another setting named <code>fail_on_severity</code>.</p><p>The
+    <code>fail_on_severity</code> setting determines the minimum criteria for failing
+    the step. For example, a <code>HIGH</code> vulnerability is found.</p><h3>Step
+    6: Run the Pipeline and View the Security Dashboard</h3><p>Now that the Stage
+    and its steps are completed and reviewed, you can run the Pipeline and see the
+    scans.</p><p>Click <strong>Save</strong>, and then click <strong>Run</strong>.</p><p>Enter
+    the following settings, and then click <strong>Run Pipeline</strong>.</p><p></p><table><tbody><tr><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656354129200/clean-shot-2022-06-27-at-11-21-59.png"/></figure></td><td><ul><li><strong>Branch
+    Name:</strong> master.</li></ul></td></tr></tbody></table><p></p><p>The Pipeline
+    executes and the results of the Bandit and Aqua Trivy are available.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656355664150/clean-shot-2022-06-27-at-11-47-31.png"/></figure><p>Click
+    a scan step to see the details of each scan.</p><p>Click the <strong>Security
+    Tests</strong> tab to see the dashboard.</p><p>The <strong>Security Tests</strong>
+    tab tells you what vulnerabilities you introduced and can fix (<strong>Only in current
+    scan targets</strong>), as well as the vulnerabilities that existed prior to running
+    the Pipeline (<strong>Common to anchor scan targets</strong>).</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/k726i6gdfa/1656356029152/clean-shot-2022-06-27-at-11-53-29.png"/></figure><p>A
+    few notes:</p><ul><li><strong>Severity:</strong> identifies what to work on first
+    according to company policy.</li><li><strong>Only in current scan targets</strong>:
+    these are vulnerabilities we would introduce if we merged into the main code or
+    infrastructure.</li><li><strong>Common to anchor scan targets</strong>: these
+    are vulnerabilities that existed in our anchor branch prior to running the Pipeline.
+    These are vulnerabilities that someone has determined are either mitigated or
+    cannot be remediated.</li></ul><h3>Congratulations</h3><p>In this tutorial, you
+    learned how to:</p><ol><li>Add a STO Security stage to your Harness Pipelines.</li><li>Configure
+    Security steps for different security scanners: one for code scanning and one
+    for container scanning.</li><li>Run a Pipeline and scan its codebase and the container
+    image.</li><li>View the normalized and deduplicated security results in the Security
+    dashboard.</li></ol><p></p>'
+  slug: security-testing-orchestration-quickstart-sma
+  tags: []
+  is_live: true

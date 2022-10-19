@@ -1,0 +1,188 @@
+type: article
+article_id: uora4f0f22
+user_id: vt9reb71i4
+category_id: kkiqy1f6d7
+author:
+  name: Clare Wilkinson
+  email: clare.wilkinson@harness.io
+  profile_image: https://www.gravatar.com/avatar/0ff8d5897ddf326bd94ba0e62e7d2841?d=mm&s=150
+title: Ruby SDK Reference
+slug: ruby-sdk-reference
+description: This topic explains how to use the Harness Feature Flags (FF) SDK in
+  your Ruby application.
+short_version: This topic explains how to use the Harness Feature Flags (FF) SDK in
+  your Ruby application.
+tags:
+- server SDK
+- ruby
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-18T19:09:15.158818Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Ruby SDK Reference
+  description: This topic explains how to use the Harness Feature Flags (FF) SDK in
+    your Ruby application.
+  short_version: This topic explains how to use the Harness Feature Flags (FF) SDK
+    in your Ruby application.
+  body: '<p>This topic describes how to use the Harness Feature Flags Ruby SDK for
+    your Java application.</p><p>For getting started quickly, you can use our <a href="https://github.com/harness/ff-ruby-server-sdk/blob/main/README.md"
+    target="_blank">sample code from the Ruby SDK README</a>. You can also <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+    target="_blank">clone</a> and run a sample application from the <a href="https://github.com/harness/ff-ruby-server-sdk"
+    target="_blank">Ruby SDK GitHub Repository.</a></p><h3>Before you begin</h3><p>You
+    should read and understand the following:</p><ul><li><a href="/article/7n9433hkc0-cf-feature-flag-overview"
+    target="_blank">Feature Flags Overview</a></li><li><a href="/article/0a2u2ppp8s-getting-started-with-continuous-features"
+    target="_blank">Getting Started with Feature Flags</a></li><li><a href="/article/rvqprvbq8f-client-side-and-server-side-sdks"
+    target="_blank">Client-Side and Server-Side SDKs</a></li><li><a href="/article/7ikyqtmjce-communication-sdks-harness-feature-flags"
+    target="_blank">Communication Strategy Between SDKs and Harness Feature Flags</a></li></ul><h3>Version</h3><div
+    class="note-callout">The current version of this SDK is <strong>1.0.2</strong>.</div><h3>Requirements</h3><p>To
+    use this SDK, make sure you:  </p><ul><li>Install <a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby
+    2.7</a> or newer</li><li><a href="https://github.com/harness/ff-ruby-server-sdk"
+    target="_blank">Download the SDK from our GitHub repository</a></li><li>Create
+    a Java application, or <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+    target="_blank">clone</a> our <a href="https://github.com/harness/ff-ruby-server-sdk"
+    target="_blank">sample application</a>.</li><li><a href="/article/1j7pdkqh7j-create-a-feature-flag"
+    target="_blank">Create a Feature Flag on the Harness Platform</a>. If you are
+    following along with the SDK README sample code, make sure your flag is called <code>harnessappdemodarkmode</code></li><li><a
+    href="/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key" target="_blank">Create
+    an SDK key and make a copy of it</a></li></ul><h3>Install the SDK</h3><p>Install
+    the Ruby SDK using gem, for example:</p><pre>gem install harness-featureflags</pre><p>Or
+    by adding the following snippet to your project&#39;s <code>Gemfile</code> file:</p><pre>gem
+    &#34;ff-ruby-server-sdk&#34;</pre><h3>Clone the SDK Repository</h3><p>Run the
+    following command to clone the Feature Flag SDK repository:</p><pre>git clone
+    --recurse-submodules git@github.com:harness/ff-ruby-server-sdk.git</pre><h3>Initialize
+    the SDK</h3><p>To initialize the Go SDK, you need to:</p><ol><li>Add your Server
+    SDK Key to connect to your Harness Environment.</li><li>(Optional) Configure the
+    SDK options. </li><li>Pass in the Server SDK Key and configuration options.</li><li>Add
+    a Target that you want to Evaluate against a Feature Flag.</li></ol><h4 id="undefined">Add
+    the Server SDK Key</h4><p>To connect to the correct Environment that you set up
+    on the Harness Platform, you need to add the Server SDK Key from that Environment.
+    For example:</p><pre class="hljs lua">key = &#34;YOUR_API_KEY_GOES_HERE&#34;</pre><p></p><h4
+    id="undefined">Configure the SDK</h4><p>You can configure the following features
+    of the SDK:</p><table><tbody><tr><td><p><strong>Name</strong></p></td><td><p><strong>Example</strong></p></td><td><p><strong>Description</strong></p></td><td><p><strong>Default
+    Value</strong></p></td></tr><tr><td><p>baseUrl</p></td><td><p><code>config_url(&#34;https://config.ff.harness.io/api/1.0&#34;)</code></p></td><td><p>The
+    URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change
+    this to: <code>http://localhost:7000</code></p></td><td><p><code>https://config.ff.harness.io/api/1.0</code></p></td></tr><tr><td><p>eventUrl</p></td><td><p><code>event_url(&#34;https://events.ff.harness.io/api/1.0&#34;)</code></p></td><td><p>The
+    URL for posting metrics data to the Feature Flag service. When using the Relay
+    Proxy, change this to: <code>http://localhost:7000</code></p></td><td><p><code>https://events.ff.harness.io/api/1.0</code></p></td></tr><tr><td><p>pollInterval</p></td><td><p><code>poll_interval_in_seconds(60)</code></p></td><td><p>The
+    interval <strong>in seconds</strong> that we poll for changes when you are using
+    stream mode.</p></td><td><p><code>60</code> (seconds)</p></td></tr><tr><td><p>streamEnabled</p></td><td><p><code>stream_enabled(true)</code></p></td><td><p>Set
+    to <code>true</code> to enable streaming mode.</p><p>Set to <code>false</code> to
+    disable streaming mode.</p></td><td><p><code>true</code></p></td></tr><tr><td><p>analyticsEnabled</p></td><td><p><code>analytics_enabled(true)</code></p></td><td><p>Set
+    to <code>true</code> to enable analytics.</p><p>Set to <code>false</code> to disable
+    analytics.</p><p><strong>Note</strong>: When enabled, analytics data is posted
+    every 60 seconds.</p></td><td><p><code>true</code></p></td></tr></tbody></table><p>For
+    further configuration options and samples, such as configuring your logger or
+    using the SDK with the Relay Proxy, go to <a href="https://docs.harness.io/article/4c8wljx60w-feature-flag-sdks-go-application#additional-options">Additional
+    Options</a>.</p><h4 id="undefined">Complete the initialization</h4><p>Complete 
+    the initialization by creating an instance of the Feature Flag client and passing
+    in the Server SDK Key and any configuration options. For example:</p><pre class="hljs
+    lua">client.init(key, config)</pre><h4 id="undefined">Add a Target</h4><div class="note-callout"><strong>What
+    is a Target?<br/></strong>Targets are used to control which users see which Variation
+    of a Feature Flag, for example, if you want to do internal testing, you can enable
+    the Flag for some users and not others. When creating a Target, you give it a
+    name and a unique identifier. Often Targets are users but you can create a Target
+    from anything that can be uniquely identified, such as an app or a machine.<br/>For
+    more information about Targets, go to <a href="https://docs.harness.io/article/xf3hmxbaji-targeting-users-with-flags"
+    target="_blank">Targeting Users With Flags</a>. </div><p>To add a Target, build
+    it and pass in arguments for the following:</p><table><tbody><tr><td><p><strong>Parameter</strong></p></td><td><p><strong>Description</strong></p></td><td><p><strong>Required?</strong></p></td><td><p><strong>Example</strong></p></td></tr><tr><td><p><code>identifier</code></p></td><td><p>Unique
+    ID for the Target.</p><p>Read <strong>Regex requirements for Target names and
+    identifiers</strong> below for accepted characters.</p></td><td><p>Required</p></td><td><p
+    style="box-sizing:border-box;font-family:ui-monospace, SFMono-Regular, &#34;SF
+    Mono&#34;, Menlo, Consolas, &#34;Liberation Mono&#34;, monospace;font-size:13.6px;margin-top:0px;margin-bottom:0px;overflow-wrap:normal;padding:16px;overflow:auto;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px;word-break:normal;color:rgb(36,
+    41, 47);font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"><code>identifier=&#34;HT_1&#34;</code></p></td></tr><tr><td><p><code>name</code></p></td><td><p>Name
+    for this Target. This does not have to be unique. </p><p><strong>Note</strong>:
+    If you don’t provide a value, Harness generates the name based on the ID.</p><p>Read
+    <strong>Regex requirements for Target names and identifiers</strong> below for
+    accepted characters.</p></td><td><p>Optional</p><p><strong>Note</strong>: If you
+    don&#39;t want to send a name, don&#39;t send the parameter. Sending an empty
+    argument will cause an error.</p></td><td><p><code>(&#34;Harness_Target_1&#34;) </code></p></td></tr><tr><td><p><code>attributes</code></p></td><td><p>Additional
+    data you can store for a Target, such as email addresses or location.</p></td><td><p>Optional</p></td><td><p
+    style="box-sizing:border-box;font-family:ui-monospace, SFMono-Regular, &#34;SF
+    Mono&#34;, Menlo, Consolas, &#34;Liberation Mono&#34;, monospace;font-size:13.6px;margin-top:0px;margin-bottom:0px;overflow-wrap:normal;padding:16px;overflow:auto;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px;word-break:normal;color:rgb(36,
+    41, 47);font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"><code>attributes={&#34;email&#34;:
+    &#34;demo@harness.io&#34;})</code></p></td></tr></tbody></table><p></p><details><summary>Regex
+    requirements for Target names and identifiers</summary><div><strong>Identifier<br/></strong>Regex:
+    <code>^[A-Za-z0-9.@_-]*$<br/></code><br/>Must consist of only alphabetical characters,
+    numbers, and the following symbols:<br/>. (period)<br/>@ (at sign)<br/>- (dash)<br/>_
+    (underscore)<br/><br/>The characters can be lowercase or uppercase but cannot
+    include accented letters, for example <code>Cafe_789</code>.<br/><br/><strong>Name<br/></strong>Regex:
+    <code>^[\\p{L}\\d .@_-]*$<br/></code><br/>Must consist of only alphabetical characters,
+    numbers, and the following symbols:<br/>. (period)<br/>@ (at sign)<br/>- (dash)<br/>_
+    (underscore)<br/> (space)<br/><br/>The characters can be lowercase or uppercase
+    and can include accented letters, for example <code>Café_123</code>.</div></details><p>For
+    example:</p><pre>target = Target.new(&#34;Harness_Target_1&#34;, identifier=&#34;HT_1&#34;,
+    attributes={&#34;email&#34;: &#34;demo@harness.io&#34;})</pre><h3 id="undefined">Evaluate
+    a Flag</h3><p>Evaluating a Flag is when the SDK processes all Flag rules and returns
+    the correct Variation of that Flag for the Target you provide. </p><p>If a matching
+    Flag can’t be found, or the SDK can’t remotely fetch flags, the default value
+    is returned. </p><p>There are different methods for the different Variation types
+    and for each method you need to pass in:</p><ul><li>Identifier of the Flag you
+    want to evaluate</li><li>The Target object you want to evaluate against</li><li>The
+    default Variation</li></ul><p>For example:</p><h4 id="undefined">Evaluate a string
+    Variation</h4><pre>def string_variation(identifier, target, default_value)</pre><h4
+    id="undefined">Evaluate a boolean Variation</h4><pre>def bool_variation(identifier,
+    target, default_value)</pre><h4 id="undefined">Evaluate a number Variation</h4><pre>def
+    number_variation(identifier, target, default_value)</pre><h4 id="undefined">Evaluate
+    a JSON Variation</h4><pre>def json_variation(identifier, target, default_value)</pre><h3
+    id="undefined">Test your app is connected to Harness</h3><p>When you receive a
+    response showing the current status of your Feature Flag, go to the Harness Platform
+    and toggle the Flag on and off. Then, check your app to verify if the Flag Variation
+    displayed is updated with the Variation you toggled.</p><h3>Close the SDK</h3><p>To
+    help prevent memory leaks, we recommend closing the SDK when it’s not in use.
+    To do this, run the following command: </p><pre>client.close</pre><p></p><h3>Additional
+    options</h3><h4>Use the Relay Proxy</h4><p>When using your Feature Flag SDKs with
+    a <a href="https://docs.harness.io/article/q0kvq8nd2o-relay-proxy" target="_blank">Harness
+    Relay Proxy</a> you need to change the default URL and events URL to <code>http://localhost:7000</code> when
+    initializing the SDK. For example:</p><pre>config = ConfigBuilder.new<br/>                      .config_url(&#34;https://config.feature-flags.uat.harness.io/api/1.0&#34;)<br/>                      .event_url(&#34;https://event.feature-flags.uat.harness.io/api/1.0&#34;)<br/>                      .build</pre><h3>Use
+    our public API methods</h3><p>Our Public API exposes the following methods that
+    you can use for instantiating, initializing, and closing the SDK:</p><pre>def
+    initialize(api_key = nil, config = nil, connector = nil)</pre><pre>def init(api_key
+    = nil, config = nil, connector = nil)</pre><pre>def wait_for_initialization</pre><pre>def
+    close</pre><h3>Sample code for a Ruby application</h3><p>Here is a sample code
+    for using the Feature Flag Ruby SDK:</p><pre>require &#34;logger&#34;<br/>require
+    &#34;securerandom&#34;<br/><br/>require_relative &#39;../lib/ff/ruby/server/sdk/dto/target&#39;<br/>require_relative
+    &#39;../lib/ff/ruby/server/sdk/api/config&#39;<br/>require_relative &#39;../lib/ff/ruby/server/sdk/api/cf_client&#39;<br/>require_relative
+    &#39;../lib/ff/ruby/server/sdk/api/config_builder&#39;<br/><br/>flag_b = &#34;flag1&#34;<br/>flag_n
+    = &#34;flag2&#34;<br/>flag_s = &#34;flag3&#34;<br/>flag_j = &#34;flag4&#34;<br/><br/>clients
+    = {}<br/>targets = {}<br/><br/>logger = Logger.new(STDOUT)<br/><br/>executor =
+    Concurrent::FixedThreadPool.new(100)<br/><br/>keys = {<br/><br/>  &#34;Freemium&#34;
+    =&gt; &#34;1f3339b4-e004-457a-91f7-9b5ce173eaaf&#34;,<br/>  &#34;Non-Freemium&#34;
+    =&gt; &#34;a30cf6aa-67f2-4545-8ac7-f86709f4f3a0&#34;<br/>}<br/><br/>keys.each
+    do |name, key|<br/><br/>  targets[name] = Target.new(&#34;ruby_target_&#34; +
+    name)<br/><br/>  config = ConfigBuilder.new<br/>                        .logger(logger)<br/>                        .build<br/><br/>  client
+    = CfClient.new(key, config)<br/><br/>  # .config_url(&#34;https://config.feature-flags.uat.harness.io/api/1.0&#34;)<br/>  #
+    .event_url(&#34;https://event.feature-flags.uat.harness.io/api/1.0&#34;)<br/><br/>  client.init<br/><br/>  config.logger.debug
+    &#34;We will wait for the initialization&#34;<br/><br/>  client.wait_for_initialization<br/><br/>  config.logger.debug
+    &#34;Initialization is complete&#34;<br/><br/>  clients[name] = client<br/>end<br/><br/>iterations
+    = 10<br/><br/>counted = 0<br/>count_to = keys.size * iterations<br/><br/>logger.debug
+    &#34;To count: &#34; + count_to.to_s<br/><br/>keys.each do |name, key|<br/><br/>  client
+    = clients[name]<br/>  target = targets[name]<br/><br/>  executor.post do<br/><br/>    (1..iterations).each
+    do |iteration|<br/><br/>      logger.debug name + &#34; :: iteration no: &#34;
+    + iteration.to_s<br/><br/>      bool_result = client.bool_variation(flag_b, target,
+    false)<br/>      number_result = client.number_variation(flag_n, target, -1)<br/>      string_result
+    = client.string_variation(flag_s, target, &#34;unavailable !!!&#34;)<br/>      json_result
+    = client.json_variation(flag_j, target, JSON.parse(&#34;{}&#34;))<br/><br/>      logger.debug
+    name + &#34; :: &#39;&#34; + flag_b.to_s + &#34;&#39; has the value of: &#34;
+    + bool_result.to_s<br/>      logger.debug name + &#34; :: &#39;&#34; + flag_n.to_s
+    + &#34;&#39; has the value of: &#34; + number_result.to_s<br/>      logger.debug
+    name + &#34; :: &#39;&#34; + flag_s.to_s + &#34;&#39; has the value of: &#34;
+    + string_result.to_s<br/>      logger.debug name + &#34; :: &#39;&#34; + flag_j.to_s
+    + &#34;&#39; has the value of: &#34; + json_result.to_s<br/>      logger.debug
+    &#34;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&#34;<br/><br/>      counted
+    = counted + 1<br/><br/>      logger.debug &#34;Counted: &#34; + counted.to_s<br/><br/>      sleep
+    10<br/>    end<br/>  end<br/>end<br/><br/>while counted != count_to<br/><br/>  sleep(1)<br/>end<br/><br/>clients.each
+    do |name, client|<br/><br/>  logger.debug name + &#34; :: closing&#34;<br/><br/>  client.close<br/>end<br/></pre><p></p>'
+  slug: ruby-sdk-reference
+  tags:
+  - server SDK
+  - ruby
+  is_live: true

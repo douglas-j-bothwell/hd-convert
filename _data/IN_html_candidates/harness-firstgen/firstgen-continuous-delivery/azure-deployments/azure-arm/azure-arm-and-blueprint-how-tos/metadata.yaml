@@ -1,0 +1,76 @@
+type: article
+article_id: qhnnq1mks3
+user_id: mfr0nxh4be
+category_id: 3i7h1lzlt2
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Azure Resource Management (ARM) How-tos
+slug: azure-arm-and-blueprint-how-tos
+description: Harness has first-class support for Azure Resource Manager (ARM) templates
+  as an infrastructure provisioner. You can use ARM templates to provision the deployment
+  target environment in Azure, or to s…
+short_version: Harness has first-class support for Azure Resource Manager (ARM) templates
+  as an infrastructure provisioner. You can use ARM templates to provision the deployment
+  target environment in Azure, or to s…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-08-03T16:05:54.287939Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Azure Resource Management (ARM) How-tos
+  description: ""
+  short_version: ""
+  body: <p>Harness has first-class support for <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview"
+    target="_blank">Azure Resource Manager (ARM) templates</a> as an infrastructure
+    provisioner.</p><p>You can use ARM templates to provision the deployment target
+    environment in Azure, or to simply provision any Azure infrastructure.</p><p>See
+    the following ARM How-tos:</p><ul><li><a href="/article/l3do0np70h-set-up-your-harness-account-for-azure-arm-and-blueprints">Set
+    Up Your Harness Account for Azure ARM</a></li><li><a href="/article/naj2d3ra4n-add-azure-arm-templates-and-blueprints">Add
+    Azure ARM Templates to Harness</a></li><li><a href="/article/idqiy49prl-target-azure-arm-or-blueprint-provisioned-infrastructure">Provision
+    and Deploy to ARM Provisioned Infrastructure</a></li><li><a href="/article/qlvrdq7uv6-provision-using-the-arm-blueprint-create-resource-step">Provision
+    Resources using a Harness ARM Infrastructure Provisioner</a></li><li><a href="/article/69fgm2e21d-use-azure-arm-and-blueprint-parameters-in-workflow-steps">Use
+    Azure ARM Template Outputs in Workflow Steps</a></li><li><a href="/article/06mkvd27tu-azure-arm-rollbacks">Azure
+    ARM Rollbacks</a></li></ul><p>For a conceptual overview of provisioning with ARM
+    and Blueprints, including videos, see <a href="/article/c7bzn7vjwn-azure-arm-and-blueprint-provision-with-harness">Azure
+    ARM and Blueprint Provisioning with Harness</a>.</p><h3>Limitations</h3><ul><li>Harness
+    supports the following scope types:<ul><li>Tenant</li><li>Management Group</li><li>Subscription</li><li>Resource
+    Group</li></ul></li><li>Harness ARM Template provisioning is supported in Canary
+    and Multi-Service Workflows, and Blue/Green Workflows that <a href="/article/lluikqw7q7-azure-web-app-deployments-overview">deploy
+    Azure Web Apps</a>.<br/>If you simply want to provision infrastructure without
+    deploying any resources to the provisioned infrastructure, simply use a Canary
+    Workflow and an <strong>ARM/Blueprint Create Resource</strong> step in its <strong>Pre-deployment
+    Steps</strong> and omit any further phases and steps.</li><li><strong>Azure Web
+    App deployment targets only:</strong> you can use ARM templates with Harness to
+    provision any Azure resources, but deployment target provisioning is limited to
+    Azure Web App deployments.<br/>A deployment target is defined in the Infrastructure
+    Definition used by a Workflow (or Workflow Phase). In an Infrastructure Definition
+    that uses the Microsoft Azure <strong>Cloud Provider Type</strong>, you will only
+    see <strong>Map Dynamically Provisioned Infrastructure</strong> if you select
+    <strong>Azure Web Application</strong> in <strong>Deployment Type</strong>.<br/>See
+    <a href="/article/idqiy49prl-target-azure-arm-or-blueprint-provisioned-infrastructure">Provision
+    and Deploy to ARM Provisioned Infrastructure</a>.</li><li>Incremental mode is
+    supported for all Scope types (Subscription, Resource group, Management group,
+    Tenant) and Complete mode is supported for Resource group only.</li><li>ARM templates
+    must be in JSON. Bicep isn&#39;t supported.</li><li>Rollback is supported for
+    the Resource group scope only. See <a href="/article/06mkvd27tu-azure-arm-rollbacks">Azure
+    ARM Rollbacks</a>.</li></ul><h3>Azure Roles Required</h3><p>See <strong>Azure
+    Resource Management (ARM)</strong> in <a href="/article/4n3595l6in-add-microsoft-azure-cloud-provider">Add
+    Microsoft Azure Cloud Provider</a>.</p><h3>Harness Permissions Required</h3><p>To
+    set up a Harness ARM Provisioner, your Harness User account must belong to a User
+    Group with the following Application Permissions:</p><ul><li><strong>Permission
+    Type:</strong> <code>Provisioners</code>.</li><li><strong>Application:</strong>
+    one or more Applications.</li><li><strong>Filter:</strong> <code>All Provisioners</code>.</li><li><strong>Action:</strong>
+    <code>Create, Read, Update, Delete</code>.</li></ul><p></p>
+  slug: azure-arm-and-blueprint-how-tos
+  tags: []
+  is_live: true

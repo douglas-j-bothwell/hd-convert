@@ -1,0 +1,76 @@
+type: article
+article_id: whwnovprrb
+user_id: wz6xkfcc9i
+category_id: ll7h8ktlwe
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Add Cloud Providers
+slug: cloud-providers
+description: Connect the cloud providers where you will deploy your services using
+  Harness.
+short_version: Connect the cloud providers where you will deploy your services using
+  Harness.
+tags:
+- Kubernetes
+- GCP
+- AWS
+- S3
+- ECS
+- CodeDeploy
+- ELB
+- ALB
+- EC2
+- Azure
+- Pivotal
+- PCF
+- OpenShift
+- openshift
+- infrastructure
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:01:47.934976Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Cloud Providers
+  description: Connect the cloud providers where you will deploy your services using
+    Harness.
+  short_version: Connect the cloud providers where you will deploy your services using
+    Harness.
+  body: <p>Cloud Providers represent the infrastructure of your applications. Typically,
+    a Cloud Provider is mapped to a Kubernetes cluster, AWS account, Google service
+    account, Azure subscription, or a data center.</p><p>See the How-tos for adding
+    these providers:</p><ul><li><a href="/article/l68rujg6mp-add-kubernetes-cluster-cloud-provider">Add
+    Kubernetes Cluster Cloud Provider</a></li><li><a href="/article/6x52zvqsta-add-google-cloud-platform-cloud-provider">Add
+    Google Cloud Platform Cloud Provider</a></li><li><a href="/article/wt1gnigme7-add-amazon-web-services-cloud-provider">Add
+    Amazon Web Services Cloud Provider</a></li><li><a href="/article/4n3595l6in-add-microsoft-azure-cloud-provider">Add
+    Microsoft Azure Cloud Provider</a></li><li><a href="/article/v0x32ks1kp-add-pivotal-cloud-foundry-cloud-provider">Add
+    Pivotal Cloud Foundry Cloud Provider</a></li><li><a href="/article/stkxmb643f-add-physical-data-center-cloud-provider">Add
+    Physical Data Center as Cloud Provider</a></li><li><a href="/article/uxah3ji489-add-spot-inst-cloud-provider">Add
+    SpotInst Cloud Provider</a></li></ul><p></p>
+  slug: cloud-providers
+  tags:
+  - Kubernetes
+  - GCP
+  - AWS
+  - S3
+  - ECS
+  - CodeDeploy
+  - ELB
+  - ALB
+  - EC2
+  - Azure
+  - Pivotal
+  - PCF
+  - OpenShift
+  - openshift
+  - infrastructure
+  is_live: true

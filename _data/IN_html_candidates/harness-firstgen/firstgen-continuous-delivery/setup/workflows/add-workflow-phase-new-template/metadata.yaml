@@ -1,0 +1,40 @@
+type: article
+article_id: nq3ugixwle
+user_id: slcpusem6b
+category_id: a8jhf8hizv
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Add Phases to a Workflow
+slug: add-workflow-phase-new-template
+description: Provide details on adding a phase to a multi-phase deployment, such as
+  a Canary Deployment.
+short_version: Provide details on adding a phase to a multi-phase deployment, such
+  as a Canary Deployment.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:37.304478Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Phases to a Workflow
+  description: Provide details on adding a phase to a multi-phase deployment, such
+    as a Canary Deployment.
+  short_version: Provide details on adding a phase to a multi-phase deployment, such
+    as a Canary Deployment.
+  body: |-
+    <p>In multi-phase deployments, such as a Canary Deployment, Workflow steps are grouped into phases.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before You Begin</a></li><li> <a href="#add_phase_multi_phase_deploy">Step: Add a Phase to a Multi-phase Workflow</a></li><li> <a href="#next_steps">Next Steps</a></li></ul><div class="hd--md" data-hd-markdown="&lt;span id=&#34;before_you_begin&#34;&gt;&lt;/span&gt;"><p><span id="before_you_begin"></span></p>
+    </div><h3>Before You Begin</h3><ul><li> <a href="https://docs.harness.io/article/m220i1tnia-workflow-configuration">Workflows</a></li><li> <a href="/article/o86qyexcab-tags-how-tos">Add a Workflow</a></li></ul><div class="hd--md" data-hd-markdown="&lt;span id=&#34;add_phase_multi_phase_deploy&#34;&gt;&lt;/span&gt;"><p><span id="add_phase_multi_phase_deploy"></span></p>
+    </div><h3>Step: Add a Phase to a Multi-phase Workflow</h3><p>To add a phase to a multi-phase deployment, do the following:</p><ol><li>In <strong>Deployment Phases</strong>, click <strong>Add Phase</strong>. The <strong>Workflow Phase</strong> settings appears.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/nq3ugixwle/1586010880838/screenshot-2020-04-04-at-8-03-59-pm.png"/></figure><ol><li>In <strong>Service</strong>, select the Service to use for this phase.</li><li>In <strong>Infrastructure Definition</strong>, select the Infrastructure Definition where you want the Workflow Phase to deploy the Service.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568240344142/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>If you want to override a variable that is defined in the Service you selected, in <strong>Service Variable Overrides</strong>, click <strong>Add</strong>. Enter the name of the variable to override, and the override value.</li><li>Click <strong>Submit</strong>. The new phase Workflow appears. Complete the phase Workflow as you would any other Workflow. You can also define the <strong>Rollback Steps</strong> for this phase.</li><li>When you are done, click the name of the Workflow in the breadcrumbs, to return to the Workflow overview and see the phase added to <strong>Deployment Phases</strong>.</li></ol><div class="hd--md" data-hd-markdown="&lt;span id=&#34;next_steps&#34;&gt;&lt;/span&gt;"><p><span id="next_steps"></span></p>
+    </div><h3>Next Steps</h3><ul><li> <a href="/article/mec513o1oc-verify-workflow-new-template">Verify Workflow</a></li></ul><p></p>
+  slug: add-workflow-phase-new-template
+  tags: []
+  is_live: true

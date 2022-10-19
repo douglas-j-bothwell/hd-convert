@@ -1,0 +1,95 @@
+<p>Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing or a beta program before a broader roll out, you can enable the Flag for some users and not others. While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.</p>
+<p>This topic describes how to add Targets to an Environment. After you’ve added the Target, you can add it to a <a href="https://ngdocs.harness.io/article/5qz1qrugyk-add-target-groups">Target Group</a> or to a <a href="https://ngdocs.harness.io/article/xf3hmxbaji-targeting-users-with-flags">Feature Flag</a>. </p>
+<div class="note-callout">You can add a Target using Harness UI. Alternatively, you can add a Target and define its attributes in your application&#39;s code directly <a href="/category/rtce97j1wu-ff-sdks" target="_blank">using a Feature Flag SDK</a>. The Targets added in your code are discovered automatically and populated in the Harness UI.</div>
+<h3>Regex requirements for Target names and identifiers</h3>
+<p>A Target is identified by a name and an identifier. The name and identifier you enter must conform to the following regex:</p>
+<h5><strong>Name</strong></h5>
+<p>Regex: <code>[\\p{L}\\d .@_-]</code></p>
+<p>Must consist of only alphabetical characters, numbers, and the following symbols: </p>
+<ul>
+  <li>. (period)</li>
+  <li>@ (at sign)</li>
+  <li>- (dash)</li>
+  <li>_ (underscore)</li>
+</ul>
+<p>The characters can be lowercase or uppercase and can include accented letters, for example <code>Café_123</code>.</p>
+<h5><strong>Identifier</strong></h5>
+<p>Regex: <code>[A-Za-z0-9.@_-]</code></p>
+<p>Must consist of only alphabetical characters, numbers, and the following symbols: </p>
+<ul>
+  <li>. (period)</li>
+  <li>@ (at sign)</li>
+  <li>- (dash)</li>
+  <li>_ (underscore)</li>
+</ul>
+<p>The characters can be lowercase or uppercase but cannot include accented letters, for example <code>CF.789</code>.</p>
+<h3>Add a Target</h3>
+<div class="note-callout">A Target is identified by a name and an identifier. Make sure your Target names and identifiers conform to the regex explained in <a href="https://ngdocs.harness.io/article/dbk9uoaid3-add-targets#review_regex_requirements_for_target_names_and_identifiers">Review Regex Requirements for Target Names and Identifiers</a>.</div>
+<p>To add a Target:</p>
+<ol>
+  <li> In <strong>Feature Flags</strong>, in <strong>Target Management</strong>, select <strong>Targets</strong>.</li>
+  <li>Click <strong>+ Target</strong>.</li>
+  <li>In <strong>Add Target(s)</strong>, select <strong>Add a Target</strong>.</li>
+  <li>In <strong>Name</strong>, enter the name that will appear in the Target Management page so you can identify this Target.</li>
+  <li>In <strong>Identifier</strong>, enter a unique identifier for your Target. When <a href="/article/xf3hmxbaji-targeting-users-with-flags" target="_blank">Targeting Users with Flags</a> or <a href="/article/5qz1qrugyk-add-target-groups" target="_blank">Managing Target Groups</a>, the Targets are identified by the identifier you give them.</li>
+  <li>You can add multiple Targets. Click <strong>+</strong> to add more Targets.
+  </li>
+</ol>
+<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dbk9uoaid3/1657788769441/ilf-3-ztwgfw-e-2-ttg-xzy-4-hkz-1-okc-qllrc-ql-qzdgk-6-r-htr-gup-eh-fajb-7-zcd-9-im-zk-2-n-uhet-m-3-m-rn-yk-vq-4-sb-fkk-40-w-di-den-0-q-6-h-1-cayyg-zpvc-wjze-wyb-1-wwia-4-zraplyzunv-vkynp-bq-7-cskkwkap-sa" style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto" alt="An example of three Targets being created on the Add Target screen." data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure>
+<p><em>Figure 1: Adding Targets</em></p>
+<ol>
+  <li start="7" style="counter-increment:li 6">When you’ve added all the Targets, Click <strong>Add</strong>.</li>
+</ol>
+<h3>Upload a List of Targets</h3>
+<p>This option allows you to import a list of Targets in CSV format. To do this:</p>
+<ol>
+  <li>In <strong>Feature Flags</strong>, in <strong>Target Management</strong>, select <strong>Targets</strong>.</li>
+  <li>Click <strong>+ Target</strong>.</li>
+  <li>In <strong>Add Target(s)</strong>, select <strong>Upload a list of Targets</strong>.</li>
+  <li>Upload your CSV file as per the template below. The CSV file must have only the Name and Identifier; do not include any headings, for example:</li>
+</ol>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p>Target_4</p>
+      </td>
+      <td>
+        <p>T4</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Target_5</p>
+      </td>
+      <td>
+        <p>T5</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Target_6</p>
+      </td>
+      <td>
+        <p>T6</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ol>
+  <li style="counter-increment:li 4" start="5">Click <strong>Add</strong>.</li>
+</ol>
+<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dbk9uoaid3/1657788967458/g-ufv-nuvlh-zukkrfc-925-li-ivswrge-sxoj-psi-d-2-tni-3-f-70-rtw-5-jabhsae-5-lq-z-06-kj-9-vyhl-ulhb-n-finhv-f-1-z-kpn-6-jlg-ve-9-g-m-ebwlz-9-uk-con-kyo-9-yh-bvxkgqc-ogmgc-nr-9-cq-4-zh-n-4-aowa-3-a-5-q" style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto" alt="A screenshot of the Add Target screen that highlights the radio button for uploading a list of Targets." data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure>
+<p><em>Figure 2: Adding Targets from a CSV file</em></p>
+<ol>
+  <li style="counter-increment:li 5" start="6">The list of Targets is added.</li>
+</ol>
+<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dbk9uoaid3/1657788983463/syp-a-7-lg-ny-um-ajj-7-ti-2-dq-p-1-cd-ybi-drm-ttd-7-rcnq-lxn-9-dzfvciw-hgq-emrf-9-z-wl-lyn-t-64-fkw-4-p-3-wqz-gqd-4-u-5-xu-xak-d-atjr-vj-5-nbrg-l-9-r-4-aocc-fwxvp-985-assz-m-6-zgu-8-o-anjj-9-i-nvicr-4-utqi-rg" style="max-height:70%;max-width:70%;display:block;margin-left:0;margin-right:auto" alt="A screenshot of the Target Management page with a list of all the Targets." data-hd-height="70%" data-hd-width="70%" data-hd-align="left"/></figure>
+<p><em>Figure 3: The list of Targets added to the Harness Platform</em></p>
+<h3>Next steps</h3>
+<p>After your have created a Target, you can:</p>
+<ul>
+  <li><a href="/article/5qz1qrugyk-add-target-groups" target="_blank">Add them to Target Groups</a></li>
+  <li><a href="/article/xf3hmxbaji-targeting-users-with-flags" target="_blank">Target Users with Flags</a></li>
+</ul>
+<p></p>

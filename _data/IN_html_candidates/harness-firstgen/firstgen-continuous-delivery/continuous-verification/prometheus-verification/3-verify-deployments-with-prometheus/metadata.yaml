@@ -1,0 +1,191 @@
+type: article
+article_id: qkcn11esgb
+user_id: mfr0nxh4be
+category_id: 177rlmujlu
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Verify Deployments with Prometheus
+slug: 3-verify-deployments-with-prometheus
+description: How to add Prometheus to a Harness Workflow, where Harness can analyze
+  Prometheus data to verify, rollback, and improve deployments.
+short_version: Harness can analyze Prometheus data to verify, rollback, and improve
+  deployments.
+tags:
+- Prometheus
+- Verification Provider
+- verification
+- Workflow
+- risk analysis
+- APM
+- application performance monitoring
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-09-15T19:39:48.752467Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Verify Deployments with Prometheus
+  description: How to add Prometheus to a Harness Workflow, where Harness can analyze
+    Prometheus data to verify, rollback, and improve deployments.
+  short_version: Harness can analyze Prometheus data to verify, rollback, and improve
+    deployments.
+  body: '<p>When Harness deploys a new application or service to the target environment
+    defined in the workflow, it will immediately connect to the Prometheus Server
+    and build a model of what it is observing.</p><p>Next, Harness compares this model
+    with previous deployment models to identify anomalies or regressions. If necessary,
+    Harness rolls back to the previous working version automatically. For more information,
+    see <a href="/article/m220i1tnia-workflow-configuration#rollback_steps">Rollback
+    Steps</a>.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#visual_summary">Visual Summary</a></li><li><a
+    href="#step_1_set_up_the_deployment_verification">Step 1: Set Up the Deployment
+    Verification</a></li><li><a href="#step_2_prometheus_server">Step 2: Prometheus
+    Server</a></li><li><a href="#step_3_metrics_to_monitor">Step 3: Metrics to Monitor</a></li><li><a
+    href="#step_4_custom_thresholds">Step 4: Custom Thresholds</a></li><li><a href="#step_5_analysis_time_duration">Step
+    5: Analysis Time Duration</a></li><li><a href="#step_6_baseline_for_risk_analysis">Step
+    6: Baseline for Risk Analysis</a></li><li><a href="#step_7_algorithm_sensitivity">Step
+    7: Algorithm Sensitivity</a></li><li><a href="#step_8_include_instances_from_previous_phases">Step
+    8: Include instances from previous phases</a></li><li><a href="#step_9_execute_with_previous_steps">Step
+    9: Execute with previous steps</a></li><li><a href="#step_10_test_configuration">Step
+    10: Test Configuration</a></li><li><a href="#review_harness_expression_support_in_cv_settings">Review:
+    Harness Expression Support in CV Settings</a></li><li><a href="#step_11_view_verification_results">Step
+    11: View Verification Results</a></li><li><a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li>Set up a Harness Application, containing a Service and Environment.
+    See  <a href="https://docs.harness.io/article/bucothemly-application-configuration">Create
+    an Application</a>.</li><li>See the  <a href="">Prometheus Verification Overview</a>.</li></ul><p></p><h3>Visual
+    Summary</h3><p>Here&#39;s an example of a Prometheus setup for verification.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/qkcn11esgb/1585726006303/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Here
+    is an example of a deployment Pipeline Stage verified using Prometheus.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/qkcn11esgb/1578094037339/image.png"/></figure><p></p><p>Under
+    <strong>Prometheus</strong>, you can see that all Prometheus metrics have been
+    validated by the Harness machine learning algorithms. Green indicates that there
+    are no anomalies or regressions identified and the deployment is operating within
+    its normal range.</p><h3>Step 1: Set Up the Deployment Verification</h3><p>To
+    verify your deployment with Prometheus, do the following:</p><ol><li>Ensure that
+    you have added Prometheus as a verification provider, as described in <a href="/article/da3je0ck3a-1-prometheus-connection-setup">Prometheus Connection
+    Setup</a>.</li><li>In your Workflow, under <strong>Verify Service</strong>, click
+    <strong>Add Verification</strong>.</li><li>In the resulting <strong>Add Step</strong>
+    settings, select <strong>Performance Monitoring</strong> &gt; <strong>Prometheus</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/qkcn11esgb/1580460436783/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>Click
+    <strong>Next</strong>. The <strong>Configure </strong><strong>Prometheus</strong>
+    settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qkcn11esgb/1585726006303/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p>The
+    <strong>Configure</strong> <strong>Prometheus</strong> settings include the following
+    fields.</p><p></p><h3>Step 2: Prometheus Server</h3><p>Select the server you added
+    when setting up the <a href="/article/da3je0ck3a-1-prometheus-connection-setup">Prometheus Connection
+    Setup</a>.</p><p></p><h3>Step 3: Metrics to Monitor</h3><p>Every time series is
+    uniquely identified by its metric name and a set of key-value pairs, also known
+    as labels. For more information, see <a href="https://prometheus.io/docs/concepts/data_model/">Data
+    Model</a> from Prometheus. A metric requires the following parameters:</p><ul><li><strong>Metric
+    Name:</strong> The name of the metric defined in Prometheus.</li><li><strong>Metric
+    Type:</strong> The type of metric (Response Time, Error, Infra, Throughput, or
+    Value).</li><li><strong>Group Name:</strong> The transaction (service or request
+    context) which the metric relates to. For example, Login or Hardware.</li><li><strong>Query:</strong>
+    The API query required to retrieve the metric value. This query must include a
+    placeholder for hostname, <code>$hostName</code>.</li></ul><div class="note-callout">When
+    you add your query in <strong>Query</strong>, you want the query to return a <u>single</u>
+    time series result for the metric and transaction you identify. If it returns
+    multiple results, Harness will not process your verification step.</div><p>For
+    <strong>Query</strong>, you can simply copy your query from Prometheus and paste
+    it into Harness, and then replace the actual hostname in the query with <code>$hostName</code>.</p><p>For
+    example, here is a query in Prometheus:</p><p></p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/dzehr6um67/1564438809032/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/dzehr6um67/1564438809032/image.png"/></a></figure><p></p><p>The
+    actual query string is:</p><p><code>container_cpu_usage_seconds_total{pod_name=&#34;prometheus-deployment-7c878596ff-r8qrt&#34;,namespace=&#34;harness&#34;}</code></p><p>When
+    you paste that string into the Query field in Harness, you replace the <code>pod_name</code>
+    value with <code>$hostName</code>:</p><p><code>container_cpu_usage_seconds_total{pod_name=&#34;$hostName&#34;,namespace=&#34;harness&#34;}</code></p><h4>Always
+    Use Throughput with Error and Response Time Metrics</h4><p>Whenever you use the
+    Error metric type, you should also add another metric for Throughput with the
+    same Group Name.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qkcn11esgb/1606858647855/image.png"/></figure><p>Harness
+    analyze errors as error percentage and without the throughput the error number
+    does not provide much information.</p><p>The same setup should used with the Response
+    Time metric also. Whenever you set up a Response Time metric, setup a Throughput
+    metric with the same Group Name.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qkcn11esgb/1606858673359/image.png"/></figure><h3>Step
+    4: Custom Thresholds</h3><p>In the <strong>Custom Thresholds</strong> section,
+    define two types of rules that override normal verification behavior:</p><ul><li><strong>Ignore
+    Hints</strong> instruct Harness to skip certain metrics/value combinations from
+    verification analysis.</li><li><strong>Fast-Fail Hints</strong> cause a Workflow
+    to promptly enter a failed state.</li></ul><p>To configure these rules, see <a
+    href="/article/z2n6mnf7u0-custom-thresholds">Apply Custom Thresholds to Deployment
+    Verification</a>.</p><p></p><h3>Step 5: Analysis Time Duration</h3><p>Set the
+    duration for the verification step. If a verification step exceeds the value,
+    the workflow <a href="/article/m220i1tnia-workflow-configuration#failure_strategy">Failure
+    Strategy</a> is triggered. For example, if the Failure Strategy is <strong>Ignore</strong>,
+    then the verification state is marked <strong>Failed</strong> but the workflow
+    execution continues.</p><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices#analysis_time_duration">CV
+    Strategies, Tuning, and Best Practices</a>.</p><p></p><h3>Step 6: Baseline for
+    Risk Analysis</h3><p><strong>Canary Analysis:</strong> (Available in Workflows
+    using the <strong>Canary</strong> and <strong>Rolling</strong> Workflow Types)
+    </p><p>Harness will compare the metrics received for the nodes deployed in each
+    phase with metrics received for the rest of the nodes in the application. For
+    example, if this phase deploys to 25% of your nodes, the metrics received from
+    Prometheus during this deployment for these nodes will be compared with metrics
+    received for the other 75% during the defined period of time.</p><p><strong>Previous
+    Analysis:</strong> (Available in Workflows using the <strong>Basic</strong>, <strong>Blue/Green</strong>,
+    and <strong>Rolling</strong> Workflow Types)</p><p>Harness will compare the metrics
+    received for the nodes deployed in each phase with metrics received for all the
+    nodes during the previous deployment. For example, if this phase deploys V1.2
+    to node A, the metrics received from Prometheus during this deployment will be
+    compared to the metrics for nodes A, B, and C during the previous deployment (V1.1).
+    Previous Analysis is best used when you have predictable load, such as in a QA
+    environment.</p><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV
+    Strategies, Tuning, and Best Practices</a>.</p><p></p><h3>Step 7: Algorithm Sensitivity</h3><p>See
+    <a href="/article/0avzb5255b-cv-strategies-and-best-practices#algorithm_sensitivity_and_failure_criteria">CV
+    Strategies, Tuning, and Best Practices</a>.</p><p></p><h3>Step 8: Include instances
+    from previous phases</h3><p>If you are using this verification step in a multi-phase
+    deployment, select this checkbox to include instances used in previous phases
+    when collecting data. Do not apply this setting to the first phase in a multi-phase
+    deployment.</p><p></p><h3>Step 9: Execute with previous steps</h3><p>Check this
+    checkbox to run this verification step in parallel with the previous steps in
+    <strong>Verify Service</strong>.</p><p></p><h3>Step 10: Test Configuration</h3><p>Click
+    <strong>Test</strong>.</p><p>If a multiple time series error occurs as follows,
+    add more filters to your query to configure successfully.</p><pre>Error while
+    saving Prometheus configuration. Multiple time series values are returned for
+    metric name CPU and group name Hardware. Please add more filters to your query
+    to return only one time series.</pre><p></p><p>Update your query to add more filters
+    (like container_name = &#34;POD&#34;), as follows:</p><pre>query=container_cpu_usage_seconds_total{pod_name=&#34;$hostName&#34;,
+    container_name=&#34;POD&#34;}</pre><h3>Review: Harness Expression Support in CV
+    Settings</h3><p>You can use expressions (<code>${...}</code>) for <a href="/article/7bpdtvhq92-workflow-variables-expressions">Harness
+    built-in variables</a> and custom <a href="/article/eb3kfl8uls-service-configuration">Service</a>
+    and <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow</a>
+    variables in the settings of Harness Verification Providers.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1586812006289/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p>Expression support lets
+    you template your Workflow verification steps. You can add custom expressions
+    for settings, and then provide values for those settings at deployment runtime.
+    Or you can use Harness built-in variable expressions and Harness will provide
+    values at deployment runtime automatically.</p><p></p><h3>Step 11: View Verification
+    Results</h3><p>When Harness deploys a new application or service to the target
+    environment defined in the workflow, it will immediately connect to the Prometheus
+    Server and build a model of what it is observing.</p><p>Next, Harness compares
+    this model with previous deployment models to identify anomalies or regressions.
+    If necessary, Harness rolls back to the previous working version automatically.
+    For more information, see <a href="/article/m220i1tnia-workflow-configuration#rollback_steps">Rollback
+    Steps</a>.</p><p>Here is an example of a deployment Pipeline Stage verified using
+    Prometheus.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qkcn11esgb/1578094037339/image.png"/></figure><p>Under
+    <strong>Prometheus</strong>, you can see that all Prometheus metrics have been
+    validated by the Harness machine learning algorithms. Green indicates that there
+    are no anomalies or regressions identified and the deployment is operating within
+    its normal range.</p><div class="note-callout">To see an overview of the verification
+    UI elements, see <a href="/article/xldc13iv1y-meet-harness#-continuous-verification-tools-">Continuous
+    Verification Tools</a>.</div><p></p><h3>Next Steps</h3><ul><li><a href="https://docs.harness.io/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code</a></li><li><a href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a></li></ul><p></p>'
+  slug: 3-verify-deployments-with-prometheus
+  tags:
+  - Prometheus
+  - Verification Provider
+  - verification
+  - Workflow
+  - risk analysis
+  - APM
+  - application performance monitoring
+  is_live: true

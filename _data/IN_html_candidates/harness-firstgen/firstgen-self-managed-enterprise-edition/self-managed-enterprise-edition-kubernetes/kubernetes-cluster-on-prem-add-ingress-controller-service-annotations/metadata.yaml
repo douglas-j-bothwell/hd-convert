@@ -1,0 +1,51 @@
+type: article
+article_id: 4602gl9ds3
+user_id: mfr0nxh4be
+category_id: 9tb4tsgko5
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add Ingress Controller Annotations
+slug: kubernetes-cluster-on-prem-add-ingress-controller-service-annotations
+description: In Harness Self-Managed Enterprise Edition - Kubernetes Cluster, you
+  can annotate the Ingress controller to customize its behavior. Annotations are done
+  in the KOTS admin tool's Nginx Ingress Control…
+short_version: In Harness Self-Managed Enterprise Edition - Kubernetes Cluster, you
+  can annotate the Ingress controller to customize its behavior. Annotations are done
+  in the KOTS admin tool's Nginx Ingress Control…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-21T00:05:32.498747Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Ingress Controller Annotations
+  description: ""
+  short_version: ""
+  body: '<p>In Harness Self-Managed Enterprise Edition - Kubernetes Cluster, you can
+    annotate the Ingress controller to customize its behavior.</p><p>Annotations are
+    done in the KOTS admin tool&#39;s Nginx Ingress Controller Service Annotations
+    settings. Next, you simply redeploy.</p><h3>Step 1: Open Advanced Configurations</h3><p>In
+    the KOTs admin tool, click <strong>Config</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4602gl9ds3/1617731808716/image.png"/></figure><p>Click
+    <strong>Advanced Configurations</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4602gl9ds3/1617731850717/image.png"/></figure><p>Click
+    <strong>Advanced Configurations</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4602gl9ds3/1617731894105/image.png"/></figure><p>Scroll
+    down to <strong>Nginx Ingress Controller Service Annotations</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4602gl9ds3/1617732635784/image.png"/></figure><h3>Step
+    2: Annotate Nginx Ingress Controller Service</h3><p>In <strong>Nginx Ingress Controller
+    Service Annotations</strong>, enter the annotation(s). See <a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/"
+    target="_blank">NGINX Ingress Controller Annotations</a> and <a href="https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/"
+    target="_blank">Ingress Controllers</a> from Kubernetes for examples.</p><p>Click
+    <strong>Save Config</strong>.</p><h3>Step 3: Deploy</h3><p>Click <strong>Version
+    History</strong> in the top nav.</p><p>Click <strong>Deploy</strong> for the new
+    version.</p><p></p>'
+  slug: kubernetes-cluster-on-prem-add-ingress-controller-service-annotations
+  tags: []
+  is_live: true

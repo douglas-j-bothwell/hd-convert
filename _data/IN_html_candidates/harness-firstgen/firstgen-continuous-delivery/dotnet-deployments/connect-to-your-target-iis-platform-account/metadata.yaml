@@ -1,0 +1,209 @@
+type: article
+article_id: 65lg4hcsnc
+user_id: mfr0nxh4be
+category_id: 3lkbch7kgn
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Connect to Your Target IIS (.NET) Platform Account
+slug: connect-to-your-target-iis-platform-account
+description: This topic describes how to connect Harness to your target IIS platform,
+  such as Azure or AWS. The process involves setting up a Harness Delegate in the
+  platform's target VPC, and then adding a Harne…
+short_version: This topic describes how to connect Harness to your target IIS platform,
+  such as Azure or AWS. The process involves setting up a Harness Delegate in the
+  platform's target VPC, and then adding a Harne…
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:06.184688Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Connect to Your Target IIS (.NET) Platform Account
+  description: ""
+  short_version: ""
+  body: |-
+    <p>This topic describes how to connect Harness to your target IIS platform, such as Azure or AWS.</p>
+    <p>The process involves setting up a Harness Delegate in the platform&#39;s target VPC, and then adding a Harness Cloud Provider that connects to the target platform.</p>
+    <p>In this topic:</p>
+    <ul>
+      <li>
+        <a href="#before_you_begin">Before You Begin</a>
+      </li>
+      <li>
+        <a href="#visual_summary">Visual Summary</a>
+      </li>
+      <li>
+        <a href="#undefined">Supported Platforms and Technologies</a>
+        <ul>
+          <li>
+            <a href="#supported_target_platforms">Supported Target Platforms</a>
+          </li>
+          <li>
+            <a href="#support_artifact_sources">Support Artifact Sources</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#review_iam_roles_and_win_rm">Review: IAM Roles and WinRM</a>
+      </li>
+      <li>
+        <a href="#step_1_set_up_vm_for_delegate">Step 1: Set Up VM for Delegate</a>
+      </li>
+      <li>
+        <a href="#step_2_install_the_harness_delegate">Step 2: Install the Harness Delegate</a>
+      </li>
+      <li>
+        <a href="#step_3_add_a_cloud_provider">Step 3: Add a Cloud Provider</a>
+      </li>
+      <li>
+        <a href="#related_topics">Related Topics</a>
+      </li>
+      <li>
+        <a href="#configure_as_code">Configure As Code</a>
+      </li>
+    </ul>
+    <h3>Before You Begin</h3>
+    <ul>
+      <li>
+        <a href="/article/2oo63r9rwb-iis-net-quickstart">IIS (.NET) Quickstart</a>
+      </li>
+      <li>
+        <a href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a>
+      </li>
+      <li>
+        <a href="/article/bq9938fbk8-iis-net-deployments-overview">IIS (.NET) Deployments Overview</a>
+      </li>
+    </ul>
+    <h3>Visual Summary</h3>
+    <p>Here is a very simple example of an IIS (.NET) deployment using Harness:</p>
+    <p></p>
+    <figure>
+      <img src="https://files.helpdocs.io/kw8ldg1itf/articles/65lg4hcsnc/1602027386663/image.png"/>
+    </figure>
+    <p>You install the Harness Delegate on an instance in your target platform (in this example, AWS), and connect Harness to it and an artifact source (for example, Artifactory). </p>
+    <p>Next, in Harness, you&#39;ll set up your IIS website, application, and virtual directory artifacts, deployment specs, and define your target infrastructure. </p>
+    <p>Lastly, you&#39;ll create a Basic Workflow and deploy the IIS components to the target host(s).</p>
+    <p> </p>
+    <h3 id="undefined">Supported Platforms and Technologies</h3>
+    <div class="note-callout">For a complete list of supported platforms and technologies, see 
+      <a href="/article/220d0ojx5y-supported-platforms">Supported Platforms and Technologies</a>.</div>
+    <p>For IIS deployments, Harness supports the following target platforms and artifact sources.</p>
+    <h4>Supported Target Platforms</h4>
+    <ul>
+      <li>AWS</li>
+      <li>Azure</li>
+      <li>Physical Datacenter</li>
+    </ul>
+    <h4>Support Artifact Sources</h4>
+    <ul>
+      <li>Jenkins</li>
+      <li>Bamboo</li>
+      <li>JFrog Artifactory</li>
+      <li>Nexus 2 and Nexus 3</li>
+      <li>Google Cloud Strorage</li>
+      <li>AWS S3</li>
+      <li>Azure Artifacts</li>
+      <li>SMB</li>
+      <li>SFTP</li>
+    </ul>
+    <h3>Review: IAM Roles and WinRM</h3>
+    <p>Harness only uses IAM Roles for discovering target VMs. When you set up an Harness Cloud Provider, the target platform account you use must have an IAM Role that permits discovery. </p>
+    <p>For all other deployment steps, Harness uses a WinRM connection. You set up WinRM connection credentials in Harness, and the Harness Delegate acts like a WinRM client using the credentials.</p>
+    <p>See
+      <a href="/article/9fqa1vgar7-add-win-rm-connection-credentials">Add WinRM Connection Credentials</a>,
+      <a href="/article/fqrimyi94t-use-win-rm-connection-via-kerberos-for-server-authentication">Create WinRM Connection Using Kerberos</a>, and
+      <a href="/article/2rlo5zw321-api-win-rm-credentials">WinRM Credentials API</a>.</p>
+    <p>You will also need IAM roles on the target hosts. This is covered in
+      <a href="/article/nmgpqoa1m0-set-up-win-rm-and-iis-on-target-hosts">Set Up WinRM and IIS on Target Hosts</a>.</p>
+    <h3>Step 1: Set Up VM for Delegate</h3>
+    <p>The Linux VM instance for the Harness Delegate must meet the following requirements:</p>
+    <ul>
+      <li>Linux/UNIX server.</li>
+      <li>​Minimum 1 CPU.</li>
+      <li>Minimum 8GB RAM. For example, an AWS EC2 instance type such as m5a.xlarge has 16GB of RAM, 8 for the Delegate and 8 for the remaining operations.</li>
+      <li>Minimum 6GB Disk space.</li>
+      <li>Outbound Access: HTTP, HTTPS, SSH. This enables the Delegate to communicate with Harness and any artifact server, such as Artifactory.</li>
+      <li>Amazon IAM role: AmazonEC2FullAccess.</li>
+      <li>Azure IAM role: Reader.</li>
+    </ul>
+    <p></p>
+    <h3>Step 2: Install the Harness Delegate</h3>
+    <p>You must install a Harness Delegate onto a VM in your target subnet. You can install it elsewhere, but it will make connections from the Delegate to the target hosts more complicated.</p>
+    <p>For example, install the Harness Shell Script Delegate on the VM instance you set up for the Delegate. </p>
+    <p>To install the Delegate on your instance:</p>
+    <ol>
+      <li>Sign into the Harness Manager.</li>
+      <li>Click <strong>Setup</strong>, and then click <strong>Harness Delegates</strong>.</li>
+      <li>Click <strong>Download Delegate</strong>, and then click <strong>Shell Script</strong>.</li>
+      <li>Enter a name for the Delegate, and select the <strong>Primary</strong> Profile.</li>
+      <li>Click <strong>Copy Download Link</strong>.</li>
+      <li>Log into your instance, paste the Shell Script Delegate command, and hit <strong>Enter</strong>.</li>
+      <li>Once the Delegate is downloaded, unzip it (<code>tar -zxvf harness-delegate.tar.gz</code>), change directories into the <strong>harness-delegate</strong> folder and run the start command: <code>./start.sh</code>. Ignore any warning about
+        the ulimit.</li>
+    </ol>
+    <p>The Delegate will start and in a few moments you will see it listed in the <strong>Harness Delegates</strong> page.</p>
+    <figure>
+      <a href="https://files.helpdocs.io/kw8ldg1itf/articles/2oo63r9rwb/1583877354906/image.png">
+        <img src="https://files.helpdocs.io/kw8ldg1itf/articles/2oo63r9rwb/1583877354906/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/>
+      </a>
+    </figure>
+    <p><strong>Delegate Selector</strong> — As a best practice, add a Delegate Selector to the Delegate so you can quickly identify it. If you use a Harness AWS Cloud Provider, you can use the Selector to inherit credentials for the Delegate.</p>
+    <ol>
+      <li>In the Delegate listing on the <strong>Harness Delegates</strong> page, click <strong>Edit</strong> next to <strong>Selectors</strong>.</li>
+      <li>Type in <strong>iis-tutorial</strong>, press <strong>Enter</strong>, and then click <strong>Submit</strong>.
+        <br/>The Selector is added to the Delegate.</li>
+    </ol>
+    <p>Next we need to add a Harness Cloud Provider to connect Harness to your platform account. </p>
+    <h3>Step 3: Add a Cloud Provider</h3>
+    <p>The following Harness Cloud Providers support connecting to platforms over WinRM.</p>
+    <p>Choose your Cloud Provider based on your target platform:</p>
+    <ul>
+      <li>
+        <a href="/article/wt1gnigme7-add-amazon-web-services-cloud-provider">Add Amazon Web Services Cloud Provider</a>
+      </li>
+      <li>
+        <a href="/article/4n3595l6in-add-microsoft-azure-cloud-provider">Add Microsoft Azure Cloud Provider</a>
+      </li>
+      <li>
+        <a href="/article/stkxmb643f-add-physical-data-center-cloud-provider">Add Physical Data Center as Cloud Provider</a>
+      </li>
+    </ul>
+    <p>When you set up an Harness Cloud Provider, the target platform account you use must have an IAM Role that permits discovery. </p>
+    <p>For Azure, this is a Reader role. </p>
+    <p>For AWS, AmazonEC2FullAccess, though there are other methods, such as the one discussed in
+      <a href="https://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/" target="_blank">How do I create an IAM policy to control access to Amazon EC2 resources using tags?</a> from AWS.</p>
+    <h3>Related Topics</h3>
+    <ul>
+      <li>
+        <a href="/article/nmgpqoa1m0-set-up-win-rm-and-iis-on-target-hosts">Set Up WinRM and IIS on Target Hosts</a>
+      </li>
+      <li>
+        <a href="/article/66k2mr06de-set-up-win-rm-connections-in-harness">Set Up WinRM Connections in Harness</a>
+      </li>
+      <li>
+        <a href="/article/f583r8mwcj-add-iis-components-for-deployment">Add IIS Components for Deployment</a>
+      </li>
+      <li>
+        <a href="/article/63s27r2kac-define-your-target-iis-infrastructure">Define Your Target IIS Infrastructure</a>
+      </li>
+      <li>
+        <a href="/article/av6sozt3zu-create-iis-workflows">Create IIS Workflows</a>
+      </li>
+      <li>
+        <a href="/article/8srpsjre52-create-and-deploy-an-iis-pipeline">Create and Deploy an IIS Pipeline</a>
+      </li>
+    </ul>
+    <h3>Configure As Code</h3>
+    <p>To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the YAML editor button (<span style="color:#fb9e00" data-hd-color="#fb9e00"><strong>&lt;/&gt;</strong></span>).</p>
+  slug: connect-to-your-target-iis-platform-account
+  tags: []
+  is_live: true

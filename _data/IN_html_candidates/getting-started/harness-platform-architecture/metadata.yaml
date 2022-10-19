@@ -1,0 +1,82 @@
+type: article
+article_id: len9gulvh1
+user_id: mfr0nxh4be
+category_id: kx4hs8bn38
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness Platform architecture
+slug: harness-platform-architecture
+description: Harness Platform overview. The Harness Platform is a self-service CI/CD
+  platform that enables end-to-end software delivery. The Platform includes modules
+  to help you build, test, deploy, and verify s…
+short_version: Harness Platform overview. The Harness Platform is a self-service CI/CD
+  platform that enables end-to-end software delivery. The Platform includes modules
+  to help you build, test, deploy, and verify s…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-15T17:55:43.008841Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Platform architecture
+  description: Harness Platform overview. The Harness Platform is a self-service CI/CD
+    platform that enables end-to-end software delivery. The Platform includes modules
+    to help you build, test, deploy, and verify s…
+  short_version: Harness Platform overview. The Harness Platform is a self-service
+    CI/CD platform that enables end-to-end software delivery. The Platform includes
+    modules to help you build, test, deploy, and verify s…
+  body: '<p>The Harness Platform is a self-service CI/CD platform that enables end-to-end
+    software delivery. The Platform includes the following modules to help you build,
+    test, deploy, and verify software:</p><ul><li>Continuous Delivery</li><li>Continuous
+    Integration</li><li>Feature Flags</li><li>Cloud Cost Management</li><li>Service
+    Reliability Management</li><li>Security Testing Orchestration</li><li>Chaos Engineering</li></ul><p>Watch
+    the following video to learn about some of the Harness modules:</p><div class="hd--embed"
+    data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/ibUVZNMrLX0/hqdefault.jpg"><iframe
+    width="200" height="113" src="https://www.youtube.com/embed/ibUVZNMrLX0?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen="" title="Harness Platform Demo"></iframe></div><h4>Harness
+    Platform components</h4><p>The Harness Platform has two components:</p><ul><li><strong>Harness
+    Manager:</strong> Harness Manager is where your CI/CD and other configurations
+    are stored and your pipelines are managed. Your pipelines can be managed purely
+    through Git as well.<br/>Pipelines are triggered manually in the Harness Manager
+    or automatically in response to Git events, schedules, new artifacts, and so on.<br/>Harness
+    Manager is available either as SaaS (running in the Harness cloud) or as self-managed
+    (running in your infrastructure).</li><li><strong>Harness Delegate:</strong> The
+    Harness Delegate is a software service you install in your environment. It connects
+    to the Harness Manager and performs tasks using your container orchestration platforms,
+    artifact repositories, monitoring systems, etc. The Delegate is key to enabling
+    Harness to perform CI/CD tasks, but you don&#39;t need to install it right away.
+    You can install the Delegate as part of the flow when setting up your Pipelines
+    or Connectors. For more information, go to <a href="/article/2k7lnc7lvl-delegates-overview">Delegates
+    Overview</a>.</li></ul><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/len9gulvh1/1660050228782/clean-shot-2022-01-25-at-12-53-46.png"
+    alt="Harness Delegate overview"/></figure><p></p><h3>Harness editions</h3><p>Harness
+    is available in the following editions to meet different users&#39; needs:</p><ul><li><strong>Enterprise:</strong>
+    This is our enterprise version, licensed by annual subscription based on your
+    usage needs. It supports flexible scaling, custom integrations, and extended data
+    analysis. It includes 24/7 support.</li><li><strong>Team</strong><strong>:</strong>
+    Designed for growing teams, this version provides most Harness Enterprise features
+    at lower per-usage pricing. It limits or excludes some integrations and enterprise
+    security features, and limits real-time support to standard business hours.</li><li><strong>Free</strong>:
+    This is a free-forever edition with almost all Harness Enterprise features (excluding
+    unlimited Services and license-based service Instances scaling).</li><li><strong>Community</strong>:
+    This version is a free-forever, open, on-premises edition. It does not have RBAC,
+    audit trails, governance, or advanced security. See <a href="/article/yhyyq0v0y4-harness-community-edition-overview">Harness
+    CD Community Edition Overview</a>.<br/>If you move from the full-featured Enterprise
+    trial to the free Community Edition, you might need to remove or adjust any premium
+    features you&#39;ve configured. For these migrations, please <a href="https://harness.io/upgrade/">contact Harness</a>.<div
+    class="tip-callout">Support for Harness Community is available through the <a
+    href="https://community.harness.io/" target="_blank">Harness Community Forum</a>.</div></li></ul><p>For
+    a detailed comparison of the Harness editions, see the <a href="https://harness.io/pricing/?module=cd"
+    target="_blank">Harness Pricing</a> page.</p><p></p>'
+  slug: harness-platform-architecture
+  tags: []
+  is_live: true

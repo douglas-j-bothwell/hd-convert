@@ -1,0 +1,116 @@
+type: article
+article_id: o5ec7vvtju
+user_id: mfr0nxh4be
+category_id: zzl3fqee2p
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Secrets and Log Sanitization (FirstGen)
+slug: secrets-and-log-sanitization
+description: This content is for Harness FirstGen. Switch to NextGen. Harness sanitizes
+  deployment logs and any script outputs to mask text secret values. First, let's
+  review secrets in Harness, and then look at…
+short_version: This content is for Harness FirstGen. Switch to NextGen. Harness sanitizes
+  deployment logs and any script outputs to mask text secret values. First, let's
+  review secrets in Harness, and then look at…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-09-14T09:42:33.436491Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Secrets and Log Sanitization (FirstGen)
+  description: ""
+  short_version: ""
+  body: '<p></p><div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="https://docs.harness.io">NextGen</a>.</div><p>Harness sanitizes
+    deployment logs and any script outputs to mask text secret values.</p><p>First,
+    let&#39;s review secrets in Harness, and then look at how Harness sanitizes logs
+    and outputs to prevent secrets from being exposed.</p><h3>Review: Secrets in Harness</h3><div
+    class="note-callout">The following information is also covered in <a href="/article/au38zpufhr-secret-management">What
+    is Secrets Management?</a>.</div><p>You can create secrets in Harness as described
+    in</p><ul><li> <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Use Encrypted
+    Text Secrets</a></li><li> <a href="/article/nt5vchhka4-use-encrypted-file-secrets">Use
+    Encrypted File Secrets</a></li><li> <a href="/article/gsp4s7abgc-add-ssh-keys">Add
+    SSH Keys</a></li><li> <a href="/article/9fqa1vgar7-add-win-rm-connection-credentials">Add
+    WinRM Connection Credentials</a></li></ul><p>For text and file secrets, the secrets
+    are stored in the Secrets Manager you select for the secret, as described in <a
+    href="/article/uuer539u3l-add-a-secrets-manager">Add a Secrets Manager</a>.</p><p>Once
+    a secret is added, you can then reference a secret in Harness Connectors and other
+    Harness settings, such as Service specifications and commands, and scripts in
+    a Workflow.</p><div class="note-callout">You can also create text and file secrets
+    in a Service <strong>Configuration</strong> section.</div><p>You reference a text
+    secret in a script using the expression <code>${secrets.getValue(&#34;secret_name&#34;)}</code>.</p><p>You
+    can reference a file secret using the expression <code>${configFile.getAsBase64(&#34;secret_name&#34;)}</code>
+    or <code>${configFile. getAsString(&#34;secret_name&#34;)}</code>.</p><p>At deployment
+    runtime, the Harness Delegate uses the Secrets Manager to decrypt and read the
+    secret only when it is needed.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/o5ec7vvtju/1606170698452/image.png"/></figure><p>Harness
+    sends only encrypted data to the Secrets Manager, as follows: </p><ol><li>Your
+    browser sends data over HTTPS to Harness Manager. </li><li>Harness Manager relays
+    encrypted data to the Harness Delegate, also over HTTPS. </li><li>The Delegate
+    exchanges a key pair with the secrets manager, over an encrypted connection. </li><li>The
+    Harness Delegate uses the encrypted key and the encrypted secret, and then discards
+    them. The keys never leave the Delegate.</li></ol><div class="note-callout">Any
+    secrets manager requires a running Harness Delegate to encrypt and decrypt secrets.
+    Any Delegate that references a secret requires direct access to the secrets manager.</div><p>You
+    can manage your secrets in Harness using either a Key Management Service or third
+    party Secrets Managers.</p><h3>Sanitization</h3><p>When a text secret is displayed
+    in a deployment log, Harness substitutes the text secret value with asterisks
+    (*) so that the secret value is never displayed.</p><p>For example, if you have
+    a Harness text secret named <strong>doc-secret</strong> containing <code>foo</code>.</p><p>You
+    can reference it in a Workflow <a href="/article/1fjrjbau7x-capture-shell-script-step-output">Shell
+    Script</a> step like this:</p><pre>echo &#34;text secret is: &#34; ${secrets.getValue(&#34;doc-secret&#34;)}</pre><p>When
+    you deploy the Workflow, the log is sanitized and the output is:</p><pre>Executing
+    command ...<br/>text secret is:  **************<br/>Command completed with ExitCode
+    (0)</pre><p>You can also reference the encrypted text used in a Service&#39;s
+    <strong>Config Variables</strong> in the Workflow using the Service with the variable
+    <code>${serviceVariable.var_name}</code>.</p><div class="note-callout">File secrets
+    are not masked in Harness logs. As noted above they can be encoded in different
+    formats, but they are not masked from users.</div><h4>Quotes and Secrets in a
+    Script</h4><p>By default, secret expressions use quotes for the secret name: <code>${secrets.getValue(&#34;secret_name&#34;)}</code>.</p><p>If
+    the secret value <u>itself</u> includes quotes, either single or double, and anywhere
+    in the secret value, you <u>must</u> use the opposite quote when you use the expression
+    in a script (echo, etc).</p><div class="warning-callout">If you do not use the
+    opposite quote you will expose the secret value.</div><p>Single quote example:</p><p>Here,
+    the secret value is <code>&#39;mysecret&#39;</code> and the name is <code>secret_name</code>.
+    To echo, use double quotes:</p><p><code>echo &#34;${secrets.getValue(&#39;secret_name&#39;)}&#34;</code></p><p><code>echo
+    &#34;${secrets.getValue(&#34;secret_name&#34;)}&#34;</code></p><p>Double quote
+    example:</p><p>Here, the secret value is <code>&#34;mysecret&#34;</code> and the
+    name is <code>secret_name</code> .</p><p><code>echo &#39;${secrets.getValue(&#39;secret_name&#39;)}&#39;</code></p><div
+    class="warning-callout">Avoid using <code>$</code> in your secret value. If your
+    secret value includes <code>$</code>, you must use single quotes when you use
+    the expression in a script.<br/>For example, if your secret value is <code>&#39;my$secret&#39;</code>
+    , and the name is <code>secret_name</code>, to echo, use single quotes:<br/>  <code>echo
+    &#39;${secrets.getValue(&#34;secret_name&#34;)}&#39;</code></div><h4>Kubernetes
+    Secret Objects</h4><p>When you deploy a <a href="https://kubernetes.io/docs/concepts/configuration/secret/"
+    target="_blank">Kubernetes Secret object</a> using Harness, Harness substitutes
+    the secret values with asterisks (*).</p><p>Here is a Secret example from the
+    manifest in the Harness Service (using Go templating):</p><pre>{{- if .Values.dockercfg}}<br/>apiVersion:
+    v1<br/>kind: Secret<br/>metadata:<br/>  name: {{.Values.name}}-dockercfg<br/>  annotations:<br/>    harness.io/skip-versioning:
+    true<br/>data:<br/>  .dockercfg: {{.Values.dockercfg}}<br/>type: kubernetes.io/dockercfg<br/>---<br/>{{-
+    end}}</pre><p></p><p>Here is the deployed Secret in the log:</p><pre>apiVersion:
+    v1<br/>kind: Secret<br/>metadata:<br/>  name: harness-example<br/>stringData:<br/>  key2:
+    &#39;***&#39;</pre><h3>Changing Secrets in Scripts and RBAC</h3><p>Harness log
+    sanitizing only detects exact matches of a secret or any line of it if it is multi-line.</p><p>If
+    an operation within a script changes the value of the secret and Harness cannot
+    match it to the expression, the newly modified string is displayed in the output
+    exposing the secret value.</p><p>If the modification is minor, the secret value
+    can be easily deciphered which is a security concern.</p><p>To avoid this issue,
+    use Harness RBAC to control which users can access a secret.</p><p>See <a href="/article/e5q9qcho4y-restrict-secrets-usage">Restrict
+    Secrets Usage</a>.</p><h3>Log Sanitizer Detects Exact Matches Only</h3><p>The
+    log sanitizer detects only exact matches of the secret or any line of the secret
+    if the secret is multiline.</p><h3>Secrets 3 Character Minimum</h3><p>The log
+    sanitizer only works on secrets that are three characters or longer.</p><p>If
+    the secret value is <code>ab</code>, then the log will show:</p><pre>Executing
+    command ...<br/>text secret is:  ab<br/>Command completed with ExitCode (0)</pre><p></p><p></p><p></p><p></p><p></p><p></p>'
+  slug: secrets-and-log-sanitization
+  tags: []
+  is_live: true

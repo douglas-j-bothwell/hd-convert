@@ -1,0 +1,202 @@
+type: article
+article_id: d3m9uo4mx0
+user_id: 2c4rk0cied
+category_id: 7lvetjzo1m
+author:
+  name: Renu Bhaskaran
+  profile_image: https://www.gravatar.com/avatar/7d21186ef4e85110a0bd60a931c90361?d=mm&s=150
+title: SLO-Driven Governance
+slug: slo-driven-deployment-governance
+description: This topic walks you through the steps to use SLO-based policies to enforce
+  Pipeline governance.
+short_version: This topic walks you through the steps to use SLO-based policies to
+  enforce Pipeline governance.
+tags:
+- SLO
+- Governance
+- OPA
+- Policy
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-15T16:05:10.616766Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: SLO-Driven Governance
+  description: This topic walks you through the steps to use SLO-based policies to
+    enforce Pipeline governance.
+  short_version: This topic walks you through the steps to use SLO-based policies
+    to enforce Pipeline governance.
+  body: '<div class="note-callout">Currently, this feature is behind the Feature Flag
+    <code>OPA_PIPELINE_GOVERNANCE</code>. Contact Harness Support to enable the feature.</div><p>Harness
+    provides governance using <a href="https://www.openpolicyagent.org/" target="_blank">Open
+    Policy Agent (OPA)</a>, Policy Management, and Rego policies. You can use Harness
+    Governance to ensure that Harness entities like Pipelines meet specific compliance
+    requirements when specific events happen (On Save, On Run, etc). Harness Governance
+    uses OPA as the central service to store and analyze policies for the different
+    entities and processes across the Harness platform.</p><p><a href="/article/trlszsj5lh-slo-management-quickstart">SLO-driven</a>
+    governance policies ensure that Harness entities like SLOs (service level objectives)
+    and Error Budgets meet specific compliance requirements when specific events happen
+    (On Save, On Run, etc). These policies prevent Pipelines from deploying if:</p><ul><li>Configured
+    SLO limit is breached for a given Harness Monitored Service</li><li>SLO isn&#39;t
+    configured for a Monitored Service</li><li>Configured Error Budget has depleted</li></ul><p>This
+    topic walks you through the steps to use SLO-based policies to enforce Pipeline
+    governance.</p><div class="note-callout">This topic is only meant to demonstrate
+    how Pipeline governance works, so we use a simple Pipeline. OPA policies are written
+    in the Rego policy language of the OPA. We&#39;ll provide the policy you&#39;ll
+    need for this quickstart, but it&#39;s also a good idea to be familiar with Rego
+    before writing or reading policies. See <a href="https://www.openpolicyagent.org/docs/latest/policy-language/">OPA
+    Policy Language</a> and the <a href="https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/">Rego
+    Cheatsheet</a> for more information.</div><h3>Before You Begin</h3><ul><li>Review <a
+    href="https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a> to establish a general understanding of Harness.</li><li>Review <a
+    href="https://ngdocs.harness.io/article/1d3lmhv4jl-harness-governance-overview">Harness
+    Governance Overview</a> </li></ul><h4>How does Harness use OPA?</h4><p>The Harness
+    OPA server is an OPA server managed by Harness.</p><p>In Harness, you add Rego
+    policies to a Policy Set and select the Harness entities for evaluation (e.g.
+    Pipelines). At that point, the policies are configured on the Harness OPA Server
+    via a Kubernetes ConfigMap.</p><p>When certain events happen (e.g. saving or running
+    a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action
+    using the Policy Set.</p><h3>Step 1: Create a Project</h3><p>In your Harness account,
+    click <strong>Home</strong>.</p><p>Click <strong>Projects.</strong></p><p>Click
+    <strong>New Project</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1636484069036/clean-shot-2021-11-09-at-10-54-17-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>Name</strong> enter a name for the Project. For example <strong>Quickstart.</strong></p><p>Click
+    <strong>Save and Continue</strong>.</p><p>In <strong>Invite Collaborators</strong>,
+    click <strong>Save and Continue</strong>. You will automatically be added as a
+    Project Admin.</p><p>Your new Project is created.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1636485680678/clean-shot-2021-11-09-at-11-21-12-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Next
+    add a Pipeline that will be evaluated later using OPA policies.</p><h3>Step 2:
+    Create a Pipeline</h3><p>Open the new Harness Project you created and click <strong>Deployments</strong>.</p><p>Click
+    <strong>Pipelines</strong>, and then click <strong>Create a Pipeline</strong>.</p><p>Name
+    the Pipeline <strong>Policy Example</strong> and click <strong>Start</strong>.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647326187987/screenshot-2022-03-15-at-12-06-08-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>Click
+    <strong>Add Stage</strong>. The <strong>Select Stage Type</strong> settings appear.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647336765452/screenshot-2022-03-15-at-3-02-31-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p>Select
+    <strong>Deploy</strong>.</p><p>In <strong>Stage Name</strong> enter a name for
+    the Stage. For example Quickstart.</p><p>Click <strong>Set Up Stage</strong>.</p><p>In
+    <strong>Specify Service</strong>, either select a Service from the list or click
+    <strong>New Service</strong> to create one.</p><p>In <strong>Service Definition</strong>,
+    select the <strong>Deployment Type</strong>. For example Kubernetes.</p><p>Click
+    <strong>Next</strong>.</p><p>In <strong>Specify Environment</strong>, either select
+    an Environment from the list or click <strong>New Environment</strong> to create
+    one.</p><p>In <strong>Infrastructure Definition</strong>, select the infrastructure
+    type. For example Kubernetes.</p><p>In <strong>Connector</strong>, select an existing
+    Connector or create a new one.</p><p>In <strong>Namespace</strong>, enter the
+    target namespace. For example quickstart.</p><p>Click <strong>Next</strong>.</p><p>In
+    <strong>Execution Strategies</strong>, select the desired strategy. For example
+    <strong>Rolling</strong>.</p><p>Click <strong>Use Strategy</strong>.</p><p>Click
+    <strong>Save</strong>. The Pipeline is now saved.</p><p>Next, we&#39;ll create
+    an SLO policy for the Pipeline.</p><h3>Step 3: Create a Policy</h3><p>Harness
+    uses the <a href="https://www.openpolicyagent.org/docs/latest/policy-language/">Rego
+    policy language</a> for defining rules that are evaluated by the OPA engine. Basically,
+    you use Rego to answer queries such as &#34;does the Pipeline have an Approval
+    step?&#34; and so on. Your Harness Pipelines and entities might be created using
+    the Harness UI or YAML, but your Rego policies will validate the JSON of your
+    Pipelines or other entities.</p><p>Perform the following steps to create an SLO-based
+    policy.</p><p>In the Harness Project, in <strong>Project Setup</strong>, click <strong>Governance</strong>.</p><p>Click <strong>Policies</strong>,
+    and then click <strong>New Policy</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647329559126/screenshot-2022-03-15-at-1-02-16-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>Name</strong>, enter a name for the Policy. For example Quickstart.</p><p>The
+    policy editor appears.</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634844532487/clean-shot-2021-10-21-at-12-28-33.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634844532487/clean-shot-2021-10-21-at-12-28-33.png"/></a></figure><p>You
+    can create SLO-based policies using the following examples, or you can create
+    your own set of policies:</p><ul><li>Example 1: If Environment is NON_PROD and
+    SLO is not configured.</li></ul><pre>package pipeline<br/><br/>authorize = &#34;allow&#34;
+    {<br/>    stage = input.pipeline.stages[_].stage<br/>    stage.type == &#34;Deployment&#34;                                                    #
+    ... that are deployments<br/>    stage.spec.infrastructure.environment.type ==
+    &#34;Production&#34;<br/>} else = &#34;deny&#34; {<br/>    step = input.pipeline.stages[i].stage.spec                                                  <br/>    step.sloPolicy.statusOfMonitoredService
+    == &#34;NOT_CONFIGURED&#34;<br/>} else = &#34;allow&#34;<br/><br/>deny [&#34;SLO
+    for the non prod env should be configured&#34;]{<br/>  authorize == &#34;deny&#34;<br/>}</pre><ul><li>Example
+    2: If Env is NON_PROD and SLO is configured, but Error Budget is less than the
+    configured percentage.</li></ul><pre>package pipeline<br/><br/>authorize = &#34;allow&#34;
+    {<br/>    stage = input.pipeline.stages[_].stage<br/>    stage.type == &#34;Deployment&#34;                                                    #
+    ... that are deployments<br/>    stage.spec.infrastructure.environment.type ==
+    &#34;Production&#34;<br/>} else = &#34;deny&#34; {<br/>    step = input.pipeline.stages[i].stage.spec                                                  <br/>    step.sloPolicy.sloErrorBudgetRemainingPercentage&lt;50<br/>}
+    else = &#34;allow&#34;<br/><br/>deny[&#34;SLO error budget for the non prod env
+    should be greater than 50&#34;] {<br/>  authorize == &#34;deny&#34;<br/>}</pre><ul><li>Example
+    3: If Environment is PROD and SLO is not configured.</li></ul><pre>package pipeline<br/><br/>authorize
+    = &#34;allow&#34; {<br/>    stage = input.pipeline.stages[_].stage<br/>    stage.type
+    == &#34;Deployment&#34;                                                    # ...
+    that are deployments<br/>    not stage.spec.infrastructure.environment.type ==
+    &#34;Production&#34;<br/>} else = &#34;deny&#34; {<br/>    step = input.pipeline.stages[i].stage.spec                                                  <br/>    not
+    step.sloPolicy.statusOfMonitoredService == &#34;CONFIGURED&#34;<br/>} else = &#34;allow&#34;<br/><br/>deny
+    [&#34;SLO should be configured for the prod env&#34;] {<br/>  authorize == &#34;deny&#34;<br/>}</pre><ul><li>Example
+    4: If Environment is PROD and the SLO is configured, but Error Budget is less
+    than configured percentage.</li></ul><pre>package pipeline<br/><br/>authorize
+    = &#34;allow&#34; {<br/>    stage = input.pipeline.stages[_].stage<br/>    stage.type
+    == &#34;Deployment&#34;                                                    # ...
+    that are deployments<br/>    not stage.spec.infrastructure.environment.type ==
+    &#34;Production&#34;<br/>} else = &#34;deny&#34; {<br/>    step = input.pipeline.stages[i].stage.spec                                                  <br/>    step.sloPolicy.sloErrorBudgetRemainingPercentage&lt;50<br/>}
+    else = &#34;allow&#34;<br/><br/>deny [&#34;SLO for the prod env should be more
+    than 50&#34;] {<br/>  authorize == &#34;deny&#34;<br/></pre><p></p><p>Consider
+    the following example in which the policy applies an SLO limit:</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647338541870/screenshot-2022-03-15-at-3-32-05-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Once
+    you have created the policy paste it in the editor.</p><p>Click <strong>Save</strong>.</p><h3>Step
+    4: Create a Policy Set</h3><p>Policy Sets are groups of related policies. A single
+    policy can be a member of many Policy Sets.</p><p>Click <strong>Policy Sets</strong>.</p><figure><a
+    href="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634856120356/clean-shot-2021-10-21-at-15-41-49-2-x.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634856120356/clean-shot-2021-10-21-at-15-41-49-2-x.png"/></a></figure><p>In <strong>Policy
+    Sets</strong>, click <strong>New Policy Set</strong>.</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1636584541766/clean-shot-2021-11-10-at-14-48-45-2-x.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1636584541766/clean-shot-2021-11-10-at-14-48-45-2-x.png"/></a></figure><p>In
+    <strong>Name</strong>, enter a name for the policy set. For example <strong>Quickstart</strong>.</p><p>In <strong>Entity
+    Type that this policy set applies to</strong>, select <strong>Pipeline</strong>.
+    It is the Harness entity for the Policy Set</p><p>In <strong>On what event should
+    the policy set be evaluated</strong>, select <strong>On Run</strong>. It is the
+    event that triggers the evaluation.</p><p>Click <strong>Continue</strong>.</p><p>In <strong>Policy
+    evaluation criteria</strong>, click <strong>Add Policy</strong>.</p><p>In <strong>Policy
+    to Evaluate</strong>, select the <strong>Quickstart</strong> policy you created.
+    Policies can be created at the Account, Org, and Project level.</p><p>In the drop-down
+    next to the selected policy, select <strong>Error and exit</strong>. You can also
+    select <strong>Warn &amp; Continue</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647332784474/screenshot-2022-03-15-at-1-55-28-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click <strong>Apply</strong>.</p><p>Click
+    <strong>Finish</strong>. The new Policy Set is listed.</p><p>Click <strong>ENFORCED</strong>
+    to enforce the policy if not enabled already.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647334392811/screenshot-2022-03-15-at-1-59-34-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><div
+    class="warning-callout">When you create Policy Sets they are applied to all matching
+    entities (for example, Pipelines). Be careful that you do not create a Policy
+    Set that might impact existing Pipelines <u>unintentionally</u>.</div><h3>Step
+    5: Evaluate a Pipeline on Run</h3><p>Click <strong>Pipelines</strong> to navigate
+    back to the Pipeline you created earlier.</p><p>Click <strong>Run</strong>, and
+    then <strong>Run Pipeline</strong>.</p><p>The Policy Set is evaluated and the
+    Pipeline execution fails.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647334536744/screenshot-2022-03-15-at-2-24-38-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    6: Configure an SLO and Rerun</h3><p>When the Policy Set is evaluated, the Pipeline
+    fails as SLO wasn&#39;t configured for the Monitored Service.</p><p>Now, <a href="/article/trlszsj5lh-slo-management-quickstart#step_5_create_an_slo">create
+    an SLO</a> for the Monitored Service.</p><p>Once you have set an SLO, click <strong>Run</strong>,
+    and then click <strong>Run Pipeline</strong>.</p><p>The Pipeline runs.</p><p>Let
+    us review the policy evaluations now.</p><h3>Step 7: Review Policy Evaluations</h3><p>You
+    can review policy evaluations in the following ways.</p><h4>Review in Pipeline
+    Execution</h4><p>On the Pipeline deployment summary (<strong>Execution History</strong>),
+    click <strong>Policy Evaluations</strong>.</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634859288101/clean-shot-2021-10-21-at-16-34-28-2-x.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634859288101/clean-shot-2021-10-21-at-16-34-28-2-x.png"/></a></figure><p>Policy
+    Set evaluations are listed.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/d3m9uo4mx0/1647340209062/screenshot-2022-03-15-at-3-53-46-pm.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure><h4>Review
+    in Governance Overview</h4><p>Click <strong>Project Setup</strong>, and then click <strong>Governance</strong>.</p><p>Click <strong>Evaluations</strong>.</p><figure><a
+    href="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634859546331/clean-shot-2021-10-21-at-16-38-59-2-x.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634859546331/clean-shot-2021-10-21-at-16-38-59-2-x.png"/></a></figure><p>You
+    can see the evaluation you just performed:</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634859678660/clean-shot-2021-10-21-at-16-40-28-2-x.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/jws2znftay/1634859678660/clean-shot-2021-10-21-at-16-40-28-2-x.png"/></a></figure><h3>Summary</h3><p>In
+    this tutorial, you:</p><ul><li>Created an SLO policy in Harness</li><li>Created
+    a Policy Set from your new policy</li><li>Ran a Pipeline that failed a policy
+    evaluation</li><li>Ran a Pipeline that passed a policy evaluation</li><li>Reviewed
+    policy evaluations for a Pipeline</li></ul><h3>See Also</h3><ul><li><a href="https://ngdocs.harness.io/article/1d3lmhv4jl-harness-governance-overview">Harness
+    Governance Overview</a></li><li><a href="/article/jws2znftay-harness-governance-quickstart">Harness
+    Governance Quickstart</a></li></ul><p></p>'
+  slug: slo-driven-deployment-governance
+  tags:
+  - SLO
+  - Governance
+  - OPA
+  - Policy
+  is_live: true

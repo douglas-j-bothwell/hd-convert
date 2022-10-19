@@ -1,0 +1,85 @@
+type: article
+article_id: ehovbje4p1
+user_id: slcpusem6b
+category_id: l2p3i03l4a
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Use HashiCorp Vault Secrets Manager API
+slug: use-hashi-corp-vault-secrets-manager-api
+description: This topic describes how to create, read, update, and delete HashiCorp
+  Vault Secrets Manager using Harness API.
+short_version: Harness includes a built-in Secrets Management feature that enables
+  you to store encrypted secrets, such as access keys, and use them in your Harness
+  Applications. This topic describes how to create,…
+tags:
+- GraphQL API
+- Secrets Manager
+- HashiCorp Vault
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:01.795206Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use HashiCorp Vault Secrets Manager API
+  description: This topic describes how to create, read, update, and delete HashiCorp
+    Vault Secrets Manager using Harness API.
+  short_version: ""
+  body: '<p>Harness includes a built-in Secrets Management feature that enables you
+    to store encrypted secrets, such as access keys, and use them in your Harness
+    Applications.</p><p>This topic describes how to create, read, update, and delete
+    HashiCorp Vault Secrets Manager using Harness API.</p><h3>Before You Begin</h3><ul><li>Review
+    the <a href="https://docs.harness.io/article/tm0w6rruqv-harness-api">Harness API</a></li><li>Review <a
+    href="https://docs.harness.io/article/au38zpufhr-secret-management">Secrets Management
+    Overview</a></li><li><a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager">Add
+    a HashiCorp Vault Secrets Manager</a></li></ul><h3 id="undefined">Create a Secret
+    Manager Using HashiCorp Vault</h3><p>Use this sample query to create a Secret
+    Manager.</p><h4>Request</h4><p>You create a Secret Manager using the mutation <code>createSecretManager</code>.</p><pre>mutation
+    CreateSecretManagerMutation($secretManagerInput: CreateSecretManagerInput!) {<br/>  createSecretManager(input:
+    $secretManagerInput) {<br/>    secretManager {<br/>      id<br/>    }<br/>  }<br/>}</pre><h4>Query
+    Variables</h4><p>The Query Variables follow this syntax, with <code>secretManagerType</code> identifying
+    the Secret Manager to create.</p><ul><li><strong>Authentication</strong>: To get
+    the authentication token, you can use <a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager#option_token">Token</a>
+    or <a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager#option_app_role_method">App
+    Role</a> method.</li><li><strong>Secret Engine</strong>: Identify the engine name
+    and version of the Secret Manager in Vault. See <a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager#manually_enter_secret_engine">Manually
+    Enter Secret Engine</a>.</li></ul><pre>{<br/>  &#34;secretManagerInput&#34;: {<br/>    &#34;secretManagerType&#34;:
+    &#34;HASHICORP_VAULT&#34;,<br/>    &#34;hashicorpVaultConfigInput&#34;: {<br/>      &#34;name&#34;:
+    &#34;abc test 222&#34;,<br/>      &#34;vaultUrl&#34;: &#34;https://vaultqa.test.io&#34;,<br/>      &#34;basePath&#34;:
+    &#34;harness&#34;,<br/>      &#34;secretEngineName&#34;: &#34;harness-test&#34;,<br/>      &#34;secretEngineVersion&#34;:
+    1,<br/>      &#34;secretEngineRenewalInterval&#34;: 60,<br/>      &#34;authDetails&#34;:
+    {<br/>        &#34;authToken&#34;: &#34;s.xxxxxxxxxxxxx11&#34;<br/>      },<br/>      &#34;usageScope&#34;:
+    {<br/>        &#34;appEnvScopes&#34;: [<br/>          {&#34;application&#34;:
+    {<br/>            &#34;filterType&#34;: &#34;ALL&#34;<br/>          },<br/>          &#34;environment&#34;:
+    {<br/>            &#34;filterType&#34;: &#34;PRODUCTION_ENVIRONMENTS&#34;<br/>          }<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Update
+    a Secret Manager Using HashiCorp Vault</h3><p>Use this sample query to update
+    a Secret Manager.</p><h4>Request</h4><p>You update a Secret Manager using the
+    mutation <code>updateSecretManager</code>.</p><pre>mutation UpdateSecretManagerMutation($input:
+    UpdateSecretManagerInput!) {<br/>  updateSecretManager(input: $input) {<br/>    secretManager
+    {<br/>      name<br/>      id<br/>    }<br/>  }<br/>}<br/></pre><h4>Query Variable</h4><p>The
+    Query Variables follow this syntax, with <code>secretManagerId</code> and <code>secretManagerType</code> identifying
+    the Secret Manager to update.</p><pre>{<br/>  &#34;input&#34;: {<br/>    &#34;secretManagerId&#34;:
+    &#34;xxxxxxxxxxxxxxxx&#34;,<br/>    &#34;secretManagerType&#34;: &#34;HASHICORP_VAULT&#34;,<br/>    &#34;hashicorpVaultConfigInput&#34;:
+    {<br/>      &#34;name&#34;: &#34;new name&#34;,<br/>      &#34;isDefault&#34;:
+    true,<br/>      &#34;secretEngineRenewalInterval&#34;: 120<br/>    }<br/>  }<br/>}</pre><h3>Delete
+    a Secret Manager Using HashiCorp Vault</h3><p>Use this sample query to delete
+    a Secret Manager.</p><h4>Request</h4><p>You delete a Secret Manager using the
+    mutation <code>deleteSecretManager</code>.</p><pre>mutation DeleteSecretManagerMutation($input:
+    DeleteSecretManagerInput!){<br/>  deleteSecretManager(input: $input){<br/>   clientMutationId<br/>  }<br/>}</pre><h4>Query
+    Variable</h4><p>The Query Variables follow this syntax, with <code>secretManagerId</code>
+     identifying the Secret Manager to delete.</p><pre>{<br/>  &#34;input&#34;: {<br/>    &#34;clientMutationId&#34;:
+    &#34;xPxNsOusEaAsdQifDdGxx&#34;,<br/>    &#34;secretManagerId&#34;: &#34;ZZZ07Kh4SC2sI_unqKqXxX&#34;<br/>  }<br/>}</pre><p></p>'
+  slug: use-hashi-corp-vault-secrets-manager-api
+  tags:
+  - GraphQL API
+  - Secrets Manager
+  - HashiCorp Vault
+  is_live: true

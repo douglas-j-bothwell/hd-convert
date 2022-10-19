@@ -1,0 +1,65 @@
+type: article
+article_id: tygjin99y9
+user_id: mfr0nxh4be
+category_id: fb16ljb8lu
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness Entity Reference
+slug: harness-entity-reference
+description: 'The term entity is used to refer to the components of Harness. Most
+  entities can be created at the account, organization, and project level. In this
+  topic: Examples of Entities. Entity Identifiers. E…'
+short_version: 'The term entity is used to refer to the components of Harness. Most
+  entities can be created at the account, organization, and project level. In this
+  topic: Examples of Entities. Entity Identifiers. E…'
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:38:36.021991Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Entity Reference
+  description: ""
+  short_version: ""
+  body: <p>The term entity is used to refer to the components of Harness. Most entities
+    can be created at the account, organization, and project level.</p><p>In this
+    topic:</p><ul><li> <a href="#examples_of_entities">Examples of Entities</a></li><li>
+    <a href="#entity_identifiers">Entity Identifiers</a></li><li> <a href="#entities_are_connected">Entities
+    are Connected</a></li><li> <a href="#entity_deletion">Entity Deletion</a><ul><li>
+    <a href="#permissions">Permissions</a></li></ul></li><li> <a href="#related_reference_material">Related
+    Reference Material</a></li></ul><h3>Examples of Entities</h3><p>Here are some
+    example of entity types in Harness:</p><ul><li>Account</li><li>User</li><li>Users
+    Group</li><li>Service</li><li>Service Definition</li><li>Environment</li><li>Infrastructure</li><li>Infrastructure
+    Definition</li><li>Pipeline</li><li>Connectors</li><li>Secrets</li><li>Secret
+    Managers</li></ul><h3>Entity Identifiers</h3><p>Most Harness entities and resources
+    include a unique Id (Identifier) that is immutable once the entity is created.</p><p>Identifiers
+    provide a permanent way to refer to an entity, and avoid issues that can arise
+    when a name is changed.</p><p>See <a href="/article/li0my8tcz3-entity-identifier-reference">Entity
+    Identifier Reference</a>.</p><h3>Entity Id Scope</h3><p>Entity Id is scoped at
+    the level where it is created. For example, two Pipelines can have the same Id
+    if they are in different Projects.</p><p>Entity Id has the following rules:</p><ul><li>There
+    cannot be 2 or more Orgs with the same Id within the account.</li><li>There cannot
+    be 2 or more Projects with the same Id within the Org.</li><li>There cannot be
+    2 or more Pipelines with the same Id within the Project.</li><li>There cannot
+    be 2 or more stages with the same Id within the Pipeline.</li><li>There cannot
+    be 2 or more steps with the same Id within the stage.</li></ul><h3>Id Naming</h3><p>The
+    identifier must start with <code>a-z</code>, <code>A-Z</code> or <code>_</code>
+    and can then be followed by <code>0-9</code>, <code>a-z</code>, <code>A-Z</code>,
+    <code>_</code> or <code>$</code>.</p><h3>Reserved Words</h3><p>The Id should not
+    be any of the following words:</p><ul><li>or</li><li>and</li><li>eq</li><li>ne</li><li>lt</li><li>gt</li><li>le</li><li>ge</li><li>div</li><li>mod</li><li>not</li><li>null</li><li>true</li><li>false</li><li>new</li><li>var</li><li>return</li><li>step</li><li>parallel</li><li>stepGroup</li><li>org</li><li>account</li></ul><h3>See
+    Also</h3><ul><li><a href="/article/li0my8tcz3-entity-identifier-reference">Entity
+    Identifier Reference</a></li><li><a href="/article/9i2kt42ztb-entity-retention-policy">Entity
+    Retention Policy</a></li><li><a href="/article/amj1oz4x4k-entity-deletion-reference">Entity
+    Deletion Reference</a></li></ul><p></p><p></p>
+  slug: harness-entity-reference
+  tags: []
+  is_live: true

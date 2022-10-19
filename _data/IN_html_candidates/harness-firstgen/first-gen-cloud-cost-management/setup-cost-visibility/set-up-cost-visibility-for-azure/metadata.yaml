@@ -1,0 +1,189 @@
+type: article
+article_id: 7idbmchsim
+user_id: slcpusem6b
+category_id: tj4mzq0vw2
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Set Up Cost Visibility for Azure
+slug: set-up-cost-visibility-for-azure
+description: Harness Continuous Efficiency (CE) monitors cloud costs of your Azure
+  Services.
+short_version: Harness Continuous Efficiency (CE) monitors cloud costs of your Azure
+  Services.
+tags:
+- Azure
+- continuous efficiency
+- cost visibility
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-05-10T13:26:32.834305Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Cost Visibility for Azure
+  description: Harness Continuous Efficiency (CE) monitors cloud costs of your Azure
+    Services.
+  short_version: Harness Continuous Efficiency (CE) monitors cloud costs of your Azure
+    Services.
+  body: '<p>Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure
+    services. Connect your Azure account and set up Billing Export to get insights
+    into your cloud infrastructure and Azure services such as Storage account, Virtual
+    machines, Containers, and so on.</p><p>Currently, CCM supports one Azure account
+    with one or multiple subscriptions. To view the cloud cost of all the subscriptions
+    in your Azure account, set up a billing export for each subscription in the same
+    storage account, container, and directory with a unique report name.</p><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/7idbmchsim-set-up-cost-visibility-for-azure#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/7idbmchsim-set-up-cost-visibility-for-azure#connect_ccm_to_your_azure_account">Connect
+    CCM to Your Azure Account</a></li><li><a href="https://docs.harness.io/article/7idbmchsim-set-up-cost-visibility-for-azure#create_a_service_principal_and_assign_permissions">Create
+    a Service Principal and Assign Permissions</a></li><li><a href="https://docs.harness.io/article/7idbmchsim-set-up-cost-visibility-for-azure#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/rr85306lq8-continuous-efficiency-overview">Cloud
+    Cost Management Overview</a></li><li><a href="/article/eeekdk75q2-cost-explorer-walkthrough">Cost
+    Explorer Walkthrough</a></li><li>The same connector cannot be used in FirstGen
+    and NextGen. NextGen Connectors are recommended for the best experience of CCM
+    capabilities and features. For information on creating an Azure connector in the
+    NextGen see <a href="https://ngdocs.harness.io/article/v682mz6qfd-set-up-cost-visibility-for-azure">Set
+    Up Cloud Cost Management for Azure</a>.</li></ul><div class="note-callout">After
+    enabling CCM, it takes about three hours for the data to be available for viewing
+    and analysis.</div><h3>Connect CCM to Your Azure Account</h3><p>To enable CCM
+    for your Azure services (such as Storage account, Virtual machines, Containers,
+    and so on), you simply need to connect Harness to your Azure account.</p><p>Perform
+    the following steps to connect to your Azure account:</p><ol><li>In <strong>Cloud
+    Cost Management</strong>, click <strong>Settings</strong> and then click <strong>Cloud
+    Integration</strong>.</li><li>In <strong>Cloud Integration</strong>, click <strong>Add
+    an Azure billing account</strong>.</li><li>Connect to your <strong>Azure Account</strong>.
+    This involves the following steps:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614330203761/screenshot-2021-02-26-at-2-32-48-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><h4>Step
+    1: Provide Azure Account Details</h4><p>You need to provide a name for your connector
+    and enter the tenant ID of your Azure Active Directory (AD).</p><ol><li>Enter
+    a name for the Azure Connector.</li><li>Enter Tenant ID of your Azure AD account.
+    A tenant represents an organization. It&#39;s a dedicated instance of Azure AD
+    that an organization or app developer receives at the beginning of a relationship
+    with Microsoft.<br/><br/>Each Azure AD tenant is distinct and separate from other
+    Azure AD tenants.<br/><br/>To find your tenant ID, do the following:<br/><ol><li>Click
+    <strong>Where do you find Tenant ID?</strong>. and then click <strong>Launch Azure
+    Active Directory</strong>.</li><li>Copy the tenant ID from the <strong>Tenant
+    information</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614751699244/screenshot-2021-03-03-at-11-38-01-am.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure>If
+    you don&#39;t find the tenant ID in the Azure console, run the <code>az account
+    show</code> command using Azure CLI.</li></ol></li><li>Enter the <strong>Tenant
+    ID</strong> in Harness.<br/><br/>When you&#39;re done, it will look something
+    like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614333777853/screenshot-2021-02-26-at-3-32-32-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><h4>Step
+    2: Enable Billing Export for Azure Subscription</h4><p>Before enabling billing
+    export for your Azure subscription, review the following permissions:</p><ul><li>Owner:
+    Can create, modify, or delete scheduled exports for a subscription.</li><li>Contributor:
+    Can create, modify, or delete their own scheduled exports. They can also modify
+    the name of scheduled exports created by others.</li><li>Reader: Can schedule
+    exports that they have permission to.</li></ul><p>Perform the following steps
+    to enable the billing export:</p><ol><li>Click <strong>Follow these instructions&gt;</strong>.</li><li>Click
+    <strong>Launch Azure Billing Exports</strong>.</li><li>In the Azure Cost Management
+    portal, in <strong>Settings</strong>, in <strong>Exports</strong>, click <strong>Add</strong> to
+    create a new export.</li><li>In <strong>Export details</strong>, provide the following
+    details:<ol><li>Enter <strong>Name</strong> for your export.</li><li>In <strong>Export
+    type</strong>, select <strong>Daily export of month-to-date costs</strong>.</li><li>In
+    the <strong>Start date</strong>, leave the date as the current date.<br/><br/>For
+    example, if you are creating a new export on March 1, 2021, select the date as
+    <strong>Mon Mar 01 2021</strong>.</li></ol></li><li>In the <strong>Storage</strong>,
+    you can select <strong>Use existing</strong> or <strong>Create new</strong>.<ol><li>If
+    you select <strong>Use existing</strong>, enter the following details:<ol><li>In
+    <strong>Subscription</strong>, select the <strong>Subscription</strong> of your
+    storage account.</li><li>In the <strong>Storage account</strong>, select the storage
+    account where the data needs to be exported.</li><li>In <strong>Container</strong>,
+    enter the container name where the report is to be stored.</li><li>In <strong>Directory</strong>,
+    enter the directory path where the export is to be stored.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614752219755/screenshot-2021-03-03-at-11-46-42-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol></li><li>If
+    you select <strong>Create new</strong>, enter the following details:<ol><li>In
+    <strong>Subscription</strong>, select the <strong>Subscription</strong> of your
+    storage account.</li><li>In the <strong>Resource group</strong>, select the group
+    to place the storage account. You can also create a new resource group.<br/><br/>A
+    resource group is a container that holds related resources for an Azure solution.</li><li>In
+    <strong>Account name</strong>, enter the name for your storage account.</li><li>In
+    <strong>Location</strong>, select the region for your storage account.</li><li>In
+    <strong>Container</strong>, enter the container name where the report is to be
+    stored.</li><li>In <strong>Directory</strong>, enter the directory path where
+    the export is to be stored.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614664583414/screenshot-2021-03-02-at-11-21-47-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol></li></ol></li><li>Once
+    you are done, click <strong>Create</strong>.<br/><br/>Your export report is listed
+    in the <strong>Exports</strong> list.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614753836168/screenshot-2021-03-03-at-12-13-32-pm.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure></li><li>Click
+    the export that you created in the previous step and click <strong>Run now</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1616754471022/screenshot-2021-03-26-at-3-55-57-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><h4>Step
+    3: Provide Billing Export Details</h4><p>You need to provide the details of the
+    export report that you created in the <a href="/article/7idbmchsim-set-up-cost-visibility-for-azure#step_2_enable_billing_export_for_azure_subscription">enable
+    export billing step</a> in Harness. Perform the following steps to fetch the report
+    details:</p><ol><li>Click <strong>Where do you find Billing Export details?</strong>.</li><li>Click
+    <strong>Launch Azure Console</strong>.</li><li>In the Azure Cost Management portal,
+    click the billing export that you created in the <a href="/article/7idbmchsim-set-up-cost-visibility-for-azure#step_2_enable_billing_export_for_azure_subscription">enable
+    export billing step</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614753782707/screenshot-2021-03-03-at-12-12-44-pm.png"
+    style="max-height:90%;max-width:90%" data-hd-height="90%" data-hd-width="90%"/></figure>Enter
+    the following details in Harness:</li><li>In the <strong>Storage account name</strong>,
+    enter the account name.</li><li>In <strong>Storage account subscription ID</strong>,
+    enter the subscription ID.</li><li>In <strong>Storage Container</strong>, enter
+    the container name.</li><li>In <strong>Storage Directory</strong>, enter the directory
+    name.</li><li>Once you are done, click <strong>Continue</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614756718819/screenshot-2021-03-03-at-1-01-36-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><h3>Create
+    a Service Principal and Assign Permissions</h3><p>Once you have set up the billing
+    export, the next step is to sync your billing data report with Harness. Harness
+    uses a multi-tenant app to sync billing export data from the source storage account
+    to Harness. This involves the following steps:</p><ul><li>Register the Harness
+    CE application into your Azure account.</li><li>Provide read permissions to the
+    storage account in which the billing data export is available.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614762714045/screenshot-2021-03-03-at-2-41-18-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ul><p></p><div
+    class="note-callout">All the commands documented in this section are mandatory
+    to execute.</div><h4>Prerequisites</h4><ul><li>Make sure that you have the <strong>Application
+    Administrator</strong> role assigned for your Azure AD. Users in this role can
+    create and manage all aspects of enterprise applications, application registrations,
+    and application proxy settings. See <a href="https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference#application-administrator">Application
+    Administrator</a>.</li><li>Many Azure CLI commands act within a subscription.
+    Ensure that you have selected the right subscription before executing the commands.
+    If you need to switch the subscription, use the following command:<br/><br/><code>az
+    account set -s &lt;</code><em><code>subs id/name</code></em><code>&gt;</code><br/><br/>For
+    more information, see <a href="https://docs.microsoft.com/en-us/cli/azure/manage-azure-subscriptions-azure-cli">Manage
+    Subscriptions</a>.</li></ul><h4>Step 1: Create a Service Principal</h4><p>Run
+    the following <strong>bash</strong> commands using your <strong>bash</strong> terminal
+    or Azure cloud shell:</p><ol><li><code>az ad sp create --id &lt;&gt;</code>: Creates
+    a service principal.<br/><br/><strong>Required Parameter</strong><br/><code>--id</code><br/>This
+    is a common ID for Harness CCM client application. Use <code>0211763d-24fb-4d63-865d-92f86f77e908</code><div
+    class="note-callout">If you see the following error proceed with <a href="/article/7idbmchsim-set-up-cost-visibility-for-azure#step_2_assign_permissions_to_the_storage_account">Step
+    2: Assign Permissions to the Storage Account</a>.<br/><br/><code>Another object
+    with the same value for property servicePrincipalNames already exists.</code><br/><br/>The
+    error means that your Harness CE application is already registered into your Azure
+    account.</div><h4>Step 2: Assign Permissions to the Storage Account</h4>Run the
+    following <strong>bash</strong> commands using your <strong>bash</strong> terminal
+    or Azure cloud shell:</li><li><code>SCOPE=`az storage account show --name &lt;storage
+    account name&gt; --query &#34;id&#34; | xargs`</code>: Provides scope for your
+    storage account. Each role assignment in Azure needs a scope on which the permissions
+    or role is applied. The output of this command is used in the next step.<br/><br/><strong>Required
+    Parameter</strong><br/><code>--name</code><br/>The name of your storage account.<br/><br/>Here&#39;s
+    a screenshot with the Storage account name for your reference.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/7idbmchsim/1614763911940/screenshot-2021-03-03-at-3-00-39-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><strong>Response</strong><br/><pre>$
+    SCOPE=`az storage account show --name test --query &#34;id&#34; | xargs`<br/><br/>$
+    echo $SCOPE<br/>/subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/&lt;resourcegroupname&gt;/providers/Microsoft.Storage/storageAccounts/&lt;storage
+    account name&gt;</pre></li><li><code>az role assignment create --assignee 0211763d-24fb-4d63-865d-92f86f77e908
+    --role &#39;Storage Blob Data Reader&#39; --scope $SCOPE</code>: Provides Storage
+    Blob Data Reader permission to the Harness application on the scope fetched in
+    the previous step.<br/><br/><strong>Required Parameter</strong><br/><code>--assignee</code><br/><br/>This
+    is the ID of the Harness CCM client application. Use <code>0211763d-24fb-4d63-865d-92f86f77e908</code></li><li>Once
+    you are done, click <strong>Finish</strong> in Harness.<div class="note-callout">Upon
+    clicking the <strong>Finish</strong> button, Harness performs the input validation.
+    The validation may take a few seconds.<br/><br/>If the process throws an <code>Authorization
+    permission mismatch</code> error, wait for a few more seconds and click the <strong>Finish</strong> button
+    again.</div></li></ol><h3>Next Steps</h3><ul><li><a href="https://docs.harness.io/article/eeekdk75q2-explorer-walkthrough">Cost
+    Explorer Walkthrough</a></li><li><a href="https://docs.harness.io/article/wvag8xht5o-analyze-cost-for-azure">Analyze
+    Cost for Azure</a></li></ul><p></p><p></p>'
+  slug: set-up-cost-visibility-for-azure
+  tags:
+  - Azure
+  - continuous efficiency
+  - cost visibility
+  is_live: true

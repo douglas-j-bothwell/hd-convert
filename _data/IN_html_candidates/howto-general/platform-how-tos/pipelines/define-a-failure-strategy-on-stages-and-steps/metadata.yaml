@@ -1,0 +1,112 @@
+type: article
+article_id: 0zvnn5s1ph
+user_id: znazf3hcp9
+category_id: kncngmy17o
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Define a Failure Strategy on Stages and Steps
+slug: define-a-failure-strategy-on-stages-and-steps
+description: Currently, only the All Errors Failure Type is supported. A failure strategy
+  defines how your stages and steps handle different failure conditions. The failure
+  strategy contains error conditions that…
+short_version: Currently, only the All Errors Failure Type is supported. A failure
+  strategy defines how your stages and steps handle different failure conditions.
+  The failure strategy contains error conditions that…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:46:28.821953Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Define a Failure Strategy on Stages and Steps
+  description: ""
+  short_version: ""
+  body: '<div class="note-callout">Currently, only the <strong>All Errors</strong> Failure
+    Type is supported.</div><p>A failure strategy defines how your stages and steps
+    handle different failure conditions.</p><p>The failure strategy contains error
+    conditions that must occur for the strategy to apply, and actions to take when
+    the conditions occur.</p><p>Failure strategies are a critical pipeline design
+    component that determine what fails a step or stage and what to do when the failure
+    occurs.</p><p>You can apply a failure strategy to the following:</p><ul><li>Step</li><li>Step
+    Group</li><li>Stage</li></ul><div class="note-callout">For details on strategy
+    options and how strategies work, see <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    and Stage Failure Strategy Settings</a>.</div><p>In this topic:</p><ul><li><a
+    href="https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#visual_summary">Visual
+    Summary</a></li><li><a href="#review_failure_strategy_takes_precedence_over_conditional_execution">Review:
+    Failure Strategy takes Precedence over Conditional Execution</a></li><li><a href="https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#step_add_a_stage_failure_strategy">Step:
+    Add a Stage Failure Strategy</a></li><li><a href="https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#step_add_a_step_failure_strategy">Step:
+    Add a Step Failure Strategy</a></li><li><a href="https://ngdocs.harness.io/article/0zvnn5s1ph-define-a-failure-strategy-on-stages-and-steps#see_also">See
+    Also</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/2chyf1acil-add-a-stage">Add
+    a Stage</a></li></ul><h3>Visual Summary</h3><p>Here&#39;s a quick video of how
+    to set up failure strategies:</p><p></p><div class="hd--embed" data-provider="YouTube"
+    data-thumbnail="https://i.ytimg.com/vi/4KYGllvJ42U/hqdefault.jpg"><iframe width="200"
+    height="150" src="https://www.youtube.com/embed/4KYGllvJ42U?feature=oembed" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen=""></iframe></div><p>Here is what a Manual Intervention action
+    looks like when a failure occurs:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/0zvnn5s1ph/1622583869478/image.png"/></figure><p></p><p>You
+    can select an option or, if the Manual Intervention exceeds its Timeout setting,
+    select the Post Timeout Action that will happen automatically.</p><h3>Review:
+    Failure Strategy takes Precedence over Conditional Execution</h3><p>Harness Pipeline
+    stages and steps both include <strong>Conditional Execution</strong> and <strong>Failure
+    Strategy</strong> settings:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/i36ibenkq2/1642460921687/clean-shot-2022-01-17-at-15-08-32.png"/></figure><p></p><p>Using
+    these settings together in multiple stages requires some consideration.</p><p>Let&#39;s
+    say you have a Pipeline with two stages: <strong>stage 1</strong> followed by
+    <strong>stage 2</strong>. </p><p>Stage 2&#39;s <strong>Conditional Execution</strong>
+    is set to <strong>Execute this step only if prior stage or step failed</strong>.
+    Stage 1&#39;s <strong>Failure Strategy</strong> is set to <strong>Rollback Stage
+    on All Errors</strong>.</p><p>If stage 1 has any error it is rolled back and so
+    it is not considered a failure. Hence, the stage 2&#39;s <strong>Conditional Execution</strong>
+    is not executed.</p><p>In order to get stage 2 to execute, you can set the stage
+    1 <strong>Failure Strategy</strong> to <strong>Ignore Failure</strong>. Rollback
+    will not occur and stage 2&#39;s <strong>Conditional Execution</strong> is executed.</p><p>In
+    general, if you want to run particular steps on a stage failure, you should add
+    them to stage&#39;s <strong>Rollback</strong> section.</p><h3>Step: Add a Stage
+    Failure Strategy</h3><p>The stage failure strategy applies to all steps in the
+    stage that do not have their own failure strategy configured.</p><p>In a stage,
+    click <strong>Advanced</strong>.</p><p>In <strong>Failure Strategy</strong>, you
+    can see the default stage strategy:</p><p><strong>On all errors other than those
+    specified in failure strategies defined here, perform action</strong></p><p>This
+    default cannot be removed, but it can be edited. You can choose a new Action,
+    Timeout, and Post timeout action.</p><p>To add an additional stage failure strategy,
+    click <strong>Add</strong>.</p><p>Select the following:</p><ul><li><strong>On
+    failure of type:</strong> select one or more of the error types. See <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    and Stage Failure Strategy Settings</a>.</li></ul><div class="note-callout">Currently,
+    only <strong>All Errors</strong> is supported.</div><ul><li><strong>Action:</strong>
+    select one of the available actions. See <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    and Stage Failure Strategy Settings</a>.</li><li><strong>Timeout</strong> and
+    <strong>Post timeout action:</strong> these are available if you selected <strong>Manual
+    Intervention</strong> in Action. Enter the timeout for the failure strategy and
+    the subsequent action to perform.</li><li><strong>Retry Count</strong> and <strong>Retry
+    Intervals:</strong> these are available if you selected <strong>Retry</strong>
+    in Action. Enter the number of times to retry the step, and the retries intervals.</li></ul><h3>Step:
+    Add a Step Failure Strategy</h3><p>By default, steps do not have a failure strategy.
+    Steps follow the stage failure strategy.</p><p>When you add a step failure strategy,
+    you are overriding the stage failure strategy.</p><p>In a step, click <strong>Advanced</strong>.</p><p>Click
+    <strong>Failure Strategy</strong> and click <strong>Add</strong>.</p><p>Select
+    the following:</p><ul><li><strong>On failure of type:</strong> select one or more
+    of the error types. See <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    and Stage Failure Strategy Settings</a>.</li></ul><div class="note-callout">Currently,
+    only <strong>All Errors</strong> is supported.</div><ul><li><strong>Action:</strong>
+    select one of the available actions. See <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    and Stage Failure Strategy Settings</a>.</li><li><strong>Timeout</strong> and
+    <strong>Post timeout action:</strong> these are available if you selected <strong>Manual
+    Intervention</strong> in Action. Enter the timeout for the failure strategy and
+    the subsequent action to perform.</li><li><strong>Retry Count</strong> and <strong>Retry
+    Intervals:</strong> these are available if you selected <strong>Retry</strong>
+    in Action. Enter the number of times to retry the step, and the retries intervals.</li></ul><h3>See
+    Also</h3><ul><li><a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    and Stage Failure Strategy Settings</a></li><li><a href="/article/i36ibenkq2-step-skip-condition-settings">Stage
+    and Step Execution Condition Settings</a></li></ul><p></p>'
+  slug: define-a-failure-strategy-on-stages-and-steps
+  tags: []
+  is_live: true

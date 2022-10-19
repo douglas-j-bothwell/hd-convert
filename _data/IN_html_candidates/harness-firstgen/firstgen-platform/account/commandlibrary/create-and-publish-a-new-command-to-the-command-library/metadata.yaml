@@ -1,0 +1,136 @@
+type: article
+article_id: 283cr6ntt5
+user_id: slcpusem6b
+category_id: deyiqtz8tf
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Create and Publish a New Command to the Command Library
+slug: create-and-publish-a-new-command-to-the-command-library
+description: Describes how to create and publish a new command to the command library.
+short_version: Describes how to create and publish a new command to the command library.
+tags:
+- command library
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:12:07.268211Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create and Publish a New Command to the Command Library
+  description: Describes how to create and publish a new command to the command library.
+  short_version: Describes how to create and publish a new command to the command
+    library.
+  body: '<p></p><p>The Harness Command Library stores custom Service commands that
+    can be shared between all your Harness account users. The Command Library allows
+    you to:</p><ul><li class="public-DraftStyleDefault-unorderedListItem public-DraftStyleDefault-reset
+    public-DraftStyleDefault-depth0 public-DraftStyleDefault-listLTR">Download and
+    use commands provided by Harness.</li><li>Create and publish your own Service
+    Commands, and link them to Harness Services and Workflows.</li><li>Categorize
+    and filter commands using tags, such as AWS, Dev, etc.</li></ul><div class="note-callout">Only
+    members of Harness User Group accounts with the <strong>Manage Template Library</strong> permission
+    may create, edit, and delete commands. Others User Group members can view and
+    link to commands.</div><p>Currently, only Harness can upload commands to the library.
+    You can search and download the commands from the library. In the future, Harness
+    customers, partners, and the community will be able to publish and share their
+    commands.</p><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/283cr6ntt5-create-and-publish-a-new-command-to-the-command-library#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/283cr6ntt5-create-and-publish-a-new-command-to-the-command-library#step_create_and_publish_a_command">Step:
+    Create and Publish a Command</a></li><li><a href="https://docs.harness.io/article/283cr6ntt5-create-and-publish-a-new-command-to-the-command-library#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/115garkjsn-introduction-to-harness-command-library">Harness
+    Command Library Overview</a></li></ul><h3>Step: Create and Publish a Command</h3><p>You
+    can create a new Service Command using YAML files in your Git repo. Once your
+    files are ready, you can publish them to the Command Library in your Harness account.</p><p>To
+    create and publish your command to the Harness Command Library, perform the following
+    steps:</p><ol><li>Clone the sample Harness repository <a href="https://github.com/wings-software/sample-command">https://github.com/wings-software/sample-command</a>
+    to your local environment. To be able to create and publish the command, you need
+    to update the following files:</li></ol><ul><li><code>command.yaml</code>: This
+    is the metadata file.</li><li><code>content.yaml</code>: This is the content file.</li><li><code>publish.sh</code>:
+    This is the script that bundles your command as a zip file and uploads it to the
+    Harness Command Library.</li></ul><ol><li style="counter-increment:li 1" start="2">Update
+    <strong>command.yaml</strong>, the metadata of the command. In the <strong>command.yaml</strong>,
+    enter the following details:<br/><table><tbody><tr><td><p>Field</p></td><td><p>Description</p></td></tr><tr><td><p>Name</p></td><td><p>Enter
+    the <code>name</code> for the command. Use a name that describes the purpose of
+    the command.</p></td></tr><tr><td><p>Version</p></td><td><p>Enter the <code>version</code>
+    number. The version number must follow <strong>number.number.number</strong> pattern,
+    for example, <strong>0.0.2</strong>.</p></td></tr><tr><td><p>Type</p></td><td><p>Enter
+    the <code>type</code> as SSH. Currently, it supports only <code>SSH</code>.</p></td></tr><tr><td><p>Description</p></td><td><p>Enter
+    the <code>description</code> for this version of the command.</p></td></tr><tr><td><p>RepoURL</p></td><td><p>Enter
+    the <code>repoUrl</code> of the repo where your code is available.</p></td></tr><tr><td><p>Tag</p></td><td><p>Enter
+    <code>tag/s</code>.</p></td></tr></tbody></table><br/>Here is an example of the
+    <code>command.yaml</code> file:<br/><br/><pre>name: sample-command<br/>version:
+    0.0.2<br/>type: SSH<br/>description: simple command<br/>repoUrl: https://github.com/wings-software/sample-command<br/>tags:<br/>-
+    Aws</pre></li><li>Define content of the command in the <code>content.yaml</code>
+    file.<br/><br/>A simple way to create the YAML for a new Service Command, is to
+    create a new Service Command in your Harness Template Library and then view and
+    copy its YAML:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/283cr6ntt5/1592570491571/screenshot-2020-06-19-at-6-11-12-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>Here
+    is an example of the <code>content.yaml</code>:<br/><br/><pre>harnessApiVersion:
+    &#39;1.0&#39;<br/>type: SSH<br/>commandUnitType: INSTALL<br/>commandUnits:<br/>-
+    command: |2-<br/>      # Execute as root and pass environment variables<br/>      #
+    su -p -<br/>      # Execute as root via user credentials (with root privileges)<br/>      #
+    sudo -E su -p -<br/>      # The following variables are absolute paths defined
+    as:<br/>      # ${HOME}/${appName}/${serviceName}/[runtime|backup|staging]<br/>      mkdir
+    -p &#34;${RuntimePath}&#34;<br/>      mkdir -p &#34;${BackupPath}&#34;<br/>      mkdir
+    -p &#34;${StagingPath}&#34;<br/>  commandUnitType: SETUP_ENV<br/>  deploymentType:
+    SSH<br/>  name: Setup Runtime Paths<br/>  scriptType: BASH<br/>- artifactVariableName:
+    artifact<br/>  commandUnitType: SCP<br/>  deploymentType: SSH<br/>  destinationDirectoryPath:
+    ${RuntimePath}<br/>  name: Copy App Stack<br/>  source: APPLICATION_STACK<br/>-
+    command: |-<br/>    rm -rf tomcat<br/>    rm -rf ${TomcatBinaryName}<br/>    tar
+    xzvf ${TomcatBinaryName}.tar.gz<br/>    ln -s ${TomcatBinaryName} tomcat<br/>    chmod
+    +x tomcat/bin/*<br/>  commandUnitType: EXEC<br/>  deploymentType: SSH<br/>  name:
+    Expand App Stack new 0.0.2<br/>  scriptType: BASH<br/>  workingDirectory: ${RuntimePath}<br/>-
+    command: |-<br/>    rm -rf tomcat<br/>    rm -rf ${TomcatBinaryName}<br/>    tar
+    xzvf ${TomcatBinaryName}.tar.gz<br/>    ln -s ${TomcatBinaryName} tomcat<br/>    chmod
+    +x tomcat/bin/*<br/>  commandUnitType: EXEC<br/>  deploymentType: SSH<br/>  name:
+    Expand App Stack again<br/>  scriptType: BASH<br/>  workingDirectory: ${RuntimePath}<br/>-
+    artifactVariableName: artifact<br/>  commandUnitType: SCP<br/>  deploymentType:
+    SSH<br/>  destinationDirectoryPath: ${RuntimePath}/tomcat/webapps<br/>  name:
+    Copy Artifact New 0.0.1<br/>  source: ARTIFACTS<br/>- commandUnitType: COPY_CONFIGS<br/>  deploymentType:
+    SSH<br/>  destinationParentPath: ${RuntimePath}<br/>  name: Copy Configs<br/>-
+    commandUnitType: COPY_CONFIGS<br/>  deploymentType: SSH<br/>  destinationParentPath:
+    ${RuntimePath}<br/>  name: Copy Configs again<br/>variables:<br/>- description:
+    Runtime path to install binaries.<br/>  name: RuntimePath<br/>- description: Backup
+    path.<br/>  name: BackupPath<br/>- description: Staging path.<br/>  name: StagingPath<br/>-
+    description: Apache tomcat 7 tar file.<br/>  name: TomcatBinaryName<br/></pre></li><li><code>Publish.sh</code>
+    script bundles your command as a zip file and uploads it to the Harness Command
+    Library. In the script, update only the following parameters:<br/><br/><table><tbody><tr><td><p><strong>Parameters</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>BEARER_TOKEN
+    (Mandatory)</p></td><td><p>Enter the bearer token to authenticate.</p></td></tr><tr><td><p>ACCOUNT_ID
+    (Mandatory)</p></td><td><p>Enter the Harness account ID.</p></td></tr><tr><td><p>HARNESS_ENDPOINT
+    (Optional)</p></td><td><p>Enter the endpoint where you want to upload the command.</p><p>For
+    example, https://app.harness.io/gateway</p></td></tr></tbody></table>Here is an
+    example of the <code>publish.sh</code> file:<br/><br/><pre>#!/bin/bash<br/># these
+    parameters can be passed as environment variables as well<br/><br/># mandatory
+    params<br/>BEARER_TOKEN=&#34;BEARER_TOKEN&#34;<br/>ACCOUNT_ID=&#34;ACCOUNT_ID&#34;<br/><br/>#optional
+    param<br/>HARNESS_ENDPOINT=&#34;https://app.harness.io/gateway&#34;<br/><br/>set
+    -e<br/><br/>if [ -z &#34;${BEARER_TOKEN}&#34; ]; then<br/>  echo &#39;BEARER_TOKEN
+    is mandatory&#39;<br/>  exit 1<br/>fi<br/><br/>if [ -z &#34;${ACCOUNT_ID}&#34;
+    ]; then<br/>  echo &#39;ACCOUNT_ID is mandatory&#39;<br/>  exit 1<br/>fi<br/><br/>if
+    [ -z &#34;${HARNESS_ENDPOINT}&#34; ]; then<br/>  HARNESS_ENDPOINT=&#34;https://app.harness.io/gateway&#34;<br/>fi<br/><br/>echo
+    &#39;Publishing Command&#39;<br/>echo &#34;name: $(yq r command.yaml name)&#34;<br/>echo
+    &#34;version: $(yq r command.yaml version)&#34;<br/>echo<br/><br/>echo &#34;Configuration
+    :&#34;<br/>echo &#34;ACCOUNT_ID = $ACCOUNT_ID&#34;<br/>echo &#34;HARNESS_ENDPOINT
+    = $HARNESS_ENDPOINT&#34;<br/>echo &#39;&#39;<br/>echo &#39;Creating command archive
+    to upload&#39;<br/>rm -rf dist<br/>mkdir dist<br/>zip -r dist/command.zip command.yaml
+    content.yaml README.md<br/><br/>CURRENT_DIR=$(pwd)<br/>ARCHIVE_PATH=&#34;${CURRENT_DIR}/dist/command.zip&#34;<br/>echo
+    &#39;&#39;<br/>echo &#34;uploading archive: $ARCHIVE_PATH&#34;<br/>echo<br/>echo
+    &#39;Response :&#39;<br/>echo<br/>curl -k --location --request POST &#34;${HARNESS_ENDPOINT}/api/command-library-service/command-stores/harness/commands?accountId=${ACCOUNT_ID}&#34;
+    \<br/>  --header &#39;accept: application/json&#39; \<br/>  --header &#34;authorization:
+    Bearer ${BEARER_TOKEN}&#34; \<br/>  --form &#34;file=@$ARCHIVE_PATH&#34; | python
+    -m json.tool<br/></pre></li><li>Run <code>./publish.sh</code> from the command
+    line. Command is uploaded to the Harness Command Library.</li></ol><h3>Next Steps</h3><ul><li><a
+    href="/article/l8bcqfbj4r-harness-command-library">Add Commands from the Command
+    Library</a></li><li><a href="/article/le9lwjq05z-use-different-versions-of-a-command">Use
+    Different Versions of a Command</a></li><li><a href="/article/r0eeviq7l6-fork-and-edit-a-command-in-the-command-library">Fork
+    and Edit a Command in the Command Library</a></li><li><a href="/article/x0jdza5viz-link-commands">Link
+    Commands from the Command Library</a></li></ul><p></p>'
+  slug: create-and-publish-a-new-command-to-the-command-library
+  tags:
+  - command library
+  is_live: true

@@ -1,0 +1,131 @@
+type: article
+article_id: g3i9jy5r6e
+user_id: ""
+category_id: a8jhf8hizv
+author:
+  name: ""
+  profile_image: ""
+title: Set Up Basic Deployment
+slug: basic-deployment
+description: 'Basic deployment allows you to deploy code to a defined number of nodes
+  in one batch. The deployment itself is a single phase procedure that includes four
+  main steps: Setup, Deploy, Verify and Wrap-u…'
+short_version: 'Basic deployment allows you to deploy code to a defined number of
+  nodes in one batch. The deployment itself is a single phase procedure that includes
+  four main steps: Setup, Deploy, Verify and Wrap-u…'
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:23:30.7999Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Basic Deployment
+  description: ""
+  short_version: ""
+  body: |-
+    <p><span style="font-weight: 400;">Basic deployment allows you to deploy code to a defined number of nodes in one batch. The deployment itself is a single phase procedure that includes four main steps: Setup, Deploy, Verify and Wrap-up. As with other types of deployments, you are able to add custom scripts and additional steps if needed. </span></p>
+    <p> </p>
+    <h2>
+    <a name="Docker_Image"></a><strong><a class="blocks-item-link" href="#Docker_Image">Docker Image</a></strong>
+    </h2>
+    <p><span style="font-weight: 400;">Can be configured to be deployed with either ECS or Kubernetes</span><span style="font-weight: 400;">.</span></p>
+    <h3>
+    <a name="Setup_Container"></a><strong><a class="blocks-item-link" href="#Setup_Container">Setup Container</a></strong>
+    </h3>
+    <h3><strong>ECS: </strong></h3>
+    <ol>
+    <ol>
+    <ol>
+    <li style="font-weight: 400;">
+    <strong>Service name:</strong><span style="font-weight: 400;"> By default the service name will be a combination of the app name, service name and the environment name, but you can also customize it. </span>
+    </li>
+    <li style="font-weight: 400;">
+    <strong>Minimum total instances for percentage based deployment:</strong><span style="font-weight: 400;"> In case you choose a percentage based deployment, you need to define the total number of instances (i.e. the amount that represents the 100%).</span>
+    </li>
+    <li style="font-weight: 400;">
+    <strong>Resize strategy:</strong><span style="font-weight: 400;"> Choose from two option- (a) add new instances first, and only then downsize he old instances (when you are able to add extra nodes during the deployment), and (b) downsize the old instances first, and only then the add new instances (when you are limited by the total number of nodes allocated to this environment).</span>
+    </li>
+    <li style="font-weight: 400;">
+    <strong>Service steady state wait timeout:</strong><span style="font-weight: 400;"> Harness will wait until receiving the Steady State signal from ECS before continuing to deploy. This field allows you to set the timeout for the waiting period. </span>
+    </li>
+    <li style="font-weight: 400;">
+    <strong>Use Load Balancer:</strong><span style="font-weight: 400;"> This allows you to configure your AWS ELB for this service. Enabling this option will allow you to choose which ELB, what’s the target group, as well as define the IAM role.</span>
+    </li>
+    </ol>
+    </ol>
+    </ol>
+    <h3><strong>Kubernetes: </strong></h3>
+    <ol>
+    <ol>
+    <ol>
+    <li style="font-weight: 400;">
+    <strong>Replication Controller Name:</strong><span style="font-weight: 400;"> By default the name will be a combination of the app name, service name and the environment name, but you can also customize it. </span>
+    </li>
+    <li style="font-weight: 400;">
+    <a name="Minimum_total_instances"></a><strong>Minimum total instances for percentage based deployment:</strong><span style="font-weight: 400;"> In case you choose a percentage based deployment, you need to define the total number of instances (i.e. the amount that represents the 100%).</span>
+    </li>
+    <li style="font-weight: 400;">
+    <strong>Resize strategy:</strong><span style="font-weight: 400;"> Choose from two option- (a) add new instances first, and only then downsize the old instances (when you are able to add extra nodes during the deployment), and (b) downsize the old instances first, and only then the add new instances (when you are limited by the total number of nodes allocated to this environment).</span>
+    </li>
+    <li style="font-weight: 400;">
+    <strong>Kubernetes Service Type:</strong><span style="font-weight: 400;"> This option allows you to configure your service based on the Kubernetes Type spec. More information can be found here: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types">https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types</a></span>
+    </li>
+    </ol>
+    </ol>
+    </ol>
+    <p> </p>
+    <h3>
+    <a name="Deploy_Container"></a><strong><a class="blocks-item-link" href="#Deploy_Container">Deploy Container</a></strong>
+    </h3>
+    <p><span style="font-weight: 400;">In this step you can define the number of nodes to which Harness will deploy. This can be a predefined number, or a percentage in case your environment is elastic. If you do choose percentage, make sure to define the </span><strong><a class="blocks-item-link" href="#Minimum_total_instances">Minimum total instances for percentage based deployment</a></strong><span style="font-weight: 400;">field</span><strong>. </strong></p>
+    <p> </p>
+    <h2>
+    <a name="AWS_CodeDeploy"></a><strong><a class="blocks-item-link" href="#AWS_CodeDeploy">AWS CodeDeploy</a></strong>
+    </h2>
+    <p><span style="font-weight: 400;">Under Deploy Service→AWS CodeDeploy you will find the configuration options for your deployment. Choose your:</span></p>
+    <ol>
+    <li style="font-weight: 400;"><span style="font-weight: 400;">AWS Bucket &amp; Key: Choose your AWS bucket and key. You can manually enter a name, or you can use predefined expressions using the $ sign (or use a combination, e.g. ${host.hostName}.bucket_01). You can use expressions that you previously defined for the service. For example: if you use S3 as your artifact source and defined it as such in your Harness Service definition, you can use ${artifact.bucketName} and it will automatically the bucket name for your deployment. </span></li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;">Bundle Type: Choose between tar, tgz or zip bundle type.</span></li>
+    <li style="font-weight: 400;">
+    <span style="font-weight: 400;">Content option: Choose which action AWS CodeDeploy will take during a deployment in case a file on the target instance in a given location has the same name as the file in the application revision. For more information visit: </span><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-rollback-and-redeploy.html#deployments-rollback-and-redeploy-content-options"><span style="font-weight: 400;">https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-rollback-and-redeploy.html</span></a>
+    </li>
+    <li style="font-weight: 400;">
+    <span style="font-weight: 400;">Enable Rollback: AWS CodeDeploy offers an automatic rollback option in case of a deployment failure. If this option is enabled, and a rollback is performed by AWS, Harness will </span><strong>not</strong><span style="font-weight: 400;"> execute its own rollback step. </span>
+    </li>
+    <li style="font-weight: 400;"><span style="font-weight: 400;">Ignore ApplicationStop Lifecycle Event Failure: In case AWS failed to stop your existing application, you can choose to ignore this lifecycle event and have Harness continue the deployment. Alternatively, if you do choose not to ignore, this failure will cause the deployment to roll back. More information can be found <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/troubleshooting-deployments.html#troubleshooting-deployments-lifecycle-event-failures">here</a>.</span></li>
+    </ol>
+    <p> </p>
+    <h2>
+    <a name="AWS_Lambda"></a><strong><a class="blocks-item-link" href="#AWS_Lambda">AWS Lambda</a></strong>
+    </h2>
+    <p><span style="font-weight: 400;">Under Deploy Service→AWS Lambda you will find the option to configure the Aliases for your Lambda function. You can use the <strong>$</strong> sign to choose a predefined expression. More information about Lambda Aliases can be found </span><span style="font-weight: 400;">here:  <a href="https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html">https://docs.aws.amazon.com/lambda/latest/dg/aliases-intro.html</a></span></p>
+    <p> </p>
+    <h2>
+    <a name="JAR_WAR_RPM_TAR_ZIP_Other"></a><strong><a class="blocks-item-link" href="#JAR_WAR_RPM_TAR_ZIP_Other">JAR/WAR/RPM/TAR/ZIP/Other</a></strong>
+    </h2>
+    <p><strong> Provision Nodes:</strong></p>
+    <p><span style="font-weight: 400;">You need to choose whether to deploy to specific nodes (you will need to specify which nodes by providing the host name. If you click on the text field you will see the list of available nodes in your chosen Service Infrastructure), or to deploy to a predefined number of random nodes. You can choose between providing a specific number of nodes, or a percentage out of the total number of nodes defined in the Service Infrastructure for this deployment. </span></p>
+    <p> </p>
+    <h2><span class="wysiwyg-underline"><strong>Additional Configuration Options:</strong></span></h2>
+    <p><strong>Verify Service: </strong><span style="font-weight: 400;">Allows you to choose your deployment verification method. More information can be found under Continuous Verification.</span></p>
+    <p><br/><strong>Wrap Up:</strong><span style="font-weight: 400;"> Allows you to add wrap-up Custom Commands and/or actions that will take place at the end of the deployment. Examples include triggering a Jenkins Job, an https post request, or sending an email. </span> </p>
+    <p> </p>
+    <p>Also:</p>
+    <p><a href="https://support.harness.io/hc/en-us/articles/115005103254-Additional-Workflow-Configurations#Rollback_Steps">Rollback Steps</a></p>
+    <p><a href="https://support.harness.io/hc/en-us/articles/115005103254-Additional-Workflow-Configurations#Notification_Strategy"><span style="font-weight: 400;">Notification Strategy</span></a></p>
+    <p><span style="font-weight: 400;"><a href="https://support.harness.io/hc/en-us/articles/115005103254-Additional-Workflow-Configurations#Failure_Strategy">Failure Strategy</a><br/></span></p>
+    <p><a href="https://support.harness.io/hc/en-us/articles/115005103254-Additional-Workflow-Configurations#Workflow_Variables"><span style="font-weight: 400;">Workflow Variables</span></a></p>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+  slug: basic-deployment
+  tags: []
+  is_live: true

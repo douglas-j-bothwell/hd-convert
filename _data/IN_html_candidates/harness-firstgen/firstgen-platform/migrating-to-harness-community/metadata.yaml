@@ -1,0 +1,141 @@
+type: article
+article_id: 8tbbtwekgt
+user_id: x5amubrz4l
+category_id: pa3v189a2b
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Migrate to Harness Community
+slug: migrating-to-harness-community
+description: Outlines usage limits to apply, and premium features to remove, if you
+  migrate to the free Harness Community plan.
+short_version: Outlines usage limits to apply, and premium features to remove, if
+  you migrate to the free Harness Community plan.
+tags:
+- Community
+- migrate
+- migration
+- limitations
+- free
+- usage limits
+- plan
+- subscription
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:00:23.116988Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Migrate to Harness Community
+  description: Outlines usage limits to apply, and premium features to remove, if
+    you migrate to the free Harness Community plan.
+  short_version: Outlines usage limits to apply, and premium features to remove, if
+    you migrate to the free Harness Community plan.
+  body: '<p>If you choose to move from your full-featured trial of Harness Professional
+    to our free Community Edition, you&#39;ll need to adjust any premium features
+    you&#39;ve configured. This page covers the range of prompts that Harness Manager
+    might display when you migrate. These fall into three categories:</p><p>In this
+    topic:</p><ul><li><a href="#review_community_limitations">Review: Community Limitations</a></li><li><a
+    href="#step_1_select_usage_limits">Step 1: Select Usage Limits</a></li><li><a
+    href="#step_2_remove_premium_features">Step 2: Remove Premium Features</a></li><li><a
+    href="#step_3_refactor_premium_features">Step 3: Refactor Premium Features</a></li></ul><h3>Review:
+    Community Limitations</h3><p>If your configuration does <em>not</em> exceed any
+    Harness Community limitations, Harness Manager&#39;s migration wizard will allow
+    you to proceed without any of these prompts. </p><p>To review all Harness Community
+    limitations—and how they compare with the premium features available in Harness
+    Professional—see <a href="/article/y1t8hhz4y5-harness-editions">Harness Editions</a>.<br/><br/>For
+    Harness Community support, please see the <a href="https://community.harness.io/">Harness
+    Community Forum</a>.</p><h3>Step 1: Select Usage Limits</h3><p>Harness Community
+    imposes numerical limits on some Harness features. Prompts in this category will
+    guide you through selecting which among your configured entities you want to keep.</p><p><strong>Users:</strong>
+    Harness Community accounts are restricted to 5 users. (Harness Professional accounts
+    allow unlimited users.) When you migrate, Harness Manager will prompt you to select
+    5 (or fewer) users to carry over to your Community account.</p><p><strong>Delegates:</strong>
+    Harness Community accounts are restricted to a single <a href="/article/h9tkwmkrm7-delegate-installation">Delegate</a>.
+    (Harness Professional accounts allow unlimited Delegates.) Upon migrating, you&#39;ll
+    be prompted to select which Delegate to keep. Other installed Delegates will be
+    deleted within 30 minutes of migration.</p><p><strong>Repositories:</strong> Harness
+    Community allows <a href="/article/khbt0yhctx-harness-git-ops">Git Operations
+    (GitOps)</a> from only a single repository. (Harness Professional allows GitOps
+    based on multiple repositories; also, both the Professional and Community versions
+    support <a href="/article/htvzryeqjw-configuration-as-code">Git synchronization</a>.)
+    You&#39;ll be prompted to select one repo to keep.</p><h3>Step 2: Remove Premium
+    Features</h3><p>Harness Community excludes several of Harness Professional&#39;s
+    enterprise security and other premium features. If you&#39;ve configured any of
+    these features, the migration process will remove them all as a group. Upon migrating,
+    you&#39;ll be prompted to confirm this removal.</p><p><strong>Single Sign-On (SSO):</strong>
+    SSO via LDAP, SAML, or custom OAuth is available only in Harness Professional.
+    If you&#39;ve <a href="/article/g1cg16xovh-sso-provider-overview">configured</a>
+    any of these mechanisms, you&#39;ll need to remove them upon migration. (Harness
+    Community <em>does</em> support OAuth SSO via Google, Azure, GitHub, GitLab, Bitbucket,
+    and LinkedIn accounts—features also supported in Harness Professional.)</p><p><strong>IP
+    Whitelisting:</strong> Whitelists (allowlists) of IP addresses or CIDR blocks
+    are supported only in Harness Professional. If you&#39;ve <a href="/article/j2ww8l3yjw-access-management">imposed</a>
+    any such restrictions on logins to your Harness account, you&#39;ll need to remove
+    them.</p><p><strong>Two-Factor Authentication:</strong> <a href="/article/h0ie5q5lkl-login-settings">2FA
+    restrictions</a> on logins to your Harness account are supported only in Harness Professional.</p><p><strong>Deployment
+    Governance:</strong> The <a href="/article/wscbhd20ca-deployment-freeze">Deployment
+    Freeze</a> option is available only in Harness Professional.</p><p><strong>API
+    Keys:</strong> You&#39;ll need a Harness Professional account to <a href="/article/smloyragsm-api-keys">generate
+    API keys</a> to integrate with third-party apps.</p><p><strong>Secrets Management:</strong>
+    Integrations with third-party <a href="/article/au38zpufhr-secret-management">Secret
+    Managers</a> are supported only in Harness Professional. When you migrate to Harness
+    Community, we&#39;ll consolidate all your configured secrets in Harness&#39; built-in
+    Secret Manager.</p><p><strong>Role-Based Access Control (RBAC):</strong> Harness
+    Professional allows advanced, customizable access control—you can <a href="/article/ven0bvulsj-users-and-permissions">assign</a>
+    your users to multiple Harness User Groups, with different security roles and
+    permissions. Harness Community supports only a single Account Administrator group.
+    When you migrate to Community, we’ll consolidate all your users to that group,
+    where they’ll inherit its configured permissions.</p><p><strong>Template Library:</strong>
+    <a href="/article/ygi6d8epse-use-templates">Templates</a> for scripts and Service
+    Commands are supported only in Harness Professional. When you migrate to Community,
+    we&#39;ll move templated commands directly into the workflows/pipelines that reference
+    templates.</p><p><strong>24/7 Service Guard:</strong> <a href="/article/dajt54pyxd-24-7-service-guard-overview">Continuous
+    monitoring</a> of live services is available only in Harness Professional. Harness
+    Community supports only basic <a href="/article/myw4h9u05l-verification-providers-list">Deployment Verification</a>.</p><p><strong>Tags
+    Management:</strong> You&#39;ll need a Harness Professional account to access
+    the <a href="/article/nrxfix3i58-tags#creating_managing">Tags Management</a> page,
+    create new Tag keys, or restrict Tags’ values. When you migrate to Harness Community,
+    users can continue to attach and remove existing Tags on Application components,
+    but Tags with Allowed Values will convert to unrestricted values.</p><p><strong>Custom
+    Dashboards:</strong> Harness Community preserves any Custom Dashboards you’ve
+    created, but removes options to display their visualizations, and to edit or add
+    dashboards. Upgrading to Harness Professional restores these options.</p><h3>Step
+    3: Refactor Premium Features</h3><p>Migrating to Harness Community will switch
+    off certain other Harness Professional premium features. To keep your deployments
+    running as expected, you&#39;ll need to refactor any Workflow/Pipelines that use
+    these features. When you migrate, we&#39;ll notify you about any affected Workflows/Pipelines,
+    but we can&#39;t make these adjustments automatically—you must adjust them manually
+    after migrating.</p><div class="tip-callout">As with certain other Community restrictions
+    listed on this page, you&#39;ll be making permanent changes to your Harness configuration.
+    Remember that you also have the option to retain all the premium features you&#39;ve
+    configured, by purchasing a Harness Professional license.</div><p><strong>Live
+    Notifications:</strong> Integrating automatic notifications with Slack, Jira,
+    or ServiceNow is supported only in Harness Professional. After migrating to Harness Community,
+    you&#39;ll need to <a href="/article/kf828e347t-notification-groups">reset</a>
+    any configured notifications as email notifications.</p><p><strong>Flow Controls:</strong>
+    Barrier and similar flow-control commands are supported only in Harness Professional.
+    After migrating to Harness Community, you&#39;ll need to remove these commands
+    from affected <a href="/article/m220i1tnia-workflow-configuration">Workflows</a>.</p><p><strong>Approval
+    Flows:</strong> Approvals via Jira, ServiceNow, Harness User Groups, and custom
+    Shell Scripts are supported only in Harness Professional. After migrating, you&#39;ll
+    need to <a href="/article/zc1u96u6uj-pipeline-configuration">reconfigure</a> affected
+    Pipelines to use only manual approvals.</p>'
+  slug: migrating-to-harness-community
+  tags:
+  - Community
+  - migrate
+  - migration
+  - limitations
+  - free
+  - usage limits
+  - plan
+  - subscription
+  is_live: true

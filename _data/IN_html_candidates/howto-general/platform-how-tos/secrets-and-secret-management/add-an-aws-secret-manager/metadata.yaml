@@ -1,0 +1,138 @@
+type: article
+article_id: a73o2cg3pe
+user_id: 2te4j9f9g7
+category_id: 48wnu4u0tj
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Add an AWS Secrets Manager
+slug: add-an-aws-secret-manager
+description: This topic shows how to create an AWS Secret Manager.
+short_version: This topic shows how to create an AWS Secret Manager.
+tags:
+- Secrets Management
+- Platform
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-12T03:49:03.731503Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add an AWS Secrets Manager
+  description: This topic shows how to create an AWS Secret Manager.
+  short_version: This topic shows how to create an AWS Secret Manager.
+  body: '<p>You can use AWS Secrets Manager for your Harness secrets.</p><p>Unlike
+    AWS KMS, AWS Secrets Manager stores both secrets and encrypted keys. With AWS
+    KMS, Harness stores the secret in its Harness store and retrieves the encryption
+    keys from KMS. For information on using an AWS KMS Secrets Manager, see <a href="/article/pt52h8sb6z">Add
+    an AWS KMS Secrets Manager</a>.</p><p>This topic describes how to add an AWS Secret
+    Manager in Harness.</p><p>In this topic:</p><ul><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#before_you_begin">Before
+    You Begin</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#permissions_test_aws_permissions">Permissions:
+    Test AWS Permissions</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#step_1_add_secrets_manager">Step
+    1: Add a Secret Manager</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#step_2_overview">Step
+    2: Overview</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#step_3_details">Step
+    3: Details</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#option_aws_access_key">Option:
+    AWS Access Key</a><ul><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#aws_access_key_id">AWS-Access
+    Key ID</a></li><li><a href="https://ngdocs.harness.io/article/a73o2cg3pe-add-an-aws-secret-manager#aws_secret_access_key">AWS-
+    Secret Access Key</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#secret_name_prefix">Secret
+    Name Prefix</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#region">Region</a></li></ul></li><li><a
+    href="/article/a73o2cg3pe-add-an-aws-secret-manager#option_assume_iam_role_on_delegate">Option:
+    Assume IAM Role on Delegate</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#option_assume_role_using_sts_on_delegate">Option:
+    Assume Role Using STS on Delegate</a><ul><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#role_arn">Role
+    ARN</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#external_id">External
+    ID</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#assume_role_duration">Assume
+    Role Duration</a></li></ul></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#step_4_setup_delegates">Step
+    4: Setup Delegates</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager#step_5_test_connection">Step
+    5: Test Connection</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/hv2758ro4e">Learn
+    Harness&#39; Key Concepts</a></li><li>See <a href="/article/hngrlb7rd6">Harness
+    Secret Manager Overview</a></li></ul><h3>Permissions: Test AWS Permissions</h3><p>Harness
+    uses the same minimum IAM policies for AWS secret manager access as the AWS CLI.</p><p>The
+    AWS account you use for the AWS Secret Manager must have the following policies
+    at a minimum:</p><pre>{<br/>    &#34;Version&#34;: &#34;2012-10-17&#34;,<br/>    &#34;Statement&#34;:
+    {<br/>        &#34;Effect&#34;: &#34;Allow&#34;,<br/>        &#34;Action&#34;:
+    [<br/>            &#34;secretsmanager:Describe*&#34;,<br/>            &#34;secretsmanager:Get*&#34;,<br/>            &#34;secretsmanager:List*&#34;
+    <br/>        ],<br/>        &#34;Resource&#34;: &#34;*&#34;<br/>    }<br/>}</pre><p></p><p>These
+    policies let you list secrets which will allow you to add the Secret Manager and
+    refer to secrets, but it will not let you read secrets values.</p><p>The following
+    policy list enables Harness to perform all the secrets operations you might need:</p><pre>{<br/>    &#34;Version&#34;:
+    &#34;2012-10-17&#34;,<br/>    &#34;Statement&#34;: {<br/>        &#34;Effect&#34;:
+    &#34;Allow&#34;,<br/>        &#34;Action&#34;: [<br/>          &#34;secretsmanager:CreateSecret&#34;,<br/>          &#34;secretsmanager:DescribeSecret&#34;,<br/>          &#34;secretsmanager:DeleteSecret&#34;,<br/>          &#34;secretsmanager:GetRandomPassword&#34;,<br/>          &#34;secretsmanager:GetSecretValue&#34;,<br/>          &#34;secretsmanager:ListSecretVersionIds&#34;,<br/>          &#34;secretsmanager:ListSecrets&#34;,<br/>          &#34;secretsmanager:PutSecretValue&#34;,<br/>          &#34;secretsmanager:UpdateSecret&#34;
+    <br/>        ],<br/>        &#34;Resource&#34;: &#34;*&#34;<br/>    }<br/>}</pre><p></p><p>See
+    <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_identity-based-policies.html">Using
+    Identity-based Policies (IAM Policies) for Secret Manager</a> from AWS.</p><p>To
+    test use the AWS account when running <a href="https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/list-secrets.html#examples"
+    target="_blank">aws secretsmanager list-secrets</a> on either the Harness Delegate
+    host or another host.</p><h3>Step 1: Add a Secret Manager</h3><p>This topic assumes
+    you have a Harness Project set up. If not, see <a href="https://ngdocs.harness.io/article/36fw2u92i4-create-an-organization">Create
+    Organizations and Projects</a>.</p><p>You can add a Connector from any module
+    in your Project in Project SETUP, or in your Organization, or Account Resources.</p><p>In
+    <strong>Connectors</strong>, click <strong>Connector</strong>.</p><p>In <strong>Secret
+    Managers</strong>, click <strong>AWS Secrets Manager</strong>. The AWS Secrets
+    Manager settings appear.</p><div class="note-callout">For information on restrictions
+    on names and maximum quotas, see <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_limits.html"
+    target="_blank">Quotas for AWS Secrets Manager</a>.</div><h3>Step 2: Overview</h3><p>Enter <strong>Name</strong> for
+    your secret manager.</p><p>You can choose to update the <strong>ID</strong> or
+    let it be the same as your secret manager&#39;s name. For more information, see <a
+    href="https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference">Entity
+    Identifier Reference</a>.</p><p>Enter <strong>Description</strong> for your secret
+    manager.</p><p>Enter <strong>Tags</strong> for your secret manager.</p><p>Click <strong>Continue</strong>.</p><h3>Step
+    3: Details</h3><p>You can select the following options in <strong>Credential Type</strong>
+    for authenticating with AWS:</p><ul><li><strong>AWS Access Key.</strong></li><li><strong>Assume
+    IAM Role on Delegate.</strong></li><li><strong>Assume Role Using STS on Delegate.</strong></li></ul><h3>Option:
+    AWS Access Key</h3><p>Use your AWS IAM user login credentials.</p><p>Gather <strong>AWS
+    - Access Key ID</strong> and <strong>AWS - Secret Access Key</strong> from the
+    JSON for the <strong>Key Policy</strong>, or in the AWS <strong>IAM</strong> console,
+    under <strong>Encryption keys</strong>.</p><p>For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn"
+    target="_blank">Finding the Key ID and ARN</a> from Amazon.</p><h4>AWS-Access
+    Key ID</h4><p>Click <strong>Create or Select a Secret</strong>.</p><p>In the secret
+    settings dialog, you can create/select a <a href="/article/osfw70e59c-add-use-text-secrets">Secret</a>
+    and enter your AWS Access Key as it&#39;s value.</p><p>The AWS Access Key is the
+    AWS Access Key ID for the IAM user you want to use to connect to Secret Manager.</p><h4>AWS-
+    Secret Access Key</h4><p>Click <strong>Create or Select a Secret</strong>.</p><p>You
+    can either create a new <a href="/article/osfw70e59c-add-use-text-secrets">Secret</a>
+    with your Access Key ID&#39;s secret key as its <strong>Value</strong> or use
+    an existing secret.</p><h4>Secret Name Prefix</h4><p>Enter <strong>Secret Name
+    Prefix</strong>. All the secrets under this secret manager would have this prefix.
+    For example, <code>devops</code> will result in secrets like <code>devops/mysecret</code>.
+    The prefix is not a folder name.</p><h4>Region</h4><p>Select the AWS <strong>Region</strong>
+    for the Secret Manager.</p><h3>Option: Assume IAM Role on Delegate</h3><p>If you
+    select this option, Harness will authenticate using the IAM role assigned to the
+    AWS host running the Delegate you select. You can select a Delegate using a Delegate
+    Selector.</p><p>Refer to <a href="/article/a73o2cg3pe-add-an-aws-secret-manager#secret_name_prefix">Secret
+    Name Prefix</a> and <a href="/article/a73o2cg3pe-add-an-aws-secret-manager#region">Region</a>
+    explained above to add these details.</p><h3>Option: Assume Role Using STS on
+    Delegate</h3><p>This option uses the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html"
+    target="_blank">AWS Security Token Service</a> (STS) feature. Typically, you use <code>AssumeRole</code> within
+    your account or for AWS cross-account access.</p><p>Refer to <a href="/article/a73o2cg3pe-add-an-aws-secret-manager#secret_name_prefix">Secret
+    Name Prefix</a> and <a href="/article/a73o2cg3pe-add-an-aws-secret-manager#region">Region</a>
+    explained above to add these details.</p><h4>Role ARN</h4><p>Enter the Amazon
+    Resource Name (ARN) of the role that you want to assume. This role is an IAM role
+    in the target deployment AWS account.</p><h4>External ID</h4><p>If the administrator
+    of the account to which the role belongs provided you with an external ID, then
+    enter that value.</p><p>For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How
+    to Use an External ID When Granting Access to Your AWS Resources to a Third Party</a> from
+    AWS.</p><h4>Assume Role Duration</h4><p>Enter the AssumeRole Session Duration.
+    See Session Duration in the <a href="https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html"
+    target="_blank">AssumeRole AWS docs</a>.</p><h3>Step 4: Setup Delegates</h3><p>In <strong>Setup
+    Delegates,</strong> enter <a href="/article/nnuf8yv13o-select-delegates-with-selectors#option_select_a_delegate_for_a_connector_using_tags"><strong>Selectors</strong></a> for
+    specific <strong>Delegates</strong> that you want to allow to connect to this
+    Connector.</p><h3>Step 5: Test Connection</h3><p>Once the Test Connection succeeds,
+    click Finish. You can now see the Connector in Connectors.​</p><details><summary>Important:
+    Test Connection fails</summary><div>Harness tests connections by creating a dummy
+    secret in the Secret Manager or Vault. For the <strong>Test Connection</strong>
+    to function successfully, make sure you have <strong>Create</strong> permission
+    for secrets.<br/>The Test Connection fails if you do not have Create permission.
+    However, Harness still creates the Connector for you. You may use this Connector
+    to read secrets, if you have <strong>View</strong> permissions.</div></details><p></p>'
+  slug: add-an-aws-secret-manager
+  tags:
+  - Secrets Management
+  - Platform
+  is_live: true

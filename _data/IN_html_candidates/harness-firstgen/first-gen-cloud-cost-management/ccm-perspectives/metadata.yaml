@@ -1,0 +1,16 @@
+type: category
+category_id: b9vb8vq908
+parent_category_id: b0wyqa1cq2
+title: CCM Perspectives
+description: Perspectives allow you to group your resources in ways that are more
+  meaningful to your business needs
+slug: ccm-perspectives
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1608253309847/perspective.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CCM Perspectives
+  description: Perspectives allow you to group your resources in ways that are more
+    meaningful to your business needs
+  slug: ccm-perspectives
