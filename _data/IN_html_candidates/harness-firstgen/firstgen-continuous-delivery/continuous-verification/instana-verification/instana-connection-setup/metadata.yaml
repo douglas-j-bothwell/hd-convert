@@ -1,0 +1,70 @@
+type: article
+article_id: dg4vojlcx1
+user_id: x5amubrz4l
+category_id: hb98hpyemv
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: 1 – Instana Connection Setup
+slug: instana-connection-setup
+description: Connect Instana as a Harness Verification Provider, enabling Instana
+  to verify the success of your deployments and live microservices.
+short_version: Connect Harness to Instana, and verify the success of your deployments
+  and live microservices.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:45.881558Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 1 – Instana Connection Setup
+  description: Connect Instana as a Harness Verification Provider, enabling Instana
+    to verify the success of your deployments and live microservices.
+  short_version: Connect Harness to Instana, and verify the success of your deployments
+    and live microservices.
+  body: <p>The first step in using Instana with Harness is to set up a Instana Verification
+    Provider in Harness.</p><p>A Harness Verification Provider is a connection to
+    monitoring tools such as Instana. Once Harness is connected, you can use Harness
+    24/7 Service Guard and Deployment Verification with your Instana data and analysis.</p><h3>Instana
+    Verification Provider Setup</h3><p>To add Instana as a verification provider:</p><ol><li>Click
+    <strong>Setup</strong>.</li><li>Click <strong>Connectors</strong>, and then click
+    <strong>Verification Providers</strong>.</li><li>Click <strong>Add Verification
+    Provider</strong>, and select <strong>Instana</strong>. The <strong>Add </strong><strong>Instana
+    Verification Provider</strong> dialog appears.<br/> <br/><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dg4vojlcx1/1587770260638/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete
+    the following fields in this dialog.<div class="note-callout">On Instana, you
+    must have the account owner role to create the API token needed to connect Harness
+    to Instana.</div><table><tbody><tr><td><p><strong>Field</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><strong>Display
+    Name</strong></p></td><td><p>Enter a display name for the provider. If you are
+    going to use multiple providers of the same type, ensure that you give each provider
+    a different name.</p></td></tr><tr><td><p><strong>Instana</strong> <strong>URL</strong></p></td><td><p>Enter
+    the URL of the Instana server, such as:</p><p><code>https://integration-&lt;your-company&gt;.instana.io</code></p></td></tr><tr><td><p><strong>Encrypted
+    </strong><strong>API Token</strong></p></td><td><p>Select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a> for your Instana API token.</p><p>To create an API key
+    in Instana, do the following:</p><ol><li>In Instana Settings, select <strong>Team Settings</strong>
+    &gt; <strong>API Tokens</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dg4vojlcx1/1584246762571/image.png"/></figure></li><li>Select
+    <strong>Add</strong> <strong>API Token</strong>.</li><li>On the resulting <strong>New
+    API Token</strong> page, enter a name for the new API key, such as <strong>Harness</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/dg4vojlcx1/1584247406177/image.png"/></figure></li><li>Under
+    Permssions, enable <strong>Service &amp; Endpoint Mapping</strong>.</li><li>Copy
+    the value from the <strong>API Token</strong> field, and save the token.</li><li>In
+    <strong>Harness</strong>, paste the token&#39;s value into the <strong>API Token</strong>
+    field.</li></ol></td></tr><tr><td><p></p><div class="hd--html"><a name="usage_scope"></a></div><p><strong>Usage
+    Scope</strong></p></td><td><p>Usage scope is inherited from the secrets used in
+    the settings.</p></td></tr></tbody></table></li></ol><p></p><h3>Testing and Saving
+    Your Setup</h3><ol><li>After you have filled in the <strong>Add </strong><strong>Instana
+    Verification Provider</strong> dialog&#39;s settings, click <strong>Test</strong>
+    to confirm them.</li><li>Once the test is successful, click <strong>Submit</strong>
+    to create your new Instana Connector.</li></ol><h3>Next Step</h3><ul><li><a href="/article/ovghx0k1xt-instana-service-guard">2
+    – 24/7 Service Guard for Instana</a></li></ul><p></p>
+  slug: instana-connection-setup
+  tags: []
+  is_live: true

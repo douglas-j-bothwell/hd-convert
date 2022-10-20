@@ -1,0 +1,350 @@
+type: article
+article_id: 6kt564f64q
+user_id: mfr0nxh4be
+category_id: emle05cclq
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Using CLI Plugins in Harness PCF Deployments
+slug: using-cli-plugins-in-harness-pcf-deployments
+description: Run Cloud Foundry plugins as a step in a Harness PCF Workflow.
+short_version: Run Cloud Foundry plugins as a step in a Harness PCF Workflow.
+tags: []
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:04.708132Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Using CLI Plugins in Harness PCF Deployments
+  description: Run Cloud Foundry plugins as a step in a Harness PCF Workflow.
+  short_version: Run Cloud Foundry plugins as a step in a Harness PCF Workflow.
+  body: '<p>Harness supports all Cloud Foundry plugins from the <a href="https://plugins.cloudfoundry.org/"
+    target="_blank">CF plugin marketplace</a>, <a href="https://network.pivotal.io/"
+    target="_blank">PCF Network</a>, and in-house, and enables you to run and use
+    them in Harness PCF Workflow steps.</p><p>Harness also includes first-class support
+    for the <a href="https://docs.run.pivotal.io/appsman-services/autoscaler/using-autoscaler-cli.html"
+    target="_blank">App Autoscaler plugin</a>, enabling you to create it as part of
+    your Harness Workflow, bind it to your app, and enable or disable it as needed.
+    Here is the App Autoscaler option as part of the <strong>App Setup</strong> command.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580332748516/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#cf_plugin_usage_overview_and_requirements">CF
+    Plugin Usage Overview and Requirements</a><ul><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#requirements_for_running_plugins">Requirements
+    for Running Plugins</a><ul><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#cf_cli_installed_on_harness_delegates">CF
+    CLI Installed on Harness Delegates</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#plugins_installed_on_harness_delegates">Plugins
+    Installed on Harness Delegates</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#create_service_push_installed_on_delegate">Create-Service-Push
+    Installed on Delegate</a></li></ul></li></ul></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#running_cf_plugins_using_the_cf_command">Running
+    CF Plugins using the CF Command</a><ul><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#scripts">Scripts</a></li><li><a
+    href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#delegate_tags">Delegate
+    Tags</a></li></ul></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#app_autoscaler_cli_plugin">App
+    Autoscaler CLI Plugin</a><ul><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#use_a_new_app_autoscaler_service">Use
+    a New App Autoscaler Service</a><ul><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#define_the_app_autoscaler_service_in_your_manifest_file">Define
+    the App Autoscaler Service in Your Manifest File</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#bind_the_app_autoscaler_service_to_your_app">Bind
+    the App Autoscaler Service to Your App</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#add_your_app_autoscaler_manifest_file">Add
+    Your App Autoscaler Manifest File</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#create_the_app_autoscaler_service_using_cf_command">Create
+    the App Autoscaler Service Using CF Command</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#enable_app_autoscaler_in_the_app_setup_step">Enable
+    App Autoscaler in the App Setup Step</a></li></ul></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#use_an_existing_app_autoscaler_service">Use
+    an Existing App Autoscaler Service</a></li></ul></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#plugin_directory">Plugin
+    Directory</a></li></ul><h3>CF Plugin Usage Overview and Requirements</h3><p>Harness
+    runs CF plugins using the Workflow command <strong>CF Command</strong>. CF Command
+    automatically sets the <code>CF_PLUGIN_HOME</code> directory, logs in (using the
+    Harness PCF Cloud Provider), and runs the plugin using the script in CF Command.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580332971092/image.png"/></figure><h4>Requirements
+    for Running Plugins</h4><p>To run plugins using CF Command, you must have the
+    following:</p><ul><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#cf_cli_installed_on_harness_delegates">CF
+    CLI Installed on Harness Delegates</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#plugins_installed_on_harness_delegates">Plugins
+    Installed on Harness Delegates</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#create_service_push_installed_on_delegate">Create-Service-Push
+    Installed on Delegate</a></li></ul><h5>CF CLI Installed on Harness Delegates</h5><p>The
+    CF CLI must be installed on the Harness Delegates used in deployment. This is
+    a requirement for any PCF deployment with Harness.</p><p>The CF CLI can be installed
+    on the Delegate(s) using a Delegate Profile script. For more information, see
+    <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profiles</a>.</p><p>Here is a Delegate Profile example that installs the CF CLI:</p><pre>sudo
+    wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo<br/>sudo
+    yum -y install cf-cli</pre><p>In Harness, click <strong>View Logs</strong> to
+    see the successful installation:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575334792407/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Here
+    is the log:</p><pre>...<br/>Installed:<br/>  cf-cli.x86_64 0:6.47.2-1                                                      <br/><br/>Complete!</pre><p>Here
+    is a Delegate Profile example using apt-get:</p><pre>apt-get install wget<br/>wget
+    -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key
+    add -<br/>echo &#34;deb https://packages.cloudfoundry.org/debian stable main&#34;
+    | tee /etc/apt/sources.list.d/cloudfoundry-cli.list<br/>apt-get update<br/>apt-get
+    install cf-cli</pre><p>A single Delegate Profile can be used on all Delegates
+    to ensure that any Delegates used have the CF CLI installed.</p><p>For more information,
+    see <a href="/article/h9tkwmkrm7-delegate-installation#delegate_profiles">Delegate
+    Profiles</a> and <a href="https://docs.pivotal.io/pivotalcf/2-3/cf-cli/install-go-cli.html">Installing
+    the cf CLI</a> from PCF.</p><h5>Plugins Installed on Harness Delegates</h5><p>The
+    plugin you want to run must be installed on the Harness Delegates that CF Command
+    will use. You can tag a Harness Delegate and then select the Tag in the CF Command,
+    ensuring that the CF Command runs your plugin on a Harness Delegate with the plugin
+    installed.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580332998447/image.png"/></figure><p>You
+    can install the plugin on the Harness Delegate using the same Delegate Profile
+    you use to install the CF CLI on the Delegate(s).</p><p>Here is an example installing
+    the CF CLI and <a href="https://plugins.cloudfoundry.org/#Create-Service-Push"
+    target="_blank">Create-Service-Push</a> plugin:</p><pre>sudo wget -O /etc/yum.repos.d/cloudfoundry-cli.repo
+    https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo<br/>sudo yum -y
+    install cf-cli<br/><br/>echo y | cf install-plugin -r CF-Community &#34;Create-Service-Push&#34;</pre><p>If
+    you are using the Kubernetes, ECS, or Helm Delegates, you can select the Profile
+    when you download a new Delegate script. Typically, you will be using a Shell
+    Script Delegate for PCF deployments. In that case, simply apply the Profile to
+    each new Delegate:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1574724912851/image.png"/></figure><p></p><h5>Create-Service-Push
+    Installed on Delegate</h5><div class="note-callout">The Create-Service-Push plugin
+    must be installed on the Delegate(s) to use the App AutoScaler plugin.</div><p>The
+    <a href="https://plugins.cloudfoundry.org/#Create-Service-Push" target="_blank">Create-Service-Push</a>
+    plugin reads in a services&#39; manifest.yml file, creates the services listed
+    in it, and pushes an application. Create-Service-Push extends <code>cf push</code>.</p><p>If
+    you want to create PCF services from the inline or remote manifest files set up
+    in your Harness Service <strong>Manifests</strong> section, you need to have Create-Service-Push
+    installed on the Delegate.</p><p>For example, you can see the <code>cf create-service-push</code>
+    command used to run a plugin defined in the manifest here:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333121300/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can install the Create-Service-Push plugin in a Delegate Profile by itself:</p><pre>echo
+    y | cf install-plugin -r CF-Community &#34;Create-Service-Push&#34;</pre><p>or
+    in the Delegate Profile that installs the CF CLI:</p><pre>sudo wget -O /etc/yum.repos.d/cloudfoundry-cli.repo
+    https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo<br/>sudo yum -y
+    install cf-cli<br/><br/>echo y | cf install-plugin -r CF-Community &#34;Create-Service-Push&#34;</pre><p>Click
+    <strong>View Logs</strong> to see the successful installation:</p><pre>Searching
+    CF-Community for plugin Create-Service-Push...<br/>Plugin Create-Service-Push
+    1.3.1 found in: CF-Community<br/>Attention: Plugins are binaries written by potentially
+    untrusted authors.<br/>Install and use plugins at your own risk.<br/>Do you want
+    to install the plugin Create-Service-Push? [yN]: y<br/>Starting download of plugin
+    binary from repository CF-Community...<br/><br/> 0 B / 9.82 MiB [------------------------------------------------------]   0.00%
+    9.82 MiB / 9.82 MiB [==============================================] 100.00% 0sInstalling
+    plugin Create-Service-Push...<br/>OK<br/><br/>Plugin Create-Service-Push 1.3.1
+    successfully installed.</pre><h3>Running CF Plugins using the CF Command</h3><p>Once
+    the CF plugin has been installed on a Harness Delegate, you can simply add the
+    CF Command to your Workflow to run the plugin.</p><ol><li>In your PCF Workflow,
+    decide where you want to execute a CF CLI command. If you want to run a plugin,
+    you will likely want to add the CF Command to the <strong>Setup</strong> section.</li><li>click
+    <strong>Add Command</strong>. <strong>Add Command</strong> appears.</li><li>Click
+    <strong>CF Command</strong>. <strong>CF Command</strong> appears.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333154645/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>As
+    the commented-out text states, the CF Command will perform the login steps of
+    using the CF CLI. So you do not need to include login credentials in CF Command.
+    CF Command will use the credentials set up in your Harness PCF Cloud Provider.</p><h4>Scripts</h4><p>In
+    <strong>Script</strong>, enter your CF CLI commands.</p><p>There are two built-in
+    Harness PCF variables you can use to reference the manifest and vars files used
+    by the plugin you want to run:</p><ul><li>If you are using inline Manifest files,
+    the variable <code>${service.manifest}</code> refers to the folder containing
+    your manifest files.</li></ul><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1574895511399/image.png"/></figure><ul><li>If
+    you are using remote Manifest files via a Git repo, <code>${service.manifest}</code>
+    refers to the folder containing your manifest files and <code>${service.manifest.repoRoot}</code>
+    refers to the root folder of the repo.</li></ul><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1574890615262/image.png"/></figure><p>You
+    can use the variables together to point to different locations. For example, here
+    the manifest.yml file is one folder and the vars.yml is located using a path from
+    the repo root folder:</p><pre>cf create-service-push --service-manifest ${service.manifest}/manifest.yml
+    --no-push --vars-file ${service.manifest.repoRoot}/QA/vars.yml<br/>cf plugins
+    | grep autoscaling-apps</pre><p>These variables appear when you type <code>${service</code>
+    in <strong>Script</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333199973/image.png"/></figure><div
+    class="note-callout">Environment Service Overrides, such as <a href="/article/ur8gjgayds-pcf-environments#pcf_manifests_override">PCF
+    Manifests Override</a>, do not apply to or override the <code>${service.manifest}</code>
+    variable. The <code>${service.manifest}</code> variable only looks in the Harness
+    Service.</div><p>You can also use variables in your script to templatize paths
+    to manifest files. For example, if your Workflow Environment were templatized
+    (see <a href="/article/m220i1tnia-workflow-configuration#template_a_workflow">Template
+    a Workflow</a>), you can use the Environment variable <code>${env.name}</code>
+    in your path, like this:</p><p><code>${service.manifest.repoRoot}/${env.name}/vars.yml</code></p><p>When
+    the Workflow is deployed, the user will have to provide a name for the Environment
+    to use. The same name will be substituted for <code>${env.name}</code> in the
+    path in your script.</p><p>This substitution can be useful if you have folder
+    names in your remote Git repo that match Harness Environment names, such as QA
+    and PROD. The same Workflow and CF Command can be used for both Environments and
+    use manifest files in separate repo folders.</p><h4>Delegate Tags</h4><p>In order
+    for the plugin in your script to execute, the Harness Delegate(s) running the
+    script must have the plugin installed.</p><p>Unless all of your Harness Delegates
+    have the plugin installed, you can refer to the specific Delegates with the plugin
+    installed using <a href="/article/h9tkwmkrm7-delegate-installation#delegate_tags">Delegate
+    Tags</a>. Add the Delegate Tag(s) for the Delegates with the plugins installed.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333212513/image.png"/></figure><p>If
+    you do not add any Delegates Tags to the CF Command, when the CF Command runs,
+    Harness will only use Delegates that have the CF CLI installed.</p><p>However,
+    if you are running plugins in CF Command, Harness cannot know which Delegates
+    have the plugins installed.</p><p>This is why the Delegate Tags setting ensures
+    that CF Command only executes on Delegates that can run the plugins mentioned
+    in the CF Command script.</p><h3>App Autoscaler CLI Plugin</h3><div class="note-callout">Harness
+    supports <a href="https://network.pivotal.io/products/pcf-app-autoscaler#/releases/491414"
+    target="_blank">App Autoscaler Plugin release 2.0.233</a>.</div><p>The <a href="https://docs.run.pivotal.io/appsman-services/autoscaler/using-autoscaler-cli.html"
+    target="_blank">App Autoscaler plugin</a> has first-class support in Harness,
+    enabling you to ensure app performance and control the cost of running apps.</p><p>The
+    following diagram illustrates how you can define, bind, create, and use App Autoscaler
+    with the PCF apps deployed by Harness.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333442490/image.png"/></figure><p>If
+    you are using the App Autoscaler plugin, then autoscaling is applied <u>after</u> the
+    final phase of deployment. </p><p>Once all phases are completed and the number
+    of old version instances has reached the desired number, then the final number
+    of instances will be as configured as defined by the Autoscaler. </p><p>For example,
+    if a deployment results in 4 new instances, but Autoscaler is set to min 8 and
+    max 10, Harness will set the desired number of instances to the minimum value.
+    So the total number of new instances is 8.</p><p>To use App Autoscaler, you must
+    have the following requirements:</p><ol><li>The App Autoscaler plugin must be
+    installed on the Delegate(s) that will execute PCF deployments. The steps in this
+    section assume that the App Autoscaler plugin is installed on your Delegates.<br/>Because
+    of limitations in the CF CLI, the best way to install the App Autoscaler plugin
+    on the Delegate is the following:<ol><li>Download the release from the <a href="https://network.pivotal.io/products/pcf-app-autoscaler"
+    target="_blank">Pivotal App Autoscaler CLI Plugin</a> page.</li><li>Store the
+    release in a repo in your network that can be accessed by the Harness Delegate.
+    This will allow you to use cURL to copy the release to the Delegate host(s).</li><li>Install
+    the App Autoscaler plugin on your Delegates using a Delegate Profile.<br/>This
+    profile will run each time the Delegate is restarted and the CF CLI cannot reinstall
+    the plugin simply, so you must uninstall the plugin and then reinstall it in your
+    Delegate Profile:</li></ol></li></ol><pre>cf uninstall-plugin &#34;App Autoscaler&#34;<br/>curl
+    /path/to/release-in-repo<br/>cf install-plugin local-path/binary</pre><p>Click
+    <strong>View Logs</strong> on the Delegate Profile to see the successful installation.</p><p>You
+    can also choose to install the plugin manually on each Delegate using the steps
+    provided by Pivotal, in <a href="https://docs.run.pivotal.io/appsman-services/autoscaler/using-autoscaler-cli.html"
+    target="_blank">Using the App Autoscaler CLI</a>.</p><ol><li style="counter-increment:li
+    1" start="2">Create the App Autoscaler service in your target Pivotal space.<br/>In
+    this topic we will show you how to use your app manifest to create the App Autoscaler
+    brokered service in your target Pivotal space.</li></ol><pre> applications:<br/>-
+    name: Test<br/>...<br/>create-services:<br/>- name:   &#34;myautoscaler&#34;<br/>  broker:
+    &#34;app-autoscaler&#34;<br/>  plan:   &#34;standard&#34;</pre><ol><li style="counter-increment:li
+    2" start="3">Bind the App Autoscaler service to the app you are deploying using
+    the <code>services</code> parameter in your manifest file.</li></ol><pre> applications:<br/>-
+    name: Test<br/>...<br/>  services:<br/>   - myautoscaler<br/>create-services:<br/>-
+    name:   &#34;myautoscaler&#34;<br/>  broker: &#34;app-autoscaler&#34;<br/>  plan:   &#34;standard&#34;</pre><ol><li
+    style="counter-increment:li 3" start="4">Configure the App Autoscaler service
+    using a manifest file:</li></ol><pre>---<br/>  instance_limits:<br/>    min: 1<br/>    max:
+    2<br/>  rules:<br/>    - rule_type: &#34;http_latency&#34;<br/>      rule_sub_type:
+    &#34;avg_99th&#34;<br/>      threshold:<br/>        min: 10<br/>        max: 20<br/>  scheduled_limit_changes:<br/>    -
+    recurrence: 10<br/>      executes_at: &#34;2032-01-01T00:00:00Z&#34;<br/>      instance_limits:<br/>        min:
+    10<br/>        max: 20</pre><ol><li style="counter-increment:li 4" start="5">Create
+    the App Autoscaler using the Create-Service-Push plugin in a CF Command.<br/><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333485892/image.png"/></figure></li><li>Select
+    <strong>Use App Autoscaler Plugin</strong> in the <strong>App Setup</strong> step
+    in your Workflow.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333525833/image.png"/></figure><p>When
+    you deploy your Workflow, Harness creates the App Autoscaler service according
+    to the configuration you defined and binds it to the app you are deploying.</p><h4>Use
+    a New App Autoscaler Service</h4><p>This section provides the steps for using
+    Harness to configure and create the App Autoscaler service in your target Pivotal
+    space, bind it to your app, and enable or disable it for the app your are deploying.</p><p>The
+    steps listed here assume you have installed the App Autoscaler plugin on the Harness
+    Delegate(s) that will deploy your app.</p><div class="note-callout">Inline manifest
+    and configuration files are used in the following procedure, but the same process
+    can be followed using remote files. For information on using remote files from
+    a Git repo, see <a href="https://docs.harness.io/article/s3emmcgotl-services-for-pcf#remote_manifest_and_variable_files">Remote
+    Manifest and Variable Files</a>.</div><p>To use a new App Autoscaler service,
+    do the following:</p><ol><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#define_the_app_autoscaler_service_in_your_manifest_file">Define
+    the App Autoscaler Service in Your Manifest File</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#bind_the_app_autoscaler_service_to_your_app">Bind
+    the App Autoscaler Service to Your App</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#add_your_app_autoscaler_manifest_file">Add
+    Your App Autoscaler Manifest File</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#create_the_app_autoscaler_service_using_cf_command">Create
+    the App Autoscaler Service Using CF Command</a></li><li><a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#enable_app_autoscaler_in_the_app_setup_step">Enable
+    App Autoscaler in the App Setup Step</a></li></ol><h5>1. Define the App Autoscaler
+    Service in Your Manifest File</h5><ol><li>In your Harness PCF Service, select
+    your manifest.yml file and click <strong>Edit</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575324249721/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Add
+    a <code>create-services</code> block that describes the App Autoscaler service
+    you want to create:<br/><br/><pre>...<br/>create-services:<br/>- name:   &#34;myautoscaler&#34;<br/>  broker:
+    &#34;app-autoscaler&#34;<br/>  plan:   &#34;standard&#34;   <br/>...</pre>Now
+    that the App Autoscaler service is defined in your manifest.yml, you can bind
+    it to the app.</li></ol><h5>2. Bind the App Autoscaler Service to Your App</h5><ol><li>In
+    <code>applications</code>, add a <code>services</code> block with the name of
+    the App Autoscaler service:</li></ol><pre>...<br/>  services:<br/>  - myautoscaler<br/><br/>create-services:<br/>-
+    name:   &#34;myautoscaler&#34;<br/>  broker: &#34;app-autoscaler&#34;<br/>  plan:   &#34;standard&#34;<br/>...</pre><p>For
+    more information on services, see the <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html#services-block"
+    target="_blank">Pivotal documentation</a>.</p><p>Now that the App Autoscaler service
+    is defined and bound to your app, you can add an App Autoscaler manifest file
+    that configures the settings for the service.</p><ol><li style="counter-increment:li
+    1" start="2">Click <strong>Save</strong> to save your manifest.yml file.</li></ol><h5>3.
+    Add Your App Autoscaler Manifest File</h5><p>App Autoscaler manifest files are
+    described in <a href="https://docs.run.pivotal.io/appsman-services/autoscaler/using-autoscaler-cli.html#configure-autoscaling"
+    target="_blank">Configure with a Manifest</a> from Pivotal.</p><ol><li>In your
+    Harness Service, click the options button on <strong>Files</strong>, and then
+    click <strong>Add File</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575325958099/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Add File</strong>, enter the name of the App Autoscaler manifest file,
+    such as <strong>autoscaler.yml</strong>. The file is added to the <strong>Manifests</strong>
+    section.<br/>You can use any name for the App Autoscaler manifest file. Harness
+    will determine which file to use for the service.</li><li>Select the App Autoscaler
+    manifest file and click <strong>Edit</strong>.</li><li>Configure your rules, add
+    instance limits, and set scheduled limit changes for the service. Here is an example:<br/><br/><pre>
+    ---<br/>  instance_limits:<br/>    min: 1<br/>    max: 2<br/>  rules:<br/>    -
+    rule_type: &#34;http_latency&#34;<br/>      rule_sub_type: &#34;avg_99th&#34;<br/>      threshold:<br/>        min:
+    10<br/>        max: 20<br/>  scheduled_limit_changes:<br/>    - recurrence: 10<br/>      executes_at:
+    &#34;2032-01-01T00:00:00Z&#34;<br/>      instance_limits:<br/>        min: 10<br/>        max:
+    20</pre></li><li>Click <strong>Save</strong>. The App Autoscaler manifest file
+    is complete.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575326590689/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p></p><h5>4.
+    Create the App Autoscaler Service Using CF Command</h5><p>To create the App Autoscaler
+    Service, you add a CF Command to your Workflow that uses the <a href="https://plugins.cloudfoundry.org/#Create-Service-Push"
+    target="_blank">Create-Service-Push</a> plugin.</p><p>If the App Autoscaler service
+    is already created and running in your target space, you can skip this step. When
+    Harness deploys the app that is already bound to the App Autoscaler service, it
+    will use the existing App Autoscaler service.</p><p>If the App Autoscaler service
+    is already running, you do not need to remove the CF Command from your Workflow.
+    Harness will check to see if the App Autoscaler service exists before creating
+    it.</p><p>To create the App Autoscaler service using CF Command, do the following:</p><ol><li>Open
+    the Harness Workflow that will deploy the Harness Service containing manifests
+    for the app and its bound App Autoscaler service.</li><li>In your Workflow, click
+    <strong>Add Command</strong> anywhere before the <strong>App Setup</strong> command.
+    Typically, this will be in <strong>Setup</strong>.</li><li>In <strong>Add Command</strong>,
+    click <strong>CF Command</strong>. <strong>CF Command</strong> appears.</li><li>In
+    <strong>Script</strong>, enter the following command:<br/><br/><pre>cf create-service-push
+    --service-manifest ${service.manifest}/manifest.yml  --vars-file ${service.manifest}/vars.yml
+    --no-push</pre>In this example, the app manifest file is named manifest.yml. You
+    can replace manifest.yml with the name of your app manifest. You do not need to
+    specify the name of the App Autoscaler manifest.<br/><br/>For inline manifest
+    files, you can use the <code>${service.manifest}</code> variable. For remote manifest
+    files stored in Git, you can use both the <code>${service.manifest}</code> and
+    <code>${service.manifest.repoRoot}</code> variables. For more information, see
+    <a href="/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#scripts">Scripts</a>.<br/><br/>The
+    <code>--no-push</code> parameter creates the services but does not push the app.
+    The app will be pushed by the <strong>App Setup</strong> command. If you omit
+    <code>--no-push</code> then App Setup will create a new revision of the app. For
+    this reason, it is a best practice is always include <code>--no-push</code>.</li><li>Ensure
+    that you enter the Delegate Tags for the Delegates that have the CF CLI and Create-Service-Push plugin
+    installed. For more information, see <a href="/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#delegate_tags">Delegate
+    Tags</a>.</li><li>Click <strong>Submit</strong>. The CF Command is added.</li></ol><p>Next
+    you can enable the App Setup command to use the App Autoscaler service.</p><h5>5.
+    Enable App Autoscaler in the App Setup Step</h5><p>The <strong>App Setup</strong>
+    command in a Workflow includes a <strong>Use App Autoscaler Plugin</strong> setting
+    so you can enable and disable autoscaling as needed.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1580333525833/image.png"/></figure><p></p><p>Select
+    <strong>Use App Autoscalar Plugin</strong> to enable the App Autoscaler service
+    bound to your app.</p><p>When you deploy your Workflow, the App Autoscalar service
+    is created using the command <code>create-service app-autoscaler standard myautoscaler</code>:</p><p></p><pre>#
+    ------------------------------------------ <br/><br/># CF_HOME value: /Users/johndoe/pcf/harness-delegate/repository/pcfartifacts/RR4DmcgKSzylo4enFUK5gw<br/>#
+    CF_PLUGIN_HOME value: /Users/johndoe<br/># Performing &#34;login&#34;<br/>API
+    endpoint: api.run.pivotal.io<br/><br/>Authenticating...<br/>OK<br/><br/>Targeted
+    org Harness<br/><br/>Targeted space AD00001863<br/><br/>API endpoint:   https://api.run.pivotal.io
+    (API version: 3.77.0)<br/>User:           john.doe@harness.io<br/>Org:            Harness<br/>Space:          AD00001863<br/>#
+    Login Successful<br/># Executing pcf plugin script :<br/>Found Service Manifest
+    File: /Users/johndoe/pcf/harness-delegate/repository/pcfartifacts/RR4DmcgKSzylo4enFUK5gw/manifests/deploy.yml<br/>myautoscaler
+    - will now be created as a brokered service.<br/>Now Running CLI Command: create-service
+    app-autoscaler standard myautoscaler<br/>Creating service instance myautoscaler
+    in org Harness / space AD00001863 as adwait.bhandare@harness.io...<br/>OK<br/>|<br/>--no-push
+    applied: Your application will not be pushed to CF ...<br/># Exit value =0<br/><br/>
+    ----------  PCF Run Plugin Command completed successfully</pre><p></p><h4>Use
+    an Existing App Autoscaler Service</h4><p>You might already have the App Autoscaler
+    service running in your target space, and so some of the steps in <a href="https://docs.harness.io/article/6kt564f64q-using-cli-plugins-in-harness-pcf-deployments#use_a_new_app_autoscaler_service">Use
+    a New App Autoscaler Service</a> can be skipped.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/6kt564f64q/1575308440116/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>If
+    you already have the App Autoscaler service running in your target Pivotal space,
+    then you can simply bind the service in the app manifest file using the <code>services</code>
+    parameter and enable the <strong>Use App Autoscalar Plugin</strong> in <strong>App
+    Setup</strong>. You do not need to set up the following:</p><ul><li>You do not
+    need <code>create-services</code> in the manifest.yml file for your app.</li><li>You
+    do not need a manifest file for the App Autoscaler service.</li><li>You do not
+    need to use the CF Command and <code>cf create-service-push</code> to create the
+    App Autoscaler service.</li></ul><p>Including any of these unnecessary components
+    will not cause a problem. Harness automatically checks for an existing App Autoscaler
+    service before creating a new service.</p><h3>Plugin Directory</h3><p>By default,
+    the CF CLI stores plugins in <code>$CF_HOME/.cf/plugins</code>, which defaults
+    to <code>$HOME/.cf/plugins</code>. For most cases, this location does not need
+    to change.</p><p>To change the root directory of this path from <code>$CF_HOME</code>,
+    set the <code>CF_PLUGIN_HOME</code> environment variable.</p><p>For example:</p><p><code>export
+    CF_PLUGIN_HOME=&#39;&lt;path to plugin home&gt;&#39;</code></p><p>You can set
+    the <code>CF_PLUGIN_HOME</code> environment variable before you install the Delegate.
+    This will ensure that the Delegate Profile that you use to install the CF CLI
+    uses the new <code>CF_PLUGIN_HOME</code>.</p><p>For more information, see <a href="https://docs.cloudfoundry.org/cf-cli/use-cli-plugins.html#plugin-directory"
+    target="_blank">Changing the Plugin Directory</a> from Pivotal.</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>'
+  slug: using-cli-plugins-in-harness-pcf-deployments
+  tags: []
+  is_live: true

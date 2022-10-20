@@ -1,0 +1,262 @@
+type: article
+article_id: 6jfl7i6a5u
+user_id: mfr0nxh4be
+category_id: mlqlmg0tww
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Provision Target Deployment Infra Dynamically with CloudFormation
+slug: provision-target-deployment-infra-dynamically-with-cloud-formation
+description: Provision a CD stage's deployment infrastructure using the CloudFormation
+  Create Stack step.
+short_version: Provision a CD stage's deployment infrastructure using the CloudFormation
+  Create Stack step.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-06-10T17:22:43.383603Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Provision Target Deployment Infra Dynamically with CloudFormation
+  description: Provision a CD stage's deployment infrastructure using the CloudFormation
+    Create Stack step.
+  short_version: Provision a CD stage's deployment infrastructure using the CloudFormation
+    Create Stack step.
+  body: '<p></p><div class="note-callout">Currently, this feature is behind the feature
+    flag <code>CLOUDFORMATION_NG</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p></p><p>This
+    topic describes how to provision a CD stage&#39;s deployment infrastructure resources
+    using the CloudFormation <strong>Create Stack</strong>, <strong>Delete Stack</strong>,
+    and <strong>Rollback Stack</strong> steps.</p><p>You can use these steps in a
+    CD stage&#39;s <strong>Execution</strong> section as part of the deployment process,
+    but this topic describes how to use them in the <strong>Infrastructure</strong>
+    section to provision resources <u>before</u> deployment.</p><p>You use the CloudFormation
+    <strong>Create Stack</strong> step to run a CloudFormation template and supporting
+    files inline or from your repos (Git, AWS S3).</p><p>When you use <strong>Create
+    Stack</strong> in <strong>Infrastructure</strong>, you also have the option to
+    map the CloudFormation outputs and target the provisioned infrastructure. During
+    deployment, Harness first provisions the target deployment infrastructure and
+    then the stage&#39;s Execution steps deploy to the provisioned infrastructure.</p><div
+    class="note-callout">To provision <u>non-target</u> infrastructure resources,
+    add the CloudFormation Create Stack step to the stage <strong>Execution</strong> section
+    instead of the <strong>Infrastructure</strong> section.</div><h3>Before You Begin</h3><ul><li><a
+    href="/article/vu2qi7dfzm-cloud-formation-provisioning-with-harness">CloudFormation
+    Provisioning with Harness</a></li></ul><h3>Limitations</h3><p>Target infrastructure
+    provisioning is limited to what is available in the target environment.</p><p>For
+    example, the cloud-agnostic Kubernetes Cluster Connector requires that you have
+    an existing cluster, so you cannot provision a new cluster. But it does let you
+    provision a namespace.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654190430846/clean-shot-2022-06-02-at-10-19-58.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    1: Enable Dynamic Provisioning</h3><p>These steps assume you&#39;ve created a
+    Harness CD stage before. If Harness CD is new to you, see <a href="https://ngdocs.harness.io/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a>.</p><p>We&#39;ll start in the stage&#39;s <strong>Infrastructure</strong> section
+    because the <strong>Service</strong> settings of the stage don&#39;t have specific
+    settings for CloudFormation provisioning. The Service manifests and artifacts
+    will be deployed to the infrastructure defined in <strong>Infrastructure</strong>.</p><p>In
+    the CD stage, click <strong>Infrastructure</strong>. If you haven&#39;t already
+    specified your <strong>Environment</strong>, and selected the <strong>Infrastructure
+    Definition</strong>, do so.</p><div class="note-callout">If you want to map CloudFormation
+    outputs to the <strong>Infrastructure Definition</strong>, the type of <strong>Infrastructure
+    Definition</strong> you select determines what CloudFormation outputs you can
+    map later.</div><p>In <strong>Dynamic provisioning</strong>, click <strong>Provision
+    your target infrastructure dynamically during the execution of your Pipeline</strong>.</p><p>The
+    default CloudFormation provisioning steps appear:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654190674582/clean-shot-2022-06-02-at-10-24-24.png"/></figure><p>Harness
+    automatically adds the <strong>Create Stack</strong>, <a href="https://ngdocs.harness.io/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages">Harness
+    Approval</a>, and <strong>Delete Stack</strong> steps in <strong>Execution</strong>,
+    and the <strong>Rollback Stack</strong> step in <strong>Rollback</strong>. You
+    can change these steps, but <strong>Create Stack</strong> is required to run your
+    CloudFormation template.</p><p></p><h3>Step 2: CloudFormation Create Stack Step</h3><p>The
+    <strong>Create Stack</strong> step is where you connect Harness to your templates
+    and provide additional settings.</p><h4>Name</h4><p>In <strong>Name</strong>,
+    enter a name for the step, for example, <strong>C</strong><strong>reate EC2 Instance</strong>.</p><p>Harness
+    will create an <a href="/article/li0my8tcz3-entity-identifier-reference">Entity
+    Id</a> using the name. The Id is very important. You can use a Harness expression
+    and Id to refer to settings in this step from another step.</p><p>See <a href="/article/lml71vhsim-harness-variables">Built-in
+    and Custom Harness Variables Reference</a>.</p><h4>Timeout</h4><p>In <strong>Timeout</strong>,
+    enter how long Harness should wait to complete the step before failing the step
+    and initiating the <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    and Stage Failure Strategy</a>.</p><h4>Provisioner Identifier</h4><p>Enter a unique
+    value in <strong>Provisioner Identifier</strong>.</p><p>The <strong>Provisioner
+    Identifier</strong> identifies the provisioning done by this step. You reference
+    the <strong>Provisioner Identifier</strong> in other steps to refer to the provisioning
+    done by this step.</p><div class="note-callout">Only one <strong>Create Stack</strong>
+    step with a specific <strong>Provisioner Identifier</strong> can be added in the
+    same stage. If you add multiple <strong>Create Stack</strong> steps with the same
+    <strong>Provisioner Identifier</strong>, only the first <strong>Create Stack</strong>
+    step will be successful.</div><p>The most common use of <strong>Provisioner Identifier</strong>
+    is between the Create Stack, Delete Stack, and Rollback Stack steps.</p><p>For
+    example, in the case of a <strong>Create Stack</strong> failure, the <strong>Rollback
+    Stack</strong> step rolls back the provisioning from the <strong>Create Stack</strong>
+    step using its <strong>Provisioner Identifier</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654197456868/clean-shot-2022-06-02-at-12-17-27.png"/></figure><h5
+    id="undefined">Provisioner Identifier Scope</h5><p>The <strong>Provisioner Identifier</strong>
+    is a <u>Project-wide</u> setting. You can reference it across Pipelines in the
+    same Project.</p><p>For this reason, it&#39;s important that all your Project
+    members know the Provisioner Identifiers. This will prevent one member building
+    a Pipeline from accidentally impacting the provisioning of another member&#39;s
+    Pipeline.</p><h4>AWS Connector</h4><p>Add or select the Harness <a href="/article/m5vkql35ca-aws-connector-settings-reference">AWS
+    Connector</a> that will be used for this step. The AWS Connector will include
+    the credentials needed to perform the provisioning.</p><p>The credentials required
+    for provisioning depend on what you are provisioning.</p><p>For example, if you
+    wanted to give full access to create and manage EKS clusters, you could use a
+    policy like this:</p><pre class="hljs json">{<br/>     &#34;Version&#34;: &#34;2012-10-17&#34;,<br/>     &#34;Statement&#34;:
+    [<br/>         {<br/>             &#34;Effect&#34;: &#34;Allow&#34;,<br/>             &#34;Action&#34;:
+    [<br/>                 &#34;autoscaling:*&#34;,<br/>                 &#34;cloudformation:*&#34;,<br/>                 &#34;ec2:*&#34;,<br/>                 &#34;eks:*&#34;,<br/>                 &#34;iam:*&#34;,<br/>                 &#34;ssm:*&#34;<br/>             ],<br/>             &#34;Resource&#34;:
+    &#34;*&#34;<br/>         }<br/>     ]<br/> }</pre><p></p><div class="note-callout">Ensure
+    that the credentials include the <code>ec2:DescribeRegions</code> policy described
+    in <a href="/article/m5vkql35ca-aws-connector-settings-reference">AWS Connector</a>.</div><p>See
+    <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html"
+    target="_blank">AWS CloudFormation service role</a> from AWS.</p><h4>Region</h4><p>Select
+    the region for the resources you are provisioning.</p><h4>Template File</h4><p>You
+    can add your template in the following ways:</p><ul><li><strong>Inline:</strong>
+    just enter the template in <strong>Template File</strong>. You can use CloudFormation-compliant
+    JSON or YAML.</li><li><strong>AWS S3:</strong> enter the URL of the S3 bucket
+    containing the template file. This can be a public or private URL. If you use
+    a private URL, the AWS credentials in the <strong>AWS Connector</strong> setting
+    are used for authentication. Ensure that the credentials include the <strong>AmazonS3ReadOnlyAccess</strong>
+    policy and the <code>ec2:DescribeRegions</code> policy described in <a href="/article/m5vkql35ca-aws-connector-settings-reference">AWS
+    Connector</a>.</li><li><strong>Remote:</strong> select a Git repo where you template
+    is located. You&#39;ll add or select a Harness Git Connector for the repo. See
+    <a href="https://newdocs.helpdocs.io/category/xyexvcc206">Code Repo Connectors</a>.</li></ul><h5>Expression
+    and Secret Support in Templates</h5><p>Harness expressions and secrets can be
+    used in templates. They are resolved at runtime.</p><p>See:</p><ul><li><a href="/article/osfw70e59c-add-use-text-secrets">Add
+    and Reference Text Secrets</a></li><li><a href="/article/lml71vhsim-harness-variables">Built-in
+    and Custom Harness Variables Reference</a></li></ul><h4>Stack Name</h4><p>Enter
+    a name for the CloudFormation stack Harness will create.</p><p>This is the same
+    as the <code>--stack-name</code> option in the <code>aws cloudformation create-stack</code>
+    command.</p><pre>aws cloudformation create-stack --stack-name test --template-body
+    file://eks.yml</pre><h4>Option: CloudFormation Parameter Files</h4><p>You can
+    use CloudFormation parameters files to specify input parameters for the stack.</p><p>This
+    is the same as using the AWS CloudFormation CLI <code>create-stack</code> option
+    <code>--parameters</code> and a JSON parameters file:</p><pre>aws cloudformation
+    create-stack --stackname startmyinstance<br/>--template-body file:///some/local/path/templates/startmyinstance.json<br/>--parameters
+    https://your-bucket-name.s3.amazonaws.com/params/startmyinstance-parameters.json</pre><p></p><p>Where
+    the JSON file contains parameters such as these:</p><pre>[<br/>  {<br/>    &#34;ParameterKey&#34;:
+    &#34;KeyPairName&#34;,<br/>    &#34;ParameterValue&#34;: &#34;MyKey&#34;<br/>  },
+    <br/>  {<br/>    &#34;ParameterKey&#34;: &#34;InstanceType&#34;,<br/>    &#34;ParameterValue&#34;:
+    &#34;m1.micro&#34;<br/>  }<br/>]</pre><p></p><p>In <strong>Cloud Formation Parameter
+    Files</strong>, click <strong>Add</strong>.</p><p>In <strong>Parameter File Connector</strong>,
+    select your Git platform, and the select or add a Git Connector. See <a href="https://newdocs.helpdocs.io/category/xyexvcc206">Code
+    Repo Connectors</a> for steps on adding a Git Connector.</p><p>For AWS S3, see
+    <a href="/article/98ezfwox9u-add-aws-connector">Add an AWS Connector</a>.</p><p>In
+    <strong>Parameter File Details</strong>, enter the following:</p><ul><li><strong>Identifier:</strong>
+    enter an Identifier for the file. This is just a name that indicates what the
+    parameters are for.</li><li><strong>Repo Name:</strong> if the Git Connector does
+    not have the repo path, enter it here.</li><li><strong>Git Fetch Type:</strong>
+    select <strong>Latest from Branch</strong> or use a Git commit Id or tag.</li><li><strong>Parameter
+    File Details:</strong> enter the path to the file from the root of the repo. To
+    add multiple files, click <strong>Add Path File</strong>.</li></ul><p>Here&#39;s
+    an example:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654207949340/clean-shot-2022-06-02-at-15-12-18.png"/></figure><h5>Encrypted
+    Text Secrets and Expressions in Parameter Files and Settings</h5><p>Harness expressions
+    and secrets can be used in parameter files and in the <strong>Parameter File Details</strong>
+    settings. They are resolved at runtime.</p><p>See:</p><ul><li><a href="/article/osfw70e59c-add-use-text-secrets">Add
+    and Reference Text Secrets</a></li><li><a href="/article/lml71vhsim-harness-variables">Built-in
+    and Custom Harness Variables Reference</a></li></ul><p></p><h4>Option: CloudFormation
+    Parameters Overrides</h4><p>You can override parameters added in <strong>Parameter
+    File Details</strong>.</p><p>In <strong>CloudFormation Parameters Overrides</strong>,
+    click <strong>Specify Inline Parameters</strong>.</p><p>In <strong>CloudFormation
+    Parameters Overrides</strong>, click <strong>Retrieve Names from template</strong>
+    to retrieve the parameters from the JSON file. You can also manually enter the
+    names and values.</p><p>For each parameter you want to override, enter a new values
+    in <strong>Value</strong>.</p><p>Harness text secrets are supported. See <a href="/article/osfw70e59c-add-use-text-secrets">Add
+    and Reference Text Secrets</a>.</p><h4>Option: Role ARN</h4><p>Enter the AWS Role
+    ARN to use when creating the stack. Use an existing AWS Identity and Access Management
+    (IAM) service role that CloudFormation can assume.</p><p>This is the same as the
+    role you would use when creating a stack using the AWS console <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html"
+    target="_blank">Permissions</a> setting or CLI.</p><p>See <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html"
+    target="_blank">AWS CloudFormation service role</a> from AWS.</p><h4>Option: Specify
+    Capabilities</h4><p>To acknowledge the capabilities in the CloudFormation template,
+    click in <strong>Specify Capabilities</strong> and select capabilities.</p><p>This
+    acknowledges that the template contains certain capabilities (for example, <code>CAPABILITY_AUTO_EXPAND</code>),
+    giving AWS CloudFormation the specified capabilities before it creates the stack.
+    This is the same as using the <code>--capabilities</code> option in the <code>aws
+    cloudformation create-stack</code> CLI command. See <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/create-stack.html"
+    target="_blank">create-stack</a>.</p><h4>Option: Tags</h4><p>Tags are arbitrary
+    key-value pairs that can be used to identify your stack for purposes such as cost
+    allocation.</p><p>A <strong>Key</strong> consists of any alphanumeric characters
+    or spaces. Tag keys can be up to 127 characters long.</p><p>A <strong>Value</strong> consists
+    of any alphanumeric characters or spaces. Tag values can be up to 255 characters
+    long.</p><p>Enter the tags in JSON or YAML (lowercase is required):</p><pre class="hljs
+    json">[{<br/>    &#34;key&#34;: &#34;string&#34;,<br/>    &#34;value&#34;: &#34;string&#34;<br/>},{<br/>    &#34;key&#34;:
+    &#34;string&#34;,<br/>    &#34;value&#34;: &#34;string&#34;<br/>}]</pre><h4>Option:
+    Continue Based on Stack Statuses</h4><p>In <strong>Continue Based on Stack Statuses</strong>,
+    you can add the stack states that allow provisioning.</p><div class="note-callout">Harness
+    checks if the stack is in <code>ROLLBACK_COMPLETE</code> state before the deployment.
+    If present, Harness deletes the stack and then triggers the deployment.</div><p></p><h4>Option:
+    Advanced Settings</h4><p>In <strong>Advanced</strong>, you can use the following
+    options:</p><ul><li><a href="/article/i36ibenkq2-step-skip-condition-settings">Step
+    Skip Condition Settings</a></li><li><a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    Failure Strategy Settings</a></li><li><a href="/article/nnuf8yv13o-select-delegates-with-selectors">Select
+    Delegates with Selectors</a></li></ul><p></p><h3>Option: Harness Approval Step</h3><p>By
+    default, Harness adds an Approval step between the Create Stack and Delete Stack
+    steps. You can remove this step or follow the steps in <a href="/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages">Using
+    Manual Harness Approval Steps in CD Stages</a> to configure the step.</p><p>You
+    can also use other Approval step types.</p><p>See:</p><ul><li><a href="/article/yu40zr6cvm-create-jira-issues-in-cd-stages">Create
+    Jira Issues in CD Stages</a></li><li><a href="/article/tjkyd945nh-create-service-now-tickets-in-cd-stages">Create
+    ServiceNow Tickets in CD Stages</a></li></ul><h3>Option: Delete Stack</h3><p>The
+    Delete Stack step is added by default.</p><p>You can use the Delete Stack step
+    to remove resources provisioned by the Create Stack step or any resources created
+    by CloudFormation.</p><h4>Configuration Type</h4><p>There are two options:</p><ul><li><strong>Inline:</strong>
+    similar to <code>aws cloudformation delete-stack --stack-name my-stack</code>.
+    <strong>Inline</strong> removes the stack you identify using these settings:<ul><li><strong>AWS
+    Connector:</strong> add or select the Harness AWS Connector for connecting to
+    AWS. Ensure its credentials have the permissions needed to remove the resources.
+    See <a href="/article/m5vkql35ca-aws-connector-settings-reference">AWS Connector</a>.</li><li><strong>Region:</strong>
+    select the region for the resources you are removing.</li><li><strong>Role ARN:</strong>
+    enter the AWS Role ARN to use when deleting the stack. This is the same as the
+    role you would use when deleting a stack using the AWS console or CLI.</li><li><strong>Stack
+    Name:</strong> enter the name of the stack to delete.</li></ul></li><li><strong>Inherit
+    from Create:</strong> removes the resources defined in the Harness <strong>Create
+    Stack</strong> step that you identify using <strong>Provisioner Identifier</strong>.
+    </li></ul><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654212296987/clean-shot-2022-06-02-at-16-24-44.png"/></figure><h3>Option:
+    Map Outputs to Target Infra Settings</h3><p>Now that the Create Stack step is
+    set up in <strong>Dynamic provisioning</strong>, Harness is configured to provision
+    the infrastructure defined in your CloudFormation template.</p><p>There are two
+    options:</p><ol><li>If you are simply provisioning a resource in your deployment
+    infrastructure that is not intended as the deployment target, such as an AWS secret,
+    you can define the deployment target in <strong>Infrastructure Definition</strong>
+    as you would if you were not provisioning anything.</li><li>If you will deploy
+    directly into the provisioned resource as part of the deployment target, you need
+    to provide the required <strong>Infrastructure Definition</strong> settings so
+    Harness can <u>target</u> and deploy to the provisioned infrastructure.</li></ol><p>We&#39;ll
+    cover option 2.</p><p>The required settings are specific outputs from your CloudFormation
+    template. Which settings are required depends on the type of target infrastructure
+    you are provisioning/targeting.</p><p>For example, a platform-agnostic Kubernetes
+    cluster infrastructure only requires the target <u>namespace</u> in the target
+    cluster.</p><p>To map the CloudFormation template output to the Infrastructure
+    Definition setting, ensure that the template has the CloudFormation Output defined.</p><p>In
+    the <strong>Infrastructure Definition</strong> setting, select <strong>Expression</strong>:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654212771091/clean-shot-2022-06-02-at-16-32-42.png"/></figure><p>In
+    the setting, enter a Harness expression that references the output.</p><p>The
+    expressions follow the format:</p><p><code>&lt;+infrastructureDefinition.provisioner.steps.[Create
+    Stack step Id].output.[output name]&gt;</code></p><p>You can find the Id in the
+    step:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654212993340/clean-shot-2022-06-02-at-16-36-05.png"/></figure><p>For
+    example, for a Kubernetes deployment, you need to map the <code>namespace</code>
+    output to the <strong>Namespace</strong> setting in Infrastructure Definition.</p><p>So
+    for a Create Stack step with the Id <strong>create123</strong> and an output named
+    <strong>namespace</strong>, the expression is:</p><p><code>&lt;+infrastructureDefinition.provisioner.steps.create123.output.namespace&gt;</code></p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654213131206/clean-shot-2022-06-02-at-16-38-40.png"/></figure><p>Now
+    Harness has the provisioned target infrastructure set up.</p><h3>Step 3: CloudFormation
+    Rollback Stack Step</h3><p>The CloudFormation Rollback Step is automatically added
+    to the <strong>Rollback</strong> section.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6jfl7i6a5u/1654213245650/clean-shot-2022-06-02-at-16-39-57.png"/></figure><p>When
+    rollback happens, Harness runs the last successfully provisioned version of the
+    stack.</p><p>Open <strong>CloudFormation Rollback Stack</strong>.</p><p>Enter
+    a name and timeout for the step.</p><p>In <strong>Provisioner Identifier</strong>,
+    enter the <u>same</u> Provisioner Identifier you used in the Create Stack step.</p><p>Harness
+    determines what to rollback using a combination of <code>Provisioner Identifier
+    + Harness account id + Harness org id + Harness project id</code>.</p><p>If you&#39;ve
+    made these settings expressions, Harness uses the values it obtains at runtime
+    when it evaluates the expression.</p><h3>Summary</h3><p>Now that you have the
+    Create Stack and Rollback Stack steps set up, when you run your Pipeline Harness
+    will provision your CloudFormation stack and perform rollback on failure.</p><p></p>'
+  slug: provision-target-deployment-infra-dynamically-with-cloud-formation
+  tags: []
+  is_live: true

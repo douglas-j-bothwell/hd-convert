@@ -1,0 +1,136 @@
+type: article
+article_id: yo2jldlq45
+user_id: mfr0nxh4be
+category_id: 872aodnvl1
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Infrastructure
+slug: embedded-kubernetes-on-prem-infrastructure-requirements
+description: This document lists the infrastructure requirements for a Harness Self-Managed
+  Enterprise Edition - Virtual Machine installation. Harness Self-Managed Enterprise
+  Edition - Virtual Machine refers to i…
+short_version: This document lists the infrastructure requirements for a Harness Self-Managed
+  Enterprise Edition - Virtual Machine installation. Harness Self-Managed Enterprise
+  Edition - Virtual Machine refers to i…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-21T00:07:23.567298Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Infrastructure
+  description: ""
+  short_version: ""
+  body: '<p>This document lists the infrastructure requirements for a Harness Self-Managed
+    Enterprise Edition - Virtual Machine installation.</p><p>Harness Self-Managed
+    Enterprise Edition - Virtual Machine refers to installing the Harness Self-Managed
+    Enterprise Edition Kubernetes cluster on VMs.</p><p>First, you use the requirements
+    below to bootstrap a Kubernetes cluster on your target VMs.</p><p>After you stand
+    up the Kubernetes cluster, you use it to install Harness Self-Managed Enterprise
+    Edition - Virtual Machine on the configured cluster.</p><h3>Supported Operating
+    Systems</h3><ul><li>Ubuntu 18.04 (recommended)</li><li>CentOS 7.4, 7.5, 7.6, 7.7</li><li>RHEL
+    7.4, 7.5, 7.6, 7.7</li></ul><h3>VM Specifications</h3><p>There are different VM
+    specifications for production and development installations.</p><h4>Number of
+    VMs</h4><p>The number of VMs depends on the configuration mode you select during
+    installation:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/yo2jldlq45/1612396550813/image.png"/></figure><ul><li><strong>Demo:</strong>
+    1 VM.</li><li><strong>Single node production:</strong> 1 VM.</li><li><strong>HA
+    production mode:</strong> 3 VMs.</li></ul><p>You&#39;ll be able to add more nodes
+    to the cluster later, if needed.</p><h4>Production Installation</h4><p>VM Specifications:
+    15 cores, 30 GB memory, 400 GB disk space.</p><p>Here are the requirements for
+    each microservice.</p><table><tbody><tr><td><p><strong>Microservice</strong></p></td><td><p><strong>Pods</strong></p></td><td><p><strong>CPU
+    / Pod</strong></p></td><td><p><strong>Memory / Pod</strong></p></td><td><p><strong>Total
+    CPU</strong></p></td><td><p><strong>Total Memory</strong></p></td></tr><tr><td><p>Manager</p></td><td><p>2</p></td><td><p>2</p></td><td><p>4</p></td><td><p>4</p></td><td><p>8</p></td></tr><tr><td><p>Verification</p></td><td><p>2</p></td><td><p>1</p></td><td><p>3</p></td><td><p>2</p></td><td><p>6</p></td></tr><tr><td><p>Machine
+    Learning Engine</p></td><td><p>1</p></td><td><p>8</p></td><td><p>2</p></td><td><p>8</p></td><td><p>2</p></td></tr><tr><td><p>UI</p></td><td><p>2</p></td><td><p>0.25</p></td><td><p>0.25</p></td><td><p>0.5</p></td><td><p>0.5</p></td></tr><tr><td><p>MongoDB</p></td><td><p>3</p></td><td><p>4</p></td><td><p>8</p></td><td><p>12</p></td><td><p>24</p></td></tr><tr><td><p>Proxy</p></td><td><p>1</p></td><td><p>0.5</p></td><td><p>0.5</p></td><td><p>0.5</p></td><td><p>0.5</p></td></tr><tr><td><p>Ingress</p></td><td><p>2</p></td><td><p>0.25</p></td><td><p>0.25</p></td><td><p>0.5</p></td><td><p>0.5</p></td></tr><tr><td><p>TimescaleDB</p></td><td><p>3</p></td><td><p>2</p></td><td><p>8</p></td><td><p>6</p></td><td><p>24</p></td></tr><tr><td><p>KOTS
+    Admin and Kubernetes Installations</p></td><td><p> </p></td><td><p> </p></td><td><p> </p></td><td><p>10</p></td><td><p>18</p></td></tr><tr><td><p><strong>Total</strong></p></td><td><p><strong> </strong></p></td><td><p><strong> </strong></p></td><td><p><strong> </strong></p></td><td><p><strong>43.5</strong></p></td><td><p><strong>83.5</strong></p></td></tr></tbody></table><h4>Dev
+    Installation</h4><p>VM Specifications: 10 cores, 16 GB memory, 100 GB disk space.</p><p>Here
+    are the requirements for each microservice.</p><table><tbody><tr><td><p><strong>Microservice</strong></p></td><td><p><strong>Pods</strong></p></td><td><p><strong>CPU
+    / Pod</strong></p></td><td><p><strong>Memory / Pod</strong></p></td><td><p><strong>Total
+    CPU</strong></p></td><td><p><strong>Total Memory</strong></p></td></tr><tr><td><p>Manager</p></td><td><p>1</p></td><td><p>2</p></td><td><p>4</p></td><td><p>2</p></td><td><p>4</p></td></tr><tr><td><p>Verification</p></td><td><p>1</p></td><td><p>1</p></td><td><p>3</p></td><td><p>1</p></td><td><p>3</p></td></tr><tr><td><p>Machine
+    Learning Engine</p></td><td><p>1</p></td><td><p>3</p></td><td><p>2</p></td><td><p>3</p></td><td><p>2</p></td></tr><tr><td><p>UI</p></td><td><p>1</p></td><td><p>0.25</p></td><td><p>0.25</p></td><td><p>0.25</p></td><td><p>0.25</p></td></tr><tr><td><p>MongoDB</p></td><td><p>3</p></td><td><p>2</p></td><td><p>4</p></td><td><p>6</p></td><td><p>12</p></td></tr><tr><td><p>Proxy</p></td><td><p>1</p></td><td><p>0.5</p></td><td><p>0.5</p></td><td><p>0.5</p></td><td><p>0.5</p></td></tr><tr><td><p>Ingress</p></td><td><p>1</p></td><td><p>0.25</p></td><td><p>0.25</p></td><td><p>0.25</p></td><td><p>0.25</p></td></tr><tr><td><p>TimescaleDB</p></td><td><p>1</p></td><td><p>2</p></td><td><p>8</p></td><td><p>2</p></td><td><p>8</p></td></tr><tr><td><p>KOTS
+    Admin Pods</p></td><td><p> </p></td><td><p> </p></td><td><p> </p></td><td><p>10</p></td><td><p>17.75</p></td></tr><tr><td><p><strong>Total</strong></p></td><td><p><strong> </strong></p></td><td><p><strong> </strong></p></td><td><p><strong> </strong></p></td><td><p><strong>25</strong></p></td><td><p><strong>47.75</strong></p></td></tr></tbody></table><p> </p><h3>Networking
+    Architecture</h3><p>The following examples diagram illustrate the simple networking
+    architecture for Harness Self-Managed Enterprise Edition - Virtual Machine.</p><p>GCP
+    Example:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/yo2jldlq45/1650921884439/clean-shot-2022-04-25-at-14-24-33.png"/></figure><p>AWS
+    Example:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/yo2jldlq45/1650921904540/clean-shot-2022-04-25-at-14-24-50.png"/></figure><p>The
+    following sections go into greater detail.</p><h3>Open Ports for 3 VMs</h3><ul><li>TCP
+    ports 6443-6783</li><li>UDP ports 6783 and 6784</li><li>TCP port 80 for exposing
+    Harness. Port 80/443 is used as the backend of the load balancer routing traffic
+    to the VMs.</li><li>TCP ports 30900-30905 for monitoring (Grafana Dashboards,
+    Prometheus)</li><li>The KOTS admin tool requires 8800.</li></ul><p>For example,
+    here is a GCP firewall rule that includes the required ports (80 is already open):</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/yo2jldlq45/1626285234366/clean-shot-2021-07-14-at-10-53-41.png"/></figure><h3>Load
+    Balancer</h3><p>There are two load balancers required for a Harness Self-Managed
+    Enterprise Edition - Virtual Machine installation.</p><h4>Load Balancer to Harness
+    Self-Managed Enterprise Edition Application</h4><p>A load balancer routing all
+    the incoming traffic to the port where Harness is exposed on all of the VM’s.
+    Once you install Harness, this port will be used for accessing Harness Self-Managed
+    Enterprise Edition.</p><ul><li>The load balancer can be any of L4 or L7.</li><li>The
+    load balancer should forward unencrypted traffic to the nodes.</li></ul><p>Different
+    cloud platforms have different methods for setting up load balancers and traffic
+    routing.</p><p>For example, in GCP, you create an HTTP Load Balancer with a frontend
+    listening on port 80 and a backend sending traffic to the Instance group containing
+    your VMs on port 80.</p><p>Later, when you configure Harness Self-Managed Enterprise
+    Edition, you will enter the frontend IP address in <strong>Load Balancer URL</strong>
+    and the backend port 80 in the <strong>NodePort</strong> setting:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/yo2jldlq45/1626285726511/clean-shot-2021-07-14-at-11-01-50.png"/></figure><p>You
+    can also use port 443 for TLS.</p><p>Typically, you will also set up DNS to resolve
+    a domain to the frontend IP, and then use the domain name in <strong>Load Balancer
+    URL</strong>.</p><h5>Port Mapping for gRPC Traffic</h5><p>You also need to open
+    port 9879 on the Load Balancer and map it to port 9879 on the Ingress controller.
+    This is to support gRPC traffic.</p><h4>In-Cluster Load Balancer for High Availability</h4><p>A
+    TCP forwarding load balancer (L4) distributing the traffic on port 6443. This
+    will be used for Kubernetes cluster HA. The health check should be on port 6443,
+    also.</p><p>The TCP load balancer you created will be selected when you install
+    Harness using the KOTS plugin via the <code>-s ha</code> parameter:</p><pre>$
+    curl -sSL https://k8s.kurl.sh/harness | sudo bash -s ha<br/>The installer will
+    use network interface &#39;ens4&#39; (with IP address &#39;10.128.0.25&#39;)<br/>Please
+    enter a load balancer address to route external and internal traffic to the API
+    servers.<br/>In the absence of a load balancer address, all traffic will be routed
+    to the first master.<br/>Load balancer address:</pre><p>You will enter the IP
+    address of your TCP load balancer.</p><p>For example, here is a GCP TCP load balancer
+    with its frontend forwarding rule using port 6443:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/yo2jldlq45/1594938385189/image.png"/></figure><p>When
+    the kurl installation prompts you for the load balancer IP address, you will enter
+    the load balancer IP and port 6443. For example <code>10.128.0.50:6443</code>.</p><p>See
+    <a href="https://kots.io/kotsadm/installing/installing-embedded-cluster/#ha-installations"
+    target="_blank">HA Installations</a> from KOTS.</p><h3>User Access Requirements</h3><p>For
+    initial setup: sudo/root access is required.</p><h3>Network Requirements</h3><p>Whitelist
+    the following URLs:</p><ul><li>kots.io — Kots pulls the latest versions of the
+    kubectl plugin and Kots admin console.</li><li>app.replicated.com — Kots admin
+    console connects to check for the availability of releases according to your license</li><li>proxy.replicated.com
+    — Proxy your registry to pull your private images.</li></ul><p>Outbound access
+    to the following URLs:</p><ul><li>proxy.replicated.com​</li><li>replicated.app</li><li>k8s.kurl.sh​</li><li>app.replicated.com</li></ul><div
+    class="note-callout">The outbound access is required for a <strong>connected install
+    only</strong>. If you have opted for <a href="https://kots.io/kotsadm/installing/airgap-packages/"
+    target="_blank">Airgap mode</a>, this is not required.</div><p>If your cluster
+    does not have direct outbound connectivity and needs a proxy for outbound connections,
+    use these instructions: <a href="https://docs.docker.com/network/proxy/">https://docs.docker.com/network/proxy</a>
+    to set up a proxy on the node machines.</p><h3>Trusted Certificate Requirement
+    for Harness Self-Managed Enterprise Edition</h3><p>All connections to the Harness
+    Manager can be secure or unencrypted according to the URL scheme you use when
+    you configure the Load Balancer URL during installation (<code>https://</code>
+    or <code>http://</code>):</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/v6x4n5j9lv/1604688719498/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>For
+    secure connections from any integration into the Harness Manager (Github Webhooks,
+    etc), including the <strong>Harness Delegate</strong>, you must use a <u>publicly
+    trusted certificate</u>.</p><p>Harness does not support self-signed certificates
+    for connections to the Harness Manager.</p><p>For connections from the Harness
+    Manager outbound to an integration, you can use a self-signed certificate. In
+    this case, you must import the self-signed certificate into Harness Delegate&#39;s
+    JRE keystore manually or using a Harness <a href="https://docs.harness.io/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles">Delegate
+    Profile</a>.</p><p>See <a href="/article/8bj3v5jqzk-add-self-signed-certificates-for-delegate-connections">Add
+    Self-Signed Certificates for Delegate Connections</a>.</p><h3>Install Harness
+    Self-Managed Enterprise Edition</h3><p>Now that you have set up the requirements,
+    proceed with installation in <a href="/article/kgvg58wg1g-on-prem-embedded-cluster-setup">Harness
+    Self-Managed Enterprise Edition - Virtual Machine: Installation Guide</a>.</p><p></p>'
+  slug: embedded-kubernetes-on-prem-infrastructure-requirements
+  tags: []
+  is_live: true

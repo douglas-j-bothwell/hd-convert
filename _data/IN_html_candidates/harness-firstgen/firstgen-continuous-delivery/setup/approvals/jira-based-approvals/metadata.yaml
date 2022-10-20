@@ -1,0 +1,101 @@
+type: article
+article_id: qxki6o7y31
+user_id: slcpusem6b
+category_id: 4edbfn50l8
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Jira Approvals
+slug: jira-based-approvals
+description: Describes how to add Jira based approvals for a Pipeline or a Workflow.
+short_version: Describes how to add Jira based approvals for a Pipeline or a Workflow.
+tags:
+- Jira-based Approvals
+- Pipeline Approval
+- Workflow Approval
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-24T18:50:19.550543Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Jira Approvals
+  description: Describes how to add Jira based approvals for a Pipeline or a Workflow.
+  short_version: Describes how to add Jira based approvals for a Pipeline or a Workflow.
+  body: '<p>You can use Jira to approve or reject a Workflow or Pipeline step.</p><p>In
+    your Harness Workflow or Pipeline, you define a Jira ticket and approval and rejection
+    criteria. During deployment, a Jira ticket is created and its approval/rejection
+    determines if the Pipeline (and Workflow) deployment may proceed. For details
+    on integrating Jira with Harness, see <a href="/article/077hwokrpr-jira-integration">Jira
+    Integration</a>.</p><p>The other approval mechanisms are:</p><ul><li><a href="/article/0ajz35u2hy-approvals">Harness
+    UI Approvals</a></li><li><a href="/article/9nkuhm8moo-service-now-ticketing-system">ServiceNow
+    Approvals</a></li><li><a href="/article/lf79ixw2ge-shell-script-ticketing-system">Custom
+    Shell Script Approvals</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/m220i1tnia-workflow-configuration">Workflows</a></li><li><a
+    href="/article/zc1u96u6uj-pipeline-configuration">Pipelines</a></li><li><a href="/article/60j7391eyy-templatize-pipelines">Create
+    Pipeline Templates</a></li><li><a href="/category/w98t8pl547-expressions">Use
+    Variable Expressions</a></li></ul><h3>Step: Add an Approval Step</h3><ol><li>In
+    your Pipeline, in <strong>Pipeline Stages</strong>, click <strong>+</strong>.
+    The following settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qxki6o7y31/1604573166683/screenshot-2020-11-05-at-4-15-49-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Select
+    <strong>Approval Step</strong>.</li><li>Select <strong>Jira</strong> in the <strong>Ticketing
+    System</strong>.</li><li>Select the Jira account in <strong>Jira Connector</strong>
+    that you want to use by selecting the Collaboration Provider you added for the
+    account. For more information, see <a href="/article/bhpffyx0co-add-jira-collaboration-provider">Add
+    Jira Collaboration Provider</a>.</li><li>Select the Jira <strong>Project</strong>
+    containing the Jira issue you want to use for approval. You can enter text and
+    expressions together.</li><li>Enter the <strong>Key/Issue ID</strong>. It is the
+    output variable for a Jira issue created in a Workflow, for example <code>${Jiravar.issueId}</code>.
+    You can enter the Jira Key/Issue ID for any Jira issue in the Jira project. You
+    can also enter text and expressions together.</li><li>Enter the time duration
+    in <strong>Timeout</strong> that Harness should wait for the approval or rejection
+    before failing the deployment. You can use <code><strong>w</strong></code>  for
+    week, <code><strong>d</strong></code>  for day, <code><strong>h</strong></code>  for
+    hour, <code><strong>m</strong></code>  for minutes, <code><strong>s</strong></code>  for
+    seconds and <code><strong>ms</strong></code> for milliseconds. For example, 1d
+    for one day.<div class="note-callout">The maximum is 3w 3d 20h 30m.</div></li><li>Enter
+    a value for approving the Pipeline. You can select a status from the <strong>Approved
+    Pipeline if Jira Status is</strong> drop-down list or enter an expression. You
+    can enter text and expressions together.</li><li>Enter a value for rejecting the
+    Pipeline. You can select a status from the <strong>Rejected</strong> <strong>Pipeline
+    if Jira Status is</strong> drop-down list or enter an expression. You can enter
+    text and expressions together.</li><li>Select <strong>Execute in Parallel with
+    Previous Step</strong> checkbox to execute the steps in parallel.</li><li>Select
+    either <strong>Do not skip</strong> or <strong>Skip always</strong> for setting
+    the skip option. For more information, see <a href="https://docs.harness.io/article/6kefu7s7ne-skip-conditions#skip_execution">Skip
+    Execution</a>.</li><li>Click <strong>Submit</strong>.</li><li>Deploy your Pipeline
+    and go to the <strong>Deployments</strong> page. The <strong>Approval Stage</strong>
+    displays the following information:</li></ol><ul><li><strong>Message</strong>:
+    The &#34;Message&#34; appears only when the stage of a Pipeline is completed,
+    and there is no action pending from the user or system. It displays the completed
+    status of the process. For example, approval provided, approval rejected, or Pipeline
+    aborted.</li><li><strong>Started At</strong>: The time at which the Pipeline was
+    triggered.</li><li><strong>Ended At</strong>: The time at which the system or
+    a user completed the approval process.</li><li><strong>Issue URL</strong>: Link
+    to the Jira issue.</li><li><strong>Timeout</strong>: The time duration that Harness
+    should wait for the approval or rejection before killing the deployment process.</li><li><strong>Triggered
+    By</strong>: The user who triggered the Pipeline deployment. It can be triggered
+    using a <a href="/article/zc1u96u6uj-pipeline-configuration">Pipeline</a> or <a
+    href="/article/xerirloz9a-add-a-trigger-2">Trigger</a> process.</li><li><strong>Approval
+    Criteria</strong>: Criterion set for approving the request.</li><li><strong>Current
+    Value</strong>: Current status of Jira issue.</li><li><strong>Rejection Criteria</strong>:
+    Criterion set for rejecting the request.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qxki6o7y31/1588866835686/screenshot-2020-05-07-at-9-07-05-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ul><p></p><p></p><p>You
+    can click on the <strong>Issue URL</strong> link to see the Jira issue in Jira&#39;s
+    UI and select set approval or rejection criteria. In this example, the status <strong>Done</strong> fulfills
+    the Approval Criteria.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/qxki6o7y31/1588868785490/screenshot-2020-05-07-at-9-55-46-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><p></p><p>Once
+    the Jira issue is approved, the Approval stage turns green in <strong>Deployments</strong>,
+    and the deployment continues.</p><p></p>'
+  slug: jira-based-approvals
+  tags:
+  - Jira-based Approvals
+  - Pipeline Approval
+  - Workflow Approval
+  is_live: true

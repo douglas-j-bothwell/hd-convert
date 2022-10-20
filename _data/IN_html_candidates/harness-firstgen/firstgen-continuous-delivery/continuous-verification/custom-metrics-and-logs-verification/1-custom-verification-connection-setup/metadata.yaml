@@ -1,0 +1,144 @@
+type: article
+article_id: 9xvrgqy2dd
+user_id: mfr0nxh4be
+category_id: ep5nt3dyrb
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: 1 - Custom Verification Connection Setup
+slug: 1-custom-verification-connection-setup
+description: Connect custom verification providers to Harness, enabling these APM
+  metrics and logging providers to verify the success of your deployments and live
+  microservices.
+short_version: Connect Harness to Custom APM metrics and logging providers to verify
+  the success of deployments.
+tags:
+- Verification Provider
+- verification
+- application performance monitoring
+- APM
+- Deployment Verification
+- setup
+- log
+- 24/7 Service Guard
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:46.278764Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 1 - Custom Verification Connection Setup
+  description: Connect custom verification providers to Harness, enabling these APM
+    metrics and logging providers to verify the success of your deployments and live
+    microservices.
+  short_version: Connect Harness to Custom APM metrics and logging providers to verify
+    the success of deployments.
+  body: '<p>The first step in using a Custom APM with Harness is to set up a Custom
+    APM Verification Provider in Harness.</p><p>A Harness Verification Provider is
+    a connection to monitoring tools such as a Custom APM. Once Harness is connected,
+    you can use Harness Deployment Verification with your Custom APM data and analysis.</p><h3>Custom
+    APM Verification Provider Setup</h3><p>Connect Harness to a Custom Metrics or
+    Logs Provider to have Harness verify the success of your deployments. Harness
+    will use your tools to verify deployments and use its machine learning features
+    to identify sources of failures.</p><p>To connect a custom metrics or logs provider,
+    do the following:</p><ol><li>Click <strong>Setup</strong>.</li><li>Click <strong>Connectors</strong>.</li><li>Click
+    <strong>Verification Providers</strong>.</li><li>Click <strong>Add Verification
+    Provider</strong>, and click <strong>Custom Verification</strong>.</li></ol><p>The
+    <strong>Metrics/Logs Data Provider</strong> dialog appears. In <strong>Type</strong>,
+    select <strong>Metrics Data Provider</strong> or <strong>Custom Logs Provider</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/27w7uso9r4/1561412245998/image.png"
+    style="max-height:505;max-width:50%" data-hd-height="505" data-hd-width="50%"/></figure><h4>Metrics
+    Data Provider</h4><p>In the <strong>Metrics Data Provider</strong> dialog, you
+    can configure how Harness can query event data via API.</p><p>For example, with
+    New Relic Insights, you are configuring the <strong>Metrics Data Provider</strong>
+    dialog to perform a cURL request like the following:</p><pre>curl -H &#34;Accept:
+    application/json&#34; \<br/>-H &#34;X-Query-Key: YOUR_QUERY_KEY&#34; \<br/>&#34;https://insights-api.newrelic.com/v1/accounts/<strong>YOUR_ACCOUNT_ID</strong>/query?nrql=<strong>YOUR_QUERY_STRING</strong>&#34;</pre><div
+    class="note-callout">To query event data via API in New Relic Insights, you will
+    need to set up an API key in New Relic. For more information, see <a href="https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api"
+    target="_blank">Query Insights event data via API</a> from New Relic.</div><p>The
+    purpose of the <strong>Metrics Data Provider</strong> dialog is to validate the
+    credentials and validation path you enter and return an HTTP 200 from your metrics
+    provider.</p><p>The <strong>Metrics Data Provider</strong> dialog has the following
+    fields.</p><table><tbody><tr><td><p><strong>Field</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><strong>Type</strong></p></td><td><p>Select
+    <strong>Metrics Data Provider</strong>.</p></td></tr><tr><td><p><strong>Display
+    Name</strong></p></td><td><p>The name for this Verification Provider connector
+    in Harness. This is the name you will use to reference this Verification Provider
+    whenever you use it to add a verification step to a Workflow.</p></td></tr><tr><td><p><strong>Base
+    URL</strong></p></td><td><p>Enter the URL for API requests. For example, in New
+    Relic Insights, you can change the default URL to get the Base URL for the API.<strong>Default
+    URL:</strong> https://insights.newrelic.com/accounts/12121212<strong>Base URL
+    for API:</strong> https://<strong>insights-api.newrelic.com/v1</strong>/accounts/12121212</p></td></tr><tr><td><p><strong>Headers</strong></p></td><td><p>Add
+    the query headers required by your metrics data provider. For New Relic Insights,
+    do the following:</p><ol><li>Click <strong>Add Headers</strong>.</li><li>In <strong>Key</strong>,
+    enter <strong>X-Query-Key</strong>. For New Relic, a X-Query-Key must contain
+    a valid query key.</li><li>In <strong>Value</strong>, enter the key, or click
+    <strong>Use Secret</strong> and select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a> for the API key you got from New Relic.</li><li>Click
+    the checkbox under <strong>Encrypted Value</strong> to encrypt the key.</li><li>Click
+    <strong>Add Headers</strong> again.</li><li>In <strong>Key</strong>, enter <strong>Accept</strong>.
+    This is for the Content-Type of a query.</li><li>In <strong>Value</strong>, enter
+    <strong>application/json</strong>. The Content-Type of a query must be application/json.</li></ol></td></tr><tr><td><p><strong>Parameters</strong></p></td><td><p>Add
+    any request parameters that do not change for every request.</p><p>In <strong>Value</strong>,
+    enter the key, or click <strong>Use Secret</strong> and select or create a new
+    <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness Encrypted Text
+    secret</a> for the API key you got from New Relic.</p></td></tr><tr><td><p><strong>Validation
+    Path</strong></p></td><td><p>In <strong>Path</strong>, you will define a validation
+    path. Enter the query string from your metric provider. The resulting URL (<strong>{base_URL}/{validation_path}</strong>)
+    is used to validate the connection to the metric provider. This query is invoked
+    with the headers and parameters defined here.For example, in New Relic Insights,
+    you can take the query from the <strong>NRQL&gt;</strong> field and add it to
+    the string <strong>query?nrql=</strong>, for example:</p><pre>query?nrql=SELECT%20average%28duration%29%20FROM%20PageView</pre><p>The
+    field accepts URL encoded or unencoded queries.</p><p>If you select <strong>POST</strong>,
+    the <strong>Body</strong> field appears. Enter a sample JSON body to send as the
+    payload when making the call to the APM provider. The requirements of the JSON
+    body will depend on your APM provider.</p></td></tr></tbody></table><h4>Custom
+    Logs Provider</h4><p>For any log providers without native support in Harness,
+    you can specify the API calls needed to make a connection. The purpose of the
+    Custom Logs Provider settings are to validate the credentials and validation path
+    you enter and return an HTTP 200 from your logs provider.</p><p>To add a Custom
+    Logs Provider, do the following:</p><ol><li>In <strong>Display Name</strong>,
+    give the Verification Provider a name. You will use this name to select this provider
+    in a Workflow.</li><li>In <strong>Base URL</strong>, enter the base URL of the
+    REST endpoint where Harness will connect. Often, the URL is the server name followed
+    by the index name, such as <code>http://server_name/index_name</code>.</li><li>In
+    <strong>Parameters</strong>, click <strong>Add Parameters</strong>, and add any
+    required parameters.</li><li>In <strong>Validation Path</strong>, you will define
+    a validation path used by Harness to validate the connection and ensure a Harness
+    Delegate can reach the provider. Harness expects an HTTP 200 response.</li></ol><p>When
+    you are finished, the dialog will look something like this:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/27w7uso9r4/1562883782130/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click
+    <strong>TEST</strong> to validate the settings and <strong>SUBMIT</strong> to
+    add the Verification Provider.</p><h3>Encrypted Text Secrets in Body</h3><p>In
+    some cases, you might need to include a token in the <strong>Body</strong> in
+    <strong>Validation Path</strong>. You can enter your token in <strong>Body</strong>,
+    but to protect your token, you can add it to Harness as an Encrypted Text secret
+    and then reference it in Body using the <code>${secrets.getValue(&#34;secret_name&#34;)}</code>
+    syntax:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9xvrgqy2dd/1574291787501/image.png"/></figure><p>The
+    Encrypted Text secret must have <strong>Scope to Account</strong> enabled or it
+    cannot be used in the Custom Logs Provider.</p><div class="note-callout">If you
+    want to use the same token in your 24/7 Service Guard Custom Logs setup, you must
+    create another Encrypted Text secret for the same token and ensure that <strong>Scope
+    to Account</strong> is <strong>not</strong> enabled. Encrypted Text secrets used
+    in Harness account settings are not shared with Encrypted Text secrets used in
+    Harness Applications. This enables you to prevent Application users from accessing
+    account-level secrets.</div><h3>Next Step</h3><ul><li><a href="/article/8rrqkoawzm-24-7-service-guard-for-custom-logs">2
+    - 24/7 Service Guard for Custom Logs</a></li></ul><p></p>'
+  slug: 1-custom-verification-connection-setup
+  tags:
+  - Verification Provider
+  - verification
+  - application performance monitoring
+  - APM
+  - Deployment Verification
+  - setup
+  - log
+  - 24/7 Service Guard
+  is_live: true

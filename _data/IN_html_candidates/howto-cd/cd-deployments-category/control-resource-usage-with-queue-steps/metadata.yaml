@@ -1,0 +1,124 @@
+type: article
+article_id: 5n96cc7cyo
+user_id: mfr0nxh4be
+category_id: etz0u5kujd
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Control Resource Usage with Queue Steps
+slug: control-resource-usage-with-queue-steps
+description: Use the Queue step to control the access order to the resources Harness
+  requests during a deployment and prevent multiple Pipelines from requesting the
+  same resources at the same time.
+short_version: Use the Queue step to control the access order to the resources Harness
+  requests during a deployment and prevent multiple Pipelines from requesting the
+  same resources at the same time.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-21T23:01:23.193649Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Control Resource Usage with Queue Steps
+  description: Use the Queue step to control the access order to the resources Harness
+    requests during a deployment and prevent multiple Pipelines from requesting the
+    same resources at the same time.
+  short_version: Use the Queue step to control the access order to the resources Harness
+    requests during a deployment and prevent multiple Pipelines from requesting the
+    same resources at the same time.
+  body: '<p></p><div class="note-callout">Currently, this feature is behind the feature
+    flag <code>PIPELINE_QUEUE_STEP</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p></p><p>To control
+    the access order to the resources Harness requests during a deployment, and prevent
+    multiple Pipelines from requesting the same resources at the same time, you can
+    use the <strong>Queue</strong> step.</p><p>For example, two Pipelines might be
+    deploying artifacts to a single Kubernetes namespace simultaneously. To avoid
+    collision, and queue deployments, you add a Queue step to each Pipeline.</p><p>When
+    the first Pipeline completes, it releases the lock and the second Pipeline can
+    continue.</p><p>Queue steps can be used on different Pipelines or even multiple
+    executions of the same Pipeline.</p><p>In this topic, you will learn how to use
+    the Queue step to control the order in which Pipelines access resources.</p><div
+    class="note-callout">Harness provide multiple options for controlling resource
+    usage and protecting capacity limits. See <a href="/article/7ogetmgq7y-controlling-deployments-with-barriers-resource-constraints-and-queue-steps">Controlling
+    Resource Usage with Barriers, Resource Constraints, and Queue Steps</a>.</div><h3>Step
+    1: Add Queue Steps</h3><p>In the stage <strong>Execution</strong>, determine where
+    you want to queue deployments and click <strong>Add Step</strong>.</p><p>In <strong>Flow
+    Control</strong>, click <strong>Queue</strong>.</p><p>Enter a name and timeout
+    for the Queue step.</p><p>In <strong>Resource Key</strong>, enter a unique key.
+    This is the same key you will add to the Queue steps in other Pipelines.</p><p>The
+    <strong>Resource Key</strong> supports Fixed Values, Runtime Inputs, and Expressions.
+    See <a href="/article/f6yobn7iq0-runtime-inputs">Fixed Values, Runtime Inputs,
+    and Expressions</a>.</p><p>In <strong>Run next queued execution after completion
+    of</strong>, select one of the following:</p><ul><li><strong>Pipeline:</strong>
+    the entire Pipeline must complete before the queued Pipelines can deploy.</li><li><strong>Stage:</strong>
+    the current Stage must complete before the queued Pipelines can deploy.</li></ul><div
+    class="note-callout">Queue steps can be used on different Pipelines or even multiple
+    executions of the same Pipeline.</div><h3>Option: Advanced Settings</h3><p>In
+    <strong>Advanced</strong>, you can use the following options:</p><ul><li><a href="/article/i36ibenkq2">Step
+    Skip Condition Settings</a></li><li><a href="/article/htrur23poj">Step Failure
+    Strategy Settings</a></li><li><a href="/article/nnuf8yv13o">Select Delegates with
+    Selectors</a></li></ul><p></p><h3>Step 3: Test</h3><p>Let&#39;s look at a simple
+    example to show how Queue steps work.</p><p>Here&#39;s the YAML for the Pipeline
+    that contains a Custom Stage with a Queue Step followed by a <a href="/article/k5lu0u6i1i-using-shell-scripts">Shell
+    Script</a> step that runs a Bash <code>sleep 30</code>.</p><p>You can copy it
+    and paste it into your Harness Project. You simply need to update the <code>projectIdentifier</code>
+    and <code>orgIdentifier</code> settings to match your current <a href="/article/7fibxie636-projects-and-organizations">Project
+    and Org</a>.</p><pre>pipeline:<br/>    name: Queue<br/>    identifier: Queue<br/>    projectIdentifier:
+    queuesteptest<br/>    orgIdentifier: default<br/>    tags: {}<br/>    stages:<br/>        -
+    stage:<br/>              name: Queue<br/>              identifier: Queue<br/>              description:
+    &#34;&#34;<br/>              type: Custom<br/>              spec:<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                type: Queue<br/>                                name:
+    Queue<br/>                                identifier: Queue<br/>                                spec:<br/>                                    key:
+    &#34;123&#34;<br/>                                    scope: Pipeline<br/>                                timeout:
+    10m<br/>                          - step:<br/>                                type:
+    ShellScript<br/>                                name: Sleep<br/>                                identifier:
+    Sleep<br/>                                spec:<br/>                                    shell:
+    Bash<br/>                                    onDelegate: true<br/>                                    source:<br/>                                        type:
+    Inline<br/>                                        spec:<br/>                                            script:
+    sleep 30<br/>                                    environmentVariables: []<br/>                                    outputVariables:
+    []<br/>                                    executionTarget: {}<br/>                                timeout:
+    10m<br/>              tags: {}</pre><p></p><p>When you&#39;re done the Pipeline
+    will look like this:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5n96cc7cyo/1658434534396/clean-shot-2022-07-21-at-13-15-25.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Open
+    the <strong>Queue</strong> step.</p><p>You can see <strong>Run next queued execution
+    after completion of</strong> is set to <strong>Pipeline</strong>. That means that
+    the Pipeline must finish deploying before any other queued Pipeline executions
+    can proceed.</p><p>Now let&#39;s run this Pipeline twice in a row quickly.</p><p>The
+    first run of the Pipeline will run without queuing but the second run of the Pipeline
+    is queued until the first one is complete.</p><p>Here&#39;s the first run of the
+    Pipeline. It shows the Pipeline execution running (<strong>Running</strong>) and
+    the other Pipeline execution queued.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5n96cc7cyo/1658437317780/clean-shot-2022-07-21-at-14-00-59.png"/></figure><p>You
+    can click the name of the queued Pipeline to jump to its execution.</p><p>Here&#39;s
+    the second run of the Pipeline:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5n96cc7cyo/1658437376044/clean-shot-2022-07-21-at-14-01-15.png"/></figure><p>You
+    can see the Pipeline execution is queued (<strong>Current</strong>) and you the
+    Pipeline execution that is running.</p><p>This example used multiple executions
+    of the <u>same</u> Pipeline, but if a Queue step is added to another Pipeline
+    and uses the same Resource Key, the same queuing process is applied to that Pipeline.</p><p>Here&#39;s
+    another Pipeline, <strong>queue 2</strong>, with the same Queue step Resource
+    Key. You can see it waiting for the <strong>Queue</strong> Pipeline to complete.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5n96cc7cyo/1658438359368/clean-shot-2022-07-21-at-14-19-09.png"/></figure><h3>Review:
+    Queue Step Scope</h3><p>Queue steps are account-wide. This ensures that if a Queue
+    step is placed in one Pipeline, it will restrict any other Pipeline in the account
+    from using resources until it is safe to use.</p><h3>Review: Barriers, Resource
+    Constraints, and Queue Steps</h3><p>Harness has a number of ways to control deployments
+    and resource usage. It&#39;s important to understand their differences.</p><p>See
+    <a href="/article/7ogetmgq7y-controlling-deployments-with-barriers-resource-constraints-and-queue-steps">Controlling
+    Resource Usage with Barriers, Resource Constraints, and Queue Steps</a>.</p><h3>Review:
+    When to Queue</h3><p>Queue steps can be added anywhere in your Stage, so it&#39;s
+    important to add them whenever the resource you want to protect is being used.</p><p>For
+    example, if Pipeline A will perform some Terraform provisioning and Pipeline B
+    will deploy to the provisioned infrastructure, you will want to place the Queue
+    step before the <a href="/article/hdclyshiho-run-a-terraform-plan-with-the-terraform-apply-step">Terraform
+    Apply</a> step in Pipeline A, and before the deployment step in Pipeline B (such
+    as a Kubernetes <a href="/article/xsla71qg8t">Rolling step</a>).</p>'
+  slug: control-resource-usage-with-queue-steps
+  tags: []
+  is_live: true

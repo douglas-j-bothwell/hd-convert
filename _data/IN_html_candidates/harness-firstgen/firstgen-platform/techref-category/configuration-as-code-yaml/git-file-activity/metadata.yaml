@@ -1,0 +1,36 @@
+type: article
+article_id: 6xawyu1tgo
+user_id: slcpusem6b
+category_id: iucs9fawif
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Git File Activity
+slug: git-file-activity
+description: ""
+short_version: ""
+tags:
+- Git File Activity
+- Git activity
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:32.923527Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Git File Activity
+  description: ""
+  short_version: ""
+  body: ""
+  slug: git-file-activity
+  tags:
+  - Git File Activity
+  - Git activity
+  is_live: true

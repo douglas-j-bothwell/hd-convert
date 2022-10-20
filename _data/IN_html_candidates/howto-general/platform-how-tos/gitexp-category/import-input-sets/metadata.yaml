@@ -1,0 +1,65 @@
+type: article
+article_id: j7kdfi3640
+user_id: 2te4j9f9g7
+category_id: rv2jo2hoiy
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Import an Input Set From Git
+slug: import-input-sets
+description: This topic explains the steps to import an Inputset from Git.
+short_version: This topic explains the steps to import an Inputset from Git.
+tags:
+- Git sync
+- git experience
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-10T11:15:50.376191Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Import an Input Set From Git
+  description: This topic explains the steps to import an Inputset from Git.
+  short_version: This topic explains the steps to import an Inputset from Git.
+  body: '<p>Harness Input Sets are collections of runtime inputs for a Pipeline provided
+    before execution.</p><p>All Pipeline settings can be set as runtime inputs in
+    Pipeline Studio <strong>Visual</strong> and <strong>YAML</strong> editors.</p><p>Before
+    running a Pipeline, you can select one or more Input Sets and apply them to the
+    Pipeline.</p><p>You can either <a href="/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#step_1_create_the_input_sets">create</a>
+    a new Input Set or import one from your Git repo.</p><p>This topic explains how
+    to import an Input Set from your Git repo and apply it to your Pipeline.</p><h3>Before
+    You Begin</h3><ul><li><a href="/article/xl028jo9jk-git-experience-overview">Harness
+    Git Experience Overview</a></li><li><a href="/article/grfeel98am-configure-git-experience-for-harness-entities">Harness
+    Git Experience Quickstart​</a></li><li><a href="https:/article/3fqwa8et3d-input-sets">Input
+    Sets and Overlays</a></li><li><a href="/article/5nz7j3e1yc-manage-a-harness-pipeline-repo-using-git-experience">Manage
+    a Harness Pipeline Repo Using Git Experience</a></li><li><a href="/article/8tdwp6ntwz-manage-input-sets-in-simplified-git-experience">Manage
+    Input Sets and Triggers in Git Experience</a></li></ul><h3>Step: Import an Input
+    Set</h3><p>You can import an Input Set from the CI or CD module in Harness.</p><p>This
+    topic shows you how to import an Input Set to the CD module.</p><ol><li>In Harness,
+    click <strong>Deployments</strong>.</li><li>Select your Project and click on <strong>Pipelines</strong>
+    and click on <strong>Input Sets</strong>.</li><li>Click <strong>New Input Set</strong>
+    and select <strong>Import From Git</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/j7kdfi3640/1658829738986/screenshot-2022-07-26-at-3-30-31-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>The
+    <strong>Import Input Set From Git</strong> settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/j7kdfi3640/1658830029315/screenshot-2022-07-26-at-11-18-41-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Enter
+    a <strong>Name</strong> for your Input Set.</li><li>Harness fetches the following
+    details and auto-fills them:<ol><li><strong>Git Connector</strong></li><li><strong>Repository</strong></li><li><strong>Git
+    Branch</strong></li></ol></li><li>Enter the <strong>YAML Path</strong> from where
+    you want to import the Input Set. All your configurations are stored in Git in
+    the <a href="/article/utikdyxgfz-harness-git-experience-overview#harness_folder">Harness
+    Folder</a>.<div class="note-callout">Make sure that your YAML path starts with
+    <code>.harness/</code> and the YAML file already exists in the specified Git repo
+    and branch.</div></li><li>Click <strong>Import</strong>.<br/>Click on your <strong>Run
+    Pipeline</strong> to proceed.</li></ol><p></p>'
+  slug: import-input-sets
+  tags:
+  - Git sync
+  - git experience
+  is_live: true

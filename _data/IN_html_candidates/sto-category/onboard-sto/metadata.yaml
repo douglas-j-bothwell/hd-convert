@@ -1,0 +1,14 @@
+type: category
+category_id: 8nywcs2sa7
+parent_category_id: txlccquh5c
+title: Onboard with STO
+description: ""
+slug: onboard-sto
+is_featured: false
+icon: https://files.helpdocs.io/i5nl071jo5/other/1649886487103/quickstart.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Onboard with STO
+  description: ""
+  slug: onboard-sto

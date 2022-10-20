@@ -1,0 +1,14 @@
+type: category
+category_id: gjyyhm9f9h
+parent_category_id: n3y8cried4
+title: Create a Feature Flag
+description: ""
+slug: ff-creating-flag
+is_featured: false
+icon: ""
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create a Feature Flag
+  description: ""
+  slug: ff-creating-flag

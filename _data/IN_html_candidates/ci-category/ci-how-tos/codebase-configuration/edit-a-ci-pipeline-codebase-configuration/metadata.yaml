@@ -1,0 +1,139 @@
+type: article
+article_id: 6vks5ym7sq
+user_id: c5pqxi9gu9
+category_id: ojaa8v6fwz
+author:
+  name: Manish Jaiswal
+  profile_image: https://www.gravatar.com/avatar/a690002c3812e556fec2f79f91e5715e?d=mm&s=150
+title: Edit a CI Pipeline Codebase Configuration
+slug: edit-a-ci-pipeline-codebase-configuration
+description: This topic provides settings for Codebase configuration in Harness CIE.
+  You can configure the Codebase in Harness CIE at the beginning of setting up a new
+  Pipeline, or later in a Stage using the Code…
+short_version: This topic provides settings for Codebase configuration in Harness
+  CIE. You can configure the Codebase in Harness CIE at the beginning of setting up
+  a new Pipeline, or later in a Stage using the Code…
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-03-24T01:37:45.810424Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Edit a CI Pipeline Codebase Configuration
+  description: ""
+  short_version: ""
+  body: '<p>This topic provides settings for Codebase configuration in Harness CIE.</p><p>You
+    can configure the Codebase in Harness CIE at the beginning of setting up a new
+    Pipeline, or later in a <strong>Stage</strong> using the <strong>Codebase</strong>
+    button. Codebase lets you set up a Harness connector to your repo containing the
+    code you want to build and test in your Pipeline. Harness will clone your code
+    from the specified repo in the Harness Git connector and use it in the execution
+    <strong>Stage</strong> of your Pipeline. You need to set up the Codebase once,
+    and it is used throughout the Pipeline.</p><p>You can modify your CI Codebase
+    any time by clicking the <strong>Codebase</strong> button in the right panel that
+    appears after you set up the CI stage. </p><p>The following steps will help you
+    modify the Codebase of your source code in Harness CIE.</p><p>In this topic:</p><ul><li><a
+    href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#undefined">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#step_1_configure_codebase">Step
+    1: Configure Codebase</a><ul><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#option_1_add_a_new_codebase">Option
+    1: Add a New Codebase</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#option_2_modify_an_existing_codebase">Option
+    2: Modify an Existing Codebase</a></li></ul></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#step_2_enter_repository_name">Step
+    2: Enter Repository Name</a><ul><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#advanced_optional">Advanced
+    (Optional)</a><ul><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#depth">Depth</a></li><li><a
+    href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#ssl_verify">SSL
+    Verify</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#set_container_resources">Set
+    Container Resources</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#pull_request_clone_strategy">Pull
+    Request Clone Strategy</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#merge_commit">Merge
+    Commit</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#source_branch">Source
+    Branch</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#limit_memory">Limit
+    Memory</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#limit_cpu">Limit
+    CPU</a></li></ul></li></ul></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#step_3_save_and_view_your_connector">Step
+    3: Save and View Your Connector</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#configure_as_code_yaml">Configure-As-Code:
+    YAML</a></li><li><a href="https://ngdocs.harness.io/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#see_also">See
+    Also</a></li></ul><h3 id="undefined">Before You Begin</h3><ul><li><a href="/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></li><li><a href="/article/2k7lnc7lvl-delegates-overview">Delegates
+    Overview</a></li><li><a href="/article/yn4x8vzw3q-ci-stage-settings">CI Stage
+    Settings</a></li><li><a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li></ul><h3>Step 1: Configure Codebase</h3><p>Connectors
+    allow Harness to connect to your Git repos to clone your Codebase. </p><h4>Option
+    1: Add a New Codebase</h4><p>You can add Codebase to your new CI Pipeline as well
+    as an existing Pipeline that doesn’t have a Codebase yet. </p><p>In this step,
+    you will create Codebase for a new Pipeline in Harness CIE.</p><ol><li>Goto <strong>Pipeline
+    Studio</strong>, click <strong>Add Stage</strong>, and then click <strong>Build</strong>.</li><li>Enter
+    a unique name for your CI stage.</li><li>In <strong>Configure Codebase</strong>,
+    in <strong>Connector</strong>, click <strong>Select Connector.</strong></li><li>Click
+    <strong>New Connector</strong>.</li><li>Follow the instructions in <a href="https://ngdocs.harness.io/article/zbhehjzsnv-connect-to-code-repo">Add
+    a Git Repo</a> to create a new Git repo connector for your Codebase.</li></ol><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/6vks5ym7sq/1637141114472/kj-om-7-ymfbt-c-3-yr-1-zgq-nquo-wf-4-tb-dolk-blh-5-w-bffsm-mlkzo-6-m-k-911-rt-4-ffihar-0-f-el-1-xn-8-atzh-xmwq-4-bscap-5-kt-70-u-xn-satkv-6-e-3-ua-zaj-7-r-te-in-mh-2-rnzdex-khxk-os-6-oj-r-7-x-q-4"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h4>Option
+    2: Modify an Existing Codebase</h4><p>In this step, you will modify an existing
+    Codebase in Harness CIE.</p><ol><li>Select a Pipeline, in <strong>Pipeline Studio</strong>,
+    click <strong>Codebase</strong>.</li></ol><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6vks5ym7sq/1637141200053/v-cz-9-kw-aj-pgi-hwjl-2-ryq-jgd-ci-bs-9-l-svakwn-um-5-uq-ezs-pgri-px-c-6-imw-3-gj-mza-b-pw-rk-7-y-5-jojhe-k-5-sz-llg-k-sryyom-973-bv-pq-fu-zyv-bjh-3-f-tbwrgng-rrjw-9-pm-pkohzem-fhhzp-4-y"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><ol><li
+    style="counter-increment:li 1" start="2">In <strong>Configure Codebase</strong>,
+    in <strong>Connector</strong>, click <strong>Select Connector</strong>.</li><li>Select
+    any available connector under your role group <a href="https://ngdocs.harness.io/article/7fibxie636-projects-and-organizations">Projects,
+    Organizations</a>, or in your Account.</li></ol><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6vks5ym7sq/1637141223582/3-5-b-fyk-s-7-h-4-bk-4-ko-ww-y-8-znjs-hk-ss-5-c-7-jp-pp-gldc-e-4-upv-koxw-1-fi-s-nm-udicd-ugj-9-y-93-k-x-2-c-7-d-x-8-m-iyn-a-5-j-10-egmf-7-irl-sj-at-3588-vmx-79-cm-4-zt-5-dt-4-twboa-3-b-7-i-guwkh-jch-amoc"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><ol><li
+    style="counter-increment:li 3" start="4">Modify the selected Git connector. Refer
+    to <a href="/article/tbm2hw6pr6-git-connector-settings-reference">Git Setting
+    Reference</a> to set up a Git Repo Connector.</li></ol><h3>Step 2: Enter Repository
+    Name</h3><p>If you selected <strong>Git Repository</strong> as the <strong>URL
+    Type</strong> in your Git repo connector, the repo name will be displayed automatically.</p><p>If
+    you selected <strong>Git Account</strong> as the <strong>URL Type</strong> in
+    your Git repo connector, you will be prompted to provide a repo name. </p><p>In
+    the following GitHub connector example, <strong>Account</strong> is selected as
+    the <strong>URL Type</strong>, and a repo name (<u>CI-How-Tos</u>) is added to
+    the <strong>Test Repository</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6vks5ym7sq/1637141373056/9-j-0-ww-hcr-s-9-g-3-g-bj-8-rmg-l-5-vd-kbm-dip-tmwrxrhdsf-2-e-kp-d-01-ges-59-xsw-1-l-p-796-m-ytlw-4-kc-ysdfwha-euady-lad-5-hxoteyv-v-7-z-7-colbri-u-4-de-pu-7-zqqyt-9-l-vx-l-ql-7-j-dku-8-b-p-2-v-q"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click
+    <strong>Continue</strong>. The configured connector will be listed.</p><h4>Advanced
+    (Optional)</h4><p>Click <strong>Advanced (Optional)</strong> to review additional
+    Codebase configuration.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/6vks5ym7sq/1637141711311/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h5>Depth</h5><p>Depth
+    is the number of commits that you want to clone from your Git repo.</p><p>Depth
+    is set to 1 by default for manual triggers. For triggers other than the manual
+    trigger, you need to set the depth number.</p><p>For details, see <a href="https://git-scm.com/docs/git-clone"
+    target="_blank">https://git-scm.com/docs/git-clone</a>.</p><h5>SSL Verify</h5><p>Select
+    an option to verify your Git SSL certification.</p><p>If set to <strong>True</strong>,
+    it verifies your Git SSL certificate.</p><p>If set to <strong>False</strong>,
+    your Git SSL certificate verification is skipped.</p><h5>Pull Request Clone Strategy</h5><p>Select
+    a pull request clone strategy.</p><ul><li><h5>Merge Commit</h5></li></ul><p>Merges
+    the source branch of the pull request to the target branch.</p><ul><li><h5>Source
+    Branch</h5></li></ul><p>Clones only the source branch of the pull request.</p><h5>Set
+    Container Resources</h5><p>Maximum resources limit values for the resources used
+    by the container at runtime.</p><ul><li><h5>Limit Memory</h5></li></ul><p>Maximum
+    memory that the container can use.</p><p>You can express memory as an integer
+    value with one of these suffixes: G, M, Gi, Mi.</p><ul><li><h5>Limit CPU</h5></li></ul><p>See
+    <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes">Resource
+    units in Kubernetes</a>.</p><p>Limit the number of cores that the container can
+    use.</p><p>Limits for CPU resources are measured in CPU units.</p><p>Fractional
+    requests are allowed. The expression 0.1 is equivalent to the expression 100m,
+    which can be read as one hundred millicpu.</p><div class="tip-callout">If cloning
+    your Codebase takes more time than expected, try these configurations for cloning
+    your codebase:<br/>1. Increase the <a href="/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#limit_memory">Limit
+    Memory</a> of Git clone to 1 Gi.<br/>2. Use <a href="/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#source_branch"
+    target="_blank">Source Branch clone strateg</a>y instead of Merge Commit. Source
+    branch clones only the pull request branch.<br/>3. Specify <a href="/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration#depth"
+    target="_blank">Depth</a> to 1.</div><h3>Step 3: Save and View Your Connector</h3><p>Click
+    <strong>Save</strong> to use the connector in your Pipeline. Your Codebase is
+    now configured successfully. Harness will use the configured repo in the Codebase
+    to clone your source code and to test and build your Pipeline.</p><p>You can also
+    view the list of your saved connectors in <strong>Connectors</strong> under <strong>Project
+    Setup</strong>.</p><h3>Configure-As-Code: YAML</h3><p>You can also use the following
+    YAML snippet to set up the Codebase configuration in CIE.</p><pre class="hljs
+    yaml">ci:<br/>            codebase:<br/>                connectorRef:<br/>                repoName:
+    <br/>                build: <br/>                depth: <br/>                sslVerify:
+    <br/>                prCloneStrategy: </pre><h3>See Also</h3><ul><li><a href="https://ngdocs.harness.io/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a></li><li><a href="/article/m0awmzipdp-create-a-connector-using-yaml">Create
+    a Connector using YAML</a></li></ul><p></p>'
+  slug: edit-a-ci-pipeline-codebase-configuration
+  tags: []
+  is_live: true

@@ -1,0 +1,88 @@
+type: article
+article_id: u8lgzsi7b3
+user_id: mfr0nxh4be
+category_id: kx4hs8bn38
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Tutorials and quickstart guides
+slug: quickstarts
+description: New to Harness? The following quickstarts and tutorials will take you
+  from novice to advanced.
+short_version: New to Harness? The following quickstarts and tutorials will take you
+  from novice to advanced.
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-30T18:34:00.834641Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Tutorials and quickstart guides
+  description: New to Harness? The following quickstarts and tutorials will take you
+    from novice to advanced.
+  short_version: New to Harness? The following quickstarts and tutorials will take
+    you from novice to advanced.
+  body: <p><strong>New to Harness?</strong> The following tutorials and quickstart
+    guides will take you from novice to advanced.</p><p></p><table><tbody><tr><td><p><strong>Module
+    or feature</strong></p></td><td><p><strong>Tutorials and quickstarts</strong></p></td></tr><tr><td><p>Continuous
+    Integration</p></td><td><p><a href="/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a> helps you to create a CI Pipeline that builds and tests
+    code and then pushes an artifact to a registry and performs integration tests.</p></td></tr><tr><td><p>Continuous
+    Deployment</p></td><td><p>Select the tutorial for the platform you want to use
+    to deploy.</p><ul><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    Deployment Tutorial</a> shows you how to create a CD Pipeline that deploys a publicly
+    available Docker image and manifest to your target cluster.</li><li><a href="/article/cifa2yb19a-helm-cd-quickstart">Helm
+    Chart Deployment Tutorial</a> shows you how to create a CD Pipeline that uses
+    a Helm chart to deploy a publicly available Docker image to your target cluster.</li><li><a
+    href="/article/uiqe6jz9o1-kustomize-quickstart">Kustomize Deployment Tutorial</a>
+    shows you how to create a CD Pipeline that uses a kustomization to deploy multiple
+    variants of a simple public Hello World server.</li><li><a href="/article/m7nkbph0ac-azure-cd-quickstart">Azure
+    ACR to AKS Deployment Tutorial</a> shows you how to create a CD Pipeline that
+    deploys your ACR image to your target AKS cluster.</li><li><a href="/article/muegjde97q-azure-web-apps-tutorial">Azure
+    Web Apps Tutorial</a> deploy a Docker image or non-containerized artifact for
+    your Azure Web App. You can deploy to source and target deployment slots, and
+    perform traffic shifting.</li><li><a href="/article/5fnx4hgwsa-serverless-lambda-cd-quickstart">Serverless
+    Lambda Deployment Tutorial</a> shows you how to deploy a Serverless Lambda application
+    to AWS Lambda using Harness.</li></ul></td></tr><tr><td><p></p><p>GitOps</p></td><td><p>The
+    following quickstart guides are available for GitOps:</p><ul><li><a href="/article/pptv7t53i9-harness-cd-git-ops-quickstart">Harness
+    CD GitOps Quickstart</a> shows you how to use Harness native GitOps to deploy
+    services by syncing the Kubernetes manifests in your source repos with your target
+    clusters.</li><li><a href="/article/ptlvh7c6z2-harness-argo-cd-git-ops-quickstart">Harness
+    Argo CD GitOps Quickstart</a> shows you how to connect Argo CD and Harness to
+    perform GitOps deployments in Harness.</li></ul></td></tr><tr><td><p>Feature Flags</p></td><td><p>The
+    following quickstart guides are available for Feature Flags:</p><ul><li><a href="/article/0a2u2ppp8s-getting-started-with-continuous-features">Getting
+    Started with Feature Flags</a> provides a high-level summary of Feature Flag (FF),
+    with video and Quick Guide walkthroughs.</li><li><a href="/article/qym3qtrexy-java-quickstart">Java
+    Quickstart</a> helps you to create a feature flag and use the feature flag SDK
+    in your Java application.</li></ul></td></tr><tr><td><p>Harness CD Community Edition</p></td><td><p><a
+    href="https://docs.harness.io/article/ltvkgcwpum-harness-community-edition-quickstart">Harness
+    Community Edition deployment tutorial</a> shows you how to set up Harness CD Community
+    Edition locally and create a CD Pipeline that deploys a public NGINX image to
+    a local cluster.</p></td></tr><tr><td><p>Harness YAML</p></td><td><p><a href="/article/1eishcolt3-harness-yaml-quickstart">Harness
+    YAML Quickstart</a> shows you how to build Pipelines using the Harness YAML builder.</p></td></tr><tr><td><p>Service
+    Reliability Management</p></td><td><p>The following quickstart guides are available
+    for Service Reliability Management:</p><ul><li><a href="/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring">Change
+    Monitoring Quickstart</a> helps you to create a Monitored Service and add a Change
+    Source to track change events.</li><li><a href="/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart">Health
+    Monitoring Quickstart</a> shows you how to create a Monitored Service and add
+    a Health Source to monitor the health of your service in its associated environment
+    using logs and metrics collected from an APM or logging tool.</li><li><a href="/article/jnl7w1rryp-slo-quickstart">SLOs
+    Quickstart</a> helps you to create an SLO to measure your service’s reliability.</li></ul></td></tr><tr><td><p>Security
+    Testing Orchestration</p></td><td><p>The following quickstart guides are available
+    for Security Testing Orchestration:</p><ul><li><a href="https://docs.harness.io/article/t57yct5guh-sto-quickstart-1-standalone-sto-workflows">Standalone
+    STO workflows quickstart</a> shows you how to use the Harness Security Testing
+    Orchestration (STO) module to perform code security scanning in a Harness Pipeline.</li><li><a
+    href="https://docs.harness.io/article/zy4h4ch6dh-sto-quickstart-2-integrated-sto-ci-cd-workflows">Integrated
+    STO/CI/CD workflows quickstart</a> shows you how to integrate STO functionality
+    into CI and CD Pipelines. </li></ul></td></tr></tbody></table><p></p>
+  slug: quickstarts
+  tags: []
+  is_live: true

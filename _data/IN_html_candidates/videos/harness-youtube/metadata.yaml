@@ -1,0 +1,14 @@
+type: category
+category_id: ap3fugajzh
+parent_category_id: vcwqzbkchr
+title: Harness YouTube
+description: ""
+slug: harness-youtube
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1606868489303/yt-icon-rgb.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness YouTube
+  description: ""
+  slug: harness-youtube

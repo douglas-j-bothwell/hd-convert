@@ -1,0 +1,43 @@
+type: article
+article_id: jy75oy83vd
+user_id: u10w77i7vp
+category_id: ody8r3ad8f
+author:
+  name: Katherine Enos
+  profile_image: https://www.gravatar.com/avatar/854cdb03d99ded9ecd30fa9cf06a5298?d=mm&s=150
+title: Install Self-Managed Enterprise Edition Using KOTS
+slug: installing-self-managed-enterprise-edition-using-kots
+description: The following topics explain how to install Harness Self-Managed Enterprise
+  Edition using KOTS Admin Console.
+short_version: The following topics explain how to install Harness Self-Managed Enterprise
+  Edition using KOTS Admin Console.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-25T21:24:41.89513Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Install Self-Managed Enterprise Edition Using KOTS
+  description: The following topics explain how to install Harness Self-Managed Enterprise
+    Edition using KOTS Admin Console.
+  short_version: The following topics explain how to install Harness Self-Managed
+    Enterprise Edition using KOTS Admin Console.
+  body: <p>The following topics provide information about using KOTS Admin Console
+    to install Harness Self-Managed Enterprise Edition into a Kubernetes cluster:</p><ul><li><a
+    href="/article/d5lptkp5ow-kubernetes-cluster-on-prem-infrastructure-requirements"
+    target="_blank">Infrastructure</a></li><li><a href="/article/95mwydgm6w-kubernetes-cluster-on-prem-kubernetes-cluster-setup"
+    target="_blank">Installation</a></li><li><a href="/article/zbqas64zn8-kubernetes-cluster-self-managed-add-ingress-controller-service-annotations"
+    target="_blank">Add Ingress Controller Annotations</a></li></ul><p>For instructions
+    on using Helm to install Self-Managed Enterprise Edition, see <a href="/article/gqoqinkhck"
+    target="_blank">Install Harness Self-Managed Enterprise Edition Using Helm</a>.</p><p></p>
+  slug: installing-self-managed-enterprise-edition-using-kots
+  tags: []
+  is_live: true

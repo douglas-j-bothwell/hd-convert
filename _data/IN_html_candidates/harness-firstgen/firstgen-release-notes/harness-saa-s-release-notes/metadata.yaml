@@ -1,0 +1,1165 @@
+type: article
+article_id: q554zjytod
+user_id: slcpusem6b
+category_id: h4k144tv5t
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Harness SaaS Release Notes (FirstGen)
+slug: harness-saa-s-release-notes
+description: This document contains release notes for Harness SaaS.
+short_version: This document contains release notes for Harness SaaS.
+tags:
+- release notes
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-15T18:36:13.796048Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness SaaS Release Notes (FirstGen)
+  description: This document contains release notes for Harness SaaS.
+  short_version: This document contains release notes for Harness SaaS.
+  body: '<p>This document contains release notes for Harness SaaS.</p><div class="note-callout">For
+    Harness On-Prem releases, see <a href="/article/0v512791gf-harness-on-prem-release-notes">Harness
+    Self-Managed Enterprise Edition Release Notes</a>.</div><p>Release notes are displayed
+    with the most recent release first.</p><div class="note-callout">If you don&#39;t
+    see a new feature or enhancement in your Harness account, it might be behind a
+    Feature Flag. Contact <a href="mailto:support@harness.io" target="_blank">Harness
+    Support</a> to enable the feature.</div><p></p><h3>September 14th, 2022, version
+    76708</h3><h4>Early Access</h4><ul><li>When using a Build Workflow followed by
+    multiple Workflows in a Pipeline, you can now pass the same artifact from the
+    first Build Workflow to rest of the Workflows in the Pipeline that deploy the
+    same Harness Service (CDS-38955, ZD-31776)<br/>Execution of each Workflow will
+    use the artifact collected by the last run Build Workflow in the Pipeline that
+    has collected the artifact from the same Service.<br/>In the first Build Workflow&#39;s
+    <strong>Artifact Collection</strong> step&#39;s <strong>Build/Tag</strong> setting,
+    you specify the artifact to collect. For subsequent <strong>Artifact Collection</strong>
+    steps in the same and subsequent Workflows in the Pipeline deploying the same
+    Service, you can leave the <strong>Artifact Collection</strong> step&#39;s <strong>Build/Tag</strong>
+    setting empty and Harness will use the artifact collected by the last Build Workflow
+    in the Pipeline.<br/>This functionality requires the Feature Flag <code>SORT_ARTIFACTS_IN_UPDATED_ORDER</code>.</li></ul><h4>Fixed
+    issues</h4><ul><li>Error message improvement: When retrieving Secret file encrypted
+    using corrupted KMS token (CDS-43080)</li><li>UI showing the wrong Rollback Artifact
+    details (CDS-42327, ZD-29101, ZD-32440, ZD-33792) Fixed a bug where the Rollback
+    was showing the wrong artifact build in the ui only.</li><li>Tags are not getting
+    populated on the Deployment Page correctly (CDS-41001, ZD-32937) Tags that were
+    getting unresolved after the Approval step remained unresolved. Tags were also
+    getting unresolved after resuming an expired Workflow. They now get resolved after
+    the stage that they resumed from completes while enabling the Feature Flag <code>MERGE_RUNTIME_VARIABLES_IN_RESUME</code>.</li></ul><p></p><h3>September
+    7th, 2022, version 76619</h3><h4>Enhancements for CD</h4><ul><li>Nexus RAW Repository
+    type support (CDS-38260, ZD-20638, ZD-30449, ZD-33630). You can now add artifacts
+    from Nexus3 raw repository formats in Harness CG. Enable the feature flag <code>NEXUS3_RAW_REPOSITORY</code>for
+    this feature, and the raw repository format will be available as an artifact source.</li></ul><h4>Fixed
+    Issues for CD</h4><ul><li>Manifest chart collection is failing in PRE-QA for V2
+    services (CDS-42581). This issue has been fixed.</li><li>Trigger on last deployed
+    artifact is failing to find the artifact - Harness doesn&#39;t account for different
+    service if workflow is templatized (CDS-41832, ZD-33449). You can now find the
+    artifacts from the last deployed workflow or pipeline with the same service as
+    triggered workflow when the feature flag <code>SERVICE_ID_FILTER_FOR_TRIGGERS</code>
+    is enabled.</li><li>Terraform plan should be encrypted and not be visible in the
+    UI (CDS-41149, ZD-32913). When the feature flag <code>OPTIMIZED_TF_PLAN</code>
+    is enabled, the shell script step will not fail for $(terrformPlan.jsonFilePath())
+    expression and the value of this expression will be null.</li></ul><h4>Enhancements
+    for Harness Platform</h4><ul><li>You can exclude applications when assigning permissions
+    to User Groups in Harness. (PL-26819)<br/>See <a href="article/ven0bvulsj-users-and-permissions#exclude_applications">Exclude
+    Applications</a>.</li><li>The support for CyberArk secret manager is now deprecated.
+    (PL-25423)</li></ul><h3>August 31st, 2022, version 76518</h3><h4>Enhancements</h4><p>N/A</p><h4>Fixed
+    Issues for CD</h4><ul><li>Hide &#34;Mark as Success&#34; and &#34;Mark as Failures&#34;
+    in UI for CG (CDS-41031).<br/>The &#34;Mark as Success&#34; and &#34;Mark as Failures&#34;
+    have been removed from Jenkins running stage.</li><li>Approval Step, Reject Approval
+    will execute a Rollback (CDS-40853) (Zendesk Ticket ID 19570).<br/>The Approval
+    Step has two buttons: <strong>Reject and Rollback</strong> and <strong>Reject</strong>.
+    When you clicked on either button, the Rollback was executed. The <strong>Reject</strong>
+    button has been renamed as <strong>Reject and Follow Failure Strategy</strong>.
+    When a rejection occurs, it was being processed as an application error and the
+    rollback was occuring for the failure strategy. This issue has been fixed.</li><li>Approval
+    using Slack is not working in Prod 1 (CDS-42064) (Zendesk Ticket ID 33758).<br/>Slack
+    approval was not working in the workflow execution steps for Prod 1 accounts.
+    This issue has been fixed.</li><li>Manager taking too much time to assign a task
+    (CDS-41999) (Zendesk Ticket ID 33514)<br/>API access type for GitLab connector
+    was not being populated. This issue has been fixed.</li><li>Trigger on Last Deployed
+    Artifact is Failing to Find Artifact (CDS-41896) (Zendesk Ticket ID 33547)  <br/>Triggered
+    pipeline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT_COLLECTION_CONFIGURABLE
+    was enabled . This issue has been fixed.</li><li>Trigger on Last Deployed Artifact
+    is Failing to Find Artifact - Harness doesn&#39;t account for different service
+    if workflow is templatized (CDS-41832) (Zendesk Ticket ID 33449)<br/>This issue
+    has been fixed. You can now find the artifacts from last deployed workflow or
+    pipeline with the same service as the triggered workflow by enabling the added
+    feature flag.</li><li>Jira approval step was still waiting although Jira status
+    was changed to Approve criteria (CDS-41567) (Zendesk Ticket ID 33416).<br/> This
+    issue has been fixed.</li></ul><h4>Fixed issues for Harness Platform</h4><ul><li>Token
+    renewal for AppRole-based login in the vault happened using a background iterator.<br/>It
+    was not recommended to store a token if its TTL is less than the iterator interval.
+    (PL-26472)<br/>This has been fixed by removing the AppRole token renewal. Now
+    the token is fetched on the fly before any CRUD operation by doing AppRole login
+    with <code>secretId</code> and <code>AppRoleId</code>.<br/>This fix is behind
+    the feature flag <code>DO_NOT_RENEW_APPROLE_TOKEN</code>.</li></ul><h3>August
+    25th, 2022, version 76425</h3><ul><li>Delegate Version: 76420</li></ul><h4>Enhancements</h4><ul><li>Change
+    Harness Users per account default limit to 50k users for paid accounts (PL-27300)</li><li>For
+    Immutable Delegates, the Harness Manager will receive information about when the
+    upgrader was last updated and if autoUpgrade is off/on (DEL-4379)</li><li>Upgrade
+    GO in go-template 0.4 to 1.17.9 from 1.16.4 (CDS-41347)<br/>The Harness Delegate
+    includes a new binary of go-template (version 0.4.1) For the default Harness Delegates,
+    this version works out of the box. For a no-tools Delegate, you need to manually
+    download the binary. It&#39;s be available on: https://app.harness.io/public/shared/tools/go-template/release/v0.4.1/bin/linux/amd64/go-template</li><li>Removed
+    library nanohttpd. Outdated. Upgraded the azure-identity version from 1.1.2 to
+    1.4.4 to remove vulnerabilities (CDS-40796)</li></ul><h4>Fixed issues</h4><ul><li>Not
+    able to select encrypted text in environment variable override (PL-27444, ZD-33520)<br/>In
+    Variable Overrides, it was not allowed to select of &#34;Type&#34; (&#39;Text&#39;
+    or &#39;Encrypted Text&#39;) for single individual services. &#34;Type&#34; Dropdown
+    was always disabled for specific services. It only allowed it for &#39;All Services&#39;
+    (PL-26345). This happened as a part of implementation of a new, faster component.
+    This issue has been resolved. Now users will be able to set VariableOverrides
+    even for single individuals services.</li><li>GraphQL User Not Authorized (PL-27092,
+    ZD-28969, ZD-30587, ZD-33183, ZD-33347, ZD-33487, ZD-33506)</li><li>Add validation
+    for SecretName Prefix (PL-19543)</li><li>Add Encrypted Text for GCP Secret Manager:
+    mandatory Version setting needs an asterisk (PL-14239)</li><li>Failure Strategy
+    Retry is taking null from 2nd retry for execution input (PIE-4874)<br/>On retry
+    we create a new nodeExecution, so the execution input instance was not present
+    for the new nodeExecutionId. Fix: While cloning the nodeExecution for retry, we
+    are now cloning the execution input instance as well.</li><li>Providing User Group
+    at execution time failing (PIE-4810)<br/>It was happening because we were not
+    handling arrayNode while converting the merged template yaml to map. Added support
+    for the list.</li><li>&#34;Failed to start watcher&#34; error fixed in Delegate
+    (DEL-4672)<br/>Modified the Delegate code to download start.sh script every attempt
+    to start watcher.</li><li>Automation Test Failure: ECS Copy Download URL contains
+    /v3 but no other Delegate has it (DEL-4654)</li><li>CloudFormation Rollback Failure
+    (CDS-41919, ZD-33635)</li><li>Tanzu (PCF) tests are failing with the error invalid
+    request: artifact URL is required (CDS-41913)<br/>Empty artifact URL an exception
+    was being thrown. Removed that exception.</li><li>Remote Terraform Backend Config
+    rename labels to Inline and Git Repository (CDS-41890)</li><li>SFTP connector
+    creation failing (CDS-41868)<br/>Due to Delegate-side library upgrade, SFTP connector
+    test was failing and is now fixed.</li><li>PostgreSQL query throwing hundreds
+    of errors on Timescale (single quotes not handled properly) (CDS-41793)</li><li>StateMachine
+    Transformation Error (CDS-41652, ZD-33485, ZD-33716)</li><li>500 Error on HTTP
+    Request (CDS-41642, ZD-33272, ZD-33898)</li><li>Secret value expression resolved
+    in Workflow variable is displayed in plaintext in Pipeline logs (CDS-41544, ZD-33364)<br/>Workflow
+    variables that uses secret variables and are referenced in Pipelines are now encrypted.</li><li>NPE/MalFormedUrlException
+    when artifact URL incorrect for Tanzu (PCF) deployment (CDS-41357, ZD-32975)<br/>Throw
+    exception if the Nexus artifact URL is empty</li><li>Fix migration in CDS-37079
+    (CDS-41232)<br/>New fields parent_pipeline_id and created_by_type fields in timescaledb.</li><li>Terraform
+    Destroy step is not changing after any change in UI (unchecking &#34;Inherit from
+    last successful Terraform Apply&#34;) (CDS-40195, ZD-32538)</li></ul><h3>August
+    18, 2022, version 76303</h3><h4>What&#39;s new</h4><ul><li>N/A</li></ul><h4>Early
+    Access</h4><ul><li>N/A</li></ul><h4>Enhancements</h4><ul><li>Added native support
+    to Amazon Managed Service for Prometheus (SRM-4207)</li><li>Upgrade org.apache.cxf_cxf_core
+    to version 3.4.7 (DEL-4575). This issue has been fixed.</li><li>Upgrade org.bouncycastle:bcprov-exte-jdk15on
+    to version 1.70 (DEL-4433)</li><li>Users wants to be able to set the Task Count
+    to 0 (CDS-39790).<ul><li>You can fill 0 value in ECS deployments&#39; fixed instances
+    count. This is implemented with a feature flag <code>FIXED_INSTANCE_ZERO_ALLOW</code>.</li></ul></li><li>Abort/Rollback
+    is disabled during a freeze (CDS-38996)<ul><li>Enabled rollback and abort in deployment
+    freeze window for pipelines that were running before deployment freeze window
+    is activated.</li></ul></li></ul><h4>Fixed Issues</h4><ul><li>Delegates are not
+    picking up tasks because of redis connection errors (DEL-4617). This issue has
+    been fixed.</li><li>Unable to deploy 401 Forbidden/ 403 for accessing Harness
+    ConfigMap - delegate start script. Examine the environment variables and automatically
+    add the master IP if that env var exists (DEL-3251)<ul><li>Proxy configured for
+    a delegate will not work on kubernetes master ip. The delegate cannot access KUBERNETES_SERVICE_HOST
+    without proxy even if proxy has been configured for delegate.</li></ul></li><li>UI
+    slowness when editing a hidden variable override (PL-26345)<ul><li>The VariableOverrides
+    component was slow to load EncryptedText (secrets) due to fetching a large number
+    of them from backend. This issue has been resolved. You should be able to edit
+    variables without any noticeable delay and save the overriden variables. This
+    feature has the feature flag <code>USE_PAGINATED_ENCRYPT_FOR_VARIABLE_OVERRIDES</code>.</li></ul></li><li>Watcher
+    Stackdriver logging not coming up in QA and Prod1 (DEL-4597)<ul><li>Missing dependencies
+    were added to the watcher.</li></ul></li><li>Even after setting yaml as POLL_FOR_TASKS
+    = true, delegate is coming up with pollForTasks=false (DEL-4571)<ul><li>The config-delegate.yml
+    in delegate.sh was being overwritten due to the setting in start. sh not being
+    preserved. This issue has has been fixed.</li></ul></li><li>Delegate Download
+    URl is incorrect and not working (DEL-4545)<ul><li>This issue has been fixed.</li></ul></li><li>Invalid
+    Provisioner Name blocks GitSync (CDS-41464)<ul><li>If the entity name contained
+    gitsync from harness to git, gitsync failed without an alert. This issue has been
+    fixed.</li></ul></li><li>We shouldn&#39;t print docker label itself as the value
+    if the docker label is missing.<ul><li>The artifact label returns null if it is
+    not present in the artifact. This issue has been fixed.</li></ul></li><li>Using
+    &#34;delegate: ubi-no-tools&#34; does not work for k8s deployments (CDS-41026)<ul><li>If
+    you installed only the required tools, Harness attempted to obtain the paths for
+    all tools (helm, go-template, kubectl, oc kustomize and this resulted in a failure
+    prior to deployment. This issue has been fixed. A default value will be used to
+    prevent any failure before starting deployment.</li></ul></li><li>Tags are not
+    getting populated on the Deployment Page correctly (CDS-40828)<ul><li>Tags that
+    were unresolved after the Approval step do not get unresolved again.</li></ul></li><li>Non-prod
+    deployments getting blocked when Freeze window for PROD env is enabled (CDS-40192,
+    CDS-40046, CDS-35655, CDS-32525)</li><li>Supplied missing dependences that prevented
+    Watcher Stackdriver logging from running. (DEL-4597)</li><li>Resolved a conflict
+    that resulted in the overwrite of the <code>config-delegate.yml</code> file and
+    interfered with configuration settings in the <code>start.sh</code> script. The
+    <code>delegate.sh</code> script was changed to rewrite the correct value for the
+    environment variable. (DEL-4571)</li></ul><h3>August 8, 2022, version 76128</h3><ul><li>Delegate
+    version: 76128</li></ul><h4>What&#39;s new</h4><ul><li>Approval Step now has <strong>Reject</strong>
+    and <strong>Reject and Rollback</strong> buttons (CDS-40853, ZD-19570)<ul><li><strong>Reject</strong>
+    initiates the Failure Strategy for the Workflow. By default, any Workflow you
+    create has rollback as the default Failure Strategy. But in many cases you will
+    have a different Failure Strategy.</li><li><strong>Reject and Rollback</strong>
+    rolls back the Workflow regardless of the Workflow Failure Strategy.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1660075860372/clean-shot-2022-08-09-at-13-10-39.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul></li><li>Azure
+    WebApp deployments now support the Basic deployment type (CDS-39316)<ul><li>You
+    can now deploy to Azure Web services using Basic workflows. This will allow you
+    to deploy to a single slot at a time.</li></ul></li></ul><h4>Early access</h4><ul><li>Harness
+    will pull images with over 10k tags (CDS-25769, ZD-20358, ZD-21781)<ul><li>Before,
+    if you used a large number of tags for images in your repo, Harness had a limitation
+    of fetching only 10,000.</li><li>With this change, you can select one of the available
+    tags from 10k or more or provide a custom tag. During Workflow execution, Harness
+    will fetch the image with the tag and proceed with the deployment. This change
+    is behind a feature flag <code>SAVE_ARTIFACT_TO_DB</code>.</li></ul></li></ul><h4>Enhancements</h4><ul><li>The
+    TAR archive utility is bundled with UBI-based Delegate images (DEL-4518)<ul><li>The
+    utility is widely used in customer scripts and shell tasks but is not available
+    by default on UBI Minimal images.</li></ul></li><li>Delegates can detect if a
+    client tool is available at the <code>$PATH</code> location and use the client
+    tool for task execution (DEL-4344)<ul><li>The discovery process checks the following
+    locations in the order given; the first located tool is used:<ul><li>Custom paths
+    configured through legacy environment variables like <code>KUBECTL_PATH</code></li><li><code>$PATH</code>
+    environment variable</li><li>Default tool location (under <code>./client-tools/</code>)</li><li>Download
+    the tool to the default tool location (if download is enabled)</li></ul>The discovery
+    process for immutable Delegates is limited to checking the following locations
+    in the order given:<ul><li><code>$PATH</code> environment variable</li><li>Default
+    tool location (under <code>./client-tools/</code>)</li></ul></li></ul></li></ul><h4>Fixed
+    issues</h4><ul><li>Unable to use AWS CloudWatch disk metrics in verification step
+    (SRM-11230, ZD-32816)</li><li>Unable to add Stackdriver log verify step as its
+    throwing &#34;The caller does not have permission&#34;. Scopes not being honored
+    for Stackdriver&#39;s &#34;get-sample-record&#34; in setup (SRM-11087, ZD-32354)</li><li>Git
+    Sync request for One File is bringing in Additional Files (PL-27006, ZD-31453)</li><li>Audit
+    Trail Returning Invalid Information (PL-26598, ZD-31159)</li><li>Config As Code
+    File Explorer displays loading when using search field (PL-26491, ZD-32330)<ul><li>Only
+    the apps/files which match the query typed in search bar will be displayed and
+    loading is removed if no file present under matching app is there.</li></ul></li><li>Removal
+    of certain feature flags from manager configuration results in some still being
+    enabled (PL-26379, ZD-31723)</li><li>UI slowness when editing a hidden variable
+    override (PL-26345, ZD-32285)<ul><li>The VariableOverrides component was slow
+    to load EncryptedText (i.e. secrets) due to fetching a large number of them from
+    backend. This issue has been resolved. We replaced the old component with a new
+    one and added support for paginated and searchable query for choosing EncryptedText
+    field. Now users should be able to edit variables without much delay in the UI
+    and save those overridden variables.</li></ul></li><li>Optional Fields on Run
+    Pipeline Faces Backend Error (PIE-3687)<ul><li>The timeout field did not fill
+    with a default value when it is left empty when a fixed value is not set during
+    design time.</li></ul></li><li>Not able to create Trigger for Pipelines with infra
+    definition as expression (CDS-40901)<ul><li>Was not able to create triggers when
+    infra definition was made as an expression in a pipeline. The dropdown for service
+    and environment weren&#39;t populating. Have fixed the same bug.</li></ul></li><li>Kubernetes
+    throwing error from Go struct field ObjectMeta.metadata.annotations (CDS-40892)<ul><li>harness.io/skip-versioning
+    was by default being generated as a boolean, however we now generate it as type
+    String. This change is to ensure support the new kubectl binary. As this is backward
+    compatible, we decided to make this change globally.</li></ul></li><li>Fix Azure
+    WebbApp basic rollback (CDS-40886)<ul><li>For Azure WebApp basic deployments rollback,
+    in case of package artifact type it was picking up pre-last successful deployment&#39;s
+    artifact however it should pick-up the last one. This issue has been fixed.</li></ul></li><li>Custom
+    webhook triggers must show the collection disabled manifest/artifact sources when
+    ‘From push event payload&#39; is selected in actions page (CDS-40884)<ul><li>You
+    should be able to see disabled artifacts in push event in custom webhook triggers.</li></ul></li><li>Environment
+    Variable resolving to Null value when deployed via pipeline (CDS-40493, ZD-32709,
+    ZD-32731, ZD-32737)<ul><li>When Workflow variable value was entered as Environment
+    variable expression in deployment modal, it was resolving to null. We added variable
+    resolutions before starting the Workflow stage in pipeline. Environment and Service
+    variables were not getting resolved correctly in those cases. Added fix to keep
+    the expression as it is if it resolves to null during initial resolution. Now
+    the environment/service variable gets resolved to the correct value provided in
+    environment/service.</li></ul></li><li>Taking a long time to abort an execution
+    (CDS-40452, ZD-32666)</li><li>Using &#34;delegate:ubi-no-tools&#34; does not work
+    for Kubernetes deployments (CDS-40449, ZD-32497)<ul><li>Some changes were made
+    to fail if tool is not installed and when used with no-tools delegate and user
+    tried to install only required tools it resulted in failure since current logic
+    is to try to get all tools paths (helm, go-template, kubectl, oc, kustomize) before
+    starting deployment. Solution is to ignore failure and fall back to default value
+    that will be binary name.</li></ul></li><li>Minor issues in Delegate selector
+    field in Jenkins step (CDS-40438)</li><li>Javascript Error Trying to add AMI Artifact
+    Source (CDS-40416)<ul><li>The feature was facing a empty enum error that was happening
+    in certain artifact forms. We have added the empty check for the enum and now
+    the tag creation should work fine following the normal flow.</li></ul></li><li>tfPlan
+    files are saved/uploaded and not deleted from KMS (CDS-40341, ZD-31827, ZD-32632)<ul><li>If
+    new FF is enabled ANALYSE_TF_PLAN_SUMMARY then there are expressions available
+    after Terrafrom Plan step:<ul><li>${terraformApply.add}</li><li>${terraformApply.change}</li><li>${terraformApply.destroy}</li></ul></li><li>or
+    there are expressions available after Terrafrom Destroy Plan step:<ul><li>${terraformDestroy.add}</li><li>${terraformDestroy.change}</li><li>${terraformDestroy.destroy}</li></ul></li><li>And
+    if there are not changes then the Plan will not get uploaded to the configured
+    Secret Manager (regardless of the checked export option in the Plan step).</li></ul></li><li>AWS
+    Cloud Provider is not being populated in InfraDef (CDS-40271, ZD-31625)<ul><li>The
+    change is released under the new FF: EXTRA_LARGE_PAGE_SIZE, which will basically
+    increase the max count from 1200 to 3000.</li></ul></li><li>User seeing UI issue
+    when loading long deployment filter list (CDS-40182, ZD-32587)</li><li>Terraform
+    Apply job is completing successfully but returning an unknown error (CDS-40083,
+    ZD-31714)<ul><li>Added warning message in case restricted output names are used
+    for Terraform Publish variable names.</li></ul></li><li>Chart manifest collection
+    is failing (CDS-40054, ZD-32179)<ul><li>Chart manifest collection step was failing
+    during deployment since we were trying to update app version and it was null for
+    the customer&#39;s helm chart. Have made a fix to skip updating the database in
+    that case. Now manifest collection step succeeds even in that case.</li></ul></li><li>Config-As-Code
+    YAML will not generate upon invalid User Group ID (CDS-39770, ZD-32247, ZD-32379)<ul><li>For
+    customers facing issues with usergroup in pipeline yamls we have created feature
+    flag REMOVE_USERGROUP_CHECK to help them correct yamls from yaml editor.</li></ul></li><li>The
+    Deployment Freeze windows are not getting filtered in the audit trails (CDS-39752)<ul><li>Changed
+    value from AccountResourceType.GOVERNANCE to AccountResourceType.DEPLOYMENT_FREEZE
+    as we were receiving DEPLOYMENT_FREEZE in API call</li></ul></li><li>Check Common
+    Parameters for blank inputs and better error logging (WinRM) (CDS-39586, ZD-32289)<ul><li>Added
+    fix to throw exception &#34;WinRM Command Parameters cannot be empty. Please remove
+    the empty WinRM Command Parameters pairs&#34; when the user tries to submit WinRM
+    Command Parameters with both parameter and value as empty. Also to handle those
+    empty parameter pairs which are already present now - we will skip them while
+    traversing command parameters and thus the code will not throw InvalidArgument
+    error.</li></ul></li><li>NPE thrown in Tanzu (PCF) app resize step when app Failed
+    to reach steady state (CDS-39556)<ul><li>Showing the failure exception on UI on
+    App Resize step failure.</li></ul></li><li>UI is displaying Step as Success but
+    the Progress bar is at 50% (CDS-39373, ZD-32113)</li><li>Missing data on CCM dashboard
+    (CCM-8233, ZD-32412, ZD-32864)<ul><li>1. Added error and info logs in delegate
+    to observe the behaviour in case of any exception.</li><li>2. Added watcher creation
+    retry logic to handle the network failure.</li></ul></li><li>Changed the Delegate
+    to delete and replace the <code>config-delegate.yml</code> file each time the
+    <code>delegate.sh</code> script runs (DEL-4571)<ul><li>This corrected a problem
+    with Harness Manager that affected the behavior of Feature Flags.</li></ul></li></ul><p></p><h3>August
+    1, 2022, version 76003</h3><ul><li>Delegate version: 76028</li></ul><h4>What&#39;s
+    new</h4><ul><li>N/A</li></ul><h4>Early access</h4><ul><li>N/A</li></ul><h4>Enhancements</h4><ul><li>Add
+    APIs for Delegates (DEL-3520, ZD-31340)<ul><li>New APIs for listing out Delegates
+    needed for automating delegate installation and usage.</li></ul></li><li>Support
+    JIRA user assignment fields when using JIRA integration (CDS-28853)<ul><li>You
+    can now update/create Jira issues with fields of type &#34;user&#34;.</li><li>For
+    details, go to <a href="/article/077hwokrpr-jira-integration">Jira Integration</a>.</li></ul></li></ul><h4>Fixed
+    issues</h4><ul><li>Python Script failed when using Local validation (PL-26534,
+    ZD-32450, ZD-32477, ZD-32501)<ul><li>The Python scripts provided for GraphQL APIs
+    at https://github.com/gabrielcerioni/harness_graphql_labs started failing with
+    the error &#34;TypeError: Type SecretManagerConfig must define one or more fields&#34;.
+    This happened because of a schema issue in the secret managers graphql API. The
+    graphql APIs failed for the customer who has enabled the schema validation. This
+    issue has been resolved. The graphql APIs are now running successfully.</li></ul></li><li>Not
+    able to re-login after logging out (PL-26444, ZD-32400, ZD-32402, ZD-32404)<ul><li>As
+    a part of security fixes some SAML library were upgraded which caused SAML to
+    break. We reverted back to original version and then added exclusion for velocity
+    jar to fix the issue.</li></ul></li><li>Long running Harness Manager task lost
+    during Harness upgrade (DEL-4479, ZD-32463)<ul><li>Fixed backward incompatible
+    enum change with latest versions of Harness Manager.</li></ul></li><li>Immutable
+    Delegate image is installing client tools even for minimal image (DEL-4478)<ul><li>Immutable
+    Delegates were still downloading client tools even though disabled explicitly.</li></ul></li><li>Issue
+    with no-tools Delegate: trying to download missing binaries on launch (DEL-4475)<ul><li>The
+    no-tools images were downloading the tools on the fly. This change stops the tools
+    binaries to be downloaded.</li></ul></li><li>Read user is able to download Delegate
+    yaml file on customer account (DEL-4425)<ul><li>Harness support user will not
+    be able to download a Delegate on customers account.</li></ul></li><li>Getting
+    &#34;Something went wrong&#34; when clicking on filter in deployment screen (CDS-39936)<ul><li>Added
+    null check for environment so that if no environments present it should not crash
+    the deployment filters</li></ul></li><li>Pipeline gives error that infra is required
+    when a particular stage is marked as skipped and we save the stage with empty
+    value for infra variable (CDS-39825)<ul><li>While adding Infrastructure Definition
+    as template in a pipeline stage and choosing the option to &#39;always skip&#39;
+    the stage, the deployment was throwing an error message saying infra is invalid.
+    We were still validating infra even when stage is marked as &#39;always skipped&#39;
+    in which case infra can be empty. Skipped validation of infra in that case to
+    fix the bug. Now we will successfully be able to select &#39;skip always&#39;
+    option for infra templatized stages too.</li></ul></li><li>Steady State Check
+    Step Failure (CDS-39623, ZD-31962)<ul><li>The Steady State Check step is based
+    on old Kubernetes implementation (V1) and is not supported. Going forward we can
+    display an error message to customers saying this step is no longer supported.</li></ul></li><li>Update
+    artifact details from deployment summary while saving instance in database (CDS-39369)</li><li>Execution
+    Context tab in Kubernetes deployment not showing expressions (CDS-39150)<ul><li>This
+    was caused because we were not tracking context resolution after Delegate task
+    response. Going further we will track it.</li></ul></li><li>CF Push does not support
+    &#39;process&#39; attributes (CDS-38921, ZD-31747)<ul><li>There were some missing
+    attributes like processes and metadata in Tanzu (PCF) manifest because it wasn&#39;t
+    being parsed. Have added the supported CF attributes.</li></ul></li><li>UI changes
+    for CDS-2992 (CDS-36735)<ul><li>Displayed the service artifact version and enhanced
+    the design on hovering over the details.</li></ul></li><li>Workflow Step level
+    failure strategy not being honoured when Workflow level strategy is Ignore (CDS-32524)<ul><li>Implemented
+    rollback Workflow on step failure strategy behind a Feature Flag ENABLE_EXPERIMENTAL_STEP_FAILURE_STRATEGIES.</li></ul></li><li>Create
+    tags are not displayed in the Audit Trail for Workflow and Infra that have been
+    created via cloning (CDS-24569)<ul><li>Added create tags for Workflows that were
+    created via cloning.</li></ul></li></ul><p></p><h3>July 18th, 2022, version 75902</h3><h4>What&#39;s
+    new</h4><ul><li>Support JAR files for Azure Web App deployments (CDS-39244)<ul><li>Harness
+    now supports deploying JAR artifacts to Azure Web apps. Harness zips the JAR and
+    deploys it.</li><li>See <a href="/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment">Add
+    Non-Containerized Artifacts for Azure Web App Deployment</a>.</li></ul></li></ul><h4>Early
+    access</h4><ul><li>N/A</li></ul><h4>Enhancements</h4><ul><li>N/A</li></ul><h4>Fixed
+    issues</h4><ul><li>GraphQL executions using API key fail with user not authorized
+    error, but are working when the same user is logged in (PL-26261)</li><li>Invalid
+    SSO suddenly when enabling the FF AZURE_SAML_150_GROUPS_SUPPORT + inputting client-id
+    + secret (PL-26215, ZD-31704)<ul><li>Added logs for SamlAuthBasedHandler.</li></ul></li><li>NullPointerException
+    while creating service using CAC API (PL-24964, ZD-29601, ZD-29900)</li><li>Pipeline
+    service restart during deployment (PIE-4092)</li><li>Bug in notifications sent
+    from Delegates for Approval (DEL-4431, ZD-32250)<ul><li>Fixed a bug where Slack
+    messages sent by Delegates were failing.</li></ul></li><li>Delegate WebSocket
+    connection does not reconnect (DEL-4269, ZD-31018, ZD-31589, ZD-31849)<ul><li>Delegate
+    makes a WebSocket connection to manager for communication regarding Delegate tasks.
+    If the WebSocket is closed violently then there existed a race where the Delegate
+    wasn&#39;t retrying to make the connection again. This led the Delegate restarting
+    after a few minutes. This fixes that race so that Delegate reconnects faster in
+    case of network glitch.</li></ul></li><li>User is getting &#34;Unauthorized&#34;
+    when trying to create a Trigger (CDS-39740, ZD-32239)<ul><li>Customers who had
+    feature flag PIPELINE_PER_ENV_DEPLOYMENT_PERMISSION enabled can now work with
+    Trigger creation with templated Pipeline.</li></ul></li><li>Hotfix for artifactory
+    issue (CDS-39432)</li><li>Environments dropdown is not loading in Compare Environments
+    modal in services and serverless dashboards (CDS-39429)</li><li>Update artifact
+    details from deployment summary while saving instance in database (CDS-39369)</li><li>AWS
+    Lambda deployment fails when installing multiple functions (CDS-39363, ZD-32155)</li><li>AMI
+    using ALB: NPE in Workflow Execution Error (CDS-39349)<ul><li>Fix for general
+    exception with message &#34;Did not find any valid target group tuple&#34; when
+    ALB details passed to rollbackSwitchAmiRoutesTrafficShift api are Null. Earlier
+    that resulted in NPE.</li></ul></li><li>Deployment fails due to ConcurrentModificationException
+    (CDS-38969, ZD-31833, ZD-32369, ZD-32394)</li><li>Deployment rate limit reached
+    message coming in the middle of deployment modal (CDS-35913)<ul><li>Error message
+    will be displayed at bottom of deployment modal.</li></ul></li><li>Secret value
+    in HTTP step was cached for few mins (CDS-33716)</li></ul><p></p><h3>Minor Release
+    75805</h3><p>Release Date: July 9th, 2022</p><p>We&#39;re pleased to present Harness
+    SaaS Release 75805.</p><h3>General What&#39;s New and Early Access</h3><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>User Groups page matches any part of group name. Now
+    searching for User Groups can be done by entering any part of the User Group name
+    (PL-26074, ZD-30786)</li><li>Added a TTL to Delegate task assignment data. Harness
+    stores information on the the tasks assigned and executed by Delegates over a
+    period of time. This data was not being expired after a while and was accumulating.
+    This change adds an expiry and deletes old records (DEL-4409)</li><li>Implement
+    Immutable Delegate Operations Suite (formerly Stackdriver) logging. Immutable
+    Delegates now transmit logs to Harness Manager (DEL-4285)</li><li>Improved the
+    Deployment Limit Reached error message so customers can easily identify which
+    limit have they reached (CDS-38674, ZD-31500)</li><li>Artifactory connection timing
+    out. Modified Harness Artifactory UI to accept custom input value (CDS-37077,
+    ZD-30437, ZD-30632)</li><li>GraphQL Mutation startExecution can now get the full
+    URL for the Pipeline execution as output. You can now fetch &#34;executionUrl&#34;
+    on startExecution GraphQL mutations (CDS-36020, ZD-29170)</li><li>Jira user assignment
+    fields supported. You can now update/create Jira issues with fields of type &#34;user&#34;
+    (CDS-28853)</li><li>Exposing params for the Amazon Default Backoff strategy on
+    the Harness Account level. Now you can tune backoff params based on their API
+    request rate per AWS account and region already set. Earlier, this was only implemented
+    for CloudFormation API Calls. Now, it is implemented for ECS API calls also. It
+    is publicly documented here (CDS-23425, ZD-11137)<br/>See <a href="/article/actaxli00u-set-amazon-sdk-backoff-strategy-params-for-cloud-formation">Set
+    Amazon SDK Default Backoff Strategy Params for CloudFormation and ECS</a>.</li><li>WinRM
+    PowerShell command failure error message improved. There was a mistake in the
+    error message. Changed it from &#34;SSH socket connection error&#34; to &#34;WinRM
+    Command execution timed out&#34; (CDS-17405, ZD-15253)</li></ul><h4>Issues Fixed</h4><ul><li>Application
+    Permissions under User Groups does not load (PL-26111, ZD-32018)</li><li>Missing
+    Kryo register for class io.harness.exception.InterruptedRuntimeException.class
+    (PL-26018)<br/>Registered the class in kryo.</li><li>Kryo exception in Delegate
+    logs with ScmGitFileTaskParams (PL-25981)</li><li>Secrets Management UX gaps (PL-25859)</li><li>Remove
+    Slack Channel Name from User Group Notification Settings (PL-25559)<br/>Removed
+    the Slack channel name UI element and updated snapshots.</li><li>Sync issue on
+    the Git end during Environment rename (PL-25117, ZD-30527)<br/>When renaming an
+    entity in Harness, it was intermittently not getting Deleted from Git. This affects
+    only those customers who used rename operation with Git sync in the FirstGen.</li><li>Improve
+    error message for invalid GraphQL queries instead of &#34;Contact Harness Support&#34;
+    (PL-24963, ZD-30093)</li><li>Audit Trail resource lookup capped at 1000 (PL-24548,
+    ZD-31159)<br/>Added search and paginated responses using infinite scroll.</li><li>Config-as-Code
+    upsert is succeeding but intermittently failing to create objects (PL-23938)<br/>Now
+    upsert-entity api will return 400 in case of failure.</li><li>Need to add mailTemplates
+    in Delegate JAR (DEL-4403, ZD-31746, ZD-31898, ZD-31917, ZD-31986, ZD-31990)<br/>SMTP
+    services sending emails using Delegates were not going due to a regression. This
+    change fixes it.</li><li>K8S_COMMAND_TASK does not execute on the Delegate because
+    Delegate has 2 min limit to decrypt remote secrets and there are more than 100
+    secrets to decrypt (DEL-4399, ZD-32084)<br/>Increased timeout for network calls
+    from Delegate as task acquire call is timing out before completion when there
+    are more than 100 secrets to decrypt.</li><li>Delegate warning, Delegate received
+    unhandled message (DEL-4393)</li><li>Delegate token name is not being saved in
+    Delegate collection (DEL-4384)</li><li>Connected-ratio-with-primary not working
+    with Delegate rings (DEL-4295)<br/>Fixed the API to accept ringName in case Delegate
+    ring is enabled.</li><li>Shell Script Delegate attempting to start on JDK8 (DEL-4291,
+    ZD-31673)<br/>We recently moved to JDK 11 from JDK 8 for Delegates. There is a
+    check between Harness Manager and Delegate to see if the Delegates are running
+    with the right Java version. Under high load the manager sometimes sent the wrong
+    version of Java for Delegates to start on which led to Delegate process being
+    killed and not able to recover. This fixes the bug.</li><li>Rollout Deployment
+    failed due to Delegate disconnected while executing the task (DEL-4167, ZD-30491)<br/>New
+    warning in Delegate logs to show if heartbeat is delayed more than 3 minutes.</li><li>Optimize
+    Harness Manager to Delegate heartbeat handling to reduce the network calls and
+    database updates (DEL-4028)</li><li>Unable to add Rancher as a Cloud connector
+    (CDS-39235)<br/>Improved the Error Message for Rancher Cloud Provider Test connection
+    failure.</li><li>Service Dashboard not loading details for a specific Service.
+    Getting invalid request error (CDS-39230, ZD-32027, ZD-32029, ZD-32115)<br/>Fixed
+    &#34;workflow execution not found&#34; exception on service dashboard page</li><li>Only
+    listing the last 15 artifacts found on the repo (CDS-39149, ZD-31573)<br/>The
+    issue was caused by limit of 500 artifacts and pattern filter. Harness now first
+    applies the pattern filter to all artifacts and then limits it to 500.</li><li>Clone
+    canary workflow issue (user not authorized, service not found) (CDS-38928, ZD-31616)<br/>Service
+    Id and Infra Definition Id are cleared in Workflow phases when Workflow is cloned
+    across Application.</li><li>Cannot Fetch Secrets from Harness Secret Manager (CDS-38837,
+    ZD-31452)<br/>Fixed Shell Script step authentication on GKE 1.19+. While the response
+    from, for instance, kubectl command invoked in a Shell Script step was previously
+    &#34;Unauthorized&#34;, now Harness will authenticate correctly if the Cloud Provider
+    credentials are valid.</li><li>Artifact text is getting overlapped in UI and impacting
+    delete functionality (CDS-38828)<br/>Text will be truncated if its length is more
+    than the length of box.</li><li>AWS Cloud Provider is not being populated in InfraDef
+    (CDS-38825, ZD-31625)</li><li>Approval Step does not send message &#34;Request
+    for Authorization&#34; (CDS-38677, ZD-31302, ZD-32268)<br/>Fixed a bug where big
+    artifacts list was not being trimmed down at Slack messages.</li><li>Deleted user
+    group reference present in the Pipeline&#39;s user input &#34;userGroupName&#34;
+    setting (CDS-38672, ZD-31471)<br/>User Group could have been deleted even when
+    they were part of Runtime Input in an execution stage of a Pipeline. Going forward
+    the user cannot be deleted if they are present as runtime input in a Pipeline
+    stage.</li><li>Terragrunt Destroy Version issue (CDS-38662, ZD-31506)<br/>Now
+    you can use Terragrunt Destroy Step even with underlying Terraform version &gt;
+    15.0.0. Internally, -force and -auto-approve flag will be used based on underlying
+    Terraform version as -force flag is not supported in Terraform version &gt; 15.0.0.</li><li>/opt/harness-delegate
+    has many manifest-collection-* folders with empty directories that are created
+    constantly (CDS-38543, ZD-30994)<br/>Manifest collection directory is changed
+    from /manifest-collection-{app-manifest-id}/ to /manifest-collection/{app-manifest-id}
+    to reduce clutter in home folder.</li><li>Auto-rejection popup displayed when
+    Workflow should reject automatically (CDS-38525)<br/>While picking previous approvals
+    to reject with auto-reject previous approvals feature, only Workflows waiting
+    on same Approval step were considered.</li><li>Unable to Select &#34;Fixed&#34;
+    Workflow variables when rerunning a Workflow directly (CDS-38270, ZD-31200)<br/>Added
+    condition to populate Workflow variables with old values.</li><li>HelmChart AppVersion
+    intermittently returns null using Harness variables (CDS-38071, ZD-30735)</li><li>If
+    Terraform init fails Terraform Plan task is still trying to read Terraform Plan
+    (CDS-37894)<br/>Error handling during Terraform initialization has been improved.</li><li>Failed
+    build number in deployment history dashboard when custom Artifactory source is
+    used (CDS-37806, ZD-30352)<br/>The deployment status was showing wrong artifact
+    in custom deployment type when a rollback happened. Have fixed this to show the
+    correct artifact.</li><li>Harness Template issue broke Workflows (CDS-37480, ZD-28531)<br/>YAML
+    won&#39;t have Service name and Environment name when templatized.</li><li>Validate
+    the costs reported by CCM (CCM-7987, ZD-31791)</li></ul><p></p><p></p><p></p><h3>Minor
+    Release 75601</h3><p>Release Date: Jun 23, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 75601.</p><h3>General What&#39;s New and Early Access</h3><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>ECS Workflow Ignores Delegate Selector. (CDS-2978,
+    ZD-18972)<ul><li>You can now prevent the Infrastructure/Cloud Provider Delegate
+    Tag Selector from being used along with the Shell Script Delegate Selectors. This
+    will help you:<ul><li>Target a specific Delegate for the Shell Script step without
+    worrying about extra Delegate Tags/Selectors being added.</li><li>Keep your Cloud
+    Provider Delegate and Shell Script step Delegate separate with specific permissions.</li><li>See
+    <a href="/article/1fjrjbau7x-capture-shell-script-step-output#include_infrastructure_selectors">Include
+    Infrastructure Selectors</a> in the Shell Script step.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1656090085546/clean-shot-2022-06-24-at-10-01-01.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul></li></ul></li></ul><h4>Issues
+    Fixed</h4><ul><li>Cannot Edit Application/Environment for Hashicorp Vault (PL-25702,
+    ZD-31154, ZD-31424)<ul><li>Earlier if there were more Secret Managers in your
+    account,The usage scope was not editable for the Secret Managers listed from 2nd
+    page. We have fixed this bug as part of this ticket.</li></ul></li><li>Unstable
+    UI when creating a User group with long name (PL-11098)</li><li>Repo Identifier
+    check needs to be removed for new Git Sync (PIE-4101)</li><li>Delegate returns
+    a RC of 403 in logs, but we need more details (DEL-4236, ZD-31346)<ul><li>Adding
+    more details in delegate logs in case the calls from delegate to manager are failing.</li></ul></li><li>Manifest
+    history widgets does not display after adding the required Helm manifest (CDS-38855)</li><li>Service
+    Dashboard not loading details for a specific Service, getting invalid request
+    error (CDS-38830, ZD-31642)<ul><li>Fix: Service dashboard fails to load if the
+    pods for any deployment is manually scaled up from 0.</li></ul></li><li>CG UI:
+    Alignment issue (CDS-38818)</li><li>Helm Deployment Task Times out be Task was
+    Allocated (CDS-38663)<ul><li>Added more details when Helm deploy task fails because
+    of connectivity issues with K8s cluster</li></ul></li><li>Account Level Config
+    As Code - Application Defaults Error with Null Pointer Exception (CDS-38624, ZD-31467)<ul><li>Fixed
+    an issue when application defaults are configured using code.</li></ul></li><li>Deployment
+    Governance Fails when referencing a Deleted User Group (CDS-38177)<ul><li>User
+    group could have been deleted if they were part of deployment freeze which led
+    to dangling references in freeze windows. Going forward user group can&#39;t be
+    deleted if they are part of deployment freeze.</li></ul></li><li>Docker registry
+    connector is not working (CDS-37915, ZD-30577)<ul><li>Added skip validation support
+    Docker Connector. You can now skip validation of Docker connectors on save from
+    both UI and YAML(`skipValidation`) field.</li></ul></li><li>Not using Helm version
+    3.8 when doing test connection for Helm connector (CDS-37554)</li><li>[Built-in
+    Variables] Looks similar to CDS-24583 - rollbackArtifact variables equal to &#39;null&#39;
+    (CDS-36700, ZD-30120)</li><li>Issues with deployments when a Harness Manager is
+    restarted (CDS-36559, ZD-18501, ZD-29096)<ul><li>We added a monitor to detect
+    when a workflow has an active status, is stuck in a not execution step, and for
+    more than 45 minutes. The REPEAT, FORK, PHASE_STEP, PHASE, and SUB_WORKFLOW are
+    considered not execution steps. This feature is behind FF named WORKFLOW_EXECUTION_ZOMBIE_MONITOR.</li><li>Two
+    info level log messages are added to help in future troubleshooting:<ul><li>Evaluating
+    if workflow execution {} is a zombie execution [workflowId={}] – Printed when
+    monitor found a stuck/zombie candidate.</li><li>Trigger force abort of workflow
+    execution {} due remains in a zombie state [currentStateType={}] – Printed when
+    is detected the zombie conditions, running for more than 10 minutes in a not execution
+    step.</li></ul></li></ul></li><li>Missing Validation for artifactType type in
+    service creation (CDS-35830)</li><li>CloudFormation Rollback from DEV Canary Workflow
+    goes to STG - AWS - Each Environment is from a Diff Account - Same Org (CDS-34125,
+    ZD-26628)<ul><li>Issues with CloudFormation Rollback have been fixed. Now, template
+    expressions and multiple cloud providers in a single environment are supported
+    during Rollback.</li></ul></li><li>ECS Blue Green: Rollback not Downscaling the
+    Newly deployed Service and instances (CDS-4024)</li></ul><p></p><h3>Minor Release
+    75304</h3><p>Release Date: June 15, 2022</p><p>We&#39;re pleased to present Harness
+    SaaS Release 75304.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>Ensure Delegate version is valid till next Delegate
+    release (DEL-4198)</li><li>Support for Custom Artifact with no artifact polling
+    to be enabled for Custom deployment type (CDS-34235, ZD-28100)<ul><li>Custom artifact
+    source script can be made empty now. If the script is empty, the deployment proceeds
+    with the version customer provides and the same details are available in the artifact
+    variable which can be accessed using <code>${artifact.*}</code>.</li></ul></li></ul><h4>Issues
+    Fixed</h4><ul><li>authentication-info during redirect URL is not consistent and
+    not showing the enabled method immediately (PL-25300)</li><li>Pipeline delete
+    throwing exception in old Git sync (PIE-3990)</li><li>Manager pods in Prod-1 restarting
+    on a regular basis. Rollback to version 1.0.5.1 of the Java SDK (FFM-3643)</li><li>Invalid
+    request: ConcurrentModificationException. Fixes a ConcurrentModificationException,
+    increases the bufferSize for SDK metrics and adds configurable bufferSize (FFM-3637,
+    ZD-31477, ZD-31480, ZD-31491, ZD-31502, ZD-31515, ZD-31552)</li><li>StackDriver
+    logging not working for delegate post 753xx. Logging dependency was removed during
+    cleanup of delegate dependencies, most likely because they were not showing up
+    in dependency graph as they are not directly referenced from code, causing delegate
+    to stop logging to stack driver (DEL-4278)</li><li>Deployment Is not Accessible
+    in the UI: Morphia deserialization issue. Some older ECS executions were not loading
+    in UI. This fixes them (DEL-4277, ZD-31501, ZD-31622)</li><li>[GraphQL] delegateList
+    ignores delegateStatus in the filter. Added filtering by delegate status (DEL-4231,
+    ZD-31001)</li><li>GCB triggers are showing an unknown error (CDS-38613)</li><li>UI
+    rendering issue on service page (CDS-38586, ZD-31435)</li><li>Continue execution
+    API fails with an error occurred (CDS-38523)</li><li>ECS BG DNS switch workflows,
+    I try to open “Setup Route 53”, it fails with error related to uid (CDS-38500)</li><li>FETCH_S3_FILE_TASK
+    fails in Manager with UNKNOWN error (CDS-38475, ZD-31300)</li><li>In manual pull
+    window, the auto collection enabled artifact sources were not listed. (CDS-38473)</li><li>Start
+    New Deployment (Workflow) Returns only 1000 workflows (CDS-38466, ZD-31355)</li><li>Even
+    if I increase the width of the column, the text remains stripped (CDS-38436, ZD-31320)</li><li>Jira
+    Update - Invalid issue type (CDS-38432, ZD-30622)</li><li>UI Issue - On adding
+    config file in service and clicking manage version window button not listing any
+    env. Added the fetchOneApp api responsible for it (CDS-38420)</li><li>Need to
+    fix historical data for Service Instance Discrepancy with Auto-Scalar (CDS-36823,
+    ZD-CDS-38398, ZD-30141)</li><li>GQL API failing to fetch all cloud providers when
+    queried (CDS-38368, ZD-31252)</li><li>Rollback failling - No context found for
+    rollback (CDS-38227)</li><li>[UI] Specific Pipeline Execution (Deployment) won&#39;t
+    load in the UI - It load some elements but then HTTP 500 (CDS-37152, ZD-30479)</li><li>[Built-in
+    Variables] Looks similar to CDS-24583 - rollbackArtifact variables equal to &#39;null&#39;
+    (CDS-36700, ZD-30120)</li></ul><p></p><h4>Delegate Version</h4><ul><li>75509</li></ul><p></p><h3>Minor
+    Release 74705</h3><p>Release Date: June 6th, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 74705.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>Add runtimePlatform to AWS ECS Task Definition. AWS
+    Java SDK Library has been upgraded from 1.12.47 to 1.12.220. You can now specify
+    runtimePlatform option in ECS task definitions. (CDS-35585, ZD-27533, ZD-30721)</li><li>Need
+    the ability to specify JEA Session ConfigurationName w/PowerShell invoke-command
+    over WinRM. (CDS-33772, ZD-26630)<ul><li>You can now add parameters to PowerShell
+    Invoke-command:<ul><li>Use this to initiate JEA sessions by passing Session parameter</li><li>Enable
+    debug output by passing Debug flag</li></ul></li></ul></li></ul><h4>Issues Fixed</h4><ul><li>Fix
+    LdapSettingsDTO Kryo backwards compatibility. Fix LdapSettings&#39; DTO class
+    to ensure Kryo backwards compatibility of new manager with old delegate. (DEL-4099)</li><li>CV
+    step is getting stuck and marked as expired. Show exception to users when save
+    fails for metric data collection. (SRM-10551, ZD-30562)</li><li>NullPointerException
+    while creating service using CAC API (PL-24964, ZD-29601)</li><li>User Cannot
+    Delete Group. After this change, userGroups referencing in a pipeline will not
+    be allowed to delete via graphQl unless those pipelines are deleted. (PL-24821,
+    ZD-30056, ZD-30935)</li><li>Harness internal users are able to delete resources
+    using graphql on customer&#39;s accounts. (PL-24764)</li><li>Integrating latest
+    Java SDK into Platform resulted breaking QA - user unable to login. The new version
+    of the Java Server SDK 1.1.5 has been added into the portal. (FFM-3215)</li><li>Custom
+    helm binary path is not supported causing deployment failures for many customers.
+    (DEL-4107, ZD-30792, ZD-30881, ZD-30883)</li><li>JDK8 Watcher keeps restarting
+    with JDK11 delegate (DEL-4041)</li><li>UI Issue - On adding config file in service
+    and clicking manage version window button not listing any env. Added the fetchOneApp
+    api responsible for it (CDS-38420)</li><li>[S3 or GS Based Helm Repo] Multiple
+    Customers reporting - Chartmuseum on the Delegate seems to be on stalled state,
+    so port is always in use. Fixed retry logic to start chart museum server in case
+    the port is already in use. (CDS-38135, ZD-31129)</li><li>Artifact collection
+    with FF &#39;DISABLE_ARTIFACT_COLLECTION&#39; on - Nexus3 artifact collection
+    is failing with Nexus 3.x does not support getVersion for parameterized artifact
+    stream (CDS-38030)</li><li>Erorr Handling for null stateFile in TerragruntProvsionTask
+    (CDS-38028)</li><li>Artifact History option is not shown for already auto collection
+    artifact sources when we enable the FF (CDS-37958)</li><li>For docker artifact
+    streams, changing collection value from yaml doesn&#39;t work. (CDS-37956)</li><li>Deployment
+    Permissions for a Specific Pipeline (CDS-37918, ZD-30951)</li><li>K8s Delete task
+    fails with timeout which is greater than configured timeout (CDS-37917, ZD-30898)</li><li>ConfigMaps
+    quota limit marking all previous inProgress releases as Failed. Behind FF CLEANUP_INCOMPLETE_CANARY_DEPLOY_RELEASE
+    (CDS-37877, ZD-30906)</li><li>AWS Secret Manager not using Delegate Selector for
+    Pulling Secret. Added the execution capability of SM to verify the eligibility
+    of delegate to access the SM. (CDS-37797, ZD-30884)</li><li>Missing Git File error
+    for CloudFormation from GIT does not surface to the Deployment Logs (CDS-37670,
+    ZD-30781)</li><li>Manage gets No delegate task found made timeout as required
+    field (CDS-37524, ZD-30412)</li><li>PCF Deployment Fails with SweepingOutputServiceImpl.save
+    Error (CDS-37500, ZD-30761)</li><li>[UI - Known Issue (API call)] Limitation to
+    render more than 1k elements on `Deployments - &gt;Start new Deployment` Blocks
+    customer use case new change will make call in group of 15 items every time you
+    scroll, and also if you type it will search for those 15 items with the written
+    text . The changes are behind a ff, so that testing scope is not increased and
+    we can quickly move the changes. (CDS-37471, ZD-30667)</li><li>Terraform Fails
+    on NoSuchFileException (CDS-37073, ZD-30357)</li><li>UI Inputs from the Dropdown
+    are trimmed fixed the ux (CDS-37018, ZD-30364)</li><li>Service Instance Discrepancy
+    with Auto-Scalar (CDS-36823, ZD-30141)</li><li>Templatizing User Groups in approval
+    displays workflow variable created instead of pipeline template variable. Fixed
+    the tooltips (CDS-36745, ZD-30033)</li><li>Azure - Artifactory incorrectly regenerates/reads
+    the artifact path (CDS-36596)</li><li>Config-as-Code Cloud Provider created without
+    Usage Scopes (CDS-35638, ZD-29012)</li><li>Data Cleanup for Extra SIs (CDS-35484,
+    ZD-20908, ZD-28627)</li><li>Immutable label error issue (CDS-35447, ZD-29000)</li><li>[CloudFormation]
+    Rollback from DEV Canary Workflow goes to STG - AWS - Each Environment is from
+    a Diff Account - Same Org (CDS-34125, ZD-26628)</li><li>Terraform Logs misleading
+    (CDS-33712)</li><li>Deployment fails with Context Error (CDS-3000, ZD-26633, ZD-30824)</li><li>Incorrect
+    time in the &#34;Last deployed at&#34; field in the Current Deployment Status
+    of a service (CDS-2997, ZD-20562)</li></ul><p></p><h3>Minor Release 74602</h3><p>Release
+    Date: May 19, 2022</p><p>We&#39;re pleased to present Harness SaaS Release 74602.</p><h3>General
+    What&#39;s New and Early Access</h3><ul><li><a href="https://changelog.harness.io/?categories=fix,improvement,new"
+    target="_blank">New features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>Remove iterator logging and build first class support
+    with opencensus.<ul><li>As part of streamlining our monitoring and reducing the
+    cost of logging, all the background jobs metrics are moved from log based metrics
+    to opencensus metrics providing us better visibility into our critical paths.
+    (DEL-3835)</li></ul></li><li>AWS SDK related delegate changes and integration
+    with Task handler (BE-2).<ul><li>For CloudFormation steps, we are going away from
+    AWS CloudFormation update() API and moving to AWS CloudFormation Change sets to
+    update stacks. This will help customers properly validate CF Templates if there
+    are no changes done. This is behind FF and impacts only stack updates. The creation
+    of the stack will work as it is working right now. (CDS-37148)</li></ul></li></ul><h4>Issues
+    Fixed</h4><ul><li>Vault SSH secret engine E2E tests (PL-25237)</li><li>Test Conn
+    fails for existing Ldap connection but functionality works fine and even test
+    conn works after password update (PL-25186)</li><li>GCB Triggers call is failing
+    with KryoException: java.lang.IllegalArgumentException: Class is not registered
+    (DEL-4050)</li><li>Watcher throwing null pointer exception on DELEGATE_SHUTDOWN_TIMEOUT.
+    Handle null value scenario while reading delegate data. Watcher was into a loop
+    of reading delegate data, couldn&#39;t make progress because of this NPE. Fixed
+    the code path by making correct assumptions. (DEL-4039)</li><li>delegateScopeList
+    API Call not working. Fixing the bug of listing delegate scopes when the environment
+    is not provided (DEL-3991, ZD-30462)</li><li>Triggers fail when optional input
+    of type allowed values is not passed in the payload. Issue scenario:<ul><li>If
+    customer had an optional workflow variable with some allowed values, and the value
+    was not provided for that workflow variable in trigger payload, trigger executions
+    starting failing with error: Trigger rejected because a passed workflow variable
+    was not present in allowed values. What happened: Allowed values validation was
+    added in triggers flow where we started checking if variables value is present
+    in allowed value list or not. This check started happening for optional workflow
+    variables as well whose values were not provided and this broke triggers flow.
+    Fix: Changed the validation to only occur when variable value is provided in trigger.<ul><li>(CDS-37510,
+    ZD-30760, ZD-30769, ZD-30773, ZD-30777, ZD-30782, ZD-30797, ZD-30798, ZD-30810,
+    ZD-30812)</li></ul></li></ul></li><li>CDP QA Sign-off 75100 Failures (CDS-37310)</li><li>Bamboo
+    step is failing and delegate is throwing Class is not registered: software.wings.delegatetasks.BambooTask$BambooExecutionResponse
+    execption (CDS-37264, ZD-30567)</li><li>[SSH Step - Download Artifact] - NPE -
+    DownloadArtifactCommandUnit.java - gives UNKNOWN_ERROR on the UI NA (CDS-37193,
+    ZD-30299, ZD-30498, ZD-30499)</li><li>BE - Cannot Select all User Groups in Freeze
+    Window same (CDS-36681)</li><li>Cannot Select all User Groups in Freeze Window.
+    We were not supporting selecting all the user group and user had to click one
+    my one to select all user group if he wants to notify all. Going forward we can
+    select &#34;ALL&#34; option to notify all at once. (CDS-36556, ZD-29926)</li><li>Artifactory
+    incorrectly regenerates/reads the artifact path - AWS Lambda (CDS-36045)</li><li>Powershell
+    script is not terminated when the shell script step timeouts When the workflow
+    is aborted or expired, the running shell script step and all its child processes
+    now terminate immediately (CDS-24447, ZD-20817, ZD-29183)</li><li>Perspective
+    page is not working in CG. Fixed the perspective list page which was not loading
+    on enablement of cost categories (CCM-7609)</li><li>CE Weekly Report was being
+    sent out every 30 minutes. It was happening for only 1 customer (CCM-7595, ZD-30545)</li></ul><p></p><h3>Minor
+    Release 74503</h3><p>Release Date: May 12, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 74503.</p><h3>General What&#39;s New and Early Access</h3><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>Support skipValidation for secrets created using <a
+    href="/article/ejaddm3ddb-add-and-use-a-custom-secrets-manager">Custom Secret
+    Manager</a>. (PL-23731)</li><li>Remove iterator logging and built first class
+    support with OpenCensus. (DEL-3835)</li><li>Trying to get repository from Artifactory
+    is timing out. (CDS-37077, ZD-30437)<ul><li>Modified UI of Artifactory to accept
+    custom input value.</li></ul></li><li>Apply deployment tags (Pipelines and Workflows)
+    during the execution. (CDS-29002)<ul><li>With this change, Pipeline tags are resolved
+    after every stage is finished. Previously they were being resolved only twice:
+    before Pipeline execution started and after Pipeline execution finished.</li></ul></li></ul><h4>Issues
+    Fixed</h4><ul><li>curl query for createFreeze window returns error message on
+    using API key. (PL-24899, ZD-29519, ZD-30296)</li><li>Delayed Sync with Harness
+    UI and Github Config as Code Repository: We had some slowness in case a file was
+    renamed in Harness to git. We have improved it going forward. (PL-24662, ZD-28316)</li><li>UI
+    is not preserving the error message format which BE is sending. Although backend
+    was sending newline characters, frontend wasn&#39;t honoring them. It is fixed
+    now using a CSS rule. (PL-23726)</li><li>Intermittent API key for graphql: &#34;Invalid
+    request: User not authorized&#34; (PL-22244, ZD-30193, ZD-30196, ZD-30506)</li><li>Manifest
+    collection task assignment is failing. (DEL-3999)</li><li>Delegate start up error
+    in 74808 and later versions for Self-Managed Enterprise Edition (DEL-3982, ZD-18302,
+    ZD-29108)</li><li>CloudFormation failure with java exception from manager side.
+    Fixed unable to process Cloud Formation task reported on 05/02/2022. (DEL-3975,
+    ZD-30371)</li><li>Deployments no longer running. (DEL-3961, ZD-30299, ZD-30432)</li><li>Kryo
+    exception (io.harness.delegate.beans.RemoteMethodReturnValueData). (DEL-3956)</li><li>Added
+    support for special characters in proxy password for Delegate proxying. (DEL-3348,
+    ZD-26493)</li><li>Webhook Trigger failing. Added additional validation on backend
+    to fix the case where build is empty string. (CI-4352)</li><li>ArtifactMetadataEvaluator
+    Class is not registered in QA. (CDS-37055)</li><li>Artifactory Docker autosuggestion
+    is wrong value for Artifactory on-prem/server for &#34;Docker Repository Server&#34;
+    (CDS-36996, ZD-30023, ZD-30402, ZD-30568, ZD-30623, ZD-30628)</li><li>Clicking
+    Task Definition in newly created ECS service: &#34;Something went wrong...&#34;
+    added null check. (CDS-36995, ZD-30422)</li><li>Canary failed: After the clone
+    operation, the workflow is not set as incomplete and that is what we fix here.
+    (CDS-36932, ZD-30269)</li><li>[Rancher] NPE on Rancher Rollout Deployment: 400
+    rest/src/main/java/software/wings/delegatetasks/rancher/RancherTaskHelper.java:105.
+    Bug resolved by adding null checks. (CDS-36740, ZD-30133)</li><li>Workflows failing
+    due to invalid Delegate Task Mapping [SSH and WinRM]. (CDS-36733)</li><li>Kyro
+    exception seen in the QA manager logs for Jenkins server while fetching builds
+    information. (CDS-36729)</li><li>Workflow variable is not resolving in manifest
+    variable reference: surface that ChartMuseum failed to start and no values.yaml
+    fetch occurred. (CDS-36728, ZD-30077)</li><li>Status of a workflow in WAITING
+    status is returned as RUNNING when using either graphql or rest api. When using
+    REST or GraphQL the workflow execution status return a value different of the
+    UI. To get the current status value is required to transpose the execution tree
+    and this take sometime, this refresh status operation is behind a FF named WORKFLOW_EXECUTION_REFRESH_STATUS.
+    (CDS-36623, ZD-29921)</li><li>SSH connection is failing with SOCKET_CONNECTION_TIMEOUT.
+    (CDS-36616, ZD-29683)</li><li>Error when editing a Cron-based Trigger where the
+    existing cron value is now in the past. Trigger editing problem with cronjob,
+    where frontend was sending an unused field with a value that was exceeding the
+    Long max value from java. The field was marked to be ignored by the backend. (CDS-36570,
+    ZD-29822, ZD-30469)</li><li>Workflow won&#39;t abort, showing up as paused. Change
+    TTL of WaitInstance to 90 days, and add a log when a WaitInstance is not found
+    to help us in future troubleshooting. (CDS-36568, ZD-29994)</li><li>Azure WebApp
+    deployments are failing due to Timeout in Swap Slot step. Checking the success
+    of Slot swap step during Azure WebApp deployments has been improved. (CDS-36236)</li><li>Custom
+    Approval Step - Shell Script - Secret exposed. (CDS-36154, ZD-29588)</li><li>JENKINS_GET_JOB
+    task not listing all Jenkins job. Fixed an issue where manager could not connect
+    to Delegates with scopes related to application. (CDS-35628, ZD-29044, ZD-29114)</li><li>Unclear
+    Error message on Fetch Instance MARK_EXPIRED. Added a proper message when aborting
+    fetch instance step. (CDS-35519, ZD-29062)</li><li>Concurrent Execution of Create
+    AMI Stack fails upon Select Nodes. We fixed certain workflows which use AWS Infrastructure
+    with Tags that were getting in a race condition if tags are provided as an expression.
+    This also resolved the incorrect instance counts for such services. (CDS-35152,
+    ZD-29973)</li><li>Helm Native deployment fails when delegate scope limited is
+    configured. (CDS-34255, ZD-27722)</li><li>Usergroup is getting deleted even if
+    it is used in notification strategy in workflow Restricted the deletion of any
+    usergroup when it is used in any notification strategy in any workflow. (CDS-34159)</li><li>CloudFormation
+    Rollback from DEV Canary Workflow goes to STG. (CDS-34125, ZD-26628)</li><li>Dashboard:
+    Build# does not match reality. (CDS-2992, ZD-18477, ZD-18483, ZD-29101)</li><li>Fixed
+    the issue with CE_VIEWER permission not getting disabled for user groups. (CCM-7324)</li></ul><p></p><h3>Minor
+    Release 74300</h3><p>Release Date: April 28, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 74300.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>Nothing new in this release.</li></ul><h4>Issues Fixed</h4><ul><li>Config-As-Code
+    was not syncing from On-Premise to Git. (PL-18485, ZD-17190, ZD-17744, ZD-18077,
+    ZD-18312, ZD-20225)</li><li>The setup as code API for performing CRUD with YAMLs
+    had a bug in which the YAML processing status was not correctly returned. This
+    issue is being addressed in order to return the correct YAML processing status.
+    (PL-17678, ZD-16868)</li><li>Config-As-Code YAML upsert API used to return 200
+    even if the zip was incorrect. In such cases, it will now return HTTP response
+    code 400. (PL-17676, ZD-16868, ZD-16873)</li><li>Ratio API for Delegate was not
+    working as expected. (DEL-3603)</li><li>The CloudWatch verification stage was
+    failing because the instance IDs of the hosts were not properly rendered. (CDS-36609,
+    ZD-30035)</li><li>The expressions <code>$ami.newAsgName</code> and <code>$ami.oldAsgName</code>
+    for AMI Blue Green incrementally shift traffic workflows were not set correctly.
+    (CDS-36563, ZD-29905)</li><li>For Deployment Freeze, an empty description was
+    getting saved in the database. (CDS-36562, ZD-29969)</li><li>Incorrect Delegate
+    selection logs were getting displayed when a Step failed or was skipped. (CDS-36480,
+    ZD-29628)</li><li>The users were not getting redirected to the Pipeline execution
+    / Workflow execution page based on the Pipeline / Workflow. (CDS-36352, ZD-29800)</li><li>Jira&#39;s
+    issue metadata was not being fetched correctly. (CDS-36158, ZD-29622, ZD-29628,
+    ZD-29775)</li><li>Audit Trail was not showing deleted Applications. (CDS-35910,
+    ZD-29197)</li><li>An invalid parentheses character within the step name prior
+    to the expression evaluation/resolution was not normalized (CDS-35795, ZD-29253)</li><li>Workflows
+    that use AWS Infrastructure and Tags were causing a race condition if tags were
+    used as an expression. (CDS-35152, ZD-29973)</li><li>Error message for “Delegate
+    task timed out” in Workflow executions is enhanced. (CDS-34845, ZD-28496)</li></ul><h3>Minor
+    Release 74200</h3><p>Release Date: April 21, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 74200.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>Custom selector API for Delegate NG Token management
+    is available now. (DEL-3558, ZD-21717, ZD-27515)<ul><li>See <a href="https://harness.io/docs/api/tag/Delegate-Token-Ng-Resource/">Delegate
+    Token NG Source</a>.</li></ul></li><li>Harness can now send key Workflow and Pipeline
+    deployment events to a URL endpoint as a JSON payload. This helps in analyzing
+    how Workflows and Pipelines are performing, using other tools that consume and
+    build dashboards for the events. This feature is now public and not behind the
+    Feature Flag<code>FF APP_TELEMETRY</code>. (CDS-35193)<ul><li>See <a href="/article/okinra1xu2-publish-workflow-events-to-an-http-endpoint">Publish
+    Workflow Events</a>.</li><li>See <a href="/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint">Publish
+    Pipeline Events</a>.</li></ul></li><li>You can now filter out the desired application
+    on the <strong>Deployments</strong> page using the search option in the <strong>Application</strong>
+    dropdown. (CDS-34070)<ul><li>See <a href="/article/lbiv3zwwm0-filtering-deployments">Filtering
+    Deployments</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1650532818324/screenshot-2022-04-21-at-2-40-14-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul></li></ul><h4>Issues
+    Fixed</h4><ul><li>When adding query specifications in the <strong>Customize Health
+    Source</strong> settings for Google Cloud Platform (GCP) Health Source, inconsistent
+    records were being fetched. (SRM-9202)</li><li>When pasting the YAML definition
+    in a Workflow, the <code>Update failed. Reason: NullPointerException</code> error
+    message was thrown without any reason for the failure. (PL-24456, ZD-29097)</li><li>API
+    Explorer wasn&#39;t using the<code>API_URL</code>environment variable. A special
+    code was removing the “gateway” prefix from the API calls. (PL-24415, ZD-27919,
+    ZD-29434)</li><li>Telemetry framework was failing, which resulted in data discrepancy
+    between activation rates of the <strong>CD Activation Rate</strong> and the <strong>CD
+    Acquisition Funnel</strong>. (PIE-3353)</li><li><code>AddDelegateScope</code>
+    output payload wasn&#39;t displayed correctly. (DEL-3757)</li><li>When querying
+    the GraphQL API for Delegates, the <strong>lastHeartBeat</strong> field was a
+    string instead of an integer. (DEL-3712)</li><li>Error message wasn&#39;t displaying
+    the reason why a Delegate task failed. A Delegate task can fail to be assigned
+    to a Delegate for various reasons, like incorrect Selectors, or Scope setup. (DEL-3686,
+    ZD-28494, ZD-29304)</li><li>GraphQL API had no method to list Delegate Scopes
+    for an account. (DEL-2963)</li><li>Error Message &#34;Duplicate State&#34; was
+    not displaying &#34;Duplicate Step Name&#34; and was displaying an incomplete
+    notification. (CDS-36298, ZD-29769)</li><li>Pipeline Approval Step was throwing
+    an error <code>UNKNOWN_ERROR</code>. (CDS-36152, ZD-29557)</li><li>Jira Approval
+    was failing with an unclear error message. (CDS-35786, ZD-29259))</li><li>An incorrect
+    error message <code>Invalid argument(s): Task has expired</code> was being displayed
+    when adding a Jenkins Provider. (CDS-35524, ZD-29044)</li></ul><h3>Minor Release
+    74002</h3><p>Release Date: April 6, 2022</p><p>We&#39;re pleased to present Harness
+    SaaS Release 74002.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>Autoscaler operations now run based on the <strong>Timeout</strong>
+    value specified by the user in <strong>Configure App Setup</strong>. (CDS-35344,
+    ZD-28940)<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1649302380019/app-setu.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><ul><li>See
+    <a href="/article/52muxcsr1v-create-a-blue-green-pcf-deployment#step_3_app_setup">Create
+    a Blue/Green Tanzu Deployment</a>.</li><li>See <a href="/article/c92izkztka-create-a-basic-pcf-deployment#step_2_app_setup">Create
+    a Basic Tanzu Deployment</a>.</li></ul></li></ul><h4>Issues Fixed</h4><ul><li>User
+    was unable to set multiple Custom Thresholds for a single metric to define rules
+    that override normal verification behavior. (SRM-3680)</li><li>The Watcher program
+    communicates with the Delegate using a local file based channel. A<code>NullPointerException</code>was
+    thrown while reading messages from this channel. (DEL-3623)</li><li>Docker Delegate
+    installation was failing whenever there was a space in the hostname. (DEL-2597)</li><li>Helm
+    version 3.5 and above was not working with Native Helm Services as the URL name
+    was changing and<code>force-update</code>flag was not working. (CDS-35667, ZD-29165,
+    ZD-29194)</li><li>Some Workflows were not rendering dynamic Infrastructure Definition
+    expressions for Terraform. This failure happens for Pipelines with multiple Terraform
+    Workflows that use the same Service and Infrastructure Definition expressions.
+    (CDS-35486, ZD-28977, ZD-28997, ZD-29166)</li><li> Concurrency issues were occurring
+    when multiple processes execute<code>helm repo add, helm repo update, and helm
+    repo pull</code>in parallel. (CDS-35483, ZD-27796)</li></ul><h3>Minor Release
+    73902</h3><p>Release Date: April 03, 2022</p><p>We&#39;re pleased to present Harness
+    SaaS Release 73902.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>The heap size of the Delegate process is being reduced
+    from 4GB to 1.5GB. In addition, we are reducing the memory requirement for Kubernetes
+    from 8GB to 4GB. Currently, this feature is behind the Feature Flag. Contact <a
+    href="mailto:support@harness.io" target="_blank">Harness Support</a> to enable
+    the feature. (DEL-3365)</li></ul><h4>Issues Fixed</h4><ul><li>A fallback scenario
+    to handle missing Manager version headers has been added in the Verification Service.
+    (SRM-9808, ZD-28900)</li><li>The ECS Delegate alerts are not unless all Delegates
+    associated with an ECS group become unavailable. (DEL-3565)</li><li>The default
+    failure and notification strategies are not added when a Workflow is created via
+    Git Sync. Git Sync to Harness was adding notification rules into Workflows. (CDS-35112,
+    ZD-28644)</li><li>When a User Group is used in a Workflow Approval Step or a templatized
+    User Group variable in a Pipeline stage, deletion of User Groups is blocked. (CDS-34698,
+    ZD-28460)</li><li>When configuring Kubernetes Cloud Provider, <code>skipValidation</code>
+    now works correctly with Custom Secret Managers. (CDS-34599, ZD-28345)</li><li>PCF
+    perpetual tasks that have failed for more than 7 days for any reason will now
+    be deleted, and will no longer be executed. (CDS-33630)</li><li>When you linked
+    a Shell Script Template to a Workflow and provided instance expressions in template
+    variables, it was not getting resolved.<br/><br/>Now we&#39;ll resolve instance
+    expressions in Shell Script Template variables. As a result, if you are deploying
+    to multiple hosts and <code>$instance.hostName</code> is provided in template
+    variables, we will have a separate Shell script execution for each host. (CDS-25446,
+    ZD-18302)<ul><li>See <a href="/article/d15of30a2i-harness-variable-availability">Availability
+    and Scope of Harness Variables</a>.</li></ul></li><li>If execution failed before the Kubernetes deployment step, the rollback was not skipped.
+    (CDS-4025, ZD-15002)</li></ul><h3>Minor Release 73700</h3><p>Release Date: March
+    23, 2022</p><p>We&#39;re pleased to present Harness SaaS Release 73700.</p><h4>General
+    What&#39;s New and Early Access</h4><ul><li><a href="https://changelog.harness.io/?categories=fix,improvement,new"
+    target="_blank">New features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>Nothing new in this release.</li></ul><h4>Issues Fixed</h4><ul><li>Spotinst
+    BG deployments were not properly rolled back in the event of a failure. This resulted
+    in Prod and Stage traffic being routed to the incorrect target groups. (CDS-34876,
+    ZD-28441)</li><li>If no instances were upsized in a canary phase for ECS deployments,
+    we would fail at the Verify Stage. This is now fixed, and users will be able to
+    create Verify steps without having to worry about upsize counts. (CDS-34382, ZD-15257)</li><li>Multiple
+    entries in the Kubernetes instance dashboard were showing for the same artifact.
+    (CDS-34330)</li><li>If the provided Git folder path contained multiple manifests,
+    after enabling the Feature Flag <code>SINGLE MANIFEST SUPPORT</code> for the <a
+    href="/article/i5jxqsbkt7-upload-local-and-remote-pcf-resource-files#file_folder_path_new_functionality">File/Folder
+    Path New Functionality</a>, deployment failed. (CDS-4003, ZD-16272)</li><li>When
+    creating <code>ManualClusterDetails</code> for the K8s Cloud Provider using GraphQL,
+    the <code>usageScope</code> was missing. (CDS-4000, ZD-15666)</li><li>Gitlab branch
+    names had to be encoded when the Feature Flag <code>OPTIMIZED GIT FETCH FILES</code>
+    was enabled. You no longer need to encode the branch names. (CDS-2998, ZD-21280)</li><li>When
+    uploading Workflow YAML to the Config-as-Code endpoint, a <code>NullPointerException</code>
+    was thrown. (CDS-35463, ZD-28775)</li><li>When configuring Git sync for an application,
+    the Git connector could not be selected from the UI, but the GraphQL API worked
+    as expected. (PL-23599, ZD-28458)</li><li>We polled the most recent data for all
+    running executions to update the status and graph. If you had several Pipelines
+    running at the same time, and each Pipeline had multiple stages, this was causing
+    serious performance issues. The executions API returned a large amount of data.<br/><br/>To
+    address this, we removed the child graph and, as a result, the polling API. This
+    reduces the number of API hits we make on the CD page while also saving a significant
+    amount of memory on the manager side. You can now click on a stage to be redirected
+    to the execution details page to view the overall graph. (OPS-6274)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73700</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.74407-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.74407-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>74400-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.74407-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.74407-000</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 73604</h3><p>Release Date: March 18, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 73604.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>Nothing new in this release.</li></ul><h4>Issues Fixed</h4><ul><li>The
+    Commit ID for Git Sync with Azure DevOps was wrong. (PL-23124, ZD-20398)</li><li>Users
+    were not able to change the profile name. (PL-23064, ZD-27743)</li><li>All User
+    Groups were not listed on the User Groups page. (PL-20963, ZD-18775, ZD-20187,
+    ZD-21829, ZD-26436, ZD-28694)</li></ul><h4>Component Versions</h4><p>The following
+    table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73604</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.74307-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.74307-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>74200-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.74307-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.74307-000</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 73502</h3><p>Release Date: March 09, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 73502.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>Nothing new in this release.</li></ul><h4>Issues Fixed</h4><ul><li>Nothing
+    new in this release.</li></ul><h4>Component Versions</h4><p>The following table
+    lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73502</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.74214-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.74214-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.74214-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.74214-000</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 73402</h3><p>Release Date: March 02, 2022</p><p>We&#39;re pleased to present
+    Harness SaaS Release 73402.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>When Helm connector details are modified (except credentials
+    and name), a confirmation modal is now displayed stating that the collected Helm
+    charts will be deleted. (CDS-29032)<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1646304764743/screenshot-2022-03-03-at-4-17-21-pm.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure></li></ul><h4>Issues
+    Fixed</h4><ul><li>Nothing new in this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73402</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.74109-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.74109-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.74109-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.74109-000</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 73300</h3><p>Release Date: February 24, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 73300.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new features are added to the Harness
+    SaaS components:</p><ul><li>In the <strong>Workflow Failure Strategy</strong>,
+    you can now select <strong>Rollback Provisioner after Phases</strong> action when
+    a Workflow is paused on manual intervention.<ul><li>See <a href="/article/vfp0ksdzg3-define-workflow-failure-strategy-new-template#timeout_manual_intervention">Timeout
+    (Manual Intervention)</a>. (CDS-28963)</li></ul></li><li>Tanzu Blue Green Deployments
+    now include the following two new in-built variables:<ul><li><code>${pcf.activeAppName}</code></li><li><code>${pcf.inActiveAppName}</code></li><li>See
+    <a href="/article/ojd73hseby-pcf-built-in-variables#app_name_variables_and_blue_green_deployments">App
+    Name Variables and Blue Green Deployments</a>. (CDS-17419)</li></ul></li></ul><h4>Issues
+    Fixed</h4><ul><li>The Delegates were not updated after changing the Helm repo
+    credentials in Harness, and they continued to poll the Artifacts with the old
+    credentials.<br/><br/>A Helm repository is used to add Helm Charts as a Manifest
+    Source in a Harness Service. If you add a chart and then change the source, other
+    than changing the credentials, Harness will delete any charts it has already collected
+    and start a new collection. (CDS-32528, ZD-19910)<ul><li>See <a href="/article/p5om530pe0-deploy-a-helm-chart-as-an-artifact">Deploy
+    Helm Charts</a>.</li></ul></li><li>When a Pipeline had multiple stages running
+    in parallel, Pipeline execution would fail intermittently, leaving the Workflow
+    greyed out. To make parallel executions thread-safe, we added locks before reading
+    and writing data in shared resources (StateMachine). (CDS-25539, ZD-26698)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73300</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.74006-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.74006-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.74006-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.74006-000</p></td></tr></tbody></table><p></p><h3>Minor
+    Release 73200</h3><p>Release Date: February 18, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 73200.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>You can now access the current step&#39;s name and
+    the type of step using the expression. This will help you to write custom logic
+    in templates based on the step&#39;s name or skip some steps based on its name
+    etc. (CDS-25435)<br/><br/><table><tbody><tr><td><p>Current step name</p></td><td><p><code>${currentStep.name}</code></p></td></tr><tr><td><p>Type
+    of step</p></td><td><p><code>${currentStep.type}</code></p></td></tr></tbody></table></li></ul><h4>Issues
+    Fixed</h4><ul><li>Nothing new in this release.</li></ul><h4>Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><p></p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73200</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.73913-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.73913-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.73913-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66300</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.73913-000</p></td></tr></tbody></table><p></p><p></p><h3>Minor
+    Release 73100</h3><p>Release Date: February 9, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 73100.</p><h4>General What&#39;s New and Early Access</h4><ul><li><a
+    href="https://changelog.harness.io/?categories=fix,improvement,new" target="_blank">New
+    features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4>New
+    Features and Enhancements</h4><p>The following new feature is added to the Harness
+    SaaS components:</p><ul><li>You can now add nodes to an Infrastructure Definition
+    and Select Nodes Workflow step for a Rolling Workflow in addition to the nodes
+    Harness pulls from the target infrastructure automatically. You can also use Workflow
+    variable expressions for node names that will be resolved at runtime. Currently,
+    this feature is behind the Feature Flag <code>DEPLOY_TO_INLINE_HOSTS</code>. Contact <a
+    href="mailto:support@harness.io" target="_blank">Harness Support</a> to enable
+    the feature. (CDS-8075)<ul><li>See <a href="/article/9h1cqaxyp9-select-nodes-workflow-step#option_select_host_not_in_infrastructure_definition">Select
+    Nodes Workflow Step</a>, <a href="/article/ax6mntmp3s-select-nodes-in-a-rolling-deployment-workflow#option_select_host_not_in_infrastructure_definition">Select
+    Nodes in a Rolling Deployment Workflow</a>, <a href="/article/3ecctnq3p9-specific-hosts#option_select_host_not_in_infrastructure">Target
+    Specific Hosts During Deployment</a>.</li></ul></li></ul><h4>Issues Fixed</h4><ul><li>Cluster
+    name was blank in the K8s Workload Recommendations API. (CCM-5179)</li></ul><h4>Component
+    Versions</h4><p>The following table lists the component versions in this release.</p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73100</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.73803-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.73803-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.73803-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.73803-000</p></td></tr></tbody></table><h3>Minor
+    Release 73002</h3><p>Release Date: February 4, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 73002.</p><h4 id="undefined">General What&#39;s New
+    and Early Access</h4><ul><li><a href="https://changelog.harness.io/?categories=fix,improvement,new"
+    target="_blank">New features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4
+    id="undefined">New Features and Enhancements</h4><ul><li>You can now customize
+    your Kubernetes deployments using Kustomize patches. Kustomizations let you create
+    specific Kubernetes deployments while leaving the original manifests untouched.
+    Currently, this feature is behind the Feature Flag <code>KUSTOMIZE_PATCHES_CG</code>.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a> to
+    enable the feature. When you enable this Feature Flag, you will be able to use
+    Kustomize version 4.0.0. (CDP-19430)<ul><li>You can add patch file(s) to <strong>Kustomize
+    Patches</strong>. In Harness Service, click <strong>Kustomize Patches</strong>
+    in <strong>Configuration</strong> and then click <strong>Add Patches</strong>.
+    You can add multiple files by using <strong>Add Patches</strong> multiple times.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1643958145455/screenshot-2022-02-04-at-12-32-07-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure></li><li>Kustomize
+    doesn&#39;t natively support variable substitution but Harness supports variable
+    substitution using <a href="/article/9dvxcegm90-variables">Harness variable expressions</a> in
+    Kustomize patches.</li><li>You can also use <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    secrets</a> in patches.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1643958216742/screenshot-2022-02-04-at-12-33-12-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure></li><li>You
+    can override the Service settings for <strong>Kustomize Patches</strong> in a
+    Harness Environment using <strong>Service Configuration Overrides</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/q554zjytod/1643958265756/screenshot-2022-02-04-at-12-34-02-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure></li><li>See
+    <a href="/article/zrz7nstjha-use-kustomize-for-kubernetes-deployments">Kustomize
+    for Kubernetes Deployments</a>.</li></ul></li></ul><h4 id="undefined">Issues Fixed</h4><ul><li>Nothing
+    new in this release.</li></ul><h4 id="undefined">Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>73002</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.73717-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.73717-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.73717-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.73717-000</p></td></tr></tbody></table><h3>Minor
+    Release 72900</h3><p>Release Date: February 1, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 72900.</p><h4 id="undefined">General What&#39;s New
+    and Early Access</h4><ul><li><a href="https://changelog.harness.io/?categories=fix,improvement,new"
+    target="_blank">New features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4
+    id="undefined">New Features and Enhancements</h4><ul><li>You can now add a non-containerized
+    artifact for Harness Azure Web App deployment. You can deploy War, NuGet, and
+    Zip on Azure Web Application from Artifact sources like Artifactory, Nexus, Jenkins,
+    and Azure artifacts. Currently, this feature is behind the Feature Flag <code>AZURE_WEBAPP_NON_CONTAINER</code>.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a> to
+    enable the feature.(CDP-19058, CDP-16747)<ul><li>See <a href="/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment">Azure
+    Web Deployment</a>.</li></ul></li><li>You can now manually pull Helm Charts for
+    a specific chart version. Harness automatically pulls all the chart and version
+    history metadata for its manifests. In the Harness Service, click <strong>Manually
+    pull artifact</strong>, and then use <strong>Manually Select a Manifest</strong> to
+    select the version. Currently, this feature is behind the feature flag <code>HELM_CHART_AS_ARTIFACT</code>.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a> to
+    enable the feature. (CDC-16422) <ul><li>See <a href="/article/p5om530pe0-deploy-a-helm-chart-as-an-artifact">Deploy
+    Helm Charts</a>.</li></ul></li><li>The <strong>Skip Validation</strong> checkbox
+    has been added for ServiceNow and Artifactory connectors. Selecting this checkbox
+    allows you to skip credential verification and creation / updation. Default behavior
+    would be followed if the checkbox remains unselected. (CDC-15574, ZD-19001)</li></ul><h4
+    id="undefined">Issues Fixed</h4><ul><li>Failure handling mentioned for &#39;Unknown
+    errors&#39; category in the failure strategies wasn&#39;t being considered. Pipeline
+    kept running even after an approval step (Harness, Jira, or ServiceNow) was rejected
+    by the approver. (CDC-16549, ZD-26346)</li></ul><h4 id="undefined">Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>72900</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.73609-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.73609-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.73609-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.73609-000</p></td></tr></tbody></table><h3>Minor
+    Release 72800</h3><p>Release Date: January 20, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 72800.</p><h4 id="undefined">General What&#39;s New
+    and Early Access</h4><ul><li><a href="https://changelog.harness.io/?categories=fix,improvement,new"
+    target="_blank">New features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4
+    id="undefined">New Features and Enhancements</h4><ul><li>For Tanzu Application
+    Deployments, validation for Verifying Manifests is enabled. This will help to
+    track the verification of manifests and identify failures if any manifests are
+    invalid. This will not impact any users as there is no change in the existing
+    flow. (CDP-20015, ZD-21855)</li></ul><h4 id="undefined">Issues Fixed</h4><ul><li>Nothing
+    new in this release.</li></ul><h4 id="undefined">Component Versions</h4><p>The
+    following table lists the component versions in this release.</p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>72800</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.73503-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.73503-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.73503-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.73503-000</p></td></tr></tbody></table><h3>Minor
+    Release 72700</h3><p>Release Date: January 11, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 72700.</p><h4 id="undefined">General What&#39;s New
+    and Early Access</h4><ul><li><a href="https://changelog.harness.io/?categories=fix,improvement,new"
+    target="_blank">New features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4
+    id="undefined">New Features and Enhancements</h4><ul><li>Nothing new in this release.</li></ul><h4
+    id="undefined">Issues Fixed</h4><ul><li>Nothing new in this release.</li></ul><h4
+    id="undefined">Component Versions</h4><p>The following table lists the component
+    versions in this release.</p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>72700</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.73406-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.73406-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.73406-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.73406-000</p></td></tr></tbody></table><h3>Minor
+    Release 72500</h3><p>Release Date: January 6, 2022</p><p>We&#39;re pleased to
+    present Harness SaaS Release 72500.</p><h4 id="undefined">General What&#39;s New
+    and Early Access</h4><ul><li><a href="https://changelog.harness.io/?categories=fix,improvement,new"
+    target="_blank">New features added to Harness</a>.</li><li><a href="https://changelog.harness.io/?categories=early-access"
+    target="_blank">Features behind Feature Flags</a> (Early Access).</li></ul><h4
+    id="undefined">New Features and Enhancements</h4><ul><li>Nothing new in this release.</li></ul><h4
+    id="undefined">Issues Fixed</h4><ul><li>The downsizeOldVMSSS field in YAML had
+    a typo in Config-as-Code for Azure VMSS BG workflow. (CDP-19407)</li><li>API calls
+    were made even for the collected versions to fetch the corresponding metadata
+    when doing a collection for NuGet. (CDC-16359, ZD-20739)</li><li>The <code>artifact.url</code>
+    in Nexus 3 was picking up a random URL irrespective of the classifier and extension
+    configured for the artifact source. (CDC-16156, ZD-20723)</li><li>There was a
+    race condition issue between the start and final stage of step execution. (CDC-15969,
+    ZD-20175)</li></ul><h4 id="undefined">Component Versions</h4><p>The following
+    table lists the component versions in this release.</p><table><tbody><tr><td><p><strong>Component</strong></p></td><td><p><strong>Version</strong></p></td></tr><tr><td><p>UI</p></td><td><p>72500</p></td></tr><tr><td><p>Portal</p></td><td><p>1.0.73316-000</p></td></tr><tr><td><p>Delegate</p></td><td><p>1.0.73316-000</p></td></tr><tr><td><p>Watcher</p></td><td><p>72702-000</p></td></tr><tr><td><p>Verification</p></td><td><p>1.0.73316-000</p></td></tr><tr><td><p>Learning</p></td><td><p>66100</p></td></tr><tr><td><p>Event
+    Service</p></td><td><p>69318</p></td></tr><tr><td><p>Command Library Service</p></td><td><p>1.0.73221-000</p></td></tr></tbody></table><p></p>'
+  slug: harness-saa-s-release-notes
+  tags:
+  - release notes
+  is_live: true

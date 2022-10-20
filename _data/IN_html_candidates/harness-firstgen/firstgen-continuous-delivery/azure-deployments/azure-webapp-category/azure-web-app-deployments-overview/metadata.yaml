@@ -1,0 +1,115 @@
+type: article
+article_id: lluikqw7q7
+user_id: mfr0nxh4be
+category_id: mfdyp6tf0v
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Azure Web App Deployments Overview
+slug: azure-web-app-deployments-overview
+description: Currently, this feature is behind the Feature Flag AZURE_WEBAPP. Contact
+  Harness Support to enable the feature. Azure Web Apps use deployment slots to host
+  different versions of your app. You can the…
+short_version: Currently, this feature is behind the Feature Flag AZURE_WEBAPP. Contact
+  Harness Support to enable the feature. Azure Web Apps use deployment slots to host
+  different versions of your app. You can the…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-08-09T20:05:20.533957Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Azure Web App Deployments Overview
+  description: ""
+  short_version: ""
+  body: <p></p><div class="note-callout">Currently, this feature is behind the Feature
+    Flag <code>AZURE_WEBAPP</code>. Contact <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p></p><p>Azure
+    Web Apps use deployment slots to host different versions of your app. You can
+    then swap these deployment slots without causing any downtime for your users.</p><p>Harness
+    deploys your Azure Web Apps using their existing deployment slots. Using Harness,
+    you can incrementally increase traffic to your source slot, and then perform a
+    standard slot swap.</p><p>For detailed instructions on deploying an Azure Web
+    App using Harness, see the following how-tos. They are listed in the order they
+    are commonly performed.</p><ul><li><a href="/article/e9k7ngaqiu-connect-to-azure-for-web-app-deployments">Connect
+    to Azure for Web App Deployments</a></li><li><a href="/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment">Add
+    Your Docker Image for Azure Web App Deployment</a></li><li><a href="/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment">Add
+    Non-Containerized Artifacts for Azure Web App Deployment</a></li><li><a href="/article/2n35dber6l-define-your-azure-web-app-infrastructure">Define
+    Your Azure Web App Infrastructure</a></li><li><a href="/article/qpfddekbax-create-an-azure-web-app-blue-green-deployment">Create
+    an Azure Web App Blue/Green Deployment</a></li><li><a href="/article/x0etkdg62q-create-an-azure-web-app-canary-deployment">Create
+    an Azure Web App Canary Deployment</a></li></ul><div class="note-callout">Basic
+    deployments are also supported.</div><p>The following topic covers related deployment
+    concepts:</p><ul><li><a href="/article/b922byhcn4-azure-web-app-deployment-rollback">Azure
+    Web App Deployment Rollback</a></li></ul><h3>Before You Begin</h3><p>Before learning
+    about Harness Azure Web App deployments, you should have an understanding of <a
+    href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a>.</p><h3>Limitations</h3><ul><li>Harness
+    deploys Docker images and non-containerized artifacts for Azure Web Apps. To see
+    what&#39;s supported, when you create a Harness Service, see <strong>Artifact
+    Type</strong>:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1643235386267/image.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>Harness
+    uses the Azure SDK among other methods and Authenticated proxy is not supported
+    for Azure SDK. Consequently, you cannot use Azure connections for artifacts, machine
+    images, etc, that require proxy authentication. This is an Azure limitation, not
+    a Harness limitation. This is a known Azure limitation with Java environment properties
+    and their SDK.</li></ul><h4>Azure Limitations</h4><ul><li>App Service on Linux
+    isn&#39;t supported on <a href="https://azure.microsoft.com/pricing/details/app-service/plans/">Shared</a> pricing
+    tier.</li><li>You can&#39;t mix Windows and Linux apps in the same App Service
+    plan.</li><li>Within the same resource group, you can&#39;t mix Windows and Linux
+    apps in the same region.</li></ul><p>See <a href="https://docs.microsoft.com/en-us/azure/app-service/overview#limitations"
+    target="_blank">Limitations</a> from Azure.</p><h3>What Does Harness Need Before
+    You Start?</h3><p></p><p>To deploy an Azure Web App using Harness, you only need
+    the following:</p><ul><li><strong>An existing Azure Web App using a Docker image
+    or non-containerized artifact:</strong> you can create one in minutes in Azure.
+    Here is an example:<br/><table><tbody><tr><td><ol><li>Basics</li></ol></td><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1611877870677/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></td></tr><tr><td><ol><li
+    style="counter-increment:li 1" start="2">Docker</li></ol></td><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1611877904631/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></td></tr></tbody></table></li><li><strong>A
+    Docker image or non-containerized artifact:</strong> this is the same image or
+    artifact you used when you created the Azure Web App.</li><li>Azure account connection
+    information.</li><li><strong>App Service Plan:</strong> the name of the Azure
+    App Service configured for your existing Web App.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1611878041274/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li><strong>Two
+    or more running deployment slots for production and staging:</strong> the slots
+    created for your existing Azure Web App:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1611878123467/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul><p></p><h3>What
+    Does Harness Deploy?</h3><p>Harness deploys the Docker image or non-containerized
+    artifact you select for your Web App to a source deployment slot.</p><p>You can
+    then increase traffic to the source slot. Once you have determined that the new
+    image and slot is working, you can swap the source and target slots.</p><h3>What
+    Operating Systems are Supported?</h3><p>Linux and Windows are both supported.</p><p>Use
+    a different resource group for each OS. Linux App Service Plans should use a different
+    resource group than Windows App Service Plans. This is a limitation of Azure.</p><p>See
+    <a href="https://docs.microsoft.com/en-us/azure/app-service/overview#limitations"
+    target="_blank">Limitations</a> from Azure.</p><p></p><h3>What Does a Harness
+    Web App Deployment Involve?</h3><p>The following list describes the major steps
+    of a Harness Web App deployment:</p><p></p><table><tbody><tr><td><p><strong>Step</strong></p></td><td><p><strong>Name</strong></p></td><td><p><strong>Links</strong></p></td></tr><tr><td><p>1</p></td><td><p>Install
+    a Harness Delegate that can connect to your target Azure region.</p></td><td><p><a
+    href="/article/e9k7ngaqiu-connect-to-azure-for-web-app-deployments">Connect to
+    Azure for Web App Deployments</a></p></td></tr><tr><td><p>2</p></td><td><p>Add
+    the Docker image or non-containerized artifact Harness will use for the Web App.</p></td><td><p><a
+    href="/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment">Add
+    Your Docker Image for Azure Web App Deployment</a></p><p><a href="/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment">Add
+    Non-Containerized Artifacts for Azure Web App Deployment</a></p></td></tr><tr><td><p>3</p></td><td><p>Select
+    the Subscription and Resource Group to use when Harness deploys a new Web App
+    version.</p></td><td><p><a href="/article/2n35dber6l-define-your-azure-web-app-infrastructure">Define
+    Your Azure Web App Infrastructure</a></p></td></tr><tr><td><p>4</p></td><td><p>Create
+    a Harness Workflow to perform deployment.</p></td><td><p><a href="/article/qpfddekbax-create-an-azure-web-app-blue-green-deployment">Create
+    an Azure Web App Blue/Green Deployment</a></p><p><a href="/article/x0etkdg62q-create-an-azure-web-app-canary-deployment">Create
+    an Azure Web App Canary Deployment</a></p><div class="note-callout">Basic deployments
+    are also supported.</div></td></tr></tbody></table><p></p><h3>Azure Web App In
+    Harness Services Dashboard</h3><p>The Harness Services dashboard shows the new
+    version of the Azure Web App that you deployed regardless of what slot it is deployed
+    in.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lluikqw7q7/1613071162492/image.png"/></figure><p></p>
+  slug: azure-web-app-deployments-overview
+  tags: []
+  is_live: true

@@ -1,0 +1,126 @@
+type: article
+article_id: dr1srl937n
+user_id: mfr0nxh4be
+category_id: a8jhf8hizv
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Deploy Multiple Services Simultaneously using Barriers
+slug: deploy-multiple-services-simultaneously-using-barriers
+description: 'This topic covers a very common Barriers use case: deploying multiple
+  microservices simultaneously (multi-service deployments). In this scenario, each
+  microservice is deployed by a different Workflow…'
+short_version: 'This topic covers a very common Barriers use case: deploying multiple
+  microservices simultaneously (multi-service deployments). In this scenario, each
+  microservice is deployed by a different Workflow…'
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: true
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:21.769195Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Deploy Multiple Services Simultaneously using Barriers
+  description: ""
+  short_version: ""
+  body: '<p>This topic covers a very common Barriers use case: deploying multiple
+    microservices simultaneously (multi-service deployments).</p><p>In this scenario,
+    each microservice is deployed by a different Workflow. For example, before executing
+    integration tests, you might want to ensure all microservices for the application
+    are deployed successfully. </p><p>Using Barriers you can handle the synchronization
+    of multi-service deployments in a simple and uniform way. </p><p>In this topic:</p><ul><li>
+    <a href="#before_you_begin">Before You Begin</a></li><li> <a href="#visual_summary">Visual
+    Summary</a></li><li> <a href="#review_barriers">Review: Barriers</a><ul><li> <a
+    href="#scenario_1_multi_service">Scenario 1: Multi-Service</a></li><li> <a href="#scenario_2_multi_environment">Scenario
+    2: Multi-Environment</a></li><li> <a href="#scenario_3_application_compatibility">Scenario
+    3: Application Compatibility</a></li></ul></li><li> <a href="#step_1_add_barrier_to_frontend_workflow">Step
+    1: Add Barrier to Frontend Workflow</a></li><li> <a href="#step_2_add_barrier_to_backend_workflow">Step
+    2: Add Barrier to Backend Workflow</a></li><li> <a href="#step_3_create_and_test_pipeline">Step
+    3: Create and Test Pipeline</a></li><li> <a href="#next_steps">Next Steps</a></li></ul><h3>Before
+    You Begin</h3><p>If you want to reproduce this scenario, ensure that you have
+    the following setup:</p><ul><li>Your target environment must have a Kubernetes
+    cluster with two namespaces.</li><li>Your Harness Application must have two Services—one
+    for the frontend service and one for the backend service—that can be deployed
+    to a Kubernetes cluster.</li><li>Configure the Harness Kubernetes Cluster Cloud
+    Provider, Environment, Infrastructure Definitions, and a <a href="/article/dl0l34ge8l-create-a-kubernetes-rolling-deployment">Rolling
+    Deployment Workflow</a> to test each service deployment.</li><li>Deploy the microservices
+    in different namespaces. This is typically set up using separate Infrastructure
+    Definitions in the Environment.</li></ul><h3>Visual Summary</h3><p>This example
+    uses two Harness Services: a <strong>Frontend Service</strong> and a <strong>Backend
+    Service</strong>. The goal is to have the Frontend Service deployment start only
+    after the Backend Service is deployed successfully.</p><p>Similarly, if there
+    is any error in deploying the frontend service, the backend service should rollback.</p><p>The
+    picture below shows the frontend deployment Workflow using a Barrier named <strong>Wait
+    for Backend service deployment</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594061169176/image.png"/></figure><p></p><p>The
+    next screenshot shows the backend deployment Workflow using two Barriers:</p><ul><li><strong>Backend
+    service deployment done</strong></li><li><strong>Wait for FrontEnd service deployment</strong></li></ul><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594061215185/image.png"/></figure><p>Notice
+    the order of the Barriers. For example, if you switch the sequence, the execution
+    will result in a cyclic loop resulting in timeout error. </p><div class="warning-callout">Always
+    ensure that there is no cyclical reference for Barriers.</div><p>You can use multiple
+    Barriers to synchronize the execution flow: the outcome from the dependent steps
+    runs in a different Workflow that runs in parallel.</p><p>Here is a picture of
+    a failed deployment with rollback of the backend caused by the frontend failure.
+    Notice the error message in the details section.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594061241058/image.png"/></figure><h3>Review:
+    Barriers</h3><p><a href="/article/7tg1s7du0d-synchronize-workflows-in-your-pipeline-using-barrier">Barriers</a>
+    enable you to control the execution of multiple Workflows running in parallel.
+    Using Barriers, complex release management processes can be easily implemented
+    using Harness Pipelines. </p><p>Barriers are available in <strong>Flow Control</strong>
+    when adding a new Workflow step.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594061382610/image.png"/></figure><p>Here
+    are the Barrier settings:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594066652743/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Be
+    sure to use a descriptive name for the Barrier. Common phrases used are <strong>Waiting
+    for…</strong>, <strong>Completed…</strong>, etc.</p><p>Define an <strong>Identifier</strong>
+    that describes the purpose of the Barrier. The identifier is used to synchronize
+    between the Workflows.</p><p>In this topic&#39;s example, the identifiers used
+    were <strong>BE</strong> and <strong>FE</strong> to distinguish between backend
+    and frontend.</p><p>For more complex deployments, identifiers such as <strong>integration-test-started</strong>,
+    <strong>integration-test-done</strong>, etc, can be used.</p><p>Let&#39;s look
+    at some common Barrier scenarios.</p><h4>Scenario 1: Multi-Service</h4><p>This
+    is the scenario we will describe in this topic. It is a very common scenario for
+    testing an application consisting of many microservices.</p><p>As you will see,
+    each microservice is deployed by a different Workflow. Before you execute any
+    integration tests, you want to ensure all application microservices are deployed
+    successfully. Using Barriers, you synch the microservice deployments in a simple
+    and uniform way.</p><h4>Scenario 2: Multi-Environment</h4><p>Deploy the same application
+    version across multiple regions. If there is any failure in any one region, you
+    would like to rollback all regions to the previous version automatically. Without
+    this feature, you&#39;ll need complex, custom scripts. </p><h4>Scenario 3: Application
+    Compatibility</h4><p>Using multiple environments to test applications where each
+    environment varies in the OS patch level, Java patch version, or the infrastructure
+    uses different cloud providers (AWS and GCP).</p><p>The ability to deploy the
+    same version of the application across these environments successfully allows
+    you to verify the portability of the application changes.</p><p>If these tasks
+    were performed sequentially, or done selectivity for every major release, the
+    cost to fix any issues discovered in any one environment is too high to resolve.
+    This results in restricting the options for deployment, probably paying a higher
+    support cost for running older versions of the OS or stack, thereby increasing
+    the overall cost of operation.</p><p>Let us see how we can use Barriers for the
+    most common scenario, Scenario 1.</p><h3>Step 1: Add Barrier to Frontend Workflow</h3><p>Start
+    with a <a href="/article/dl0l34ge8l-create-a-kubernetes-rolling-deployment">Kubernetes
+    Rolling Workflow</a> and modify it to add Barriers as follows:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594067963093/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    2: Add Barrier to Backend Workflow</h3><p>Use a second Kubernetes Rolling Workflow
+    and modify it to add Barriers as follows:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594068034439/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>Step
+    3: Create and Test Pipeline</h3><p>Create a <a href="/article/zc1u96u6uj-pipeline-configuration">Pipeline</a>
+    containing both the frontend and backend Workflows.</p><p>Configure the Workflows
+    to run in parallel by enabling the <strong>Execute in Parallel with Previous Step</strong>
+    setting on the second Workflow.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594068246937/image.png"/></figure><p>The
+    frontend-deploy Workflow deploys to the frontend namespace and backend-deploy
+    Workflow deploys to backend namespace.</p><p>Note that the order of the parallel
+    Workflows in the Pipeline does not matter.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/dr1srl937n/1594068293081/image.png"/></figure><h3>Next
+    Steps</h3><ul><li> <a href="/article/0avzb5255b-cv-strategies-and-best-practices#wait_before_execution">Continuous
+    Verification: Wait Before Execution</a></li><li> <a href="/article/7tg1s7du0d-synchronize-workflows-in-your-pipeline-using-barrier">Synchronize
+    Workflow Deployments using Barriers</a></li></ul><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>'
+  slug: deploy-multiple-services-simultaneously-using-barriers
+  tags: []
+  is_live: true

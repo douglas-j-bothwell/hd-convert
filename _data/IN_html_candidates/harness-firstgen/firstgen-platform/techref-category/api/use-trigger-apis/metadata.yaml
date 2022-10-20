@@ -1,0 +1,162 @@
+type: article
+article_id: u21rkuzfod
+user_id: slcpusem6b
+category_id: l2p3i03l4a
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Use Trigger APIs
+slug: use-trigger-apis
+description: This topic provides information on how to create, read, update, and delete
+  Triggers using the Harness API.
+short_version: This topic provides information on how to create, read, update, and
+  delete Triggers using the Harness API.
+tags:
+- trigger APIs
+- Trigger
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-06-28T18:19:49.477124Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use Trigger APIs
+  description: This topic provides information on how to create, read, update, and
+    delete Triggers using the Harness API.
+  short_version: This topic provides information on how to create, read, update, and
+    delete Triggers using the Harness API.
+  body: '<p>This topic provides information on how to create, read, update, and delete
+    <a href="/article/xerirloz9a-add-a-trigger-2">Triggers</a> using the Harness API.
+    Triggers automate deployments using a variety of conditions, such as Git events,
+    new Artifacts, schedules, and the success of other Pipelines.</p><p>In this topic:</p><ul><li><a
+    href="https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#step_create_a_trigger">Step:
+    Create a Trigger</a></li><li><a href="https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#step_update_a_trigger">Step:
+    Update a Trigger</a></li><li><a href="https://docs.harness.io/article/u21rkuzfod-use-trigger-apis#step_delete_a_trigger">Step:
+    Delete a Trigger</a></li></ul><h3>Before You Begin</h3><ul><li>Review the <a href="https://docs.harness.io/article/tm0w6rruqv-harness-api">Harness
+    API</a></li><li><a href="/article/xerirloz9a-add-a-trigger-2">Trigger Workflows
+    and Pipelines</a></li></ul><h3>Step: Create a Trigger</h3><p>Create a Trigger
+    using the mutation <code>createTrigger</code>. You can select any of the following
+    conditions to execute a Trigger:</p><ul><li>On Pipeline Completion</li><li>On
+    New Artifact</li><li>On Time Schedule</li><li>On Webhook Event</li></ul><h4>On
+    Pipeline Completion</h4><p>In this example, the execution type is <strong>Workflow</strong>,
+    and the Artifact selection is <strong>From Triggering Pipeline</strong>.</p><pre
+    class="hljs json">mutation {<br/>  createTrigger(input: {<br/>    applicationId:
+    &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    name: &#34;someTrigger&#34;,<br/>    clientMutationId:
+    &#34;12312&#34;,<br/>    condition: {<br/>      conditionType: ON_PIPELINE_COMPLETION,<br/>      pipelineConditionInput:
+    {<br/>        pipelineId: &#34;SWRorW6SS3u9IsSzhN1X9g&#34;<br/>      }<br/>    },<br/>    action:
+    {<br/>      entityId: &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>      executionType:
+    WORKFLOW,<br/>      artifactSelections: {<br/>        artifactSelectionType: FROM_TRIGGERING_PIPELINE<br/>        serviceId:
+    &#34;pavG2jhWQRG18ffov0slNQ&#34;,      }<br/>    }<br/>  }) {<br/>    clientMutationId<br/>  }<br/>}</pre><p></p><p>In
+    this example, the execution type is <strong>Workflow</strong> with Variables,
+    and the Artifact selection type is <strong>Last Collected</strong>.</p><pre class="hljs
+    json">mutation {<br/>  createTrigger(input: {<br/>    applicationId: &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    name:
+    &#34;somsadasdger&#34;,<br/>    clientMutationId: &#34;12312&#34;,<br/>    condition:
+    {<br/>       conditionType: ,ON_PIPELINE_COMPLETION<br/>       pipelineConditionInput:
+    {<br/>        pipelineId: &#34;SWRorW6SS3u9IsSzhN1X9g&#34;<br/>      }<br/>    },<br/>    action:
+    {<br/>      entityId: &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>      executionType:
+    WORKFLOW,<br/>      artifactSelections: [<br/>        {<br/>          artifactSelectionType:
+    LAST_COLLECTED,<br/>        artifactSourceId: &#34;a-hIRk_KTQGx6wtE12L1yA&#34;,<br/>        serviceId:
+    &#34;pavG2jhWQRG18ffov0slNQ&#34;,<br/>        artifactFilter: &#34;*latest*&#34;<br/>        regex:
+    true<br/>        }<br/>      ],<br/>      variables: [<br/>        {<br/>          name:
+    &#34;NewRelic_Server&#34;,<br/>          variableValue: {<br/>            type:
+    NAME,<br/>            value: &#34;server&#34;<br/>          }<br/>        },<br/>        {<br/>          name:
+    &#34;NewRelic_Application&#34;,<br/>          variableValue: {<br/>            type:
+    NAME,<br/>            value: &#34;application&#34;<br/>          }<br/>        },<br/>        {<br/>          name:
+    &#34;SSH_ConnectionAttribute&#34;,<br/>          variableValue: {<br/>            type:
+    NAME,<br/>            value: &#34;ssh&#34;<br/>          }<br/>        },<br/>        {<br/>          name:
+    &#34;req&#34;,<br/>          variableValue: {<br/>            type: NAME,<br/>            value:
+    &#34;requiredVar&#34;<br/>          }<br/>        }<br/>      ]<br/>    }<br/>    })
+    {<br/>    clientMutationId,<br/>    trigger {<br/>      condition {<br/>        ...on
+    OnWebhook {<br/>          webhookEvent {<br/>            event,<br/>            action<br/>          }<br/>        }<br/>      }<br/>    }<br/>  }<br/>}</pre><h4>On
+    New Artifact</h4><p>In this example, the execution type is <strong>Pipeline</strong>,
+    and the Artifact selection type is <strong>From Triggering Artifact</strong>.</p><pre
+    class="hljs json">mutation {<br/>  createTrigger(input: {<br/>    applicationId:
+    &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    name: &#34;somsadasdger&#34;,<br/>    clientMutationId:
+    &#34;12312&#34;,<br/>    condition: {<br/>      conditionType: ON_NEW_ARTIFACT,<br/>      artifactConditionInput:{<br/>        artifactSourceId:&#34;a-hIRk_KTQGx6wtE12L1yA&#34;,<br/>        artifactFilter:
+    &#34;latest*&#34;<br/>        regex:true<br/>      }<br/>    },<br/>    action:
+    {<br/>      entityId: &#34;SWRorW6SS3u9IsSzhN1X9g&#34;,<br/>      executionType:
+    PIPELINE,<br/>      artifactSelections: {<br/>        artifactSelectionType: FROM_TRIGGERING_ARTIFACT<br/>        serviceId:
+    &#34;pavG2jhWQRG18ffov0slNQ&#34;,<br/>      },<br/>      variables: [<br/>        {<br/>          name:
+    &#34;sda&#34;,<br/>          variableValue: {<br/>            type: NAME,<br/>            value:
+    &#34;asdqwq&#34;<br/>          }<br/>        }<br/>      ]<br/>    }<br/>  })
+    {<br/>    clientMutationId<br/>  }<br/>}</pre><p>In this example, the execution
+    type is <strong>Workflow</strong>, and the Artifact selection type is <strong>Last
+    Deployed Workflow</strong>.</p><pre class="hljs json">mutation {<br/>  createTrigger(input:
+    {<br/>    applicationId: &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    name: &#34;someTrigger&#34;,<br/>    clientMutationId:
+    &#34;12312&#34;,<br/>    condition: {<br/>      conditionType: ON_NEW_ARTIFACT,<br/>      artifactConditionInput:{<br/>        artifactSourceId:&#34;a-hIRk_KTQGx6wtE12L1yA&#34;,<br/>        regex:true<br/>      }<br/>    },<br/>    action:
+    {<br/>      entityId: &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>      executionType:
+    WORKFLOW,<br/>      artifactSelections: {<br/>        artifactSelectionType: LAST_DEPLOYED_WORKFLOW,<br/>        workflowId:
+    &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>        serviceId: &#34;pavG2jhWQRG18ffov0slNQ&#34;,<br/>        regex:
+    true<br/>      }<br/>    }<br/>  }) {<br/>    clientMutationId<br/>  }<br/>}</pre><h4>On
+    Time Schedule</h4><p>In this example, the execution type is <strong>Workflow</strong>,
+    the and Artifact selection is <strong>Last Collected</strong>.</p><pre class="hljs
+    json">mutation {<br/>  createTrigger(input: {<br/>    applicationId: &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    name:
+    &#34;somsadasdger&#34;,<br/>    clientMutationId: &#34;12312&#34;,<br/>    condition:
+    {<br/>      conditionType: ON_SCHEDULE,<br/>      scheduleConditionInput: {<br/>        cronExpression:
+    &#34;0 0 * * ?&#34;,<br/>        onNewArtifactOnly: true<br/>      }<br/>    },<br/>    action:
+    {<br/>      entityId: &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>      executionType:
+    WORKFLOW,<br/>      artifactSelections:[<br/>        {<br/>          artifactSourceId:
+    &#34;a-hIRk_KTQGx6wtE12L1yA&#34;,<br/>          artifactSelectionType: LAST_COLLECTED,<br/>          serviceId:
+    &#34;pavG2jhWQRG18ffov0slNQ&#34;,<br/>          regex: true<br/>        }<br/>      ]<br/>    }<br/>  })
+    {<br/>    clientMutationId<br/>  }<br/>}</pre><h4>On Webhook Event</h4><p>In this
+    example, the execution type is <strong>Workflow</strong>, and Webhook source type
+    is <strong>BitBucket</strong>.</p><pre class="hljs json">mutation {<br/>  createTrigger(input:
+    {<br/>    applicationId: &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    name: &#34;somsadasdger&#34;,<br/>    clientMutationId:
+    &#34;12312&#34;,<br/>    condition: {<br/>      conditionType: ON_WEBHOOK,<br/>      webhookConditionInput:
+    {<br/>        webhookSourceType: BITBUCKET,<br/>        bitbucketEvent: PULL_REQUEST_CREATED,<br/>        branchRegex:
+    &#34;sadas&#34;<br/>      }<br/>    },<br/>    action: {<br/>      entityId: &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>      executionType:
+    WORKFLOW<br/>    }<br/>  }) {<br/>    clientMutationId<br/>  }<br/>}</pre><p></p><p>In
+    this example, the execution type is <strong>Workflow</strong>, and Webhook source
+    type is <strong>GitHub</strong>.</p><pre class="hljs json">mutation {<br/>  createTrigger(input:
+    {<br/>    applicationId: &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    name: &#34;somsadasdger&#34;,<br/>    clientMutationId:
+    &#34;12312&#34;,<br/>    condition: {<br/>      conditionType: ON_WEBHOOK,<br/>      webhookConditionInput:
+    {<br/>        webhookSourceType: GITHUB,<br/>        githubEvent:{<br/>          event:PULL_REQUEST,<br/>          action:
+    OPENED<br/>        }<br/>      }<br/>    },<br/>    action: {<br/>      entityId:
+    &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>      executionType: WORKFLOW<br/>    }<br/>  })
+    {<br/>    clientMutationId<br/>  }<br/>}</pre><p></p><h4>WebHook Triggers using
+    Authorization</h4><p>Your Git provider includes secret tokens that enable you
+    to validate requests.</p><p>You can use a Harness secret in your Webhook secret
+    setting. When the Git provider sends a POST request to the Harness URL in the
+    Webhook, Harness will use the secret to validate the request.</p><p>The mutation
+    uses the Harness secret identifier, not the secret name. For details on finding
+    the secret Id, see <a href="/article/omnfccj1n0-api-encrypted-text">Encrypted
+    Text API</a>.</p><p>Here is an example of creating the Trigger using the secret
+    ID:</p><pre>mutation {<br/>  createTrigger(input: {<br/>    applicationId: &#34;Nx0ZMWZbTKy_3rdAV1mr7g&#34;,<br/>    name:
+    &#34;docWebhookExample-test1&#34;,<br/>    clientMutationId: &#34;12312&#34;,<br/>    condition:
+    {<br/>      conditionType: ON_WEBHOOK,<br/>      webhookConditionInput: {<br/>        webhookSourceType:
+    GITHUB,<br/>        githubEvent:{<br/>          event:PULL_REQUEST,<br/>          action:
+    OPENED<br/>        }<br/>        webhookSecret:&#34;PK1eiqP2T7K_fMx2SuIuiA&#34;<br/>      }<br/>    },<br/>    action:
+    {<br/>      entityId: &#34;nSbpSvZXSzmXL4IbMAruWQ&#34;,<br/>      executionType:
+    WORKFLOW<br/>    }<br/>  }) {<br/>    clientMutationId<br/>  }<br/>}</pre><p></p><p>Here
+    is an example of updating the Trigger using the secret ID:</p><pre>mutation {<br/>  updateTrigger(input:{<br/>    name:&#34;docWebhookExample-test1-test2-update&#34;<br/>    triggerId:&#34;FuvG7ALdRBWNDvyd9bX3Qg&#34;<br/>    applicationId:&#34;Nx0ZMWZbTKy_3rdAV1mr7g&#34;<br/>    condition:{<br/>      conditionType:ON_WEBHOOK<br/>      webhookConditionInput:{<br/>        webhookSourceType:GITHUB<br/>        githubEvent:{<br/>          action:ASSIGNED<br/>          event:PUSH<br/>        }<br/>        webhookSecret:&#34;PK1eiqP2T7K_fMx2SuIuiA&#34;<br/>      }<br/>    }<br/>    action:{<br/>      executionType:WORKFLOW<br/>      entityId:&#34;nSbpSvZXSzmXL4IbMAruWQ&#34;<br/>    }<br/>  })
+    {<br/>    clientMutationId<br/>  }<br/>}</pre><p></p><p>For details on setting
+    this up in the Harness Manager Trigger UI, see <a href="https://docs.harness.io/article/ys3cvwm5gc-trigger-a-deployment-on-git-event#option_authenticate_the_webhook">Authenticate
+    the Webhook</a>.</p><h3>Step: Update a Trigger</h3><p>Update a Trigger using the
+    mutation <code>updateTrigger</code>.</p><p>The syntax for the <strong>Update Trigger</strong>
+    is almost identical to the <strong>Create Trigger.</strong> You need to change
+    the mutation <code>createTrigger</code> to <code>updateTrigger</code> and simply
+    need to enter the ID of the Trigger that you want to update.</p><pre class="hljs
+    json">mutation {<br/>  updateTrigger(input: {<br/>    applicationId: &#34;M-e1DZhKTEaCex0KL4WPMA&#34;,<br/>    triggerId:
+    &#34;L-e1DZhKTEaCex0XX4XXXX&#34;,<br/>    name: &#34;someTrigger&#34;,<br/>    clientMutationId:
+    &#34;12312&#34;,<br/>    condition: {<br/>      conditionType: ON_PIPELINE_COMPLETION,<br/>      pipelineConditionInput:
+    {<br/>        pipelineId: &#34;SWRorW6SS3u9IsSzhN1X9g&#34;<br/>      }<br/>    },<br/>    action:
+    {<br/>      entityId: &#34;SE29hL0yS92bH1bwITevNA&#34;,<br/>      executionType:
+    WORKFLOW,<br/>      artifactSelections: {<br/>        artifactSelectionType: FROM_TRIGGERING_PIPELINE<br/>        serviceId:
+    &#34;pavG2jhWQRG18ffov0slNQ&#34;,<br/>      }<br/>    }<br/>  }) {<br/>    clientMutationId<br/>  }<br/>}</pre><h3>Step:
+    Delete a Trigger</h3><p>Delete a Trigger using the mutation <code>deleteTrigger</code>.
+    You need to enter the ID of the Trigger that you want to delete.</p><pre>mutation
+    {<br/>  deleteTrigger(input: {<br/>    applicationId: &#34;l6A2Yy27TQ2gdtWOXEzFtQ&#34;,<br/>    clientMutationId:
+    &#34;1234&#34;,<br/>    triggerId: &#34;wrNVNQ7BTLeNgVqQr-bcgQ&#34;<br/>  }) {<br/>    clientMutationId<br/>  }<br/>}</pre><p></p>'
+  slug: use-trigger-apis
+  tags:
+  - trigger APIs
+  - Trigger
+  is_live: true

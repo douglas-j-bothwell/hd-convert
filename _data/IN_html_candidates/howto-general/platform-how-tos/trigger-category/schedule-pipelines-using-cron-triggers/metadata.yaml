@@ -1,0 +1,64 @@
+type: article
+article_id: 4z9mf24m1b
+user_id: mfr0nxh4be
+category_id: oya6qhmmaw
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Schedule Pipelines using Triggers
+slug: schedule-pipelines-using-cron-triggers
+description: Schedule Pipeline executions using Cron-based Triggers.
+short_version: Schedule Pipeline executions using Cron-based Triggers.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-13T22:46:02.144384Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Schedule Pipelines using Triggers
+  description: Schedule Pipeline executions using Cron-based Triggers.
+  short_version: Schedule Pipeline executions using Cron-based Triggers.
+  body: '<p>You can schedule Pipeline executions using Cron-based Triggers.</p><p>For
+    example, you can have a Pipeline run every Monday at 1AM. Harness will generate
+    the Cron expression (<code>0 1 * * MON</code>).</p><div class="note-callout">For
+    general Triggers reference, see <a href="https://ngdocs.harness.io/article/rset0jry8q-triggers-reference">Triggers
+    Reference</a>.</div><h3>​Before You Begin</h3><ul><li><a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a></li><li><a href="/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></li></ul><p></p><h3>​Step 1: Add a Trigger to a Pipeline​</h3><p>Open
+    your Harness Pipeline in Pipeline Studio.</p><p>Click <strong>Triggers</strong>.</p><p>Click
+    <strong>New Trigger</strong>.</p><p>Click <strong>Cron</strong>.</p><p>For Git-based
+    Trigger types or CodeCommit, see <a href="/article/hndnde8usz-triggering-pipelines">Trigger
+    Pipelines using Git Events</a>.</p><p>In <strong>Trigger Overview</strong>, enter
+    a name, description, and Tags for the Trigger.</p><h3>​Step 2: Schedule the Trigger​</h3><p>In
+    <strong>Schedule</strong>, use the settings to schedule the Trigger.</p><p>When
+    you edit a Cron Trigger later, you can type or paste in a Cron expression.</p><p>The
+    Cron expression will be evaluated against UTC time.</p><p>Here&#39;s a reminder
+    of Cron expression formatting:</p><pre>0 0 4 7 ? 2014<br/>| | | |   | |<br/>|
+    | | |   | \------- YEAR (2014)<br/>| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)<br/>|
+    | | \------------- MONTH (JULY)<br/>| | \--------------- DAY_OF_MONTH (4th)<br/>|
+    \----------------- HOUR (0- MIDNIGHT LOCAL TIME)<br/>\------------------- MINUTE
+    (0)</pre><h3>​Step 3: Set Pipeline Input</h3><p>Pipelines often have <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a> like codebase branch names or artifact versions and tags.</p><p>Provide
+    values for the inputs. You can also use <a href="/article/3fqwa8et3d-input-sets">Input
+    Sets</a>.</p><p>Click <strong>Create Trigger</strong>.</p><p>The Trigger is now
+    added to the Triggers page.</p><h3>Step 4: Enable or Disable Trigger</h3><p>Use
+    the Enable setting to turn the Trigger on and off.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/4z9mf24m1b/1620080269663/image.png"/></figure><p>That&#39;s
+    it. Your Pipeline will run when the Cron expression equals the current time.</p><h3>Option:
+    Run Once</h3><p>To specify a run-once schedule, specify a fully qualified date
+    and time.</p><p>Simply enter the time, day of month, month, and then allow for
+    any day of the week.</p><p>The below example runs on <strong>At 1:45 PM, on day
+    13 of the month, and on Tuesday, only in September</strong></p><p><code>45 13
+    13 09 Tue</code></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/4z9mf24m1b/1663109151847/clean-shot-2022-09-13-at-15-45-35-2-x.png"/></figure><h3>See
+    Also</h3><ul><li><a href="/article/rset0jry8q-triggers-reference">Triggers Reference</a></li></ul><p></p>'
+  slug: schedule-pipelines-using-cron-triggers
+  tags: []
+  is_live: true

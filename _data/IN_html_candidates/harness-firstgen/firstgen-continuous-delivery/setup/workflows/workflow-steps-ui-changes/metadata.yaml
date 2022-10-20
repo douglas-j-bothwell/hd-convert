@@ -1,0 +1,51 @@
+type: article
+article_id: tbl31wsyfm
+user_id: mfr0nxh4be
+category_id: a8jhf8hizv
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Workflow Steps UI Changes
+slug: workflow-steps-ui-changes
+description: Harness is changing how you add steps in Workflows to offer new features
+  for managing commonly-used steps. The settings inside each step will remain the
+  same, but the user experience will change slig…
+short_version: Harness is changing how you add steps in Workflows to offer new features
+  for managing commonly-used steps. The settings inside each step will remain the
+  same, but the user experience will change slig…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:55.430856Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Workflow Steps UI Changes
+  description: ""
+  short_version: ""
+  body: <p>Harness is changing how you add steps in Workflows to offer new features
+    for managing commonly-used steps.</p><p>The settings inside each step will remain
+    the same, but the user experience will change slightly.</p><p>The new UI for Workflow
+    steps will be implemented soon. This document provides an overview of the changes
+    to help with the transition.</p><p>Let&#39;s take a look at some of the changes.</p><h3>Adding
+    Commands</h3><p>The following table shows the difference between the current Add
+    Command dialog and the new Add Step UI:</p><p></p><table><tbody><tr><td><p><strong>Adding
+    Commands Currently</strong></p></td><td><p><strong>Add Steps in the New UI</strong></p></td></tr><tr><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/tbl31wsyfm/1578443046506/image.png"/></figure></td><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/tbl31wsyfm/1578443101513/image.png"/></figure></td></tr></tbody></table><p>The
+    new Add Step UI has the following features:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/tbl31wsyfm/1578442930987/image.png"/></figure><p>Here
+    is an animated GIF showing how steps are added in the new UI:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/tbl31wsyfm/1578525174064/add-steps.gif"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure><h3>Do
+    I Have to Do Anything?</h3><p>No. Your current Workflows and their step settings
+    will not change. The only change is in the user experience.</p><p></p><p></p><p></p>
+  slug: workflow-steps-ui-changes
+  tags: []
+  is_live: true

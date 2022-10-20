@@ -1,0 +1,112 @@
+type: article
+article_id: 38qrwi7wu2
+user_id: mfr0nxh4be
+category_id: ux6clfhfhz
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Connect to Sumo Logic
+slug: 1-sumo-logic-connection-setup
+description: Connect Sumo Logic as a Harness Verification Provider, enabling Sumo
+  Logic to verify the success of your deployments and live microservices.
+short_version: Connect Harness to Sumo Logic and verify the success of your deployments
+  and live microservices.
+tags:
+- Sumo Logic
+- Verification Provider
+- verification
+- Deployment Verification
+- 24/7 Service Guard
+- setup
+- log
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:46.497211Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Connect to Sumo Logic
+  description: Connect Sumo Logic as a Harness Verification Provider, enabling Sumo
+    Logic to verify the success of your deployments and live microservices.
+  short_version: Connect Harness to Sumo Logic and verify the success of your deployments
+    and live microservices.
+  body: '<p></p><p>The first step in using Sumo Logic with Harness is to set up a
+    Sumo Logic Verification Provider in Harness.</p><p>A Harness Verification Provider
+    is a connection to monitoring tools such as Sumo Logic. Once Harness is connected,
+    you can use Harness 24/7 Service Guard and Deployment Verification with your Sumo
+    Logic data and analysis.</p><div class="note-callout">The Sumo Logic API is available
+    to Sumo Logic Enterprise Accounts only. For more information, see <a href="https://help.sumologic.com/APIs/Search-Job-API/About-the-Search-Job-API"
+    target="_blank">About the Search Job API</a> from Sumo Logic.</div><p>In this
+    topic:</p><ul><li> <a href="#before_you_begin">Before You Begin</a></li><li> <a
+    href="#visual_summary">Visual Summary</a></li><li> <a href="#step_1_add_sumo_logic_verification_provider">Step
+    1: Add Sumo Logic Verification Provider</a></li><li> <a href="#step_2_display_name">Step
+    2: Display Name</a></li><li> <a href="#step_3_sumo_logic_api_server_url">Step
+    3: Sumo Logic API Server URL</a></li><li> <a href="#step_4_encrypted_access_id">Step
+    4: Encrypted Access ID</a></li><li> <a href="#step_5_encrypted_access_key">Step
+    5: Encrypted Access Key</a></li><li> <a href="#step_6_usage_scope">Step 6: Usage
+    Scope</a></li><li> <a href="#step_7_test_and_submit">Step 7: Test and Submit</a></li><li>
+    <a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before You Begin</h3><ul><li>See
+    the <a href="/article/wb2k4u4kxm-sumo-logic-verification-overview">Sumo Logic
+    Verification Provider Overview</a>.</li></ul><p></p><h3>Step 1: Add Sumo Logic
+    Verification Provider</h3><p>To add Sumo Logic as a verification provider, do
+    the following:</p><ol><li>In Harness, click <strong>Setup</strong>.</li><li>Click
+    <strong>Connectors</strong>, and then click <strong>Verification Providers</strong>.</li><li>Click
+    <strong>Add Verification Provider</strong>, and select <strong>Sumo Logic</strong>.
+    The <strong>Add Sumo Logic Verification Provider</strong> dialog appears.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/38qrwi7wu2/1587769798219/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete
+    the following fields of the <strong>Add Sumo Logic Verification Provider</strong>
+    dialog.</li></ol><p></p><h3>Step 2: Display Name</h3><p>The name for the Sumo
+    Logic verification provider connection in Harness. If you will have multiple Sumo
+    Logic connections, enter a unique name.You will use this name to select this connection
+    when integrating Sumo Logic with the <strong>Verify Steps</strong> of your workflows,
+    described below.</p><h3>Step 3: Sumo Logic API Server URL</h3><p>The API URL for
+    your Sumo Logic account. The format of the URL is:https://api.<em>YOUR_DEPLOYMENT</em>.sumologic.com/api/v1/Where
+    <em>YOUR_DEPLOYMENT</em> is either <strong>us1</strong>, <strong>us2</strong>,
+    <strong>eu</strong>, <strong>de</strong>, or <strong>au</strong>. For <strong>us1</strong>,
+    use <strong>api.sumologic.com</strong>.Sumo Logic applies default <a href="https://help.sumologic.com/APIs/General-API-Information/API-Authentication#Rate_limiting"
+    target="_blank">rate limiting</a>.For more information, see <a href="https://help.sumologic.com/APIs/General-API-Information/API-Authentication"
+    target="_blank">API Authentication</a> from Sumo Logic.</p><h3>Step 4: Encrypted
+    Access ID</h3><div class="note-callout">For secrets and other sensitive settings,
+    select or create a new <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a>.</div><p>Select/create the <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a> for the access ID for the user account you want to use
+    to connect to Sumo Logic.</p><p>Access keys are generated by an individual user
+    in Sumo Logic depending on the permissions set for their account.For more information
+    on creating the access keys, see <a href="https://help.sumologic.com/Manage/Security/Access-Keys"
+    target="_blank">Access Keys</a> from Sumo Logic.</p><h3>Step 5: Encrypted Access
+    Key</h3><p>Select/create the <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Harness
+    Encrypted Text secret</a> for the access key for the Sumo Logic user account using
+    the connection.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536620168354/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536620168354/image.png"/></a></figure><p>For
+    more information, see <a href="https://help.sumologic.com/Manage/Security/Access-Keys"
+    target="_blank">Access Keys</a> from Sumo Logic.</p><h3>Step 6: Usage Scope</h3><p>If
+    you want to restrict the use of a provider to specific applications and environments,
+    do the following:</p><p>In <strong>Usage Scope</strong>, click the drop-down under <strong>Applications</strong>,
+    and click the name of the application.</p><p>In <strong>Environments</strong>,
+    click the name of the environment.</p><h3>Step 7: Test and Submit</h3><ol><li
+    style="counter-increment:li 0" start="1">When you have set up the dialog, click
+    <strong>TEST</strong>.</li><li>Once the test is completed, click <strong>SUBMIT</strong>
+    to add the <strong>Verification Provider</strong>.</li></ol><p>Once you have set
+    up Sumo Logic as a Verification Provider, you can integrate it into 24/7 Service
+    Guard and your Workflows, as described below.</p><h3>Next Steps</h3><ul><li><a
+    href="/article/cj2a2sb65g-2-24-7-service-guard-for-sumo-logic">Monitor Applications
+    24/7 with Sumo Logic</a></li><li><a href="/article/jwfw9qy5it-3-verify-deployments-with-sumo-logic">Verify
+    Deployments with Sumo Logic</a></li></ul><p></p>'
+  slug: 1-sumo-logic-connection-setup
+  tags:
+  - Sumo Logic
+  - Verification Provider
+  - verification
+  - Deployment Verification
+  - 24/7 Service Guard
+  - setup
+  - log
+  is_live: true

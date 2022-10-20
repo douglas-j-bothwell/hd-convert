@@ -1,0 +1,14 @@
+type: category
+category_id: gurgsl2gqt
+parent_category_id: 1qtels4t8p
+title: Continuous Verification
+description: Real-time analytics for your deployments
+slug: continuous-verification
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1570215418690/verification.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Continuous Verification
+  description: Real-time analytics for your deployments
+  slug: continuous-verification

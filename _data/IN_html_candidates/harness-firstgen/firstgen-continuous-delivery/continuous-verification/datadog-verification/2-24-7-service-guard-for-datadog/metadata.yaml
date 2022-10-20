@@ -1,0 +1,126 @@
+type: article
+article_id: j1b1fhh592
+user_id: mfr0nxh4be
+category_id: x9hs9wviib
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Monitor Applications 24/7 with Datadog Logging
+slug: 2-24-7-service-guard-for-datadog
+description: Lists specific options for integrating Datadog with Harness 24/7 Service
+  Guard. This feature monitors your live applications, catching problems that surface
+  minutes or hours following deployment.
+short_version: Combined with DataDog, Harness 24/7 Service Guard monitors your live
+  applications, catching problems that surface minutes or hours following deployment.
+tags:
+- Datadog
+- Verification Provider
+- Deployment Verification
+- verification
+- 24/7 Service Guard
+- setup
+- APM
+- application performance monitoring
+- log
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:47.163973Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Monitor Applications 24/7 with Datadog Logging
+  description: Lists specific options for integrating Datadog with Harness 24/7 Service
+    Guard. This feature monitors your live applications, catching problems that surface
+    minutes or hours following deployment.
+  short_version: Combined with DataDog, Harness 24/7 Service Guard monitors your live
+    applications, catching problems that surface minutes or hours following deployment.
+  body: '<p></p><p>Harness 24/7 Service Guard monitors your live applications, catching
+    problems that surface minutes or hours following deployment. For more information,
+    see <a href="/article/dajt54pyxd-24-7-service-guard-overview">24/7 Service Guard
+    Overview</a>.</p><p>You can add your Datadog monitoring to Harness 24/7 Service
+    Guard in your Harness Application Environment. For a setup overview, see <a href="/article/yqris5svub-1-datadog-connection-setup">Connect
+    to Datadog</a>.</p><div class="note-callout">This section assumes you have a Harness
+    Application set up and containing a Service and Environment. For steps on setting
+    up a Harness Application, see <a href="/article/bucothemly-application-configuration">Application
+    Checklist</a>.</div><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#visual_summary">Visual Summary</a></li><li><a
+    href="#step_1_set_up_24_7_service_guard">Step 1: Set Up 24/7 Service Guard</a></li><li><a
+    href="#step_2_display_name">Step 2: Display Name</a></li><li><a href="#step_3_service">Step
+    3: Service</a></li><li><a href="#step_4_datadog_server">Step 4: Datadog Server</a></li><li><a
+    href="#step_5_log_verification">Step 5: Log Verification</a></li><li><a href="#step_6_search_keywords">Step
+    6: Search Keywords</a></li><li><a href="#step_7_field_name_for_host_containers">Step
+    7: Field Name for Host/Containers</a></li><li><a href="#step_8_enable_24_7_service_guard">Step
+    8: Enable 24/7 Service Guard</a></li><li><a href="#step_9_verify_your_settings">Step
+    9: Verify your Settings</a></li><li><a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li>See the <a href="/article/ong5rbbn49-datadog-verification-overview">Datadog
+    Verification Overview</a>.</li><li>Make sure you <a href="/article/yqris5svub-1-datadog-connection-setup">Connect
+    to Datadog</a>.</li></ul><p></p><h3>Visual Summary</h3><p>Here&#39;s an example
+    of a Datadog Logging setup for 24/7 Service Guard setup.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ao35op8etv/1588071447356/datadog-log-s.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>Step
+    1: Set Up 24/7 Service Guard</h3><p>To set up 24/7 Service Guard for Datadog,
+    do the following:</p><ol><li>Ensure that you have added Datadog as a Harness Verification
+    Provider, as described in <a href="https://docs.harness.io/article/yqris5svub-1-datadog-connection-setup#datadog_verification_provider_setup">Verification
+    Provider Setup</a>.</li><li>In your Harness Application, ensure that you have
+    added a Service, as described in <a href="/article/eb3kfl8uls-service-configuration">Services</a>.
+    For 24/7 Service Guard, you do not need to add an Artifact Source to the Service,
+    or configure its settings. You simply need to create a Service and name it. It
+    will represent your application for 24/7 Service Guard.</li><li>In your Harness
+    Application, click <strong>Environments</strong>.</li><li>In <strong>Environments</strong>,
+    ensure that you have added an Environment for the Service you added. For steps
+    on adding an Environment, see <a href="/article/n39w05njjv-environment-configuration">Environments</a>.</li><li>Click
+    the Environment for your Service. Typically, the <strong>Environment Type</strong>
+    is <strong>Production</strong>.</li><li>In the <strong>Environment</strong> page,
+    locate <strong>24/7 Service Guard</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1553127693787/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>24/7 Service Guard</strong>, click <strong>Add Service Verification</strong>,
+    and then click <strong>Datadog</strong>. The <strong>Datadog</strong> dialog appears.</li></ol><p></p><h3>Step
+    2: Display Name</h3><p>The name that will identify this service on the <strong>Continuous
+    Verification</strong> dashboard. Use a name that indicates the environment and
+    monitoring tool, such as <strong>Datadog</strong>.</p><h3>Step 3: Service</h3><p>The
+    Harness Service to monitor with 24/7 Service Guard.</p><h3>Step 4: Datadog Server</h3><p>Select
+    the Datadog Verification Provider to use.</p><h3>Step 5: Log Verification</h3><p>Select
+    the Log Verification option.</p><h3>Step 6: Search Keywords</h3><p>Enter search
+    keywords, such as <code>*expression*</code>. Separate keywords using spaces. (Follow
+    the Datadog <a href="https://docs.datadoghq.com/logs/explorer/search/#search-syntax"
+    target="_blank">log search syntax</a>.)</p><p>You can also enter variable expressions,
+    such as:</p><p><code>error OR ${serviceVariable.error_type}</code></p><h3>Step
+    7: Field Name for Host/Containers</h3><p>Enter the log field that contains the
+    name of the host/container for which you want logs. You can enter a field name
+    for example.</p><p>Harness uses this field to group data and perform analysis
+    at the container-level.</p><h3>Step 8: Enable 24/7 Service Guard</h3><p>Enable
+    this setting to turn on 24/7 Service Guard. If you simply want to set up 24/7
+    Service Guard, but not enable it, leave this setting disabled.</p><h3>Step 9:
+    Verify your Settings</h3><ol><li start="1" style="counter-increment:li 0">Click
+    <strong>Test</strong>. Harness verifies the settings you entered.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1559934827560/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>Submit</strong>. The Datadog 24/7 Service Guard is added.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1553203539723/image.png"/></figure><p>To
+    see the running 24/7 Service Guard analysis, click <strong>Continuous Verification</strong>.</p><p>The
+    24/7 Service Guard dashboard displays the production verification results.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1553203573665/image.png"/></figure><p>
+    For more information, see <a href="/article/dajt54pyxd-24-7-service-guard-overview">24/7
+    Service Guard Overview</a>.</p><h3>Next Steps</h3><ul><li><a href="/article/vd4jgv41io-3-verify-deployments-with-datadog">Verify
+    Deployments with Datadog Logging</a></li><li><a href="/article/o9pl8tfvix-verify-deployments-with-datadog-metrics">Verify
+    Deployments with Datadog Metrics</a></li><li><a href="https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#algorithm_sensitivity_and_failure_criteria">CV
+    Strategies, Tuning, and Best Practice</a></li></ul><p></p>'
+  slug: 2-24-7-service-guard-for-datadog
+  tags:
+  - Datadog
+  - Verification Provider
+  - Deployment Verification
+  - verification
+  - 24/7 Service Guard
+  - setup
+  - APM
+  - application performance monitoring
+  - log
+  is_live: true

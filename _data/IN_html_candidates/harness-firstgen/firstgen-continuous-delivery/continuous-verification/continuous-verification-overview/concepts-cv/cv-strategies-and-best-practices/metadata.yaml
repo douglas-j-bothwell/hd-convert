@@ -1,0 +1,270 @@
+type: article
+article_id: 0avzb5255b
+user_id: mfr0nxh4be
+category_id: zxxvl8vahz
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: CV Strategies, Tuning, and Best Practices
+slug: cv-strategies-and-best-practices
+description: Pick the best analysis strategy when setting up Harness Continuous Verification
+  (CV) for deployments, and then tune the results using your expertise.
+short_version: Learn about analysis strategies, results tuning, and best practices
+  for Harness Continuous Verification (CV).
+tags:
+- CV
+- Continuous Verification
+- verification
+- risk analysis
+- APM
+- application performance monitoring
+- Canary
+- Predictive Analysis
+- Previous Analysis
+- log
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-12-24T06:33:49.484713Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CV Strategies, Tuning, and Best Practices
+  description: Pick the best analysis strategy when setting up Harness Continuous
+    Verification (CV) for deployments, and then tune the results using your expertise.
+  short_version: Learn about analysis strategies, results tuning, and best practices
+    for Harness Continuous Verification (CV).
+  body: "<p>This topic helps you pick the best analysis strategy when setting up Harness
+    Continuous Verification (CV) for deployments, and helps you tune the results using
+    your expertise.</p><p>First, learn about the types of analysis strategies, and
+    then learn about best practices and tuning.</p><ul><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#where_are_analysis_strategies_set_up\">Where
+    Are Analysis Strategies Set Up? </a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#types_of_analysis_strategies\">Types
+    of Analysis Strategies</a><ul><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#previous_analysis\">Previous
+    Analysis</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#canary_analysis\">Canary
+    Analysis</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#what_about_24_7_service_guard\">What
+    about 24/7 Service Guard?</a></li></ul></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#verification_best_practices\">Verification
+    Best Practices</a><ul><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#previous_analysis_2\">Previous
+    Analysis </a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#canary_analysis_2\">Canary
+    Analysis</a></li></ul></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#analysis_time_duration\">Analysis
+    Time Duration</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#wait_before_execution\">Wait
+    Before Execution</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#algorithm_sensitivity_and_failure_criteria\">Algorithm
+    Sensitivity and Failure Criteria</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#tuning_your_verification\">Tuning
+    Your Verification</a><ul><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#customize_threshold\">Customize
+    Threshold</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#3rd_party_api_call_history\">3rd
+    Party API Call History</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#event_distribution\">Event
+    Distribution</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#pin_as_baseline_for_continuous_verification\">Pin
+    as Baseline for Continuous Verification</a></li></ul></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#analysis_support_for_providers\">Analysis
+    Support for Providers</a></li><li><a href=\"https://docs.harness.io/article/0avzb5255b-cv-strategies-and-best-practices#deployment_type_support\">Deployment
+    Type Support</a></li></ul><h3>Where Are Analysis Strategies Set Up? </h3><p>When
+    you set up a verification step in a Harness Workflow, each supported APM lists
+    the available analysis strategies in its <strong>Baseline for Risk Analysis</strong>
+    setting and for how long the verification should be performed in its <strong>Analysis
+    Time duration</strong> setting.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840164814/z-6-o-yh-a-2-ked-kikl-5-x-7-sr-ksbhhq-7-ww-f-9-7-u-9-eex-3-rb-rrpy-pjjx-wzpkn-2-m-4-vy-h-gk-kgu-ygl-al-ecmdhjx-rz-x-2-mm-z-2-ieefs-65-agwcj-gj-tmatoh-05-vszi-cmozw-kw-am-4-yp-d-6-z-ol-wu-cgu-l-6\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><p>These
+    two settings are used to tune the verification Harness performs. They are discussed
+    in detail in this topic. </p><h3>Types of Analysis Strategies</h3><p>Harness uses
+    these types of analysis strategies, each with a different combination of load
+    (datasets) and granularity:</p><table><tbody><tr><td><p><strong>Analysis Strategy</strong></p></td><td><p><strong>Load</strong></p></td><td><p><strong>Granularity</strong></p></td></tr><tr><td><p>Previous</p></td><td><p>Synthetic</p></td><td><p>Container
+    level</p></td></tr><tr><td><p>Canary</p></td><td><p>Real user traffic</p></td><td><p>Container
+    level</p></td></tr></tbody></table><p>Each strategy is defined below.</p><div
+    class=\"hd--md\" data-hd-markdown=\"&lt;span id=&#34;previous_analysis&#34;&gt;&lt;/span&gt;\"><p><span
+    id=\"previous_analysis\"></span></p>\n</div><h4>Previous Analysis</h4><p>In Previous
+    Analysis, Harness compares the metrics received for the nodes deployed in each
+    Workflow Phase with metrics received for all the nodes during the previous deployment. Remember
+    that verification steps are used only after you have deployed successfully at
+    least once: In order to verify deployments and find anomalies, Harness needs data
+    from previous deployments.</p><p>For example, if Phase 1 deploys app version 1.2
+    to node A, the metrics received from the APM during this deployment are compared
+    to the metrics for nodes A, B, and C (all the nodes) during the previous deployment
+    (version 1.1). Previous Analysis is best used when you have predictable load,
+    such as in a QA environment.</p><div class=\"note-callout\">For Previous Analysis
+    to be effective, the load on the application should be the same across deployments.
+    For example, provide a (synthetic) test load using <a href=\"https://jmeter.apache.org/\">Apache
+    JMeter</a>. If the load varies between deployments, then Previous Analysis is
+    not effective.</div><h5>Baseline for Previous Analysis</h5><p>How does Harness
+    identify the baseline? As stated earlier, Harness uses the metrics received for
+    all the nodes during the previous deployment.</p><p>You can use <a href=\"#pin_as_baseline_for_continuous_verification\">Pin
+    as Baseline for Continuous Verification</a> to specify a deployment to use as
+    a baseline.</p><p>But if you do not use <strong>Pin as Baseline for Continuous
+    Verification</strong>, Harness uses a combination of the following Harness entities
+    to define what deployment is compared:</p><ul><li>Workflow (the specific Workflow
+    that performed the deployment)</li><li>Service</li><li>Environment</li><li>Infrastructure
+    Definition (the specific Infrastructure Definition used for the specific deployment)</li></ul><div
+    class=\"hd--md\" data-hd-markdown=\"&lt;span id=&#34;canary_analysis&#34;&gt;&lt;/span&gt;\"><p><span
+    id=\"canary_analysis\"></span></p>\n</div><h4>Canary Analysis</h4><p>For Canary
+    Analysis, Harness compares the metrics received for all old app version nodes
+    with the metrics for the new app version nodes. The nodes deployed in each Workflow
+    Phase are compared with metrics received for all of the existing nodes hosting
+    the application.</p><p>In the following example, a Prometheus verification step
+    is using Canary Analysis to compare a new node with two previous nodes:</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840164934/i-rse-rlnmsul-0-kosz-on-melq-b-94-m-1-oyd-z-f-rs-1-zaptd-0-xo-dnzks-vx-6-f-po-9-d-6-n-dmc-0-fvvye-tcp-hrlan-4-r-s-lzdp-4-dy-qsz-yo-vaxmv-pk-af-3-dyxg-mrjae-zygzpsk-oof-nmy-2-za-2-dz-7-m-4-b\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><p>For
+    example, if Phase 1 deploys to 25% of your nodes, the metrics received for the
+    new app versions on these nodes are compared with metrics received for the old
+    app versions on these nodes.</p><p>The metrics are taken for the period of time
+    defined in <strong>Analysis Time duration</strong>.</p><div class=\"note-callout\">Harness
+    supports Canary Analysis only in <a href=\"/article/325x7awntc-deployment-concepts-and-strategies#canary_deployment\">Canary
+    deployments</a>.</div><h5>Canary Analysis without a Host</h5><p>Most providers
+    have the concept of a host, where you use a host placeholder in the query used
+    by Harness. In cases where the metrics provider does not have this concept (for
+    example, Dynatrace), Canary analysis performs historical analysis.</p><p>For example,
+    if your deployment is from 10-10:15am, Harness will compare it with deployments
+    from 10-10:15am over the last 7 days. That historical data is the control data.</p><h3>Verification
+    Best Practices</h3><p>When picking an analysis strategy, there are several factors
+    to consider, such as the type of deployment, in which Phase of the Workflow to
+    add verification, and whether the number of instances/nodes/etc are consistent
+    between deployments.  </p><p>This section provides help on selecting the right
+    analysis strategy for your deployment.</p><h4>Previous Analysis </h4><p>Use the
+    following best practices with Previous Analysis.</p><h5>Do</h5><ul><li>Use Previous
+    Analysis in deployments where 100% of instances are deployed at once (single-phase
+    deployments):<ul><li>Basic deployment.</li><li>Canary deployment with only one
+    phase.</li><li>Blue/Green deployment.</li><li>Rolling deployment.</li></ul></li><li>Use
+    Previous Analysis if the number of instances deployed remains the same between
+    deployments.</li><li>In log verification, construct queries that selectively target
+    errors. (This trains Continuous Verification to detect new failures.)</li><li>In
+    time-series verification, add signals that are strong indications of service issues:<ul><li>For
+    example, a spike in error rates is cause for concern.</li><li>Response times are
+    also good candidates.</li><li>Add CPU usage, memory usage, and similar metrics
+    only if you are concerned about them.</li><li>When configuring deployment verification,
+    collect signals at the Service Instance level.</li><li>When configuring 24/7 Service
+    Guard, collect signals at the Service level.</li></ul></li></ul><h5>Don&#39;t</h5><ul><li>Don&#39;t
+    use Previous Analysis in any phase of a <em>multiphase</em> Canary deployment.</li><li>Don&#39;t
+    use Previous Analysis when <a href=\"https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/\">Kubernetes
+    Horizontal Pod Autoscaler (HPA)</a> is configured for a deployment.</li><li>In
+    log verification, don&#39;t construct a generic query—such as one that will match
+    all <code>info</code> messages. (Generic queries pull in a huge volume of data,
+    without training Continuous Verification to recognize errors. The result is little
+    signal, amid lots of noise.)</li></ul><h4>Canary Analysis</h4><p>Use the following
+    best practices with Canary Analysis.</p><h5>Do</h5><ul><li>Use Canary Analysis
+    in multiphase Canary Workflows only.</li></ul><h5>Don&#39;t</h5><ul><li>Don&#39;t
+    use Canary Analysis if there is only one phase in the Canary Workflow.</li><li>Don&#39;t
+    use Canary Analysis in the last phase of a Canary Workflow because the final phase
+    deploys to 100% of nodes and so there are no other nodes to compare.</li><li>Don&#39;t
+    use Canary Analysis when deploying 100% of instances at once.</li></ul><div class=\"note-callout\">Harness
+    supports Canary Analysis only in <a href=\"/article/325x7awntc-deployment-concepts-and-strategies#canary_deployment\">Canary
+    deployments</a>.</div><h3>Analysis Time Duration</h3><p>This is the number of
+    data points Harness uses. If you enter 10 minutes, Harness will take the first
+    10 minutes worth of the log/APM data points and analyze it.</p><p>The length of
+    time it takes Harness to analyze the 10 min of data points depends on the number
+    of instances being analyzed and the monitoring tool. If you have a 1000 instances,
+    it can take some time to analyze the first 10 minutes of all of their logs/APM
+    data points.</p><p>The recommended Analysis Time Duration is 10 minutes for logging
+    providers and 15 minutes for APM and infrastructure providers.</p><p>Harness waits
+    2-3 minutes to allow enough time for the data to be sent to the verification provider
+    before it analyzes the data. This wait time is a standard with monitoring tools.
+    So, if you set the <strong>Analysis Time Duration</strong> to 10 minutes, it includes
+    the initial 2-3 minute wait, and so the total sample time is 13 minutes.</p><h4>Wait
+    Before Execution</h4><p>The <strong>Verify Service</strong> section of the Workflow
+    has a <strong>Wait before execution</strong> setting.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840165106/t-8-g-9-mpf-par-yqnw-bkni-rcctf-bg-jod-7-j-dlw-vvl-vwz-xw-bpk-oy-gp-ox-9-ryird-ppo-7-cy-3-c-9-s-jsv-tagiojt-9-abn-3-dtd-zjy-1-ji-3-rdd-gaih-0117-gp-1-as-eb-0-hp-ol-6-jml-0-ux-qdbgt-qh-8-a-cjl\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><p>As
+    stated earlier, Harness waits 2-3 minutes before performing analysis to avoid
+    initial noise. Use the <strong>Wait before execution</strong> setting only when
+    your deployed application takes more than 3-4 minutes to reach steady state. This
+    will help avoid initial noise when an application starts like CPU spikes.</p><h3>Algorithm
+    Sensitivity and Failure Criteria</h3><p>When adding a verification step to your
+    Workflow, you can use the <strong>Algorithm Sensitivity</strong> setting to define
+    the risk level that will be used as failure criteria during the deployment.</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1565282929056/image.png\"/></figure><p>When
+    the criteria are met, the Failure Strategy for the Workflow is executed.</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840165215/rle-8-z-ac-99-w-jg-7-b-ny-zx-cva-m-cf-x-9-m-ksm-ma-1-eb-4-u-3-q-6-wwe-zkug-de-4-cd-i-3-vwg-wi-erccepgfi-2-ho-mrpc-1-wx-aelwkas-lwd-otn-in-l-6-epfd-lde-6-dq-fo-byrhpbgd-zac-4-ml-5-m-dua-6-hajmi-3-fl\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><p>For
+    time-series analysis (APM), the risk level is determined using standard deviations,
+    as follows: 5\U0001D7BC (<a href=\"https://watchmaker.uncommons.org/manual/ch03s05.html\">sigma</a>)
+    represents high risk, 4\U0001D7BC represents medium risk, and 3\U0001D7BC or below
+    represents low risk.</p><p>Harness also takes into account the number of points
+    that deviated: 50%+ is high risk, 25%-50% is medium risk, and 25% or below is
+    low risk.</p><p>Harness will normally invoke a Workflow&#39;s Failure Strategy
+    when it detects high risk; however, if you have set a verification step&#39;s
+    sensitivity to <strong>Very sensitive</strong>, Harness will also invoke the Workflow&#39;s
+    Failure Strategy upon detecting medium risk.</p><p>Every successful deployment
+    contributes to creating and shaping a healthy baseline that tells Harness what
+    a successful deployment looks like, and what should be flagged as a risk. If a
+    deployment failed due to verification, Harness will not consider any of the metrics
+    produced by that deployment as part of the baseline.</p><h3>Tuning Your Verification</h3><p>When
+    you first start using Harness Continuous Verification, we recommend you examine
+    the results and use the following features to tune your verification using your
+    knowledge of your application and deployment environment:</p><p></p><h4>Customize
+    Threshold</h4><p>In your deployment verification results, you can customize the
+    threshold of each metric/transaction for a Harness Service in a Workflow.</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840165404/lqmn-2-vw-6-v-0-mamf-ix-0-cbc-tg-b-8-pw-xyhu-miy-a-9-g-7-doqnw-0-l-wpjmr-nnunq-8-anwdh-sa-9-wpj-8-y-x-2-mjrqcnz-veu-9-iicr-ufbyt-mz-alt-uyn-tc-f-7-m-qv-w-13-gua-d-1-lj-7-rngcw-em-gip-xsow-u-6-e\"/></figure><p></p><p>You
+    can tune each specific metric for each Harness Service to eliminate noise. </p><p>The
+    example above helps you refine the response time. This means if the response time
+    is less than the value entered in <strong>Ignore if [95th Percentile Response
+    Time (ms)] is [less]</strong> then Harness will not mark it as a failure even
+    if it is an anomaly.</p><p>Let&#39;s say the response time was around 10ms and
+    it went to 20ms. Harness&#39; machine-learning engine will flag it as an anomaly
+    because it jumped 100%. If you add a threshold configured to ignore a response
+    time is less than 100ms, then Harness will not flag it.</p><p>You can adjust the
+    threshold for any metric analysis. The following example shows how you can adjust
+    the min and max of host memory comparisons.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840165518/or-4-e-de-kttq-9-k-8-kwp-s-1-l-mm-4-ug-2-hou-tb-tg-hx-sn-siu-6-nmn-iopsngd-8-pmj-wb-wid-yq-nh-t-9-drp-fd-dez-dd-qyjbg-7-oqbp-pmv-8-jrc-n-9-cz-qwii-2-fgl-6-b-05-loun-trwjg-n-0-pbfx-3-m-rku-787-z-a\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><p></p><div
+    class=\"hd--md\" data-hd-markdown=\"&lt;span id=&#34;3rd_party_api_call_history&#34;&gt;&lt;/span&gt;\"><p><span
+    id=\"3rd_party_api_call_history\"></span></p>\n</div><h4>3rd-Party API Call History</h4><p>You
+    can view each API call and response between Harness and a verification provider
+    by selecting <strong>View 3rd Party API Calls</strong> in the deployment&#39;s
+    verification details.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840165689/hna-hotib-p-1-ppm-jtrm-l-5-uzzndv-8-ualroteq-y-tghy-fwj-1-as-gzvlvwak-5-mbr-vbi-w-1-g-yzq-8-jdofcia-azze-kb-4-efbkpf-srvs-7-l-r-2-a-7-bkmvmmv-6-pb-zv-uo-powqs-t-s-ck-3-wj-p-9-p-1-uji-kz\"/></figure><p></p><p>The
+    <strong>Request</strong> section shows the API call made by Harness and the <strong>Response</strong>
+    section shows what the verification provider returned:</p><pre> {&#34;sdkResponseMetadata&#34;:{&#34;requestId&#34;:&#34;bd678748-f905-46bc-91e1-f17843f87ac2&#34;},&#34;sdkHttpMetadata&#34;:{&#34;httpHeaders&#34;:{&#34;Content-Length&#34;:&#34;988&#34;,&#34;Content-Type&#34;:&#34;text/xml&#34;,&#34;Date&#34;:&#34;Wed,
+    07 Aug 2019 20:12:06 GMT&#34;,&#34;x-amzn-RequestId&#34;:&#34;bd678748-f905-46bc-91e1-f17843f87ac2&#34;},&#34;httpStatusCode&#34;:200},&#34;label&#34;:&#34;MemoryUtilization&#34;,&#34;datapoints&#34;:[{&#34;timestamp&#34;:1565208600000,&#34;average&#34;:10.512906283101966,&#34;unit&#34;:&#34;Percent&#34;},{&#34;timestamp&#34;:1565208540000,&#34;average&#34;:10.50788872163684,&#34;unit&#34;:&#34;Percent&#34;},{&#34;timestamp&#34;:1565208420000,&#34;average&#34;:10.477005777531302,&#34;unit&#34;:&#34;Percent&#34;},{&#34;timestamp&#34;:1565208480000,&#34;average&#34;:10.493672297485643,&#34;unit&#34;:&#34;Percent&#34;}]} </pre><p>The
+    API response details allow you to drill down to see the specific datapoints and
+    the criteria used for comparison. Failures can also examined in the <strong>Response</strong>
+    section:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840165817/wpj-0-x-aozkd-7-z-kgggatlny-pdrj-rcmbq-zehl-qvs-agf-zx-84-blg-42-x-mo-ri-ldh-mjnkgg-k-u-4-bavd-u-4-ar-5-uzb-jlshf-4-d-ztq-2-tnfzl-vw-602-bj-x-hidn-zuvkke-ebo-s-o-ybh-zc-tpeuhp-1\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><div
+    class=\"tip-callout\">Harness&#39; machine-learning engine can process a maximum
+    of 1,000 logs per minute.</div><h4>Event Distribution</h4><p>You can view the
+    event distribution for each event by clicking the graph icon:</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1620840165949/8-ozmungu-nhk-w-tjm-6-bw-16-hx-72-wq-rq-wey-jkp-fs-zp-4-v-8-a-frmy-uxe-vw-tl-4-s-7-y-6-cjj-flmjh-o-4-n-avm-yk-nvuv-ayf-f-6-n-n-0-zrfd-c-6-e-6-sq-1-w-vh-rld-mqf-ovhzr-swvae-qq-v-4-p-56-aggzkmhd-q\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><p>The
+    Event Distribution will show you the measured and baseline data, allowing you
+    to see why the comparison resulted in an anomaly. </p><h4>Pin as Baseline for
+    Continuous Verification</h4><div class=\"note-callout\">If you do not use Pin
+    as Baseline, Harness uses default criteria. See <a href=\"#baseline_for_previous_analysis\">Baseline
+    for Previous Analysis</a>.</div><p>By default in a Previous Analysis strategy,
+    Harness uses the Continuous Verification data of the last successful Workflow
+    execution <strong>with data</strong> as the baseline for the current analysis.
+    This is an automatic setting, but you can select a specific deployment as a new
+    baseline.</p><div class=\"note-callout\">Data is never deleted from a workflow
+    if it is set as the baseline. Also the baseline assignment can only be done through
+    the UI and it has no Git property reference.</div><p>To set a specific deployment
+    as the baseline, do the following:</p><ol><li>In Harness, click <strong>Continuous
+    Deployment</strong>.</li><li>Locate the deployment you want to use as the new
+    baseline.</li><li>Click the options button, and select <strong>Pin as Baseline
+    for Continuous Verification</strong>. When you are prompted to confirm, click
+    <strong>Pin Baseline</strong>.</li></ol><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1573843478633/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p>If
+    the deployment does not contain verification data, you will see the following
+    error:</p><p><code>Either there is no workflow execution with verification steps
+    or verification steps haven&#39;t been executed for the workflow.</code></p><p>Once
+    the deployment is pinned as the baseline. You will see an icon on it and the option
+    to unpin it:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/0avzb5255b/1574465187152/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><h3>Analysis
+    Support for Providers</h3><p>The following table lists which analysis strategies
+    are supported for each Verification Provider.</p><table><tbody><tr><td><p><strong>Provider</strong></p></td><td><p><strong>Previous</strong></p></td><td><p><strong>Canary</strong></p></td></tr><tr><td><p>AppDynamics</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>NewRelic</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>DynaTrace</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>Prometheus</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>SplunkV2</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>ELK</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>Sumo</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>Datadog
+    Metrics</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>Datadog
+    Logs</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>CloudWatch</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>Custom
+    Metric Verification</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>Custom
+    Log Verification</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>BugSnag</p></td><td><p>Yes</p></td><td><p>No</p></td></tr><tr><td><p>Stackdriver
+    Metrics</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p>Stackdriver
+    Logs</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr></tbody></table><h3>Deployment
+    Type Support</h3><p>The following table lists which analysis strategies are supported
+    in each deployment type.</p><table><tbody><tr><td><p><strong>Deployment Type</strong></p></td><td><p><strong>Analysis
+    Supported</strong></p></td></tr><tr><td><p>Basic</p></td><td><p>Previous</p></td></tr><tr><td><p>Canary</p></td><td><p>Canary</p></td></tr><tr><td><p>BlueGreen</p></td><td><p>Previous</p></td></tr><tr><td><p>Rolling</p></td><td><p>Previous</p></td></tr><tr><td><p>Multi-service</p></td><td><p>No</p></td></tr><tr><td><p>Build </p></td><td><p>No</p></td></tr><tr><td><p>Custom</p></td><td><p>No</p></td></tr></tbody></table><p></p>"
+  slug: cv-strategies-and-best-practices
+  tags:
+  - CV
+  - Continuous Verification
+  - verification
+  - risk analysis
+  - APM
+  - application performance monitoring
+  - Canary
+  - Predictive Analysis
+  - Previous Analysis
+  - log
+  is_live: true

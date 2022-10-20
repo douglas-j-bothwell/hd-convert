@@ -1,0 +1,73 @@
+type: article
+article_id: tl6ql57em6
+user_id: mfr0nxh4be
+category_id: 9i5thr0ot2
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Delete a Delegate
+slug: delete-a-delegate
+description: This topic describes how to delete a Harness Delegate from a Kubernetes
+  cluster and Harness.
+short_version: This topic describes how to delete a Harness Delegate from a Kubernetes
+  cluster and Harness.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-13T19:09:17.786318Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Delete a Delegate
+  description: This topic describes how to delete a Harness Delegate from a Kubernetes
+    cluster and Harness.
+  short_version: This topic describes how to delete a Harness Delegate from a Kubernetes
+    cluster and Harness.
+  body: '<p>This topic describes how to delete a Harness Delegate from a Kubernetes
+    cluster and Harness.</p><h3>Before You Begin</h3><ul><li><a href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Kubernetes Delegate</a></li><li><a href="/article/cya29w2b99-install-a-docker-delegate">Install
+    a Docker Delegate</a></li></ul><p></p><h3>Am I using an Immutable or Legacy Delegate?</h3><p>Immutable
+    Delegates are installed as Kubernetes Deployment objects.</p><p>Legacy Delegates
+    are installed as Kubernetes StatefulSet objects.</p><p>You can check which Delegate
+    you are using by looking at its YAML file or by running <code>kubectl get all
+    -n harness-delegate-ng</code>. </p><h3>Immutable Delegate</h3><p>An <a href="/article/4ax6q6dxa4-install-an-immutable-kubernetes-delegate">Immutable
+    Kubernetes Delegate</a> is installed in a cluster as a Deployment.</p><h4>Step
+    1: Delete the Deployment for the Delegate</h4><p>To delete the Harness Delegate
+    from your Kubernetes cluster, you delete the Deployment for the Delegate.</p><p><code>kubectl
+    delete deployment -n harness-delegate-ng &lt;Deployment name&gt;</code></p><p>You
+    can see all the Deployments with:</p><p><code>kubectl get deployments</code></p><p>The
+    Deployment name comes from the Delegate YAML you used to install the Delegate.
+    For example, the Deployment name is <code>doc-demos</code>:</p><pre>...<br/>apiVersion:
+    apps/v1<br/>kind: Deployment<br/>metadata:<br/>  labels:<br/>    harness.io/name:
+    doc-demos<br/>  name: doc-demos<br/>  namespace: harness-delegate-ng<br/>...</pre><p></p><p>Next,
+    delete the Updater CronJob:</p><p><code>kubectl delete cronjob -n harness-delegate-ng
+    &lt;Deployment name&gt;-upgrader-job</code></p><p>For example, if the Deployment
+    name is <code>quickstart-delegate</code>:</p><p><code>kubectl delete cronjob -n
+    harness-delegate-ng quickstart-delegate-upgrader-job</code></p><h4>Step 2: Delete
+    the Delegate in Harness</h4><p>Simply locate the Delegate in the Harness account/Project/Org,
+    click more options (⋮), and click <strong>Delete</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/tl6ql57em6/1654800399295/clean-shot-2022-06-09-at-11-44-20.png"/></figure><p></p><h3>Legacy
+    Delegate</h3><p>A <a href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Legacy
+    Kubernetes Delegate</a> is installed in a cluster as a StatefulSet.</p><h4>Step
+    1: Delete the StatefulSet for the Delegate</h4><p>To delete the Harness Delegate
+    from your Kubernetes cluster, you delete the StatefulSet for the Delegate.</p><p>Once
+    created, the StatefulSet ensures that the desired number of pods are running and
+    available at all times. Deleting the pod without deleting the StatefulSet will
+    result in the pod being recreated.</p><p>For example, if you have the Delegate
+    pod name <code>quickstart-vutpmk-0</code>, you can delete the StatefulSet with
+    the following command:</p><p><code>$ kubectl delete statefulset -n harness-delegate-ng
+    quickstart-vutpmk</code></p><p>Note that the <code>-0</code> suffix in the pod
+    name is removed for the StatefulSet name.</p><h4>Step 2: Delete the Delegate in
+    Harness</h4><p>Simply locate the Delegate in the Harness account/Project/Org,
+    click more options (⋮), and click <strong>Delete</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/tl6ql57em6/1654800399295/clean-shot-2022-06-09-at-11-44-20.png"/></figure><p></p>'
+  slug: delete-a-delegate
+  tags: []
+  is_live: true

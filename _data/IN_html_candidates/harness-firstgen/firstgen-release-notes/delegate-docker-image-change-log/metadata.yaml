@@ -1,0 +1,43 @@
+type: article
+article_id: ydht3mch32
+user_id: slcpusem6b
+category_id: h4k144tv5t
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Harness Delegate Docker Image Change Log
+slug: delegate-docker-image-change-log
+description: This document contains the change log for Harness Delegate Docker Image.
+short_version: This document contains the change log for Harness Delegate Docker Image.
+tags:
+- delegate
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-04T19:43:25.950657Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Delegate Docker Image Change Log
+  description: This document contains the change log for Harness Delegate Docker Image.
+  short_version: This document contains the change log for Harness Delegate Docker
+    Image.
+  body: <p>This document contains the change log for <a href="https://hub.docker.com/r/harness/delegate/tags">Harness
+    Delegate Docker Image</a>.</p><p></p><div class="note-callout">For Harness SaaS
+    releases, see <a href="/article/ajlzpn1s2n-harness-saa-s-release-notes-2021">Harness
+    SaaS Release Notes 2021</a>.<br/><br/>For Harness On-Prem releases, see <a href="https://ngdocs.harness.io/article/ajlzpn1s2n-harness-saa-s-release-notes-2021">Harness
+    On-Prem Release Notes</a>.</div><p></p><p>The following table lists the release
+    information of the Harness Delegate Docker image:</p><p></p><table><tbody><tr><td><p><strong>Release
+    Date</strong></p></td><td><p><strong>Issues Fixed</strong></p></td></tr><tr><td><p>December
+    20, 2021</p></td><td><ul><li>There were permission issues for downloading the
+    Watcher JAR files.</li><li>The Watcher version is updated to 72713-000.</li></ul><p></p></td></tr></tbody></table><p></p><p></p>
+  slug: delegate-docker-image-change-log
+  tags:
+  - delegate
+  is_live: true

@@ -1,0 +1,209 @@
+type: article
+article_id: rset0jry8q
+user_id: mfr0nxh4be
+category_id: lussbhnyjt
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Webhook Triggers Reference
+slug: triggers-reference
+description: This topic provides settings information for Triggers. Triggers are used
+  to initiate the execution of Pipelines. For steps on setting up different types
+  of Triggers, see Triggers Howtos. Name. The un…
+short_version: This topic provides settings information for Triggers. Triggers are
+  used to initiate the execution of Pipelines. For steps on setting up different types
+  of Triggers, see Triggers Howtos. Name. The un…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-09T23:34:44.073104Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Webhook Triggers Reference
+  description: ""
+  short_version: ""
+  body: '<p>This topic provides settings information for Triggers. Triggers are used
+    to initiate the execution of Pipelines.</p><p>For steps on setting up different
+    types of Triggers, see <a href="/category/oya6qhmmaw-trigger-category">Triggers
+    Howtos</a>.</p><h3>Name</h3><p>The unique name for the Trigger.</p><h3>ID</h3><p>See
+    <a href="/article/li0my8tcz3-entity-identifier-reference">Entity Identifier Reference</a>.</p><h3>Description</h3><p>Text
+    string.</p><h3>Tags</h3><p>See <a href="/article/i8t053o0sq-tags-reference">Tags
+    Reference</a>.</p><p></p><h3>Payload Type</h3><p>Git providers, such as GitHub,
+    Bitbucket, and GitLab.</p><h3>Custom Payload type</h3><p>To use a custom payload
+    type, copy the secure token and add it to your custom Git provider.</p><p>Whenever
+    you regenerate a secure token, any preceding tokens become invalid. Update your
+    Git provider with the new token.</p><h3>Connector</h3><p>Select the Code Repo
+    Connector that connects to your Git provider account.</p><p>See <a href="/category/xyexvcc206-ref-source-repo-provider">Code
+    Repo Connectors Tech Ref</a>.</p><h3>Repository Name</h3><p>Enter the name of
+    the repo in the account.</p><h3>Event and Actions</h3><p> Select the Git events
+    and actions that will initiate the Trigger.</p><p></p><table><tbody><tr><td><p><strong>Payload
+    Type</strong></p></td><td><p><strong>Event</strong></p></td><td><p><strong>Action</strong></p></td></tr><tr><td><p> <strong>Github</strong></p></td><td><p> Pull
+    Request</p></td><td><p>Closed</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Edited</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Labeled</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Opened</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Reopened</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Synchronized</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Unassigned</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>UnLabeled</p></td></tr><tr><td><p> </p></td><td><p>Push</p></td><td><p>n/a</p></td></tr><tr><td><p> </p></td><td><p>Issue
+    Comment</p><div class="note-callout">Only comments on a pull request are supported.</div></td><td><p>Created</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Deleted</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Edited</p></td></tr><tr><td><p><strong>GitLab</strong></p></td><td><p>Push</p></td><td><p>N/A</p></td></tr><tr><td><p> </p></td><td><p>Merge
+    Request</p></td><td><p>Sync</p></td></tr><tr><td><p></p></td><td><p></p></td><td><p>Open</p></td></tr><tr><td><p></p></td><td><p></p></td><td><p>Close</p></td></tr><tr><td><p></p></td><td><p></p></td><td><p>Reopen</p></td></tr><tr><td><p></p></td><td><p></p></td><td><p>Merge</p></td></tr><tr><td><p></p></td><td><p></p></td><td><p>Update</p></td></tr><tr><td><p><strong> Bitbucket</strong></p></td><td><p> On
+    Pull Request</p></td><td><p>Pull Request Created</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Pull
+    Request Merged</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p>Pull
+    Request Declined</p></td></tr><tr><td><p> </p></td><td><p>Push</p></td><td><p></p></td></tr></tbody></table><p></p><p>Harness
+    uses your Harness account Id to map incoming events. Harness takes the incoming
+    event and compares it to ALL triggers in the account.</p><p>You can see the event
+    Id that Harness mapped to a Trigger in the Webhook&#39;s event response body <code>data</code>:</p><pre>{&#34;status&#34;:&#34;SUCCESS&#34;,&#34;data&#34;:&#34;60da52882dc492490c30649e&#34;,&#34;metaData&#34;:null,...</pre><p></p><p>Harness
+    maps the success status, execution Id, and other information to this event Id.</p><p></p><h3>Conditions</h3><p>Optional
+    conditions to specify in addition to events and actions. These help to form the
+    overall set of criteria to trigger a Pipeline based on changes in a given source.</p><p>For
+    example:</p><ul><li>Trigger when a specific value is passed in the source payload.</li><li>Trigger
+    when there&#39;s a change in a specific file or a pull request.</li><li>Trigger
+    based on a specific artifact tag convention.</li></ul><h4>Conditions are ANDs</h4><p>You
+    can think of each Trigger as a complex filter in which all Conditions are <code>AND</code>-ed
+    together. To execute a Trigger, the event payload must match all Conditions in
+    the Trigger.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/rset0jry8q/1624924312486/clean-shot-2021-06-28-at-16-51-34.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></figure><p>In
+    this example, an event must match all conditions under <strong>Source Branch</strong>,
+    <strong>Target Branch</strong>, <strong>Header Conditions</strong>, <strong>Payload
+    Conditions</strong>, and <strong>JEXL Conditions</strong> for the Trigger to be
+    filtered.</p><p>To use <code>OR</code>, <code>NOT</code>, or other operators across
+    the payload, use a <strong>JEXL Condition</strong> and leave the rest empty.</p><div
+    class="note-callout">The JEXL <code>in</code> operator is not supported in <strong>JEXL
+    Condition</strong>.</div><h4>Source and Target Branch</h4><p>The source and target
+    branches of the Git merge that must be matched.</p><p>These are available depending
+    on the type of event selected. Any event that belongs to a merge will have Source
+    Branch and Target Branch conditions.</p><p>For example:</p><ul><li>Source Branch
+    starts with <code>new-</code></li><li>Target Branch equals <code>main</code></li></ul><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/rset0jry8q/1613776102338/image.png"/></figure><h4>Built-in
+    Git Trigger and Payload Expressions</h4><p>Harness includes built-in expressions
+    for referencing trigger details such as a PR number.</p><h5>Main Expressions</h5><ul><li><code>&lt;+trigger.type&gt;</code><ul><li>Webhook.</li></ul></li><li><code>&lt;+trigger.sourceRepo&gt;</code><ul><li>Github,
+    Gitlab, Bitbucket, Custom</li></ul></li><li><code>&lt;+trigger.event&gt;</code><ul><li>PR,
+    PUSH, etc.</li></ul></li></ul><h5>PR and Issue Comment Expressions</h5><ul><li><code>&lt;+trigger.targetBranch&gt;</code></li><li><code>&lt;+trigger.sourceBranch&gt;</code></li><li><code>&lt;+trigger.prNumber&gt;</code></li><li><code>&lt;+trigger.prTitle&gt;</code></li><li><code>&lt;+trigger.gitUser&gt;</code></li><li><code>&lt;+trigger.repoUrl&gt;</code></li><li><code>&lt;+trigger.commitSha&gt;</code></li><li><code>&lt;+trigger.baseCommitSha&gt;</code></li><li><code>&lt;+trigger.event&gt;</code><ul><li>PR,
+    PUSH, etc.</li></ul></li></ul><h5>Push Expressions</h5><ul><li><code>&lt;+trigger.targetBranch&gt;</code></li><li><code>&lt;+trigger.gitUser&gt;</code></li><li><code>&lt;+trigger.repoUrl&gt;</code></li><li><code>&lt;+trigger.commitSha&gt;</code></li><li><code>&lt;+trigger.event&gt;</code><ul><li>PR,
+    PUSH, etc.</li></ul></li></ul><h4>Header Conditions</h4><p>Valid JSON cannot contain
+    a dash (–), but headers are not JSON strings and often contain dashes. For example,
+    X-Github-Event, content-type:</p><pre>Request URL: https://app.harness.io:<br/>Request
+    method: POST<br/>Accept: */*<br/>content-type: application/json<br/>User-Agent:
+    GitHub-Hookshot/0601016<br/>X-GitHub-Delivery: be493900-000-11eb-000-000<br/>X-GitHub-Event:
+    create<br/>X-GitHub-Hook-ID: 281868907<br/>X-GitHub-Hook-Installation-Target-ID:
+    250384642<br/>X-GitHub-Hook-Installation-Target-Type: repository</pre><p></p><p>The
+    header expression format is <code>&lt;+trigger.header[&#39;key-name&#39;]&gt;</code>.
+    For example. <code>&lt;+trigger.header[&#39;X-GitHub-Event&#39;]&gt;</code>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1624919275031/clean-shot-2021-06-28-at-15-27-08.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>If
+    the header key doesn&#39;t contain a dash (<code>–</code>), then the format <code>&lt;+trigger.header.[&#39;key
+    name&#39;]&gt;</code> will work also.</p><p>When Harness evaluates the header
+    key you enter, the comparison is case insensitive.</p><p>In <strong>Matches Value</strong>,
+    you can enter multiple values separated by commas and use wildcards.</p><h4>Payload
+    Conditions</h4><p>Conditions based on the values of the JSON payload. Harness
+    treats the JSON payload as a data model and parses the payload and listens for
+    events on a JSON payload key.</p><p>To reference payload values, you use <code>&lt;+eventPayload.</code>
+    followed by the path to the key name.</p><p>For example, a payload will have a
+    repository owner:</p><pre>...<br/>&gt;   &#34;repository&#34; : {<br/>&gt;     &#34;id&#34;:
+    1296269,<br/>&gt;     &#34;full_name&#34;: &#34;octocat/Hello-World&#34;,<br/>&gt;     &#34;owner&#34;:
+    {<br/>&gt;       &#34;login&#34;: &#34;octocat&#34;,<br/>&gt;       &#34;id&#34;:
+    1,<br/>&gt;       ...<br/>&gt;     },<br/>...</pre><p></p><p>To reference the
+    repository owner, you would use <code>&lt;+eventPayload.repository.owner&gt;</code>.
+    Here&#39;s an example using <code>name</code>:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1624919275031/clean-shot-2021-06-28-at-15-27-08.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Next,
+    you enter an operator and the value to match. For example:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/rset0jry8q/1613777562060/image.png"/></figure><p></p><h4>Referencing
+    Payload Fields</h4><p>You can reference any payload fields using the expression
+    <code>&lt;+trigger.payload.pathInJson&gt;</code>, where <code>pathInJson</code>
+    is the path to the field in the JSON payload.</p><p>For example: <code>&lt;+trigger.payload.pull_request.user.login&gt;</code></p><p>How
+    you reference the path depends on a few things:</p><ul><li>There are different
+    payloads for different events.</li><li>Different Git providers send JSON payloads
+    formatted differently, even for the same event. For example, a GitHub push payload
+    might be formatted differently than a Bitbucket push payload. Always make sure
+    the path you use works with the provider&#39;s payload format.</li></ul><h4>JEXL
+    Expressions</h4><p>You can refer to payload data and headers using <a href="https://commons.apache.org/proper/commons-jexl/reference/syntax.html"
+    target="_blank">JEXL expressions</a>. That includes all constants, methods, and
+    operators in <a href="https://commons.apache.org/proper/commons-jexl/apidocs/org/apache/commons/jexl3/JexlOperator.html"
+    target="_blank">JexlOperator</a>.</p><p>Be careful when you combine Harness variables
+    and JEXL expressions.</p><ul><li><strong>Invalid expression:</strong> <code>&lt;+pipeline.variables.MAGIC.toLowerCase()&gt;</code><br/>This
+    expression is ambiguous. It could be evaluated as a Harness variable (return the
+    value of variable <code>pipeline.variables.MAGIC.toLowerCase()</code>) or as a
+    JEXL operation (return the lowercase of literal string <code>pipeline.variables.MAGIC</code>).</li><li><strong>Valid
+    expression:</strong> <code>&lt;+&lt;+pipeline.variables.MAGIC&gt;.toLowerCase()&gt;</code>
+    First it gets the value of variable <code>pipeline.variables.MAGIC</code>. Then
+    it returns the value converted to all lowercase.</li></ul><p>Here are some examples:</p><ul><li><code>&lt;+trigger.payload.pull_request.diff_url&gt;.contains(&#34;triggerNgDemo&#34;)</code></li><li><code>&lt;+trigger.payload.pull_request.diff_url&gt;.contains(&#34;triggerNgDemo&#34;)
+    || &lt;+trigger.payload.repository.owner.name&gt; == &#34;wings-software&#34;</code></li><li><code>&lt;+trigger.payload.pull_request.diff_url&gt;.contains(&#34;triggerNgDemo&#34;)
+    &amp;&amp; (&lt;+trigger.payload.repository.owner.name&gt; == &#34;wings-software&#34;
+    || &lt;+trigger.payload.repository.owner.name&gt; == &#34;harness&#34;)</code></li></ul><h4>Operators</h4><p>Some
+    operators work on single values and some work on multiple values:</p><p><strong>Single
+    values:</strong> <code>equals</code>, <code>not equals</code>, <code>starts with</code>,
+    <code>ends with</code>, <code>regex</code>.</p><p><strong>Multiple values:</strong>
+    <code>in</code>, <code>not in</code>.</p><div class="note-callout">The <strong>IN</strong>
+    and <strong>NOT IN</strong> operators don&#39;t support Regex.</div><h3>Pipeline
+    Input</h3><p>Runtime Inputs for the Trigger to use, such as Harness Service and
+    artifact.</p><p>You can use the <a href="#built_in_git_trigger_and_payload_expressions">Built-in
+    Git Payload Expressions</a> and JEXL expressions in this setting.</p><p>See <a
+    href="/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays">Run Pipelines
+    using Input Sets and Overlays</a>.</p><h3>Webhook</h3><p>For all Git providers
+    supported by Harness, the Webhook is created in the repo automatically. You don&#39;t
+    need to copy it and add it to your repo webhooks.</p><h4>Git Events Automatically
+    Registered with Webhooks</h4><p>The following Git events are automatically added
+    to the webhooks Harness registers.</p><h5>GitHub</h5><p><a href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads"
+    target="_blank">GitHub events</a>:</p><ul><li><code>create</code></li><li><code>push</code></li><li><code>delete</code></li><li><code>deployment</code></li><li><code>pull_request</code></li><li><code>pull_request_review</code></li></ul><p></p><h5>GitLab</h5><p><a
+    href="https://docs.gitlab.com/ee/user/project/integrations/webhooks.html" target="_blank">GitLab
+    events</a>:</p><ul><li>Comment events</li><li>Issue events</li><li>Merge request
+    events</li><li>Push events</li></ul><p></p><h5>Bitbucket Cloud</h5><p><a href="https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/"
+    target="_blank">Bitbucket Cloud events</a>:</p><ul><li><code>issue</code></li><li><code>pull
+    request</code></li></ul><p></p><h5>Bitbucket Server</h5><p><a href="https://confluence.atlassian.com/bitbucketserver/event-payload-938025882.html"
+    target="_blank">Bitbucket Server events</a>:</p><ul><li>Pull requests</li><li>Branch
+    push tag</li></ul><p></p><h4>Manually Applying the Webhook</h4><p>Although Webhooks
+    are applied automatically by Harness, here&#39;s a quick summary of the manual
+    process. This is provided in case the automatic Webhook registration doesn&#39;t
+    work.</p><p>You obtain the Webhook to use in your repo by clicking the <strong>Webhook</strong>
+    icon.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/rset0jry8q/1613777651302/image.png"/></figure><p>Log
+    into your repo in the Git provider and navigate to its Webhook settings. For example,
+    here&#39;s the <strong>Webhooks</strong> section of GitHub.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1614103358723/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Add
+    a Webhook.</p><p>In the Webhook settings, paste the Webhook URL you copied from
+    Harness into the payload URL setting in the repo.</p><p><u>Make sure that you
+    select JSON for the content type.</u> For example, in GitHub, you select <strong>application/json</strong>
+    in <strong>Content type</strong>.</p><h4>Custom Webhook</h4><p>You enter the webhook
+    in your custom Git provider.</p><div class="note-callout">Make sure that the payload
+    content type is JSON (application/json).</div><p>The format for the custom Webhook
+    is:</p><pre>https://app.harness.io/pipeline/api/webhook/custom?accountIdentifier=123456789&amp;orgIdentifier=default&amp;projectIdentifier=myProject&amp;pipelineIdentifier=newpipelinetest&amp;triggerIdentifier=myTrigger</pre><p></p><p>The
+    <code>pipelineIdentifier</code> and <code>triggerIdentifier</code> target the
+    Webhook at the specific Pipeline and Trigger.</p><p>Is some cases, you will not
+    want to target the Webhook at the specific Pipeline and Trigger. For example,
+    there are events in GitHub that are not covered by Harness and you might want
+    to set up a Trigger for those events that applies to all Pipelines and their Triggers
+    in the Project.</p><p>To instruct Harness to evaluate the custom Trigger against
+    <u>all</u> Pipelines (until it finds a <strong>Conditions</strong> match), remove
+    <code>pipelineIdentifier</code> and <code>triggerIdentifier</code> from the URL
+    before adding it to your repo.</p><div class="note-callout">The <code>orgIdentifier</code>
+    and <code>projectIdentifier</code> are mandatory.</div><h3>Last Execution Details</h3><p>In
+    a Trigger&#39;s details, you can see when the Trigger was executed:</p><p>Activation
+    means the Trigger could request Pipeline execution. It doesn&#39;t mean that the
+    Webhook didn&#39;t work.</p><p>If you see <strong>Failed</strong>, the Pipeline
+    probably has a configuration issue that prevented the Trigger from initiating
+    a Execution.</p><h3>YAML Example</h3><p>You can edit your Trigger in YAML also.
+    Click the Trigger, and then click YAML.</p><pre>trigger:<br/>    name: GitlabNewTrigger<br/>    identifier:
+    GitlabNewTrigger<br/>    enabled: true<br/>    description: &#34;&#34;<br/>    tags:
+    {}<br/>    orgIdentifier: default<br/>    projectIdentifier: NewProject<br/>    pipelineIdentifier:
+    testpp<br/>    source:<br/>        type: Webhook<br/>        spec:<br/>            type:
+    Gitlab<br/>            spec:<br/>                type: MergeRequest<br/>                spec:<br/>                    connectorRef:
+    gitlab<br/>                    autoAbortPreviousExecutions: true<br/>                    payloadConditions:<br/>                        -
+    key: &lt;+trigger.payload.user.username&gt;<br/>                          operator:
+    In<br/>                          value: john, doe.john<br/>                    headerConditions:<br/>                        -
+    key: &lt;+trigger.header[&#39;X-Gitlab-Event&#39;]&gt;<br/>                          operator:
+    Equals<br/>                          value: Merge Request Hook<br/>                    jexlCondition:
+    (&lt;+trigger.payload.user.username&gt; == &#34;doe&#34; || &lt;+trigger.payload.user.username&gt;
+    == &#34;doe.john&#34;) &amp;&amp; &lt;+trigger.header[&#39;X-Gitlab-Event&#39;]&gt;
+    == &#34;Merge Request Hook&#34;<br/>                    actions: []<br/>    inputYaml:
+    |<br/>        pipeline:<br/>            identifier: testpp<br/>            properties:<br/>                ci:<br/>                    codebase:<br/>                        build:<br/>                            type:
+    branch<br/>                            spec:<br/>                                branch:
+    &lt;+trigger.branch&gt;<br/>            variables:<br/>                - name:
+    testVar<br/>                  type: String<br/>                  value: alpine</pre><p></p><h3>Notes</h3><ul><li>For
+    details on each providers events, see:<ul><li><a href="https://docs.github.com/en/actions/reference/events-that-trigger-workflows"
+    target="_blank">Events that trigger workflows</a> from GitHub.</li><li><a href="https://docs.gitlab.com/ee/api/events.html"
+    target="_blank">Events</a> from GitLab.</li><li><a href="https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/#Repository-events">Repository
+    events</a> from Bitbucket.</li></ul></li></ul><p></p>'
+  slug: triggers-reference
+  tags: []
+  is_live: true

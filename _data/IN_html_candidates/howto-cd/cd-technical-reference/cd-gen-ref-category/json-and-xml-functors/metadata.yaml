@@ -1,0 +1,255 @@
+type: article
+article_id: 9ir9geteqc
+user_id: znazf3hcp9
+category_id: y9ixzx2x5y
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: JSON and XML Functors
+slug: json-and-xml-functors
+description: Harness includes JSON and XML functors you can use to select contents
+  from JSON and XML sources.
+short_version: Harness includes JSON and XML functors you can use to select contents
+  from JSON and XML sources.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2021-09-08T20:05:47.571867Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: JSON and XML Functors
+  description: Harness includes JSON and XML functors you can use to select contents
+    from JSON and XML sources.
+  short_version: Harness includes JSON and XML functors you can use to select contents
+    from JSON and XML sources.
+  body: '<p>Harness includes JSON and XML functors you can use to select contents
+    from JSON and XML sources. These functors reduce the amount of shell scripting
+    needed to pull JSON and XML information into your Harness Pipeline steps.</p><p>In
+    this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#json_functor">JSON
+    Functor</a><ul><li><a href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#select">select()</a></li><li><a
+    href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#object">object()</a></li><li><a
+    href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#list">list()</a></li><li><a
+    href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#format">format()</a></li></ul></li><li><a
+    href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#xml_functor">XML
+    Functor</a><ul><li><a href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#select_2">select()</a></li></ul></li><li><a
+    href="https://ngdocs.harness.io/article/9ir9geteqc-json-and-xml-functors#yaml_pipeline_example">YAML
+    Pipeline Example</a></li></ul><h3>JSON Functor</h3><p>The JSON functor uses the
+    JSON library <a href="https://github.com/json-path/JsonPath" target="_blank">JsonPath</a>.
+    The JSON functor methods are described below.</p><h4>select()</h4><ul><li><strong>Syntax:</strong>
+    <code>select(string, string)</code></li><li><strong>Description:</strong> Select
+    attribute values using a path.</li><li><strong>Parameters:</strong> literal string,
+    string (typically, the second string is <code>httpResponseBody</code>). This is
+    a path to identify the desired JSON attribute value from a JSON response.</li></ul><p><strong>Example:</strong></p><p>Here
+    is the JSON array that we want to select a value from:</p><pre>{<br/>  &#34;data&#34;:
+    {<br/>    &#34;attributes&#34;: {<br/>      &#34;name&#34;: &#34;new-construction-api&#34;,<br/>      &#34;version_pins&#34;:
+    {<br/>        &#34;mvn-service://new-construction-api&#34;: &#34;0.0.253-feature_NC-6595.8d268cd~nc1.6312a66&#34;<br/>      }<br/>    }<br/>  }<br/>}</pre><p></p><p>You
+    can find this example at <a href="https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json"
+    target="_blank">https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json</a>.</p><p>To
+    select the value <code>0.0.253-feature_NC-6595.8d268cd~nc1.6312a66</code>, you
+    would use <code>select()</code> to specify the path to the value, like this:</p><pre>&lt;+json.select(&#34;data.attributes.version_pins.mvn-service://new-construction-api&#34;,
+    httpResponseBody)&gt;</pre><p></p><p>The <code>httpResponseBody</code> argument
+    is used to indicate that we want to select the path <em>within</em> the HTTP response
+    body. <code>httpResponseBody</code> is propagated from the HTTP request.</p><p>A
+    common use of <code>select()</code> is in an HTTP step.</p><p>For example, the
+    following HTTP step uses a variable named <strong>book</strong> and the <code>select()</code>
+    method in <strong>Value</strong> to obtain the value <code>0.0.253-feature_NC-6595.8d268cd~nc1.6312a66</code>
+    from the HTTP response payload at the URL specified in <strong>URL</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622674929535/image.png"/></figure><p>When
+    this HTTP step is executed, in its <strong>Output</strong> tab, you can see the
+    HTTP response in <strong>HTTP Response Body</strong> and the selection in the
+    <strong>Output Variables</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622675353675/image.png"/></figure><p>You
+    can also use a Shell Script step to echo the book output like this:</p><pre>echo
+    &lt;+pipeline.stages.Functors.spec.execution.steps.jsonselect.output.outputVariables.book&gt;</pre><p></p><p>When
+    the Pipeline is executed, the value of <strong>book</strong> is output:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622675572940/image.png"/></figure><h4>object()</h4><ul><li><strong>Syntax:</strong>
+    <code>object(string)</code></li><li><strong>Description:</strong> Selects objects
+    from a JSON collection.</li><li><strong>Parameters:</strong> string. This is a
+    JSON key used to identify the desired JSON attribute value from a JSON response.
+    Typically, <code>httpResponseBody</code>.</li></ul><p><strong>Example:</strong></p><p>Here
+    is the JSON we will query:</p><pre class="hljs json">{&#34;item&#34;:&#34;value1&#34;,&#34;level1&#34;:{&#34;level2&#34;:&#34;value2&#34;}}</pre><p></p><p>You
+    can find this example at <a href="https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/object.json"
+    target="_blank">https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/object.json</a>.</p><p>Here
+    is the query using the <code>object()</code> method to select <code>value1</code>:</p><pre>&lt;+json.object(httpResponseBody).item&gt;</pre><p></p><p>We
+    can add the <code>object()</code> method to an HTTP step and output it:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622675767984/image.png"/></figure><p>When
+    this HTTP step is executed, in its <strong>Output</strong> tab, you can see the
+    HTTP response in <strong>HTTP Response Body</strong> and the object in the <strong>Output
+    Variables</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622675858428/image.png"/></figure><p></p><h4>list()</h4><ul><li><strong>Syntax:</strong>
+    <code>list(string, string)</code></li><li><strong>Description:</strong> Returns
+    list object.</li><li><strong>Parameters:</strong> literal string, string (typically,
+    <code>httpResponseBody</code>). Using the <code>list().get()</code> method returns
+    items from the list.</li></ul><p><strong>Example:</strong></p><p>Here is the JSON
+    we will query:</p><pre>{<br/>  &#34;books&#34;: [{<br/>      &#34;isbn&#34;: &#34;9781593275846&#34;,<br/>      &#34;title&#34;:
+    &#34;Eloquent JavaScript, Second Edition&#34;,<br/>      &#34;subtitle&#34;: &#34;A
+    Modern Introduction to Programming&#34;,<br/>      &#34;author&#34;: &#34;Marijn
+    Haverbeke&#34;,<br/>      &#34;published&#34;: &#34;2014-12-14T00:00:00.000Z&#34;,<br/>      &#34;publisher&#34;:
+    &#34;No Starch Press&#34;,<br/>      &#34;pages&#34;: &#34;472&#34;,<br/>      &#34;description&#34;:
+    &#34;JavaScript lies at the heart of almost every modern web application, from
+    social apps to the newest browser-based games. Though simple for beginners to
+    pick up and play with, JavaScript is a flexible, complex language that you can
+    use to build full-scale applications.&#34;<br/>    },<br/>    {<br/>      &#34;isbn&#34;:
+    &#34;9781449331818&#34;,<br/>      &#34;title&#34;: &#34;Learning JavaScript Design
+    Patterns&#34;,<br/>      &#34;subtitle&#34;: &#34;A JavaScript and jQuery Developer&#39;s
+    Guide&#34;,<br/>      &#34;author&#34;: &#34;Addy Osmani&#34;,<br/>      &#34;published&#34;:
+    &#34;2012-07-01T00:00:00.000Z&#34;,<br/>      &#34;publisher&#34;: &#34;O&#39;Reilly
+    Media&#34;,<br/>      &#34;pages&#34;: &#34;254&#34;,<br/>      &#34;description&#34;:
+    &#34;With Learning JavaScript Design Patterns, you&#39;ll learn how to write beautiful,
+    structured, and maintainable JavaScript by applying classical and modern design
+    patterns to the language. If you want to keep your code efficient, more manageable,
+    and up-to-date with the latest best practices, this book is for you.&#34;<br/>    },<br/>    {<br/>      &#34;isbn&#34;:
+    &#34;9781449365035&#34;,<br/>      &#34;title&#34;: &#34;Speaking JavaScript&#34;,<br/>      &#34;subtitle&#34;:
+    &#34;An In-Depth Guide for Programmers&#34;,<br/>      &#34;author&#34;: &#34;Axel
+    Rauschmayer&#34;,<br/>      &#34;published&#34;: &#34;2014-02-01T00:00:00.000Z&#34;,<br/>      &#34;publisher&#34;:
+    &#34;O&#39;Reilly Media&#34;,<br/>      &#34;pages&#34;: &#34;460&#34;,<br/>      &#34;description&#34;:
+    &#34;Like it or not, JavaScript is everywhere these days-from browser to server
+    to mobile-and now you, too, need to learn the language or dive deeper than you
+    have. This concise book guides you into and through JavaScript, written by a veteran
+    programmer who once found himself in the same position.&#34;<br/>    },<br/>    {<br/>      &#34;isbn&#34;:
+    &#34;9781491950296&#34;,<br/>      &#34;title&#34;: &#34;Programming JavaScript
+    Applications&#34;,<br/>      &#34;subtitle&#34;: &#34;Robust Web Architecture
+    with Node, HTML5, and Modern JS Libraries&#34;,<br/>      &#34;author&#34;: &#34;Eric
+    Elliott&#34;,<br/>      &#34;published&#34;: &#34;2014-07-01T00:00:00.000Z&#34;,<br/>      &#34;publisher&#34;:
+    &#34;O&#39;Reilly Media&#34;,<br/>      &#34;pages&#34;: &#34;254&#34;,<br/>      &#34;description&#34;:
+    &#34;Take advantage of JavaScript&#39;s power to build robust web-scale or enterprise
+    applications that are easy to extend and maintain. By applying the design patterns
+    outlined in this practical book, experienced JavaScript developers will learn
+    how to write flexible and resilient code that&#39;s easier-yes, easier-to work
+    with as your code base grows.&#34;<br/>    }<br/>  ]<br/>}</pre><p></p><p>You
+    can find this example at <a href="https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.json"
+    target="_blank">https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.json</a>.</p><p>Here
+    is the query using the <code>list()</code> method to select <code>pages</code>
+    from the 3rd book:</p><pre>&lt;+json.list(&#34;books&#34;, httpResponseBody).get(2).pages&gt;</pre><p></p><p>Since
+    the JSON array starts at 0, <code>get(2)</code> returns <code>pages</code> from
+    the third list item (<code>&#34;pages&#34;: &#34;460&#34;</code>).</p><p>We can
+    add the <code>list()</code> method to an HTTP step and output it using the variable
+    <strong>list</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622676072429/image.png"/></figure><p>When
+    this HTTP step is executed, in its <strong>Output</strong> tab, you can see the
+    HTTP response in <strong>HTTP Response Body</strong> and the list item in the
+    <strong>Output Variables</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622676211501/image.png"/></figure><p></p><h4>format()</h4><ul><li><strong>Syntax:</strong>
+    <code>format(object)</code></li><li><strong>Description:</strong> Format the array
+    passed as the string value in JSON format.</li><li><strong>Parameters:</strong>
+    object. Typically, this is the response from the HTTP response body (<code>httpResponseBody</code>).
+    The <code>httpResponseBody</code> argument is used to indicate that we want to
+    select the path within the HTTP response body. <code>httpResponseBody</code> is
+    propagated from the HTTP request.</li></ul><p><strong>Example:</strong></p><p>We
+    add an HTTP step to obtain the <code>httpResponseBody</code> and then reference
+    that in a subsequent Shell Script step.</p><p>We are using the example at <a href="https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json"
+    target="_blank">https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json</a>.</p><p>If
+    we simply rendered the <code>httpResponseBody</code>, we would get:</p><pre>{data:{attributes:name:new-construction-api}}
+    {data:{attributes:version_pins:{mvn-service://new-construction-api:0.0.253-feature_NC-6595.8d268cd~nc1.6312a66}}}</pre><p></p><p>If
+    we render it using <code>&lt;+json.format(&lt;+pipeline.stages.Functors.spec.execution.steps.jsonformat1.output.httpResponseBody&gt;)&gt;</code>
+    we get a JSON formatted string:</p><pre class="hljs json">{\n  &#34;data&#34;:
+    {\n    &#34;attributes&#34;: {\n      &#34;name&#34;: &#34;new-construction-api&#34;,\n      &#34;version_pins&#34;:
+    {\n        &#34;mvn-service://new-construction-api&#34;: &#34;0.0.253-feature_NC-6595.8d268cd~nc1.6312a66&#34;\n      }\n    }\n  }\n}\n</pre><p></p><p>Note:
+    JSON accepts the control sequence <code>\n</code> in strings. Use a prettifier
+    like jq to format the JSON.</p><h3>XML Functor</h3><p>The <a href="https://developer.mozilla.org/en-US/docs/Web/XPath"
+    target="_blank">XPath</a> functor has one method: <code>xml.select()</code>.</p><h4>select()</h4><ul><li><strong>Syntax:</strong>
+    <code>xml.select(string, string)</code></li><li><strong>Description:</strong>
+    Returns XML file.</li><li><strong>Parameters:</strong> String using an XPath expression
+    and XML file, and a string for <code>httpResponseBody</code>.</li></ul><p><strong>Example:</strong></p><p>Here
+    is the contents of the XML file we will query:</p><pre class="hljs xml">&lt;?xml
+    version=&#34;1.0&#34;?&gt;<br/>&lt;bookstore&gt;<br/>  &lt;book category=&#34;cooking&#34;&gt;<br/>    &lt;title
+    lang=&#34;en&#34;&gt;Everyday Italian&lt;/title&gt;<br/>    &lt;author&gt;Giada
+    De Laurentiis&lt;/author&gt;<br/>    &lt;year&gt;2005&lt;/year&gt;<br/>    &lt;price&gt;30.00&lt;/price&gt;<br/>  &lt;/book&gt;<br/>  &lt;book
+    category=&#34;children&#34;&gt;<br/>    &lt;title lang=&#34;en&#34;&gt;Harry Potter&lt;/title&gt;<br/>    &lt;author&gt;J
+    K. Rowling&lt;/author&gt;<br/>    &lt;year&gt;2005&lt;/year&gt;<br/>    &lt;price&gt;29.99&lt;/price&gt;<br/>  &lt;/book&gt;<br/>  &lt;book
+    category=&#34;web&#34;&gt;<br/>    &lt;title lang=&#34;en&#34;&gt;XQuery Kick
+    Start&lt;/title&gt;<br/>    &lt;author&gt;James McGovern&lt;/author&gt;<br/>    &lt;author&gt;Per
+    Bothner&lt;/author&gt;<br/>    &lt;author&gt;Kurt Cagle&lt;/author&gt;<br/>    &lt;author&gt;James
+    Linn&lt;/author&gt;<br/>    &lt;author&gt;Vaidyanathan Nagarajan&lt;/author&gt;<br/>    &lt;year&gt;2003&lt;/year&gt;<br/>    &lt;price&gt;49.99&lt;/price&gt;<br/>  &lt;/book&gt;<br/>  &lt;book
+    category=&#34;web&#34; cover=&#34;paperback&#34;&gt;<br/>    &lt;title lang=&#34;en&#34;&gt;Learning
+    XML&lt;/title&gt;<br/>    &lt;author&gt;Erik T. Ray&lt;/author&gt;<br/>    &lt;year&gt;2003&lt;/year&gt;<br/>    &lt;price&gt;39.95&lt;/price&gt;<br/>  &lt;/book&gt;<br/>&lt;/bookstore&gt;</pre><p></p><p>We
+    are using the example at <a href="https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.xml"
+    target="_blank">https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.xml</a>.</p><p>Here
+    is the query using the <code>xml.select()</code> method to select the title from
+    the first book:</p><pre>&lt;+xml.select(&#34;/bookstore/book[1]/title&#34;, httpResponseBody)&gt;</pre><p></p><p>We
+    can add the <code>xml.select()</code> method to an HTTP step and output it using
+    <strong>Response Mapping</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622755215953/image.png"/></figure><p></p><p>Next,
+    we reference the output variable <strong>select</strong> in a Shell Script step:</p><pre>echo
+    &lt;+pipeline.stages.Functors.spec.execution.steps.XML_select.output.outputVariables.select&gt;</pre><p></p><p>When
+    the Workflow is deployed, the result is:</p><pre>Executing command ...<br/><br/>Everyday
+    Italian<br/><br/>Command completed with ExitCode (0)</pre><p></p><p>You can also
+    see the entire XML file in the deployment <strong>Details</strong> section:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/9ir9geteqc/1622755303808/image.png"/></figure><h3>YAML
+    Pipeline Example</h3><p>Here&#39;s the YAML for a Pipeline that demonstrates all
+    of the functors.</p><details><summary>Functors Pipeline YAML</summary><div><pre
+    class="hljs yaml">pipeline:<br/>    name: Functors<br/>    identifier: Functors<br/>    projectIdentifier:
+    CD_Quickstart<br/>    orgIdentifier: default<br/>    tags: {}<br/>    stages:<br/>        -
+    stage:<br/>              name: Functors<br/>              identifier: Functors<br/>              description:
+    &#34;&#34;<br/>              type: Deployment<br/>              spec:<br/>                  serviceConfig:<br/>                      serviceDefinition:<br/>                          type:
+    Kubernetes<br/>                          spec:<br/>                              manifestOverrideSets:
+    []<br/>                              manifests: []<br/>                              artifacts:<br/>                                  sidecars:
+    []<br/>                      serviceRef: nginx<br/>                  infrastructure:<br/>                      environmentRef:
+    quickstart<br/>                      infrastructureDefinition:<br/>                          type:
+    KubernetesDirect<br/>                          spec:<br/>                              connectorRef:
+    account.k8s_cluster<br/>                              namespace: default<br/>                              releaseName:
+    docs<br/>                      allowSimultaneousDeployments: false<br/>                      infrastructureKey:
+    &#34;&#34;<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                type: Http<br/>                                name:
+    json.select<br/>                                identifier: jsonselect<br/>                                timeout:
+    40s<br/>                                spec:<br/>                                    url:
+    https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json<br/>                                    method:
+    GET<br/>                                    headers: []<br/>                                    outputVariables:<br/>                                        -
+    name: book<br/>                                          value: &lt;+json.select(&#34;data.attributes.version_pins.mvn-service://new-construction-api&#34;,
+    httpResponseBody)&gt;<br/>                                          type: String<br/>                          -
+    step:<br/>                                type: ShellScript<br/>                                name:
+    json select export<br/>                                identifier: json_select_export<br/>                                timeout:
+    40s<br/>                                spec:<br/>                                    shell:
+    Bash<br/>                                    onDelegate: true<br/>                                    source:<br/>                                        type:
+    Inline<br/>                                        spec:<br/>                                            script:
+    echo &lt;+pipeline.stages.Functors.spec.execution.steps.jsonselect.output.outputVariables.book&gt;<br/>                                    environmentVariables:
+    []<br/>                                    outputVariables: []<br/>                                    executionTarget:
+    {}<br/>                          - step:<br/>                                type:
+    Http<br/>                                name: json.object<br/>                                identifier:
+    jsonobject<br/>                                timeout: 40s<br/>                                spec:<br/>                                    url:
+    https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/object.json<br/>                                    method:
+    GET<br/>                                    headers: []<br/>                                    outputVariables:<br/>                                        -
+    name: item<br/>                                          value: &lt;+json.object(httpResponseBody).item&gt;<br/>                                          type:
+    String<br/>                          - step:<br/>                                type:
+    Http<br/>                                name: json.list<br/>                                identifier:
+    jsonlist<br/>                                timeout: 40s<br/>                                spec:<br/>                                    url:
+    https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.json<br/>                                    method:
+    GET<br/>                                    headers: []<br/>                                    outputVariables:<br/>                                        -
+    name: list<br/>                                          value: &lt;+json.list(&#34;books&#34;,
+    httpResponseBody).get(2).pages&gt;<br/>                                          type:
+    String<br/>                          - step:<br/>                                type:
+    Http<br/>                                name: jsonformat1<br/>                                identifier:
+    jsonformat1<br/>                                timeout: 10s<br/>                                spec:<br/>                                    url:
+    https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/select.json<br/>                                    method:
+    GET<br/>                                    headers: []<br/>                                    outputVariables:
+    []<br/>                          - step:<br/>                                type:
+    ShellScript<br/>                                name: jsonformatecho<br/>                                identifier:
+    jsonformatecho<br/>                                timeout: 10m<br/>                                spec:<br/>                                    shell:
+    Bash<br/>                                    onDelegate: true<br/>                                    source:<br/>                                        type:
+    Inline<br/>                                        spec:<br/>                                            script:
+    echo &lt;+json.format(&lt;+pipeline.stages.Functors.spec.execution.steps.jsonformat1.output.httpResponseBody&gt;)&gt;<br/>                                    environmentVariables:
+    []<br/>                                    outputVariables: []<br/>                                    executionTarget:
+    {}<br/>                          - step:<br/>                                type:
+    Http<br/>                                name: XML select<br/>                                identifier:
+    XML_select<br/>                                timeout: 10s<br/>                                spec:<br/>                                    url:
+    https://raw.githubusercontent.com/wings-software/harness-docs/main/functors/books.xml<br/>                                    method:
+    GET<br/>                                    headers: []<br/>                                    outputVariables:<br/>                                        -
+    name: select<br/>                                          value: &lt;+xml.select(&#34;/bookstore/book[1]/title&#34;,
+    httpResponseBody)&gt;<br/>                                          type: String<br/>                          -
+    step:<br/>                                type: ShellScript<br/>                                name:
+    echo XML select<br/>                                identifier: echo_XML_select<br/>                                timeout:
+    10m<br/>                                spec:<br/>                                    shell:
+    Bash<br/>                                    onDelegate: true<br/>                                    source:<br/>                                        type:
+    Inline<br/>                                        spec:<br/>                                            script:
+    echo &lt;+pipeline.stages.Functors.spec.execution.steps.XML_select.output.outputVariables.select&gt;<br/>                                    environmentVariables:
+    []<br/>                                    outputVariables: []<br/>                                    executionTarget:
+    {}<br/>                      rollbackSteps: []<br/>              tags: {}<br/>              failureStrategies:<br/>                  -
+    onFailure:<br/>                        errors:<br/>                            -
+    AnyOther<br/>                        action:<br/>                            type:
+    StageRollback<br/>              when:<br/>                  pipelineStatus: Success<br/></pre></div></details><p></p><p></p>'
+  slug: json-and-xml-functors
+  tags: []
+  is_live: true

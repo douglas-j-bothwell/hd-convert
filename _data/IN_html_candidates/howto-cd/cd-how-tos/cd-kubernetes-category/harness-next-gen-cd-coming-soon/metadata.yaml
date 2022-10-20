@@ -1,0 +1,42 @@
+type: article
+article_id: kf6n24odtg
+user_id: mfr0nxh4be
+category_id: qfj6m1k2c4
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness NextGen CD Video Summary
+slug: harness-next-gen-cd-coming-soon
+description: For the current version of Harness (FirstGen), see docs.harness.io. Harness
+  NextGen Continuous Delivery is rolling out now, platform by platform. For a review,
+  see the following presentation from Har…
+short_version: For the current version of Harness (FirstGen), see docs.harness.io.
+  Harness NextGen Continuous Delivery is rolling out now, platform by platform. For
+  a review, see the following presentation from Har…
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-04-08T21:25:08.606944Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness NextGen CD Video Summary
+  description: ""
+  short_version: ""
+  body: <div class="note-callout">For the current version of Harness (FirstGen), see
+    <a href="https://docs.harness.io/" target="_blank">docs.harness.io</a>.</div><p>Harness
+    NextGen Continuous Delivery is rolling out now, platform by platform.</p><p>For
+    a review, see the following presentation from Harness <code>{Unscripted}</code>
+    conference:</p><p></p><div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/XeLyJXr3PzE/hqdefault.jpg"><iframe
+    width=" 480" height="270" src="https://www.youtube.com/embed/XeLyJXr3PzE?feature=oembed"
+    frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><p></p>
+  slug: harness-next-gen-cd-coming-soon
+  tags: []
+  is_live: true

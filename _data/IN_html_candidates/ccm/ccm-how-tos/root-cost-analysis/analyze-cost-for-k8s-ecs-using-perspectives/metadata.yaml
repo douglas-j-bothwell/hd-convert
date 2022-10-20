@@ -1,0 +1,109 @@
+type: article
+article_id: b8sdsxlfee
+user_id: slcpusem6b
+category_id: jkwta6oexk
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Analyze Cost for Kubernetes or AWS ECS Using Perspectives
+slug: analyze-cost-for-k8s-ecs-using-perspectives
+description: Harness Cloud Cost Management (CCM) allows you to view your cloud costs
+  at a glance, understand what is costing the most, and analyze cost trends. CCM displays
+  the data for all your resources and als…
+short_version: Harness Cloud Cost Management (CCM) allows you to view your cloud costs
+  at a glance, understand what is costing the most, and analyze cost trends. CCM displays
+  the data for all your resources and als…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-07T20:48:12.946674Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Analyze Cost for Kubernetes or AWS ECS Using Perspectives
+  description: ""
+  short_version: ""
+  body: '<p>Harness Cloud Cost Management (CCM) allows you to view your cloud costs
+    at a glance, understand what is costing the most, and analyze cost trends. CCM
+    displays the data for all your resources and also provides the following details:</p><ul><li>Cloud
+    cost spend trend</li><li>Cluster or Harness Application costing the most in the
+    specified time range</li><li>Idle cost across clusters or Applications</li><li>Primary
+    cost contributors, for example, Kubernetes or ECS cluster, namespace, node/instances,
+    workload/task, or label</li><li>Forecast future costs based on historical trends</li><li>Cost
+    of resources by label</li><li>Primary cost contributors, for example, Harness
+    Service (microservices), Environment (infrastructure), or Tags (components tagged
+    using Harness Tags)</li></ul><p>In this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/b8sdsxlfee-analyze-cost-for-kubernetes-using-perspectives#undefined">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/b8sdsxlfee-analyze-cost-for-kubernetes-using-perspectives#step_analyze_kubernetes_cost">Step:
+    Analyze Kubernetes Cost</a></li><li><a href="https://ngdocs.harness.io/article/b8sdsxlfee-analyze-cost-for-kubernetes-using-perspectives#option_add_filter">Option:
+    Add Filter</a></li></ul><h3 id="undefined">Before You Begin</h3><ul><li><a href="/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes">Set
+    up Cloud Cost Management for Kubernetes</a></li></ul><h3>Step: Analyze Kubernetes
+    Cost</h3><p>The Perspectives provides deep insights into your Kubernetes Cluster
+    costs. The cost includes all the applicable credits and discounts.</p><ol><li>In <strong>Cloud
+    Costs</strong>, click <strong>Perspectives</strong>,<strong> </strong>and then
+    click <strong>Cluster</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b8sdsxlfee/1638957181667/screenshot-2021-12-08-at-3-22-23-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure>The
+    Cluster services are displayed.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b8sdsxlfee/1641308134170/screenshot-2022-01-04-at-8-24-53-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Select
+    the date range, by clicking the calendar icon available at the top-right corner,
+    for the costs you want to analyze. <strong>Last 7 Days</strong> is selected by
+    default. You can choose <strong>Select custom range</strong> to customize it as
+    per your preference.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b8sdsxlfee/1638957688778/screenshot-2021-12-08-at-3-31-01-pm.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>Selecting
+    options under <strong>Group By</strong> offers you a unified view of your cloud
+    cost data. You can use the following to group and filter your cloud cost data.</li></ol><ul><li><strong>Cluster</strong>:
+    Under Cluster, you can <strong>Group By</strong>:<ul><li><strong>Cluster Name</strong>:
+    Total cost, Cost trend, Idle cost, Unallocated cost, and efficiency score for
+    each cluster name.</li><li><strong>Cluster Type</strong>: These are the cost by
+    the cluster type. For example, ECS, Kubernetes, etc.</li><li><strong>Namespace</strong>:
+    The cost of each Kubernetes namespace in the cluster. This does not apply to ECS
+    clusters.</li><li><strong>Namespace ID</strong>: The cost of each Kubernetes namespace
+    ID in the cluster.</li><li><strong>Workload</strong>: The cost of each Kubernetes
+    workload or ECS service. You can see the workload type also. Workloads identified
+    by Pod as Kubernetes pods or ECS tasks.</li><li><strong>Workload ID</strong>:
+    The cost of each Kubernetes workload ID.</li><li><strong>Node</strong>: The cost
+    of each Kubernetes node or ECS instance.</li><li><strong>Storage</strong>: These
+    are the cost of the persistent volumes present in your Kubernetes cluster. For
+    more information, see <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Persistent
+    Volumes</a>.</li><li><strong>Application</strong>: These are the sum of your Harness
+    Application costs. The supported Group by filters are, Application, Service, Environment,
+    Tag, and Cloud Provider.</li><li><strong>Environment:</strong> Environments organize
+    and name the deployment infrastructures in your cloud platforms, such as Dev,
+    QA, Stage, Production, etc. These are your cloud platform infrastructures costs,
+    grouped by team, department, and so on.</li><li><strong>Service:</strong> Services
+    represent your microservices and applications. These are your microservice costs.</li><li><strong>Cloud
+    Provider:</strong> These are your cloud platform costs. Cloud Providers describe
+    your public or private cloud or physical infrastructures, like AWS and Kubernetes. </li><li><strong>ECS
+    Service:</strong> The cost of an ECS service that specifies the number of task
+    definition instances running in an Amazon ECS cluster. For a detailed description
+    of ECS services, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html"
+    target="_blank">Services</a> from AWS.</li><li><strong>ECS Launch Type:</strong>
+    The cost of an Amazon ECS launch type. An Amazon ECS launch type determines the
+    type of infrastructure on which your tasks and services are hosted. There are
+    two types:<ul><li>Fargate - Run containers without having to manage servers or
+    clusters of Amazon EC2 instances.</li><li>EC2 - Run containers on a cluster of
+    Amazon EC2 instances that you manage.</li></ul></li></ul></li><li><strong>Region</strong>:
+    Each Cluster region you are currently running services in.</li><li><strong>Product</strong>:
+    Each of your active products with its cloud costs.</li><li><strong>Label</strong>:
+    Each label that you assign to your Cluster resources. You can select a label name
+    to get further granular details of your label.</li></ul><h3>Option: Add Filter</h3><p>Perform
+    the following steps to add filters.</p><ol><li>In <strong>Cloud Costs</strong>,
+    click <strong>Perspectives</strong>,<strong> </strong>and then click <strong>Cluster</strong>.</li><li>Click <strong>add
+    filter</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b8sdsxlfee/1638959746935/screenshot-2021-12-08-at-4-05-27-pm.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>Select
+    Cluster, Region, Product, or Label.</li><li>Select the operator. The supported
+    operators are:<ul><li><strong>IN:</strong> The exact match operation is used to
+    filter for the value specified.</li><li><strong>NOT IN:</strong> The exact match
+    operation is used to filter for the value that is not specified.</li></ul></li><li>Select
+    value for your filter. You can select multiple values. You can also filter and
+    customize your result using the search option.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/b8sdsxlfee/1638959919908/screenshot-2021-12-08-at-4-08-11-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p></p>'
+  slug: analyze-cost-for-k8s-ecs-using-perspectives
+  tags: []
+  is_live: true

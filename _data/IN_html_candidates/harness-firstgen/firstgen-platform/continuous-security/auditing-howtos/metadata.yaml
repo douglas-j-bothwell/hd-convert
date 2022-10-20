@@ -1,0 +1,14 @@
+type: category
+category_id: vm78eo4xln
+parent_category_id: kmq42nhzm4
+title: Auditing
+description: ""
+slug: auditing-howtos
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1600986898311/verify.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Auditing
+  description: ""
+  slug: auditing-howtos

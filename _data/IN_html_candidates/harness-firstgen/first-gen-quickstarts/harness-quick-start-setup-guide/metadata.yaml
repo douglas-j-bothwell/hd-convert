@@ -1,0 +1,420 @@
+type: article
+article_id: ju72gdpns9
+user_id: mfr0nxh4be
+category_id: f6rh2cdvx9
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness Quick Start Setup Guide
+slug: harness-quick-start-setup-guide
+description: 30 minutes to a successful deployment of a publicly-available Tomcat
+  artifact
+short_version: 30 minutes to a successful deployment of a publicly-available Tomcat
+  artifact
+tags: []
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T17:18:50.016834Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Quick Start Setup Guide
+  description: 30 minutes to a successful deployment of a publicly-available Tomcat
+    artifact
+  short_version: 30 minutes to a successful deployment of a publicly-available Tomcat
+    artifact
+  body: "<p class=\"lead\">This guide is intended to take DevOps and developers through
+    a simple CI/CD Harness set up quickly.</p>\n<p><strong>In 10 minutes</strong>,
+    you will have a successful deployment of an open source, publicly-available Tomcat
+    artifact to a Kubernetes cluster on Google Cloud Platform (GCP).</p>\n<p>If you
+    are completely new to Harness, take a look at the overall\n  <a href=\"https://docs.harness.io/article/de9t8iiynt-harness-architecture\">Harness
+    architecture</a> to help you visualize the Harness topology and the many technologies
+    Harness supports.</p>\n<h4>Requirements for this Guide</h4>\n<p>While Harness
+    supports many repositories, container orchestration tools, and deployment environments,
+    this Quick Start Guide only uses a few components:</p>\n<ul>\n  <li>\n    <a href=\"https://app.harness.io\"
+    target=\"_blank\" rel=\"noopener\"><strong>Harness SaaS</strong></a> and your
+    browser. You can get a free Harness SaaS account\n    <a href=\"https://harness.io/try-for-free-continuous-delivery-as-a-service/\"
+    target=\"_blank\" rel=\"noopener\">here</a>.</li>\n  <li>One-way connectivity
+    from the Harness Delegate to Harness Manager. When you download and install the
+    Delegate from the Harness Manager, you’ll have the connectivity you need for this
+    guide. The Delegate will connect to artifact and cloud\n    providers using your
+    Internet connection. </li>\n  <li>An open-source Tomcat artifact as the application
+    we want to deploy. We will get Tomcat from the publicly-available\n    <a href=\"https://hub.docker.com/explore/\"
+    target=\"_blank\" rel=\"noopener\">Docker Hub</a> using the Harness Manager. You
+    will need a\n    <a href=\"https://hub.docker.com/\" target=\"_blank\" rel=\"noopener\">free
+    Docker Hub account</a> and Harness will take care of the rest.</li>\n  <li>A Kubernetes
+    cluster on GCP for our deployment environment. You will need a\n    <a href=\"https://cloud.google.com/free/\"
+    target=\"_blank\" rel=\"noopener\">free GCP account</a> and Harness will manage
+    deployment. Details about the minimum settings for the\n    <a href=\"https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-cluster\"
+    target=\"_blank\" rel=\"noopener\">cluster on Kubernetes Engine</a> are included
+    in the steps in this guide.</li>\n</ul>\n<div class=\"note-callout\"> While we
+    are using a specific artifact and deployment environment in this guide, the steps
+    in this guide are the same for all service providers and deployment environments
+    Harness supports. You can simply install the Harness Delegate in your own Kubernetes
+    cluster and use that instead of GCP.</div>\n<p>Let’s get started.</p>\n<div id=\"accordion\"
+    role=\"tablist\" aria-multiselectable=\"true\">\n  <div class=\"card accordion-card\">\n
+    \   <div id=\"headingOne\" class=\"card-header\" role=\"tab\">\n      <h5 class=\"mb-0\">\n
+    \       <a href=\"#collapseOne\" data-toggle=\"collapse\" data-parent=\"#accordion\"
+    aria-expanded=\"true\" aria-controls=\"collapseOne\">Get the Delegate</a>\n      </h5>\n
+    \   </div>\n    <div id=\"collapseOne\" class=\"collapse\" role=\"tabpanel\" aria-labelledby=\"headingOne\">\n
+    \     <div class=\"card-block\">\n        <p>The Harness Delegate is a service
+    you run in your local network to connect your infrastructure, collaboration, and
+    verification providers with the Harness Manager.</p>\n        <ol>\n          <li>Sign
+    into\n            <a title=\"Harness\" href=\"https://app.harness.io/#/login\">Harness
+    SaaS</a>.</li>\n          <li>Download and install the Harness Delegate.\n            <ol
+    type=\"a\">\n              <li>Click <strong>Setup</strong>.\n                <br/>\n
+    \               <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840215268/setu.png\"
+    alt=\"Responsive image\"/>\n              </li>\n              <li>Click <strong>Harness
+    Installations</strong>.\n                <br/>\n                <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840215470/harness-installations.png\"
+    alt=\"Responsive image\"/>\n              </li>\n              <li>Click <strong>Download
+    Delegate</strong>.\n                <br/>\n                <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840215688/download-delegate.png\"
+    alt=\"Responsive image\"/>\n                <ol type=\"i\">\n                  <li>For
+    <strong>Shell Script</strong>, unzip the file and run the start.sh script (<code>$
+    ./start.sh</code>).</li>\n                  <li>\n                    <p>For <strong>Docker</strong>,
+    unzip the file and run the start script (<code>$ ./launch-harness-delegate.sh</code>).
+    You will see the Docker image pull, for example:</p>\n                    <pre>
+    \       latest: Pulling from harness/delegate\n        297061f60c36: Pull complete…\n
+    \       Status: Downloaded newer image for harness/delegate:latest\n        \n</pre>\n
+    \                 </li>\n                  <li>\n                    <p>For <strong>Kubernetes</strong>,
+    unzip the file and run the following commands (ensure you have <strong>kubectl</strong>
+    installed and credentials to access your Kubernetes cluster):</p>\n                    <p><code>$
+    kubectl apply -f harness-delegate.yaml</code> (installs or replaces the Harness
+    delegate)</p>\n                    <p><code>$ kubectl get pods -n harness-delegate</code>
+    (get pod names)</p>\n                    <p><code>$ kubectl logs pod-name -n harness-delegate
+    -f</code> (see startup logs)</p>\n                    <p><code>$ kubectl exec
+    pod-name -n harness-delegate -it -- bash</code> (run a shell in a pod)</p>\n                    <p>If
+    needed, edit the <strong>harness-delegate.yaml</strong> you unzipped to change
+    the namespace, set proxy settings, or to enter a delegate description.</p>\n                    You
+    do not need root privileges. The delegate does need:\n                    <ul>\n
+    \                     <li>HTTPS port 443 outbound to Harness.</li>\n                      <li>API/HTTP
+    access to your cloud providers, container orchestration tools, verification providers,
+    continuous integration tools, artifact repositories, collaboration providers,
+    SSH access to physical and virtual servers.</li>\n                    </ul>\n
+    \                 </li>\n                </ol>\n              </li>\n            </ol>\n
+    \         </li>\n          <li>Once the delegate is installed, refresh the <strong>Installations</strong>
+    page. Your Delegate is listed.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840215876/installations.png\"
+    alt=\"Responsive image\"/>\n          </li>\n        </ol>\n        <p>On to <strong>Add
+    a Connector</strong>.</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"card
+    accordion-card\">\n    <div id=\"headingTwo\" class=\"card-header\" role=\"tab\">\n
+    \     <h5 class=\"mb-0\">\n        <a class=\"collapsed\" href=\"#collapseTwo\"
+    data-toggle=\"collapse\" data-parent=\"#accordion\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">Add
+    a Connector</a>\n      </h5>\n    </div>\n    <div id=\"collapseTwo\" class=\"collapse\"
+    role=\"tabpanel\" aria-labelledby=\"headingTwo\">\n      <div class=\"card-block\">\n
+    \       <p>Now that app.harness.io and your delegate are connected, you can connect
+    your artifact server and cloud provider. You will add the artifact server containing
+    the image you want to deploy and the cloud provider where you will deploy the
+    Kubernetes\n          containers.\n        </p>\n        <ol>\n          <li>Add
+    the Artifact Server.\n            <ol type=\"a\">\n              <li>Click <strong>Setup</strong>.</li>\n
+    \             <li>Click <strong>Connectors</strong>.</li>\n              <li>Expand
+    <strong>Artifact Servers</strong>.</li>\n              <li>Click <strong>Add Artifact
+    Server</strong>. The <strong>Artifact Server</strong> dialog appears.\n                <br/>\n
+    \               <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840216136/add-artifact-server.png\"
+    alt=\"Responsive image\"/>\n              </li>\n              <li>In <strong>Type</strong>,
+    pick <strong>Docker Registry</strong>. Once you’ve selected a provider, the dialog
+    will display provider-specific fields.</li>\n              <li>In <strong>Docker
+    Registry URL</strong>, enter the URL for the public Docker Registry, <strong>https://registry.hub.docker.com/v2/</strong>.</li>\n
+    \             <li>Enter a username and password for the provider (your\n                <a
+    title=\"\" href=\"https://hub.docker.com/\">Docker Hub account</a>).</li>\n              <li>In
+    <strong>Display Name</strong>, enter a display name or let Harness generate one
+    for you.</li>\n              <li>Click <strong>SUBMIT</strong>. The artifact server
+    is displayed.\n                <br/>\n                <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840216392/docker-artifact-server.png\"
+    alt=\"Responsive image\"/>\n              </li>\n            </ol>\n          </li>\n
+    \         <li>\n            <p>Add the Cloud Provider.</p>\n            <div class=\"alert
+    alert-primary\" role=\"alert\">For a Kubernetes deployment on GCP, you need a
+    GCP cluster on Kubernetes Engine in your GCP. For information on creating a cluster,
+    see\n              <a title=\"Creating a Cluster\" href=\"https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-cluster\">Creating
+    a Cluster</a> from Google. Ensure that the GCP cluster that you will use to deploy
+    your service has enough resources. Here is an example of a cluster with adequate
+    resources for Tomcat:</div>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840216602/kubernetes-cluster-tomcat.png\"
+    alt=\"Responsive image\"/>\n            <br/>\n            <ol type=\"a\">\n              <li>Click
+    <strong>Setup</strong>.</li>\n              <li>Click <strong>Cloud Providers</strong>.\n
+    \               <br/>\n                <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840216797/cloud-providers-butto.png\"
+    alt=\"Responsive image\"/>\n              </li>\n              <li>Click <strong>Add
+    Cloud Provider</strong>. The <strong>Cloud Provider</strong> dialog opens.\n                <br/>\n
+    \               <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840217024/cloud-provider-dialo.png\"
+    alt=\"Responsive image\"/>\n                <br/> In this guide, we will add a
+    GCP cloud provider, but there are several other provider options. In all cases,
+    you will need to provide access keys in order for the delegate to connect to the
+    provider.</li>\n              <li>In <strong>Type</strong>, select <strong>Google
+    Cloud Platform</strong>. Next you will upload the Google Cloud account service
+    key file. The GCP service account you use must have the\n                <a title=\"Creating
+    Cloud IAM Policies\" href=\"https://cloud.google.com/kubernetes-engine/docs/how-to/iam#predefined\">Kubernetes
+    Engine Admin</a> (GKE Admin) and\n                <a title=\"Cloud Storage IAM
+    Roles\" href=\"https://cloud.google.com/storage/docs/access-control/iam-roles\">Storage
+    Object Viewer</a> roles assigned to it. \n                <br/>\n                <br/>For
+    steps to add roles to your service account, see <a href=\"https://cloud.google.com/iam/docs/granting-roles-to-service-accounts\">Granting
+    Roles to Service Accounts</a> from Google.\n                <br/>\n                <br/>Here
+    is what the permissions look like in GCP:\n                <br/>\n                <img
+    class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840217281/gcp-kubernetes-project-permissions.png\"
+    alt=\"Responsive image\"/>\n                <p>When you create this role GCP will
+    create a service and account key file in the JSON format and download it onto
+    your computer. This is the file you will upload into Harness. For information
+    on creating a new service key file, see\n                  <a title=\"Creating
+    and Managing Service Account Keys\" href=\"https://cloud.google.com/iam/docs/creating-managing-service-account-keys\">Creating
+    and Managing Service Account Keys</a>.</p>\n              </li>\n              <li>Click
+    <strong>Choose File</strong>, select your service and account key file and click
+    <strong>Open</strong>. The Google Cloud Account Name is automatically entered.</li>\n
+    \             <li>Click <strong>SUBMIT</strong>. The GCP cloud provider is added.\n
+    \               <br/>\n                <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840217466/cloud-provider-gc.png\"
+    alt=\"Responsive image\"/>\n              </li>\n            </ol>\n          </li>\n
+    \       </ol>\n        <p>On to Add Your Service.</p>\n      </div>\n    </div>\n
+    \ </div>\n  <div class=\"card accordion-card\">\n    <div id=\"headingThree\"
+    class=\"card-header\" role=\"tab\">\n      <h5 class=\"mb-0\">\n        <a class=\"collapsed\"
+    href=\"#collapseThree\" data-toggle=\"collapse\" data-parent=\"#accordion\" aria-expanded=\"false\"
+    aria-controls=\"collapseThree\">Add Your Service</a>\n      </h5>\n    </div>\n
+    \   <div id=\"collapseThree\" class=\"collapse\" role=\"tabpanel\" aria-labelledby=\"headingThree\">\n
+    \     <div class=\"card-block\">\n        <p>A service in Harness contains an
+    artifact (software image), artifact source server, deployment specification, and
+    any configuration files. In this guide, you create a service using the\n          <a
+    title=\"\" href=\"https://hub.docker.com/_/tomcat/\">Tomcat Docker image</a> from
+    the public\n          <a title=\"\" href=\"https://hub.docker.com/explore/\">Docker
+    Registry</a> that we added as a source server in <strong>Connect Providers</strong>.</p>\n
+    \       <ol>\n          <li>Click <strong>Setup</strong>, and then click <strong>Add
+    Application</strong>. The <strong>Application</strong> dialog appears.\n            <br/>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840217652/add-application-dialo.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Let&#39;s enter the
+    name <strong>kube-app</strong> for your application, and click <strong>SUBMIT</strong>.
+    Your new application appears.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840217843/kubeapp-application-name.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click your application’s
+    name. The application entities appear.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840218084/kubeapp-entities.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click <strong>Services</strong>,
+    and then click <strong>Add Service</strong>. The <strong>Service</strong> dialog
+    appears.\n            <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840218280/services-dialo.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Enter the name <strong>micro-service</strong>
+    for the service. In <strong>Artifact Type</strong>, select an artifact type, such
+    as <strong>Docker Image</strong>, and click <strong>SUBMIT</strong>. The <strong>Service
+    Overview</strong> appears.</li>\n          <li>Click <strong>Add Artifact Source</strong>
+    and select the type of artifact source server, <strong>Docker Registry</strong>.
+    The <strong>Artifact Source</strong> dialog appears.\n            <br/>\n            <img
+    class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840218484/artifact-source-dialog-docker-registry.png\"
+    alt=\"Responsive image\"/>\n            <p>The fields in the dialog will be different
+    depending on the type of artifact server you selected. In our example, we are
+    using Docker Registry. Once you have selected a source server and artifact, Harness
+    will generate a name for the artifact\n              source.\n            </p>\n
+    \         </li>\n          <li>In <strong>Source Server</strong>, select the name
+    of the artifact source server you added in <strong>Connect Providers</strong>
+    (typically, <strong>registry_hub_docker_com</strong>).</li>\n          <li>Click
+    in <strong>Docker Image Name</strong> and select or enter the name of the artifact
+    you want to deploy, <strong>library/tomcat</strong>. By default, Harness automatically
+    populates the field with the artifacts available from the source\n            server,
+    but Docker Hub does not allow anyone to scan its images. When you are done, the
+    dialog will look like this:\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840218718/artifact-source-dialog-docker-registry-filled.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click <strong>SUBMIT</strong>.
+    The new service is listed in the <strong>Services Overview</strong>.\n            <br/>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840218919/service-overview-with-artifact.png\"
+    alt=\"Responsive image\"/>\n            <p>If you click <strong>Artifact History</strong>
+    you will see the build history that Harness pulled from the source server.</p>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840219135/artifact-history-tomcat.png\"
+    alt=\"Responsive image\"/>\n          </li>\n        </ol>\n        <p>On to <strong>Set
+    Your Environment</strong>.</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"card
+    accordion-card\">\n    <div id=\"headingFour\" class=\"card-header\" role=\"tab\">\n
+    \     <h5 class=\"mb-0\">\n        <a href=\"#collapseFour\" data-toggle=\"collapse\"
+    data-parent=\"#accordion\" aria-expanded=\"true\" aria-controls=\"collapseFour\">Set
+    Your Envrionment</a>\n      </h5>\n    </div>\n    <div id=\"collapseFour\" class=\"collapse\"
+    role=\"tabpanel\" aria-labelledby=\"headingFour\">\n      <div class=\"card-block\">\n
+    \       <p>An environment for your application can be Dev, QA, Production, or
+    any production stage. Once an environment is created, you can deploy one or more
+    services to it.</p>\n        <ol>\n          <li>Click <strong>Setup</strong>,
+    click your application name, and then click <strong>Environments</strong>.\n            <br/>
+    <strong>Tip:</strong> you can also navigate between the components of an application
+    using the drop-down menu next to the component names:\n            <br/>\n            <img
+    class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840219442/app-drop-down-services.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click <strong>Add Environment</strong>.
+    The <strong>Environment</strong> dialog appears.\n            <br/>\n            <img
+    class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840219645/add-environment-dialo.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Enter the name <strong>Dev</strong>,
+    a description, select the environment type <strong>Non-Production</strong>, and
+    click <strong>SUBMIT</strong>. The <strong>Environment Overview</strong> page
+    appears. Next, you need to add a service infrastructure\n            for the environment.
+    This is the cloud provider you added in <strong>Connect Providers</strong>.</li>\n
+    \         <li>Click <strong>Add Service Infrastructure</strong>. The <strong>Service
+    Infrastructure</strong> dialog appears.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840219935/service-infrastructure-dialo.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>In <strong>Service</strong>,
+    select the name of the service you added in <strong>Add Your Service</strong>,
+    <strong>micro-service</strong>.</li>\n          <li>In <strong>Deployment Type</strong>,
+    select the container orchestration service you want to use. In this guide, we
+    are using <strong>Kubernetes</strong>.</li>\n          <li>In <strong>Cloud Provider</strong>,
+    click the Cloud Provider you added in <strong>Connect Providers</strong>, and
+    click <strong>Next</strong>.</li>\n          <li>In <strong>Cluster Name</strong>,
+    select the GCP Kubernetes cluster to deploy your service. The <strong>Service
+    Infrastructure</strong> dialog will look something like this:\n            <br/>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840220144/service-infrastructure-dialog-gc.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click <strong>SUBMIT</strong>.\n
+    \           <br/> The new environment and service infrastructure is listed.\n
+    \           <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840220402/environment-overview-configured.png\"
+    alt=\"Responsive image\"/>\n          </li>\n        </ol>\n        <p>On to <strong>Build
+    Your Workflow</strong>.</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"card
+    accordion-card\">\n    <div id=\"headingFive\" class=\"card-header\" role=\"tab\">\n
+    \     <h5 class=\"mb-0\">\n        <a class=\"collapsed\" href=\"#collapseFive\"
+    data-toggle=\"collapse\" data-parent=\"#accordion\" aria-expanded=\"false\" aria-controls=\"collapseFive\">Build
+    Your Workflow</a>\n      </h5>\n    </div>\n    <div id=\"collapseFive\" class=\"collapse\"
+    role=\"tabpanel\" aria-labelledby=\"headingFive\">\n      <div class=\"card-block\">\n
+    \       <p>A workflow is where you define how Harness deploys your service to
+    an environment. Workflows can have multiple services, multiple steps (pre-deployment,
+    deployment, and post-deployment), and notification and failure strategies.</p>\n
+    \       <ol>\n          <li>Click <strong>Workflows</strong> in the setup drop-down
+    menu.\n            <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840220624/workflows-drop-dow.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click <strong>Add Workflow</strong>.
+    The <strong>Workflow</strong> dialog appears.\n            <br/>\n            <img
+    class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840220850/add-workflow.png\"
+    alt=\"Responsive image\"/>\n            <br/> Here you will define a deployment
+    type, such as <strong>Basic</strong> or <strong>Canary</strong>. Later, you will
+    create a deployment pipeline that contains this workflow. It is a useful to give
+    each workflow a name that describes the purpose\n            of its deployment
+    stage.</li>\n          <li>In <strong>Name</strong>, enter the name <strong>build-workflow</strong>
+    for this workflow.</li>\n          <li>In <strong>Workflow Type</strong>, select
+    <strong>Basic Deployment</strong>.</li>\n          <li>In <strong>Environment</strong>,
+    select the environment you created in <strong>Set Your Environment</strong>.</li>\n
+    \         <li>In <strong>Service</strong>, select the service you created in <strong>Add
+    Your Service</strong>.</li>\n          <li>In <strong>Service Infrastructure</strong>,
+    select the infrastructure you added in <strong>Set Your Environment</strong>,
+    and click <strong>SUBMIT</strong>.\n            <br/> The workflow is created.\n
+    \           <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840221073/workflow-overview.png\"
+    alt=\"Responsive image\"/>\n            <br/> Below the <strong>Workflow Overview</strong>,
+    you will see the workflow steps.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840221294/workflow-overview-steps.png\"
+    alt=\"Responsive image\"/>\n            <br/> There are many different options
+    available for configuring your workflow, but for this guide we’ll simply modify
+    <strong>Upgrade Containers</strong> in <strong>Step 2</strong> and add an email
+    verification as part of <strong>Step 3</strong>.\n            <br/> Harness displays
+    an alert icon next to <strong>Upgrade Containers</strong> to indicate that this
+    step needs further configuration.</li>\n          <li>Click <strong>Upgrade Containers</strong>.
+    In the <strong>Upgrade Containers</strong> dialog you can set how much of your
+    deployment environment you want to use for this stage in the workflow.\n            <br/>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840221507/upgrade-containers-dialo.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>In <strong>Desired
+    Instances</strong>, enter <strong>33</strong>, and leave the drop down as <strong>Percent</strong>.
+    Click <strong>SUBMIT</strong>. The alert icon is gone from the <strong>Upgrade
+    Containers</strong> substep. Next, we’ll configure\n            Harness to send
+    an email verification when the deployment is successful.</li>\n          <li>Under
+    <strong>Verify Service</strong> in <strong>Step 3</strong>, click the <strong>Add
+    Verification</strong> drop-down, and scroll down and click <strong>Email</strong>.
+    The <strong>Email</strong> dialog appears.\n            <br/>\n            <img
+    class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840221713/email-verificatio.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Use the dialog to send
+    an email to your email address with the message <strong>Harness deployment was
+    successful!</strong> and click <strong>SUBMIT</strong>. The <strong>Verify Service</strong>
+    step shows the new item.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840221956/verify-step-email.png\"
+    alt=\"Responsive image\"/>\n            <br/> You can see the <strong>Rollback
+    Steps</strong>, <strong>Notification Strategy</strong>, <strong>Failure Strategy</strong>,
+    and <strong>Workflow Variables</strong> on the right side of the page. We won’t
+    change their defaults in this guide,\n            but you can learn about them
+    in the\n            <a title=\"harness.io\" href=\"https://docs.harness.io/hc/en-us\">Harness
+    documentation</a>.</li>\n          <li>Expand <strong>Rollback Steps</strong>
+    to see the steps Harness will perform if deployment is unsuccessful.\n            <br/>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840222170/rollback-steps.png\"
+    alt=\"Responsive image\"/>\n            <br/> We’ll leave these settings alone,
+    but you can see the rollback steps in the order they are performed and change
+    them at any time.</li>\n          <li>Click <strong>Workflows</strong> in the
+    <strong>Setup</strong> breadcrumbs. Your workflow is displayed as a flowchart.\n
+    \           <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840222361/build-workflow.png\"
+    alt=\"Responsive image\"/>\n            <br/> You can click on any flowchart item
+    to go back into your workflow and change it.</li>\n        </ol>\n        <p>On
+    to <strong>Deploy</strong>.</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"card
+    accordion-card\">\n    <div id=\"headingSix\" class=\"card-header\" role=\"tab\">\n
+    \     <h5 class=\"mb-0\">\n        <a class=\"collapsed\" href=\"#collapseSix\"
+    data-toggle=\"collapse\" data-parent=\"#accordion\" aria-expanded=\"false\" aria-controls=\"collapseSix\">Deploy</a>\n
+    \     </h5>\n    </div>\n    <div id=\"collapseSix\" class=\"collapse\" role=\"tabpanel\"
+    aria-labelledby=\"headingSix\">\n      <div class=\"card-block\">\n        <p>Now
+    you can set up a deployment pipeline containing your workflow and run it to deploy
+    your service.</p>\n        <ol>\n          <li>Click <strong>Pipelines</strong>
+    in the setup drop-down menu.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840222576/pipelines-drop-dow.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click <strong>Add Pipeline</strong>.
+    The <strong>Add Pipeline</strong> dialog appears.</li>\n          <li>Enter the
+    name <strong>quick-start-pipeline</strong> for the pipeline, and click <strong>SUBMIT</strong>.
+    The next screen of the dialog appears.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840222794/quick-start-pipeline.png\"
+    alt=\"Responsive image\"/>\n            <br/> In this screen, you define the first
+    stage the pipeline executes.</li>\n          <li>Click <strong>Execution Step</strong>,
+    and in <strong>Step Name</strong>, enter the name <strong>Build</strong>.</li>\n
+    \         <li>In <strong>Execution Workflow</strong>, select the workflow you
+    created in <strong>Build Your Workflow</strong>, <strong>build-workflow</strong>,
+    and click <strong>SUBMIT</strong>. The pipeline overview displays.\n            <br/>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840223036/pipeline-overview.png\"
+    alt=\"Responsive image\"/>\n            <br/> Your deployment pipeline is shown
+    as a series of stages. You can click on a stage to see its configuration and add
+    a stage by clicking the plus icon.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840223258/stage-plus-ico.png\"
+    alt=\"Responsive image\"/>\n            <br/> You are now ready to run your deployment
+    pipeline.</li>\n          <li>Click <strong>Continuous Deployment</strong> in
+    the top nav.</li>\n          <li>In <strong>Deployments</strong>, click <strong>Start
+    New Deployment</strong>. The <strong>Start New Deployment</strong> dialog appears.\n
+    \           <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840223478/new-deployment-dialo.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Click <strong>Deploy
+    by executing a Pipeline</strong>.</li>\n          <li>In <strong>Application</strong>,
+    click the name of the application you created in <strong>Add Your Service</strong>,
+    <strong>kube-app</strong>.</li>\n          <li>In <strong>Pipeline</strong>, click
+    the name of the pipeline you created above, <strong>quick-start-pipeline</strong>.
+    The dialog changes to show the <strong>Artifacts</strong> options.</li>\n          <li>Next
+    to the name of your service, <strong>micro-service</strong>, click the drop-down
+    and select the Docker tag for the artifact you want to deploy. For this guide,
+    choose <strong>latest</strong>.\n            <br/>\n            <img class=\"img-fluid\"
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840223691/tomcat-library.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>To start your deployment,
+    click <strong>SUBMIT</strong>. This will automatically deploy the artifact to
+    your cloud provider. Ensure that you have configured the cloud provider with enough
+    capacity, as described in <strong>Set Your Environment</strong>.</li>\n          <li>Watch
+    the deployment run. It will take a few minutes to complete. When it is done you
+    will see:\n            <font color=\"green\">SUCCESS</font>\n            <br/>\n
+    \           <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840223896/deployment-success.png\"
+    alt=\"Responsive image\"/>\n            <br/> Here is how the cluster looks in
+    GCP:\n            <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840224219/gcp-cluster-success.png\"
+    alt=\"Responsive image\"/>\n          </li>\n          <li>Check your email. You
+    will receive the verification email we configured in <strong>Build Your Workflow</strong>.\n
+    \           <br/>\n            <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840224485/email-success.png\"
+    alt=\"Responsive image\"/>\n          </li>\n        </ol>\n        <p>You’re
+    done. In just a few minutes you created a deployment pipeline to deploy your service
+    whenever you want. But you’ve only scratched the surface of Harness. Explore Harness
+    and its documentation to see more of its features.</p>\n      </div>\n    </div>\n
+    \ </div>\n</div>\n<p> </p>\n<h2><span style=\"font-weight: 400;\">Next Steps</span></h2>\n<p><span
+    style=\"font-weight: 400;\">Now that you&#39;ve learned the basics, explore some
+    of the advanced features that enable CI/CD, YAML integration, rollbacks, Continuous
+    Verification, and Continuous Security.</span></p>\n<ul>\n  <li><strong>Run your
+    Pipeline Automatically</strong> - Create a Trigger to run your pipeline automatically.
+    For more information about triggers, see the\n    <a href=\"https://docs.harness.io/article/xerirloz9a-add-a-trigger-2\">Add
+    a Trigger</a>.</li>\n  <li><strong>Configuration as Code</strong> - View or edit
+    the YAML for your all Harness components and settings. Click <strong>Setup</strong>,
+    then click <strong>Configuration as Code</strong> or the code icon <strong>&lt;/&gt;</strong>
+    next to your application\n    name. The <strong>Harness YAML Editor</strong> appears.
+    Here is the small editor:\n    <br/>\n    <img class=\"img-fluid\" src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ju72gdpns9/1620840224676/yaml-editor.png\"
+    alt=\"Responsive image\"/>\n    <br/><span style=\"font-weight: 400;\">Click any
+    application component or setting in Harness to see its YAML. Edit the YAML and
+    click </span><strong>Save</strong><span style=\"font-weight: 400;\"> and Harness
+    displays the change in the browser GUI. In the large YAML editor (click </span><strong>Configuration
+    as Code</strong>\n    <span style=\"font-weight: 400;\">) you can sync your YAML
+    files with your Github account. For more information, see <a href=\"https://docs.harness.io/article/htvzryeqjw-configuration-as-code\">Configuration
+    as Code</a>.</span>\n  </li>\n  <li><strong>Fail a deployment and see a Rollback</strong>
+    - You can modify your deployment infrastructure to force a deployment failure
+    and see how Harness rolls back your workflow steps. Modify your deployment GCP
+    cluster so that it only has a single node\n    and run your Harness deployment
+    again. Watch how Harness rolls back changes to their last successful state.</li>\n
+    \ <li><strong>Set up Continuous Verification</strong> - Add verification steps
+    using Splunk, SumoLogic, Elk, AppDynamics, New Relic, DynaTrace, and others to
+    your workflow. For more information,\n    see\n    <a href=\"https://docs.harness.io/article/myw4h9u05l-coming-soon\"
+    title=\"Harness.io Docs - Continuous Verification\">Continuous Verification</a>.</li>\n
+    \ <li><strong>Learn about Continuous Security</strong> - Read the documentation
+    on Harness’ Continuous Security features such as\n    <a href=\"https://docs.harness.io/article/au38zpufhr-secret-management\">Secret
+    Management</a>.</li>\n  <li><strong>Listen to customer stories</strong> - Listen
+    to what Harness customers say about how Harness has reduced their CI/CD costs
+    and time dramatically:\n    <a href=\"https://docs.harness.io/article/mtwmuc2naf-jobvite\">Jobvite</a>,\n
+    \   <a href=\"https://docs.harness.io/article/5tqdqremle-build-com\">Build.com</a>.</li>\n</ul>"
+  slug: harness-quick-start-setup-guide
+  tags: []
+  is_live: true

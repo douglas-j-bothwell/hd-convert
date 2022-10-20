@@ -1,0 +1,67 @@
+type: article
+article_id: e2o4sektz1
+user_id: mfr0nxh4be
+category_id: 4xo13zdnfx
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Restore Cache from GCS Settings
+slug: restore-cache-from-gcs-settings
+description: This topic provides settings for the Restore Cache from GCS step, which
+  restores files and directories that were saved using the Save Cache to GCS step.
+  Name. The unique name for this step. Id. See E…
+short_version: This topic provides settings for the Restore Cache from GCS step, which
+  restores files and directories that were saved using the Save Cache to GCS step.
+  Name. The unique name for this step. Id. See E…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-05-05T01:03:34.922554Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Restore Cache from GCS Settings
+  description: ""
+  short_version: ""
+  body: '<p>This topic provides settings for the Restore Cache from GCS step, which
+    restores files and directories that were saved using the <a href="/article/11nzeuntrz-save-cache-to-gcs-step-settings">Save
+    Cache to GCS</a> step.</p><h3>Name</h3><p>The unique name for this step.</p><h3>Id</h3><p>See
+    <a href="/article/li0my8tcz3-entity-identifier-reference">Entity Identifier Reference</a>.</p><h3>GCP
+    Connector</h3><p>The Harness Connector for the GCP account where you saved the
+    cache.</p><h3>Bucket</h3><p>GCS bucket name.</p><h3>Key</h3><p>The key used to
+    identify the cache.</p><p>The backslash character isn&#39;t allowed as part of
+    the checksum added here. This is a limitation of the Go language (golang) template.
+    Use a forward slash instead.  </p><ul><li>Incorrect format:  <code>cache-{{ checksum
+    &#34;.\src\common\myproj.csproj&#34; }</code></li><li>Correct format:  <code>cache-{{
+    checksum &#34;./src/common/myproj.csproj&#34; }}</code></li></ul><h3 id="undefined">Optional
+    Configurations</h3><h4 id="undefined">Archive Format</h4><p>Select the archive
+    format.</p><div class="note-callout">The default archive format is Tar.</div><h4>Fail
+    if Key Doesn&#39;t Exist</h4><p>Select this option to fail the step if the key
+    doesn’t exist.</p><div class="note-callout">By default, the Fail if Key Doesn&#39;t
+    Exist option is set to False.</div><h4 id="undefined">Run as User</h4><p>Set the
+    value to specify the user id for all processes in the pod, running in containers.
+    See <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">Set
+    the security context for a pod</a>.</p><h4>Set Container Resources</h4><p>Maximum
+    resources limit values for the resources used by the container at runtime.</p><h5>Limit
+    Memory</h5><p>Maximum memory that the container can use. You can express memory
+    as a plain integer or as a fixed-point number using the suffixes <code>G</code> or <code>M</code>.
+    You can also use the power-of-two equivalents <code>Gi</code> and <code>Mi</code>.</p><h5
+    id="undefined">Limit CPU</h5><p>The maximum number of cores that the container
+    can use. CPU limits are measured in cpu units. Fractional requests are allowed:
+    you can specify one hundred millicpu as <code>0.1</code> or <code>100m</code>.
+    See <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes"
+    target="_blank">Resource units in Kubernetes</a>.</p><h5>Timeout</h5><p>Timeout
+    for the step. Once the timeout is reached, the step fails and the Pipeline execution
+    continues.</p><h3>See Also</h3><ul><li> <a href="/article/i36ibenkq2-step-skip-condition-settings">Step
+    Skip Condition Settings</a></li><li> <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    Failure Strategy Settings</a></li></ul><p></p><p></p>'
+  slug: restore-cache-from-gcs-settings
+  tags: []
+  is_live: true

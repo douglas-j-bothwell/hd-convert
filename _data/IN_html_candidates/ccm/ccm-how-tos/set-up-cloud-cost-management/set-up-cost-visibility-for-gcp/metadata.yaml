@@ -1,0 +1,136 @@
+type: article
+article_id: kxnsritjls
+user_id: slcpusem6b
+category_id: 7vy86n7cws
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Set Up Cloud Cost Management for GCP
+slug: set-up-cost-visibility-for-gcp
+description: This topic describes how to set up cost visibility for GCP.
+short_version: This topic describes how to set up cost visibility for GCP.
+tags:
+- cloud cost management
+- gcp
+- cloud cost
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-05-10T11:58:16.147136Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Cloud Cost Management for GCP
+  description: This topic describes how to set up cost visibility for GCP.
+  short_version: This topic describes how to set up cost visibility for GCP.
+  body: '<p>Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP
+    products, projects, SKUs, and location. As a first step, you connect Harness to
+    your GCP account to get insights into your cloud infrastructure and GCP services,
+    Compute Engine Cloud Storage, BigQuery, etc. CCM displays the data for your connected
+    GCP services for further analysis.</p><p></p><div class="note-callout">After enabling
+    CCM, it takes about 24 hours for the data to be available for viewing and analysis.</div><p>In
+    this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#connect_harness_to_google_cloud_platform_gcp_account">Connect
+    Harness to Google Cloud Platform (GCP) Account</a></li><li><a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#step_1_overview">Step
+    1: Overview</a></li><li><a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#step_2_gcp_billing_export">Step
+    2: GCP Billing Export</a></li><li><a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#step_3_grant_permissions">Step
+    3: Grant Permissions</a></li><li><a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#step_4_test_connection">Step
+    4: Test Connection</a></li><li><a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li>The same connector cannot
+    be used in NextGen and FirstGen. For information on creating a GCP connector in
+    the FirstGen see <a href="https://docs.harness.io/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp">Set
+    Up Cost Visibility for GCP</a>. </li><li>Review <a href="https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles">Required
+    permissions and roles</a> to create an IAM role at the organization level</li><li>Ensure
+    that you have the following permissions to enable and configure the export of
+    Google Cloud billing data to a BigQuery dataset:<ul><li><strong>Billing Account
+    Administrator</strong> role for the target Cloud Billing account</li><li><a href="https://cloud.google.com/bigquery/docs/dataset-access-controls">BigQuery
+    User role for the Cloud project</a> that contains the BigQuery dataset that will
+    be used to store the Cloud Billing data</li></ul></li></ul><h3>Connect Harness
+    to Google Cloud Platform (GCP) Account</h3><p>Connect Harness to your GCP account
+    to get insights into your cloud infrastructure and GCP services, Compute Engine
+    Cloud Storage, BigQuery, etc. This will give you cost insights that are derived
+    from the billing export. For deep Kubernetes visibility and rightsizing recommendations
+    based on the historical utilization and usage metrics, set up Kubernetes connectors.
+    See <a href="https://ngdocs.harness.io/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes">Set
+    Up Cloud Cost Management for Kubernetes</a>.</p><p></p><div class="note-callout">Time
+    periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe
+    daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone.
+    You may notice some cloud cost differences between Harness CCM explorer and the
+    GCP Cloud Billing report due to the time zone difference.</div><h3>Step 1: Overview</h3><ol><li>In <strong>Account
+    Setup</strong>, in <strong>Account Resources</strong>, click <strong>Connectors</strong>.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1630563180229/screenshot-2021-09-02-at-11-22-27-am.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>In <strong>Connectors</strong>,
+    click <strong>+ Connector</strong>.</li><li>In <strong>Cloud Costs</strong>, click
+    <strong>GCP</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1626110343551/screenshot-2021-07-12-at-10-42-20-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure></li><li>In <strong>Overview</strong>,
+    in <strong>Connector Name</strong>, enter a name that describes this account.</li><li>In
+    <strong>Specify Project ID</strong>, enter the project ID and click <strong>Continue</strong>.
+    For more information on how to get a project ID, see <a href="https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset">Create
+    a BigQuery dataset</a>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1625854255149/screenshot-2021-07-09-at-11-39-30-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><h3>Step
+    2: GCP Billing Export</h3><p>Cloud Billing export to BigQuery enables you to export
+    detailed Google Cloud billing data (such as usage and cost estimate data) automatically
+    throughout the day to a BigQuery dataset that you specify.</p><ol><li>In <strong>GCP
+    Billing Export</strong>, click <strong>Launch GCP console</strong>.</li><li>In
+    the GCP <strong>Explorer</strong> window, in the pinned projects section, click <strong>your
+    project ID</strong> to open the project. If you see an overflow menu (:) next
+    to your project ID, click the menu and select <strong>Open</strong>.</li><li>Click <strong>Create
+    dataset</strong>. For more information, see <a href="https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset">Create
+    a BigQuery dataset</a>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1626001265234/screenshot-2021-07-11-at-4-30-50-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Enter
+    a <strong>Dataset Name</strong>.<br/><div class="note-callout">You need to enter
+    Dataset Name in Harness.</div></li><li>Select a <strong>Data location</strong>.</li><li>Set
+    the <strong>Default table expiration</strong> to <strong>Never</strong>.</li><li>Set
+    the <strong>Encryption</strong> option to <strong>Google-managed key</strong>.</li><li>To
+    save, click <strong>CREATE DATASET</strong>.</li><li>Enter the <strong>Dataset
+    Name</strong> in Harness.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1643738388698/screenshot-2022-02-01-at-11-29-32-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Next,
+    you need to enter the table name in Harness. From the GCP console, copy the table
+    name where the billing export is available. In your BigQuery dataset, the table
+    is named <code>gcp_billing_export_v1_&lt;BILLING_ACCOUNT_ID&gt;</code>.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1642004505075/screenshot-2022-01-12-at-9-51-30-pm.png"/></figure>Enter
+    the <strong>Table Name</strong> in Harness.</li><li>Click <strong>Continue</strong>.
+    When you are done it will look something like this:<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1642004600001/screenshot-2022-01-12-at-9-52-53-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ol><h3>Step
+    3: Grant Permissions</h3><p>Cloud Billing Export to BigQuery helps you export
+    detailed Google Cloud billing data (such as usage and cost estimate data) to a
+    BigQuery dataset that you specify. The export happens throughout the day automatically. </p><ol><li>In
+    <strong>Grant permissions</strong>, click <strong>Open BigQuery Page</strong>.</li><li>Log
+    into the GCP console and go to the BigQuery page.</li><li>Select your project in
+    the left panel.</li><li>Select your dataset. For more information on creating
+    a dataset, see <a href="https://cloud.google.com/bigquery/docs/datasets">Creating
+    datasets</a>.<figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595605703660/screenshot-2020-07-23-at-8-54-29-pm.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595605703660/screenshot-2020-07-23-at-8-54-29-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></a></figure></li><li>Click <strong>SHARE
+    DATASET</strong>.</li><li>In <strong>Dataset permissions</strong>, in <strong>Add
+    members</strong>, enter the Harness service account as a member.<br/><br/>Copy
+    the service account detail from Harness. The service account is generated dynamically
+    for your account.</li><li>In <strong>Select a</strong> <strong>role</strong>,
+    select <strong>BigQuery Data Viewer</strong>, and then click <strong>Add</strong>.</li><li>Click <strong>Done</strong>.<br/><br/>When
+    you are done, it will look something like this:<figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595606637082/screenshot-2020-07-24-at-9-21-45-pm.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595606637082/screenshot-2020-07-24-at-9-21-45-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></a></figure></li><li>Click
+    <strong>Continue</strong> in Harness.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1626112117371/screenshot-2021-07-12-at-11-11-38-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><h3>Step
+    4: Test Connection</h3><p>The validation and verification happen in this step.
+    Once the validation and verification are completed, click <strong>Finish</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1626111830795/screenshot-2021-07-12-at-11-13-37-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Your
+    connector is now listed in the <strong>Connectors</strong>.</p><p></p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/kxnsritjls/1626111908041/screenshot-2021-07-12-at-11-14-32-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Next
+    Steps</h3><ul><li><a href="/article/ryhe4aut1y-analyze-cost-for-gcp-using-perspectives">Analyze
+    Cost for GCP ​Using Perspectives</a></li><li><a href="/article/dvspc6ub0v-create-cost-perspectives">Create
+    Cost Perspectives</a></li></ul><p></p>'
+  slug: set-up-cost-visibility-for-gcp
+  tags:
+  - cloud cost management
+  - gcp
+  - cloud cost
+  is_live: true

@@ -1,0 +1,71 @@
+type: article
+article_id: 78g32khjcu
+user_id: mfr0nxh4be
+category_id: hupik7gwhc
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: CloudFormation How-tos (FirstGen)
+slug: cloud-formation-provisioner
+description: Guide to using AWS CloudFormation as an infrastructure provisioner in
+  your Harness Application.
+short_version: Harness has first-class support for AWS CloudFormation as an infrastructure
+  provisioner.
+tags:
+- Infrastructure Provisioner
+- permission
+- Delegate
+- Cloud Provider
+- S3
+- AmazonS3ReadOnlyAccess
+- Service Mapping
+- Infrastructure Definition
+- Environment
+- Workflow variable
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:16:02.486731Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CloudFormation How-tos (FirstGen)
+  description: Guide to using AWS CloudFormation as an infrastructure provisioner
+    in your Harness Application.
+  short_version: Harness has first-class support for AWS CloudFormation as an infrastructure
+    provisioner.
+  body: <p></p><div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/vynj4hxt98">NextGen</a>.</div><p>Harness has first-class
+    support for <a href="https://aws.amazon.com/cloudformation/" target="_blank">AWS CloudFormation</a> as
+    an infrastructure provisioner.</p><p>See the following CloudFormation How-tos:</p><ul><li><a
+    href="/article/308nblm0vc-cloud-formation-account-setup">Set Up Your Harness Account
+    for CloudFormation</a></li><li><a href="/article/wtper654tn-add-cloud-formation-templates">Add
+    CloudFormation Templates</a></li><li><a href="/article/4xtxj2f88b-map-cloud-formation-infrastructure">Map
+    CloudFormation Infrastructure</a></li><li><a href="/article/5wdb3r765g-provision-cloudformation-create-stack">Provision
+    using CloudFormation Create Stack</a></li><li><a href="/article/ez8bgluqg5-using-cloudformation-outputs-in-workflow-steps">Using
+    CloudFormation Outputs in Workflow Steps</a></li><li><a href="/article/i1agf0s6h4-cloudformation-delete-stack">Remove
+    Provisioned Infra with CloudFormation Delete Stack</a></li></ul><p>For a conceptual
+    overview of Harness CloudFormation integration, see <a href="/article/qj0ems5hmg-cloud-formation-provisioning-with-harness">CloudFormation
+    Provisioning with Harness</a>.</p><div class="note-callout"><strong>Deployment
+    Strategies Supported</strong> — For most deployments, Harness Infrastructure Provisioners
+    are only supported in Canary and Multi-Service types. For AMI/ASG and ECS deployments,
+    Infrastructure Provisioners are also supported in Blue/Green deployments.</div><p></p>
+  slug: cloud-formation-provisioner
+  tags:
+  - Infrastructure Provisioner
+  - permission
+  - Delegate
+  - Cloud Provider
+  - S3
+  - AmazonS3ReadOnlyAccess
+  - Service Mapping
+  - Infrastructure Definition
+  - Environment
+  - Workflow variable
+  is_live: true

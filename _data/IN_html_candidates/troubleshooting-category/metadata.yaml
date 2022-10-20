@@ -1,0 +1,14 @@
+type: category
+category_id: svxv7bn8as
+parent_category_id: ""
+title: Troubleshooting
+description: ""
+slug: troubleshooting-category
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1657129663484/info-message.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Troubleshooting
+  description: ""
+  slug: troubleshooting-category

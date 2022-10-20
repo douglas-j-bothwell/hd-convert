@@ -1,0 +1,156 @@
+type: article
+article_id: x53e2by67m
+user_id: slcpusem6b
+category_id: tj4mzq0vw2
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Set Up Cost Visibility for GCP
+slug: enable-cloud-efficiency-for-google-cloud-platform-gcp
+description: Describes how to enable Continuous Efficiency for GCP.
+short_version: Describes how to enable Continuous Efficiency for GCP.
+tags:
+- continuous efficiency
+- enable continuous efficiency
+- GCP
+- Google Cloud Platform
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-05-10T16:27:31.357549Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Cost Visibility for GCP
+  description: Describes how to enable Continuous Efficiency for GCP.
+  short_version: Describes how to enable Continuous Efficiency for GCP.
+  body: '<p></p><p>Harness Cloud Cost Management (CCM) monitors the cloud costs of
+    your GCP products, projects, SKUs, and location. As a first step, you connect
+    Harness to your GCP account to get insights into your cloud infrastructure and
+    GCP services, Compute Engine Cloud Storage, BigQuery, etc. CCM displays the data
+    for your connected GCP services for further analysis.</p><p>In this topic:</p><ul><li><a
+    href="https://docs.harness.io/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp#step_1_connect_to_google_cloud_platform_gcp_account">Step
+    1: Connect to Google Cloud Platform (GCP) Account</a></li><li><a href="https://docs.harness.io/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp#step_2_enable_cloud_billing_export_to_the_big_query_dataset_and_grant_permission">Step
+    2: Enable Cloud Billing Export to the BigQuery Dataset and Grant Permission</a></li><li><a
+    href="https://docs.harness.io/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li>Review <a href="https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles">Required
+    permissions and roles</a> to create an IAM role at the organization level</li><li>Ensure
+    that you have the following permissions to enable and configure the export of
+    Google Cloud billing data to a BigQuery dataset:<ul><li><strong>Billing Account
+    Administrator</strong> role for the target Cloud Billing account</li><li><a href="https://cloud.google.com/bigquery/docs/dataset-access-controls">BigQuery
+    User role for the Cloud project</a> that contains the BigQuery dataset that will
+    be used to store the Cloud Billing data</li></ul></li><li>Review <a href="/article/rr85306lq8-continuous-efficiency-overview">Cloud
+    Cost Management Overview</a></li><li>The same connector cannot be used in FirstGen
+    and NextGen. NextGen Connectors are recommended for the best experience of CCM
+    capabilities and features. For information on creating a GCP connector in the
+    NextGen see <a href="https://ngdocs.harness.io/article/kxnsritjls-set-up-cost-visibility-for-gcp">Set
+    Up Cloud Cost Management for GCP</a>.</li></ul><div class="note-callout">After
+    enabling CE, it takes about 24 hours for the data to be available for viewing
+    and analysis.</div><h3>Step 1: Connect to Google Cloud Platform (GCP) Account</h3><p></p><p>Connect
+    Harness to your GCP account to get insights into your cloud infrastructure and
+    GCP services.</p><ol><li>In <strong>Cloud Cost Management</strong>, click <strong>Settings</strong>
+    and then click <strong>Cloud Integration</strong>.</li><li>In <strong>Cloud</strong>
+    <strong>Integration</strong>, click <strong>Add a GCP billing account</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1604055472286/screenshot-2020-10-30-at-4-25-42-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Connect to Google Cloud Platform (GCP) Account</strong>, in <strong>Account
+    Name</strong>, enter a name that describes this account.<br/><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1652200022022/screenshot-2022-05-10-at-9-56-35-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Create
+    an IAM role and assign it to Harness Service Account.</li></ol><h4>Step: Create
+    an IAM Role at the Organization Level</h4><p>IAM role allows you to grant granular
+    access to specific Google Cloud resources with the required permissions for cost
+    analysis. To create the required IAM Role, perform the following steps:</p><ol><li>Click
+    <strong>Follow these instructions</strong> and then click <strong>Open the Roles
+    Page</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595415811892/screenshot-2020-07-22-at-4-33-18-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Log
+    into your <strong>GCP Account</strong> via GCP console. Click <strong>CREATE ROLE</strong>
+    to create an IAM role at the organization level.<div class="note-callout">Ensure
+    that you have the required permissions to create a role at the organization level.
+    For more information, see <a href="https://cloud.google.com/iam/docs/understanding-custom-roles">Understanding
+    IAM custom roles</a>.</div><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595416081615/screenshot-2020-07-22-at-4-37-40-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Enter
+    <strong>Harness_CE_Role</strong> in <strong>Title</strong> and <strong>ID</strong>.</li><li>Select
+    <strong>General Availability</strong> from the <strong>Role launch stage</strong>
+    drop-down list.</li><li>Click <strong>ADD PERMISSIONS</strong>.</li><li>Filter
+    the table by <strong>Permission</strong>.</li><li>Add the following permissions:<ul><li>billing.accounts.list</li><li>billing.accounts.get</li><li>billing.accounts.getUsageExportSpec</li></ul><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595923079829/screenshot-2020-07-28-at-1-11-10-pm.png"
+    style="max-height:35%;max-width:35%" data-hd-height="35%" data-hd-width="35%"/></figure>When
+    you are done, it will look something like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595418131584/screenshot-2020-07-22-at-5-11-57-pm.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure></li><li>Click
+    <strong>CREATE</strong>.</li></ol><h4>Step: Assign Role</h4><p>To assign the IAM
+    role to Harness service account, perform the following steps:</p><ol><li> Click
+    <strong>Follow these instructions</strong> and then click <strong>Open the IAM
+    Page</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595419455458/screenshot-2020-07-22-at-5-33-33-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Log
+    into your <strong>GCP Account</strong> via the GCP console.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595676741406/screenshot-2020-07-25-at-5-01-34-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>ADD</strong>.</li><li>In <strong>New members</strong>, enter the Harness
+    service account as a member.<br/>Copy the service account detail from Harness.
+    The service account is generated dynamically for your account.</li><li>In <strong>Role</strong>,
+    select <strong>Harness_CE_Role</strong> from the drop-down list.<br/>When you
+    are done, it will look something like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595420582756/screenshot-2020-07-22-at-5-52-46-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Click
+    <strong>SAVE</strong>.</li><li>In Harness, click <strong>Save &amp; Continue</strong>.</li></ol><h3>Step
+    2: Enable Cloud Billing Export to the BigQuery Dataset and Grant Permission</h3><p>Cloud
+    Billing Export to BigQuery helps you export detailed Google Cloud billing data
+    (such as usage and cost estimate data) to a BigQuery dataset that you specify.
+    The export happens throughout the day automatically. Next, in CE, you can access
+    your Cloud Billing data from BigQuery for detailed analysis.</p><p>To enable cloud
+    billing export to the BigQuery dataset and grant permission, click <strong>How
+    to export a cloud billing report to the BigQuery dataset and grant permission?</strong></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595677124378/screenshot-2020-07-25-at-5-08-21-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h4>Step:
+    Enable Cloud Billing Export to the BigQuery Dataset</h4><ol><li>Log into the GCP
+    console.</li><li>Export your billing report to BigQuery. For more information,
+    see <a href="https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#how-to-enable">Enable
+    Cloud Billing data export to BigQuery</a>.</li><li>Gather the Billing Account
+    Name, Project ID, and Dataset ID.</li></ol><h4>Step: Grant Permission to BigQuery</h4><ol><li>Log
+    into the GCP console and go to the BigQuery page.</li><li>Select your project in
+    the left panel.</li><li>Select your dataset. For more information on creating
+    a dataset, see <a href="https://cloud.google.com/bigquery/docs/datasets">Creating
+    datasets</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595605703660/screenshot-2020-07-23-at-8-54-29-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click <strong>SHARE
+    DATASET</strong>.</li><li>In <strong>Dataset permissions</strong>, in <strong>Add
+    members</strong>, enter the Harness service account as a member.<br/>Copy the service
+    account detail from Harness. The service account is generated dynamically for
+    your account.</li><li>In <strong>Select a</strong> <strong>role</strong>, select <strong>BigQuery
+    Data Viewer</strong>, and then click <strong>Add</strong>.</li><li>Click <strong>Done</strong>.<br/>When
+    you are done, it will look something like this:<br/><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1652199785883/screenshot-2022-05-10-at-9-49-25-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><h4>Step:
+    Enter the Details in Harness</h4><ol><li style="counter-increment:li 0" start="1">In
+    <strong>Billing Account Name</strong>, enter the name of the billing account that
+    you want to manage.</li><li>In <strong>Project ID</strong>, enter the ID of the
+    GCP project running the BigQuery dataset you want to use.</li><li>In <strong>Dataset
+    ID</strong>, enter the dataset ID of your project. Datasets are listed by the
+    project in the <strong>Resources</strong> pane.</li><li>Click <strong>Back</strong>
+    to go to the <strong>Connect to Google Cloud Platform (GCP) Account</strong> tab
+    to modify any settings.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1595611362430/screenshot-2020-07-24-at-10-52-19-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Click
+    <strong>Submit</strong>. Details of the connected GCP account are displayed.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1620840090804/x-tjd-jl-qhuw-27-y-mhgsq-0-ao-qqd-ll-yoaw-hma-dgmzba-h-5-gb-kq-7-ruf-3-vag-qzl-ged-m-4-i-omy-g-5-jrklh-7-x-to-3-pzd-qprul-8-iglc-v-8-a-0-n-4-bfs-inah-zas-7-cms-a-6-tao-1-xwc-skh-1-lef-svkq-4"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><p></p><p>As
+    noted earlier, after enabling CE, it takes about 24 hours for the data to be available
+    for viewing and analysis in <strong>Cost Explorer</strong>.</p><h3>Troubleshooting</h3><ol><li>If
+    you get an <strong>Error Processing Data</strong> error, check if the BigQuery
+    table is created. See <a href="/article/x53e2by67m-enable-cloud-efficiency-for-google-cloud-platform-gcp#step_grant_permission_to_big_query">Grant
+    Permission to BigQuery</a>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x53e2by67m/1606283835229/screenshot-2020-11-25-at-11-25-17-am.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure></li></ol><h3>Next
+    Steps</h3><ul><li><a href="/article/eeekdk75q2-explorer-walkthrough">Cost Explorer
+    Walkthrough</a></li><li><a href="/article/244q2uv4or-analyze-cost-trends-for-aws">Analyze
+    Cost for AWS</a></li><li><a href="/article/4rq26sszja-analyze-cost-trends-across-clusters">Analyze
+    Cost for Kubernetes</a></li><li><a href="/article/wvag8xht5o-analyze-cost-for-azure">Analyze
+    Cost for Azure</a></li></ul><p></p>'
+  slug: enable-cloud-efficiency-for-google-cloud-platform-gcp
+  tags:
+  - continuous efficiency
+  - enable continuous efficiency
+  - GCP
+  - Google Cloud Platform
+  is_live: true

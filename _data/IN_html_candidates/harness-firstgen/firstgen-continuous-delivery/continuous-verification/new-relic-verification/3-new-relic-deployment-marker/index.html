@@ -1,0 +1,77 @@
+<p>You can use the New Relic REST API v2 to record Harness deployments and then view them in the New Relic APM <strong>Deployments</strong> page and in the <strong>Event</strong> log list on the <strong>Overview</strong> page. For more information, see
+  <a href="https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/record-deployments#api" target="_blank">REST API Procedures</a> from New Relic.</p>
+<p>In this topic:</p>
+<ul>
+  <li>
+    <a href="#review_new_relic_deployment_markers">Review: New Relic Deployment Markers</a>
+  </li>
+  <li>
+    <a href="#step_1_add_a_new_relic_verification_provider">Step 1: Add a New Relic Verification Provider</a>
+  </li>
+  <li>
+    <a href="#step_2_add_new_relic_deployment_marker">Step 2: Add New Relic Deployment Marker</a>
+  </li>
+  <li>
+    <a href="#yaml_example">YAML Example</a>
+  </li>
+  <li>
+    <a href="#see_also">See Also</a>
+  </li>
+</ul>
+<h3>Review: New Relic Deployment Markers</h3>
+<p>In a Harness Workflow, you can add a <strong>New Relic Deployment Marker</strong> to perform the POST as part of your Workflow:</p>
+<p></p>
+<p></p>
+<figure>
+  <img src="https://files.helpdocs.io/kw8ldg1itf/articles/5zh0ijlupr/1585809769612/image.png" style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/>
+</figure>
+<p>The result is similar to using a cURL command that sends a POST to the API to record a deployment. See the <code>deployment</code> section in this example:</p><pre>curl -X POST &#39;https://api.newrelic.com/v2/applications/${APP_ID}/deployments.json&#39; \<br/>     -H &#39;X-Api-Key:${APIKEY}&#39; -i \<br/>     -H &#39;Content-Type: application/json&#39; \<br/>     -d \<br/>&#39;{<br/>  &#34;deployment&#34;: {<br/>    &#34;revision&#34;: &#34;REVISION&#34;,<br/>    &#34;changelog&#34;: &#34;Added: /v2/deployments.rb, Removed: None&#34;,<br/>    &#34;description&#34;: &#34;Added a deployments resource to the v2 API&#34;,<br/>    &#34;user&#34;: &#34;datanerd@example.com&#34;<br/>  }<br/>}&#39;</pre>
+<h3>Step 1: Add a New Relic Verification Provider</h3>
+<p>You connect Harness to New Relic using a Harness New Relic Verification Provider.</p>
+<p>See
+  <a href="/article/iz45kpa10u-1-new-relic-connection-setup">Connect to New Relic</a>.</p>
+<p>Later, when you add the <strong>New Relic Deployment Marker</strong> step in your Workflow, the API key parameter (shown in the cURL example above) is provided by the credentials you entered in the New Relic Verification Provider. </p>
+<h3>Step 2: Add New Relic Deployment Marker</h3>
+<p>New Relic Deployment Marker is only available within a Workflow deployment phase in the <strong>Verify</strong> section.</p>
+<p></p>
+<figure>
+  <img src="https://files.helpdocs.io/kw8ldg1itf/articles/5zh0ijlupr/1604014976682/image.png"/>
+</figure>
+<p>You cannot use it in the <strong>Pre-deployment Steps</strong> of a canary Workflow.</p>
+<ol>
+  <li>To select the <strong>New Relic Deployment Marker</strong> step, click <strong>Add Step</strong>, and then, in the <strong>Utility</strong> section, select <strong>New Relic Deployment Marker</strong>. </li>
+  <li>In <strong>New Relic Server</strong>, select the
+    <a href="/article/iz45kpa10u-1-new-relic-connection-setup">New Relic Verification Provider</a> you added.</li>
+</ol>
+<p>You can also enter set up a
+  <a href="/article/9dvxcegm90-variables">Service or Workflow variable</a> in the <strong>New Relic Server</strong> setting, such as: <code>${serviceVariable.new_relic_connector_name}</code> .</p>
+<div class="note-callout">If the <strong>New Relic Server</strong> field contains an expression, the <strong>Application Name</strong> field must also use an expression.</div>
+<p>The App ID parameter is provided by the <strong>Application Name</strong> you select. The list of applications is pulled from the New Relic Server you selected. You can also enter variable expressions, such as: <code>${app.name}</code>.</p>
+<p>The <strong>Body</strong> section contains the standard JSON content as in the cURL example:</p><pre>{<br/>  &#34;deployment&#34;: {<br/>    &#34;revision&#34;: &#34;${artifact.buildNo}&#34;,<br/>    &#34;description&#34;: &#34;Harness Deployment via workflow ${workflow.name}&#34;,<br/>    &#34;user&#34;: &#34;${workflow.name}&#34;<br/>  }<br/>}</pre>
+<p>Harness uses some
+  <a href="/article/9dvxcegm90-variables">built-in variables</a> to provide the revision information and other settings.</p>
+<p>Now when the Workflow is deployed you will see the Deployment Marker vertical line in New Relic:</p>
+<p></p>
+<figure>
+  <img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1564520325362/image.png"/>
+</figure>
+<h3>YAML Example</h3>
+<p>Here&#39;s an example YAML schema that you can use for New Relic Deployment Marker.</p><pre>- type: NEW_RELIC_DEPLOYMENT_MARKER<br/>      name: New Relic Deployment Marker<br/>      properties:<br/>        analysisServerConfigId: 1crZaE-DQrKE_YFmH97CSg<br/>        applicationId: &#34;${service.name}&#34;<br/>        body: |-<br/>          {<br/>                &#34;deployment&#34;: {<br/>                  &#34;revision&#34;: &#34;${artifact.buildNo}&#34;,<br/>                  &#34;description&#34;: &#34;Harness Deployment via workflow ${workflow.name}&#34;,<br/>                  &#34;user&#34;: &#34;${workflow.name}&#34;<br/>                }<br/>              }<br/>        templateUuid: null<br/>        templateVariables: null<br/>        templateVersion: null<br/> </pre>
+<p></p>
+<p>For <strong>applicationId</strong>, you can use a Harness built-in variable expression such as <strong>${service.name}</strong> or a Workflow or Service variable.</p>
+<p>For more information about variables and expressions, see the following topics:</p>
+<ul>
+  <li>
+    <a href="/article/q78p7rpx9u-add-service-level-config-variables">Add Service Config Variables</a>
+  </li>
+  <li>
+    <a href="/article/9dvxcegm90-variables">What is a Harness Variable Expression?</a>
+  </li>
+</ul>
+<h3>See Also</h3>
+<ul>
+  <li>
+    <a href="/article/9rc6pryw97-4-verify-deployments-with-new-relic">Verify Deployments with New Relic</a>
+  </li>
+</ul>
+<p></p>

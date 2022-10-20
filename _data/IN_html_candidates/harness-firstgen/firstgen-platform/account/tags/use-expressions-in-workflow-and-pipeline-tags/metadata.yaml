@@ -1,0 +1,170 @@
+type: article
+article_id: 285bu842gb
+user_id: mfr0nxh4be
+category_id: 5havnl8qad
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Use Expressions in Workflow and Pipeline Tags
+slug: use-expressions-in-workflow-and-pipeline-tags
+description: Tag Workflows and Pipelines with variable expressions.
+short_version: Tag Workflows and Pipelines with variable expressions.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:11:33.737075Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use Expressions in Workflow and Pipeline Tags
+  description: Tag Workflows and Pipelines with variable expressions.
+  short_version: Tag Workflows and Pipelines with variable expressions.
+  body: '<p>Workflow and Pipeline Tags support Harness variable expressions.</p><p>Using
+    expressions in Tags lets you create dynamic metadata for your deployments. This
+    can be very helpful when filtering Workflows and Pipelines in the Harness <strong>Deployments</strong>
+    page.</p><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#review_tag_restrictions">Review:
+    Tag Restrictions</a><ul><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#expressions_in_workflow_and_pipelines_tags_only">Expressions
+    in Workflow and Pipelines Tags Only</a></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#workflow_variables_application_and_account_defaults_only">Workflow
+    Variables, Application and Account Defaults Only</a></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#standard_format_restrictions_do_not_apply">Standard
+    Format Restrictions Do Not Apply</a></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#tag_naming_restrictions_for_deployment_tags">Tag
+    Naming Restrictions for Deployment Tags</a></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#cannot_use_expressions_in_both_name_and_value">Cannot
+    Use Expressions in Both Name and Value</a></li></ul></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#step_1_expressions_in_workflow_tags">Step
+    1: Expressions in Workflow Tags</a><ul><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#evaluated_expressions_in_deployments">Evaluated
+    Expressions in Deployments</a></li></ul></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#step_2_expressions_in_pipeline_tags">Step
+    2: Expressions in Pipeline Tags</a><ul><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#workflow_variables_in_pipeline_tags">Workflow
+    Variables in Pipeline Tags</a></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#evaluated_expressions_in_deployments_2">Evaluated
+    Expressions in Deployments</a></li></ul></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#step_3_filtering_by_tag_expressions_in_deployments">Step
+    3: Filtering By Tag Expressions in Deployments</a></li><li><a href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#step_4_filtering_and_grouping_by_tag_expressions_in_custom_dashboards">Step
+    4: Filtering and Grouping by Tag Expressions in Custom Dashboards</a></li><li><a
+    href="https://docs.harness.io/article/285bu842gb-use-expressions-in-workflow-and-pipeline-tags#notes">Notes</a></li></ul><h3>Before
+    You Begin</h3><ul><li> <a href="/article/nrxfix3i58-tags">Using Tags</a></li><li>
+    <a href="/article/m220i1tnia-workflow-configuration">Workflows</a></li><li> <a
+    href="/article/zc1u96u6uj-pipeline-configuration">Pipelines</a></li></ul><h3>Review:
+    Tag Restrictions</h3><p>There are many restrictions for using variable expressions
+    in Tags. Review the following restrictions.</p><h4>Expressions in Workflow and
+    Pipelines Tags Only</h4><p>You can only use variable expressions in the Tags created/modified
+    in Workflows and Pipelines. If you attempt to add one in <strong>Tags Management</strong>,
+    an error will occur:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585616558260/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>If
+    a Tag uses a variable expression in its name or value, you cannot edit it in <strong>Tags
+    Management</strong>. You must delete the Tag in a Workflow or Pipeline and add
+    it again.</p><h4>Workflow Variables, Application and Account Defaults Only</h4><p>For
+    Workflows, you can add variables expressions to Tags for the following:</p><ul><li>Workflow
+    variables — For example <code>${workflow.variables.wfvar}</code>.</li><li>Application
+    Defaults — For example <code>${app.defaults.RUNTIME_PATH}</code>.</li><li>Account
+    Defaults — For example <code>${account.defaults.example}</code>.</li></ul><p>For
+    more information, see <a href="/article/m220i1tnia-workflow-configuration">Workflows</a>
+    and <a href="/article/9dvxcegm90-variables">Variables and Expressions in Harness</a>.</p><p>Harness
+    built-in variables expressions cannot be used in Tags at deployment runtime.</p><p>Application
+    Defaults support some Harness built-in expressions, such as the names and descriptions
+    of Application components.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1586192381349/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Standard
+    Format Restrictions Do Not Apply</h4><p>Normally, Tag names and values must meet
+    specific format restrictions: <code>^[/A-Za-z0-9 _-]+</code>. No dots are supported.</p><p>When
+    using expressions in Tags, you do not need to follow these restrictions. When
+    a variable expression is evaluated by Harness, its result does not have to meet
+    the standard Tag format restrictions. It has no restrictions.</p><h4>Tag Naming
+    Restrictions for Deployment Tags</h4><p>When a Workflow/Pipeline using Tags is
+    deployed, we say the Tags have been promoted to Deployment Tags. But there are
+    restrictions on which Tags may be promoted:</p><ul><li>If the Workflow/Pipeline
+    Tag name or evaluated name contains a dot character, <code>${</code>, or any unresolved
+    Harness variables, Harness does not promote it as a Deployment Tag.</li></ul><h4>Cannot
+    Use Expressions in Both Name and Value</h4><p>You can use a variable expression
+    in a Tag name or value, but not both.</p><h3>Step 1: Expressions in Workflow Tags</h3><p>In
+    a Harness Workflow, click <strong>Add Tag</strong>.</p><p>In <strong>Name</strong>
+    or <strong>Value</strong>, enter a string or variable expression that references
+    a Workflow variable, Application Default, or Account Default.</p><p>In the other
+    setting, enter a string.</p><p>For example, here is an Account Default variable
+    added to two Tags. One Tag references the Account Default variable in its <strong>Name</strong>,
+    and the other in its <strong>Value</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585610441885/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Here
+    is an example using Application Default variables for RUNTIME_PATH:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585610779260/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Here
+    is an example using a Workflow variable:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585611159746/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Evaluated
+    Expressions in Deployments</h4><p>When you deploy the Workflow, the expressions
+    are evaluated after every stage by Harness and their values are displayed in the
+    <strong>Deployments</strong> view.</p><p>Here is an example using the three types
+    of variable expressions in the Tag <strong>Name</strong>:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585612832150/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>Step
+    2: Expressions in Pipeline Tags</h3><p>In a Harness Pipeline, click <strong>Add
+    Tag</strong>.</p><p>In <strong>Name</strong> or <strong>Value</strong>, enter
+    a string or variable expression that references one of the following:</p><ul><li>Workflow
+    variables — For example <code>${workflow.variables.wfvar}</code>.<br/>If you want
+    to use Workflow variables in a Pipeline tag, you need to create a Pipeline variable
+    that represents the Workflow variable value.</li><li>Application Defaults — For
+    example <code>${app.defaults.RUNTIME_PATH}</code>.</li><li>Account Defaults —
+    For example <code>${account.defaults.example}</code>.</li><li>Pipeline Name —
+    Use <code>${pipeline.name}</code>.</li><li>Pipeline Description — Use <code>${pipeline.description}</code>.</li></ul><p>Here
+    is an example using expressions for an Application Default and Workflow variable
+    in the Tag <strong>Name</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585613115098/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h4>Workflow
+    Variables in Pipeline Tags</h4><p>If you want to use Workflow variables in a Pipeline
+    tag, you need to create a Pipeline variable that represents the Workflow variable
+    value.</p><p>For example, here is a Workflow variable:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1624381354993/image.png"/></figure><p>When
+    we add the Workflow as a stage in a Pipeline, we use an expression as its value:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1624381369366/image.png"/></figure><p>This
+    expression is now a Pipeline variable that evaluates to the Workflow variable
+    value at runtime.</p><p>And now we add the Pipeline variable to the Pipeline tag:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1624381382499/image.png"/></figure><h4>Evaluated
+    Expressions in Deployments</h4><p>When you deploy the Pipeline, the expressions
+    are evaluated after every stage by Harness and their values are displayed in the
+    <strong>Deployments</strong> view.</p><p>The expressions in all Tags on the Workflows
+    deployed by the Pipeline are also evaluated and displayed.</p><p>Here is an example
+    where the Pipeline has Tags using expressions for the Application Default and
+    a Workflow variable. In addition, a Workflow in the Pipeline also uses an Account
+    Default expressions in a Tag <strong>Name</strong>.</p><p>As a result, the Pipeline
+    Deployment displays the evaluated expressions for Tags from the Pipeline and its
+    Workflow:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585687834377/image.png"/></figure><p></p><h3>Step
+    3: Filtering By Tag Expressions in Deployments</h3><p>In <strong>Deployments</strong>,
+    you can filter by Tag <strong>Name</strong> or a combination of <strong>Name:Value</strong>.</p><p>Here
+    is an example of a filter that uses a Tag Name that contains a Workflow expression,
+    <code>${workflow.variables.wfvar}</code>. Since you are filtering deployments,
+    you must enter the evaluated value for the expression in the Filter (<code>wf-var-value</code>)
+    like this:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585672681174/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><div
+    class="note-callout">The <strong>Display matching workflow executions as separate
+    cards in the result</strong> filter option allows you to see each Workflow deployment
+    as separate.</div><p>The filter results in all deployments for Workflows and Pipelines
+    that use the Tag:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1585672735786/image.png"/></figure><p>Each
+    deployment is listed separately. If the Tag is used in a single Workflow/Pipeline,
+    but that Workflow/Pipeline has been deployed multiple times, then each deployment
+    is listed separately.</p><p>You can also filter by Name:Value using the evaluated
+    expression. So, if the Tag on the Workflow is <code>WorkflowVar: ${workflow.variables.wfvar}</code>,
+    then you can filter by <code>WorkflowVar:wf-var-value</code>.</p><p></p><h3>Step
+    4: Filtering and Grouping by Tag Expressions in Custom Dashboards</h3><p>You can
+    create a Harness <a href="/article/rxlbhvwe6q-custom-dashboards">Custom Dashboard</a>
+    that filters or groups using Tags that use expressions.</p><p>You can use a Tag
+    whose name or value uses an expression, but you can only filter or group by Tag
+    <em>name</em>.</p><p>You cannot use the expression itself to filter or group.
+    You must use the evaluated expression displayed in Harness <strong>Deployments</strong>.</p><p>You
+    can use expression Tags in the following Widgets:</p><ul><li>Deployments</li><li>Lead
+    Time to Production</li><li>Mean Time to Restore</li></ul><p>You simply use the
+    <strong>Tag (Deployments)</strong> option in the <strong>Data Filter</strong>
+    or <strong>Group By</strong> settings of the Widget.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/285bu842gb/1587680486916/image.png"/></figure><p>This
+    can be a very powerful method for creating Custom Dashboards.</p><p>For example,
+    let&#39;s say you had a Workflow or Pipeline Tag named <strong>commitID</strong>.
+    The value for it is passed in as an expression, such as <code>${workflow.variables.commitID}</code>.
+    You could provide the value for the variable using <a href="/article/revc37vl0f-passing-variable-into-workflows">a
+    Trigger that passes in a Git commit ID</a>.</p><p>When you deploy, the expression
+    is evaluated and the commit ID is displayed in <strong>Deployments</strong> like
+    <strong>commitID:521747298a3790fde1710f3aa2d03b55020575aa</strong>.</p><p>Now,
+    you can create a Custom Dashboard for the name <strong>commitID</strong> that
+    filters or groups deployments by each commit ID.</p><h3>Notes</h3><ul><li>When
+    you use Workflow variables for Tags, a value must be provided for the Workflow
+    variable at the time of deployment. The value must be added whether the Workflow
+    is deployed alone, as part of a Pipeline, or as part of a Trigger.</li></ul><p></p>'
+  slug: use-expressions-in-workflow-and-pipeline-tags
+  tags: []
+  is_live: true

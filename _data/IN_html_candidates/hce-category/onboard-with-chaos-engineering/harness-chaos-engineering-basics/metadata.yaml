@@ -1,0 +1,227 @@
+type: article
+article_id: v64rj2maiz
+user_id: znazf3hcp9
+category_id: wogg6uk871
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Harness Chaos Engineering Basics (Public Preview)
+slug: harness-chaos-engineering-basics
+description: Basic concepts for the Harness Chaos Engineering.
+short_version: Basic concepts for the Harness Chaos Engineering.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-02T21:34:21.187795Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Chaos Engineering Basics (Public Preview)
+  description: Basic concepts for the Harness Chaos Engineering.
+  short_version: Basic concepts for the Harness Chaos Engineering.
+  body: '<p>This topic covers Harness Chaos Engineering basics for the Harness Chaos
+    Engineering Public Preview.</p><h3>ChaosCenter</h3><p>The ChaosCenter is the graphical
+    interface for interacting with Harness Chaos Engineering.</p><p>The ChaosCenter
+    is how you create Chaos Scenarios, monitor experiments, and so on.</p><h3>Dashboard</h3><p>The
+    dashboard displays the Scenarios, Delegates, and Projects for your account.</p><h3>Projects</h3><p>Projects
+    are how Harness Chaos Engineering enables teams to collaborate. A Project could
+    represent a business unit, division, or simply a development project for an app.</p><p>By
+    default, a Harness Chaos Engineering User gets their own Project, but they can
+    belong to other users/teams&#39; projects also.</p><h3>Delegates</h3><p>Delegates
+    are used to connect the Harness Chaos Engineering control pane with the Kubernetes
+    clusters you want to target.</p><p>There are two types of Delegates, described
+    below.</p><h4>Self Delegates</h4><p>A Self Delegate is installed in the same Kubernetes
+    cluster that is hosting the Harness Chaos Engineering control plane.</p><p>When
+    you install Harness Chaos Engineering into a Kubernetes cluster, a Self Delegate
+    is installed automatically.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/v64rj2maiz/1649968971757/clean-shot-2022-04-14-at-13-42-38.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>External
+    Delegates</h4><p>External Delegates are installed in a Kubernetes cluster that
+    is external to the cluster hosting the Harness Chaos Engineering installation
+    you are viewing in your ChaosCenter.</p><p>External Delegates let you run experiments
+    (<em>inject chaos</em>) into external clusters without having to install Harness
+    Chaos Engineering in each cluster. They let you manage all your experiments from
+    one ChaosCenter.</p><p>External Delegates are installed in clusters using the
+    <strong>chaosctl</strong> CLI tool. The binary and instructions are located in
+    the <strong>Delegates</strong> &gt; <strong>Connect the Delegate</strong> page
+    in ChaosCenter. The chaosctl tool is used to register the External Delegate with
+    your ChaosCenter.</p><h3>Scenarios</h3><p>A chaos Scenario is a collection of
+    one or more chaos experiments ordered to achieve a desired chaos impact on the
+    resources in a Kubernetes Cluster.</p><p>You can add as many experiments as needed
+    and reorder their sequence. Scenarios can run experiments in serial or parallel
+    to achieve a desired chaos injection scenario.</p><p>Scenarios use Delegates to
+    run an experiment in a target cluster.</p><div class="note-callout">Technically
+    speaking, a Scenario is a GitOps Argo manifest containing the steps for the experiment.</div><h4>Scenario
+    Types</h4><p>You can create Scenarios in different ways:</p><ul><li><strong>Predefined
+    Scenario templates:</strong> Harness Chaos Engineering includes predefined Scenario
+    templates to get you started.</li><li><strong>Create a new Scenario by cloning
+    an existing Scenario:</strong> Scenarios can be templated and then reused with
+    this option.</li><li><strong>Create a new Scenario using experiments from ChaosHubs.</strong></li><li><strong>Import
+    a Scenario using YAML:</strong> you can upload a Scenario manifest for your Scenario.</li></ul><h4>Tuning
+    and Resilience Score</h4><p>You can tune Scenarios to edit the sequence of their
+    steps and add Probes to test hypotheses. You can tune Scenarios by editing them
+    visually or using YAML in ChaosCenter.</p><h5>Tuning</h5><p>You can tune each
+    experiment in a Scenario using environment variables.</p><p>For example, you can
+    specify the chaos duration and interval. You can also specify what percentage
+    of pods are used.</p><h5>Resiliency Score</h5><p>The successful outcome of each
+    test in a Scenario carries a certain weight. Weights are used to calculate the
+    Resiliency Score at the end of test. You can adjust the weights of the experiments
+    in the Scenario.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/v64rj2maiz/1649974250441/image.png"/></figure><p>A
+    Resiliency Score is the measure of how resilient your Scenario is considering
+    all the chaos experiments and their individual result points.</p><p>For details
+    on the concept of Resilience Score, see <a href="https://dev.to/litmus-chaos/how-the-resilience-score-algorithm-works-in-litmus-1d22"
+    target="_blank">How the Resilience Score Algorithm works in Litmus</a>.</p><h4>Editing
+    Scenarios</h4><p>Experiments can be changed when they are added to a Scenario.</p><p>For
+    example, when an experiment is used in Scenario A it might target a different
+    namespace, Kubernetes Kind, or label than when it is used in Scenario B.</p><h4>Probes</h4><p>Probes
+    are editable checks you can define for any chaos experiment.</p><p>For example,
+    let&#39;s say you have an experiment that deletes pods in a cluster that hosts
+    a Web interface microservice. You can set an HTTP probe to check that users can
+    still access the Web interface during the chaos experiment. The probe could perform
+    GET requests on the Web interface URL continuously and verify that they return
+    HTTP 200 status codes.</p><p>A Probe&#39;s success impacts the verdict of the
+    experiment. If a Probe fails, it impacts the success of the experiment.</p><h5>Types
+    of Probes</h5><p>There are several types of probes:</p><ul><li><strong>HTTP:</strong>
+    query for the health/downstream of URIs.</li><li><strong>CMD:</strong> To execute
+    any health check function implemented as a shell command.</li><li><strong>Kubernetes:</strong>
+    To perform CRUD operations against native and custom Kubernetes resources.</li><li><strong>Prom:</strong>
+    To execute Prometheus query (promql) and match Prometheus metrics for specific
+    criteria.</li></ul><p>These probes can be used in isolation or in several combinations
+    to achieve the desired checks.</p><h5>Probe Modes</h5><p>Probes can be executed
+    in the following modes:</p><ul><li><strong>SOT:</strong> executed at the start
+    of a test as a pre-chaos check.</li><li><strong>EOT:</strong> executed at the
+    end of a test as a post-chaos check.</li><li><strong>Edge:</strong> executed before
+    and after the chaos.</li><li><strong>Continuous:</strong> executed continuously,
+    with a specified polling interval during the chaos injection.</li><li><strong>OnChaos:</strong>
+    executed continuously, with a specified polling interval strictly for chaos duration
+    of chaos.</li></ul><h4>Scheduling</h4><p>You can set Scenarios to run on a schedule
+    (hour, day, month, etc).</p><h3>ChaosHubs</h3><p><strong>ChaosHubs</strong> links
+    to online marketplaces for different chaos experiments. These can be open source
+    as well as closed source experiments. They can be added to ChaosCenter from remote
+    Git repos and remote ChaosHubs.</p><p>ChaosHubs contain charts that define different
+    experiments. Each chart has manifests that contain the information for the experiment.</p><h4>Enterprise
+    ChaosHub</h4><p>This chaos experiment hub contains experiments available for Harness
+    Enterprise users.</p><p>You can see the experiments in <a href="/article/1cqpe6f5id-chaos-enterprise-hub-experiments">Chaos
+    Enterprise Hub Experiments</a>.</p><h4>Litmus ChaosHub</h4><p>This repo is used
+    for the Litmus ChaosHub website <a href="https://hub.litmuschaos.io/" target="_blank">hub.litmuschaos.io</a>.
+    Litmus ChaosHub is an open source marketplace hosting all the different chaos
+    experiments offered by Litmus.</p><p>From ChaosCenter, you can use all of the
+    experiments in Litmus ChaosHub.</p><h4>Additional ChaosHubs</h4><p>You can connect
+    additional hubs to ChaosCenter <strong>ChaosHubs</strong> by clicking <strong>Connect
+    New Hub</strong>.</p><p>Typically, you fork the Litmus ChaosHub, add your own
+    experiment charts, and then add the new hub in your ChaosCenter <strong>ChaosHubs</strong>.
+    Also, you can make your forked repo private before adding it as a ChaosHub.</p><h3>Analytics</h3><p>Analytics
+    tells you how well your chaos engineering Scenarios are working: which ones have
+    succeeded, failed, and are running. It displays execution statistics over time
+    and totals.</p><p>You can drill down and see the statistics for each Scenario.</p><h4>Scenario
+    Comparison</h4><p>Analytics also lets you compare the resilience scores of multiple
+    Scenarios.</p><h3>Harness Chaos Engineering vs Litmus</h3><p>The following table
+    lists the different features supported by Litmus and Harness Chaos Engineering.</p><table><tbody><tr><td><p><strong>Feature</strong></p></td><td><p><strong>Litmus</strong></p></td><td><p><strong>Harness
+    Chaos Engineering</strong></p></td></tr><tr><td><p><strong>Platform Features</strong></p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>UI
+    Support for Chaos Scenario Construction</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Centralized
+    Chaos Portal</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Teaming
+    support</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Chaos Metrics</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>YAML
+    download and upload for Chaos Scenarios</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Ready
+    API download for a Chaos Scenario</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Advanced
+    authentication support (LDAP and AD)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Advanced
+    Air Gap Support</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Artifact
+    storage in S3</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p><strong>Chaos
+    Orchestration</strong></p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>Parallel
+    Chaos Scenarions</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Fault-Range
+    support</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Ability
+    to abort chaos</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Event
+    driven chaos orchestration</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Chaos
+    scenarios for Multiple Clusters</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Selecting
+    multiple targets through Tags or Filters or Labels in a chaos scenario</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p><strong>Chaos
+    Collaboration</strong></p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>Basic
+    Chaos Hubs</p></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Ready
+    to use Chaos Scenarios</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Export
+    the chaos scenarios to Chaos Hubs</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Schedule
+    chaos scenarios directly from a Chaos Hub</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Vault
+    integration for Chaos Hubs</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Gameday
+    Portal</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p><strong>Security
+    &amp; Governance</strong></p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>Namespace
+    Whitelisting</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Chaos
+    ACLs</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Service Exclusion</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Enforce
+    Governance around chaos scenario configurations</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Generate
+    Governance Report</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p><strong>Integrations</strong></p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>(MS)Running
+    chaos scenarios in Harness CD pipelines</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>(MS)Running
+    chaos scenarios in Harness CI pipelines</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>(MS)Using
+    Harness SRM SLOs as CE probes</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>(MS)Running
+    Chaos Scenarios in GitLab</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>(MS)Running
+    Chaos Scenarios in Spinnaker</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>(MS)Running
+    Chaos Scenarios in CodeFresh/Jenkins/Bamboo</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>(MS)Chaos
+    Metrics integration into APM (NewRelic, Dynatrace, DataDog, HoneyComb, AppDynamics)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p><em><strong>MS:
+    Manual Scripting</strong></em></p></td><td><p></p></td><td><p></p></td></tr><tr><td><p><strong>Support</strong></p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>Enterprise
+    Support with SLAs</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Air-gap
+    support</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Progressional
+    Services for APM integrations</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Professional
+    Services for CI/CD integrations</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p><strong>Chaos
+    Experiments</strong></p></td><td><p></p></td><td><p></p></td></tr><tr><td><p>Kubernetes
+    Chaos</p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>POD Chaos</p><ul><li>Pod
+    Delete</li><li>Pod DNS Error</li><li>Pod DNS Spoof</li><li>POD IO Stress</li><li>Container
+    Kill</li><li>Disk Fill</li><li>Pod Memory Hod</li><li>Pod CPU Hog</li><li>Pod
+    Network Loss</li><li>Pod Network Partition</li><li>Pod Network Latency</li><li>Pod
+    Network Corruption</li><li>Pod Network Duplication</li><li>Pod HTTP Latency</li><li>Pod
+    Autoscaler</li></ul></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>Node
+    Chaos</p><ul><li>Node Drain</li><li>Node IO Stress</li><li>Node Memory Hog</li><li>Node
+    CPU Hog</li><li>Node Restart</li><li>Node Taint</li></ul></td><td><p>YES</p></td><td><p>YES</p></td></tr><tr><td><p>K8s
+    Node Network Latency</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>K8s
+    Node Network Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>K6
+    Load test for Chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Fortio
+    Load test for Chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Locust
+    Load test for Chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>JMeter
+    Load test for Chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Neoload
+    load test for Chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    Chaos</p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>VMware Disk Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    Process Kill</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    Service Stop</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    Host Reboot</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    Network Latency</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    Network Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    HTTP Chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>VMware
+    run script and stress chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>AWS
+    Chaos</p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>EC2 Kill (EC2
+    instance stop)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>EBS
+    Disk Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>EC2 Process
+    Kill</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>EC2 Network
+    Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>EC2 Network
+    Latency (Jitter/Abort)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>EC2
+    Stress Chaos (CPU/Memory/IO)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>RDS
+    Failures</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>S3 Failures</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>ECS
+    Instance Kill</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>ECS
+    Network Chaos</p><p>(ecs-container-network-latency)</p><p>(ecs-container-network-loss)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>ECS
+    Agent Kill</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>ECS Container
+    Resource Chaos (CPU/Memory/IO)</p><p>1. ecs-container-stress-cpu</p><p>2. ecs-container-stress-mem</p><p>3.
+    ecs-container-stress-io</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>ECS
+    Task performance Degradation</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>ECS
+    Drain Container Instances</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>ECS
+    Task Kill</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>GCP
+    Chaos</p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>Disk Failure</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Instance
+    failure</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Zone Failure</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Network
+    Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>CPU Hog</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Memory
+    Hog</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Cloud SQL Failure</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Hosted
+    Pubsub Failure</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Azure
+    Chaos</p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>Instance Kill</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Azure
+    Disk Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Process
+    Kill</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Instance Network
+    Loss</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Zone Failure</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Instance
+    Network Latency (jitter/abort)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Instance
+    Stress chaos (CPU/Memory/IO)</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>HTTP
+    Chaos (basic)</p><ul><li>latency</li><li>response failure</li><li>reset/connection
+    failure</li></ul></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Azure
+    Web App Stop</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Web
+    App Access Restriction</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>Other
+    Chaos</p></td><td><p> </p></td><td><p> </p></td></tr><tr><td><p>Locust Load Generator</p></td><td><p>NO</p></td><td><p>YES</p></td></tr><tr><td><p>SQL
+    Stress Chaos</p></td><td><p>NO</p></td><td><p>YES</p></td></tr></tbody></table><p> </p><p></p><h3>Next
+    Steps</h3><p>Give Harness Chaos Engineering a try using the <a href="/article/da85u0cbhx-harness-chaos-engineering-quickstart-public-preview">Harness
+    Chaos Engineering Quickstart</a>.</p>'
+  slug: harness-chaos-engineering-basics
+  tags: []
+  is_live: true

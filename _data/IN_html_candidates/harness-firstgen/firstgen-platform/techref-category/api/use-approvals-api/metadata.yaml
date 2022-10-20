@@ -1,0 +1,117 @@
+type: article
+article_id: n43s95h2aj
+user_id: mfr0nxh4be
+category_id: l2p3i03l4a
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Use Approvals API
+slug: use-approvals-api
+description: Query and approve pending Approval steps and stages using Harness approvalDetails
+  GraphQL API.
+short_version: Query and approve pending Approval steps and stages using Harness approvalDetails
+  GraphQL API.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2021-08-18T17:50:12.565094Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use Approvals API
+  description: Query and approve pending Approval steps and stages using Harness approvalDetails
+    GraphQL API.
+  short_version: Query and approve pending Approval steps and stages using Harness
+    approvalDetails GraphQL API.
+  body: '<p>You can query for the pending Approval steps and stages of a Workflow
+    or Pipeline using Harness <code>approvalDetails</code> GraphQL API.</p><p>Once
+    you have found the Approval step or stage, you can use the <code>approveOrRejectApprovals</code>
+    mutation to approve or reject it.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#undefined">Supported Platforms and Technologies</a></li><li><a
+    href="#requirements">Requirements</a></li><li><a href="#step_get_application_and_execution_ids">Step:
+    Get Application and Execution Ids</a></li><li><a href="#step_query_approvals_by_execution">Step:
+    Query Approvals by Execution</a></li><li><a href="#step_approve_or_reject_approval">Step:
+    Approve or Reject Approval</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/0ajz35u2hy-approvals">Harness
+    UI Approvals</a></li><li><a href="/article/qxki6o7y31-jira-based-approvals">Jira
+    Approvals</a></li><li><a href="/article/9nkuhm8moo-service-now-ticketing-system">ServiceNow
+    Approvals</a></li></ul><h3 id="undefined">Supported Platforms and Technologies</h3><p>See <a
+    href="/article/220d0ojx5y-supported-platforms">Supported Platforms and Technologies</a>.</p><h3>Requirements</h3><p>The
+    <code>approvalDetails</code> GraphQL API uses the same RBAC required for the Approval
+    step type. The API can be run using a user session or API key, as described in
+    <a href="/article/2rmd5i0e0h-harness-api-explorer">Harness API Explorer</a>.</p><p>For
+    example, if the Approval is a Harness UI Approval step, you must be a member of
+    the User Group(s) selected as approvers for that step in order to use the API
+    to accept/reject the step.</p><h3>Step: Get Application and Execution Ids</h3><p>To
+    use the <code>approvalDetails</code> API you need the Ids of the Application and
+    Workflow/Pipeline execution where the approval steps/stages are located.</p><p>In
+    the API, you will enter them like this:</p><pre class="hljs graphql">approvalDetails(applicationId:
+    &#34;[Application Id]&#34;, executionId: &#34;[execution Id]&#34;){<br/>...<br/>}</pre><p></p><p>You
+    can get these Ids using the GraphQL API. See:</p><ul><li><a href="/article/0wmvn5dgzn-use-harness-applications-api">Use
+    Harness Applications API</a></li><li><a href="/article/ba4vs50071-use-workflows-api">Use
+    Workflows API</a></li><li><a href="/article/rfqmu6cejy-use-pipelines-api">Use
+    Pipelines API</a></li></ul><p>Also, you can see these Ids in the URL of an execution
+    in the Deployments page.</p><h3>Step: Query Approvals by Execution</h3><p>The
+    following example shows how to query a Workflow execution for all its Approval
+    steps, including all of the available types (Jira, ServiceNow, Shell Script, User
+    Group):</p><pre class="hljs graphql">{<br/>  approvalDetails(applicationId: &#34;_2rA0SO7TE-AAurQv-GiIA&#34;,
+    executionId: &#34;0dyqdgJ0TE2rrHII5JISGw&#34;) {<br/>    approvalDetails {<br/>      approvalId<br/>      approvalType<br/>      stepName<br/>      stageName<br/>      startedAt<br/>      triggeredBy
+    {<br/>        name<br/>        email<br/>      }<br/>      willExpireAt<br/>      ...
+    on UserGroupApprovalDetails {<br/>        approvers<br/>        approvalId<br/>        approvalType<br/>        stepName<br/>        stageName<br/>        startedAt<br/>        executionId<br/>        triggeredBy
+    {<br/>          name<br/>          email<br/>        }<br/>        willExpireAt<br/>        variables
+    {<br/>          name<br/>          value<br/>        }<br/>      }<br/>      ...
+    on ShellScriptDetails {<br/>        approvalId<br/>        approvalType<br/>        retryInterval<br/>        stageName<br/>        stepName<br/>        startedAt<br/>        triggeredBy
+    {<br/>          email<br/>          name<br/>        }<br/>        willExpireAt<br/>      }<br/>      ...
+    on SNOWApprovalDetails {<br/>        approvalCondition<br/>        approvalId<br/>        approvalType<br/>        currentStatus<br/>        rejectionCondition<br/>        stageName<br/>        startedAt<br/>        stepName<br/>        ticketType<br/>        ticketUrl<br/>        triggeredBy
+    {<br/>          email<br/>          name<br/>        }<br/>        willExpireAt<br/>      }<br/>      ...
+    on JiraApprovalDetails {<br/>        approvalCondition<br/>        approvalId<br/>        approvalType<br/>        currentStatus<br/>        issueKey<br/>        issueUrl<br/>        rejectionCondition<br/>        stepName<br/>        stageName<br/>        startedAt<br/>        triggeredBy
+    {<br/>          email<br/>          name<br/>        }<br/>        willExpireAt<br/>      }<br/>    }<br/>  }<br/>}</pre><p></p><p>In
+    this example, the Workflow only contains User Group Approval step (Harness UI
+    Approvals), so the results are for Approval steps of the <code>USER_GROUP</code>
+    type:</p><pre>{<br/>  &#34;data&#34;: {<br/>    &#34;approvalDetails&#34;: {<br/>      &#34;approvalDetails&#34;:
+    [<br/>        {<br/>          &#34;approvalId&#34;: &#34;IyqEFWtTQSer0xcTvoy2SQ&#34;,<br/>          &#34;approvalType&#34;:
+    &#34;USER_GROUP&#34;,<br/>          &#34;stepName&#34;: &#34;Approval_2&#34;,<br/>          &#34;stageName&#34;:
+    null,<br/>          &#34;startedAt&#34;: &#34;1628609788702&#34;,<br/>          &#34;triggeredBy&#34;:
+    {<br/>            &#34;name&#34;: &#34;john.doe@harness.io&#34;,<br/>            &#34;email&#34;:
+    &#34;john.doe@harness.io&#34;<br/>          },<br/>          &#34;willExpireAt&#34;:
+    &#34;1628696188702&#34;,<br/>          &#34;approvers&#34;: [<br/>            &#34;myUserGroup&#34;<br/>          ],<br/>          &#34;executionId&#34;:
+    &#34;0dyqdgJ0TE2rrHII5JISGw&#34;,<br/>          &#34;variables&#34;: null<br/>        },<br/>        {<br/>          &#34;approvalId&#34;:
+    &#34;2AScQdfqSOCYTPdHAsXRsQ&#34;,<br/>          &#34;approvalType&#34;: &#34;USER_GROUP&#34;,<br/>          &#34;stepName&#34;:
+    &#34;Approval&#34;,<br/>          &#34;stageName&#34;: null,<br/>          &#34;startedAt&#34;:
+    &#34;1628609788693&#34;,<br/>          &#34;triggeredBy&#34;: {<br/>            &#34;name&#34;:
+    &#34;john.doe@harness.io&#34;,<br/>            &#34;email&#34;: &#34;john.doe@harness.io&#34;<br/>          },<br/>          &#34;willExpireAt&#34;:
+    &#34;1628696188693&#34;,<br/>          &#34;approvers&#34;: [<br/>            &#34;Account
+    Administrator&#34;<br/>          ],<br/>          &#34;executionId&#34;: &#34;0dyqdgJ0TE2rrHII5JISGw&#34;,<br/>          &#34;variables&#34;:
+    null<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><p></p><p></p><h3>Step:
+    Approve or Reject Approval</h3><p>To approve or reject an Approval step, you need
+    the Application, Execution, and Approval step Ids. The Approval step Id is displayed
+    in the results of the <code>approvalDetails</code> query:</p><pre>{<br/>  &#34;data&#34;:
+    {<br/>    &#34;approvalDetails&#34;: {<br/>      &#34;approvalDetails&#34;: [<br/>        {<br/>          &#34;approvalId&#34;:
+    &#34;IyqEFWtTQSer0xcTvoy2SQ&#34;,<br/>          &#34;approvalType&#34;: &#34;USER_GROUP&#34;,<br/>          &#34;stepName&#34;:
+    &#34;Approval_2&#34;,<br/>...</pre><p></p><p>Once you have the Ids, you use the
+    mutation approveOrRejectApprovals to approve/reject. The <code>approveOrRejectApprovals</code>
+    mutation includes an <code>action</code> parameter where you approve/reject the
+    step/stage.</p><p>The <code>action</code> parameter has two values:</p><ul><li>APPROVE</li><li>REJECT</li></ul><p>Here&#39;s
+    an example:</p><pre>mutation {<br/> approveOrRejectApprovals(input: {<br/>  action:
+    APPROVE<br/>  approvalId: &#34;jupRo7KxTamKSJyR4BXc5A&#34;<br/>  applicationId:
+    &#34;iDnsEHm6SH-3au-yEaeaRA&#34;<br/>  comments: &#34;Testing&#34;<br/>  executionId:
+    &#34;p1AuqRjLTDCrbvBKuENzxQ&#34;<br/>  clientMutationId: &#34;testing&#34;<br/>  })<br/>  {<br/>  success<br/>  clientMutationId<br/>  }<br/>}</pre><p></p><p>If
+    the Approval contains variables, you can provide values for the variable in the
+    mutation using <code>variableInputs</code>:</p><pre class="hljs graphql">mutation
+    {<br/> approveOrRejectApprovals(input: {<br/>  action: APPROVE<br/>  approvalId:
+    &#34;jupRo7KxTamKSJyR4BXc5A&#34;<br/>  applicationId: &#34;iDnsEHm6SH-3au-yEaeaRA&#34;<br/>  comments:
+    &#34;Testing&#34;<br/>  executionId: &#34;p1AuqRjLTDCrbvBKuENzxQ&#34;<br/>  clientMutationId:
+    &#34;testing&#34;<br/>  variableInputs: [ {<br/>    name: &#34;var1&#34;<br/>    value:
+    &#34;var1Value&#34;<br/>  }, <br/>  {<br/>    name: &#34;var2&#34;<br/>    value:
+    &#34;var2Value&#34;}],<br/>  })<br/>  {<br/>  success<br/>  clientMutationId<br/>  }<br/>}</pre><p></p><p>Whether
+    an Approval step is approved/rejected via the GraphQL API is highlighted in the
+    Deployment details:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/n43s95h2aj/1628628401307/clean-shot-2021-08-10-at-13-45-20.png"/></figure><p></p><p></p><p></p>'
+  slug: use-approvals-api
+  tags: []
+  is_live: true

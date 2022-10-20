@@ -1,0 +1,43 @@
+type: article
+article_id: jkmwaj2o9b
+user_id: mfr0nxh4be
+category_id: bz4zh3b75p
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Using Jira and ServiceNow Approval Stages in CD Pipelines
+slug: using-jira-and-service-now-approval-steps-in-cd-stages
+description: You can add Approval stages to your Pipeline and use Jira and ServiceNow
+  steps in the stages as criteria for approvals and rejections. Jira and ServiceNow
+  Approval stages are described in the followi…
+short_version: You can add Approval stages to your Pipeline and use Jira and ServiceNow
+  steps in the stages as criteria for approvals and rejections. Jira and ServiceNow
+  Approval stages are described in the followi…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-12T19:21:23.267317Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Using Jira and ServiceNow Approval Stages in CD Pipelines
+  description: ""
+  short_version: ""
+  body: '<p>You can add Approval stages to your Pipeline and use Jira and ServiceNow
+    steps in the stages as criteria for approvals and rejections.</p><p>Jira and ServiceNow
+    Approval stages are described in the following topics:</p><ul><li><a href="/article/2lhfk506r8-adding-jira-approval-stages">Adding
+    Jira Approval Stages and Steps</a>: add Jira Approval stages and steps.</li><li><a
+    href="/article/h1so82u9ub-service-now-approvals">Adding ServiceNow Approval Steps
+    and Stages</a> for ServiceNow Approval stages and steps.</li></ul><p>You can also
+    use Jira and ServiceNow steps anywhere inside your CD stages.</p><p>For more details,
+    see <a href="/category/qd6woyznd7">Ticketing Systems</a>.</p>'
+  slug: using-jira-and-service-now-approval-steps-in-cd-stages
+  tags: []
+  is_live: true

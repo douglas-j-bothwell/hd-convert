@@ -1,0 +1,184 @@
+type: article
+article_id: x0etkdg62q
+user_id: mfr0nxh4be
+category_id: mfdyp6tf0v
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Create an Azure Web App Canary Deployment
+slug: create-an-azure-web-app-canary-deployment
+description: 'Before You Begin. Visual Summary. Supported Platforms and Technologies.
+  Step 1: Create the Canary Workflow. Name. Workflow Type. Environment. Submit. Step
+  2: Create Phase 1 Step 3: Slot Setup Step. O…'
+short_version: 'Before You Begin. Visual Summary. Supported Platforms and Technologies.
+  Step 1: Create the Canary Workflow. Name. Workflow Type. Environment. Submit. Step
+  2: Create Phase 1 Step 3: Slot Setup Step. O…'
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-08-26T23:32:40.424262Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create an Azure Web App Canary Deployment
+  description: 'Before You Begin. Visual Summary. Supported Platforms and Technologies.
+    Step 1: Create the Canary Workflow. Name. Workflow Type. Environment. Submit.
+    Step 2: Create Phase 1 Step 3: Slot Setup Step. O…'
+  short_version: 'Before You Begin. Visual Summary. Supported Platforms and Technologies.
+    Step 1: Create the Canary Workflow. Name. Workflow Type. Environment. Submit.
+    Step 2: Create Phase 1 Step 3: Slot Setup Step. O…'
+  body: '<p></p><div class="note-callout">Currently, this feature is behind the Feature
+    Flag <code>AZURE_WEBAPP</code>. Contact <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p></p><p>A Harness
+    Azure Web App Canary deployment shifts traffic from one deployment slot to another
+    incrementally.</p><p>First, you select the deployment (live) and target (stage)
+    slots to use. Next, you add Traffic Shift steps to incrementally increase traffic
+    to the target slot.</p><p>Finally, you swap entirely to the target slot, making
+    it the deployment slot for this release. Azure swaps the Virtual IP addresses
+    and URLs of the deployment and target slots.</p><div class="note-callout">You
+    can perform a Web App Canary deployment using a single or multi-phase Workflow.
+    In either method, make sure the <strong>Swap Slot</strong> step is in the <u>final</u>
+    phase of the Workflow.</div><p></p><h3>Before You Begin</h3><p>Make sure you have
+    read the following:</p><ul><li><a href="/article/lluikqw7q7-azure-web-app-deployments-overview">Azure
+    Web App Deployments Overview</a></li><li>Make sure that you have connected Harness
+    to your Azure subscription as described in <a href="/article/e9k7ngaqiu-connect-to-azure-for-web-app-deployments">Connect
+    to Azure and Artifact Repo for Your Web App Deployments</a>.</li><li><a href="/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment">Add
+    Your Docker Image for Azure Web App Deployment</a></li><li><a href="/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment">Add
+    Non-Containerized Artifacts for Azure Web App Deployment</a></li><li><a href="/article/2n35dber6l-define-your-azure-web-app-infrastructure">Define
+    Your Azure Web App Infrastructure</a></li><li><a href="/article/b922byhcn4-azure-web-app-deployment-rollback">Azure
+    Web App Deployment Rollback</a></li></ul><h3>Visual Summary</h3><p>The following
+    short video walks you through a Harness Azure Web App Canary Wokflow setup.</p><div
+    class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/JrPdBERdrl8/hqdefault.jpg"><iframe
+    width="200" height="113" src="https://www.youtube.com/embed/JrPdBERdrl8?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h3>Supported
+    Platforms and Technologies</h3><p>See <a href="/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h3>Step 1: Collect Azure Web App Information</h3><p>The
+    Harness Workflow will use the existing Deployment slots from your Azure Web App.</p><p>In
+    the Azure portal, click your Web App, and then click <strong>Deployment slots</strong>.
+    You can see the Deployment slots for your Web App.</p><p>Click <strong>Swap</strong>.
+    You can see the Source and Target slots.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x0etkdg62q/1612219242264/image.png"/></figure><p>You&#39;ll
+    use these slot names in your Harness Workflow.</p><p><u>Don&#39;t click the</u>
+    <u><strong>Swap</strong></u> <u>button.</u> Click <strong>Close</strong>.</p><h3>Step
+    2: Create the Canary Workflow</h3><p>Next we&#39;ll create a single phase Canary
+    Workflow.</p><div class="note-callout">You can perform a Web App Canary deployment
+    using a single or multi-phase Workflow. In either method, make sure the <strong>Swap
+    Slot</strong> step is in the <u>final</u> phase of the Workflow.</div><p>In your
+    Harness Application, click <strong>Workflows</strong>, and then click <strong>Add
+    Workflow</strong>.</p><p>Enter the following settings and click <strong>Submit</strong>.</p><ul><li><strong>Name:</strong>
+    the name for this Workflow.</li><li><strong>Workflow Type:</strong> select <strong>Canary
+    Deployment</strong>.</li><li><strong>Environment:</strong> select the Harness
+    Environment you added in <a href="/article/2n35dber6l-define-your-azure-web-app-infrastructure">Define
+    Your Azure Web App Infrastructure</a>.</li></ul><h3>Step 3: Create Phase 1</h3><p>In
+    your new Workflow, click <strong>Add Phase</strong>.</p><p>In Workflow Phase,
+    enter the following settings and click <strong>Submit</strong>.</p><ul><li><strong>Service:</strong>
+    select the Harness Service you set up in <a href="/article/8s766bhiec-add-your-docker-image-for-azure-web-app-deployment">Add
+    Your Docker Image for Azure Web App Deployment</a> or <a href="/article/rflkjqxod2-add-a-non-containerized-artifacts-for-azure-web-app-deployment">Add
+    Non-Containerized Artifacts for Azure Web App Deployment</a>.</li><li><strong>Infrastructure
+    Definition:</strong> select the Web App Infrastructure Definition you set up in
+    <a href="/article/2n35dber6l-define-your-azure-web-app-infrastructure">Define
+    Your Azure Web App Infrastructure</a>.</li></ul><p>Harness generate the steps
+    needed for the phase.</p><h3>Step 4: Slot Deployment Step</h3><p>The Slot Deployment
+    step is where you select the Web App and source and target deployment slots for
+    the deployment.</p><p>Open the <strong>Slot Deployment</strong> step.</p><p>Enter
+    the following settings and click <strong>Submit</strong>.</p><ul><li><strong>Name:</strong>
+    enter a name for the step.</li><li><strong>App Service:</strong> select the Azure
+    Web App for deployment. Harness pulls the list of Web Apps using the credentials
+    of the Azure Cloud Provider you selected in the phase&#39;s Infrastructure Definition.</li><li><strong>Deployment
+    Slot:</strong> select the Source slot for the deployment. This slot is where Harness
+    deploys the new Web App version.<div class="note-callout">Make sure the slot you
+    select is running. Harness shows all slots regardless of their status.</div></li><li><strong>Target
+    Slot:</strong> select the Target slot for the deployment. This slot is where Harness
+    will swap the App content and configurations elements during the <strong>Swap
+    Slot</strong> step.<div class="note-callout">Make sure the slot you select is
+    running. Harness shows all slots regardless of their status.</div></li><li><strong>Slot
+    Steady State Timeout:</strong> enter a minimum of <strong>30m</strong>. The slot
+    deployment relies on Azure and can take some time.</li></ul><p>When you are done,
+    the step will look similar to this:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/x0etkdg62q/1612221766698/image.png"/></figure><h3>Option:
+    Use Variable Expressions in Settings</h3><p>You can use built-in Harness or custom
+    Workflow variable expressions in the <strong>Slot Deployment</strong> step. See
+    <a href="/article/766iheu1bk-add-workflow-variables-new-template">Set Workflow
+    Variables</a>.</p><p>Variables are often used for templating the Workflow. See
+    <a href="/article/60j7391eyy-templatize-pipelines">Create Pipeline Templates</a>.</p><h3>Option:
+    Add a Health Check after Slot Setup</h3><p>In the Workflow <strong>Verify Service</strong>
+    section, add a health check to ensure that the Docker container or non-containerized
+    app is running correctly.</p><p>The Slot Deployment step is considered successful
+    once the slot is in a running state.</p><p>A running state does not ensure that
+    your new app is accessible. It can take some time for new content to become available
+    on Azure.</p><p>Also, the slot deployment might succeed but the Docker container
+    or non-containerized artifact could be corrupted.</p><p>A health check after Slot
+    Deployment can ensure a successful deployment.</p><h3>Step 5: Traffic % Step</h3><p>The
+    <strong>Traffic %</strong> step shifts network traffic to the new Web App version
+    in the deployment (source) slot.</p><p><strong>Traffic % steps are</strong> <u><strong>not</strong></u>
+    <strong>cumulative.</strong> If you set 25% in one and 25% in the next one, only
+    25% of traffic is routed.</p><p>Open the <strong>Traffic %</strong> step.</p><p>In
+    <strong>Traffic Percentage</strong>, enter a number (without the % character).</p><p>Click
+    <strong>Submit</strong>.</p><p>You can use multiple <strong>Traffic %</strong>
+    steps to incrementally increase traffic. In-between each Traffic % step, you can
+    add a health check and/or Approval step. Here is an example:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x0etkdg62q/1612296228982/image.png"/></figure><p>The
+    Script in this example is:</p><pre>curl -Is &lt;stage-url&gt; | head -n 1</pre><p></p><p>The
+    Script output is:</p><pre>INFO   2021-02-02 12:01:05    Executing command ...<br/>INFO   2021-02-02
+    12:01:17    HTTP/1.1 200 OK<br/>INFO   2021-02-02 12:01:17    Command completed
+    with ExitCode (0)</pre><h3>Step 6: Swap Slot</h3><div class="note-callout">You
+    can perform a Web App Canary deployment using a single or multi-phase Workflow.
+    In either method, make sure the <strong>Swap Slot</strong> step is in the <u>final</u>
+    phase of the Workflow.</div><p>The final step in the phase is Swap Slot. This
+    step performs the Web App deployment slot swap. It is similar to doing a swap
+    in the Azure portal or via the Azure CLI:</p><pre>az webapp deployment slot swap
+    -n &#34;web app name&#34; -g &#34;resource group name&#34; -s &#34;source slot
+    name&#34; --target-slot &#34;target slot&#34;</pre><p></p><p>Here is an example
+    of the swap in the deployment logs:</p><pre>Sending request for swapping source
+    slot: [stage] with target slot: [production]<br/>Operation name : [Apply Web App
+    Slot Configuration]<br/>Status : [Succeeded]<br/>Description : [Applied configuration
+    settings from slot &#39;Production&#39; to a site with deployment id &#39;anil-demowebapp__f3c3&#39;
+    in slot &#39;stage&#39;]<br/>Operation name : [Microsoft.Web/sites/slots/StartSlotWarmup/action]<br/>Status
+    : [Succeeded]<br/>Description : [Initial state for slot swap operation is (Source
+    slot: &#39;stage&#39;, DeploymentId:&#39;anil-demowebapp__f3c3&#39;) (TargetSlot:
+    &#39;production&#39;, DeploymentId:&#39;anil-DemoWebApp&#39;)&#39;. Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]<br/>Operation
+    name : [Microsoft.Web/sites/slots/StartSlotWarmup/action]<br/>Status : [Succeeded]<br/>Description
+    : [Initial state for slot swap operation is (Source slot: &#39;stage&#39;, DeploymentId:&#39;anil-demowebapp__f3c3&#39;)
+    (TargetSlot: &#39;production&#39;, DeploymentId:&#39;anil-DemoWebApp&#39;)&#39;.
+    Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]<br/>Operation name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]<br/>Status
+    : [Succeeded]<br/>Description : [Finished warming of site with deploymentId &#39;anil-demowebapp__f3c3&#39;]<br/>Operation
+    name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]<br/>Status : [Succeeded]<br/>Description
+    : [Finished warming of site with deploymentId &#39;anil-demowebapp__f3c3&#39;]<br/>Operation
+    name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]<br/>Status : [Succeeded]<br/>Description
+    : [Finished warming of site with deploymentId &#39;anil-demowebapp__f3c3&#39;]<br/>Operation
+    - [Swap Slots] was success<br/>Swapping request returned successfully<br/>Operation
+    name : [Microsoft.Web/sites/slots/EndSlotWarmup/action]<br/>Status : [Succeeded]<br/>Description
+    : [Finished warming of site with deploymentId &#39;anil-demowebapp__f3c3&#39;]<br/>Operation
+    name : [Microsoft.Web/sites/slots/SlotSwap/action]<br/>Status : [Succeeded]<br/>Description
+    : [Finished swapping site. New state is (Slot: &#39;stage&#39;, DeploymentId:&#39;anil-DemoWebApp&#39;),
+    (Slot: &#39;Production&#39;, DeploymentId:&#39;anil-demowebapp__f3c3&#39;)&#39;.
+    Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]<br/>Swapping slots done successfully</pre><p></p><p>The
+    Workflow phase is complete. You can now deploy.</p><h3>Review: Artifact Check
+    Step</h3><p>When you navigate back to the main Workflow view, you will see that
+    an Artifact Check step has been added. Harness adds this step automatically to
+    ensure that the deployment does not proceed unless the artifact can be obtained.</p><h3>Step
+    7: Deploy the Workflow</h3><p>Click <strong>Deploy</strong>, select an artifact,
+    and then click <strong>Submit</strong>.</p><p>The Workflow deploys:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x0etkdg62q/1612296747637/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can see the swap succeeded in the logs:</p><pre>...<br/>Description : [Finished
+    swapping site. New state is (Slot: &#39;stage&#39;, DeploymentId:&#39;anil-DemoWebApp&#39;),
+    (Slot: &#39;Production&#39;, DeploymentId:&#39;anil-demowebapp__f3c3&#39;)&#39;.
+    Operation:db1d5ed2-edba-471d-a8f2-d0421cdbe43f]<br/>Swapping slots done successfully</pre><p></p><p>And
+    the same information is displayed in the Azure portal Activity log:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/x0etkdg62q/1612297242294/image.png"/></figure><p></p><h3>Option:
+    Templatize the Workflow</h3><p>See <a href="/article/60j7391eyy-templatize-pipelines">Create
+    Pipeline Templates</a>.</p><h3>Configure As Code</h3><p>To see how to configure
+    the settings in this topic using YAML, configure the settings in the UI first,
+    and then click the YAML editor button (<strong>&lt;/&gt;</strong>).</p><h3>See
+    Also</h3><ul><li><a href="/article/b922byhcn4-azure-web-app-deployment-rollback">Azure
+    Web App Deployment Rollback</a></li></ul><p></p>'
+  slug: create-an-azure-web-app-canary-deployment
+  tags: []
+  is_live: true

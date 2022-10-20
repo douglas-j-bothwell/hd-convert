@@ -1,0 +1,106 @@
+type: article
+article_id: 7dghbx1dbl
+user_id: wz6xkfcc9i
+category_id: ll7h8ktlwe
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Add Artifact Servers
+slug: configuring-artifact-server
+description: Connect your artifact servers with Harness.
+short_version: Connect your artifact servers with Harness.
+tags:
+- S3
+- Jenkins
+- Bamboo
+- Docker
+- Nexus
+- Artifactory
+- SMB
+- SFTP
+- Helm
+- anonymous access
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:01:47.841656Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Artifact Servers
+  description: Connect your artifact servers with Harness.
+  short_version: Connect your artifact servers with Harness.
+  body: '<p>Harness integrates with many different types of repositories and artifact
+    providers. We call these Artifact Servers, and they help Harness you pull your
+    artifacts during deployments.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#review_artifact_sizes_and_limitations">Review:
+    Artifact Sizes and Limitations</a></li><li><a href="#review_add_aws_s3_and_google_cloud_storage_artifact_servers">Review:
+    Add AWS S3 and Google Cloud Storage Artifact Servers</a></li><li><a href="#review_anonymous_access">Review:
+    Anonymous Access</a></li><li><a href="#add_platform_specific_artifact_servers">Add
+    Platform-Specific Artifact Servers</a></li></ul><h3>Before You Begin</h3><ul><li>See <a
+    href="https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a>.</li></ul><p></p><h3>Review: Artifact Sizes and Limitations</h3><p>Most
+    artifacts are set up in Harness Services using only their metadata, but in some
+    cases, like traditional deployments using ZIP, JAR, or WAR files, the files are
+    uploaded to the Harness cloud.</p><p>Harness has a limit of a 1GB file upload.
+    However, Harness directly streams from the artifact server if the file size is
+    larger (even larger than 25GB).</p><p>For artifacts larger than 1GB, use the <strong>Metadata
+    Only</strong> option in the Harness Service <strong>Artifact Source</strong> settings.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1642545039479/clean-shot-2022-01-18-at-14-30-26-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Review:
+    Add AWS S3 and Google Cloud Storage Artifact Servers</h3><p>Amazon AWS and Google
+    Cloud Platform are added to Harness as <strong>Cloud Providers</strong>, but they
+    may also be used as artifact servers in a Harness Service.</p><p>You simply add
+    them as Cloud Providers, and then when you are adding an artifact in a Harness
+    Service, the AWS S3 and Google Cloud Storage options will be available.</p><p>Here
+    is what the Artifact Source list looks like in a Harness service when AWS S3 and
+    Google Cloud Storage have been as added as Cloud Providers:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/7dghbx1dbl/1538674447613/image.png"/></figure><p>For
+    information on how to add AWS and GCP as Cloud Providers, see <a href="/article/whwnovprrb-infrastructure-providers">Add
+    Cloud Providers</a>.</p><h3>Review: Anonymous Access</h3><p>The following Artifact
+    Servers support anonymous access for Docker images:</p><ul><li>Docker Registry</li><li>Nexus</li><li>Artifactory</li></ul><p>If
+    you are using anonymous access to obtain the artifact for your Service, you should
+    ensure that host running the Harness Delegate has view and read permissions and
+    that the container specification for the deployment platform you are using is
+    set up for anonymous access. For example:</p><ul><li><strong>Kubernetes</strong>
+    - Ensure that <code>imagePullSecrets</code> is removed from the container specification.
+    For more information, see <a href="/article/g3bw9z659p-pull-an-image-from-a-private-registry-for-kubernetes">Pull
+    an Image from a Private Registry for Kubernetes</a>. For Harness version 1 implementation
+    of Kubernetes, <code>imagePullSecrets</code> is added by default. For version
+    2, <code>imagePullSecrets</code> is not added by default.</li><li><strong>ECS</strong>
+    - By default, ECS uses anonymous access. To use a private registry, you must use
+    the RepositoryCredentials property type in the Container Specification. For more
+    information, see <a href="https://docs.harness.io/article/riu73ehy2m-ecs-services#using_private_docker_registry_authentication">Using
+    Private Docker Registry Authentication</a>.</li></ul><p></p><h3>Add Platform-Specific
+    Artifact Servers</h3><p>See the following topics for platform-specific Artifact
+    Servers:</p><ul><li><a href="/article/s4vi1cpfla-add-azure-dev-ops-artifact-servers">Add
+    Azure DevOps Artifact Servers</a></li><li><a href="/article/qa7lewndxq-add-jenkins-artifact-servers">Add
+    Jenkins Artifact Servers</a></li><li><a href="/article/feks6co940-add-bamboo-artifact-servers">Add
+    Bamboo Artifact Servers</a></li><li><a href="/article/tdj2ghkqb0-add-docker-registry-artifact-servers">Add
+    Docker Registry Artifact Servers</a></li><li><a href="/article/6y6b8pkm12-add-nexus-artifact-servers">Add
+    Nexus Artifact Servers</a></li><li><a href="/article/nj3p1t7v3x-add-artifactory-servers">Add
+    Artifactory Artifact Servers</a></li><li><a href="/article/o1ck4eay7a-add-smb-artifact-servers">Add
+    Samba Server Artifact Servers</a></li><li><a href="/article/3d1awjkw57-add-sftp-artifact-servers">Add
+    SFTP Artifact Servers</a></li><li><a href="/article/0hrzb1zkog-add-helm-repository-servers">Add
+    Helm Repository Artifact Servers</a></li></ul><p>You can also use a custom artifact
+    source in a Harness Service that queries your artifact server via its API. See
+    <a href="/article/jizsp5tsms-custom-artifact-source">Using Custom Artifact Sources</a>.</p><p></p>'
+  slug: configuring-artifact-server
+  tags:
+  - S3
+  - Jenkins
+  - Bamboo
+  - Docker
+  - Nexus
+  - Artifactory
+  - SMB
+  - SFTP
+  - Helm
+  - anonymous access
+  is_live: true

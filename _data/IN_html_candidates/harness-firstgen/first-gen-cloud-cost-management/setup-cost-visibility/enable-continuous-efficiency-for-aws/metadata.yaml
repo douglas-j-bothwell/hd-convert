@@ -1,0 +1,244 @@
+type: article
+article_id: 5ql31pdjcm
+user_id: slcpusem6b
+category_id: tj4mzq0vw2
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Set Up Cost Visibility for AWS
+slug: enable-continuous-efficiency-for-aws
+description: Describes how to enable Continuous Efficiency for AWS.
+short_version: Describes how to enable Continuous Efficiency for AWS.
+tags:
+- continuous efficiency
+- Enable Continuous Efficiency for AWS
+- Amazon Services
+- AWS
+- CE
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-05-10T13:20:12.306099Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Cost Visibility for AWS
+  description: Describes how to enable Continuous Efficiency for AWS.
+  short_version: Describes how to enable Continuous Efficiency for AWS.
+  body: '<p>Harness Cloud Cost Management (CCM) monitors the cloud costs of your Amazon
+    Web Services (AWS). Connect your AWS account to Harness to get insights into your
+    expenses across your cloud infrastructure and AWS services, such as EC2, S3, RDS,
+    Lambda, and so on. Harness uses a secure, cross-account role with a restricted
+    policy to access the cost and usage reports and resources for cost analysis.</p><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#prerequisites">Prerequisites</a></li><li><a
+    href="https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#review_aws_access_permissions">Review:
+    AWS Access Permissions</a></li><li><a href="https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#step_connect_to_your_aws_master_account">Step:
+    Connect to Your AWS Master Account</a></li><li><a href="https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#step_optional_provide_access_to_member_accounts">Step
+    (Optional): Provide Access to Member Accounts</a></li><li><a href="https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#troubleshooting">Troubleshooting</a></li><li><a
+    href="https://docs.harness.io/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><p></p><ul><li><a href="/article/rr85306lq8-continuous-efficiency-overview">Cloud
+    Cost Management Overview</a></li><li>Review <a href="/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#review_aws_access_permissions">AWS
+    Access Permissions</a></li><li>The same connector cannot be used in FirstGen and
+    NextGen. NextGen Connectors are recommended for the best experience of CCM capabilities
+    and features. For information on creating an AWS connector in the NextGen see
+    <a href="https://ngdocs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws">Set
+    Up Cloud Cost Management for AWS</a>. </li></ul><div class="note-callout">After
+    enabling CCM, it takes about 24 hours for the data to be available for viewing
+    and analysis.</div><h3>Prerequisites</h3><p>Create an organization that starts
+    with your AWS account as the master account. When you create an organization,
+    you can choose whether the organization supports all features (recommended) or
+    only consolidated billing features. For more information, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_create.html">Creating
+    an organization</a>.</p><h3>Review: AWS Access Permissions</h3><ul><li>If you
+    have a <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html">consolidated
+    billing process</a> enabled, then CCM needs read-only access to the cost and usage
+    reports (CUR) stored in the S3 bucket in the master or payer account. This gives
+    access to the cost data for all the accounts (linked/member) in the organization.</li><li>If
+    you don&#39;t have consolidated billing enabled at the organization level then
+    you can create the CUR at a linked account level.</li><li>If you don&#39;t have
+    access to your master account, contact your IT or security teams to get the following
+    permissions.<br/><ul><li><strong>Master Account</strong>: The following permissions
+    are needed:<ul><li>Provides access to your S3 bucket:<br/><br/><pre> &#34;s3:GetBucketLocation&#34;,<br/>
+    &#34;s3:ListBucket&#34;,<br/> &#34;s3:GetObject&#34;</pre></li><li>Validates CUR
+    parameters:<br/><br/><pre>&#34;cur:DescribeReportDefinitions&#34;</pre></li><li>Provides
+    access to all the linked accounts:<br/><br/><pre>&#34;organizations:Describe*&#34;,<br/><br/>
+    &#34;organizations:List*&#34;</pre></li><li>For more information on the policies,
+    see <a href="https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v2/masterAccount.json">AWS
+    master account template</a>.</li></ul></li><li><strong>Stack Set</strong> (optional):
+    Provide the following permissions to the stack set deployed in your master account.
+    For more information on the policies, see <a href="https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v2/linkedAccount.json">AWS
+    linked account template</a>.<br/><br/><pre>&#34;eks:Describe*&#34;,<br/>&#34;eks:List*&#34;,<br/>&#34;ecs:ListServices&#34;,<br/>&#34;ec2:DescribeInstances&#34;,<br/>&#34;cloudwatch:GetMetricData&#34;,<br/>&#34;ecs:ListTasks&#34;,<br/>&#34;ecs:ListContainerInstances&#34;,<br/>&#34;ecs:DescribeTasks&#34;</pre></li></ul></li><li>You
+    can also limit visibility into specific accounts:<ul><li>Contact the Harness Support
+    team to whitelist or blacklist those accounts for which you want to limit visibility.</li><li>Deploy
+    stack set to those linked accounts for which you want to limit visibility into
+    event collection and watching clusters. However, it is recommended to <a href="/article/5ql31pdjcm-enable-continuous-efficiency-for-aws#step_4_set_deployment_options">deploy
+    a stack set</a> to the entire organization.</li></ul></li></ul><h3>Step: Connect
+    to Your AWS Master Account</h3><p>To enable CCM for your AWS services (such as
+    EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS
+    accounts.</p><p>Perform the following steps to connect to your AWS master account:</p><ol><li>In
+    <strong>Cloud Cost Management</strong>, click <strong>Settings</strong> and then
+    click <strong>Cloud Integration</strong>.</li><li>In <strong>Cloud Integration</strong>,
+    click <strong>Add a AWS billing account</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1604055396644/screenshot-2020-10-30-at-4-25-58-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Connect
+    to your <strong>AWS Master Account</strong>. This involves the following steps:<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593162152900/screenshot-2020-06-26-at-2-32-13-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ol><h4>Step
+    1: Enable Cost and Usage Report (CUR) via AWS console</h4><p>CUR provides detailed
+    billing data across AWS accounts to help you analyze your spend.</p><p>You need
+    to enter the <strong>cost and usage report name</strong> and <strong>cost and
+    usage S3 bucket name</strong> in Harness. To get these details, do the following:</p><ol><li
+    style="counter-increment:li 0" start="1">Log into your <strong>AWS Master Account</strong>
+    via AWS console. To launch the AWS console, click <strong>How to create a Cost
+    and Usage Report (CUR) using Harness required specifications?</strong> and click
+    <strong>Launch AWS Console</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593249865338/screenshot-2020-06-27-at-2-53-51-pm.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>In
+    <strong>AWS Cost and Usage Reports</strong>, click <strong>Create Report</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593247638364/screenshot-2020-06-27-at-12-47-26-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Enter
+    the <strong>Report Name</strong>. This is the CUR name that you need to enter
+    in Harness.</li><li>In <strong>Additional report details</strong>, select the
+    checkbox <strong>Include resource IDs</strong> to include the IDs of each individual
+    resource in the report.</li><li>In <strong>Data refresh settings</strong>, select
+    the checkbox <strong>Automatically refresh your Cost &amp; Usage Report when charges
+    are detected for previous months with closed bills</strong>.</li><li>Click <strong>Next</strong>.<br/><br/>When
+    you are done with the <strong>Report content</strong> step, it will look something
+    like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593149692641/screenshot-2020-06-26-at-11-04-27-am.png"
+    style="max-height:65%;max-width:65%" data-hd-height="65%" data-hd-width="65%"/></figure></li><li>In
+    the <strong>S3 bucket</strong>, click <strong>Configure</strong>.</li><li>In <strong>Configure
+    S3 Bucket</strong>, in <strong>Create a bucket</strong>, enter <strong>S3 bucket
+    name</strong>. This is the cost and usage S3 bucket name that you need to enter
+    in Harness. For more information on S3 bucket naming requirements, see <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html">Amazon
+    S3 Bucket Naming Requirements</a>.</li><li>Select <strong>Region</strong> from
+    the drop-down list and click <strong>Next</strong>. It is recommended to select
+    <strong>US East</strong> (<strong>N. Virginia</strong>).<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593151392665/screenshot-2020-06-26-at-11-32-51-am.png"
+    style="max-height:65%;max-width:65%" data-hd-height="65%" data-hd-width="65%"/></figure></li><li>In
+    <strong>Verify policy</strong>, select the checkbox <strong>I have confirmed that
+    this policy is correct</strong> and click <strong>Save</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593151922204/screenshot-2020-06-26-at-11-41-46-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Enter
+    the report path prefix that you want prepended to the name of your report.</li><li>Select
+    <strong>Hourly</strong> in <strong>Time granularity</strong>.</li><li>Select <strong>Overwrite
+    Existing Report</strong> in <strong>Report versioning</strong>.</li><li>Do not
+    select any value in <strong>Enable report data integration for</strong>.</li><li>Select
+    <strong>GZIP</strong> in the <strong>Compression type</strong>.</li><li>Click
+    <strong>Next</strong>.<br/><br/>When you are done with the <strong>Delivery options</strong>
+    step, it will look something like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593162743786/screenshot-2020-06-26-at-2-41-30-pm.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure></li><li>Review
+    your report details and click <strong>Review and Complete</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593163475420/screenshot-2020-06-26-at-2-54-13-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Enter
+    the <strong>Cost and Usage Report Name</strong> (as entered in step 3) and <strong>Cost
+    and Usage S3 Bucket Name</strong> (as entered in step 8) in Harness.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593163137866/screenshot-2020-06-26-at-2-48-39-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ol><h4>Step
+    2: Create Cross-Account IAM Role using the AWS CloudFormation Template</h4><p>Harness
+    uses the secure cross-account role to access your AWS account. The role includes
+    a restricted policy to access the cost and usage reports and resources for cost
+    analysis. Harness will never modify any of your workloads.</p><ol><li>Click <strong>Follow
+    these instructions</strong> and click <strong>Launch Template</strong>. You can
+    review the template before launching it. To review, click <strong>View Template</strong>.<div
+    class="note-callout">Ensure that you are logged into your AWS master account.
+    The <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">master
+    account</a> is the account that creates the organization.</div></li><li>In <strong>Quick
+    create stack</strong>, in <strong>Capabilities</strong>, select acknowledgment,
+    and click <strong>Create stack</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593245784707/screenshot-2020-06-27-at-1-43-17-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>In
+    the <strong>Stacks</strong> page, from <strong>Outputs</strong> tab copy <strong>Value</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593245956946/screenshot-2020-06-27-at-1-49-02-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><h4>Step
+    3: Provide Cross-Account IAM ARN from the Output of CloudFormation Stack</h4><ol><li>Enter
+    the <strong>Cross-Account Role ARN</strong> that you copied from the <strong>Output</strong>s
+    tab (previous step) in Harness.</li><li>Enter the <strong>Account Name</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593245415855/screenshot-2020-06-27-at-1-40-02-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Click
+    <strong>Save &amp; Continue</strong>.<br/>When you are done, it will look something
+    like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593246109654/screenshot-2020-06-27-at-1-51-31-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ol><h3>Step
+    (Optional): Provide Access to Member Accounts</h3><p>With access to AWS member
+    accounts, CCM provides cost impact data on member accounts events.</p><p>Once
+    setup, the list of the member accounts linked to your AWS master account along
+    with their status is displayed. To provide access to member accounts you need
+    to create an IAM Role using the CloudFormation Template provided in the CCM AWS
+    setup. This IAM role provides access to member accounts.</p><div class="note-callout">The
+    ECS clusters are monitored without creating the connectors. Providing access to
+    linked accounts creates an IAM role to monitor ECS clusters.</div><ol><li>Click
+    <strong>Follow these instructions</strong> and click <strong>Launch Template</strong>.
+    The StackSets settings appear.<br/><br/>StackSets provides IAM access across linked
+    member accounts.<div class="note-callout">Ensure that you are logged into your
+    AWS master account. The <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html">master
+    account</a> is the account that creates the organization.</div></li></ol><h4>Step
+    1: Choose a Template</h4><ol><li>In <strong>Prerequisite - Prepare template</strong>,
+    select <strong>Template is ready</strong>.</li><li>In the <strong>Specify template</strong>,
+    select the <strong>Amazon S3 URL</strong> and enter the following URL and click
+    <strong>Next</strong>.<br/><br/><code>https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/v1/linkedAccount.json</code><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593174190603/screenshot-2020-06-26-at-3-22-41-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ol><h4>Step
+    2: Specify StackSet Details</h4><ol><li>Enter <strong>Stack set name</strong>
+    <code>harness-ce-iam-stackset</code>.</li><li>In <strong>Parameters</strong>,
+    in <strong>ExternalID</strong> enter the External ID. Copy the external ID from
+    Harness. The external ID is generated dynamically for your account, for example,
+    <code>harness:111111111111:lnFZRF6jQO6tQnB9xxXXXx</code> .<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593246295121/screenshot-2020-06-27-at-1-54-38-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>Click
+    <strong>Next</strong>.</li></ol><h4>Step 3: Configure StackSet Options</h4><p>In
+    <strong>Permissions</strong>, select <strong>Service-managed permissions</strong>
+    and click <strong>Next</strong>.</p><div class="note-callout">Ensure that <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">All
+    features</a> feature set is enabled in your AWS organization.</div><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593174664046/screenshot-2020-06-26-at-6-00-15-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><h4>Step
+    4:  Set Deployment Options</h4><ol><li>In <strong>Deployment targets</strong>,
+    select <strong>Deploy to organization</strong> (recommended). You can select <strong>Deploy
+    to Organizational Units (OUs)</strong> to limit the monitoring clusters to a particular
+    OU or a subset of linked accounts.</li><li>In <strong>Automatic deployment</strong>,
+    select <strong>Enabled</strong>.</li><li>In <strong>Account removal behavior</strong>,
+    select <strong>Delete Stacks</strong>.</li><li>Select a <strong>region</strong>
+    from the drop-down list and click <strong>Next</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593175092722/screenshot-2020-06-26-at-6-06-40-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ol><h4>Step
+    5: Review</h4><p>Review the details, select acknowledgment, and click <strong>Submit</strong>.</p><ol><li
+    style="counter-increment:li 1" start="2">In Harness, click <strong>Verify Access</strong>
+    to check the status of the connected member accounts. The following status is
+    displayed:<br/><br/><strong>Connected</strong>: Harness has access to your linked
+    member accounts.<br/><strong>Not Connected</strong>: Harness does not have access
+    to your linked member accounts.<br/><strong>Not Verified</strong>: Harness is
+    not able to verify linked member accounts.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1620840091213/pv-huh-ylaec-ra-44-zze-jq-flt-ai-i-4-j-v-5-qo-2-lq-npw-2-p-5-qjo-7-ys-y-5-m-vexx-2-jj-9-cm-a-lr-8-pdk-jcl-3-j-2-zz-p-h-xuwrf-7-f-2-qpz-u-iod-14-shj-30-pk-qw-7-ovu-5-nt-ba-6-pv-gwuwh-q-5-x-ty-cd-3-ow"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>To
+    modify any of the master account settings, click <strong>Back</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1620840091672/4-q-3-tdybt-ml-mn-8-amb-4-mfu-8713-q-mr-6-daz-6-q-5-h-4-pm-l-6-puzrp-4-y-zpv-uyz-e-6-b-5-q-lqnm-fxwg-eaf-gqb-ftn-64-qdx-nvwju-q-6-ehfdc-o-2-c-afjmc-1-qeo-ye-ww-lmolfzje-8-k-7-vbolo-0-on-s-8-cuh-e"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>When
+    you have provided access to Harness for all of the member accounts you want to
+    analyze, click <strong>Done</strong>.</li><li>The connected AWS master account
+    along with the member account details are displayed.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1620840092092/6-v-khw-3-usr-3-nyol-cd-f-hbi-ma-bsfubkc-wy-3-oyc-7-ky-qdh-aq-4-cam-wnumrb-ba-1-fsa-mub-gmn-ijkgamygoj-fu-1-bu-2-zwrwv-ifs-xsx-tdkmm-8-d-vlf-rl-mx-bwlacp-uhws-6-xo-ygc-s-5-oo-ty-g-i-8-u"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>Use
+    <strong>Has Access</strong>, <strong>No Access</strong>, or <strong>All</strong>
+    filters to sort the members accounts for which Harness has the access.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1620840092474/xe-tjjde-ehu-cga-kla-0-nw-gocke-p-5-hwqlme-e-8-eutm-u-3-r-0-ndo-tdik-4-xj-wr-0-faavl-xv-6-okr-qn-nmsb-voo-6-b-phs-cd-xcmqgdo-9-aebc-3-vi-98-azh-oisffw-mqp-bl-pq-vf-2-khb-6-yf-iepyyn-qde"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li></ol><p>The
+    AWS Cloud Provider is now listed under <strong>Efficiency Enabled</strong>.</p><p>As
+    noted earlier, after enabling CCM, it takes about 24 hours for the data to be
+    available for viewing and analysis in <strong>Cost Explorer</strong>.</p><h3>Troubleshooting</h3><p>If
+    you get <strong>Linked Accounts are in NOT_CONNECTED state</strong> error, try
+    the following:</p><ol><li>Log in to the AWS linked account.</li><li>Check if <code>harnessContinuousEfficiencyRole</code>
+    role exists.<ol><li>If the role exists, check if in the <strong>Trust relationships</strong>:<ol><li>In
+    <strong>Trusted entities</strong>, the account value is updated <code>891xxxxxxx55</code>.</li><li>In
+    <strong>Conditions</strong>, the values for <strong>Condition</strong>, <strong>Key</strong>,
+    and <strong>Value</strong> are updated. The condition of <code>StringEquals</code>
+    on <code>sts:ExternalId</code> = <em><code>&lt;Your Harness AccountId&gt;</code></em>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1599045895448/screenshot-2020-09-02-at-4-54-37-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol></li><li>If
+    the role does not exist, go to the stack creation and create a stack to create
+    the IAM Role.</li></ol></li></ol><h3>Next Steps</h3><ul><li><a href="/article/eeekdk75q2-explorer-walkthrough">Cost
+    Explorer Walkthrough</a></li><li><a href="/article/244q2uv4or-analyze-cost-trends-for-aws">Analyze
+    Cost for AWS</a></li><li><a href="/article/4rq26sszja-analyze-cost-trends-across-clusters">Analyze
+    Cost for Kubernetes</a></li></ul><p></p>'
+  slug: enable-continuous-efficiency-for-aws
+  tags:
+  - continuous efficiency
+  - Enable Continuous Efficiency for AWS
+  - Amazon Services
+  - AWS
+  - CE
+  is_live: true

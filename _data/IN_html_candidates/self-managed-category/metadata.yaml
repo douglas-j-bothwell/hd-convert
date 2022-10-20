@@ -1,0 +1,14 @@
+type: category
+category_id: mm97945oxz
+parent_category_id: ""
+title: Self-Managed Enterprise Edition
+description: On-premises Software
+slug: self-managed-category
+is_featured: false
+icon: https://files.helpdocs.io/i5nl071jo5/other/1622746228090/onprem.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Self-Managed Enterprise Edition
+  description: On-premises Software
+  slug: self-managed-category

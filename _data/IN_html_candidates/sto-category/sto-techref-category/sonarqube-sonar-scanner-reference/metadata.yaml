@@ -1,0 +1,95 @@
+type: article
+article_id: 4qe4h3cl28
+user_id: xwmdbyp4x8
+category_id: m01pu2ubai
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: SonarQube SonarScanner Reference
+slug: sonarqube-sonar-scanner-reference
+description: This topic describes how to configure a step to scan a repository using
+  SonarQube. STO supports all languages supported by SonarScanner.
+short_version: This topic describes how to configure a step to scan a repository using
+  SonarQube. STO supports all languages supported by SonarScanner.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-21T21:33:22.912491Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: SonarQube SonarScanner Reference
+  description: This topic describes how to configure a step to scan a repository using
+    SonarQube. STO supports all languages supported by SonarScanner.
+  short_version: This topic describes how to configure a step to scan a repository
+    using SonarQube. STO supports all languages supported by SonarScanner.
+  body: <p>You can set up a Security step with <a href="https://docs.sonarqube.org/latest/"
+    target="_blank">SonarQube SonarScanner</a> to analyze your code repos and ensure
+    that they are secure, reliable, readable, and modular, among other key attributes.</p><h3>Important
+    Notes</h3><ul><li>STO supports repository scanning only for SonarScanner.</li><li>STO
+    supports all languages supported by SonarScanner.</li><li>Before you scan your
+    repo, make sure that you perform any prerequisites for the language used in your
+    repo. If you are scanning a Java repo with more than one Java file, for example,
+    you must compile <code>.class</code> files before you run the scan.<br/>Go to
+    the <a href="https://docs.sonarqube.org/latest/analysis/languages/overview/" target="_blank">SonarQube
+    language reference</a> for details about specific language requirements.</li></ul><h3>Scan
+    types</h3><p>STO supports the following scan types for SonarQube:</p><ul><li><code>orchestratedScan</code> 
+    — A Security step in the pipeline runs the scan and ingests the results. This
+    is the easiest to set up and supports scans with default or predefined settings.</li><li><code>dataLoad</code> 
+    — The pipeline downloads scan results using the <a href="https://docs.sonarqube.org/latest/extend/web-api/"
+    target="_blank">SonarScanner API</a>.</li><li><code>ingestionOnly</code> — Run
+    the scan in a Run step, or outside the pipeline, and then ingest the results.
+    This is useful for advanced workflows that address specific security needs. See
+    <a href="https://docs.harness.io/article/d24n34qdbk" target="_blank">Ingest scan
+    results into an STO pipeline</a>.</li></ul><h3>Required settings</h3><ul><li><code>product_name</code>
+    = <code>sonarqube</code></li><li><code>scan_type</code> = <code>repository</code></li><li><code>product_config_name</code>
+    = <code>default</code> — Runs a SonarQube scan with default settings.</li><li><code>policy_type</code>
+    — Enter one of the following:<ul><li><code>orchestratedScan</code>  — A Security
+    step in the pipeline runs the scan and ingests the results. This is the easiest
+    to set up and supports scans with default or predefined settings.</li><li><code>dataLoad</code> 
+    — The pipeline downloads scan results using the <a href="https://docs.sonarqube.org/latest/extend/web-api/"
+    target="_blank">SonarScanner API</a>.</li><li><code>ingestionOnly</code> — Run
+    the scan in a Run step, or outside the pipeline, and then ingest the results.
+    This is useful for advanced workflows that address specific security needs. See
+    <a href="https://docs.harness.io/article/ijkyokxrot" target="_blank">Ingest scan
+    results into an STO pipeline</a>.</li></ul></li><li><code>repository_project</code>
+    — The repository name. If you want to scan https://github.com/my-github-account/codebaseAlpha,
+    for example, you would set this to <code>codebaseAlpha</code>.</li><li><code>repository_branch</code>
+    — The git branch to scan. You can specify a hardcoded string or use the runtime
+    variable <a href="https://docs.harness.io/article/576gjpak61-built-in-cie-codebase-variables-reference"
+    target="_blank"><code>&lt;+codebase.branch&gt;</code></a>. This sets the branch
+    based on the user input or trigger payload at runtime.</li></ul><h3><code>ingestionOnly</code>
+    settings</h3><p>For information about setting up an ingestionOnly scan, go to
+    <a href="https://docs.harness.io/article/ijkyokxrot" target="_blank">Ingest scan
+    results into an STO pipeline</a>.</p><h3> <code>orchestratedScan</code> and <code>dataLoad</code>
+    settings</h3><ul><li><code>product_domain</code> — The URL of the SonarQube server.</li><li><code>product_access_token</code>
+    — The access token to communicate with the SonarQube server. You must create a
+    secret for the token and use the format <code>&lt;+secrets.getValue(&#34;secret_name&#34;)&gt;</code>
+    to reference the secret. See <a href="https://docs.harness.io/article/ygyvp998mu">Use
+    Encrypted Text Secrets</a>.<br/>Go to the <a href="https://docs.sonarqube.org/latest/user-guide/user-token/">SonarQube
+    docs</a> for information about creating tokens.</li><li><code>product_project_name</code>—The
+    name of the SonarQube project. This is the also the target name in the Harness
+    UI (Security Tests &gt; Test Targets).</li><li><code>product_project_key</code>
+    — The unique identifier of the SonarQube project you want to scan. Look for <code>sonar.projectKey</code>
+    in the <strong>sonar-project.properties</strong> file.</li><li><code>product_exclude</code>
+    — If you want to exclude some files from a scan, you can set the sonar.exclusions
+    key in your SonarQube project. See <a href="https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/"
+    target="_blank">Narrowing the Focus</a> in the SonarQube docs.</li><li><code>product_java_binaries</code>
+    — When scanning Java, you need to set the <code>sonar.java.binaries</code> key
+    in SonarQube. This is a list of comma-separated paths with the compiled bytecode
+    that correspond to your source files. See <a href="https://docs.sonarqube.org/latest/analysis/languages/java/"
+    target="_blank">Java</a> in the SonarQube docs.</li><li><code>product_java_libraries</code>
+    — <code>sonar.java.binaries</code> is a comma-separated list of paths to files
+    with third-party libraries (JAR or Zip files) used by your project. See <a href="https://docs.sonarqube.org/latest/analysis/languages/java/"
+    target="_blank">Java</a> in the SonarQube docs.</li></ul><p></p><p></p>
+  slug: sonarqube-sonar-scanner-reference
+  tags: []
+  is_live: true

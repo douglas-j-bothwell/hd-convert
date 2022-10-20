@@ -1,0 +1,150 @@
+type: article
+article_id: pe7vgjs6sv
+user_id: mfr0nxh4be
+category_id: cwefyz0jos
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Export Deployment Logs
+slug: export-deployment-logs
+description: This content is for Harness FirstGen. Switch to NextGen. Large enterprises
+  are highly regulated and auditing the deployments happening in their environments
+  is critical. These audits might take into…
+short_version: This content is for Harness FirstGen. Switch to NextGen. Large enterprises
+  are highly regulated and auditing the deployments happening in their environments
+  is critical. These audits might take into…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T21:07:28.535791Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Export Deployment Logs
+  description: ""
+  short_version: ""
+  body: '<p></p><div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/0slo2gklsy">NextGen</a>.</div><p>Large enterprises
+    are highly regulated and auditing the deployments happening in their environments
+    is critical. These audits might take into account deployment information across
+    years.</p><p>Harness provides advanced auditing in the Harness Manager, as described
+    in <a href="/article/kihlcbcnll-audit-trail">Audit Trail</a>, and deployment information
+    in the <strong>Deployments</strong> page and <a href="/article/c3s245o7z8-main-and-services-dashboards">dashboards</a>,
+    but large enterprises want to save deployment information to their centralized
+    archives for years to come.</p><p>Harness includes deployment exports to serve
+    this need. Deployment exports give you control over what is stored and audited
+    and allows you to save deployment information in your archives.</p><p>Harness
+    also provides an API for deployment exports, enabling you to extract logs programmatically.</p><p></p><h3>Before
+    You Begin</h3><p>Familiarize yourself with the different ways Harness displays
+    deployment information:</p><ul><li> <a href="/article/rxlbhvwe6q-custom-dashboards">Custom
+    Dashboards</a></li><li> <a href="/article/c3s245o7z8-main-and-services-dashboards">Main
+    and Services Dashboards</a></li><li> <a href="/article/kihlcbcnll-audit-trail">Audit
+    Trail</a></li><li> <a href="/article/tm0w6rruqv-harness-api">Harness API</a></li></ul><h3>Limitations</h3><ul><li>Exports
+    are limited to 25 exports per day.</li><li>There is a limit of 1000 deployments
+    per export. You can use the Deployments page filtering to control how many deployments
+    are in each log.</li><li>Anyone can use the export file download link from Harness
+    to download the logs. There is no authentication. You can specify the Harness
+    User Group to notify in Harness Manager and in the API (<code>userGroupIds</code>).</li><li>Export
+    log download links expire 72 hours after they are generated.</li><li>There is
+    a hard limit of 25MB for logs produced by 1 Workflow step. Logs beyond this limit
+    will be skipped and not available for download as well.</li></ul><h3>Review: Export
+    Process</h3><p>There are two options for exporting deployment logs from Harness:</p><ul><li>Harness
+    Manager</li><li>Harness API</li></ul><p>In both options, the process is:</p><ol><li>Once
+    you export logs from Harness, Harness is notified of your request.</li><li>Harness
+    processes your request in the background.</li><li>Once Harness is finished:<ol><li>If
+    you are using the Harness Manager: Harness sends you an email or Slack message
+    with a link to your log file. You can specify the Harness User Group to notify.</li><li>If
+    you using the Harness API, the <code>status</code> field is updated with <code>READY</code>.</li></ol></li><li>You
+    can then download the log archive file.</li></ol><h3>Option 1: Export Using the
+    Harness Manager</h3><p>In the Harness Manager <strong>Deployments</strong> page,
+    you filter all deployments to get the exact deployments you want to export, specify
+    which Harness User Groups to notify when Harness has the export file, and then
+    export the logs.</p><p>Next, you check email or Slack to get the download link.</p><h4>Filter
+    Deployments</h4><p>In the Harness Manager, filter the deployment logs before exporting.
+    This ensures that you have exactly the deployment logs you want.</p><ol><li>In
+    <strong>Deployments</strong>, click the filter button to show the filter settings.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591385908381/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Use
+    the filter settings to get the exact logs you want to export. Be sure to use the
+    <strong>Filter by</strong> and <strong>Filter by Time</strong> settings to control
+    which deployments you download and their date range.</li></ol><p>Once you have
+    the deployments you want to export, you can begin the export process.</p><h4>Export
+    Deployment Logs</h4><ol><li>In the <strong>Deployments</strong> page, click the
+    options button and click <strong>Export Deployment Logs</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591313079229/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Export Deployment Logs</strong>, specify the Harness User Groups to notify
+    when the log file is ready.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591313106673/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>The
+    User Groups are notified using their email and/or Slack settings, as described
+    in <a href="/article/kf828e347t-notification-groups">Manage User Notifications</a>.</li><li>Click
+    <strong>Submit</strong>.</li></ol><p></p><h4>Download Log File</h4><p>Check the
+    User Group&#39;s email or Slack channels (or other notification tools) for the
+    Export Execution Logs message:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591312072294/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>As
+    you can see, the message has a <strong>Download link</strong>. Click that link
+    to download the log archive.</p><h3>Option 2: Export Using the Harness API</h3><p>You
+    can use Harness API mutation <code>exportExecutions</code> to fetch your deployment
+    logs. It provides all of the same options as the Harness Manager.</p><p><code>exportExecutions</code>
+    includes the following arguments:</p><pre>clientMutationId: String<br/><br/>filters:
+    [ExecutionFilter!]<br/>  Execution filters<br/><br/>notifyOnlyTriggeringUser:
+    Boolean<br/>  Notify only the triggering user<br/><br/>userGroupIds: [String!]<br/>  User
+    group ids</pre><p>You will use these arguments to specify the deployment logs
+    you want. You can also use <code>Executionfilter</code> fields to control which
+    deployments you download and their date range.</p><p>Here&#39;s an example that
+    downloads an Application&#39;s deployments and uses the <code>startTime</code>
+    field to filter:</p><p></p><pre>mutation {<br/>  exportExecutions(input: {<br/>    clientMutationId:
+    &#34;gqahal-test&#34;<br/>    filters: [<br/>      {application: {operator: IN,
+    values: [&#34;ekftWF9jQRewZt7FhM7KTw&#34;]}},<br/>      {startTime: {operator:
+    AFTER, value: 1590969600000}},<br/>    ]<br/>    userGroupIds: &#34;HhsqnZRlSCyqTxhVNCqzfA&#34;<br/>  })
+    {<br/>    clientMutationId<br/>    requestId<br/>    status<br/>    totalExecutions<br/>    triggeredAt<br/>    downloadLink<br/>    expiresAt<br/>    errorMessage<br/>  }<br/>}</pre><div
+    class="note-callout">The <code>clientMutationId</code> option is simply used here
+    to demonstrate the case where multiple clients are making updates.</div><p>Note
+    the use of <code>userGroupIds</code> to indicate which Harness User Group to notify
+    via its <a href="/article/kf828e347t-notification-groups">Notification Settings</a>.
+    You can get the ID using the API queries <code>userGroup</code> or <code>userGroupByName</code>
+    or from the Harness Manager URL when looking at the User Group.</p><p>Here is
+    the example response:</p><p></p><pre>{<br/>  &#34;data&#34;: {<br/>    &#34;exportExecutions&#34;:
+    {<br/>      &#34;clientMutationId&#34;: &#34;gqahal-test&#34;,<br/>      &#34;requestId&#34;:
+    &#34;o63US8waSImWhoEnlDAEcg&#34;,<br/>      &#34;status&#34;: &#34;QUEUED&#34;,<br/>      &#34;totalExecutions&#34;:
+    2,<br/>      &#34;triggeredAt&#34;: 1591390258752,<br/>      &#34;downloadLink&#34;:
+    &#34;https://pr.harness.io/export-logs/api/export-executions/download/o63US8waSImWhoEnlDAEcg?accountId=kmpySmUISimoRrJL6NL73w&#34;,<br/>      &#34;expiresAt&#34;:
+    1591660258751,<br/>      &#34;errorMessage&#34;: null<br/>    }<br/>  }<br/>}</pre><p>Here
+    is a screenshot showing them together:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591390326545/image.png"/></figure><p>The
+    <code>downloadLink</code> field contains the link to your export log archive.</p><p>Look
+    for the <code>status</code> code in the results. It will show <code>&#34;status&#34;:
+    &#34;QUEUED&#34;</code> until the export is ready.</p><p>There are four statuses:</p><ul><li>EXPIRED</li><li>FAILED</li><li>QUEUED</li><li>READY</li></ul><p>When
+    the export is ready, it will show <code>&#34;status&#34;: &#34;READY&#34;</code>.</p><p>When
+    the status code is READY you can download the log archive using the link.</p><h3>Step
+    1: Examine the Log Files</h3><p>Once you have downloaded and extracted the log
+    archive, you will have the folder named <strong>HarnessExecutionsLogs</strong>.</p><p>Inside,
+    you will see separate folders for each deployment:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591312492487/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    folder name shows the deployment timestamp and unique ID.</p><p>Open a folder
+    and you will see that each deployment step has a different log file.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591312698611/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>These
+    correspond to the deployment steps and subcommands displayed in the Harness <strong>Deployments</strong>
+    page.</p><p>The README file contains a summary of all log files.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/pe7vgjs6sv/1591312795135/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Open
+    a log file and you will see the deployment information for the step subcommands.</p><p></p><h3>Step
+    2: Use the JSON Export File</h3><p>In each deployment folder there is a file named
+    <strong>execution.json</strong>.</p><p>The execution.json file contains your entire
+    Pipeline or Workflow structure, all Workflow steps and subcommands, Services,
+    artifacts, Harness Delegates, and so on.</p><p>The execution log file for each
+    subcommand is listed also:</p><pre class="hljs json">...<br/>            &#34;subCommands&#34;
+    : [ {<br/>              &#34;name&#34; : &#34;Execute&#34;,<br/>              &#34;type&#34;
+    : &#34;COMMAND&#34;,<br/>              &#34;status&#34; : &#34;FAILURE&#34;,<br/>              &#34;executionLogFile&#34;
+    : &#34;Shell Script_Execute_Oc8AGrsXR6KimnFPTN97AgXlt2.log&#34;<br/>            }
+    ],<br/>...</pre><p></p><p></p><p></p>'
+  slug: export-deployment-logs
+  tags: []
+  is_live: true

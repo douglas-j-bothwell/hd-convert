@@ -1,0 +1,32 @@
+type: article
+article_id: ya3k60jffy
+user_id: slcpusem6b
+category_id: uepsjmurpb
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Create Expressions
+slug: create-expressions
+description: ""
+short_version: ""
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T17:10:35.223115Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create Expressions
+  description: ""
+  short_version: ""
+  body: ""
+  slug: create-expressions
+  tags: []
+  is_live: true

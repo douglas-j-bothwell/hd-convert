@@ -1,0 +1,50 @@
+type: article
+article_id: ox5ewy2sf4
+user_id: x5amubrz4l
+category_id: mizega9tt6
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: AMI/ASG Deployments How-tos
+slug: ami-deployments-overview
+description: Links to Harness' deployment guides covering AMI (Amazon Machine Image)
+  Basic, Canary, and Blue/Green deployments.
+short_version: Links to Harness' deployment guides covering AMI (Amazon Machine Image)
+  Basic, Canary, and Blue/Green deployments.
+tags:
+- AMI
+- Amazon Machine Image
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:38.37062Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: AMI/ASG Deployments How-tos
+  description: Links to Harness' deployment guides covering AMI (Amazon Machine Image)
+    Basic, Canary, and Blue/Green deployments.
+  short_version: Links to Harness' deployment guides covering AMI (Amazon Machine
+    Image) Basic, Canary, and Blue/Green deployments.
+  body: <p>Harness&#39; AMI deployment guides walk you through deploying Amazon Machine
+    Images to AWS (Amazon Web Services). </p><ol><li><a href="/article/rd6ghl00va-ami-deployment">AMI
+    Basic Deployment</a></li><li><a href="/article/agv5t7d156-ami-canary">AMI Canary
+    Deployment</a></li><li><a href="/article/vw71c7rxhp-ami-blue-green">AMI Blue/Green
+    Deployment</a></li></ol><p>For an overview of AWS AMI deployments, see <a href="/article/aedsdsw9cm-aws-ami-deployments-overview">AWS
+    AMI Deployments Overview</a>.</p><p>For steps on using provisioners as part of
+    the deployment, see <a href="/article/o22jx8amxb-add-an-infra-provisioner">Infrastructure
+    Provisioners Overview</a>.</p><h3>Only Private AMIs are Supported</h3><p>Harness
+    only supports private AMIs.</p><p>AWS EC2 allows you to share an AMI so that all
+    AWS accounts can launch it. AMIs shared this way are called public AMIs. Harness
+    does not support public AMIs.</p><p></p>
+  slug: ami-deployments-overview
+  tags:
+  - AMI
+  - Amazon Machine Image
+  is_live: true

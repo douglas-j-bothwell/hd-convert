@@ -1,0 +1,48 @@
+type: article
+article_id: 2zxfjt67yb
+user_id: x5amubrz4l
+category_id: zxxvl8vahz
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: AppDynamics Verification Overview
+slug: app-dynamics-verification-overview
+description: Overview of adding AppDynamics to Harness' monitoring features (Deployment
+  Verification and 24/7 Service Guard).
+short_version: Overview of Harness' AppDynamics integration.
+tags:
+- AppDynamics
+- Deployment Verification
+- Verification Provider
+- APM
+- application performance monitoring
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:47.072963Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: AppDynamics Verification Overview
+  description: Overview of adding AppDynamics to Harness' monitoring features (Deployment
+    Verification and 24/7 Service Guard).
+  short_version: Overview of Harness' AppDynamics integration.
+  body: |-
+    <p>This topic introduces you to integrating AppDynamics with Harness&#39; Continuous Verification features. Once integrated, you can use AppDynamics to monitor your deployments and production applications using Harness&#39; semi-supervised machine-learning functionality. Sections in this topic:</p><ul><li><a href="#integration_overview">Integration Overview</a></li><li><a href="#setup_preview">Setup and Verification Preview</a></li><li><a href="#next_step">Next Step</a></li></ul><p>If you are looking for How-tos, see:</p><ul><li><a href="/article/cqy0jmm71h-1-app-dynamics-connection-setup">Add AppDynamics as a Verification Provider</a></li><li><a href="/article/i6f2irsz9v-2-24-7-service-guard-for-app-dynamics">Monitor Applications 24/7 with AppDynamics</a></li><li><a href="/article/ehezyvz163-3-verify-deployments-with-app-dynamics">Verify Deployments with AppDynamics</a></li><li><a href="/article/yyi1c69jeq-templatize-app-dynamics-verification">Templatize AppDynamics Verification</a></li><li><a href="/article/e1qar9w373-app-dynamics-environment-variables">Set AppDynamics Environment Variables</a></li></ul><div class="hd--md" data-hd-markdown="&lt;span id=&#34;integration_overview&#34;&gt;&lt;/span&gt;"><p><span id="integration_overview"></span></p>
+    </div><h3>Integration Overview</h3><p>AppDynamics enables you to monitor and manage your entire application-delivery ecosystem, from client requests straight through to your networks, backend databases, and application servers.</p><p>Harness Continuous Verification integrates with AppDynamics to verify your deployments and live production applications using the following Harness features:</p><ul><li><strong>24/7 Service Guard</strong> - Monitors your live, production applications.</li><li><strong>Deployment Verification</strong> - Monitors your application deployments, and performs automatic rollback according to your criteria.</li></ul><p></p><table><tbody><tr><td><p><strong>Microservices Environment using AppDynamics</strong></p></td><td><p><strong>Harness Verification and Impact Analysis</strong></p></td></tr><tr><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1535563254909/image.png"/></figure></td><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/ps716zaurs/1535563268193/image.png"/></figure></td></tr></tbody></table><p></p><div class="note-callout">Harness does not support <a href="https://www.appdynamics.com/lite/" target="_blank">AppDynamics Lite</a>. If you set up AppDynamics with Harness using an AppDynamics Pro Trial account and the trial expires, you will be using AppDynamics Lite and it will not work with Harness.<br/><br/>If you require more flexibility than the standard integration outlined here, you also have the option to <a href="/article/w7tcb2frp9-connect-to-app-dynamics-as-a-custom-apm">AppDynamics as a Custom APM</a>.</div><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;setup_preview&#34;&gt;&lt;/span&gt;"><p><span id="setup_preview"></span></p>
+    </div><h3 id="setup_overview">Setup and Verification Preview</h3><p>You set up AppDynamics and Harness as follows:</p><ol><li><strong>AppDynamics</strong> – These instructions assume that you are already using AppDynamics to monitor your application.</li><li><strong>Harness Application</strong> – Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See <a href="/article/bucothemly-application-configuration">Create an Application</a>.</li><li><strong>​Verification Provider Setup</strong> – In Harness, you connect Harness to your AppDynamics account, adding AppDynamics as a <a href="/article/cqy0jmm71h-1-app-dynamics-connection-setup">Harness Verification Provider</a>.<br/><br/>A Verification Provider is a connection to monitoring tools such as AppDynamics. Once Harness is connected, you can use Harness 24/7 Service Guard and Deployment Verification with your AppDynamics data and analysis.</li><li><strong>​24/7 Service Guard Setup</strong> – In the Environment, set up 24/7 Service Guard to monitor your live, production application.</li></ol><p>After completing this setup, you&#39;ll be able to <a href="/article/2la30ysdz7-deployment-verification-results">verify deployments</a> as follows:</p><ol><li>Add a Workflow to your Harness Application, and deploy your microservice or application to your configured Environment.</li><li>After you have run a successful deployment, you then add verification steps to the Workflow using your Verification Provider.</li><li>Harness uses semi-supervised machine-learning and AppDynamics analytics to analyze your future deployments, discovering events that might be causing your deployments to fail. You can use this information to set rollback criteria, and to improve your deployments.</li></ol><div class="hd--md" data-hd-markdown="&lt;span id=&#34;next_step&#34;&gt;&lt;/span&gt;"><p><span id="next_step"></span></p>
+    </div><h3>Next Step</h3><ul><li><a href="/article/cqy0jmm71h-1-app-dynamics-connection-setup">Add AppDynamics as a Verification Provider</a></li></ul><p></p>
+  slug: app-dynamics-verification-overview
+  tags:
+  - AppDynamics
+  - Deployment Verification
+  - Verification Provider
+  - APM
+  - application performance monitoring
+  is_live: true

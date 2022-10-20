@@ -1,0 +1,14 @@
+type: category
+category_id: yb32qiprs8
+parent_category_id: ""
+title: Release Notes
+description: ""
+slug: release-history
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1605114443552/release-history.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Release Notes
+  description: ""
+  slug: release-history

@@ -1,0 +1,89 @@
+type: article
+article_id: 2chyf1acil
+user_id: mfr0nxh4be
+category_id: kncngmy17o
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add a Stage
+slug: add-a-stage
+description: This functionality is limited temporarily to the platforms and settings
+  you can see. More functionality for this feature is coming soon. A Stage is a subset
+  of a Pipeline that contains the logic to p…
+short_version: This functionality is limited temporarily to the platforms and settings
+  you can see. More functionality for this feature is coming soon. A Stage is a subset
+  of a Pipeline that contains the logic to p…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:48:34.612709Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add a Stage
+  description: ""
+  short_version: ""
+  body: '<p></p><div class="note-callout">This functionality is limited temporarily
+    to the platforms and settings you can see. More functionality for this feature
+    is coming soon.</div><p>A Stage is a subset of a Pipeline that contains the logic
+    to perform one major segment of the Pipeline process. Stages are based on the
+    different milestones of your Pipeline, such as building, approving, and delivering.</p><p>Adding
+    a stage to your Pipeline is the same across all Harness modules (CD, CI, etc).
+    When you add a stage you select the module you want to use.</p><p>The module you
+    select determines the stage settings.</p><h3>Before You Begin</h3><ul><li><a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li><li><a href="/article/36fw2u92i4-create-an-organization">Create
+    Organizations and Projects</a></li></ul><p></p><h3>Step 1: Create a Pipeline</h3><p>This
+    topic assumes you have a Harness Project set up. If not, see <a href="/article/36fw2u92i4-create-an-organization">Create
+    Organizations and Projects</a>.</p><p>You can create a Pipeline from any module
+    in your Project, and then add stages for any module.</p><p>This topic shows you
+    how to create a Pipeline from the CI module. To do this, perform the below steps:</p><p>In
+    Harness, click <strong>Builds</strong> and then click <strong>Pipelines</strong>.</p><p>Click
+    <strong>Pipeline</strong>. The new Pipeline settings appear.</p><p>Enter <strong>Name</strong>,
+    <strong>Description</strong>, <strong>Tags</strong>, <strong>and Timeout</strong>
+    for your Pipeline.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/2chyf1acil/1629380298806/screenshot-2021-08-19-at-7-07-29-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click
+    <strong>Start</strong>. Now you&#39;re ready to add a stage.</p><h3>Step 2: Add
+    a Stage</h3><p>Click <strong>Add Stage</strong>. The stage options appear.</p><p>Select
+    a stage type and follow its steps.</p><p>The steps you see depend on the type
+    of stage you selected.</p><div class="note-callout">Don&#39;t see the module you
+    want? You can enable modules in your Project Overview. See <a href="/article/36fw2u92i4-create-an-organization">Create
+    Organizations and Projects</a>.</div><p>Enter a name for the stage.</p><p>You
+    can add a name when you create the stage, but you can edit the name in the <strong>Overview</strong>
+    section of the stage anytime.</p><p>Changing the stage name doesn&#39;t change
+    the stage identifier (Id). The stage identifier is created when you first name
+    the stage and it cannot be changed. See <a href="/article/li0my8tcz3-entity-identifier-reference">Entity
+    Identifier Reference</a>.</p><p>For CD stages, you can select a deployment type.
+    A Stage can deploy Services, and other workloads. Select the type of deployment
+    this Stage performs.</p><h3>Option: Stage Variables</h3><p>Once you&#39;ve created
+    a stage, its settings are in the <strong>Overview</strong> tab. For example, here&#39;s
+    the <strong>Overview</strong> tab for a Deploy stage:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/2chyf1acil/1631221583537/clean-shot-2021-09-09-at-14-06-11.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>Advanced</strong>, you can add <strong>Stage Variables</strong>.</p><p>Stage
+    variables are custom variables you can add and reference in your stage and Pipeline.
+    They&#39;re available across the Pipeline. You can override their values in later
+    stages.</p><p>You can even reference stage variables in the files fetched at runtime.</p><p>For
+    example, you could create a stage variable <code>name</code> and then reference
+    it in the Kubernetes values.yaml file used by this stage: <code>name: &lt;+stage.variables.name&gt;</code>:</p><pre>name:
+    &lt;+stage.variables.name&gt;<br/>replicas: 2<br/><br/>image: &lt;+artifact.image&gt;<br/>...</pre><p></p><p>When
+    you run this Pipeline, the value for <code>name</code> is used for the values.yaml
+    file. The value can be a Fixed Value, Expression, or Runtime Input.</p><p>You
+    reference stage variables <strong>within their stage</strong> using the expression
+    <code>&lt;+stage.variables.[variable name]&gt;</code>.</p><p>You reference stage
+    variables <strong>outside their stage</strong> using the expression <code>&lt;+pipeline.stages.[stage
+    Id].variables.[variable name]&gt;</code>.</p><h3>Option: Advanced Settings</h3><p>In
+    <strong>Advanced</strong>, you can use the following options:</p><ul><li><a href="/article/i36ibenkq2-step-skip-condition-settings">Stage
+    Conditional Execution Settings</a></li><li><a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    Failure Strategy Settings</a></li></ul><h3>Option: Running Stages in Parallel</h3><p>You
+    can drag stages on top of each other to run them in parallel:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/2chyf1acil/1654291485234/clean-shot-2022-06-03-at-14-24-20.png"/></figure><h3>See
+    Also</h3><ul><li><a href="/article/36fw2u92i4">Create Organizations and Projects</a></li></ul><p></p>'
+  slug: add-a-stage
+  tags: []
+  is_live: true

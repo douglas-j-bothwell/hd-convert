@@ -1,0 +1,63 @@
+type: article
+article_id: gl8y89hpdx
+user_id: mfr0nxh4be
+category_id: gkuygzkid4
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Drone and Harness
+slug: drone-and-harness
+description: Drone over the past decade has flourished through its vibrant open source
+  community with over 100m pulls on DockerHub, 50,000+ active users, and 250+ contributors.
+  Drone was acquired by Harness in 20…
+short_version: Drone over the past decade has flourished through its vibrant open
+  source community with over 100m pulls on DockerHub, 50,000+ active users, and 250+
+  contributors. Drone was acquired by Harness in 20…
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-06T19:04:43.155682Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Drone and Harness
+  description: ""
+  short_version: ""
+  body: <p>Drone over the past decade has flourished through its vibrant open source
+    community with over 100m pulls on DockerHub, 50,000+ active users, and 250+ contributors.</p><p>Drone
+    was acquired by Harness in 2020 and is now part of <a href="https://harness.io/continuous-integration/"
+    target="_blank">Harness CI</a>.</p><p>See <a href="https://harness.io/blog/featured/harness-acquires-ci-pioneer-drone-io-and-commits-to-open-source/"
+    target="_blank">Harness Acquires CI Pioneer Drone.io and Commits to Open Source</a>
+    and <a href="https://harness.io/customers/case-studies/reduce-developer-toil/"
+    target="_blank">Lavasoft Reduces Developer Toil by 94% Using Drone and Harness</a>.</p><p>Together
+    with Drone, Harness provides a CI/CD platform that is both simple and powerful
+    for engineers to deliver software.</p><p>In the near future, Harness CI will be
+    built to eliminate engineer toil, scripting, version dependencies, time, cost,
+    and complexity. We want to empower engineers to focus on delivering innovation
+    for their business rather than manually building software delivery pipelines.</p><h3>Drone
+    Documentation</h3><p>You can start CI with Drone and Harness today.</p><p>See
+    <a href="https://docs.drone.io/" target="_blank">Drone Documentation</a> and the
+    <a href="http://plugins.drone.io/" target="_blank">Drone Plugins Registry</a>.</p><p>Here
+    is a quick walkthrough of using Drone with Harness:</p><p></p><div class="hd--embed"
+    data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe
+    width=" 480" height="270" src="https://www.youtube.com/embed/kZmOCLCpvmk?feature=oembed"
+    frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><h3>Drone Overview</h3><p>Here
+    is a quick introduction to Drone:</p><p></p><div class="hd--embed" data-provider="YouTube"
+    data-thumbnail="https://i.ytimg.com/vi/f5QW667z8DM/hqdefault.jpg"><iframe width="
+    480" height="270" src="https://www.youtube.com/embed/f5QW667z8DM?feature=oembed"
+    frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><p></p><h3>Harness
+    CI Enterprise</h3><p>The following presentation covers the basics of the soon-to-be-released
+    Harness CI Enterprise offering:</p><p></p><div class="hd--embed" data-provider="YouTube"
+    data-thumbnail="https://i.ytimg.com/vi/U4XS7DgvjJ0/hqdefault.jpg"><iframe width="
+    480" height="270" src="https://www.youtube.com/embed/U4XS7DgvjJ0?feature=oembed"
+    frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><p></p>
+  slug: drone-and-harness
+  tags: []
+  is_live: true

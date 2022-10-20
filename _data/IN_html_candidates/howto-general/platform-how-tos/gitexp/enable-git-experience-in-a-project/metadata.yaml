@@ -1,0 +1,240 @@
+type: article
+article_id: hzajxmb3oj
+user_id: mfr0nxh4be
+category_id: 236edhb63y
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Configure Git Sync in Harness (Deprecated)
+slug: enable-git-experience-in-a-project
+description: Harness Git Experience syncs your Harness Projects and all of their Pipelines
+  and resources with one or more Git repos.
+short_version: Harness Git Experience syncs your Harness Projects and all of their
+  Pipelines and resources with one or more Git repos.
+tags:
+- 2-way sync to github
+- gitsync
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T22:33:29.68208Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Configure Git Sync in Harness (Deprecated)
+  description: Harness Git Experience syncs your Harness Projects and all of their
+    Pipelines and resources with one or more Git repos.
+  short_version: Harness Git Experience syncs your Harness Projects and all of their
+    Pipelines and resources with one or more Git repos.
+  body: '<div class="note-callout">This version of Harness Git Experience has been
+    deprecated. To try out the latest version of Git Experience, see <a href="/article/grfeel98am">Harness
+    Git Experience Quickstart.​​</a>​</div><p>Harness Git Experience syncs one or
+    more Git repositories with your Harness Projects, including all of their Pipelines
+    and their <a href="#review_git_sync_requirements">resources</a>. When you push
+    changes to your Git repository, the changes are pushed to your Harness entities
+    as well, and vice versa.</p><p>This topic explains how to configure the integration
+    between your Git repositories and Harness Projects, Pipelines, and resources.</p><h3>Before
+    You Begin</h3><ul><li><a href="/article/utikdyxgfz-harness-git-experience-overview">Harness
+    Git Experience Overview</a></li><li><a href="/article/dm69dkv34g-harness-git-experience-quickstart">Harness
+    Git Experience Quickstart</a></li></ul><h3>Limitations</h3><ul><li>Git Sync in
+    Harness is limited to the following Git providers:<ul><li>GitHub</li><li>Bitbucket
+    cloud. Bitbucket on-prem is not supported.</li></ul><div class="note-callout">Git
+    Management using BitBucket is in Beta and is behind the Feature Flag <code>GIT_SYNC_WITH_BITBUCKET</code>.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a> to
+    enable it. Harness only supports BitBucket cloud.</div></li><li>In the Git Connectors,
+    all Projects that connect to a given Git repo must use the same Connection Type:
+    SSH or HTTP. For more information, see <a href="/article/tbm2hw6pr6-git-connector-settings-reference#connection_type">Connection
+    Type</a>.<br/>Let us take an example where Project1 and Project2 connect to repo
+    Repo1. In this case, the Git connectors for both projects must use the same Connection
+    Type.</li><li>Do not change any Types or Identifiers (Account Id, Org Id, Project
+    Id, Connectors, etc) for any Harness entities. Ids are immutable and if they are
+    out of sync, Harness Git Experience will not work.</li><li>Do not delete the branch
+    that you used to enable Git sync. Deleting this branch will cause inconsistencies
+    in the Harness Git Experience.</li><li>Harness Git Experience is not enabled for
+    Pipeline Triggers at this time. Pipelines with Harness Git Experience enabled
+    can use default Triggers, but not Triggers added to Pipelines in Git branches.</li></ul><h3>Review:
+    Git Sync Requirements</h3><ul><li>You can sync the following Harness resources
+    with your Git repo:<ul><li>Pipelines</li><li>Connectors</li><li>Input Sets</li><li>Templates</li><li>Feature
+    Flags</li></ul></li><li>Only the resources created at the Project <a href="/article/vz5cq0nfg2-rbac-in-harness#scope">scope</a>
+    can be synced to Git. Resources created at the Account or Org scope will not be
+    synced.</li></ul><h3>Review: Harness to Git Sync</h3><p>For Git-enabled projects,
+    Git is the source of truth. Harness changes don&#39;t take effect until they&#39;re
+    committed to Git.</p><p>Harness to Git flow can be triggered for the following
+    scenarios:</p><ul><li>When a new entity is created.</li><li>When an existing entity
+    is modified.</li><li>When Git is enabled on an existing Project with existing
+    entities.</li></ul><h3>Review: Git to Harness Sync</h3><p>When you enable Git
+    to create and manage the config in Harness, any change done in Git is synced to
+    Harness.</p><ul><li>Git to Harness flow is initiated only for those repos and
+    branches which exist in Harness.</li><li>You must manually sync every new branch
+    in Git, to push subsequent changes automatically.</li><li>Git to Harness is synced
+    using the webhook that is automatically registered for each Project when Git Experience
+    is enabled. However, make sure you have the following permissions for the GitHub
+    Personal Access Token for automatic webhook registration to work:<ul><li><strong>Scopes:</strong> select
+    all the <strong>repo</strong>, <strong>user</strong>, and <strong>admin:repo_hook</strong> options<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1649752379250/webhook-permissions.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul>You
+    should also be the repo admin.</li><li>Although Webhooks are applied automatically
+    by Harness, you can do it manually in case the automatic Webhook registration
+    doesn&#39;t work.<br/>You obtain the Webhook to use in your repo by clicking the <strong>Webhook</strong> icon.<figure><a
+    href="https://files.helpdocs.io/i5nl071jo5/articles/rset0jry8q/1613777651302/image.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/rset0jry8q/1613777651302/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></a></figure>Log
+    into your repo in the Git provider and navigate to its Webhook settings. For example,
+    here&#39;s the <strong>Webhooks</strong> section of GitHub.<figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1614103358723/image.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hndnde8usz/1614103358723/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></a></figure>Add
+    a Webhook.<br/>In the Webhook settings, paste the Webhook URL you copied from
+    Harness into the payload URL setting in the repo.<br/><u>Make sure that you select
+    JSON for the content type.</u> For example, in GitHub, you select <strong>application/json</strong> in <strong>Content
+    type</strong>.</li></ul><h3>Prerequisites</h3><ul><li>You must have valid Git
+    credentials and a repo within this Git account.</li><li>Make sure that you have
+    <strong>Project Administrator</strong> permissions in Harness to create a Project
+    and enable Git Experience on Projects. See <a href="/article/yaornnqh0z-permissions-reference">Permissions
+    Reference</a>.</li><li>Make sure you have a Git Source Code Manager in your Harness
+    account. A <strong>Harness SCM</strong> is required to sync entities from Harness
+    to Git. For detailed steps to add an SCM, see <a href="/article/p92awqts2x-add-source-code-managers">Add
+    Source Code Managers</a>. If you try to enable Harness Git Experience without
+    first setting up an SCM, Harness will warn you and require you to set one up.</li></ul><h3>Step
+    1: Add a Harness SCM</h3><p>Once you have <a href="/article/p92awqts2x-add-source-code-managers">set
+    up a Harness SCM</a>, you can enable Git Experience in your Harness Project.</p><p>This
+    topic uses GitHub as the SCM to explain Git Experience.</p><p>Once enabled, you
+    can add your Pipelines and resources and select the repos and folders where their
+    YAML files are stored.</p><p>See <a href="/article/p92awqts2x-add-source-code-managers">Add
+    Source Code Managers</a>.</p><div class="note-callout">Git Management using BitBucket
+    is behind the Feature Flag <code>GIT_SYNC_WITH_BITBUCKET</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable it. Harness only supports BitBucket
+    cloud.</div><h3>Step 2: Create a Repo</h3><p>In the Git provider, you want to
+    use for syncing your Project, create a repo(s) for the Project. If you wish to
+    use an existing repo, skip this step.</p><ul><li>You can use multiple repos in
+    the Harness Git Experience for a Project. For example, you could add Pipelines
+    to one repo and Connectors to another.</li><li>Make sure your repo has at least
+    one branch, such as main or master. For most Git providers, you can simply add
+    a README file to the repo, and the branch is created.</li></ul><p>Here&#39;s a
+    new GitHub repo named <strong>GitExpDocExample</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1623794233271/clean-shot-2021-06-15-at-14-56-29-2-x.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h3>Step
+    3: Create a New Project</h3><p>You can enable Git Management for new as well as
+    existing Projects.</p><p>If you wish to enable Git Management for an existing
+    Project, skip this step.</p><p>In Harness, create a new Project. See <a href="/article/36fw2u92i4-create-an-organization">Create
+    Organizations and Projects</a>.</p><p>Here&#39;s a new Project named <strong>GitExp
+    Doc Example</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1647344213610/screenshot-2022-03-15-at-4-28-44-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>Add
+    any team members as contributors.</p><p>When you&#39;re done you&#39;ll have a
+    new Project containing the modules according to your license.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1647344025380/screenshot-2022-03-15-at-4-38-04-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p></p><h3>Step
+    4: Enable Harness Git Experience</h3><p>In your <strong>Project</strong>, select
+    a module such as CI or CD.</p><p>Click <strong>Project Setup</strong>, and then
+    click <strong>Git Management</strong>.</p><p>The <strong>Enable Git Experience</strong>
+    settings appear.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1647344138133/enable-git-ex.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>Click
+    <strong>Enable Git Experience</strong>.</p><h3>Step 5: Configure Harness Folder</h3><p>Harness
+    requires a Git folder to sync your projects and resources. All the configurations
+    are stored in the Harness Folder. The Harness Folder is created in the Git directory
+    you select and is named <strong>.harness</strong>.</p><p>You can have multiple
+    Harness Folders to store configs.</p><p>For example: If you have two Connectors
+    in a single Project you can have one Harness folder for each Connector or a common
+    Harness Folder for the entire Project.</p><p>Later, when you add Pipelines and
+    resources to this Project, you can specify their default folders. When a Pipeline
+    in one repo needs to access a Connector/Secret/etc in another repo at runtime,
+    the Pipeline will always use the Connector/Secret/etc in their default branch
+    and folder.</p><p>You can add the Project&#39;s Harness Folder at the root of
+    your repo or in a subfolder.</p><div class="note-callout">Create the folder in
+    your repo before setting up the Harness Folder. You will enter the name of the
+    folder in Harness. Harness does not create the folder for you.</div><p>In <strong>Repository
+    Display Name</strong>, enter a name for the repo. It doesn&#39;t have to be the
+    same as the Git repo name. The name you enter here will appear in Harness only.
+    It will identify the Project repo.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1645807144900/screenshot-2022-02-24-at-7-08-43-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>For
+    example, here&#39;s the <strong>Repository Display Name</strong> <code>GitExpDocExample</code>
+    after Harness Git Experience is enabled:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1645850354392/screenshot-2022-02-26-at-10-08-15-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>In
+    <strong>Select the Connector to your GitHub</strong>, select, or create a Git
+    Connector to the repo for your Project. For steps, see <a href="https://ngdocs.harness.io/category/xyexvcc206-ref-source-repo-provider">Code
+    Repo Connectors</a>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1645807740225/screenshot-2022-02-25-at-10-18-03-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><div
+    class="note-callout"><strong>Important:</strong> The Connector must use the <strong>Enable
+    API access</strong> option and Username and <strong>Token</strong> authentication.
+    Harness requires the token for API access. Generate the token in your account
+    on the Git provider and add it to Harness as a Secret. Next, use the token in
+    the credentials for the Git Connector.</div><p>Here&#39;s an example of a GitHub
+    Connector with all the correct settings:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1646118159190/screenshot-2022-03-01-at-12-30-59-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>Once
+    you add a Connector, enter the <strong>Repository Name</strong> with which you
+    want to establish a connection.</p><p>You should see the Repo URL below the repository
+    name.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1645808825077/screenshot-2022-02-25-at-10-35-17-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>Click
+    <strong>Test Connection</strong>. Once Harness verifies the connection, you will
+    see <strong>Connection Successful</strong>.</p><p>In <strong>Select Harness Folder</strong>,
+    enter the name of the folder in your repo where you want to sync.</p><p>In <strong>Select
+    Default Branch</strong>, select the branch that you want to use, such as <strong>main</strong>.</p><p>Click
+    <strong>Continue</strong>.</p><h3>Step 6: Select Connectivity Mode</h3><p>In <strong>Select
+    Connectivity Mode</strong>, you have two options:</p><ul><li><strong>Connect Through
+    Manager:</strong> Harness SaaS will connect to your Git repo whenever you make
+    a change and Git and Harness sync.</li><li><strong>Connect Through Delegate:</strong>
+    Harness will make all connections using the Harness Delegate. This option is used
+    for Harness On-Prem frequently, but can be used for Harness SaaS as well. See
+    <a href="/article/tb4e039h8x-harness-on-premise-overview">Harness On-Premise Overview</a>.</li></ul><div
+    class="note-callout"><strong>Secrets:</strong> If you select <strong>Connect Through
+    Manager</strong>, the secrets are decrypted on the Delegate and are available
+    on the Harness Manager. This is different from <strong>Connect Through Delegate</strong>
+    where the Harness Delegate decrypts the secrets. The secrets are then used in
+    the context of the Delegate that sits in your private network. See <a href="/article/hngrlb7rd6-harness-secret-manager-overview">Harness
+    Secrets Manager Overview</a>.</div><p>If you select <strong>Connect Through Manager</strong>
+    then click <strong>Save and Continue</strong>.</p><p>If you select <strong>Connect
+    Through Delegate</strong>, select/add the Delegate you want to use. See <a href="/article/re8kk0ex4k-delegate-installation-overview">Delegate
+    Installation Overview</a>.</p><p>Harness Git Experience is enabled and the new
+    repo and folder are listed.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1646271046149/screenshot-2022-03-03-at-6-57-47-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h3>Step
+    7: Select the Branch to Sync</h3><p>Perform this step if you are enabling Git
+    Experience for an existing Project that already has Pipeline or Harness resources.
+    This will establish a full sync of your Harness Project and its resources with
+    Git.</p><div class="note-callout">The settings for this stage will not be available
+    if you are enabling Git Experience for a new Project.</div><p>You can select or
+    create a specific branch in your Git repo to sync these resources. You can also
+    start a pull request to merge these changes. Click <strong>Save</strong>.</p><p>The
+    SCM user profile credentials of the user who initiated the sync will be used to
+    sync all resources to Git.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1645712473597/screenshot-2022-02-24-at-7-14-47-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><div
+    class="note-callout">If you use a Git connector at Project scope to enable Git
+    experience, then the connector will be synced as well. Make sure you merge this
+    connector to the default branch so that it is not accidentally deleted in the
+    non-default branch.</div><p>To view the sync status, click <strong>Config</strong>
+    in <strong>Git Management</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1648642579038/screenshot-2022-03-30-at-5-44-47-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can check the status of any entity&#39;s sync under <strong>Sync Status</strong>.
+    An entity can have any of the following sync statuses:</p><ul><li>SUCCESS</li><li>FAILED</li><li>QUEUED</li></ul><p>Your
+    Harness entities will appear in the Harness Folder under the selected branch in
+    your Git Repo after the sync is complete.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1646271186903/screenshot-2022-03-03-at-7-01-24-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>To
+    resync any entities that failed to sync, click <strong>Resync</strong>.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1648641932295/screenshot-2022-03-30-at-5-30-37-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>Step
+    8: Review the Harness Git Experience in your Project</h3><p>Harness does not automatically
+    add a folder to your repo until you create a Pipeline or resource like a Connector
+    in your Project.</p><p>You can see the repo setting in your Project before creating
+    Pipelines and resources.</p><p>In your Project, click one of your modules. In
+    this example, we&#39;ll use <strong>Builds</strong>.</p><p>Click <strong>Pipelines</strong>.</p><p>At
+    the top of the page, you can see <strong>All Repositories</strong>.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1623967095819/clean-shot-2021-06-17-at-14-58-04.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>Click
+    <strong>All Repositories</strong> and select the name of the repo you entered
+    in the <strong>Repository name</strong> earlier.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1623967195652/clean-shot-2021-06-17-at-14-58-35.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>You
+    can now select any branch from the repo.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1623967244297/clean-shot-2021-06-17-at-15-00-25.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><p>Harness
+    Git Experience is enabled.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hzajxmb3oj/1646271358018/screenshot-2022-03-03-at-7-04-03-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h3>Next
+    Steps</h3><p>Now that you&#39;ve enabled Harness Git Experience in your Project,
+    you can start creating Pipelines and resources and syncing them with Git.</p><p>See
+    <a href="/article/soavr3jh0i-git-experience-how-tos">Git Experience How-tos</a>.</p><p></p>'
+  slug: enable-git-experience-in-a-project
+  tags:
+  - 2-way sync to github
+  - gitsync
+  is_live: true

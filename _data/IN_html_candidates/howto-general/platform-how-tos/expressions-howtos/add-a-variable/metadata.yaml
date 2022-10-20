@@ -1,0 +1,118 @@
+type: article
+article_id: f3450ye0ul
+user_id: 2te4j9f9g7
+category_id: bp8t5hf922
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Add Account, Org, and Project-level Variables
+slug: add-a-variable
+description: Describes steps to add Variables as Resources.
+short_version: Describes steps to add Variables as Resources.
+tags:
+- Variables
+- Platform
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-09T14:33:00.340012Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Account, Org, and Project-level Variables
+  description: Describes steps to add Variables as Resources.
+  short_version: Describes steps to add Variables as Resources.
+  body: '<p>In your Pipelines, Variables can be added at the Pipeline-level, which
+    makes them available to all Stages in the Pipeline. Within a Stage, you can add
+    Variables at the Stage and Service-level. Here&#39;s <a href="https://youtu.be/lqbmO6EVGuU"
+    target="_blank">a video</a> covering those Variable types.</p><p>But what about
+    when you need to use the same Variable across multiple Pipelines, or even Pipelines
+    in multiple Projects?</p><p>With Account-level, Org-level, and Project-level Variables,
+    Harness lets you store values that you can share and use across multiple Pipelines
+    in multiple Projects.</p><p>This topic explains how to add Variables as an Account-level
+    and Org-level Resource in Harness.</p><div class="note-callout">For details on
+    Harness built-in variables, see <a href="/article/lml71vhsim-harness-variables">Built-in
+    Harness Variables Reference</a>.</div><h3>Before You Begin</h3><ul><li><a href="https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a>.</li><li>Make sure you have <a href="/article/tsons9mu0v-add-manage-roles">all
+    permissions</a> on Variables to add and manage Variables.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1652286536496/screenshot-2022-05-11-at-9-57-45-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul><h3>Limitations</h3><ul><li>Harness
+    supports only String type Account-level, Org-level, and Project-level Variables.
+    This is only a temporary limitation. You can use Secrets in Pipeline, Stage, and
+    Service variables.</li><li>If you delete a Variable that is referenced using <a
+    href="/article/lml71vhsim">expressions</a> in entities like Pipelines, the reference
+    expressions are not deleted. At runtime, when the expressions are resolved, the
+    expression will resolve as null.</li></ul><h3>Visual Summary</h3><p>Here is a
+    quick overview of how Variables can be shared across Pipelines.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1652320246864/screenshot-2022-05-12-at-7-19-19-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    1: Add Account, Org, and Project Variables</h3><p>You can add a Variable to the
+    Account, Organization, or Project <a href="/article/vz5cq0nfg2-rbac-in-harness#rbac_scope">scope</a>.</p><h4>Account</h4><p>In
+    Harness, click <strong>Account Settings</strong>.</p><p>Click <strong>Account
+    Resources</strong> and then click <strong>Variables</strong>.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1652286110770/screenshot-2022-05-11-at-9-50-58-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click
+    <strong>New Variable</strong>. The <strong>Add Variable</strong> settings appear.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1652326530565/screenshot-2022-05-12-at-9-04-25-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Enter
+    a <strong>Name</strong> for your Variable.</p><p>In <strong>Fixed Value</strong>,
+    enter a value for your Variable.</p><p>Click <strong>Save</strong>.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1652345505394/screenshot-2022-05-12-at-2-21-12-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Org</h4><p>Click
+    <strong>Account Settings</strong>.</p><p>Click <strong>Organizations</strong>.</p><p>Select
+    an Org.</p><p>In <strong>Organization Resources</strong>, click <strong>Variables</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1653071903363/clean-shot-2022-05-20-at-11-37-45.png"/></figure><p>Click
+    <strong>New Variable</strong>.</p><p>Enter a name, select the variable type (for
+    example, <strong>String</strong>), and enter a value.</p><p>For example, here&#39;s
+    a variable named <strong>organiz_var</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1653072329541/clean-shot-2022-05-20-at-11-45-19.png"/></figure><p>Note
+    the Id. That Id is used to reference the variable.</p><p>Click <strong>Save</strong>.</p><h4>Project</h4><p>In
+    a Harness Project, click <strong>Project Setup</strong>, and then click <strong>Variables</strong>.</p><p>Click
+    <strong>New Variable</strong>.</p><p>Enter a name, select the variable type (for
+    example, <strong>String</strong>), and enter a value.</p><p>For example, here&#39;s
+    a variable named <strong>proj_var</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1653072434084/clean-shot-2022-05-20-at-11-47-05.png"/></figure><p>Note
+    the Id. That Id is used to reference the variable.</p><p>Click <strong>Save</strong>.</p><h3>Step
+    2: Reference Variables in a Pipeline</h3><p>To reference an Account and Org-level
+    Variable, you must use the following expression in your Pipeline:</p><p><code>&lt;+variable.[scope].[variable_id]&gt;</code></p><ul><li>Account-level
+    reference: <code>&lt;+variable.account.[var Id]&gt;</code></li><li>Org-level reference:
+    <code>&lt;+variable.org.[var Id]&gt;</code></li><li>Project-level reference: <code>&lt;+variable.[var
+    Id]&gt;</code></li></ul><div class="note-callout">The expression to reference
+    <strong>Project</strong> scope Variables is <code>&lt;+variable.Example&gt;</code>.
+    You do not need to specify <code>scope</code> to reference Project Variables.</div><p>For
+    example, to reference the Variable you just created, the expression will be:</p><p><code>&lt;+variable.account.Example&gt;</code></p><p>Let
+    us add the Variable in a Pipeline now.</p><p>In Harness go to a Pipeline in the
+    same Org as the variable you created.</p><p>In <strong>Execution</strong>, add
+    a <a href="/article/k5lu0u6i1i-using-shell-scripts">Shell Script</a> step and
+    reference the variables:</p><pre>echo &#34;account var: &#34;&lt;+variable.account.acct_var&gt;<br/>echo
+    &#34;org var: &#34;&lt;+variable.org.organiz_var&gt;<br/>echo &#34;project var:
+    &#34; &lt;+variable.proj_var&gt;</pre><p></p><p>When you run the Pipeline, the
+    variable references are resolved and output:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1653073061898/clean-shot-2022-05-20-at-11-57-33.png"/></figure><h3>Review:
+    Using an Account, Org, or Project Variable in a Service Variable</h3><p>In <strong>Service</strong>,
+    in <strong>Advanced</strong>, click <strong>Add Variable</strong>.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1652329517911/screenshot-2022-05-12-at-9-54-38-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    <strong>Add Variable</strong> settings appear.</p><p>In <strong>Variable</strong>
+    <strong>Name</strong>, enter a name for your Variable.</p><p>Select <strong>String</strong>
+    as <strong>Type</strong> and click <strong>Save</strong>.</p><p>Your Variable
+    is now listed under <strong>Variables</strong>.</p><p>In <strong>VALUE</strong>,
+    select <strong>Expression</strong> and enter <code>&lt;+variable.account.acct_var&gt;</code>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1653073228695/clean-shot-2022-05-20-at-12-00-11.png"/></figure><p>Now,
+    when you run your Pipeline the referenced value is evaluated at runtime.</p><p>Copy
+    the Service variable from <strong>Variables</strong>:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1653073441583/clean-shot-2022-05-20-at-12-03-38.png"/></figure><p>In
+    your Shell Script step, reference the Service variable with <code>&lt;+stage.spec.serviceConfig.serviceDefinition.spec.variables.serv_var&gt;</code>.</p><p>Run
+    the Pipeline and see that the value for the Account Variable is passed into the
+    Service Variable:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1653073553017/clean-shot-2022-05-20-at-12-05-13.png"/></figure><p>You
+    can refer to a Variable in most settings. For example, if you an Account Variable
+    storing a Service named <strong>Example</strong>, you can refer to it inline using
+    the same expression.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/f3450ye0ul/1652331383760/screenshot-2022-05-12-at-10-25-23-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Now,
+    when you run your Pipeline the referenced value is evaluated at runtime.</p><p></p>'
+  slug: add-a-variable
+  tags:
+  - Variables
+  - Platform
+  is_live: true

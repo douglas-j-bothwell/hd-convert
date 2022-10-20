@@ -1,0 +1,86 @@
+type: article
+article_id: q71d8kurhz
+user_id: mfr0nxh4be
+category_id: n03qfofd5w
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Use Harness Config Files in Manifests
+slug: using-harness-config-files-in-manifests
+description: Use Kubernetes Service Config Files in your manifests.
+short_version: Use Kubernetes Service Config Files in your manifests.
+tags:
+- configFile.getAsString
+- getAsBase64
+- getAsString
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:56:44.698593Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use Harness Config Files in Manifests
+  description: Use Kubernetes Service Config Files in your manifests.
+  short_version: Use Kubernetes Service Config Files in your manifests.
+  body: '<div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/category/qfj6m1k2c4">NextGen</a>.</div><p>You can use files
+    added to the <strong>Config Files</strong> section in your Kubernetes Service
+    in your manifests, such as in a ConfigMap. You can reference unencrypted and encrypted
+    files, and they can be single or multiline.</p><p>In this topic:</p><ul><li> <a
+    href="#before_you_begin">Before You Begin</a></li><li><a href="#review_config_file_reference_scope">Review:
+    Config File Reference Scope</a></li><li> <a href="#review_config_files_encoding_and_references">Review:
+    Config Files Encoding and References</a></li><li> <a href="https://docs.harness.io/article/q71d8kurhz-using-harness-config-files-in-manifests#review_use_base64_to_avoid_new_lines">Review:
+    Use Base64 to Avoid New Lines</a></li><li> <a href="#step_1_add_the_file_to_config_files">Step
+    1: Add the File to Config Files</a></li><li> <a href="#step_2_reference_config_file">Step
+    2: Reference Config File</a></li><li> <a href="#step_3_decode_the_file">Step 3:
+    Decode the File</a></li><li> <a href="https://docs.harness.io/article/q71d8kurhz-using-harness-config-files-in-manifests#limitations">Limitations</a></li></ul><h3>Before
+    You Begin</h3><ul><li><a href="/article/qy6zw1u0y2-using-harness-config-variables-in-manifests">Using
+    Harness Config Variables in Manifests</a></li><li><a href="/article/2j2vi5oxrq-define-kubernetes-manifests">Define
+    Kubernetes Manifests</a></li></ul><h3>Review: Config File Reference Scope</h3><p>You
+    cannot reference a Service&#39;s Config File in the <u>Pre-Deployment</u> Phase
+    of a Workflow. Canary and Multi-Service Workflows are the only Workflow types
+    with the <u>Pre-Deployment</u> Phase.</p><p>The Pre-Deployment Phase does not
+    use a Service and so it has no access to Service Config Files (or Config variables).</p><p>You
+    can reference a Service&#39;s Config File in the Deployment Phase of the Workflow.</p><h3>Review:
+    Config Files Encoding and References</h3><p>Files added in the <strong>Config
+    Files</strong> section are referenced using the <code>configFile.getAsString(&#34;fileName&#34;)</code> Harness
+    expression:</p><ul><li><code>configFile.getAsString(&#34;fileName&#34;)</code> -
+    Plain text file contents.</li><li><code>configFile.getAsBase64(&#34;fileName&#34;)</code> -
+    Base64-encoded file contents.</li></ul><h3>Review: Use Base64 to Avoid New Lines</h3><p>If
+    you are going to use a Config File in a manifest, be aware that <code>${configFile.getAsString()}</code>
+    can cause problems by adding new lines to your manifest (unless you have formatted
+    the file very carefully).</p><p>Instead, use <code>${configFile.getAsBase64()}</code>.
+    This will ensure that the contents of the file are rendered as a single line.</p><h3>Step
+    1: Add the File to Config Files</h3><p>In this example, we will use a file in
+    a ConfigMap object.</p><ol><li>Add the unencrypted file to <strong>Config Files</strong>.
+    In this example, the file is a base64 encoded file named <code>myFile</code>.</li></ol><div
+    class="note-callout">Make sure you have the <strong>update</strong> permission
+    on the Service or the Environment before you try to add the Service Config File.
+    See <a href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a> for more information about assigning permissions.</div><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1572887504228/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p>The base64 encoded file
+    will be decoded when added to the manifest, as shown below.</p><h3>Step 2: Reference
+    Config File</h3><ol><li>In the <strong>values.yaml</strong> in the Harness Service
+    <strong>Manifests</strong> section, reference the Config File using <code>my_file:
+    ${configFile.getAsBase64(&#34;myFile&#34;)}</code>.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1572637555107/image.png"/></figure><h3>Step
+    3: Decode the File</h3><ol><li>In the manifest (in our example, a ConfigMap),
+    decode the base64 Config File and indent it for the YAML syntax:</li></ol><pre>data:<br/>  keyname:
+    |<br/>{{.Values.my_file | b64dec | indent 4}}</pre><p>At runtime, the Config File
+    is decoded and used as plaintext.</p><h3>Limitations</h3><ul><li>Do not use Harness
+    variables within the file used as a Config File. Harness does not do variable
+    substitution of content within an uploaded Harness Config File.</li></ul><p></p><p></p>'
+  slug: using-harness-config-files-in-manifests
+  tags:
+  - configFile.getAsString
+  - getAsBase64
+  - getAsString
+  is_live: true

@@ -1,0 +1,106 @@
+type: article
+article_id: nh6tdfse6g
+user_id: mfr0nxh4be
+category_id: 9i5thr0ot2
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Truststore Override for Delegates
+slug: trust-store-override-for-delegates
+description: Replace or use a different default truststore with Harness Delegates.
+short_version: Replace or use a different default truststore with Harness Delegates.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T22:34:45.237976Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Truststore Override for Delegates
+  description: Replace or use a different default truststore with Harness Delegates.
+  short_version: Replace or use a different default truststore with Harness Delegates.
+  body: '<p>Harness Delegates perform most Harness tasks. Delegates make outbound
+    TLS/SSL connections to the Harness SaaS platform to obtain these task assignments.
+    The TLS/SSL connection from the Delegate to Harness requires a trusted certificate.</p><p>Harness
+    Delegates ship with a Java Runtime Environment (JRE) that includes a default trusted
+    certificate in its <a href="https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html"
+    target="_blank">truststore</a> (located at <code>jdk8u242-b08-jre/lib/security/cacerts</code>).
+    This truststore uses multiple trusted certificates, but you might want to limit
+    these to conform to your company&#39;s security protocols.</p><p>Harness&#39;
+    only requirement is that the JRE truststore includes the certificate Delegates
+    use to trust Harness (app.harness.io).</p><p>This topic describes how to limit
+    the truststore used with Harness Delegates and ensure the trusted certificate
+    Harness requires is included in the Delegate truststore.</p><p>In this topic:</p><ul><li><a
+    href="#before_you_begin">Before You Begin</a></li><li><a href="#required_harness_trusted_certificate">Required:
+    Harness Trusted Certificate</a></li><li><a href="#step_1_stop_the_delegate">Step
+    1: Stop the Delegate</a></li><li><a href="#step_2_create_truststore_with_harness_trusted_certificate">Step
+    2: Create Truststore with Harness Trusted Certificate</a></li><li><a href="#step_3_add_3rd_party_certificates_to_the_truststore">Step
+    3: Add 3rd Party Certificates to the Truststore</a></li><li><a href="#step_4_update_the_delegate_java_opts_environment_variable">Step
+    4: Update the Delegate JAVA_OPTS Environment Variable</a></li><li><a href="#step_5_start_the_delegate">Step
+    5: Start the Delegate</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/2k7lnc7lvl-delegates-overview">Delegates
+    Overview</a></li><li><a href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Kubernetes Delegate</a></li></ul><h3>Required: Harness Trusted Certificate</h3><p>TLS/SSL
+    communication between the Harness Delegate and Harness SaaS uses a certificate
+    from the DigiCert Global Root CA:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/lb2cxxgak1/1636062222450/clean-shot-2021-11-04-at-14-43-32-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>For
+    Delegates to communicate with Harness, this root CA certificate needs to be installed
+    in the Delegate&#39;s truststore.</p><p>The public key for the certificate is
+    publicly available and can be downloaded. Here it is:</p><pre>-----BEGIN CERTIFICATE-----<br/>MIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh<br/>MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3<br/>d3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD<br/>QTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT<br/>MRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j<br/>b20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG<br/>9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB<br/>CSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97<br/>nh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt<br/>43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P<br/>T19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4<br/>gdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO<br/>BgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR<br/>TLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw<br/>DQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr<br/>hMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg<br/>06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF<br/>PnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls<br/>YSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk<br/>CAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=<br/>-----END
+    CERTIFICATE-----</pre><p></p><p>This topic describes how to import this certificate
+    into a new truststore.</p><h4>3rd Party Certificates</h4><p>The Harness Delegate
+    also connects to all of the 3rd party tools you are using with Harness. You will
+    need to include those certificates in the Delegate truststore also.</p><p>For
+    example, if you are pulling a Docker image from an artifact server like Nexus
+    or DockerHub, the truststore will need the certificates required by those tools.</p><h3>Step
+    1: Stop the Delegate</h3><p>You don&#39;t need to stop the Kubernetes Delegate.
+    You can simply run <code>kubectl apply</code> again once you have updated the
+    Kubernetes Delegate YAML file.</p><h3>Step 2: Create Truststore with Harness Trusted
+    Certificate</h3><p>Let&#39;s walk through the steps of creating a new truststore
+    and importing the Harness Trusted Certificate.</p><p>Copy the following public
+    key to a file and save it.</p><pre>-----BEGIN CERTIFICATE-----<br/>MIIDrzCCApegAwIBAgIQCDvgVpBCRrGhdWrJWZHHSjANBgkqhkiG9w0BAQUFADBh<br/>MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3<br/>d3cuZGlnaWNlcnQuY29tMSAwHgYDVQQDExdEaWdpQ2VydCBHbG9iYWwgUm9vdCBD<br/>QTAeFw0wNjExMTAwMDAwMDBaFw0zMTExMTAwMDAwMDBaMGExCzAJBgNVBAYTAlVT<br/>MRUwEwYDVQQKEwxEaWdpQ2VydCBJbmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5j<br/>b20xIDAeBgNVBAMTF0RpZ2lDZXJ0IEdsb2JhbCBSb290IENBMIIBIjANBgkqhkiG<br/>9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jvhEXLeqKTTo1eqUKKPC3eQyaKl7hLOllsB<br/>CSDMAZOnTjC3U/dDxGkAV53ijSLdhwZAAIEJzs4bg7/fzTtxRuLWZscFs3YnFo97<br/>nh6Vfe63SKMI2tavegw5BmV/Sl0fvBf4q77uKNd0f3p4mVmFaG5cIzJLv07A6Fpt<br/>43C/dxC//AH2hdmoRBBYMql1GNXRor5H4idq9Joz+EkIYIvUX7Q6hL+hqkpMfT7P<br/>T19sdl6gSzeRntwi5m3OFBqOasv+zbMUZBfHWymeMr/y7vrTC0LUq7dBMtoM1O/4<br/>gdW7jVg/tRvoSSiicNoxBN33shbyTApOB6jtSj1etX+jkMOvJwIDAQABo2MwYTAO<br/>BgNVHQ8BAf8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUA95QNVbR<br/>TLtm8KPiGxvDl7I90VUwHwYDVR0jBBgwFoAUA95QNVbRTLtm8KPiGxvDl7I90VUw<br/>DQYJKoZIhvcNAQEFBQADggEBAMucN6pIExIK+t1EnE9SsPTfrgT1eXkIoyQY/Esr<br/>hMAtudXH/vTBH1jLuG2cenTnmCmrEbXjcKChzUyImZOMkXDiqw8cvpOp/2PV5Adg<br/>06O/nVsJ8dWO41P0jmP6P6fbtGbfYmbW0W5BjfIttep3Sp+dWOIrWcBAI+0tKIJF<br/>PnlUkiaY4IBIqDfv8NZ5YBberOgOzW6sRBc4L0na4UU+Krk2U886UAb3LujEV0ls<br/>YSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk<br/>CAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=<br/>-----END
+    CERTIFICATE-----</pre><p></p><p>In this example, we&#39;ll name the file <strong>DigiCertGlobalRootCA.pem</strong>.</p><p>Run
+    the following command to create a truststore:</p><pre>keytool -import -file DigiCertGlobalRootCA.pem
+    -alias DigiCertRootCA -keystore trustStore.jks</pre><p></p><p>The above command
+    will ask for a password. You can choose your own password.</p><p>This command
+    creates a file named <strong>trustStore.jks</strong> and imports DigiCert global
+    root CA certificate.</p><p><strong>Note where the trustStore.jks is located.</strong>
+    You will provide this path to the Delegate as an environment variable.</p><h3>Step
+    3: Add 3rd Party Certificates to the Truststore</h3><p>You should import any certificates
+    required by the 3rd party tools you use with Harness.</p><p>In most cases, you
+    can navigate to the 3rd party tool&#39;s website portal and download the certificate
+    using a Copy or Export button in the browser. Simply save the certificate as a
+    PEM (.pem) file and then import it into the truststore.</p><p>To add multiple
+    certificates in the trustStore.jks you created, simply run the <code>keytool -import</code>
+    command multiple times with the different aliases and certificate PEM files for
+    the certificates you are importing.</p><h3>Step 4: Update the Delegate JAVA_OPTS
+    Environment Variable</h3><p>Now that you have a new truststore, you need to update
+    the Delegate JAVA_OPTS environment variable to point to the location of the new
+    truststore file.</p><h4>Kubernetes Delegate</h4><p>For the Kubernetes Delegate,
+    you need to edit the Delegate YAML file. It&#39;s named <strong>harness-delegate.yaml</strong>.</p><p>Open
+    the Delegate YAML file in a text editor.</p><p>In the <code>StatefulSet</code>
+    manifest, under <code>env</code>, locate <code>JAVA_OPTS</code>.</p><p>Here&#39;s
+    what the default setting looks like:</p><pre>...<br/>apiVersion: apps/v1<br/>kind:
+    StatefulSet<br/>...<br/>spec:<br/>  ...<br/>    spec:<br/>      ...<br/>        env:<br/>        -
+    name: JAVA_OPTS<br/>          value: &#34;-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+    -XX:MaxRAMFraction=2 -Xms64M&#34;<br/>...</pre><p></p><p>Update the <code>JAVA_OPTS</code>
+    environment variable with the location of the new trustStore.jks file and the
+    password.</p><p>For example:</p><pre>      ...<br/>        env:<br/>        -
+    name: JAVA_OPTS<br/>          value: &#34;-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+    -XX:MaxRAMFraction=2 -Xms64M -Djavax.net.ssl.trustStore=&lt;path/to/trustStore.jks&gt;
+    -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStorePassword=&lt;password&gt;&#34;<br/>...</pre><p></p><p>Next,
+    you can apply the Delegate YAML file, described in the next step.</p><h3>Step
+    5: Start the Delegate</h3><p>Now that the JAVA_OPTS environment variable is updated,
+    you can start the Delegate.</p><h4>Kubernetes Delegate</h4><p>Apply the Kubernetes
+    Delegate YAML file you edited:</p><pre>kubectl apply -f harness-delegate.yaml</pre><p></p><p>The
+    Delegate will start and in a few moments you will see it listed in the <strong>Harness
+    Delegates</strong> page.</p><p></p>'
+  slug: trust-store-override-for-delegates
+  tags: []
+  is_live: true

@@ -1,0 +1,251 @@
+type: article
+article_id: c1eskrgngf
+user_id: mfr0nxh4be
+category_id: oya6qhmmaw
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Trigger Pipelines on a New Artifact
+slug: trigger-on-a-new-artifact
+description: Trigger Harness Pipeline deployments in response to a new artifact version
+  being added to a registry.
+short_version: Trigger Harness Pipeline deployments in response to a new artifact
+  version being added to a registry.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-14T22:42:17.735563Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Trigger Pipelines on a New Artifact
+  description: Trigger Harness Pipeline deployments in response to a new artifact
+    version being added to a registry.
+  short_version: Trigger Harness Pipeline deployments in response to a new artifact
+    version being added to a registry.
+  body: '<p>You can trigger Harness Pipelines in response to a new artifact version
+    being added to a registry.</p><p>For example, every time a new Docker image is
+    pushed to your Docker Hub account, it triggers a CD Pipeline that deploys it automatically.</p><p>On
+    New Artifact Triggers simply listen to the registry where one or more of the artifacts
+    in your Pipeline are hosted.</p><p>You can set conditions on the Triggers, such
+    as matching a Docker tag or label or a traditional artifact build name or number.</p><p>This
+    Trigger is a simple way to automate deployments for new builds.</p><h3>Before
+    You Begin</h3><ul><li>You should be familiar with Harness CD Pipelines, such as
+    the one you create in the <a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a>.</li></ul><h3>Limitations</h3><ul><li>You can only use an On
+    New Artifact Trigger if you have added an artifact in the Stage&#39;s <strong>Service
+    Definition</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637261100349/clean-shot-2021-11-18-at-10-44-50.png"/></figure>If
+    the artifact is hardcoded in your Kubernetes manifests, an On New Artifact Trigger
+    will not work correctly. Instead, you can use a Harness Git-based or Manifest-based
+    Trigger.<br/>You reference an artifact in the Stage&#39;s Service Definition in
+    your manifests using the expression <code>&lt;+artifact.image&gt;</code>. See
+    <a href="/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments">Add Container
+    Images as Artifacts for Kubernetes Deployments</a>.</li><li>If more than one artifact
+    is collected during the polling interval (two minutes), only one deployment will
+    be started and will use the last artifact collected.</li><li>The Trigger is executed
+    based on <strong>file names</strong> and not metadata changes.</li><li>Do not
+    trigger on the <strong>latest</strong> tag of an artifact, such as a Docker image.
+    With latest, Harness only has metadata, such as the tag name, which has not changed,
+    and so Harness does not know if anything has changed. The Trigger will not be
+    executed.</li><li>In Harness, you can select who is able to create and use Triggers
+    <u>within Harness</u>, but you must use your repos&#39; RBAC to control who can
+    add the artifacts or initiate the events that start the Harness Trigger.</li></ul><h3>Visual
+    Summary</h3><p>This 5min video walks you through building an app from source code
+    and pushing it to Docker Hub using Harness CIE, and then having an On New Artifact
+    Trigger execute a CD Pipeline to deploy the new app release automatically.</p><div
+    class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/4765DJDUfyk/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/4765DJDUfyk?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p><h3>Review:
+    Artifact Polling</h3><p>Once you have created a Trigger to listen for new artifacts,
+    Harness will poll for new artifacts continuously.</p><p>Polling is immediate because
+    Harness uses a perpetual task framework that constantly monitors for new builds/tags.</p><h4>Input
+    Sets and Artifacts</h4><p>When you create a Trigger, you can select <a href="/article/3fqwa8et3d-input-sets">Input
+    Sets</a> to apply to the Pipeline when the Trigger is executed.</p><p>If the Input
+    Set you select has a <a href="/article/f6yobn7iq0-runtime-inputs">Fixed Value</a>
+    for the artifact <strong>Tag</strong> (for example, <strong>2</strong>), the Trigger
+    will work, but it will not select the new artifact. Instead, Harness will select
+    the artifact with the Tag value in the Input Set (<strong>2</strong>).</p><p>Instead,
+    in the Input Set&#39;s <strong>Tag</strong> setting, use the expression <code>&lt;+trigger.manifest.build&gt;</code>.</p><p>The
+    Input Set option is for settings other than the <strong>Tag</strong> setting of
+    the artifact you want to pull. For example, the Artifact Server or the Tag of
+    a sidecar artifact.</p><h3>Step 1: Create Trigger</h3><p>Select a Harness Pipeline
+    that includes an artifact in the Stage&#39;s <strong>Service Definition</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637261100349/clean-shot-2021-11-18-at-10-44-50.png"/></figure><p>You
+    reference an artifact in the Stage&#39;s Service Definition in your manifests
+    using the expression <code>&lt;+artifact.image&gt;</code>. See <a href="/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments">Add
+    Container Images as Artifacts for Kubernetes Deployments</a>.</p><p>Click <strong>Triggers</strong>.</p><p>Click
+    <strong>New Trigger</strong>.</p><p>The On New Artifact Trigger options are listed
+    under <strong>Artifact</strong>.</p><p>Each of the <strong>Artifact</strong> options
+    are described below.</p><p>Select the artifact registry where your artifact is
+    hosted. If you artifact is hosted on Docker Hub and you select GCR, you won&#39;t
+    be able to set up your Trigger.</p><h3>Option: Docker Registry Artifacts</h3><p>In
+    <strong>Configuration</strong>, in <strong>Name</strong>, enter a name for the
+    Trigger.</p><p>In <strong>Listen on New Artifact</strong>, click <strong>Select
+    Artifact</strong>. If this setting is not enabled, it is because the artifact
+    Tag setting is not a <a href="/article/f6yobn7iq0-runtime-inputs">Runtime Input</a>
+    (<code>&lt;+input&gt;</code>).</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637264901363/clean-shot-2021-11-18-at-11-47-50.png"/></figure><p>In
+    <strong>Select an Artifact Reference</strong>, select the artifact for this Trigger
+    to listen for and click <strong>Select</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637265053657/clean-shot-2021-11-18-at-11-50-44.png"/></figure><p>In
+    <strong>Configure Artifact Runtime Inputs</strong>, provide values for any Runtime
+    inputs you have in your artifact settings (such as the <strong>Artifact Server</strong>),
+    and click <strong>Apply</strong>.</p><p>Click <strong>Continue</strong>.</p><p>The
+    remaining settings are discussed below.</p><div class="note-callout">In your Docker
+    Registry Connector, to connect to a public Docker registry like Docker Hub, use <code>https://registry.hub.docker.com/v2/</code>.
+    To connect to a private Docker registry, use <code>https://index.docker.io/v2/</code>.</div><h3>Option:
+    GCR Artifacts</h3><p>In <strong>Configuration</strong>, in <strong>Name</strong>,
+    enter a name for the Trigger.</p><p>In <strong>Listen on New Artifact</strong>,
+    click <strong>Select Artifact</strong>. If this setting is not enabled, it is
+    because the artifact Tag setting is not a <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Input</a> (<code>&lt;+input&gt;</code>).</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637274897328/clean-shot-2021-11-18-at-14-34-43-2-x.png"/></figure><p>In
+    <strong>Select an Artifact Reference</strong>, select the artifact for this Trigger
+    to listen for and click <strong>Select</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637274936347/clean-shot-2021-11-18-at-14-35-24-2-x.png"/></figure><p>In
+    <strong>Configure Artifact Runtime Inputs</strong>, provide values for any Runtime
+    inputs you have in your artifact settings (such as the <strong>Artifact Server</strong>),
+    and click <strong>Apply</strong>.</p><p>Click <strong>Continue</strong>.</p><p>The
+    remaining settings are discussed below.</p><h3>Option: ECR Artifacts</h3><p>In
+    <strong>Configuration</strong>, in <strong>Name</strong>, enter a name for the
+    Trigger.</p><p>In <strong>Listen on New Artifact</strong>, click <strong>Select
+    Artifact</strong>. If this setting is now enabled, it is because the artifact
+    Tag setting is not a <a href="/article/f6yobn7iq0-runtime-inputs">Runtime Input</a>
+    (<code>&lt;+input&gt;</code>).</p><p>In <strong>Select an Artifact Reference</strong>,
+    select the artifact for this Trigger to listen for and click <strong>Select</strong>.</p><p>In
+    <strong>Configure Artifact Runtime Inputs</strong>, provide values for any Runtime
+    inputs you have in your artifact settings (such as the <strong>Artifact Server</strong>),
+    and click <strong>Apply</strong>.</p><p>Click <strong>Continue</strong>.</p><p>The
+    remaining settings are discussed below.</p><h3>Option: Artifactory</h3><p>In <strong>Configuration</strong>,
+    in <strong>Name</strong>, enter a name for the Trigger.</p><p>In <strong>Listen
+    on New Artifact</strong>, click <strong>Select Artifact</strong>. If this setting
+    is now enabled, it is because the artifact Tag setting is not a <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Input</a> (<code>&lt;+input&gt;</code>).</p><p>In <strong>Select an Artifact Reference</strong>,
+    select the artifact for this Trigger to listen for and click <strong>Select</strong>.</p><p>In
+    <strong>Configure Artifact Runtime Inputs</strong>, provide values for any Runtime
+    inputs you have in your artifact settings (such as the <strong>Artifact Server</strong>),
+    and click <strong>Apply</strong>.</p><p>Click <strong>Continue</strong>.</p><p>The
+    remaining settings are discussed below.</p><h3>Step 2: Set Conditions</h3><p>In
+    <strong>Conditions</strong>, enter any conditions that must be matched in order
+    for the Trigger to execute.</p><h4>Regex and Wildcards</h4><p>You can use wildcards
+    in the condition&#39;s value and you can select <strong>Regex</strong>.</p><p>For
+    example, if the build is <code>todolist-v2.0</code>:</p><ul><li>With Regex <u>not
+    selected</u>, both <code>todolist*</code> or <code>*olist*</code> will match.</li><li>With
+    Regex selected, the regex <code>todolist-v\d.\d</code> will match.</li></ul><p>If
+    the regex expression does not result in a match, Harness ignores the value.</p><p>Harness
+    supports standard Java regex. For example, if Regex is enabled and the intent
+    is to match any branch, the wildcard should be <code>.*</code> instead of simply
+    a wildcard <code>*</code>. If you wanted to match all of the files that end in
+    <code>-DEV.tar</code> you would enter <code>.*-DEV\.tar</code>.</p><h3>Step 3:
+    Select Pipeline Inputs</h3><p>If your Pipeline uses <a href="/article/3fqwa8et3d-input-sets">Input
+    Sets</a>, you can select the Input Set to use when the Trigger executes the Pipeline.</p><p>For
+    example, here&#39;s an Input Set:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637275884055/clean-shot-2021-11-18-at-14-51-16-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    <code>&lt;+trigger.artifact.build&gt;</code> is used for <strong>Tag</strong>
+    to ensure that the new artifact version that executed the Trigger is used for
+    the deployment.</p><p>If you use a <a href="/article/f6yobn7iq0-runtime-inputs">Fixed
+    Value</a> for the artifact <strong>Tag</strong> (for example, <strong>2</strong>),
+    the Trigger will work when a new artifact appears, but it will not select the
+    new artifact. Instead, Harness will select the artifact with the <strong>Tag</strong>
+    value in the Input Set (<strong>2</strong>).</p><p>The Input Set option is for
+    settings other than the <strong>Tag</strong> setting of the artifact you want
+    to pull. For example, the Artifact Server.</p><h3>Step 4: Test Trigger</h3><p>Once
+    your Trigger is set up, click <strong>Create Trigger</strong>. The new Trigger
+    is listed.</p><p>Once the Pipeline is executed using the Trigger, in <strong>Deployments</strong>,
+    you can see the Trigger and the user who initiated the deployment.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637277376452/clean-shot-2021-11-18-at-15-15-03-2-x.png"/></figure><p>If
+    you look at the Trigger in your Pipeline again you can see its activation records:</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637277556455/clean-shot-2021-11-18-at-15-17-59-2-x.png"/></figure><p>And
+    these records are also in the Trigger details:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637277613270/clean-shot-2021-11-18-at-15-19-26-2-x.png"/></figure><p></p><p>You
+    can test the Trigger by pushing a new artifact version to your artifact registry.</p><p>You
+    can build and push to your registry using Harness CIE.</p><p>Here&#39;s a simple
+    CIE Pipeline that uses public source code and pushes it to Docker Hub using Harness
+    CIE. You&#39;ll have to replace the <code>&lt;+input&gt;</code> for some settings
+    with your own Connectors and credentials.</p><details><summary>CIE Pipeline YAML</summary><div><pre>pipeline:<br/>    name:
+    Build Tweet App<br/>    identifier: Build_Tweet_App<br/>    projectIdentifier:
+    CD_Examples<br/>    orgIdentifier: default<br/>    tags: {}<br/>    properties:<br/>        ci:<br/>            codebase:<br/>                connectorRef:
+    tweetapp<br/>                build: &lt;+input&gt;<br/>    stages:<br/>        -
+    stage:<br/>              name: Build<br/>              identifier: Build<br/>              description:
+    &#34;&#34;<br/>              type: CI<br/>              spec:<br/>                  cloneCodebase:
+    true<br/>                  infrastructure:<br/>                      type: KubernetesDirect<br/>                      spec:<br/>                          connectorRef:
+    &lt;+input&gt;<br/>                          namespace: default<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                type: BuildAndPushDockerRegistry<br/>                                name:
+    Build and Push<br/>                                identifier: Build_and_Push<br/>                                spec:<br/>                                    connectorRef:
+    &lt;+input&gt;<br/>                                    repo: &lt;+input&gt;<br/>                                    tags:<br/>                                        -
+    &lt;+pipeline.sequenceId&gt;<br/>                                    optimize:
+    true<br/>              variables: []</pre></div></details><p></p><p>Here&#39;s
+    a simple CD Pipeline that deploys that artifact to a Kubernetes cluster. It uses
+    public values YAML and Kubernetes manifest files. You&#39;ll have to replace the
+    <code>&lt;+input&gt;</code> for some settings with your own Connectors and credentials.</p><details><summary>CD
+    Pipeline YAML</summary><div><pre>pipeline:<br/>    name: On New Artifact Tweet<br/>    identifier:
+    On_New_Artifact_Tweet<br/>    projectIdentifier: CD_Examples<br/>    orgIdentifier:
+    default<br/>    tags: {}<br/>    stages:<br/>        - stage:<br/>              name:
+    Deploy<br/>              identifier: Deploy<br/>              description: &#34;&#34;<br/>              type:
+    Deployment<br/>              spec:<br/>                  serviceConfig:<br/>                      serviceRef:
+    tweet<br/>                      serviceDefinition:<br/>                          type:
+    Kubernetes<br/>                          spec:<br/>                              variables:
+    []<br/>                              manifests:<br/>                                  -
+    manifest:<br/>                                        identifier: values<br/>                                        type:
+    Values<br/>                                        spec:<br/>                                            store:<br/>                                                type:
+    Github<br/>                                                spec:<br/>                                                    connectorRef:
+    &lt;+input&gt;<br/>                                                    gitFetchType:
+    Branch<br/>                                                    paths:<br/>                                                        -
+    default-k8s-manifests/Manifests/Files/ng-values.yaml<br/>                                                    branch:
+    main<br/>                                  - manifest:<br/>                                        identifier:
+    manifests<br/>                                        type: K8sManifest<br/>                                        spec:<br/>                                            store:<br/>                                                type:
+    Github<br/>                                                spec:<br/>                                                    connectorRef:
+    &lt;+input&gt;<br/>                                                    gitFetchType:
+    Branch<br/>                                                    paths:<br/>                                                        -
+    default-k8s-manifests/Manifests/Files/templates<br/>                                                    branch:
+    main<br/>                                            skipResourceVersioning: false<br/>                              artifacts:<br/>                                  primary:<br/>                                      type:
+    DockerRegistry<br/>                                      spec:<br/>                                          connectorRef:
+    &lt;+input&gt;<br/>                                          imagePath: &lt;+input&gt;<br/>                                          tag:
+    &lt;+input&gt;<br/>                  infrastructure:<br/>                      environmentRef:
+    tweet<br/>                      infrastructureDefinition:<br/>                          type:
+    KubernetesDirect<br/>                          spec:<br/>                              connectorRef:
+    &lt;+input&gt;<br/>                              namespace: default<br/>                              releaseName:
+    release-&lt;+INFRA_KEY&gt;<br/>                      allowSimultaneousDeployments:
+    false<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                name: Rollout Deployment<br/>                                identifier:
+    rolloutDeployment<br/>                                type: K8sRollingDeploy<br/>                                timeout:
+    10m<br/>                                spec:<br/>                                    skipDryRun:
+    false<br/>                      rollbackSteps:<br/>                          -
+    step:<br/>                                name: Rollback Rollout Deployment<br/>                                identifier:
+    rollbackRolloutDeployment<br/>                                type: K8sRollingRollback<br/>                                timeout:
+    10m<br/>                                spec: {}<br/>              tags: {}<br/>              failureStrategies:<br/>                  -
+    onFailure:<br/>                        errors:<br/>                            -
+    AllErrors<br/>                        action:<br/>                            type:
+    StageRollback<br/>              variables:<br/>                  - name: name<br/>                    type:
+    String<br/>                    value: tweetapp</pre></div></details><p></p><p>Finally
+    here&#39;s the Trigger in the CD Pipeline that executes the Pipeline when a new
+    artifact version is pushed to the registry.</p><details><summary>CD Pipeline Trigger
+    YAML</summary><div><pre>trigger:<br/>    name: tweet trigger Docker Hub<br/>    identifier:
+    tweet_trigger<br/>    enabled: true<br/>    orgIdentifier: default<br/>    projectIdentifier:
+    CD_Examples<br/>    pipelineIdentifier: On_New_Artifact_Tweet<br/>    source:<br/>        type:
+    Artifact<br/>        spec:<br/>            stageIdentifier: Deploy<br/>            type:
+    DockerRegistry<br/>            spec:<br/>                connectorRef: &lt;+input&gt;<br/>                imagePath:
+    &lt;+input&gt;<br/>                tag: &lt;+trigger.artifact.build&gt;<br/>            artifactRef:
+    primary<br/>    inputYaml: |<br/>        pipeline:<br/>            identifier:
+    On_New_Artifact_Tweet<br/>            stages:<br/>                - stage:<br/>                      identifier:
+    Deploy<br/>                      type: Deployment<br/>                      spec:<br/>                          serviceConfig:<br/>                              serviceDefinition:<br/>                                  type:
+    Kubernetes<br/>                                  spec:<br/>                                      artifacts:<br/>                                          primary:<br/>                                              type:
+    DockerRegistry<br/>                                              spec:<br/>                                                  connectorRef:
+    &lt;+input&gt;<br/>                                                  tag: &lt;+trigger.artifact.build&gt;<br/>                                                  imagePath:
+    &lt;+input&gt;<br/>                                              identifier: <br/>            properties:<br/>                ci:<br/>                    codebase:<br/>                        build:<br/>                            type:
+    branch<br/>                            spec:<br/>                                branch:
+    &lt;+trigger.branch&gt;</pre></div></details><h3>Option: Enable or Disable Trigger</h3><p>You
+    can enable or disable Triggers using the Enabled toggle:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637278018604/clean-shot-2021-11-18-at-15-26-38-2-x.png"/></figure><h3>Option:
+    Reuse Trigger YAML to Create New Triggers</h3><p>You can reuse Triggers by copying
+    and pasting Trigger YAML. This can be helpful when you have advanced Conditions
+    you don&#39;t want to set up each time.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/c1eskrgngf/1637278098047/clean-shot-2021-11-18-at-15-27-58-2-x.png"/></figure><h3>See
+    Also</h3><ul><li><a href="/article/4z9mf24m1b-schedule-pipelines-using-cron-triggers">Schedule
+    Pipelines using Triggers</a></li><li><a href="/article/hndnde8usz-triggering-pipelines">Trigger
+    Pipelines using Git Events</a></li></ul><p></p>'
+  slug: trigger-on-a-new-artifact
+  tags: []
+  is_live: true

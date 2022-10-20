@@ -1,0 +1,427 @@
+type: article
+article_id: oinivtywnl
+user_id: mfr0nxh4be
+category_id: df9vj316ec
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: 5 - ECS Basic and Canary Workflows
+slug: ecs-workflows
+description: Create a Workflow to deploy your ECS services. Covers Replica Scheduling
+  (Basic deployment), Daemon Scheduling (Canary deployment), and ELB and Auto Scaling
+  options.
+short_version: Create a Workflow to deploy your ECS services.
+tags:
+- ECS Workflow
+- Basic Workflow
+- Canary
+- Basic Deployment
+- ECS
+- Replica Scheduling
+- Daemon Scheduling
+- ELB
+- Auto Scaling
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-09-02T20:28:28.425324Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 5 - ECS Basic and Canary Workflows
+  description: Create a Workflow to deploy your ECS services. Covers Replica Scheduling
+    (Basic deployment), Daemon Scheduling (Canary deployment), and ELB and Auto Scaling
+    options.
+  short_version: Create a Workflow to deploy your ECS services.
+  body: '<p>This topic describes how to set up Harness Basic and Canary Workflows
+    for ECS deployments.</p><h3>Overview</h3><p>Workflows are the deployment steps
+    for your ECS services, including deployment types such as Canary and Blue/Green.
+    Workflows can involve a few steps or multiple phases each composed of several
+    steps.</p><div class="note-callout">This topic covers Canary and Basic ECS Workflows.
+    For ECS Blue/Green Workflows, see <a href="/article/7qtpb12dv1-ecs-blue-green-workflows">ECS
+    Blue/Green Workflows</a>.</div><p>ECS Harness Workflows differ according to the
+    ECS Service Scheduler (Replica and Daemon) used by the Harness Service in the
+    Workflow. In this section, we will set up one Workflow for each Replica and Daemon
+    Scheduler:</p><ul><li><strong>Workflow 1: Replica Scheduling using Canary Deployment.</strong><ul><li>Phase
+    1 - 50% Deployment:<ul><li>Setup Container: ECS Service Setup.</li><li>Deploy
+    Containers: Upgrade Containers.</li></ul></li><li>Phase 2 - 100% Deployment:<ul><li>Deploy
+    Containers: Upgrade Containers.</li></ul></li></ul></li><li><strong>Workflow 2:
+    Daemon Scheduling using Basic Deployment.</strong><ul><li>ECS Daemon Service Setup
+    Step.</li></ul></li></ul><h3>Review: Permissions</h3><p>To create and deploy an
+    ECS Workflow, you must belong to a Harness User Group with the following Account
+    Permissions enabled:</p><ul><li><code>Workflow Update</code></li><li><code>Workflow
+    Create</code></li></ul><p>See <a href="/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a>.</p><h3>Review: Do Not Use Multiple ECS Setup Steps</h3><p>The
+    ECS Service Setup is added to a Harness ECS Workflow automatically when you create
+    the Workflow.</p><p>Your Basic Workflow or Canary Workflow Phase should only use
+    one ECS Setup step. If you use multiple ECS Setup steps, the last step overrides
+    all previous steps, rendering them useless.</p><h3>Replica Scheduling using Canary
+    Deployment</h3><p>In this procedure, we will create a Workflow to deploy a Harness
+    Service configured with a Replica Scheduling Strategy, as described in <a href="https://docs.harness.io/article/riu73ehy2m-ecs-services#replica_strategy">Replica
+    Strategy</a>.</p><p>To create a Workflow using a Service configured with a Replica
+    Scheduling Strategy, do the following:</p><ol><li>In your Harness Application,
+    click <strong>Workflows</strong>. The <strong>Workflows</strong> page appears.</li><li>Click
+    <strong>Add Workflow</strong>. The <strong>Workflow</strong> dialog appears.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568939997260/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete the following
+    fields.<ol><li><strong>Name</strong> - Give the Workflow a name that describes
+    its deployment goals, such as <strong>ECS Replica Strategy</strong>.</li><li><strong>Description</strong>
+    - Provide details about the Workflow so other users understand its deployment
+    goals.</li><li><strong>Workflow Type</strong> - Select <strong>Canary Deployment</strong>.</li><li><strong>Environment</strong>
+    - Select the Environment you created for ECS. This is the Environment containing
+    an <a href="/article/v3l3wqovbe-infrastructure-definitions">Infrastructure Definition</a>
+    for the Harness Service you are deploying with this Workflow. You will select
+    the Service and the Infrastructure Definition when you set up the Canary deployment&#39;s
+    stages.</li><li>Click <strong>SUBMIT</strong>. The new Workflow is displayed.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840178905/elb-mvf-agv-rt-5-nz-vcdvn-9-a-uf-qjjmgc-twelqs-30-y-ju-gtx-0-w-61-l-9-egv-dqvaqk-5-g-82-o-idmq-b-6-cfgce-i-2-e-0-ogy-kli-3-lv-pw-g-6-djv-dlm-pzu-bq-6-o-4-e-0-giv-0-b-5-i-fyq-jp-1-x-ac-dos-fyy-el"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>Next,
+    you will add two phases for the Canary deployment. The first phase will set up
+    your ECS service and then upgrade ECS service instances to 50% of the available
+    ECS service instances.</li></ol></li><li>In the Workflow, in <strong>Deployment
+    Phases</strong>, click <strong>Add Phase</strong>. The <strong>Workflow Phase</strong>
+    dialog appears.<br/><br/>If you are using Infrastructure Definitions, the dialog
+    will look like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568943378073/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete
+    the following fields.<ol><li><strong>Service</strong> - Select the Harness Service
+    that uses the Replica Strategy.</li><li><strong>Infrastructure Definition</strong>
+    — This list is populated using the Environment you selected when creating the
+    Workflow. Select the Infrastructure Definition that describes the cluster where
+    you will deploy the Amazon ECS service defined in the Harness Service.</li><li><strong>Service
+    Variable Overrides</strong> — If the Harness Service uses variables that you want
+    to override for this Workflow phase, such as those described in <a href="/article/riu73ehy2m-ecs-services#service_discovery">Service
+    Discovery</a>, you can override the variable values here.</li></ol></li><li>Click
+    <strong>SUBMIT</strong>. The new <strong>Phase 1</strong> page appears.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840179302/qros-sr-62-jq-2-s-8-v-jt-8-tk-zsf-9-hzysekypqoy-5-ox-4-ue-km-3-c-d-52-zchs-r-7-gvqkp-ycw-5-p-7-ma-ceilb-kbxas-i-1-abtlj-vo-ezd-ej-3-o-tmpw-cxh-6-f-caii-zk-m-0-aj-lwxvs-8-gc-q-6-wa-0-iw-vt-ksm"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>ECS Service Setup</strong>. The <strong>ECS Service Setup</strong> dialog
+    appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1580168512950/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete
+    the following fields.<ol><li><strong>ECS Service Name</strong> - By default, the
+    ECS service will be named using a concatenation of the Harness Application, Service,
+    and Environment names. You can change the name here using text or a variable.
+    Enter <strong>${</strong> in the field to see a list of all of the variables available.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1580168546848/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li><strong>Same
+    as already running instances</strong> - This field displays the number of desired
+    <em>ECS service instances</em> for this stage. By default, the ECS service will
+    be set up using 2 ECS service instances even if the field contains <strong>0</strong>.<div
+    class="note-callout">During deployment, only one old version of the application
+    will be kept. If there are more than one, Harness will reduce their instances
+    to 0.</div></li><li><strong>Fixed</strong> - Click this option to fix the specific
+    number of ECS service instances to use for this stage. The <strong>Fixed Instances
+    Count</strong> field will appear, where you can enter the value.</li><li><strong>Resize
+    Strategy</strong> - Specify how you want the new ECS service instances added and
+    downsized.</li><li><strong>Service Steady State Wait Timeout</strong> - Specify
+    how many minutes Harness should wait for the ECS service instances to reach Steady
+    State before failing the set up. The default is 10 minutes. If you use an expression
+    for this setting and it fails or evaluates to null, 10 minutes is used.<div class="note-callout">This
+    setting supports Harness variable expressions in Basic and Canary Workflows. They
+    are not supported in Blue/Green Workflows or the ECS Run Task and ECS Daemon Service
+    Setup steps. See <a href="/article/9dvxcegm90-variables">What is a Harness Variable
+    Expression?</a> and <a href="/article/766iheu1bk-add-workflow-variables-new-template">Set
+    Workflow Variables</a>.</div></li><li><strong>AWS Auto Scaler Configuration</strong>
+    - See <a href="#aws_auto_scaling_with_ecs">AWS Auto Scaling with ECS</a>.</li><li><strong>Use
+    Load Balancer</strong> - See <a href="#using_elb_load_balancers_during_deployment">Using
+    ELB Load Balancers During Deployment</a>.</li><li>Close or Submit the <strong>ECS
+    Service Setup</strong> dialog to return to the <strong>Phase 1</strong> page.</li></ol></li></ol><div
+    class="note-callout">To obtain the name of the ECS service deployed currently
+    (from the <strong>ECS Service Setup</strong> step), you can use the Harness variable
+    <code>${ECS__Service__Setup.serviceName}</code>. You might want to use the name
+    in additional Workflow steps.</div><ol><li style="counter-increment:li 8" start="9">Click
+    <strong>Upgrade Containers</strong>. The <strong>Upgrade Containers</strong> dialog
+    appears.</li><li>In <strong>Desired Instances</strong>, set the number or percentage
+    of ECS service instances to use for this stage. As this is Phase 1 of a Canary
+    deployment, enter <strong>50 Percent</strong>.<br/><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1662150503217/image.png"/></figure>The
+    value in <strong>Desired Instances</strong> relates to the number of ECS service
+    instances set in the <strong>ECS Service Setup</strong> dialog. For example, if
+    you entered <strong>2</strong> as the <strong>Fixed Instances Count</strong> in
+    <strong>ECS Service Setup</strong> and then enter <strong>50 Percent</strong>
+    in <strong>Upgrade Containers</strong>, that means, for this phase, Harness will
+    deploy <strong>1</strong> ECS service instance.<div class="note-callout">The timeout
+    for the <strong>Upgrade Containers</strong> step is inherited from the preceding
+    <strong>ECS Service Setup</strong> step.</div><div class="tip-callout"><strong>Use
+    Expressions:</strong> You can use <a href="/article/9dvxcegm90-variables">Harness
+    Service, Environment Override, and Workflow</a> variable expressions in <strong>Desired
+    Instances</strong> by selecting <strong>Use Expression</strong> and then entering
+    the expression, like <code>${workflow.variables.DesiredInstances}</code>. When
+    you run the Workflow, you can provide a value for the variable.</div></li><li>Click
+    <strong>SUBMIT</strong>.</li><li>Click the name of the Workflow in the breadcrumb
+    links to return to the <strong>Workflow</strong> page and add the second Phase
+    of this Canary deployment.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840179417/38-mpf-l-1-l-2-pz-iiuo-2-w-2-abk-ll-4-r-4-b-5-xfp-5-j-iqw-b-1-hb-c-6-op-0-o-my-rp-uuz-crguidrs-e-82-b-8-fz-kw-2-z-t-2-qi-z-ro-4-6-3-cd-1-zjsg-t-9-kw-mrev-qv-60-tsbk-9-zqj-iazb-htinw-nod-0-ilouu-o-7-fnn"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>To
+    add <strong>Phase 2</strong>, click <strong>Add Phase</strong>.</li><li>In the
+    <strong>Workflow Phase</strong> dialog, complete the following fields.<ol><li><strong>Service</strong>
+    - Select the same Harness Service that uses the Replica Strategy.</li><li><strong>Infrastructure
+    Definition</strong> — Select the Infrastructure Definition that describes the
+    cluster where you will deploy the Amazon ECS service defined in the Harness Service.</li><li><strong>Service
+    Variable Overrides</strong> - If the Harness Service uses variables that you want
+    to override for this Workflow phase, such as those described in <a href="#service_discovery">Service
+    Discovery</a>, you can override the variable values here.</li></ol></li><li>Click
+    <strong>SUBMIT</strong>. The <strong>Phase 2</strong> page appears.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840179764/1-gd-8-xosmf-gh-sr-od-uuz-8-guw-b-32-s-1-w-rvf-im-k-9-m-lk-7-iw-1-bid-pjs-8-je-kc-2-k-l-8-nxw-4-uwhist-45-d-ey-mx-4-cwk-ydhhzqldqaxg-jd-bac-ogx-i-0-voh-8-xku-rx-8-vz-nea-d-1-ppa-6-c-6-pkx-fisl-njb"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>As
+    this is the second phase in the Canary deployment, it will only run if Phase 1
+    deployed successfully. Let&#39;s upgrade the number of containers to 100%.</li><li>Click
+    <strong>Upgrade Containers</strong>. The <strong>Upgrade Containers</strong> dialog
+    appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1580168669143/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Desired Instances</strong>, enter <strong>100</strong>, choose <strong>Percent</strong>,
+    and click <strong>SUBMIT</strong>. This will deploy the full count of ECS service
+    instances.</li></ol><p>The Workflow is complete. You can run the Workflow to deploy
+    the ECS service with the Replica strategy to your ECS cluster.</p><h3>Daemon Scheduling
+    using Basic Deployment</h3><p>In this procedure, we will create a Workflow to
+    deploy a Harness Service configured with a Daemon Scheduling Strategy, as described
+    in <a href="https://docs.harness.io/article/riu73ehy2m-ecs-services#daemon_strategy">Daemon
+    Strategy</a>.</p><p>To deploy a Harness Service configured with a Daemon Scheduling
+    Strategy, do the following:</p><ol><li>In your Harness Application, click <strong>Workflows</strong>.
+    The <strong>Workflows</strong> page appears.</li><li>Click <strong>Add Workflow</strong>.
+    The <strong>Workflow</strong> dialog appears, in one of the following formats.<br/><br/><table
+    class="borderless" style="margin-top:-0.5em"><tbody><tr><td style="width:50%;padding-left:0
+    !important"><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568963102574/image.png"/></figure></td></tr></tbody></table>We
+    will be creating a Basic Deployment Workflow using the Harness Service configured
+    with a Daemon Scheduling Strategy.</li><li>Complete the following fields.<ol><li><strong>Name</strong>
+    - Give the Workflow a name that describes its deployment goals, such as <strong>ECS
+    Daemon Strategy</strong>.</li><li><strong>Description</strong> - Provide details
+    about the Workflow so other users understand its deployment goals.</li><li><strong>Workflow
+    Type</strong> - Select <strong>Basic Deployment</strong>.</li><li><strong>Environment</strong>
+    - Select the Environment you created for ECS. This is the Environment containing
+    an <a href="/article/v3l3wqovbe-infrastructure-definitions">Infrastructure Definition</a>
+    for the Harness Service you are deploying with this Workflow. You will select
+    the Service and Infrastructure Definition when you set up the Basic deployment.</li></ol></li><li>Click
+    <strong>SUBMIT</strong>. The new Workflow is displayed.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840180049/qyqce-pk-qd-wj-2-m-b-1-dlhz-7-xb-eg-mtp-5-jtppk-qfr-1-m-2-sav-j-6-cn-brp-siri-3-zdvdz-i-rp-mog-0-occ-ghm-1-x-xv-6-us-47-msj-wki-9-y-szowon-7-p-v-b-1-u-7-a-ot-w-p-1-m-5-pj-566-fy-uwl-omxmsx-ze-tx"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>This
+    Workflow will simply set up the ECS service using a Daemon strategy.</li><li>Click
+    the <strong>ECS Daemon Service Setup</strong> step. The <strong>ECS Daemon Service
+    Setup</strong> dialog appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1580168947367/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete
+    the following fields.<ol><li><strong>ECS Service Name</strong> - The step will
+    create the ECS service using the names of the Harness Application, Service, and
+    Environment.</li><li><strong>Service Steady State Wait Timeout</strong> - Specify
+    how many minutes Harness should wait for the instances to reach Steady State before
+    failing the set up.<br/>You cannot use Harness variable expressions in this setting
+    in the ECS Daemon Service Setup step. You can use them in the Replica scheduling
+    scenario.</li><li>Click <strong>SUBMIT</strong>.</li></ol></li></ol><p>The Workflow
+    is complete. You can run the Workflow to deploy the ECS service with the Daemon
+    strategy to your ECS cluster.</p><h3>Using ELB Load Balancers During Deployment</h3><p></p><div
+    class="note-callout">Currently, the <u>single</u> ELB is available in production,
+    but the <strong>multiple ELBs</strong> feature is behind the Feature Flag <code>ECS_MULTI_LBS</code>.
+    See <a href="#multiple_load_balancers">Multiple Load Balancers</a> below.</div><p></p><p>Harness
+    can use one or more AWS Elastic Load Balancers (ALB and NLB only) for your Amazon
+    ECS service to distribute traffic evenly across the tasks in your service.</p><p>When
+    you set up an ELB configuration in Harness, you specify the target group for the
+    ECS service.</p><p>When each task for your ECS service is started, the container
+    and port combination specified in the <strong>Service Specification</strong> in
+    the Harness Service is registered with that target group and traffic is routed
+    from the load balancer to that task.</p><div class="note-callout">For information
+    about using ELB and ECS, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+    Load Balancing</a> from AWS.</div><p>In a Harness Workflow, the <strong>ECS Service
+    Setup</strong> and <strong>ECS Daemon Service Setup</strong> steps allow you to
+    use ELBs when deploying your ECS service.</p><p>To use ELBs in the <strong>ECS
+    Service Setup</strong> or <strong>ECS Daemon Service Setup</strong> steps, do
+    the following:</p><ol><li>In the <strong>ECS Service Setup</strong> or <strong>ECS
+    Daemon Service Setup</strong> step, in <strong>AWS LoadBalancer Configuration</strong>,
+    click <strong>Add</strong>. The ELB settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1613505386798/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Complete
+    the following ELB settings.<ol><li><strong>IAM Role</strong> - The role must have
+    the <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_IAM_role.html">AmazonEC2ContainerServiceRole</a>
+    policy.</li><li><strong>Elastic Load Balancer</strong> - Select the ELB that you
+    want to use. The list is populated using the Infrastructure Definition in the
+    Workflow setup. Once you select an ELB, Harness will fetch the list of target
+    groups.</li><li><strong>Target Group</strong> - Select the target group for the
+    load balancer. You associate a target group to an ECS service. Each target group
+    is used to route requests to one or more registered targets.</li><li><strong>Target
+    Container Name</strong> and <strong>Target Port</strong> - You can leave these
+    fields blank. They are used if the container specification has multiple container
+    definitions, which is not common. When you deploy your ECS service with Harness,
+    Harness uses the container name and port from the <strong>Service Specification</strong>
+    in the Harness Service. If you choose to use these fields, note that as an ECS
+    requirement Target Container cannot be empty if Target Port is defined.<br/>In
+    <strong>Target Container Name</strong>, you can also use the <code>${CONTAINER_NAME}</code>
+    parameter used in the Harness ECS Service spec.</li></ol></li><li>Click <strong>SUBMIT</strong>.</li></ol><p>The
+    ELB configuration is set. When Harness deploys the ECS service, traffic will be
+    routed from the load balancer to the service task.</p><p>You can use Harness <a
+    href="/article/q78p7rpx9u-add-service-level-config-variables">Service Config variables</a>,
+    <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow variables</a>,
+    and <a href="/article/ez8bgluqg5-using-cloudformation-outputs-in-workflow-steps">CloudFormation
+    Outputs</a> for all of these settings.</p><h4>Multiple Load Balancers</h4><div
+    class="note-callout">Currently, this feature is behind the Feature Flag <code>ECS_MULTI_LBS</code>.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a>
+    to enable the feature.</div><p>To use multiple Load Balancers, simply click <strong>Add</strong>
+    in <strong>AWS LoadBalancer Configuration</strong>.</p><p>Complete the settings
+    as described above.</p><p>The IAM role selected in <strong>IAM Role</strong> is
+    used for all Load Balancers.</p><p>You can use Harness <a href="/article/q78p7rpx9u-add-service-level-config-variables">Service
+    Config variables</a>, <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow
+    variables</a>, and <a href="/article/ez8bgluqg5-using-cloudformation-outputs-in-workflow-steps">CloudFormation
+    Outputs</a> for all of these settings.</p><h3>AWS Auto Scaling with ECS</h3><div
+    class="note-callout">For details on how Harness applies ECS Auto Scaling, see
+    <a href="/article/28ehkmqy3v-ecs-auto-scaling">ECS Auto Scaling</a>.</div><p>The
+    ECS service(s) you deploy with Harness can be configured to use AWS Service Auto
+    Scaling to adjust its desired ECS service count up or down in response to CloudWatch
+    alarms. For more information on using Auto Scaling with ECS, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html">Target
+    Tracking Scaling Policies</a> from AWS.</p><p>This is what the AWS Auto Scaling
+    setting looks like in the ECS console:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840180383/hcz-5-n-51-rdji-1-jh-x-0-b-2-a-vvkgfl-fy-w-1-cfir-ex-q-0-e-tq-oqgcq-gz-3-hok-6-ti-teq-6-bl-re-wdq-3-pe-p-6-id-7-l-4-pea-ebec-3-g-g-6-ea-sxjf-qmyqu-gy-zoq-uvgg-pfhkh-xacbo-dah-8560-s-uk-yzx-nui-znb"/></figure><p>In
+    Harness, you configure Auto Scaling in the <strong>ECS Service Setup</strong>
+    step of a Workflow (for example, Canary Deployment).</p><div class="note-callout">ECS
+    Auto Scaling is performed using the <strong>Upgrade Containers</strong> step.
+    If you delete this step from a Phase, no ECS Auto Scaling is performed in that
+    Phase. You can add the step to a previous Phase, but you must also add its corresponding
+    <strong>Rollback Containers</strong> step. See <a href="#upgrade_containers_and_rollback_containers_steps_are_dependent">Upgrade
+    Containers and Rollback Containers Steps are Dependent</a>.</div><p>There are
+    two AWS Auto Scaling resource types that you must be set up in Harness to use
+    Auto Scaling with ECS:</p><ul><li><strong>Scalable Target</strong> - Specifies
+    a resource that AWS Application Auto Scaling can scale. For more information,
+    see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html">ScalableTarget</a>
+    from AWS.</li><li><strong>Scalable Policy</strong> - Defines a scaling policy
+    that Application Auto Scaling uses to adjust your application resources. For more
+    information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html">ScalingPolicy</a>
+    from AWS.</li></ul><p>Before you set up Auto Scaling for the ECS service in Harness,
+    you need to obtain the JSON for the Scalable Target and Scalable Policy resources
+    from AWS.</p><div class="note-callout">The JSON format used in the <strong>Auto
+    Scaler Configurations</strong> settings should match the AWS standards as described
+    in <a href="https://docs.aws.amazon.com/autoscaling/application/APIReference/API_ScalableTarget.html"
+    target="_blank">ScalableTarget</a> and <a href="https://docs.aws.amazon.com/autoscaling/application/APIReference/API_ScalingPolicy.html"
+    target="_blank">ScalablePolicy</a>.</div><p>To obtain the Scalable Target, connect
+    to an EC2 instance in your VPC and enter the following:</p><p><code>aws application-autoscaling
+    describe-scalable-targets --service-namespace ecs</code></p><p>For more information,
+    see <a href="https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/describe-scalable-targets.html">describe-scalable-targets</a>
+    from AWS.</p><p>To obtain the Scalable Policy, enter the following:</p><p><code>aws
+    application-autoscaling describe-scaling-policies --service-namespace ecs</code></p><p>For
+    more information, see <a href="https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/describe-scaling-policies.html">describe-scaling-policies</a>
+    from AWS.</p><div class="note-callout">To create the Scalable Target and Scalable
+    Policy resources, see the <a href="https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html">register-scalable-target</a>
+    and <a href="https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html">put-scaling-policy</a>
+    commands from AWS.</div><p>To set up Auto Scaling for the ECS service in the Harness
+    Workflow, do the following:</p><ol><li>In a Workflow with the <strong>ECS Service
+    Setup</strong> step, open the <strong>ECS Service Setup</strong> step.</li><li>In
+    <strong>Auto Scaler Configurations</strong>, the Auto Scaling property fields
+    appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1584729213764/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Scalable Target</strong>, paste the JSON for the property.<div class="note-callout">This
+    should follow the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalabletarget.html">AWS
+    ScalableTarget JSON format</a>.</div>For example:</li></ol><pre class="hljs json">{<br/><br/>  &#34;ServiceNamespace&#34;:
+    &#34;ecs&#34;,<br/><br/>  &#34;ScalableDimension&#34;: &#34;ecs:service:DesiredCount&#34;,<br/><br/>  &#34;MinCapacity&#34;:
+    2,<br/><br/>  &#34;MaxCapacity&#34;: 5,<br/><br/>  &#34;RoleARN&#34;: &#34;arn:aws:iam::448XXXXXXX7:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService&#34;<br/><br/>}</pre><p></p><ol><li
+    style="counter-increment:li 3" start="4">In <strong>Scaling Policy</strong>, paste
+    the JSON for the property.<div class="note-callout">This should follow the <a
+    href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html"
+    target="_blank">AWS ScalingPolicy JSON format</a>.</div>For example:</li></ol><pre
+    class="hljs json">{<br/><br/>  &#34;ScalableDimension&#34;: &#34;ecs:service:DesiredCount&#34;,<br/><br/>  &#34;ServiceNamespace&#34;:
+    &#34;ecs&#34;,<br/><br/>  &#34;PolicyName&#34;: &#34;P1&#34;,<br/><br/>  &#34;PolicyType&#34;:
+    &#34;TargetTrackingScaling&#34;,<br/><br/>  &#34;TargetTrackingScalingPolicyConfiguration&#34;:
+    {<br/><br/>    &#34;TargetValue&#34;: 60.0,<br/><br/>    &#34;PredefinedMetricSpecification&#34;:
+    {<br/><br/>      &#34;PredefinedMetricType&#34;: &#34;ECSServiceAverageCPUUtilization&#34;<br/><br/>    },<br/><br/>    &#34;ScaleOutCooldown&#34;:
+    300,<br/><br/>    &#34;ScaleInCooldown&#34;: 300<br/><br/>  }<br/><br/>}</pre><p></p><p>When
+    Harness deploys your ECS service, it will register the service with an AWS Auto
+    Scaling Group to apply the scaling policy, scaling out (and in) using CloudWatch
+    target tracking.</p><div class="tip-callout">To obtain the name of the Auto Scaling
+    Group created by Harness, use the Harness variable <code>${ami.newAsgName}</code>.
+    For example, you could add a Shell Script command to your Workflow that contains
+    the command <code>echo ${ami.newAsgName}</code>.</div><h3>Upgrade Containers and
+    Rollback Containers Steps are Dependent</h3><p>In order for rollback to add ECS
+    Auto Scaling to the previous, successful service, you must have both the <strong>Upgrade
+    Containers</strong> and <strong>Rollback Containers</strong> steps in the same
+    Phase.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/28ehkmqy3v/1610478708602/image.png"/></figure><p>Since
+    ECS Auto Scaling is added by the <strong>Upgrade Containers</strong> step, if
+    you delete <strong>Upgrade Containers</strong>, then <strong>Rollback Containers</strong>
+    has no ECS Auto Scaling to roll back to.</p><div class="note-callout">If you want
+    to remove ECS Auto Scaling from a Phase, delete <u>both</u> the <strong>Upgrade
+    Containers</strong> and <strong>Rollback Containers</strong> steps. The Phase
+    will no longer perform ECS Auto Scaling during deployment or rollback.</div><h3>ECS
+    Steady State Check Command</h3><p>You can use the <strong>ECS Steady State Check</strong>
+    command in an ECS Workflow to check for the steady state of a service you have
+    deployed using a method other than the default <strong>ECS Service Setup</strong>
+    or <strong>ECS Daemon Service Setup</strong> commands, such as a <strong>Shell
+    Script</strong> command.</p><p>The <strong>ECS Steady State Check</strong> command
+    may be added to the <strong>Deploy Containers</strong> section of a Workflow.
+    The <strong>ECS Steady State Check</strong> command dialog looks like this:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1584729819104/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>ECS Service Name</strong>, enter the name of the ECS service you are deploying.</p><p>In
+    <strong>Timeout</strong>, enter how long Harness should wait for Steady State
+    to be reached before failing the deployment. The default is <strong>600000</strong>
+    ms (10 minutes).</p><h3>Rollback Command</h3><p>When you created a Workflow for
+    an ECS service a Rollback command is automatically added to the <strong>Rollback
+    Steps</strong> section of the Workflow (and its Phases).</p><p>If Harness needs
+    to rollback and restore the ECS setup to its previous working version, or if you
+    interrupt the deployment to roll it back manually, the first step is to rollback
+    the ECS services.</p><p>When a rollback occurs, Harness rolls back all Workflow
+    phases in the reverse order they were deployed. This is true for ECS services
+    deployed to EC2 or Fargate clusters.</p><p>See <a href="/article/d7rnemtfuz-ecs-rollback">ECS
+    Rollbacks</a>.</p><h3>Deploy ECS Workflows</h3><p>Once your ECS Workflow is complete,
+    you can deploy it to your ECS cluster. For more information about deploying Workflows,
+    see <a href="https://docs.harness.io/article/m220i1tnia-workflow-configuration#deploy_a_workflow">Deploy
+    a Workflow</a>.</p><p>Let’s look at the deployment of an ECS Workflow that deploys
+    an ECS service using the Replica Strategy as part of a Canary deployment. Here
+    is what the completed <strong>Phase 1</strong> looks like in Harness.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840181063/xj-89-t-zzvuoc-apkokel-9-ul-bix-rxfqero-ktv-rbr-ckr-7-vz-7-ir-fbw-qf-u-4-vc-6-nlorr-rx-pz-zy-wct-bht-ixw-210-ln-33-s-qps-1-djy-th-e-0-bmggq-8-n-m-8-c-ec-816-i-3-japyq-9-iqinc-s-33-p-5-c-rn-lc"/></figure><p>The
+    <strong>ECS Service Setup</strong> step displays the steps executed by the Harness
+    Delegate installed in the same AWS VPC as the ECS cluster named <strong>example</strong>.
+    Here’s the output with comments explaining the deployment:</p><pre class="hljs
+    html">INFO   2019-01-07 13:32:54    Begin execution of command: Setup ECS Service<br/><br/><strong>#
+    Cluster named example is selected<br/></strong><br/>INFO   2019-01-07 13:32:54
+       Cluster Name: example<br/><br/><strong># Artifact source is identified<br/></strong><br/>INFO
+      2019-01-07 13:32:54    Docker Image Name: library/nginx:stable-perl<br/><br/><strong>#
+    Container name is created<br/></strong><br/>INFO   2019-01-07 13:32:54    Container
+    Name: library_nginx_stable-perl<br/><br/><strong># Task definition is created
+    using the Harness Service Container Specification<br/></strong><br/>INFO   2019-01-07
+    13:32:54    Creating task definition ECS__Example__Default_Replica__stage__ecs
+    with container image library/nginx:stable-perl<br/><br/>INFO   2019-01-07 13:32:54
+       Creating ECS service ECS__Example__Default_Replica__stage__ecs__4 in cluster
+    example<br/><br/>INFO   2019-01-07 13:32:54    <br/><br/>INFO   2019-01-07 13:32:54
+       Cleaning versions with no tasks<br/><br/><strong># No Auto Scaling Configured
+    for this deployment</strong><br/><br/>INFO   2019-01-07 13:32:54    Checking for
+    Auto-Scalar config for existing services<br/><br/>INFO   2019-01-07 13:32:54    No
+    Auto-scalar config found for existing services<br/><br/><strong># Deployment Success</strong><br/><br/>INFO
+      2019-01-07 13:32:54    Command execution finished with status SUCCESS<br/></pre><p>Next,
+    the Upgrade Containers Step updates the desired count of 2 services:</p><pre class="hljs
+    html">INFO   2019-01-07 13:32:56    Begin execution of command: Resize ECS Service<br/><br/><strong>#
+    Resize instances to 50% of 2 (1 instance)</strong><br/><br/>INFO   2019-01-07
+    13:32:56    Resize service [ECS__Example__Default_Replica__stage__ecs__4] in cluster
+    [example] from 0 to 1 instances<br/><br/>INFO   2019-01-07 13:32:56    Waiting
+    for service: ECS__Example__Default_Replica__stage__ecs__4 to reflect updated desired
+    count: 1<br/><br/><strong># Resize Complete<br/></strong><br/>INFO   2019-01-07
+    13:32:56    Current service desired count return from aws for Service: ECS__Example__Default_Replica__stage__ecs__4
+    is: 1<br/><br/>INFO   2019-01-07 13:32:56    Service update request successfully
+    submitted.<br/><br/>INFO   2019-01-07 13:32:56    Waiting for pending tasks to
+    finish. 0/1 running ...<br/><br/>INFO   2019-01-07 13:33:37    Waiting for service
+    to be in steady state...<br/><br/><strong># Service reached Steady State</strong><br/><br/>INFO
+      2019-01-07 13:33:37    Service has reached a steady state<br/><br/><strong>#
+    Pull dockerId</strong><br/><br/>INFO   2019-01-07 13:33:37    Fetching container
+    meta data from http://10.0.0.53:51678/v1/tasks<br/><br/>INFO   2019-01-07 13:33:37
+       Successfully fetched dockerId<br/><br/>INFO   2019-01-07 13:33:37    <br/><br/>INFO
+      2019-01-07 13:33:37    Container IDs:<br/><br/>INFO   2019-01-07 13:33:37      6452d4b0ef39
+    - 10.0.0.53 (new)<br/><br/>INFO   2019-01-07 13:33:37    <br/><br/>INFO   2019-01-07
+    13:33:37    Completed operation<br/><br/>INFO   2019-01-07 13:33:37    ----------<br/><br/><strong>#
+    Deployment Success</strong><br/><br/>INFO   2019-01-07 13:33:48    Command execution
+    finished with status SUCCESS</pre><p>This example is for Phase 1 of a Canary deployment
+    where 50% of 2 services are deployed. Once the Canary deployment is complete and
+    both services are deployed, you can see the deployed services in the AWS ECS console:</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/oinivtywnl/1620840181469/p-3-cptx-r-79-wws-ib-i-vvcedvt-fs-bzcd-6-ysd-km-2-c-fswryyml-7-joc-jc-4-l-ks-56-jp-2-c-3-papp-0-x-77-r-ub-7-w-krmeq-zn-nth-gtq-1-o-dwnf-ijuo-hpr-zah-gg-8-wiqe-zua-exz-4-c-7-w-44-p-ayiz-7-dzb"/></figure><p></p><h3>Post-Production
+    Rollback</h3><p>Harness also supports post-production rollback for cases where
+    you want to recover from a deployment that succeeded on technical criteria, but
+    that you want to undo for other reasons.</p><p>See <a href="/article/2f36rsbrve-post-deployment-rollback">Rollback
+    Production Deployments</a>.</p><h3>Next Step</h3><p>Now that you have completed
+    a successful deployment, explore some of the other ECS and general Harness topics:</p><ul><li>
+    <a href="/article/7qtpb12dv1-ecs-blue-green-workflows">ECS Blue/Green Workflows</a></li><li>
+    <a href="/article/5229btw1mq-ecs-setup-in-yaml">ECS Setup in YAML</a></li><li>
+    <a href="/article/rdk1j5s32z-ecs-troubleshooting">ECS Troubleshooting</a></li><li>
+    <a href="/article/zc1u96u6uj-pipeline-configuration">Pipelines</a></li><li> <a
+    href="/article/xerirloz9a-add-a-trigger-2">Triggers</a></li></ul><p></p>'
+  slug: ecs-workflows
+  tags:
+  - ECS Workflow
+  - Basic Workflow
+  - Canary
+  - Basic Deployment
+  - ECS
+  - Replica Scheduling
+  - Daemon Scheduling
+  - ELB
+  - Auto Scaling
+  is_live: true

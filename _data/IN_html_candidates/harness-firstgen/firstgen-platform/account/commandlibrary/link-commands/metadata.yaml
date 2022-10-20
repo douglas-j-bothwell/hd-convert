@@ -1,0 +1,55 @@
+type: article
+article_id: x0jdza5viz
+user_id: slcpusem6b
+category_id: deyiqtz8tf
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Link Commands from the Command Library
+slug: link-commands
+description: Describes how to link commands to a Service or a Workflow.
+short_version: Describes how to link commands to a Service or a Workflow.
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:12:07.26253Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Link Commands from the Command Library
+  description: Describes how to link commands to a Service or a Workflow.
+  short_version: Describes how to link commands to a Service or a Workflow.
+  body: <p>The Harness Command Library stores custom Service commands that can be
+    shared between all your Harness account users. You can download these commands
+    and link them to a Service or Workflow. You can use the same command in multiple
+    Workflows and Services by linking it as needed.</p><p>Service commands are used
+    in the following Service types only:</p><ul><li>Secure Shell (SSH)</li><li>WinRM</li></ul><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/x0jdza5viz-link-commands-to-a-service#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/x0jdza5viz-link-commands#link_commands_to_a_service">Link
+    Commands to a Service</a></li><li><a href="https://docs.harness.io/article/x0jdza5viz-link-commands#link_commands_to_a_workflow">Link
+    Commands to a Workflow</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/115garkjsn-introduction-to-harness-command-library">Harness
+    Command Library Overview</a></li><li><a href="/article/l8bcqfbj4r-harness-command-library">Add
+    Commands from the Command Library</a></li></ul><h3>Link Commands to a Service</h3><p>To
+    link a command to a Service, do the following:</p><ol><li>Open a <strong>Service</strong>.</li><li>In
+    <strong>Deployment Specification</strong>, click <strong>Add Command</strong>.
+    The <strong>Add Command</strong> settings appear.</li><li>Select <strong>Select
+    from Shared Template Library</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/l8bcqfbj4r/1592470415090/screenshot-2020-06-18-at-2-20-09-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li><li>In
+    <strong>Downloads</strong>, click <strong>Link</strong> next to the command that
+    you want to link. The command is added to the Service and linked.</li></ol><h3>Link
+    Commands to a Workflow</h3><p>To link a command to a Workflow, do the following:</p><ol><li>Open
+    a <strong>Workflow</strong>.</li><li>Click <strong>Add Step</strong>, and then
+    select <strong>Template Library</strong>.</li><li>In <strong>Downloads</strong>,
+    click <strong>Link</strong> next to the command that you want to link. The command
+    is added to the Workflow and linked.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/l8bcqfbj4r/1592474563951/screenshot-2020-06-18-at-3-30-09-pm.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure></li></ol><p></p>
+  slug: link-commands
+  tags: []
+  is_live: true

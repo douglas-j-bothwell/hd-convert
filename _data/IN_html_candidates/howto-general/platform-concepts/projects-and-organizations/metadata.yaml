@@ -1,0 +1,86 @@
+type: article
+article_id: 7fibxie636
+user_id: mfr0nxh4be
+category_id: sy6sod35zi
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Organizations and Projects Overview
+slug: projects-and-organizations
+description: 'This topic explains Organizations and Projects in Harness. In this topic:
+  Before You Begin. Visual Summary. What is an Organization?. What is a Project?.
+  What is a Product Module?. Resources Across S…'
+short_version: 'This topic explains Organizations and Projects in Harness. In this
+  topic: Before You Begin. Visual Summary. What is an Organization?. What is a Project?.
+  What is a Product Module?. Resources Across S…'
+tags:
+- Platform
+- RBAC
+- AccessManagement
+- scope
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T16:45:59.6783Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Organizations and Projects Overview
+  description: ""
+  short_version: ""
+  body: <p>This topic explains Organizations and Projects in Harness.</p><p>In this
+    topic:</p><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a
+    href="#visual_summary">Visual Summary</a></li><li><a href="#what_is_an_organization">What
+    is an Organization?</a></li><li><a href="#what_is_a_project">What is a Project?</a></li><li><a
+    href="#what_is_a_product_module">What is a Product Module?</a></li><li><a href="#resources_across_scopes">Resources
+    Across Scopes</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/vz5cq0nfg2-rbac-in-harness">Harness
+    Role-Based Access Management Overview</a></li></ul><h3>Visual Summary</h3><p>Harness
+    enables you to manage access control at the following <a href="/article/vz5cq0nfg2-rbac-in-harness#scope">scopes</a>:</p><ul><li>Account</li><li>Organization</li><li>Project</li></ul><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/7fibxie636/1649088377739/screenshot-2022-04-04-at-9-35-28-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>What
+    is an Organization?</h3><p>Harness Organizations (Orgs) allow you to group Projects
+    that are related and share the same goals. For example, all projects for a business
+    unit or division.</p><p>You can create multiple Organizations within an Account.
+    Any resource that you create within the Organization&#39;s scope is available
+    for use in all the Projects created within this Organization.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/7fibxie636/1649226361483/screenshot-2022-04-06-at-11-55-26-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Within
+    each Org you can add several Harness Projects.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/7fibxie636/1649227493167/screenshot-2022-04-06-at-12-14-09-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>To
+    create a new Organization, make sure you have the <strong>Create</strong> permissions
+    for Organizations. For more information, see <a href="/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org">Create
+    a Harness Org</a>.</p><h3>What is a Project?</h3><p>A Harness Project is a group
+    of Harness modules, their Pipelines and resources. For example, a Project might
+    have a Harness CI Pipeline to build code and push an image and a Harness CD Pipeline
+    to deploy that image to a cloud platform</p><p>Think of projects as a common space
+    for managing teams working on similar technologies. A space where the team can
+    work independently and not need to bother Account admins or even Org admins when
+    new entities like Connectors, Delegates, or secrets are needed.</p><p>You can
+    create multiple Projects within an Organization.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/7fibxie636/1649229495089/screenshot-2022-04-06-at-12-14-09-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>To
+    create a new Project, make sure you have the <strong>Create</strong> permissions
+    for Projects. For more information, see <a href="/article/36fw2u92i4-create-an-organization#step_3_create_a_project">Create
+    a Project</a>.</p><p>Much like Account-level roles, project members can be assigned
+    Project Admin, Member, and Viewer roles.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/7fibxie636/1649229957368/screenshot-2022-04-06-at-12-54-00-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h3>What
+    is a Product Module?</h3><p>Your Project can add Harness products as modules,
+    such as Continuous Integration or Continuous Delivery.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/7fibxie636/1649230034650/screenshot-2022-04-06-at-12-56-28-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Resources
+    Across Scopes</h3><p>The following table lists the resources that are available
+    at various scopes in Harness:</p><table><tbody><tr><td><p><strong>Resources</strong></p></td><td><p><strong>Account</strong></p></td><td><p><strong>Org</strong></p></td><td><p><strong>Project</strong></p></td></tr><tr><td><p><strong>Pipeline</strong></p></td><td><p>No</p></td><td><p>No</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Services</strong></p></td><td><p>No</p></td><td><p>No</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Environments</strong></p></td><td><p>No</p></td><td><p>No</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Git
+    Management</strong></p></td><td><p>No</p></td><td><p>No</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Connectors</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Secrets</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>SMTP
+    Configuration</strong></p></td><td><p>Yes</p></td><td><p>No</p></td><td><p>No</p></td></tr><tr><td><p><strong>Templates</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Audit
+    Trail</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Delegates</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Governance</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr></tbody></table><p></p>
+  slug: projects-and-organizations
+  tags:
+  - Platform
+  - RBAC
+  - AccessManagement
+  - scope
+  is_live: true

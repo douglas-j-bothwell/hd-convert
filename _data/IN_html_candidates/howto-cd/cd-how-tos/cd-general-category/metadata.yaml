@@ -1,0 +1,14 @@
+type: category
+category_id: y6gyszr0kl
+parent_category_id: 21a052rbi0
+title: General CD
+description: ""
+slug: cd-general-category
+is_featured: false
+icon: https://files.helpdocs.io/i5nl071jo5/other/1621966635816/trigger-pipeline.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: General CD
+  description: ""
+  slug: cd-general-category

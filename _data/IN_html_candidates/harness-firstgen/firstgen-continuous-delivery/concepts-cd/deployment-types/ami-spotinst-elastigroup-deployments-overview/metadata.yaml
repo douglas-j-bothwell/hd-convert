@@ -1,0 +1,116 @@
+type: article
+article_id: ighbnk6xg6
+user_id: mfr0nxh4be
+category_id: vbcmo6ltg7
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: AMI Spotinst Elastigroup Deployments Overview
+slug: ami-spotinst-elastigroup-deployments-overview
+description: A summary of Harness AMI Spotinst implementation.
+short_version: A summary of Harness AMI Spotinst implementation.
+tags:
+- Spotinst
+- Elastigroup
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-07T00:00:16.031889Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: AMI Spotinst Elastigroup Deployments Overview
+  description: A summary of Harness AMI Spotinst implementation.
+  short_version: A summary of Harness AMI Spotinst implementation.
+  body: '<div class="note-callout">Currently, Harness integrates with Spotinst only
+    for deployments to AWS (Amazon Web Services) via Elastigroup.</div><p>This topic
+    describes the concept of a Harness AWS Spotinst Elastigroup deployment by describing
+    the high-level steps involved.</p><p>For detailed instructions on using AWS Spotinst
+    Elastigroup in Harness, see the  <a href="/article/bkxhdsur2z-ami-elastigroup">AMI
+    Spotinst Elastigroup Deployment</a>.</p><h3>Before You Begin</h3><p>Before learning
+    about Harness AWS Spotinst Elastigroup deployments, you should have an understanding
+    of <a href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a>.</p><h3>What
+    Does Harness Need Before You Start?</h3><p>A Harness AWS Spotinst Elastigroup
+    deployment requires the following:</p><ul><li>In AWS:<ul><li>For an AMI Canary
+    deployment, you must set up a working AMI that Harness will use to create your
+    instances and at least one  <a href="https://docs.aws.amazon.com/en_pv/elasticloadbalancing/latest/application/introduction.html"
+    target="_blank">Application Load Balancer</a> (ALB) or  <a href="https://docs.aws.amazon.com/en_pv/elasticloadbalancing/latest/classic/introduction.html"
+    target="_blank">Classic Load Balancer</a>. (See the  <a href="https://docs.spot.io/elastigroup/tools-integrations/aws-load-balancers-elb-alb">Spotinst
+    documentation</a> for Load Balancer support.)</li><li>For AMI Blue/Green deployment,
+    you must also have:<ul><li>A pair of  <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html">Target
+    Groups</a>—typically staging (Stage) and production (Prod)—both with the <strong>instance</strong> target
+    type.</li><li>A Load Balancer with listeners for both your Target Groups&#39;
+    ports.</li></ul></li></ul></li><li>In Spotinst, an Elastigroup configuration with
+    at least one Elastigroup cluster that matches your AWS configuration&#39;s AMI,
+    VPC, Load Balancer(s), security groups, availability zones, and allowed instance
+    types.</li></ul><h3>What Does Harness Deploy?</h3><p>Harness takes the AMI and
+    Elastigroup configuration you provide, and creates a new Elastigroup and populates
+    it with instances using the AMI. You can specify the target, min, and max instances
+    for the new Elastigroup, and other settings in Harness.</p><h3>What Does a Harness
+    AWS Spotinst Elastigroup Deployment Involve?</h3><p>The following list describes
+    the major steps of a Harness AWS Spotinst Elastigroup deployment:</p><p></p><table><tbody><tr><td><p><strong>Step</strong></p></td><td><p><strong>Name</strong></p></td><td><p><strong>Description
+    and Links</strong></p></td></tr><tr><td><p>1</p></td><td><p>Install the Harness
+    Shell Script or ECS <strong>Delegate</strong> in your target EC2 subnet.</p></td><td><p>Typically,
+    the Shell Script or ECS Delegate is installed in the same subnet where you will
+    deploy your application(s).</p></td></tr><tr><td><p>2</p></td><td><p>Add both
+    an <strong>AWS</strong> <strong>Cloud Provider</strong> and a <strong>Spotinst Cloud
+    Provider</strong>.</p></td><td><p>An AWS Cloud Provider is a connection to your
+    AWS account. The AWS Cloud Provider is used to obtain the AMI Harness will use
+    to create new instances and to deploy the new instances.</p><p>A Spotinst Cloud
+    Provider is used to connect Harness to Spotinst.</p></td></tr><tr><td><p>3</p></td><td><p>Create
+    the Harness <strong>Application</strong> for your Spotinst deployment.</p></td><td><p>The
+    Harness Application represents a group of microservices, their deployment pipelines,
+    and all the building blocks for those pipelines. Harness represents your release
+    process using a logical group of one or more entities: Services, Environments,
+    Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications
+    organize all of the entities and configurations in Harness CD.</p></td></tr><tr><td><p>4</p></td><td><p>Create
+    the Harness <strong>Service</strong> using the Amazon Machine Image Deployment
+    Type.</p></td><td><p>Add an AMI as an artifact in a Harness Service, add any AMI
+    User Data, and any config variables and files.</p></td></tr><tr><td><p>5</p></td><td><p>Create
+    the Harness <strong>Environment</strong> and Infrastructure Definition for your
+    deployment, and any overrides.</p></td><td><p>Using the Harness AWS Cloud Provider
+    and Spotinst Cloud Provider you set up, you can select the Elastigroup configuration
+    as the target environment for your deployment.</p><p>You can also override any
+    Service settings, such as User Data values. This enables you to use a single Service
+    with multiple Harness Environments.</p></td></tr><tr><td><p>6</p></td><td><p>Create
+    the Basic, Canary, and Blue/Green deployments in Harness <strong>Workflows</strong>.</p></td><td><p>The
+    Workflow deploys the new AMI instances defined in the Harness Service to the environment
+    in the Harness Infrastructure Definition.</p></td></tr><tr><td><p>7</p></td><td><p>Deploy
+    the Workflow.</p></td><td><p>Once you&#39;ve deployed a Workflow, learn how to
+    improve your AWS AMI CD:</p><ul><li> <a href="/article/m220i1tnia-workflow-configuration">Workflows</a></li><li>
+    <a href="/article/xerirloz9a-add-a-trigger-2">Triggers</a></li><li> <a href="/article/o22jx8amxb-add-an-infra-provisioner">Infrastructure
+    Provisioners Overview</a></li></ul></td></tr></tbody></table><p></p><h3>How Does
+    Harness Downsize Old Elastigroups?</h3><p>Harness upscales and downsizes in two
+    states, setup and deploy.</p><ul><li><strong>Setup</strong> — The setup state
+    is when your new Elastigroup is created.</li><li><strong>Deploy</strong> — The
+    deploy phase(s) is when your new Elastigroup is upscaled to the number of new
+    instances you requested. This is either a fixed setting (Min, Max, Desired) or
+    the same number as the previous Elastigroup.</li></ul><div class="note-callout">Instances
+    are always tied to their Elastigroup. A new Elastigroup does not take instances
+    from an old Elastigroup.</div><p>During setup state:</p><ul><li>The previous Elastigroup
+    is kept with non-zero instance count (highest revision number, such as <strong>_7</strong>).
+    Any older Elastigroup are downsized to 0.</li><li>New Elastigroup is created with
+    0 count.</li><li>For Elastigroups that had 0 instances, Harness keeps 3 old Elastigroups
+    and deletes the rest.</li></ul><p>During deploy phases:</p><ul><li>New Elastigroup
+    is upscaled to the number of new instances you requested.</li><li>Previous Elastigroup
+    is gradually downsized. In the case of a Canary deployment, the old Elastigroup
+    is downsized in the inverse proportion to the new Elastigroup&#39;s upscale. If
+    the new Elastigroup is upscaled 25% in phase 1, the previous Elastigroup is downsized
+    25%.</li></ul><p>At the end of deployment:</p><ul><li>New Elastigroup has the
+    number of new instances you requested. In Canary, this is always 100%.</li><li>Previous
+    Elastigroup is downsized to 0.</li></ul><h4>Rollback</h4><p>If rollback occurs,
+    the previous Elastigroup is upscaled to its pre-setup number of instances using
+    new instances.</p><h3>Next Steps</h3><p>Read the following topics to build on
+    what you&#39;ve learned:</p><ul><li> <a href="/article/bkxhdsur2z-ami-elastigroup">AMI
+    Spotinst Elastigroup Deployment</a></li></ul><p></p>'
+  slug: ami-spotinst-elastigroup-deployments-overview
+  tags:
+  - Spotinst
+  - Elastigroup
+  is_live: true

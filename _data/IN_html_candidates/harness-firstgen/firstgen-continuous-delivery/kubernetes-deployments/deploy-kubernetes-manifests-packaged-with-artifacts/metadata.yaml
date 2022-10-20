@@ -1,0 +1,263 @@
+type: article
+article_id: 53qqnebrak
+user_id: mfr0nxh4be
+category_id: n03qfofd5w
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add Packaged Kubernetes Manifests
+slug: deploy-kubernetes-manifests-packaged-with-artifacts
+description: You can use manifests packaged along with artifacts by using the Custom
+  Remote Manifests setting in a Harness Kubernetes Service. You add a script that
+  pull the artifact, extracts its contents, and then supply the path to the manifest.
+short_version: Use manifests packaged along with artifacts by using the Custom Remote
+  Manifests setting in a Harness Kubernetes Service.
+tags:
+- Custom Remote Manifests
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-05-06T19:17:25.547868Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Packaged Kubernetes Manifests
+  description: You can use manifests packaged along with artifacts by using the Custom
+    Remote Manifests setting in a Harness Kubernetes Service. You add a script that
+    pull the artifact, extracts its contents, and then supply the path to the manifest.
+  short_version: Use manifests packaged along with artifacts by using the Custom Remote
+    Manifests setting in a Harness Kubernetes Service.
+  body: '<p></p><div class="note-callout">Currently, this feature is behind the Feature
+    Flag <code>CUSTOM_MANIFEST</code>. Contact <a href="mailto:support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature.</div><p></p><p>By default,
+    you add Kubernetes and OpenShift files to a Harness Kubernetes Service inline
+    or from a repo as files.</p><p>In some cases, your manifests, templates, etc are
+    in a packaged archive and you simply wish to extract them and use then at runtime.</p><p>You
+    can use a packaged archive with the <strong>Custom Remote Manifests</strong> setting
+    in a Harness Kubernetes Service. You add a script to the Service that pulls the
+    package and extracts its contents. Next, you supply the path to the manifest,
+    template, etc.</p><div class="note-callout">Looking for other methods? See <a
+    href="/article/2j2vi5oxrq-define-kubernetes-manifests">Define Kubernetes Manifests</a>.</div><p>In
+    this topic:</p><ul><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#undefined">Supported
+    Platforms and Technologies</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#limitations">Limitations</a></li><li><a
+    href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#undefined">Review:
+    What Workloads Can I Deploy?</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#option_add_secrets_for_script">Option:
+    Add Secrets for Script</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#step_1_create_a_harness_kubernetes_service">Step
+    1: Create a Harness Kubernetes Service</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#option_add_secret_for_script">Option:
+    Add Secret for Script</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#step_2_use_custom_remote_manifests">Step
+    2: Use Custom Remote Manifests</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#step_3_add_script_for_remote_package">Step
+    3: Add Script for Remote Package</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#step_4_add_path_to_manifests">Step
+    4: Add Path to Manifests</a><ul><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#kubernetes_yaml">Kubernetes
+    YAML</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#open_shift_manifest">OpenShift
+    Manifest</a></li></ul></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#option_delegate_selector">Option:
+    Delegate Selector</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#option_override_manifest_in_service">Option:
+    Override Manifest in Service</a><ul><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#inherit_script_from_service">Inherit
+    Script from Service</a><ul><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#kubernetes">Kubernetes</a></li><li><a
+    href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#open_shift">OpenShift</a></li></ul></li><li><a
+    href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#define_new_script">Define
+    new Script</a></li></ul></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#option_override_manifests_in_environment">Option:
+    Override Manifests in Environment</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#option_use_a_harness_artifact_source">Option:
+    Use a Harness Artifact Source</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#option_use_local_script">Option:
+    Use Local Script</a></li><li><a href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#notes">Notes</a></li><li><a
+    href="https://docs.harness.io/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts#configure_as_code">Configure
+    As Code</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/7in9z2boh6-kubernetes-quickstart">Kubernetes
+    Quickstart</a></li><li><a href="/article/wnr5n847b1-kubernetes-overview">Kubernetes
+    Deployments Overview</a></li><li><a href="/article/6ib8n1n1k6-add-container-images-for-kubernetes-deployments">Add
+    Container Images for Kubernetes Deployments</a></li></ul><h3 id="undefined">Supported
+    Platforms and Technologies</h3><p>See <a href="/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h3>Limitations</h3><ul><li>Custom Remote Manifests
+    scripts use Bash only.</li><li>The Delegate that runs the script must have all
+    the software needed for the scripts to execute.<br/>Currently, you cannot select
+    a specific Delegate to execute the Custom Remote Manifests script. Harness selects
+    the Delegate based on <a href="/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates">its
+    standard methods</a>. You can use <a href="/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles">Delegate
+    Profiles</a> to add software to Delegates from Harness.<br/>If you select a Delegate
+    in the Kubernetes Cluster Cloud Provider used by the Workflow&#39;s Infrastructure
+    Definition, then the script is run on that Delegate.</li></ul><h3 id="undefined">Review:
+    What Workloads Can I Deploy?</h3><p>See <a href="/article/pc6qglyp5h-kubernetes-deployments-overview">Kubernetes
+    How-tos</a>.</p><h3>Option: Add Secrets for Script</h3><p>Typically, your script
+    to pull the remote package will use a user account. For example:</p><pre>curl
+    -sSf -u &#34;johndoe:mypwd&#34; -O &#39;https://mycompany.jfrog.io/module/example/manifest.zip&#39;</pre><p>You
+    can use Harness secrets for the username and password in your script. For example:</p><pre>curl
+    -sSf -u &#34;${secrets.getValue(&#34;username&#34;)}:${secrets.getValue(&#34;password&#34;)}&#34;
+    -O &#39;https://mycompany.jfrog.io/module/example/manifest.zip&#39;</pre><p></p><p>For
+    more information, see <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Use
+    Encrypted Text Secrets</a>.</p><h3>Step 1: Create a Harness Kubernetes Service</h3><p>Create
+    a Harness Kubernetes Service.</p><p>In Harness, click <strong>Setup</strong>,
+    and then click <strong>Add Application</strong>.</p><p>Enter a name for the Application
+    and click <strong>Submit</strong>.</p><p>Click <strong>Services</strong>, and
+    then click <strong>Add Service</strong>. The <strong>Add Service</strong> settings
+    appear.</p><p>In <strong>Name</strong>, enter a name for the Service.</p><p>In <strong>Deployment
+    Type</strong>, select <strong>Kubernetes</strong>, and then ensure <strong>Enable
+    Kubernetes V2</strong> is selected.</p><p>Click <strong>Submit</strong>. The new
+    Harness Kubernetes Service is created.</p><h3>Step 2: Use Custom Remote Manifests</h3><p>In
+    your Harness Kubernetes Service, in <strong>Manifests</strong>, click more options
+    (︙) and select <strong>Custom Remote Manifests</strong>.</p><p>In <strong>Manifest
+    Format</strong>, select <strong>Kubernetes YAML</strong> or <strong>OpenShift
+    Manifest</strong>.</p><p>Now you can add your script to pull the package containing
+    your manifest.</p><h3>Step 3: Add Script for Remote Package</h3><p>In <strong>Script</strong>,
+    enter the script that pulls the package containing your manifest and extracts
+    the manifest from the package. For example:</p><pre>curl -sSf -u &#34;${secrets.getValue(&#34;username&#34;)}:${secrets.getValue(&#34;password&#34;)}&#34;
+    -O &#39;https://mycompany.jfrog.io/module/example/manifest.zip&#39;<br/><br/>unzip
+    manifest.zip</pre><p></p><p>You can use Harness Service, Workflow, secrets, and
+    built-in variables in the script.</p><p>The script is run on the Harness Delegate
+    selected for deployment. If you selected a Delegate in the Kubernetes Cluster
+    Cloud Provider used by the Workflow&#39;s Infrastructure Definition, then the
+    script is run on that Delegate.</p><p>Harness creates a temporary working directory
+    on the Delegate host for the downloaded package. You can reference the working
+    directory in your script with <code>WORKING_DIRECTORY=$(pwd)</code> or <code>cd
+    $(pwd)/some/other/directory</code>.</p><p>Once you have deployed the Workflow,
+    you can check which Delegate was selected in the <strong>Delegates Evaluated</strong>
+    setting for the Workflow step that used the manifest.</p><p>Look for the <strong>CUSTOM_MANIFEST_VALUES_FETCH_TASK</strong>
+    task:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/53qqnebrak/1616197794785/image.png"/></figure><p></p><p>You
+    can also map specific Delegates to specific Harness tasks. See <a href="/article/nzuhppobyg-map-tasks-to-delegates-and-profiles">Delegate
+    Task Category Mapping</a>.</p><h3>Step 4: Add Path to Manifests</h3><p>Once you
+    have a script that extracts your package, you provide Harness with the path to
+    the manifest in the expanded folders and files.</p><p>You can use Harness Service,
+    Workflow, and built-in variables in the path.</p><h4>Kubernetes YAML</h4><p>You
+    can enter the path to a manifests <u>folder</u>.</p><p>For example, if your expanded
+    package has this folder structure:</p><pre>manifest:<br/> - values.yaml<br/> -
+    templates<br/>    - deployment.yaml<br/>    - service.yaml</pre><p></p><p>In this
+    example, you can enter <strong>manifest</strong> and Harness automatically detects
+    the <strong>values.yaml</strong> and the other file (for example, <strong>deployment.yaml</strong>
+    and <strong>service.yaml</strong>). If no values.yaml file is present, Harness
+    will simply use the other files.</p><p>That&#39;s all the setup required. You
+    can now deploy the Service and the script is executed at runtime.</p><p>The remainder
+    of this topic covers options for overriding the manifest.</p><h4>OpenShift Manifest</h4><p>Provide
+    the path to the OpenShift template, Kubernetes manifest, or Helm file. For example,
+    <strong>manifest/template.yaml</strong>.</p><div class="warning-callout">Do not
+    enter a folder. Harness requires a direct path to the file.</div><p>That&#39;s
+    all the setup required. You can now deploy the Service and the script is executed
+    at runtime.</p><p>The remainder of this topic covers options for overriding the
+    template.</p><h3>Option: Delegate Selector</h3><p>In <strong>Delegate Selector</strong>,
+    select the Selector for the Delegate(s) you want to use. You add Selectors to
+    Delegates to make sure that they&#39;re used to execute the command. For more
+    information, see <a href="/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors">Select
+    Delegates with Selectors</a>.</p><p>Harness will use Delegates matching the Selectors
+    you add.</p><p>If you use one Selector, Harness will use any Delegate that has
+    that Selector.</p><p>If you select two Selectors, a Delegate must have both Selectors
+    to be selected. That Delegate might also have other Selectors, but it must have
+    the two you selected.</p><div class="note-callout">You can use expressions for
+    Harness built-in variables or Account Default variables in <strong>Delegate Selectors</strong>.
+    When the variable expression is resolved at deployment runtime, it must match
+    an existing Delegate Selector.<br/><br/>For example, if you have a Delegate Selector <strong>prod</strong> and
+    the Workflow is using an Environment also named <strong>prod</strong>, the Delegate
+    Selector can be <code>${env.name}</code>. This is very useful when you match Delegate
+    Selectors to Application component names such as Environments, Services, etc.
+    It&#39;s also a way to template the Delegate Selector setting.</div><p></p><h3>Option:
+    Override Manifest in Service</h3><p>You can override settings in the manifest
+    you unpacked in Custom Remote Manifest using the Service&#39;s <strong>Configuration</strong>
+    section.</p><p>In the Harness Service, in <strong>Configuration</strong>, click
+    <strong>Add Values</strong> (Kubernetes) or <strong>Add Param</strong> (OpenShift).</p><p>Choose
+    from the following options.</p><h4>Inherit Script from Service</h4><p>Select this
+    option if you want to use an alternative values.yaml file (Kubernetes) or parameters
+    file (OpenShift) from the package you pulled in <strong>Custom Remote Manifest</strong>.</p><p>You
+    can use Harness Service, Workflow, and built-in variables in the path. For example,
+    <code>${serviceVariable.overridesPath}/values-production.yaml</code>.</p><p>You
+    can enter multiple values separated by commas.</p><h5>Kubernetes</h5><p>Enter
+    the path to an alternative values file in the extracted package.</p><p>For example,
+    let&#39;s say you entered the folder <strong>manifest</strong> in the <strong>Custom
+    Remote Manifest</strong> path, but you have another values file in a <strong>production</strong>
+    folder in the extracted package.</p><p>You can enter the path to the other values
+    file and Harness will use it instead of the values.yaml file in the <strong>manifest</strong>
+    folder. For example, <code>production/values-production.yaml</code>.</p><p>The
+    path must be from the root of the extracted package.</p><h5>OpenShift</h5><p>Enter
+    the path to an alternative parameters file in the extracted package.</p><p>For
+    OpenShift, this is the equivalent of the passing a parameters file in the <code>oc
+    process</code> command (<code>--param-file=parameters/file.env</code>).</p><h4>Define
+    new Script</h4><p>Enter a script to override the script entered in <strong>Custom
+    Remote Manifest</strong>. The new script can download and extract a different
+    package.</p><p>Provide the path to the new manifest folder (Kubernetes) or template
+    file (OpenShift).</p><p>You can use Harness Service, Workflow, and built-in variables
+    in the script and path. You can enter multiple values separated by commas.</p><h3>Option:
+    Override Manifests in Environment</h3><p>You can override Harness Service settings
+    at the Harness Environment level using Service Configuration Overrides. See <a
+    href="/article/ycacqs7tlx-override-harness-kubernetes-service-settings">Override
+    Harness Kubernetes Service Settings</a> and <a href="/article/4m2kst307m-override-service-files-and-variables-in-environments">Override
+    a Service Configuration in an Environment</a>.</p><p>The <strong>Custom Manifest
+    Override Configuration</strong> follows the same guidelines as overriding settings
+    using the Service&#39;s <strong>Configuration</strong> sections: <strong>Add Values</strong>
+    (Kubernetes) or <strong>Add Param</strong> (OpenShift).</p><p>Here&#39;s an example
+    overriding Service file locations with new file locations:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/53qqnebrak/1616438995700/image.png"/></figure><p>You
+    can use Harness Service, Workflow, and built-in variables in the script and path.
+    You can enter multiple values separated by commas.</p><h3>Option: Use a Harness
+    Artifact Source</h3><p>Although the <strong>Custom Remote Manifests</strong> option
+    is designed for when the manifest and deployment artifact are in the same package,
+    you can use them separately with <strong>Custom Remote Manifests</strong>.</p><div
+    class="note-callout">Deploying a manifest separately from the deployment artifact
+    is the Harness default setup. Artifacts are added to a Harness Kubernetes Service
+    from a repository and manifests are inline or added from a separate repo. See
+    <a href="/article/6ib8n1n1k6-add-container-images-for-kubernetes-deployments">Add
+    Container Images for Kubernetes Deployments</a> and <a href="/article/2j2vi5oxrq-define-kubernetes-manifests">Define
+    Kubernetes Manifests</a>.</div><p>Simply add the artifact in <strong>Artifact
+    Source</strong> as described in <a href="/article/6ib8n1n1k6-add-container-images-for-kubernetes-deployments">Add
+    Container Images for Kubernetes Deployments</a>.</p><p>In the values.yaml and
+    manifests that you add using <strong>Custom Remote Manifests</strong>, you must
+    reference the Harness Artifact Source using the Harness built-in variables:</p><ul><li><code>image:
+    ${artifact.metadata.image}</code></li><li><code>dockercfg: ${artifact.source.dockerconfig}</code></li></ul><p>For
+    example, in the values.yaml you would add these variables:</p><pre>name: harness-example<br/>replicas:
+    1<br/><br/>image: ${artifact.metadata.image}<br/>dockercfg: ${artifact.source.dockerconfig}<br/><br/>createNamespace:
+    true<br/>...</pre><p></p><p>And then in the manifest for a deployment, you would
+    reference these variables:</p><pre>...<br/>spec:<br/>      {{- if .Values.dockercfg}}<br/>      imagePullSecrets:<br/>      -
+    name: {{.Values.name}}-dockercfg<br/>      {{- end}}<br/>      containers:<br/>      -
+    name: {{.Values.name}}<br/>        image: {{.Values.image}}<br/>...</pre><p></p><h3>Option:
+    Use Local Script</h3><p>You can also use a local script to create your manifest
+    in <strong>Custom Remote Manifests</strong>.</p><p>You can use Harness Service,
+    Workflow, secrets, and built-in variables in the script.</p><p>Here is an example
+    using Service variables in the script and <strong>Path to OpenShift Manifests</strong>
+    setting:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/53qqnebrak/1616194496801/image.png"/></figure><p>Here
+    is the script used:</p><details><summary>Example Script</summary><div><pre>WORKING_DIRECTORY=$(pwd)<br/>MANIFEST_PATH=&#34;${serviceVariable.manifestPath}&#34;<br/>OVERRIDES_PATH=&#34;${serviceVariable.overridesPath}&#34;<br/><br/>##########################################<br/>##########################################<br/>##<br/>##
+    TEMPLATE<br/>##<br/>##########################################<br/>##########################################<br/><br/>mkdir
+    -p &#34;$MANIFEST_PATH&#34;<br/>cd &#34;$MANIFEST_PATH&#34;<br/><br/>read -r -d
+    &#39;&#39; TEMPLATE_MANIFEST &lt;&lt;- TEMPLATE<br/>apiVersion: v1<br/>kind: Template<br/>metadata:<br/>  name:
+    ${workflow.variables.workloadName}-template<br/>  annotations:<br/>    description:
+    &#34;Description&#34;<br/>objects:<br/>- apiVersion: v1<br/>  kind: ConfigMap<br/>  metadata:<br/>    name:
+    \${WORKLOAD_NAME}<br/>  data:<br/>    value: \${CONFIGURATION}<br/>- apiVersion:
+    v1<br/>  kind: Secret<br/>  metadata:<br/>    name: \${WORKLOAD_NAME}<br/>  stringData:<br/>    value:
+    \${SECRET}<br/>- apiVersion: apps/v1<br/>  kind: Deployment<br/>  metadata:<br/>    name:
+    \${WORKLOAD_NAME}-deployment<br/>    labels:<br/>      secret: ${secrets.getValue(&#34;custom-manifest-validation-test-secret&#34;)}<br/>  spec:<br/>    replicas:
+    1<br/>    selector:<br/>      matchLabels:<br/>        app: \${WORKLOAD_NAME}<br/>        param:
+    ${workflow.variables.valueOverride}<br/>        param1: ${workflow.variables.value1Override}<br/>        param2:
+    ${workflow.variables.value2Override}<br/>        param3: ${workflow.variables.value3Override}<br/>        param4:
+    ${workflow.variables.value4Override}<br/><br/>    template:<br/>      metadata:<br/>        labels:<br/>          app:
+    \${WORKLOAD_NAME}<br/>          param: \${PARAM}<br/>          param1: \${PARAM1}<br/>          param2:
+    \${PARAM2}<br/>          param3: \${PARAM3}<br/>          param4: \${PARAM4}<br/>      spec:<br/>        containers:<br/>        -
+    name: \${WORKLOAD_NAME}<br/>          image:  harness/todolist-sample:11<br/>          envFrom:<br/>          -
+    configMapRef:<br/>              name: \${WORKLOAD_NAME}<br/>          - secretRef:<br/>              name:
+    \${WORKLOAD_NAME}<br/>parameters:<br/>- name: WORKLOAD_NAME<br/>  description:
+    Workload name<br/>  value: ${workflow.variables.workloadName}<br/>- name: CONFIGURATION<br/>  description:
+    Configuration value<br/>  value: Some configuration value<br/>- name: SECRET<br/>  description:
+    Secret value<br/>  value: Some secret value<br/>- name: PARAM<br/>  description:
+    Param value<br/>  value: default-override<br/>- name: PARAM1<br/>  description:
+    Param value<br/>  value: default-override<br/>- name: PARAM2<br/>  description:
+    Param value<br/>  value: default-override<br/>- name: PARAM3<br/>  description:
+    Param value<br/>  value: default-override<br/>- name: PARAM4<br/>  description:
+    Param value<br/>  value: default-override<br/>TEMPLATE<br/><br/>echo &#34;$TEMPLATE_MANIFEST&#34;
+    &gt; template.yaml<br/><br/>##########################################<br/>##########################################<br/>##<br/>##
+    ADDITIONAL OVERRIDES<br/>##<br/>##########################################<br/>##########################################<br/><br/>cd
+    &#34;$WORKING_DIRECTORY&#34;<br/>mkdir -p &#34;$OVERRIDES_PATH&#34;<br/>cd &#34;$OVERRIDES_PATH&#34;<br/><br/>read
+    -r -d &#39;&#39; PARAMS_OVERRIDE1 &lt;&lt;- OVERRIDE1<br/>PARAM1: ${configFile.getAsString(&#34;values1-override.txt&#34;)}<br/>PARAM2:
+    ${configFile.getAsString(&#34;values1-override.txt&#34;)}<br/>OVERRIDE1<br/><br/>read
+    -r -d &#39;&#39; PARAMS_OVERRIDE2 &lt;&lt;- OVERRIDE2<br/>PARAM2: ${configFile.getAsString(&#34;value2Override&#34;)}<br/>PARAM3:
+    values2-override<br/>OVERRIDE2<br/><br/>echo &#34;$PARAMS_OVERRIDE1&#34; &gt;
+    params1<br/>echo &#34;$PARAMS_OVERRIDE2&#34; &gt; params2<br/><br/></pre></div></details><p></p><p></p><h3>Notes</h3><ul><li>You
+    can use Go templating in your Kubernetes resource files, just as you would for
+    files stored in Git or inline. See <a href="/article/mwy6zgz8gu-use-go-templating-in-kubernetes-manifests">Use
+    Go Templating in Kubernetes Manifests</a>. For OpenShift, you must use OpenShift
+    templating.</li><li>If the artifact you are deploying with your manifest is public
+    (DockerHub) and does not require credentials, you can use the standard public
+    image reference, such as <code>image: harness/todolist-sample:11</code>.</li></ul><h3>Configure
+    As Code</h3><p>To see how to configure the settings in this topic using YAML,
+    configure the settings in the UI first, and then click the YAML editor button
+    (<span style="color:#fb9e00" data-hd-color="#fb9e00"><strong>&lt;/&gt;</strong></span>).</p>'
+  slug: deploy-kubernetes-manifests-packaged-with-artifacts
+  tags:
+  - Custom Remote Manifests
+  is_live: true

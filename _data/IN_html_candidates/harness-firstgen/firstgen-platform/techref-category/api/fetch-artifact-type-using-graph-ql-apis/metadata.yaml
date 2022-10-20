@@ -1,0 +1,183 @@
+type: article
+article_id: nrl5r5zj94
+user_id: slcpusem6b
+category_id: l2p3i03l4a
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Fetch Artifact Type Details Using GraphQL APIs
+slug: fetch-artifact-type-using-graph-ql-apis
+description: Describes how to fetch details of Artifact Type using GraphQL APIs.
+short_version: Describes how to fetch details of Artifact Type using GraphQL APIs.
+tags:
+- GraphQL API
+- Artifact Source
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:21.001036Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Fetch Artifact Type Details Using GraphQL APIs
+  description: Describes how to fetch details of Artifact Type using GraphQL APIs.
+  short_version: Describes how to fetch details of Artifact Type using GraphQL APIs.
+  body: '<p>The Artifact Source defines where the Artifact Collection step will look
+    for the build artifact during the Build Workflow. The Artifact Source for the
+    Service lists the file(s) that you want to be copied to the target host(s).</p><p>To
+    add an Artifact source to a Harness Service, you add an Artifact Server as a Harness
+    Connector, and then use that Connector in your Service along with the specific
+    details.</p><p>This topic describes how to fetch Artifact Type details using GraphQL
+    APIs.</p><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_jenkins_artifact_type">Fetch
+    Details of Jenkins Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_bamboo_artifact_type">Fetch
+    Details of Bamboo Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_docker_registry_artifact_type">Fetch
+    Details of Docker Registry Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_elastic_container_registry_ecr_artifact_type">Fetch
+    Details of Elastic Container Registry (ECR) Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_google_cloud_container_registry_gcr_artifact_type">Fetch
+    Details of Google Cloud Container Registry (GCR) Artifact Type</a></li><li><a
+    href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_azure_container_registry_acr_artifact_type">Fetch
+    Details of Azure Container Registry (ACR) Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_nexus_artifact_type">Fetch
+    Details of Nexus Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_artifactory_artifact_type">Fetch
+    Details of Artifactory Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_amazon_s3_artifact_type">Fetch
+    Details of Amazon S3 Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_ami_artifact_type">Fetch
+    Details of AMI Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_gcs_artifact_type">Fetch
+    Details of GCS Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_smb_artifact_type">Fetch
+    Details of SMB Artifact Type</a></li><li><a href="https://docs.harness.io/article/nrl5r5zj94-add-artifact-source-using-graph-ql-apis#fetch_details_of_azure_artifact_type">Fetch
+    Details of Azure Artifact Type</a></li></ul><h3>Before You Begin</h3><ul><li><a
+    href="/article/tm0w6rruqv-harness-api">​Introduction to Harness GraphQL API</a></li><li><a
+    href="/article/2rmd5i0e0h-harness-api-explorer">Harness API Explorer</a></li><li><a
+    href="/article/qluiky79j8-service-types-and-artifact-sources">Service Types and
+    Artifact Sources</a></li><li><a href="/article/0z2b5a1x4x-artifact-source-api">Fetch
+    Artifact Source Details Using GraphQL APIs</a></li></ul><h3>Fetch Details of Jenkins
+    Artifact Type</h3><p>Use this request to get the details of <code>Jenkins Artifact
+    Type</code> in your Service.</p><h5>Request</h5><pre class="hljs json">query{<br/>  service(serviceId:&#34;Jw1sMNZ5QxCa69y1tYIjtQ&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>      ...on
+    JenkinsArtifactSource{<br/>        artifactPaths<br/>        jenkinsConnectorId<br/>        jobName<br/>      }<br/>    }<br/>  }<br/>}<br/></pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;WAR&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;jenkins sourc&#34;,<br/>          &#34;createdAt&#34;: 1595231474582,<br/>          &#34;__typename&#34;:
+    &#34;JenkinsArtifactSource&#34;,<br/>          &#34;artifactPaths&#34;: null,<br/>          &#34;jenkinsConnectorId&#34;:
+    &#34;5FOKeaR_T1u0aJqnJBVCMg&#34;,<br/>          &#34;jobName&#34;: &#34;garvit-test&#34;<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of Bamboo Artifact Type</h3><p>Use this request to get the details of
+    <code>Bamboo Artifact Type</code> in your Service.</p><h5>Request</h5><pre class="hljs
+    json">query{<br/>  service(serviceId:&#34;p06KjT4XSQWYzvWT08wVuQ&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>      ...on
+    BambooArtifactSource{<br/>        bambooConnectorId<br/>        planKey<br/>        artifactPaths<br/>      }<br/>    }<br/>  }<br/>}<br/></pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;WAR&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;Azure&#34;,<br/>          &#34;createdAt&#34;: 1592812060753,<br/>          &#34;__typename&#34;:
+    &#34;AzureArtifactsArtifactSource&#34;<br/>        },<br/>        {<br/>          &#34;name&#34;:
+    &#34;bamb-art&#34;,<br/>          &#34;createdAt&#34;: 1594412813789,<br/>          &#34;__typename&#34;:
+    &#34;BambooArtifactSource&#34;,<br/>          &#34;bambooConnectorId&#34;: &#34;dgZR6uVcRkiXluv3AQGddg&#34;,<br/>          &#34;planKey&#34;:
+    &#34;TES-GAR&#34;,<br/>          &#34;artifactPaths&#34;: [<br/>            &#34;metadata.json/metadata.json&#34;<br/>          ]<br/>        }      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of Docker Registry Artifact Type</h3><p>Use this request to get the details
+    of <code>Docker Registry Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;BYmnREO7TqS1FBDDScmTig&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    DockerArtifactSource{<br/>        dockerConnectorId<br/>        imageName<br/>      }<br/>    }<br/>  }<br/>}<br/>  </pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;DOCKER&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;docker registry image&#34;,<br/>          &#34;createdAt&#34;: 1595231711747,<br/>          &#34;__typename&#34;:
+    &#34;DockerArtifactSource&#34;,<br/>          &#34;dockerConnectorId&#34;: &#34;GsON7vLBTmiPAUb5Esb_7g&#34;,<br/>          &#34;imageName&#34;:
+    &#34;library/nginx&#34;<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of Elastic Container Registry (ECR) Artifact Type</h3><p>Use this request
+    to get the details of <code>ECR Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;s6hh7zepSEKW7SB5bEIjHA&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    ECRArtifactSource{<br/>        awsCloudProviderId<br/>        region<br/>      imageName<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;PCF&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;kenngrepo&#34;,<br/>          &#34;createdAt&#34;: 1595234322476,<br/>          &#34;__typename&#34;:
+    &#34;ECRArtifactSource&#34;,<br/>          &#34;awsCloudProviderId&#34;: &#34;AGXNwNkGT8ye0XKDEbkd-A&#34;,<br/>          &#34;region&#34;:
+    &#34;us-east-1&#34;,<br/>          &#34;imageName&#34;: &#34;kenngrepo&#34;<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}<br/></pre><h3>Fetch
+    Details of Google Cloud Container Registry (GCR) Artifact Type</h3><p>Use this
+    request to get the details of <code>GCR Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;SBZ6P2kKTpWnWERJNVNs0Q&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>      ...on
+    GCRArtifactSource{<br/>        gcpCloudProviderId<br/>        dockerImageName<br/>        registryHostName<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;DOCKER&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;us-gcr-io_qa-target_todolist&#34;,<br/>          &#34;createdAt&#34;: 1594717525639,<br/>          &#34;__typename&#34;:
+    &#34;GCRArtifactSource&#34;,<br/>          &#34;gcpCloudProviderId&#34;: &#34;BYAMglynSUy5HPF7qgZgAA&#34;,<br/>          &#34;dockerImageName&#34;:
+    &#34;qa-target/todolist&#34;,<br/>          &#34;registryHostName&#34;: &#34;us.gcr.io&#34;<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of Azure Container Registry (ACR) Artifact Type</h3><p>Use this request
+    to get the details of <code>ACR Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;21DHLvJpRRedwtPPPr9VCA&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    ACRArtifactSource{<br/>        azureCloudProviderId<br/>        subscriptionId<br/>      registryName<br/>      repositoryName<br/>      <br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;DOCKER&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;azure reg&#34;,<br/>          &#34;createdAt&#34;: 1595232155101,<br/>          &#34;__typename&#34;:
+    &#34;ACRArtifactSource&#34;,<br/>          &#34;azureCloudProviderId&#34;: &#34;qoCIKr94RhSm6b1OIjNw8w&#34;,<br/>          &#34;subscriptionId&#34;:
+    &#34;20d6a917-99fa-4b1b-9b2e-a3d624e9dcf0&#34;,<br/>          &#34;registryName&#34;:
+    &#34;harnessqa&#34;,<br/>          &#34;repositoryName&#34;: &#34;hello-world-server&#34;<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of Nexus Artifact Type</h3><p>Use this request to get the details of <code>Nexus
+    Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;VsCTz0rFT_u6H_VZLePtLQ&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    NexusArtifactSource{<br/>       properties{<br/>        nexusConnectorId<br/>        repositoryFormat<br/>        repository<br/>        ...on
+    NexusDockerProps{dockerImageName dockerRegistryUrl}<br/>      }<br/>      }<br/>    }<br/>  }<br/>}<br/><br/>  </pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;DOCKER&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;nexus 3 docker image&#34;,<br/>          &#34;createdAt&#34;: 1595233491249,<br/>          &#34;__typename&#34;:
+    &#34;NexusArtifactSource&#34;,<br/>          &#34;properties&#34;: {<br/>            &#34;nexusConnectorId&#34;:
+    &#34;FzHdv_IiScGGwzIoFtNLow&#34;,<br/>            &#34;repositoryFormat&#34;:
+    &#34;DOCKER&#34;,<br/>            &#34;repository&#34;: &#34;docker-group&#34;,<br/>            &#34;dockerImageName&#34;:
+    &#34;alpine&#34;,<br/>            &#34;dockerRegistryUrl&#34;: null<br/>          }<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of Artifactory Artifact Type</h3><p>Use this request to get the details
+    of <code>Artifactory Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;iomToipURcuAii_6rithdw&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    ArtifactoryArtifactSource{<br/>       properties{<br/>        artifactoryConnectorId<br/>        repository<br/>        ...on
+    ArtifactoryFileProps{artifactPath}<br/>      }<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json">{<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;AWS_CODEDEPLOY&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;artifactory - other aws code&#34;,<br/>          &#34;createdAt&#34;: 1595232990161,<br/>          &#34;__typename&#34;:
+    &#34;ArtifactoryArtifactSource&#34;,<br/>          &#34;properties&#34;: {<br/>            &#34;artifactoryConnectorId&#34;:
+    &#34;Lvgm7o5jS6SVtiYxpnKI1A&#34;,<br/>            &#34;repository&#34;: &#34;delegate&#34;,<br/>            &#34;artifactPath&#34;:
+    &#34;/&#34;<br/>          }<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}
+    </pre><h3>Fetch Details of Amazon S3 Artifact Type</h3><p>Use this request to
+    get the details of <code>Amazon S3 Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;09YzQa1ZTz23Dj8uaY94jQ&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    AmazonS3ArtifactSource{<br/>        awsCloudProviderId<br/>        bucket<br/>      artifactPaths<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;AWS_CODEDEPLOY&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;amazon s3&#34;,<br/>          &#34;createdAt&#34;: 1595231820940,<br/>          &#34;__typename&#34;:
+    &#34;AmazonS3ArtifactSource&#34;,<br/>          &#34;awsCloudProviderId&#34;:
+    &#34;AGXNwNkGT8ye0XKDEbkd-A&#34;,<br/>          &#34;bucket&#34;: &#34;ankita-harness-bucket&#34;,<br/>          &#34;artifactPaths&#34;:
+    [<br/>            &#34;echo-1.0.war&#34;<br/>          ]<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of AMI Artifact Type</h3><p>Use this request to get the details of <code>AMI
+    Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;FOQ-BzY_Se64wt5eT-gwwQ&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    AMIArtifactSource{<br/>        awsCloudProviderId<br/>        region<br/>      awsTags{key
+    value}<br/>      amiResourceFilters{key value}<br/>      <br/>      <br/>      <br/>      }<br/>    }<br/>  }<br/></pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;AMI&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;us-east-1-ptask-testing-true&#34;,<br/>          &#34;createdAt&#34;: 1595240550667,<br/>          &#34;__typename&#34;:
+    &#34;AMIArtifactSource&#34;,<br/>          &#34;awsCloudProviderId&#34;: &#34;AGXNwNkGT8ye0XKDEbkd-A&#34;,<br/>          &#34;region&#34;:
+    &#34;us-east-1&#34;,<br/>          &#34;awsTags&#34;: [<br/>            {<br/>              &#34;key&#34;:
+    &#34;ptask-testing&#34;,<br/>              &#34;value&#34;: &#34;true&#34;<br/>            }<br/>          ],<br/>          &#34;amiResourceFilters&#34;:
+    []<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch Details of
+    GCS Artifact Type</h3><p>Use this request to get the details of <code>GCS Artifact
+    Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;9lYbjqwAS9Wnk8EWP9kwKA&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>      ...on
+    GCSArtifactSource{<br/>        gcpCloudProviderId<br/>        projectId<br/>        artifactPaths<br/>        bucket<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;IIS_APP&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;us-artifacts-qa-target-appspot-com_containers_images_sha256-03384474141d1c5a03cac57f042ccc81dcab541d2a5e9bf82bf1bc6813ebdb85&#34;,<br/>          &#34;createdAt&#34;:
+    1594717632927,<br/>          &#34;__typename&#34;: &#34;GCSArtifactSource&#34;,<br/>          &#34;gcpCloudProviderId&#34;:
+    &#34;BYAMglynSUy5HPF7qgZgAA&#34;,<br/>          &#34;projectId&#34;: &#34;qa-target&#34;,<br/>          &#34;artifactPaths&#34;:
+    [<br/>            &#34;containers/images/sha256:03384474141d1c5a03cac57f042ccc81dcab541d2a5e9bf82bf1bc6813ebdb85&#34;<br/>          ],<br/>          &#34;bucket&#34;:
+    &#34;us.artifacts.qa-target.appspot.com&#34;<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Fetch
+    Details of SMB Artifact Type</h3><p>Use this request to get the details of <code>SMB
+    Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;cXCcKAgkSyGq-WqAJ-GNGQ&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    SMBArtifactSource{<br/>        smbConnectorId<br/>        artifactPaths         <br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json">{<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;AWS_CODEDEPLOY&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;smb&#34;,<br/>          &#34;createdAt&#34;: 1595234192053,<br/>          &#34;__typename&#34;:
+    &#34;SMBArtifactSource&#34;,<br/>          &#34;smbConnectorId&#34;: &#34;sBQXNHMDS32NQR08dU4gpg&#34;,<br/>          &#34;artifactPaths&#34;:
+    [<br/>            &#34;tmp.reg&#34;<br/>          ]<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}
+    </pre><h3>Fetch Details of Azure Artifact Type</h3><p>Use this request to get
+    the details of <code>Azure Artifact Type</code> in your Service.</p><h5>Request</h5><pre>query{<br/>  service(serviceId:&#34;GuJQsvFKTCSHu6Vz3FqKjg&#34;){<br/>    artifactType<br/>     artifactSources{<br/>      name<br/>      createdAt<br/>      __typename<br/>     ...on
+    AzureArtifactsArtifactSource{<br/>        azureConnectorId<br/>        packageType<br/>      packageName<br/>      scope<br/>      project<br/>      feedName<br/>      <br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre
+    class="hljs json"> {<br/>  &#34;data&#34;: {<br/>    &#34;service&#34;: {<br/>      &#34;artifactType&#34;:
+    &#34;AWS_CODEDEPLOY&#34;,<br/>      &#34;artifactSources&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;azure devopps artifact&#34;,<br/>          &#34;createdAt&#34;: 1595232253980,<br/>          &#34;__typename&#34;:
+    &#34;AzureArtifactsArtifactSource&#34;,<br/>          &#34;azureConnectorId&#34;:
+    &#34;NKlOj_GPSd2Tlov3iFsYnA&#34;,<br/>          &#34;packageType&#34;: &#34;maven&#34;,<br/>          &#34;packageName&#34;:
+    &#34;com.mycompany.app:other-app&#34;,<br/>          &#34;scope&#34;: &#34;PROJECT&#34;,<br/>          &#34;project&#34;:
+    &#34;sample-project&#34;,<br/>          &#34;feedName&#34;: &#34;other-feed&#34;<br/>        }<br/>      ]<br/>    }<br/>  }<br/>}</pre><p></p>'
+  slug: fetch-artifact-type-using-graph-ql-apis
+  tags:
+  - GraphQL API
+  - Artifact Source
+  is_live: true

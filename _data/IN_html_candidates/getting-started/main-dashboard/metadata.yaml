@@ -1,0 +1,69 @@
+type: article
+article_id: fbce532ci2
+user_id: ""
+category_id: kx4hs8bn38
+author:
+  name: ""
+  profile_image: ""
+title: Main Dashboard
+slug: main-dashboard
+description: 'The main dashboard provides an overview of the status and health of
+  your active services and deployments with Harness. # Name Description 1 Attention
+  Needed Reports connection problems, pending appro…'
+short_version: 'The main dashboard provides an overview of the status and health of
+  your active services and deployments with Harness. # Name Description 1 Attention
+  Needed Reports connection problems, pending appro…'
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:23:31.22132Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Main Dashboard
+  description: ""
+  short_version: ""
+  body: |-
+    <p><span style="font-weight: 400;">The main dashboard provides an overview of the status and health of your active services and deployments with Harness.</span></p>
+    <figure><img src="https://files.helpdocs.io/articles/fbce532ci2/1532028635417/main-dashboard.png" alt="“MAIN_DASHBOARD&#34;" data-image="5r3k6z3ebrs7"/></figure>
+    <table class="table">
+    <thead class="thead-light">
+    <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <th scope="row">1</th>
+    <td><strong>Attention Needed</strong></td>
+    <td>Reports connection problems, pending approvals, and required manual interventions.</td>
+    </tr>
+    <tr>
+    <th scope="row">2</th>
+    <td><strong>Deployments</strong></td>
+    <td>30 day summary of all deployments, with each day displayed per row. The graphs display successful and failed deployments, and the number of service instances deployed.</td>
+    </tr>
+    <tr>
+    <th scope="row">3</th>
+    <td><strong>Most Active Services</strong></td>
+    <td>The most active service instances over the last 30 days, with the red and green bars indicating their successful and failed deployments.</td>
+    </tr>
+    <tr>
+    <th scope="row">4</th>
+    <td><strong>Service Instances</strong></td>
+    <td>All active service instances, with donut charts displaying service by number of instances, by cloud provider name (the name you used when you added the Cloud Provider to your account), and whether the instances are production or non-produciton instances.</td>
+    </tr>
+    </tbody>
+    </table><p> </p>
+  slug: main-dashboard
+  tags: []
+  is_live: true

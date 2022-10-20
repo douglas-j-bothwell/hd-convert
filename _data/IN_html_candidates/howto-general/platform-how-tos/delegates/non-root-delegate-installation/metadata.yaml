@@ -1,0 +1,82 @@
+type: article
+article_id: h2kydm6qme
+user_id: mfr0nxh4be
+category_id: 9i5thr0ot2
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Non-Root Delegate Installation
+slug: non-root-delegate-installation
+description: By default, Harness Delegates use root access. You can install a different
+  Docker image tag of the Delegate if you want to install and run the Delegate as
+  non-root. Harness Delegate images are public…
+short_version: By default, Harness Delegates use root access. You can install a different
+  Docker image tag of the Delegate if you want to install and run the Delegate as
+  non-root. Harness Delegate images are public…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:49:34.253563Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Non-Root Delegate Installation
+  description: ""
+  short_version: ""
+  body: '<p>By default, Harness Delegates use root access. You can install a different
+    Docker image tag of the Delegate if you want to install and run the Delegate as
+    non-root.</p><div class="note-callout">Harness Delegate images are publicly hosted
+    on <a href="https://hub.docker.com/r/harness/delegate/tags" target="_blank">Docker
+    Hub</a>.</div><p>This topic described how to install and run a Delegate as non-root.</p><p>In
+    this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#limitations">Limitations</a></li><li><a
+    href="https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#step_1_download_the_delegate_config_file">Step
+    1: Download the Delegate Config File</a></li><li><a href="https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#option_pick_a_non_root_type">Option:
+    Pick a Non-Root Type</a></li><li><a href="https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#step_2_update_the_delegate_image">Step
+    2: Update the Delegate Image</a></li><li><a href="https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#step_3_install_the_delegate">Step
+    3: Install the Delegate</a></li><li><a href="https://ngdocs.harness.io/article/h2kydm6qme-non-root-delegate-installation#see_also">See
+    Also</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/k7sbhe419w-delegate-requirements-and-limitations">Delegate
+    Requirements and Limitations</a></li><li><a href="/article/re8kk0ex4k-delegate-installation-overview">Delegate
+    Installation Overview</a></li></ul><h3>Limitations</h3><ul><li>The Harness Delegate
+    does NOT require root account access, but the Kubernetes and Docker Delegates
+    run as root by default. </li><li>If you do not run the Delegate as root, be aware
+    that you cannot install any software using a <a href="https://ngdocs.harness.io/article/auveebqv37-common-delegate-profile-scripts">Delegate
+    Initialization Script</a>.</li></ul><h3>Step 1: Download the Delegate Config File</h3><p>Download
+    the Delegate config file as part of its installation.</p><p>For examples, see:</p><ul><li><a
+    href="/article/cya29w2b99-install-a-docker-delegate">Install a Docker Delegate</a></li><li><a
+    href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Install a Kubernetes
+    Delegate</a></li></ul><h3>Option: Pick a Non-Root Type</h3><p>Harness Delegate
+    images are publicly hosted on <a href="https://hub.docker.com/r/harness/delegate/tags"
+    target="_blank">Docker Hub</a> and Harness has non-root options for different
+    platforms:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/h2kydm6qme/1646958490103/clean-shot-2022-03-10-at-16-27-28-2-x.png"/></figure><p>Unless
+    you are using OpenShift or a Universal Base Images (UBI), you will want to use
+    to use <code>delegate:non-root</code>.</p><h3>Step 2: Update the Delegate Image</h3><p>In
+    the Delegate config file, update the image tag to use the non-root image: <code>harness/delegate:non-root</code>.</p><p>For
+    example, here&#39;s the Docker Delegate config file updated:</p><pre class="hljs
+    yaml">version: &#34;3.7&#34;<br/>services:<br/>  harness-ng-delegate:<br/>    restart:
+    unless-stopped<br/>    deploy:<br/>      resources:<br/>        limits:<br/>          cpus:
+    &#34;0.5&#34;<br/>          memory: 2048M<br/>    image: harness/delegate:non-root<br/>    environment:<br/>      -
+    ACCOUNT_ID=xxx<br/>      - ACCOUNT_SECRET=xxx<br/>      - MANAGER_HOST_AND_PORT=https://app.harness.io<br/>      -
+    WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers<br/>...</pre><p></p><p>Here&#39;s
+    the Kubernetes Delegate config file updated:</p><pre class="hljs yaml">...<br/>---<br/><br/>apiVersion:
+    apps/v1<br/>kind: StatefulSet<br/>metadata:<br/>  labels:<br/>    harness.io/name:
+    foo<br/>  name: foo<br/>  namespace: harness-delegate-ng<br/>spec:<br/>  replicas:
+    1<br/>  podManagementPolicy: Parallel<br/>  selector:<br/>    matchLabels:<br/>      harness.io/name:
+    foo<br/>  serviceName: &#34;&#34;<br/>  template:<br/>    metadata:<br/>      labels:<br/>        harness.io/name:
+    foo<br/>    spec:<br/>      containers:<br/>      - image: harness/delegate:non-root<br/>        imagePullPolicy:
+    Always<br/>        name: harness-delegate-instance<br/>        ports:<br/>          -
+    containerPort: 8080<br/><br/>...</pre><p></p><h3>Step 3: Install the Delegate</h3><p>Install
+    the Delegate as described in topics such as the following:</p><ul><li><a href="/article/cya29w2b99-install-a-docker-delegate">Install
+    a Docker Delegate</a></li><li><a href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Kubernetes Delegate</a></li></ul><h3>See Also</h3><ul><li><a href="/article/9deaame3qz-automate-delegate-installation">Automate
+    Delegate Installation</a></li></ul><p></p>'
+  slug: non-root-delegate-installation
+  tags: []
+  is_live: true

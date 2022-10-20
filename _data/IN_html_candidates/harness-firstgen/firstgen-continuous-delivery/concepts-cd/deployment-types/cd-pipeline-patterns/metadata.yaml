@@ -1,0 +1,222 @@
+type: article
+article_id: i9qrdyecle
+user_id: mfr0nxh4be
+category_id: vbcmo6ltg7
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: CD Pipeline Patterns
+slug: cd-pipeline-patterns
+description: At Harness we have the opportunity to see how 100’s of organizations
+  implement software delivery pipelines. Transcending organizations, the patterns
+  covered in this document, serve as approaches of g…
+short_version: At Harness we have the opportunity to see how 100’s of organizations
+  implement software delivery pipelines. Transcending organizations, the patterns
+  covered in this document, serve as approaches of g…
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-07T00:00:16.105836Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CD Pipeline Patterns
+  description: ""
+  short_version: ""
+  body: '<p>At Harness we have the opportunity to see how 100’s of organizations implement
+    software delivery pipelines. </p><p>Transcending organizations, the patterns covered
+    in this document, serve as approaches of getting ideas into production and continue
+    to evolve, balancing agility and regulatory constraints. </p><p>No one pattern
+    can rule them all since each organization and industry vertical they represent
+    are different. Because pipelines bring together disparate skills and applications
+    are the culmination of the work of many teams, pipelines can be highly unique
+    and opinionated to the organization.</p><p>Teams and organizations can have variations
+    or aggregations of multiple patterns. Fine-tuning the processes around manual
+    approvals and full automation, these patterns support different levels of agility,
+    confidence, and opinion. Though your specific goal might not 100% match one of
+    the patterns we’ve covered, these models can act as a foundation for pipeline
+    development in your organization. </p><p>This topic covers the most common CD
+    pipeline patterns.</p><p>It summaries the patterns, and then provides some general
+    guidance on different patterns.</p><p>In this topic:</p><p></p><h3>Pipeline Structure
+    Overview</h3><p>Driven by Environments</p><p>As systems grow more distributed,
+    the number of locations a service needs to</p><p>be deployed to increases. If
+    your main goal is to deploy to multiple environments/</p><p>locations, the pipelines
+    will tend to be more deployment centric favoring the</p><p>orchestration of all
+    the environments a service has to traverse through.</p><p>Driven by Tests</p><p>Test
+    orchestration is a popular use of pipelines. Having to chain together several</p><p>different
+    testing methodologies, a natural home for the automation progressing</p><p>the
+    testing is in your pipeline. These pipelines will tend to have longer stages as</p><p>progression
+    occurs between environments, the testing rigor increases thus longer</p><p>time
+    per stage occurs the closer to production a pipeline gets.</p><p>Driven by Services</p><p>With
+    the rise of microservices, deployments tend to include more than one service.</p><p>If
+    the pipeline is used for service orchestration, several services in parallel</p><p>or
+    sequentially need to be deployed. These pipelines tend to be used for the</p><p>orchestration
+    of several services ensuring uniformity across their deployments.</p><p>Driven
+    by Outcome</p><p>Eventually, the feature has to match the expectation. Pipelines
+    that focus on</p><p>outcomes tend to have longer final stages and the ability
+    not to end when the</p><p>deployment is over. An outcome can mean ensuring SLAs/SLOs/SLIs
+    and if breached</p><p>the pipeline is a conduit to restore/MTTR. Regression or
+    a change in outcome can</p><p>happen hours or days after a deployment.</p><p>Driven
+    by People</p><p>Before there were pipelines, people were highly involved with
+    progressing</p><p>deployments. If the deployment process is still fairly manual
+    and requires lots of</p><p>approval gates (e.g. driven by people), these pipelines
+    tend to be long-running and</p><p>used as a place to keep track of human workflow.
+    Modern pipelines try to avoid this</p><p>anti-pattern. </p><h3>Outcome Centric
+    Pattern</h3><p>If you are unfamiliar with a canary release, it introduces changes
+    as a percent of traffic or infrastructure and as changes are vetted continues
+    to promote the changes until the stable version is completely replaced by the
+    canary. </p><p>With the Outcome Centric Pattern, once the goals are meet, the
+    changes are ready to be deployed. </p><table><tbody><tr><td><p><strong>Pipeline
+    Score</strong></p></td><td><p><strong>Diagram</strong></p></td></tr><tr><td><p><strong>Agility:</strong>
+    High</p><p><strong>Complexity:</strong> Low</p><p><strong>Administration:</strong>
+    Medium</p><p><strong>Risk:</strong> Low</p></td><td><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/i9qrdyecle/1610150878849/image.png"/></figure></td></tr></tbody></table><h4>Pros</h4><p>A
+    very pragmatic approach to delivering changes to production, there is less emphasis
+    on what environment to deploy do vs did the changes make sense. Canary releases
+    coupled with more stringent or harder to pass a set of tests like a soak test
+    instill confidence that a change meets expectations.</p><h4>Who Uses This Pattern?</h4><p>This
+    pattern does require teams to have maturity in infrastructure and modern quality
+    engineering. Where the applications are the bread and butter of an organization,
+    such as eCommerce, customers tend to exhibit this pattern. The adage of your customers
+    don’t care how you did it [infrastructure] but what you did [application changes]
+    shines bright with eCommerce firms.</p><h4>Cons</h4><p>Depending on who the internal
+    customer is for this pattern, the testing phase (e.g. the main gatekeeper to production)
+    might be viewed as a black box to development teams.</p><h3>Button Push Pattern</h3><p>The
+    Button Push Pattern allows for human approval at the finish line rather than entirely
+    removing the human element. </p><p>This method allows for one more validation
+    either for compliance, regulatory or confidence building reasons.</p><p></p><table><tbody><tr><td><p><strong>Pipeline
+    Score</strong></p></td><td><p><strong>Diagram</strong></p></td></tr><tr><td><p><strong>Agility:</strong>
+    Low to Medium</p><p><strong>Complexity:</strong> Low to Medium</p><p><strong>Administration:</strong>
+    Low</p><p><strong>Risk:</strong> Low to Medium</p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/i9qrdyecle/1610151231534/image.png"/></figure></td></tr></tbody></table><h4>Pros</h4><p>Blending
+    human and systemic expertise takes the burden off of the engineering teams to
+    get a release candidate very close to production. Then depending on regulatory,
+    compliance or organizational requirements a human can review all of the facts
+    and findings that were systematically produced. If you are facing resistance in
+    your pipeline automation journey, the Button Push Pattern would be a good middle
+    ground as automation continues to build confidence.</p><h4>Who Uses This Pattern?</h4><p>Mostly
+    in organizations where there is some sort of compliance or regulatory requirement
+    for a responsible party to sign off. As organizations try to limit the number
+    of manual approvals but can’t fully remove them, the Button Push Pattern is a
+    good choice. </p><h4>Cons</h4><p>Providing all of the information needed to make
+    a decision and keep in an auditable format is challenging for certain CI/CD platforms
+    that do not have out of box capabilities for manual steps. Usually adding a manual
+    step into an automated process is hard. Once the team develops that pattern, expanding
+    the number of manual approvals might be a pitfall or an anti-pattern that might
+    lean towards the Approval Pattern. </p><h3>Semi-Approval Pattern</h3><p>With the
+    Semi Approval pattern, there is a good mix of automation and human approval (when
+    necessary). A mixing of the new and traditional approaches are represented. </p><p></p><table><tbody><tr><td><p><strong>Pipeline
+    Score</strong></p></td><td><p><strong>Diagram</strong></p></td></tr><tr><td><p><strong>Agility:</strong>
+    Low to Medium</p><p><strong>Complexity:</strong> Medium</p><p><strong>Administration:</strong>
+    Medium to High</p><p><strong>Risk: Low</strong></p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/i9qrdyecle/1610152508150/image.png"/></figure></td></tr></tbody></table><h4>Pros</h4><p>For
+    organizations under regulatory/compliance obligations or risk-averse, this is
+    a step towards full automation. Automating even pieces of the promotional steps
+    might represent a fundamental shift in the organization. Being pragmatic on where
+    to tackle automation first, automated promotions/approvals will happen in lower
+    environments. This pattern can be a catalyst for change. </p><h4>Who Uses This
+    Pattern?</h4><p>In financial services firms and regulated industries, these patterns
+    exist to address the drive for innovation and digital transformation. Organizations
+    that also have high-risk changes can run a subset of their applications through
+    the pattern. </p><h4>Cons</h4><p>If there are too many approval gates or there
+    is a lag with an approval gate, a bottleneck will occur. The Full Approval Pattern
+    takes the Semi Approval Pattern and adds a manual approval to every stage. As
+    a more evolutionary pattern, improvements will be made as confidence in the pipeline
+    continues and the need for manual approvals lessen. </p><h3>Full Approval Pattern</h3><p>With
+    the Full Approval Pattern, most if not all promotion steps require a manual approval.
+    </p><p></p><table><tbody><tr><td><p><strong>Pipeline Score</strong></p></td><td><p><strong>Diagram</strong></p></td></tr><tr><td><p><strong>Agility:</strong>
+    Low</p><p><strong>Complexity:</strong> Medium</p><p><strong>Administration:</strong>
+    High</p><p><strong>Risk:</strong> Low</p></td><td><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/i9qrdyecle/1610152662550/image.png"/></figure></td></tr></tbody></table><h4>Pros</h4><p>For
+    certain organizations that are conservative and risk-averse, the Full Approval
+    Pattern mimics the current SDLC. Pushback to adopt this pattern would be low since
+    most likely was happening before a pipeline in disjointed steps in several platforms.
+    Having this pattern would help track where bottlenecks do occur and if there was
+    some sort of future evolution to occur, the areas for which improvements could
+    be made would be very apparent. </p><h4>Who Uses This Pattern?</h4><p>This pattern
+    most often supports highly regulated industries such as critical infrastructure,
+    intelligence/military, and sensitive financial and healthcare organizations. </p><p>When
+    there is a need to bring together disparate workforces e.g multiple contracting
+    or consulting organizations to deliver a project, confidence automation might
+    not be readily available until future renditions of the project. </p><h4>Cons</h4><p>More
+    often than not the manual approval steps are signs of manual testing. Especially
+    if this is your first foray into getting an item into production, automation will
+    come as learnings about all of the steps that a production deployment takes is
+    flushed out. This lift and shift of your existing manual process being tracked
+    by a workflow or pipeline is the first step into automation. After the steps are
+    all complete, the pipeline is complete. Ownership of what happens after deployment
+    follows the organizational structure. </p><h3>Test Automation Pattern</h3><p>Modifying
+    test coverage to cover application changes is an expectation with automated tests.
+    Having a pipeline dedicated to test automation can be a prudent choice.</p><p></p><table><tbody><tr><td><p><strong>Pipeline
+    Score</strong></p></td><td><p><strong>Diagram</strong></p></td></tr><tr><td><p><strong>Agility:</strong>
+    Medium</p><p><strong>Complexity:</strong> Medium</p><p><strong>Administration:</strong>
+    Low</p><p><strong>Risk:</strong> Low</p></td><td><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/i9qrdyecle/1610151455255/image.png"/></figure></td></tr></tbody></table><h4>Pros</h4><p>With
+    organizations having a heavier emphasis on automated testing, getting the testing
+    right requires iteration similarly to the application development. The Test Automation
+    Pattern treats testing/quality assurance assets like application assets being
+    able to deploy and run test suites against application artifacts. The pipeline
+    can be run independently so if developers and/or quality assurance engineers want
+    to give feedback early, this is possible with this pattern since is designed to
+    be run multiple times.</p><h4>Who Uses This Pattern?</h4><p>This pattern can potentially
+    be Conway’s Law at play. We see this with customers who are building out their
+    test automation practices or tend to have a lot of iteration in their test suites.
+    Several customers representing different verticals had variations of this pattern
+    where test automation was orchestrated by dedicated pipelines.</p><h4>Cons</h4><p>As
+    with any purpose-specific (excluding complete path to production) pipeline, Test
+    Automation represents the ideal steps towards Continuous Delivery. Dependent on
+    the pipeline’s designer, placing quality assurance as a separate pipeline for
+    applications traversing through the pattern, may be creating a path of least resistance.</p><h3>Multi-Service
+    Pattern</h3><p>When thinking of a traditional pipeline, the notion of one artifact
+    per execution of a pipeline comes to mind. Though there are valid instances where
+    more than one artifact needs to be deployed during a pipeline. For example, deploying
+    multiple services together for a platform change or different types of assets
+    e.g static assets alongside application assets, the Multi-Service Pattern’s main
+    goal is getting the artifacts deployed. </p><p></p><table><tbody><tr><td><p><strong>Pipeline
+    Score</strong></p></td><td><p><strong>Diagram</strong></p></td></tr><tr><td><p><strong>Agility:</strong>
+    Medium to High</p><p><strong>Complexity:</strong> Medium</p><p><strong>Administration:</strong>
+    Medium</p><p><strong>Risk:</strong> Low to</p><p>Medium</p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/i9qrdyecle/1610152223193/image.png"/></figure></td></tr></tbody></table><h4>Pros</h4><p>Multiservice
+    allows the ability to subject multiple services to the same rigor during a release.
+    As enterprise standards permeate the organization and new services are created,
+    a base level of confidence for all deployed services in the pipeline equates to
+    a safer release. As applications and services become more granular, adding additional
+    services to the pipeline is standard to the design of the pattern. </p><h4>Who
+    Uses This Pattern?</h4><p>Organizations that are building platforms e.g have more
+    than one artifact at a time for a release. Previous renditions of the pattern
+    would be executing the same pipeline over and over just changing the artifact
+    and/or destination for the deployment.</p><h4>Cons</h4><p>Orchestration of multiple
+    service deployments can be complex especially during a partial failure scenario.
+    Each service should be independent of each other and not tightly coupled. However,
+    if one service depended on an outcome of another service, there could be a delay
+    in a new feature implementation as the pipeline needs to be able to have logic
+    or the underlying system needs to determine what has failed vs what has succeeded
+    in the past. </p><h3>Multi-Service Environment Pattern</h3><p>Multi-Service Environment
+    Pattern can help drive changes across multiple <strong>environments</strong> with
+    multiple artifacts. </p><p></p><table><tbody><tr><td><p><strong>Pipeline Score</strong></p></td><td><p><strong>Diagram</strong></p></td></tr><tr><td><p><strong>Agility:</strong>
+    Medium</p><p><strong>Complexity:</strong> High</p><p><strong>Administration:</strong>
+    Medium to High</p><p><strong>Risk:</strong> Low</p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/i9qrdyecle/1610152377782/image.png"/></figure></td></tr></tbody></table><h4>Pros</h4><p>What
+    was in place before this pattern could be one of the more complex orchestrations
+    ensuring parity between environments and the multiple artifacts that have to be
+    deployed. This pattern grew out of the need to automate a complex deployment scenario.
+    Not every artifact and service is created equally. Interacting with different
+    application infrastructure providers, such as a cache or a database, requires
+    a different strategy to deploy and adding to the number of disparate environments/infrastructure.
+    The Multiservice Environment Pattern drives both of those concerns.</p><h4>Who
+    Uses This Pattern?</h4><p>This pattern is common amongst organizations that have
+    complex topologies/dealing with the significant load to warrant the complex topologies.
+    For example, eCommerce and Travel and Leisure providers dealing with web-scale
+    traffic on a constant basis. </p><h4>Cons</h4><p>This pattern more often than
+    not is broken up into separate pipelines encompassing pre-prod and then prod.
+    When crossing potentially multiple skill domains in a pipeline (e.g. application
+    and cache changes), the full effect of all the changes needs to be vetted out.
+    By design this could be a soak test or what was observed was production-specific
+    pipelines once lower environments were deemed fit. </p><p></p><p></p>'
+  slug: cd-pipeline-patterns
+  tags: []
+  is_live: true

@@ -1,0 +1,166 @@
+type: article
+article_id: bbmhnoqrzw
+user_id: 2te4j9f9g7
+category_id: 2ea2y01kgz
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Config-As-Code Using REST APIs
+slug: config-as-code-using-rest-apis
+description: This topis explains Harness CRUD REST APIs for Config-As-Code.
+short_version: This topis explains Harness CRUD REST APIs for Config-As-Code.
+tags:
+- API
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-06T03:24:39.04537Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Config-As-Code Using REST APIs
+  description: This topis explains Harness CRUD REST APIs for Config-As-Code.
+  short_version: This topis explains Harness CRUD REST APIs for Config-As-Code.
+  body: '<p>Harness includes many REST APIs that allow you to have full control over
+    its Config-as-Code functionality.</p><p>The REST APIs allow you to perform CRUD
+    operations on Harness YAML entities.</p><div class="note-callout">The CRUD REST
+    API is different from Harness GraphQL API. For information on the GraphQL API,
+    see <a href="https://docs.harness.io/article/jbjam276xn-harness-graph-ql-api-faqs">Harness
+    GraphQL API FAQs</a>.</div><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Before-You-Begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Harness-Permissions-Required">Harness
+    Permissions Required</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#REST-API-Summary">REST
+    API Summary</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Create-and-Update-Multiple-YAML-Entities">Create
+    and Update Multiple YAML Entities</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Delete-YAML-Entities">Delete
+    YAML Entities</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Create-and-Update-a-Single-YAML-Entity">Create
+    and Update a Single YAML Entity</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Fetch-Config-as-Code-Directory-Structure">Fetch
+    Config-as-Code Directory Structure</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Fetch-YAML-Content-for-a-Single-Entity">Fetch
+    YAML Content for a Single Entity</a></li><li><a href="https://docs.harness.io/article/bbmhnoqrzw-config-as-code-using-rest-apis#Notes">Notes</a></li></ul><h3
+    id="Before-You-Begin">Before You Begin</h3><ul><li><a href="https://docs.harness.io/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code Overview</a></li><li><a href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a></li><li><a href="https://docs.harness.io/article/smloyragsm-api-keys">API
+    Keys</a></li></ul><h3 id="Harness-Permissions-Required">Harness Permissions Required</h3><p>The
+    Harness User account that executes the API must belong to a User Group with the
+    following <a href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions#account_permissions">Account
+    Permission</a>:</p><ul><li><strong>Account Permission:</strong> <code>Administer
+    Other Account Functions</code>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/bbmhnoqrzw/1642108443556/clean-shot-2022-01-13-at-13-13-16.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ul><h3>Granular
+    Permissions for CRUD</h3><div class="note-callout">Currently, this feature is
+    behind the feature flag <code>YAML_APIS_GRANULAR_PERMISSION</code>. Contact Harness
+    Support to enable the feature.</div><p>To perform CRUD operations on a specific
+    Harness entity, your account must have <strong>Create/update </strong>permissions
+    for that entity.</p><p>For example, to create a Service within an Application,
+    the User Group must have <code>Create Service</code> permission for that Application.</p><h3
+    id="REST-API-Summary">REST API Summary</h3><p>Harness provides CRUD APIs that
+    allow you to have full control over your account’s Config-as-Code YAML without
+    having to use the Harness Manager or sync with a Git repo.</p><p>Authorization
+    for the APIs is performed using Harness <a href="https://docs.harness.io/article/smloyragsm-api-keys">API
+    keys</a>. Ensure you have Harness API keys before using the commands below.</p><p>For
+    each API, you use a CURL command that contains the URL and ID of the Harness account
+    and the type of change to make:</p><p><code>https://app.harness.io/gateway/api/setup-as-code/yaml/{change_type}?accountId={account_ID}</code></p><p>You
+    also include headers for Content-Type and authentication:</p><pre>--header &#39;accept:
+    application/json, text/plain, */*&#39; \<br/>--header &#39;x-api-key: [API_key]&#39;</pre><p></p><p>That’s
+    it. You can simply run CRUD operations via REST API to manage your Harness Config-as-Code
+    YAML.</p><h3 id="Create-and-Update-Multiple-YAML-Entities">Create and Update Multiple
+    YAML Entities</h3><p>You can use a ZIP file to create or replace multiple YAML
+    entities in your Harness account.</p><p>The <code>upsert-entities</code> parameter
+    identifies that this is a Create or Update operation.</p><p><strong>URL</strong>:
+    <code>/api/setup-as-code/yaml/upsert-entities?accountId={accountId}</code></p><p><strong>HTTP
+    Method</strong>: <strong>POST</strong></p><p><strong>Query Param</strong>: <code>accountId</code>
+    is your account identifier (ID).</p><p><strong>Request body</strong>: a ZIP (<code>.zip</code>)
+    file consisting of the YAML files for a Harness Application(s) and Application
+    entities (Services, Workflows, Pipelines, Environments, Triggers, Infrastructure
+    Provisioners).</p><p><strong>Sample ZIP file</strong>:</p><p><a href="https://github.com/wings-software/harness-docs/blob/main/Setup.zip">harness-docs/Setup.zip
+    at main · wings-software/harness-docs</a></p><p>Click <strong>Download</strong>
+    to view the contents of the ZIP file.</p><p><strong>Sample cURL</strong><strong>:</strong></p><pre>curl
+    --location --request POST &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entities?accountId=12345678910&#39;
+    \<br/>--header &#39;accept: application/json, text/plain, */*&#39; \<br/>--header
+    &#39;authorization: Bearer {bearer_token}&#39; \<br/>--form &#39;file=@/Users/johndoe/Documents/SampleApp.zip&#39;</pre><p></p><p><strong>API
+    key example:</strong></p><pre>curl --location --request POST &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entities?accountId=12345678910&#39;
+    \<br/>--header &#39;accept: application/json, text/plain, */*&#39; \<br/>--header
+    &#39;x-api-key: {api_key}&#39; \<br/>--form &#39;file=@&#34;/Users/johndoe/Downloads/Setup.zip&#34;&#39;</pre><p></p><h3
+    id="Delete-YAML-Entities">Delete YAML Entities</h3><p>The <code>delete-entities</code>
+    parameter identifies that this is a Delete operation.</p><p>A comma-separated
+    list of file paths identifies the entities to delete.</p><p><strong>URL</strong>:
+    <code>/api/setup-as-code/yaml/delete-entities?accountId={accountId}&amp;filePaths={comma-separated-list-of-filePaths}</code></p><p>The
+    <code>filePaths</code> should be a full path to the YAML file(s) you want to delete.
+    For example, the following path is to a Kubernetes manifest:</p><p><code>1filePaths=Setup/Applications/test%20app/Services/test3/Manifests/Files/templates/deployment.yaml</code></p><p><strong>HTTP
+    Method</strong>: <strong>DELETE</strong></p><p><strong>Query Params</strong>:</p><ul><li><code>accountId</code>
+    is your account identifier (ID).</li><li><code>filePaths</code> is a comma-separated
+    list of filePath(s).</li></ul><p><strong>Response</strong>: status code <code>200
+    OK</code> if successful, error message if failed.</p><p><strong>Sample cURL</strong>:</p><pre>curl
+    --location --request DELETE &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/delete-entities?accountId=12345678910&amp;filePaths=Setup/Applications/test%20app/Services/test3/Manifests/Files/templates/deployment.yaml&#39;
+    \<br/>--header &#39;accept: application/json, text/plain, */*&#39; \<br/>--header
+    &#39;authorization: Bearer {bearer_token}&#39;</pre><p></p><p><strong>API key
+    example:</strong></p><pre>curl --location --request DELETE &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/delete-entities?accountId=12345678910&amp;filePaths=Setup/Applications/test%20app/Services/test3/Manifests/Files/templates/deployment.yaml&#39;
+    \<br/>--header &#39;accept: application/json, text/plain, */*&#39; \<br/>--header
+    &#39;x-api-key: {api_key}&#39;</pre><p></p><h3 id="Create-and-Update-a-Single-YAML-Entity">Create
+    and Update a Single YAML Entity</h3><p>Instead of posting a ZIP file to create
+    or update all of the entities in an Application, you can post a single YAML change.</p><p>You
+    simply provide the full path to the YAML file and the YAML content (<code>yamlContent</code>)
+    to create/update.</p><p>The content must identify the YAML key and value with
+    careful attention paid to any quotes.</p><p>For example, here&#39;s a line in
+    YAML that you want to change:</p><pre>harnessApiVersion: &#39;1.0&#39;</pre><p></p><p>The
+    <code>yamlContent</code> must escape the quotes:</p><pre>&#39;yamlContent={key_name}:
+    &#39;\&#39;&#39;1.0&#39;\&#39;&#39;</pre><p></p><p><strong>URL</strong>: <code>/api/setup-as-code/yaml/upsert-entity?accountId={accountId}&amp;yamlFilePath={yamlFilePath}</code></p><p><strong>HTTP
+    Method</strong>: <strong>POST</strong></p><p><strong>Query Params</strong>:</p><ul><li><code>accountId</code>
+    is your account identifier (ID).</li><li><code>filePaths</code> is a comma-separated
+    list of filePath(s).</li><li><code>yamlContent</code> is the form-data parameter
+    holding the YAML content to be created/updated.</li></ul><p><strong>Sample curl:</strong></p><pre>curl
+    -X POST \<br/>  &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entity?accountId=12345678910&amp;yamlFilePath=Setup/Applications/test%20app/Index.yaml&#39;
+    \<br/>  -H &#39;accept: application/json, text/plain, */*&#39; \<br/>  -H &#39;authorization:
+    Bearer {bearer_token}&#39; \<br/>  -H &#39;content-type: multipart/form-data;
+    boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW&#39; \<br/>  -F &#39;yamlContent=harnessApiVersion:
+    &#39;\&#39;&#39;1.0&#39;\&#39;&#39;<br/>type: APPLICATION&#39;</pre><p></p><p><strong>API
+    key example:</strong></p><pre>curl -X POST \<br/>  &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entity?accountId=12345678910&amp;yamlFilePath=Setup/Applications/test%20app/Index.yaml&#39;
+    \<br/>  -H &#39;accept: application/json, text/plain, */*&#39; \<br/>  --header
+    &#39;x-api-key: {api_key}&#39; \<br/>  -H &#39;content-type: multipart/form-data;
+    boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW&#39; \<br/>  -F &#39;yamlContent=harnessApiVersion:
+    &#39;\&#39;&#39;1.0&#39;\&#39;&#39;<br/>type: APPLICATION&#39;</pre><h3 id="Fetch-Config-as-Code-Directory-Structure">Fetch
+    Config-as-Code Directory Structure</h3><p>You can fetch the directory structure
+    for a Harness Application using the <code>directory</code> parameter.</p><p><strong>URL</strong>:
+    <code>/api/setup-as-code/yaml/directory?accountId={accountId}&amp;appId={applicationId}</code></p><p><strong>Query
+    Params:</strong></p><ul><li><code>accountId</code> is your account identifier
+    (ID).</li><li><code>appId</code> is the Application identifier (ID).</li></ul><p><strong>HTTP
+    Method</strong>: <strong>GET</strong></p><p><strong>Sample cURL:</strong></p><pre>curl
+    --location --request GET &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/directory?accountId=12345678910&amp;appId=fCLnFhwsTryU-HEdKDVZ1g&#39;
+    \<br/>--header &#39;accept: application/json&#39; \<br/>--header &#39;content-type:
+    application/json; charset=utf-8&#39; \<br/>--header &#39;x-api-key: {api_key}&#39;</pre><p></p><p><strong>API
+    key example:</strong></p><pre>curl --location --request GET &#39;https://app.harness.io/gateway/api/setup-as-code/yaml/directory?accountId=12345678910&amp;appId=fCLnFhwsTryU-HEdKDVZ1g&#39;
+    \<br/>--header &#39;accept: application/json&#39; \<br/>--header &#39;content-type:
+    application/json; charset=utf-8&#39; \<br/>--header &#39;x-api-key: {api_key}&#39;</pre><h3
+    id="Fetch-YAML-Content-for-a-Single-Entity">Fetch YAML Content for a Single Entity</h3><div
+    class="note-callout">At this time, this API supports bearer token authentication
+    only. It will be updated in the near future.</div><p>Using the response from the
+    Fetch Config-as-Code Directory Structure API (<code>/api/setup-as-code/yaml/directory</code>),
+    you can fetch the YAML content of an individual Application or account-level entity
+    based on its <code>restName</code> and <code>uuid</code>.</p><p>For example, here’s
+    the response from a <code>/api/setup-as-code/yaml/directory</code> API call:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/bbmhnoqrzw/1627559027665/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>For
+    all Application-level entities like Service, Workflow, Pipeline etc., you can
+    use the API to fetch YAML content.</p><p><strong>URL:</strong> <code>/api/setup-as-code/yaml/{node.restName}/{node.uuid}?accountId={accountId}&amp;appId={appId}</code></p><p>Every
+    node in the tree directory structure returned using the <code>directory</code>
+    parameter has an associated <code>restName</code> property and a <code>uuid</code>.
+    These can be used in the API.</p><p><strong>Query Params:</strong></p><ul><li><code>node.restName</code>
+    the name of the Harness entity type: <code>workflows, services, pipelines, environments</code>,
+    etc.</li><li><code>node.uuid</code> is the universally unique identifier (<strong>UUID</strong>)
+    of the node.</li><li><code>accountId</code> is your account identifier (ID).</li><li><code>appId</code>
+    is the Application identifier (ID).</li></ul><p><strong>Sample cURL:</strong></p><pre>curl
+    --location --request GET &#39;https://qa.harness.io/gateway/api/setup-as-code/yaml/services/pT65F_wHTzSALR2qYknX9Q?accountId=12345678910&amp;appId=fCLnFhwsTryU-HEdKDVZ1g&#39;
+    \<br/>--header &#39;authorization: Bearer {bearer_token}&#39;</pre><p></p><p>Here
+    <code>node</code> is a node in the YAML tree.</p><p>Similarly, for all account-level
+    entities like Cloud providers and Connector, the API call would look like this:</p><pre>/api/setup-as-code/yaml/{node.restName}/{node.uuid}?accountId={accountId}</pre><h3
+    id="Notes">Notes</h3><ul><li>To find the bearer token for your session, open Dev
+    Tools in your browser and search for <strong>bearer</strong>:</li></ul><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/bbmhnoqrzw/1627559205650/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p>'
+  slug: config-as-code-using-rest-apis
+  tags:
+  - API
+  is_live: true

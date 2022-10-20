@@ -1,0 +1,268 @@
+type: article
+article_id: 47awo4xim5
+user_id: mfr0nxh4be
+category_id: 85qz9mdf0y
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness Security FAQs
+slug: harness-security-faq
+description: This content is for Harness FirstGen. Switch to NextGen. This article
+  addresses some frequently asked questions about Harness security features. Before
+  You Begin. General. Harness ​Role-based access…
+short_version: This content is for Harness FirstGen. Switch to NextGen. This article
+  addresses some frequently asked questions about Harness security features. Before
+  You Begin. General. Harness ​Role-based access…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-29T08:27:08.242698Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness Security FAQs
+  description: ""
+  short_version: ""
+  body: '<div class="tip-callout">This content is for Harness <a href="https://docs.harness.io/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/320domdle1-harness-security-">NextGen</a>.</div><p>This
+    article addresses some frequently asked questions about Harness security features.</p><ul><li>
+    <a href="#undefined">Before You Begin</a></li><li> <a href="#general">General</a></li><li>
+    <a href="#harness_role_based_access_control_rbac">Harness ​Role-based access control
+    (RBAC)</a></li><li> <a href="#harness_authentication">Harness Authentication</a></li><li>
+    <a href="#secrets_management">Secrets Management</a></li><li> <a href="#auditing">Auditing</a></li><li>
+    <a href="#governance">Governance</a></li><li> <a href="#ip_whitelisting">IP Whitelisting</a></li><li>
+    <a href="#api_keys">API Keys</a></li></ul><h3 id="undefined">Before You Begin</h3><ul><li>
+    <a href="https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a></li><li> <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a></li></ul><h3>General</h3><p>For an overview of
+    Harness&#39; support for platforms, methodologies, and related technologies, see
+    <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>What security features does Harness provide?</h4><p>Harness
+    includes:</p><ul><li> <a href="/article/ven0bvulsj-users-and-permissions">Users
+    and User Groups</a></li><li> <a href="/article/ven0bvulsj-users-and-permissions">Role-based
+    access control (RBAC)</a></li><li> <a href="/article/g1cg16xovh-sso-provider-overview">Single
+    sign-on (SSO)</a></li><li> <a href="/article/zlymcu6bf1-authentication-settings#enforcing_password_policies">Password
+    policies</a></li><li> <a href="/article/h0ie5q5lkl-login-settings">Two-Factor
+    Authentication</a></li><li> <a href="/article/zlymcu6bf1-authentication-settings#restricting_email_domains">Domain
+    name restriction</a></li><li> <a href="/article/j2ww8l3yjw-access-management">IP
+    Whitelisting</a></li><li> <a href="/article/au38zpufhr-secret-management">Support
+    for common and custom secrets managers</a></li><li> <a href="/article/ygyvp998mu-use-encrypted-text-secrets#step_3_using_the_encrypted_text_in_connectors">Encryption
+    for all 3rd party account info</a></li><li> <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Encrypted
+    text</a></li><li> <a href="/article/nt5vchhka4-use-encrypted-file-secrets">Encrypted
+    files</a></li><li> <a href="/article/gsp4s7abgc-add-ssh-keys">SSH connection credentials</a></li><li>
+    <a href="/article/lx4wios62k-use-ssh-key-via-kerberos-for-server-authentication">SSH
+    with Kerberos</a></li><li> <a href="/article/9fqa1vgar7-add-win-rm-connection-credentials">WinRM
+    connection credentials</a></li><li> <a href="/article/fqrimyi94t-use-win-rm-connection-via-kerberos-for-server-authentication">WinRM
+    with Kerberos</a></li><li> <a href="/article/kihlcbcnll-audit-trail">Auditing</a></li><li>
+    <a href="/article/zhqccv0pff-pipeline-governance">Governance</a></li><li> <a href="/article/wscbhd20ca-deployment-freeze">Deployment
+    Freezing</a></li></ul><h4>Are Delegate communications secure?</h4><p>Yes. All
+    network connections from the Delegate in your local network or VPC to Harness
+    SaaS are HTTPS outbound-only.</p><p>See <a href="/article/migeq3achl-harness-delegate-faqs">Harness
+    Delegate FAQs</a>.</p><h4>What data does the Delegate send to the Harness Manager?</h4><p>The
+    Delegate and the Harness Manager (via SaaS) establish a Secure WebSocket channel
+    (WebSocket over TLS) to send new Delegate task event notifications (not the tasks
+    themselves) and exchange connection heartbeats. In the case that the WebSocket
+    connection is dropped, the Harness Delegate falls back to outbound-only, polling-based
+    task fetch.</p><ul><li><strong>Heartbeat</strong> - The Delegate sends a <a href="https://en.wikipedia.org/wiki/Heartbeat_(computing)"
+    target="_blank">heartbeat</a> to let the Harness Manager that it is running.</li><li><strong>Deployment
+    data</strong> - The information from the API executions the Delegate performs
+    are sent to the Manager for display in the <strong>Deployments</strong> page.</li><li><strong>Time
+    series and log data for Continuous Verification</strong> - The Delegate connects
+    to the verification providers you have configured and sends their data to the
+    Manager for display in Harness Continuous Verification.</li></ul><p>See <a href="/article/migeq3achl-harness-delegate-faqs">Harness
+    Delegate FAQs</a>.</p><h3>Harness ​Role-based access control (RBAC)</h3><p>For
+    an overview of Harness&#39; support for platforms, methodologies, and related
+    technologies, see <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>How does Harness implement RBAC?</h4><p>Harness
+    provides Role-Based Access Control (RBAC) via User and User Group Account and
+    Application permissions.</p><p>Here is an overview of Harness RBAC. It shows how
+    a user is authenticated via its User settings and authorized via its User Group
+    Account and Application Permissions.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/ven0bvulsj/1592548765632/new-permissions.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ven0bvulsj/1592548765632/new-permissions.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></a></figure><p>See
+    <a href="/article/ven0bvulsj-users-and-permissions">Managing Users and Groups
+    (RBAC)</a>.</p><h4>How are users added?</h4><p>When you add Harness users manually,
+    they are added using email addresses. When a user is added, they receive an email
+    invite to the Harness account.</p><h4>Can users be added dynamically?</h4><p>Yes,
+    you can leverage your existing user management infrastructure by adding them using
+    OAuth 2.0, LDAP, SAML, and SCIM.</p><p>See:</p><ul><li> <a href="https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0">Single
+    Sign-On (SSO) with OAuth 2.0</a></li><li> <a href="https://docs.harness.io/article/85rycqfiqg-sso-ldap">Single
+    Sign-On (SSO) with LDAP</a></li><li> <a href="https://docs.harness.io/article/zy8yjcrqzg-single-sign-on-sso-with-saml">Single
+    Sign-On (SSO) with SAML</a></li><li> <a href="/article/3hmfr07oz9-provision-users-with-one-login">Provision
+    Users and Groups with OneLogin (SCIM)</a></li><li> <a href="/article/8hwnfif0v1-scim-okta">Provisioning
+    Users with Okta (SCIM)</a></li><li> <a href="/article/aios86yiyk-provision-azure-ad-users-and-groups-scim">Provision
+    Azure AD Users and Groups (SCIM)</a></li></ul><h4>Are there best practices for
+    setting up Harness users?</h4><p>Yes, you can add users for the most common application
+    release scenario. This involves separate Harness User Groups for app devs, DevOps
+    engineers, and release approvers.</p><p>See <a href="/article/78tbtb5e8d-rbac-setup-in-harness">Set
+    Up RBAC for Application Release Process</a>.</p><h3>Harness Authentication</h3><p>For
+    an overview of Harness&#39; support for platforms, methodologies, and related
+    technologies, see <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>How are Harness users authenticated?</h4><p>The
+    default method is email address and password.</p><p>You can use several other
+    methods:</p><ul><li> <a href="https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0">Single
+    Sign-On (SSO) with OAuth 2.0</a></li><li> <a href="https://docs.harness.io/article/85rycqfiqg-sso-ldap">Single
+    Sign-On (SSO) with LDAP</a></li><li> <a href="https://docs.harness.io/article/zy8yjcrqzg-single-sign-on-sso-with-saml">Single
+    Sign-On (SSO) with SAML</a></li></ul><h4>How is SAML SSO supported?</h4><p>See
+    <a href="/article/zy8yjcrqzg-single-sign-on-sso-with-saml#saml_sso_fa_qs">SAML
+    SSO FAQs</a>.</p><h4>Can I adjust password policies?</h4><p>Yes. You can adjust:</p><ul><li>
+    <a href="/article/zlymcu6bf1-authentication-settings#enforcing_password_strength">Strength</a></li><li>
+    <a href="/article/zlymcu6bf1-authentication-settings#enforcing_password_expiration">Expiration</a> (refresh)
+    period</li><li> <a href="/article/zlymcu6bf1-authentication-settings#enforcing_lockout_after_failed_logins">Lockout Policy</a> after
+    failed logins</li></ul><h4>Do you support Single Sign-On (SSO)?</h4><p>Yes. Uou
+    can enable Harness logins via a range of single sign-on mechanisms. Enable the <strong>Allow login
+    via public OAuth providers</strong> slider to expose sliders for enabling individual
+    <a href="/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0">OAuth</a> providers.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/47awo4xim5/1605815457518/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>See:</p><ul><li>
+    <a href="https://docs.harness.io/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0">Single
+    Sign-On (SSO) with OAuth 2.0</a></li><li> <a href="https://docs.harness.io/article/85rycqfiqg-sso-ldap">Single
+    Sign-On (SSO) with LDAP</a></li><li> <a href="https://docs.harness.io/article/zy8yjcrqzg-single-sign-on-sso-with-saml">Single
+    Sign-On (SSO) with SAML</a></li></ul><h4>Do you support Two-Factor Authentication
+    (2FA)?</h4><p>Yes. Two-Factor Authentication (2FA) can be managed in two ways:</p><ul><li><strong>Individual
+    user:</strong> You can set up 2FA for your own <strong>User Profile</strong> without
+    impacting other user accounts.</li><li><strong>All account users:</strong> If
+    you have <strong>Manage Account</strong> permissions, you can enforce 2FA for
+    all users in Harness. First, you set up 2FA for your own account, and then you
+    can enforce 2FA account-wide in the Harness account&#39;s <strong>Login Settings</strong>.</li></ul><p>See
+    <a href="/article/h0ie5q5lkl-login-settings">Two-Factor Authentication</a>.</p><h3>Secrets
+    Management</h3><p>For an overview of Harness&#39; support for platforms, methodologies,
+    and related technologies, see <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>How are secrets managed in Harness?</h4><p>Using
+    common secrets managers. Google Cloud Key Management Service is the default Secrets
+    Manager in Harness.</p><p>You can use your own secrets manager with Harness. Harness
+    integrates with all of the common secret managers:</p><ul><li> <a href="https://docs.harness.io/article/avo98eldl0-add-a-google-cloud-kms-secrets-manager">Add
+    a Google Cloud KMS Secrets Manager</a></li><li> <a href="https://docs.harness.io/article/otkxijqoa6-add-an-aws-secrets-manager">Add
+    an AWS Secrets Manager</a></li><li> <a href="https://docs.harness.io/article/qj4psb5vsf-add-an-aws-kms-secrets-manager">Add
+    an AWS KMS Secrets Manager</a></li><li> <a href="https://docs.harness.io/article/2nv0gy1wnh-azure-key-vault">Add
+    an Azure Key Vault Secrets</a></li><li> <a href="https://docs.harness.io/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager">Add
+    a HashiCorp Vault Secrets Manager</a></li><li> <a href="https://docs.harness.io/article/uzsv1l2ivd-add-a-cyber-ark-secrets-manager">Add
+    a CyberArk Secrets Manager</a></li></ul><p>You can configure and make use of other
+    Secrets Managers using the Custom Secrets Manager: <a href="/article/ejaddm3ddb-add-and-use-a-custom-secrets-manager">Add
+    and Use a Custom Secrets Manager</a>.</p><p>This diagram shows how Harness handles
+    secrets:</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/other/1568741594665/on-prem-architecture.jpg"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568741594665/on-prem-architecture.jpg"/></a></figure><h4>What
+    kind of secrets are supported?</h4><p>Harness supports:</p><ul><li> <a href="/article/ygyvp998mu-use-encrypted-text-secrets">Encrypted
+    text</a></li><li> <a href="/article/nt5vchhka4-use-encrypted-file-secrets">Encrypted
+    files</a></li><li> <a href="/article/gsp4s7abgc-add-ssh-keys">SSH connection credentials</a></li><li>
+    <a href="/article/lx4wios62k-use-ssh-key-via-kerberos-for-server-authentication">SSH
+    with Kerberos</a></li><li> <a href="/article/9fqa1vgar7-add-win-rm-connection-credentials">WinRM
+    connection credentials</a></li><li> <a href="/article/fqrimyi94t-use-win-rm-connection-via-kerberos-for-server-authentication">WinRM
+    with Kerberos</a></li></ul><h4>Where can I use a secret?</h4><p>You use secrets
+    in many places in Harness.</p><p>You use secrets for credentials for Harness connections
+    to third party integrations, such as cloud platform, git repos, and artifact servers.</p><p>You
+    use secrets in Harness connections to target infrastructure, such as SSH keys,
+    and also when passing credentials as part of infrastructure provisioning.</p><p>You
+    use secrets in <a href="/article/1fjrjbau7x-capture-shell-script-step-output">Shell
+    Script Workflow steps</a>, as part of your Bash and PowerShell scripts.</p><p>You
+    use secrets in Delegate Profiles, which as scripts Harness runs on the hosts/containers/pods
+    running the Harness Delegate.</p><h4>How do I create a secret?</h4><p>In Harness
+    Secrets Management, you pick a type of secret, and then enter the secret or upload
+    the file.</p><p>See:</p><ul><li> <a href="https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets">Use
+    Encrypted Text Secrets</a></li><li> <a href="https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets">Use
+    Encrypted File Secrets</a></li></ul><h4>How do I use a secret?</h4><p>In most
+    cases, you select the encrypted text or file secret you created as part of the
+    credentials or value for a setting.</p><p>You can also reference a secret using
+    an expression.</p><p>You reference a text secret in a script using the expression <code>${secrets.getValue(&#34;secret_name&#34;)}</code>.</p><p>You
+    can reference a file secret using the expression <code>${configFile.getAsBase64(&#34;secret_name&#34;)}</code> or <code>${configFile.
+    getAsString(&#34;secret_name&#34;)}</code>.</p><p>See:</p><ul><li> <a href="https://docs.harness.io/article/ygyvp998mu-use-encrypted-text-secrets">Use
+    Encrypted Text Secrets</a></li><li> <a href="https://docs.harness.io/article/nt5vchhka4-use-encrypted-file-secrets">Use
+    Encrypted File Secrets</a></li></ul><h4>Can I limit a secret to certain users?</h4><p>Yes,
+    you can scope Secrets Managers and their secrets, and then you can decrease the
+    scope the secrets further, if needed.</p><p>See:</p><ul><li> <a href="/article/e4ikpd00f6-scope-secret-managers-to-applications-and-environments">Scope
+    Secret Managers to Applications and Environments</a></li><li> <a href="/article/e5q9qcho4y-restrict-secrets-usage">Restrict
+    Secrets Usage</a></li></ul><h4>Can I use my existing secrets in Harness?</h4><p>Yes.
+    If you already have secrets created in a secrets manager such as HashiCorp Vault
+    or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.</p><p>Harness
+    does not query the secrets manager for existing secrets, but you can create a
+    secret in Harness that references an existing secret in HashiCorp Vault or AWS
+    Secrets Manager.</p><p>No new secret is created in those providers. If you delete
+    the secret in Harness, it does not delete the secret in the provider.</p><p>See
+    <a href="/article/cwp7rlauzn-reference-existing-secrets">Reference Existing Secret
+    Manager Secrets</a>.</p><h4>Can I migrate secrets between secrets managers?</h4><p>Yes.
+    Harness Secrets Management supports the ability to migrate your secrets between
+    secrets managers.</p><p>See <a href="/article/prjsaaev0c-migrate-secrets-between-secrets-managers">Migrate
+    Secrets between Secrets Managers</a>.</p><h4>Are my secrets exposed in logs?</h4><p>No.
+    Text secrets are not exposed. Harness sanitizes logs and secrets are masked.</p><p>See
+    <a href="/article/o5ec7vvtju-secrets-and-log-sanitization">Secrets and Log Sanitization</a>.</p><div
+    class="note-callout">File secrets are not masked in Harness logs. As noted above
+    they can be encoded in different formats, but they are not masked from users.</div><h3>Auditing</h3><p>For
+    an overview of Harness&#39; support for platforms, methodologies, and related
+    technologies, see <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>Can I view all my setup events and changes
+    in Harness?</h4><p>Yes. Harness provides auditing of events for many Harness account,
+    Applications, and Application components. The Audit Trail enables you to track
+    and review all events in one place.</p><p>See <a href="/article/kihlcbcnll-audit-trail">Audit
+    Trail</a>.</p><h4>Can I view deployment history?</h4><p>The Audit Trail feature
+    covers events in accounts and Applications. To see your deployment history use
+    Harness Manager&#39;s <strong>Continuous Deployment</strong>. See <a href="https://docs.harness.io/article/lbiv3zwwm0-filtering-deployments">Filtering
+    Deployments</a>.</p><h4>What can I see in the audit trail?</h4><p>For each event,
+    you can see details such as:</p><ul><li>Date and time.</li><li>User who made the
+    change (<strong>Updated By</strong>).</li><li>Underlying REST API call (<strong>Event
+    Source</strong>).</li><li>Harness entity and Application affected (<strong>Resource</strong>).</li><li>Details
+    summary.</li><li>YAML diff.</li></ul><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/47awo4xim5/1605823945232/image.png"/></figure><h4>Can
+    I set a date range for an audit?</h4><p>Yes. You can restrict the Audit Trail&#39;s
+    displayed events by date and time, or define detailed filters by these and other
+    criteria.</p><h4>Can I filter audit events?</h4><p>Yes, extensively. You can set
+    multiple conditions on the events displayed.</p><p>You can save your filters,
+    also.</p><p>See <a href="/article/kihlcbcnll-audit-trail#modify_the_audit_trail_view">Modify
+    the Audit Trail View</a>.</p><h3>Governance</h3><p>For an overview of Harness&#39;
+    support for platforms, methodologies, and related technologies, see <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>Does Harness provide governance features?</h4><p>Yes.
+    Harness Pipeline Governance feature enables you to measure how conformant your
+    Pipelines are with your regulatory and operations standards.</p><p>See <a href="/article/zhqccv0pff-pipeline-governance">Pipeline
+    Governance</a>.</p><h4>How do set up governance?</h4><p>Using Harness Pipeline
+    Governance is a simple process. After you create Workflows that perform or verify
+    some regulatory operation, you describe them using <a href="https://docs.harness.io/article/nrxfix3i58-tags">Tags</a>.</p><p>Next,
+    you use those Tags to create rules in a Pipeline Governance Standard. You assign
+    a weight to each rule to indicate how important it is.</p><p>The standards are
+    used to score the conformance of Pipelines. A score lets you measure the conformance
+    level of the Workflows a Pipeline contains.</p><p>You can see the score before
+    you deploy a Pipeline, and during Pipeline Approval steps.</p><p>Below is an example
+    of a Pipeline Governance Standard and how a Pipeline Approval step measures conformance
+    with the standard during deployment:</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/other/1571264351741/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1571264351741/image.png"/></a></figure><h4>When
+    can I measure conformance?</h4><p>Before and during deployment.</p><p>When you
+    open a Pipeline in Harness, you will see all of the Pipeline Governance Standards
+    available to it, and their individual scores.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/other/1571353425254/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1571353425254/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></a></figure><p>Approval steps in Pipelines
+    display the Pipeline Governance Standards available to that Pipeline.</p><p>For
+    example, here is an Approval step in a Pipeline displaying two standards and their
+    scores:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/47awo4xim5/1605824143816/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>IP
+    Whitelisting</h3><p>For an overview of Harness&#39; support for platforms, methodologies,
+    and related technologies, see <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>Can I whitelist IPs for connections to
+    my Harness accounts?</h4><p>Yes. You can whitelist the IP addresses that may access
+    your Harness account.</p><p>You can enter individual IP addresses or a CIDR (Classless
+    Inter-Domain Routing) block.</p><p>Once you add and enable an IP Whitelist, only
+    users connecting from the IP address/CIDR block may log into Harness.</p><p>See
+    <a href="/article/j2ww8l3yjw-access-management">IP Whitelist Management</a>.</p><h4>Can
+    I whitelist IPs for the Harness Delegate?</h4><p>No. Harness IP Whitelisting is
+    for user connections to a Harness account. It will not perform IP whitelisting
+    for Harness Delegate connections.</p><h3>API Keys</h3><p>For an overview of Harness&#39;
+    support for platforms, methodologies, and related technologies, see <a href="https://docs.harness.io/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h4>Can I register Harness with third-party
+    apps?</h4><p>Yes, by using Harness API keys.</p><p>To integrate Harness with some
+    third-party apps, you need to register Harness with the app and then supply a
+    Harness API key.</p><p>The API key is a simple encrypted string that other applications
+    can use to access Harness without a private Harness account.</p><p>See <a href="/article/smloyragsm-api-keys">API
+    Keys</a>.</p><h4>Is there a limit on how many API calls I can make?</h4><p>Yes.
+    The Harness API has a usage rate limit of <strong>1 query per second per API Key</strong>.
+    If the rate limit is reached, you will receive this response in the API call:</p><pre
+    class="hljs css">Too Many requests. Throttled. Max QPS: 1.0</pre><h4>Can I use
+    an API key to track deployments?</h4><p>Yes. Once you have generated an API key
+    in Harness, deployment status can be tracked by making a REST call to Harness.</p><p>For
+    more information, see <a href="https://docs.harness.io/article/xerirloz9a-add-a-trigger-2#manual_triggers_and_github_webhooks">Add
+    a Trigger</a>.</p><p></p>'
+  slug: harness-security-faq
+  tags: []
+  is_live: true

@@ -1,0 +1,73 @@
+type: article
+article_id: qm2u5fc10e
+user_id: ""
+category_id: a8jhf8hizv
+author:
+  name: ""
+  profile_image: ""
+title: Additional Workflow Configurations
+slug: additional-workflow-configurations
+description: 'Add Command: This option allows you to add a custom functionality as
+  part of the deployment. For more information see Custom Commands. Rollback Steps:
+  Harness allows you to configure an automated or…'
+short_version: 'Add Command: This option allows you to add a custom functionality
+  as part of the deployment. For more information see Custom Commands. Rollback Steps:
+  Harness allows you to configure an automated or…'
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:23:30.707818Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Additional Workflow Configurations
+  description: ""
+  short_version: ""
+  body: |-
+    <p><a name="add_command"></a><strong>Add Command: </strong><span style="font-weight: 400;">This option allows you to add a custom functionality as part of the deployment. For more information see Custom Commands.</span></p>
+    <p> </p>
+    <p><a name="Rollback_Steps"></a><strong> Rollback Steps:</strong><span style="font-weight: 400;"> Harness allows you to configure an automated or manually-triggered rollback step in case of a deployment failure. The criteria for a deployment failure can be defined by you in the Failure Strategy section. Harness uses artifact versioning to keep track of which artifacts were previously deployed and should be used for the rollback deployment. </span></p>
+    <p><span style="font-weight: 400;">For Docker, AWS CodeDeploy, and Lambda deployments, Harness will simply rollback the deployment to the nodes that received the new code. In case of a JAR, WAR, RPM, TAR, ZIP and other deployments, Harness provides the default steps (Disable, Stop, Deploy, Enable, Wrap-up), but also allows you to add Custom Commands in case you need to customize the rollback procedure.  </span></p>
+    <p> </p>
+    <p><a name="Notification_Strategy"></a><strong>Notification Strategy:</strong><span style="font-weight: 400;">  By default, Harness will notify the account administrator on every workflow failure. In addition, you can edit this strategy or add additional ones. You can choose the type of event that will trigger a notification (success, failure or a pause), the scope (workflow or phase) and the recipient of the notification.</span></p>
+    <p> </p>
+    <h3>
+    <a name="Flow_Control"></a><strong>Flow Control:</strong>
+    </h3>
+    <p> </p>
+    <p><a name="barriers"></a><strong>Barriers:</strong></p>
+    <p><span style="font-weight: 400;">When dealing with deploying interdependent services (typically microservices or a large and complicated application) there might be a need to coordinate the timing of the deployment of all the different components. A common example would be the need to run verification on a group of services but only after all the services were successfully deployed. For this purpose, Harness developed the Barrier functionality which allows you to synchronize different workflows in your pipeline, and have better control over the flow of your deployment.</span></p>
+    <p class="wysiwyg-text-align-center"></p>
+    <figure><img src="https://files.helpdocs.io/articles/qm2u5fc10e/1532028637582/barrier-flow.png" alt="“config_icon&#34;" data-image="twoesmvln91r"/></figure>
+    <p></p>
+    <ol>
+    <ol>
+    <li class="wysiwyg-text-align-left" style="font-weight: 400;"><span style="font-weight: 400;">Under the “Add Command” menu in the workflow design screen, you’ll see the Barrier option.</span></li>
+    </ol>
+    </ol>
+    <p class="wysiwyg-text-align-center"></p>
+    <figure><img src="https://files.helpdocs.io/articles/qm2u5fc10e/1532028637802/barrier-link.png" alt="“config_icon&#34;" data-image="gokwfoqld2rb"/></figure>
+    <p></p>
+    <ol>
+    <ol>
+    <li class="wysiwyg-text-align-left" style="font-weight: 400;"><span style="font-weight: 400;">In the Barrier configuration screen, enter the Identifier which is an arbitrary string that needs to be identical in all the other related barriers in your other workflows. Please note that you can have multiple barriers per workflow, as long as you make sure to match the identifier string for each related barrier across the different workflows.</span></li>
+    </ol>
+    </ol>
+    <p class="wysiwyg-text-align-center"></p>
+    <figure><img src="https://files.helpdocs.io/articles/qm2u5fc10e/1532028638026/barrier-menu.png" alt="“config_icon&#34;" data-image="2r32uvbgg7gz"/></figure>
+    <p></p>
+    <ol>
+    <li><span style="font-weight: 400;">Enter the timeout period: This will determine how long each workflow that has a barrier will need to wait for the other workflows to reach their barrier point. In case one of the timeouts expires, this will be considered as a deployment failure.</span></li>
+    </ol>
+    <p><span style="font-weight: 400;"> </span></p>
+    <p><span style="font-weight: 400;">Please note: If a workflow fails before reaching it&#39;s barrier point, it will signal the other workflows that have the same barrier, and this will be considered as if each of the other workflows failed as well. At that point each workflow will act according to its failure strategy defined in that workflow setup. </span></p>
+  slug: additional-workflow-configurations
+  tags: []
+  is_live: true

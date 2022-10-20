@@ -1,0 +1,55 @@
+type: article
+article_id: lf6a27usso
+user_id: znazf3hcp9
+category_id: 013h04sxex
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Harness GitOps ApplicationSet Tutorial
+slug: harness-git-ops-application-set-tutorial
+description: Currently, this feature is behind the feature flags ARGO_PHASE2_MANAGED.
+  Contact Harness Support to enable the feature. You can use an ApplicationSet controller
+  to distribute a single Application acr…
+short_version: Currently, this feature is behind the feature flags ARGO_PHASE2_MANAGED.
+  Contact Harness Support to enable the feature. You can use an ApplicationSet controller
+  to distribute a single Application acr…
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-23T21:08:04.940945Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness GitOps ApplicationSet Tutorial
+  description: ""
+  short_version: ""
+  body: '<div class="note-callout">Currently, this feature is behind the feature flags<code>ARGO_PHASE2_MANAGED</code>.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a> to
+    enable the feature.</div><p>You can use an ApplicationSet controller to distribute a
+    single Application across a large number of clusters. </p><p>An ApplicationSet
+    allows you to automatically and dynamically generate Harness GitOps Applications.
+    An ApplicationSet is similar to an Application but uses a template part that contains
+    all fields defined from the spec part of the Application (CR).</p><p>Harness will
+    generate Applications based on the ApplicationSet, which </p><p>ApplicationSet
+    is supported in your cluster using a <a href="https://kubernetes.io/docs/concepts/architecture/controller/">Kubernetes
+    controller</a> for the <code>ApplicationSet</code> <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/">CustomResourceDefinition</a> (CRD).
+    </p><p>You add an ApplicationSet manifest to your Harness GitOps Application just
+    like you would add a typical Deployment manifest.</p><p>The ability to use a single
+    Kubernetes manifest to target multiple Kubernetes clusters with Argo CD</p><ul><li>The
+    ability to use a single Kubernetes manifest to deploy multiple applications from
+    one or multiple Git repositories with Argo CD</li><li>Improved support for monorepos:
+    in the context of Argo CD, a monorepo is multiple Argo CD Application resources
+    defined within a single Git repository</li><li>Within multitenant clusters, improves
+    the ability of individual cluster tenants to deploy applications using Argo CD
+    (without needing to involve privileged cluster administrators in enabling the
+    destination clusters/namespaces)</li></ul><p></p>'
+  slug: harness-git-ops-application-set-tutorial
+  tags: []
+  is_live: true

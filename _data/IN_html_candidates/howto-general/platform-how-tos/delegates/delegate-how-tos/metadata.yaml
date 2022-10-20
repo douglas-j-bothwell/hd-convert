@@ -1,0 +1,62 @@
+type: article
+article_id: 0slo2gklsy
+user_id: u10w77i7vp
+category_id: 9i5thr0ot2
+author:
+  name: Katherine Enos
+  profile_image: https://www.gravatar.com/avatar/854cdb03d99ded9ecd30fa9cf06a5298?d=mm&s=150
+title: Delegate How-to
+slug: delegate-how-tos
+description: Harness Delegate is a service you run in your own environment, such as
+  your local network, VPC, or cluster. For example, you can run the Delegate in the
+  deployment target cluster for a CD Pipelin…
+short_version: Harness Delegate is a service you run in your own environment, such
+  as your local network, VPC, or cluster. For example, you can run the Delegate in
+  the deployment target cluster for a CD Pipelin…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-26T03:09:23.818562Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Delegate How-to
+  description: Harness Delegate is a service you run in your own environment, such
+    as your local network, VPC, or cluster. For example, you can run the Delegate
+    in the deployment target cluster for a CD Pipelin…
+  short_version: Harness Delegate is a service you run in your own environment, such
+    as your local network, VPC, or cluster. For example, you can run the Delegate
+    in the deployment target cluster for a CD Pipelin…
+  body: <p>The Harness Delegate is a service you run in your own environment, such
+    as your local network, VPC, or cluster.</p><p>For example, you can run the Delegate
+    in the deployment target cluster for a CD Pipeline or the build farm cluster for
+    a CI Pipeline.</p><p>The Delegate connects all of your artifact, infrastructure,
+    collaboration, verification, and other providers with the Harness Manager.</p><p>Most
+    importantly, the Delegate performs most Harness operations.</p><p>See the following
+    Delegate How-to topics:</p><ul><li><a href="/article/4ax6q6dxa4-install-an-immutable-kubernetes-delegate">Install
+    an Immutable Kubernetes Delegate</a></li><li><a href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Legacy Kubernetes Delegate</a></li><li><a href="/article/cya29w2b99-install-a-docker-delegate">Install
+    a Docker Delegate</a></li><li><a href="/article/nnuf8yv13o-select-delegates-with-selectors">Select
+    Delegates with Tags</a></li><li><a href="/article/yte6x6cyhn-run-scripts-on-delegates">Run
+    Initialization Scripts on Delegates</a></li><li><a href="/article/5ww21ewdt8-configure-delegate-proxy-settings">Configure
+    Delegate Proxy Settings</a></li><li><a href="/article/9deaame3qz-automate-delegate-installation">Automate
+    Delegate Installation</a></li><li><a href="/article/nh6tdfse6g-trust-store-override-for-delegates">Truststore
+    Override for Delegates</a></li><li><a href="/article/39tx85rekj-delegate-registration">Delegate
+    Registration and Verification</a></li><li><a href="/article/h2kydm6qme-non-root-delegate-installation">Non-Root
+    Delegate Installation</a></li><li><a href="/article/nbi9uj9wm4-custom-delegate">Create
+    a Custom Delegate that Includes Custom Tools</a></li><li><a href="/article/omydtsrycn-secure-delegates-with-tokens">Secure
+    Delegates with Tokens</a></li><li><a href="/article/tl6ql57em6-delete-a-delegate">Delete
+    a Delegate</a></li></ul><p>For an overview, see the</p><ul><li><a href="/article/2k7lnc7lvl-delegates-overview">Delegates
+    Overview</a></li><li><a href="/article/4zzg5qitkv-immutable-delegate-overview">Immutable
+    Delegate Overview</a></li><li><a href="/article/re8kk0ex4k-delegate-installation-overview">Delegate
+    Installation Overview</a></li></ul><p></p>
+  slug: delegate-how-tos
+  tags: []
+  is_live: true

@@ -1,0 +1,15 @@
+type: category
+category_id: psx5rymdnm
+parent_category_id: rtce97j1wu
+title: FF APIs
+description: This section talks about how to use Harness Feature Flags using the APIs.
+slug: ff-apis
+is_featured: false
+icon: ""
+permission_groups: []
+multilingual:
+- language_code: en
+  title: FF APIs
+  description: This section talks about how to use Harness Feature Flags using the
+    APIs.
+  slug: ff-apis

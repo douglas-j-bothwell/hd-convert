@@ -1,0 +1,52 @@
+type: article
+article_id: vlj9xbj315
+user_id: mfr0nxh4be
+category_id: 36pjokv13r
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Serverless Functions Dashboard
+slug: serverless-functions-dashboard
+description: Harness Manager's Serverless Functions Dashboard offers views of your
+  Lambda deployment data.
+short_version: Harness Manager's Serverless Functions Dashboard offers views of your
+  Lambda deployment data.
+tags:
+- lambda
+- serverless
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:55.448144Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Serverless Functions Dashboard
+  description: Harness Manager's Serverless Functions Dashboard offers views of your
+    Lambda deployment data.
+  short_version: Harness Manager's Serverless Functions Dashboard offers views of
+    your Lambda deployment data.
+  body: <p>Harness Manager&#39;s Serverless Functions Dashboard offers views of your
+    Lambda deployment data.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/vlj9xbj315/1578427006549/image.png"/></figure><p></p><p>The
+    dashboard provides details for each deployment, giving you a way to view accumulated
+    deployment details quickly.</p><p>Here is an individual <a href="/article/z24n8ut61d-lambda-deployment-overview">Lambda
+    deployment</a> and how it is displayed on the Serverless Functions dashboard:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/vlj9xbj315/1578426243990/image.png"/></figure><h3>Lambda
+    Execution Role Policy Requirements</h3><p>To see your Lambda invocations on the
+    Serverless Dashboard, the <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html"
+    target="_blank">Execution Role</a> for the Lambda function must have the following
+    policies:</p><ul><li>AmazonEC2FullAccess</li><li>AWSLambda_FullAccess (previously
+    AWSLambdaFullAccess)</li><li>AWSLambdaVPCAccessExecutionRole</li><li>AWSLambdaRole</li><li>CloudWatchReadOnlyAccess</li></ul><p>The
+    Function Invocations are updated every 10 minutes.</p><p>See <a href="/article/z24n8ut61d-lambda-deployment-overview">Lambda
+    Deployment Overview</a>.</p>
+  slug: serverless-functions-dashboard
+  tags:
+  - lambda
+  - serverless
+  is_live: true

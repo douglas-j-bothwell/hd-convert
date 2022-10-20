@@ -1,0 +1,59 @@
+type: article
+article_id: zahb65jgmy
+user_id: znazf3hcp9
+category_id: 85tr1q4hin
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Kubernetes Releases and Versioning
+slug: kubernetes-releases-and-versioning
+description: Every Harness deployment creates a new release with an incrementally
+  increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap.
+  This ConfigMap is essential for release tra…
+short_version: Every Harness deployment creates a new release with an incrementally
+  increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap.
+  This ConfigMap is essential for release tra…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-08-19T20:14:29.609633Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Kubernetes Releases and Versioning
+  description: ""
+  short_version: ""
+  body: '<p>Every Harness deployment creates a new release with an incrementally increasing
+    number. Release history is stored in the Kubernetes cluster in a ConfigMap. This
+    ConfigMap is essential for release tracking, versioning and rollback.</p><p>By
+    default, all the ConfigMap and <a href="https://kubernetes.io/docs/concepts/configuration/secret/"
+    target="_blank">Secrets</a> resources are versioned by Harness. Corresponding
+    references in PodSpec are also updated with versions.</p><p>You can see the use
+    of release numbers and versioning in the <strong>Deployments</strong> page details:</p><pre
+    class="hljs css">INFO   2019-02-15 10:53:33    Kind                Name                                    Versioned
+    <br/>INFO   2019-02-15 10:53:33    Namespace           default                                 false     <br/>INFO   2019-02-15
+    10:53:33    Secret              image-pull-secret                       false     <br/>INFO   2019-02-15
+    10:53:33    Secret              sample                                  true      <br/>INFO   2019-02-15
+    10:53:33    Deployment          nginx-deployment                        false     <br/>INFO   2019-02-15
+    10:53:33    <br/>INFO   2019-02-15 10:53:33    <br/>INFO   2019-02-15 10:53:33    Current
+    release number is: 5<br/>INFO   2019-02-15 10:53:33    <br/>INFO   2019-02-15
+    10:53:33    Previous Successful Release is 4</pre><div class="note-callout">Versioning
+    does not change how you use Secrets. You do not need to reference versions when
+    using Secrets.</div><p>For cases where versioning is not required, the manifest
+    entered in the Harness Service Manifests section should be annotated with <code>harness.io/skip-versioning:
+    &#34;true&#34;</code>.</p><p>For example. you might want to skip versioning is
+    for an ImagePullSecret because it never changes, or for TLS certs if they are
+    referred in a Kubernetes container cmd args.</p><p>Harness also uses a release
+    name for tracking releases. You can supply a release name in a stage&#39;s Infrastructure
+    Definition Cluster Details <strong>Release Name</strong> setting in <strong>Advanced</strong>.</p><p>See
+    .</p><p></p>'
+  slug: kubernetes-releases-and-versioning
+  tags: []
+  is_live: true

@@ -1,0 +1,93 @@
+type: article
+article_id: lrrbgkjzo8
+user_id: mfr0nxh4be
+category_id: qx7uza8xbv
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Installing Harness Chaos Engineering in OpenShift
+slug: installing-harness-chaos-engineering-in-open-shift
+description: Use the following steps to install Harness Chaos Engineering (HCE) in
+  OpenShift.
+short_version: Use the following steps to install Harness Chaos Engineering (HCE)
+  in OpenShift.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-23T19:01:20.356459Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Installing Harness Chaos Engineering in OpenShift
+  description: Use the following steps to install Harness Chaos Engineering (HCE)
+    in OpenShift.
+  short_version: Use the following steps to install Harness Chaos Engineering (HCE)
+    in OpenShift.
+  body: '<p>Use the following steps to install Harness Chaos Engineering (HCE) in
+    OpenShift.</p><h3>Step 1: Apply the Installation Manifest</h3><p>Run the following
+    command to install Harness Chaos Engineering in OpenShift:</p><pre>oc apply -f
+    https://hce.chaosnative.com/manifests/latest/hce-cluster-scope.yaml</pre><h3>Step
+    2: Update Security Context Constraints (SCCs)</h3><p>By default, HCE components
+    run under the restricted SCC. You have two options:</p><ul><li>You can make use
+    of the default SCC and update it according to the required permissions.</li><li>You
+    can create our own SCC and associate the HCE experiment service account (litmus-admin)
+    to run all the experiments.</li></ul><p>Here is a SecurityContextConstraints object
+    to use for the second option. In this example, the file is named litmus-scc.yaml.</p><pre>apiVersion:
+    security.openshift.io/v1<br/>kind: SecurityContextConstraints<br/>allowHostDirVolumePlugin:
+    true<br/>allowHostIPC: false<br/>allowHostNetwork: true<br/>allowHostPID: true<br/>allowHostPorts:
+    true<br/>allowPrivilegeEscalation: true<br/>allowPrivilegedContainer: true<br/>allowedCapabilities:<br/>  -
+    &#39;*&#39;<br/>defaultAddCapabilities: null<br/>fsGroup:<br/>  type: MustRunAs<br/>groups:
+    []<br/>metadata:<br/>  name: litmus-scc<br/>priority: null<br/>readOnlyRootFilesystem:
+    false<br/>runAsUser:<br/>  type: RunAsAny<br/>seLinuxContext:<br/>  type: MustRunAs<br/>supplementalGroups:<br/>  type:
+    RunAsAny<br/>volumes:<br/>  - configMap<br/>  - downwardAPI<br/>  - emptyDir<br/>  -
+    hostPath<br/>  - persistentVolumeClaim<br/>  - projected<br/>  - secret</pre><h3>Step
+    3: Apply the SCC</h3><p>Run the following command to apply the SCC:</p><pre>oc
+    apply -f litmus-scc.yaml</pre><h3>Step 4: Associate Service Accounts with New
+    SCC</h3><p>Next, associate all service accounts in your namespace with the newly
+    created SCC.</p><p>Run the following command using the desired namespace:</p><pre>oc
+    adm policy add-scc-to-group litmus-scc system:serviceaccounts:&lt;namespace&gt;
+    -n &lt;namespace&gt;</pre><h3>Step 5: Tune Experiment Helper with SET_HELPER_DATA</h3><p>In
+    OpenShift 4.x, chaos injection issues can occur due to the helper pod failure.
+    The issue is caused when the same IP is assigned for the helper and experiment
+    pods. The issue occurs due to the same annotation shared by helper and experiment
+    pods. </p><p>Helper pod usage can be tuned via the environment variable <code>SET_HELPER_DATA</code>.
+    When you don’t want to use the experiment data inside helper pods, you can disable
+    it.</p><p>Use <code>SET_HELPER_DATA: false</code> for the experiment which uses
+    helper pods, so that the helper pod uses new annotations and gets the correct
+    SCC. </p><p>You can tune <code>SET_HELPER_DATA</code> in the environment variables.
+    Here&#39;s an example showing the path the environment variable <code>experiments
+    &gt; name &gt; spec &gt; components &gt; env &gt; SET_HELPER_DATA</code>:</p><pre>kind:
+    Workflow<br/>apiVersion: argoproj.io/v1alpha1<br/>metadata:<br/>  name: custom-1661183659<br/>  namespace:
+    litmus<br/>  creationTimestamp: null<br/>  labels:<br/>    subject: custom_litmus<br/>    workflows.argoproj.io/controller-instanceid:
+    d3b054b1-fd85-4ebf-9c3c-83e85ffe0406<br/>spec:<br/>...<br/>    - name: pod-cpu-hog-7on<br/>      inputs:<br/>        artifacts:<br/>          -
+    name: pod-cpu-hog-7on<br/>            path: /tmp/chaosengine-pod-cpu-hog-7on.yaml<br/>            raw:<br/>              data:
+    |<br/>                apiVersion: litmuschaos.io/v1alpha1<br/>                kind:
+    ChaosEngine<br/>                metadata:<br/>                  namespace: &#34;{{workflow.parameters.adminModeNamespace}}&#34;<br/>                  generateName:
+    pod-cpu-hog-7on<br/>                  labels:<br/>                    instance_id:
+    48e5652a-56f9-4fb6-b5c8-6342a3c141e5<br/>                    workflow_name: custom-1661183659<br/>                spec:<br/>                  engineState:
+    active<br/>                  appinfo:<br/>                    appns: default<br/>                    applabel:
+    app=nginx<br/>                    appkind: deployment<br/>                  chaosServiceAccount:
+    litmus-admin<br/>                  experiments:<br/>                    - name:
+    pod-cpu-hog<br/>                      spec:<br/>                        components:<br/>                          env:<br/>                            -
+    name: TOTAL_CHAOS_DURATION<br/>                              value: &#34;60&#34;<br/>                            -
+    name: CPU_CORES<br/>                              value: &#34;1&#34;<br/>                            -
+    name: PODS_AFFECTED_PERC<br/>                              value: &#34;&#34;<br/>                            -
+    name: CONTAINER_RUNTIME<br/>                              value: crio<br/>                            -
+    name: SOCKET_PATH<br/>                              value: /run/crio/crio.sock<br/>                            -
+    name: SET_HELPER_DATA<br/>                              value: &#34;false&#34;<br/>                        probe:
+    []<br/>      outputs: {}<br/>      metadata:<br/>        labels:<br/>          weight:
+    &#34;10&#34;<br/>      container:<br/>        name: &#34;&#34;<br/>        image:
+    litmuschaos/litmus-checker:2.11.0<br/>        args:<br/>          - -file=/tmp/chaosengine-pod-cpu-hog-7on.yaml<br/>          -
+    -saveName=/tmp/engine-name<br/>        resources: {}<br/>  entrypoint: custom-chaos<br/>  arguments:<br/>    parameters:<br/>      -
+    name: adminModeNamespace<br/>        value: litmus<br/>  serviceAccountName: argo-chaos<br/>  securityContext:<br/>    runAsUser:
+    1000<br/>    runAsNonRoot: true<br/>status:<br/>  ? startedAt<br/>  ? finishedAt</pre><p></p>'
+  slug: installing-harness-chaos-engineering-in-open-shift
+  tags: []
+  is_live: true

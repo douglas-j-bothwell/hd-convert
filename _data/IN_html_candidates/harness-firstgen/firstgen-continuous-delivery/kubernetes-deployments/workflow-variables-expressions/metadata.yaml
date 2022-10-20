@@ -1,0 +1,103 @@
+type: article
+article_id: 7bpdtvhq92
+user_id: mfr0nxh4be
+category_id: n03qfofd5w
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Kubernetes Workflow Variables and Expressions
+slug: workflow-variables-expressions
+description: Learn about the Kubernetes-specific Harness variables you can use in
+  your Workflows.
+short_version: Learn about the Kubernetes-specific Harness variables you can use in
+  your Workflows.
+tags:
+- Kubernetes
+- ${k8s.primaryServiceName}
+- ${k8s.stageServiceName}
+- ${k8s.virtualServiceName}
+- ${k8s.canaryDestination}
+- ${k8s.stableDestination}
+- Istio
+-  Destination Rule
+- ${infra.kubernetes.namespace}
+- namespace
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-01-24T18:45:38.24503Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Kubernetes Workflow Variables and Expressions
+  description: Learn about the Kubernetes-specific Harness variables you can use in
+    your Workflows.
+  short_version: Learn about the Kubernetes-specific Harness variables you can use
+    in your Workflows.
+  body: '<p>The following Kubernetes-specific Harness variables are available as expressions
+    you can use in your Workflows.</p><h3>${k8s.primaryServiceName}</h3><p><code>${k8s.primaryServiceName}</code> -
+    The service in your Harness Service <strong>Manifests</strong> section that uses
+    the <code>annotations: harness.io/primary-service: &#34;true&#34;</code> annotation.
+    See <a href="/article/ukftzrngr1-create-a-kubernetes-blue-green-deployment">Create
+    a Kubernetes Blue/Green Deployment</a>.</p><div class="note-callout">Boolean annotation
+    values must use quotes (<code>&#34;true&#34;|&#34;false&#34;</code>).</div><h3>${k8s.stageServiceName}</h3><p><code>${k8s.stageServiceName}</code> -
+    The service in your Harness Service <strong>Manifests</strong> section uses the <code>annotations:
+    harness.io/stage-service: &#34;true&#34;</code> annotation. See <a href="/article/ukftzrngr1-create-a-kubernetes-blue-green-deployment">Create
+    a Kubernetes Blue/Green Deployment</a>.</p><h3>${k8s.canaryWorkload}</h3><p><code>${k8s.canaryWorkload}</code> -
+    The Kubernetes workload set up in the Canary Workflow. Workflows only deploy one
+    workload per deployment. Workloads include the Deployment, StatefulSet, DaemonSet,
+    and DeploymentConfig objects.</p><h3>${k8s.virtualServiceName}</h3><p><code>${k8s.virtualServiceName}</code> -
+    The name in the <a href="https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/"
+    target="_blank">Virtual Service</a> manifest deployed by the Workflow. This is
+    the manifest in the Service <strong>Manifests</strong> section that uses <code>kind:
+    VirtualService</code> for Istio. See <a href="/article/1qfb4gh9e8-set-up-kubernetes-traffic-splitting">Set
+    Up Kubernetes Traffic Splitting</a>.</p><h3>Canary Destinations</h3><p><code>${k8s.canaryDestination}</code> and <code>${k8s.stableDestination}</code> -
+    The names in the <a href="https://istio.io/docs/reference/config/networking/v1alpha3/destination-rule/"
+    target="_blank">Destination Rule</a> subsets deployed by the Canary Workflow.
+    See <a href="/article/1qfb4gh9e8-set-up-kubernetes-traffic-splitting">Set Up Kubernetes
+    Traffic Splitting</a>.</p><p>This is the manifest Harness generates for Istio
+    traffic splitting:</p><pre class="hljs sql">Found VirtualService with name anshul-traffic-split-demo-virtualservice<br/><br/>Found
+    following destinations<br/>${k8s.canaryDestination}<br/>weight: 50<br/><br/>${k8s.stableDestination}<br/>weight:
+    50<br/><br/>...<br/><br/>http:<br/>- route:<br/>  - destination:<br/>      host:
+    &#34;anshul-traffic-split-demo-svc&#34;<br/>      subset: &#34;canary&#34;<br/>    weight:
+    50<br/>  - destination:<br/>      host: &#34;anshul-traffic-split-demo-svc&#34;<br/>      subset:
+    &#34;stable&#34;<br/>    weight: 50</pre><h3>${infra.kubernetes.namespace}</h3><p><code>${infra.kubernetes.namespace}</code>
+    - The Harness variable <code>${infra.kubernetes.namespace}</code> refers to the
+    namespace entered in the Harness Environment Infrastructure Definition settings <strong>Namespace</strong> field:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568672205379/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>You can use <code>${infra.kubernetes.namespace}</code> in
+    your Harness Service <strong>Manifests</strong> definition of a Kubernetes Namespace
+    to reference the name you entered in the Infrastructure Definition <strong>Namespace</strong> field.
+    When the Harness Service is deployed to that Infrastructure Definition, it will
+    create a Kubernetes namespace using the value you entered in the Infrastructure
+    Definition <strong>Namespace</strong> field.</p><p>In the values.yaml file, it
+    will look like this:</p><pre class="hljs cpp">namespace: ${infra.kubernetes.namespace}</pre><p>In
+    a manifest file for the Kubernetes Namespace object, it will be used like this:</p><pre
+    class="hljs makefile">apiVersion: v1<br/>kind: Namespace<br/>metadata:<br/>  name:
+    {{.Values.namespace}}</pre><p>When this manifest is used by Harness to deploy
+    a Kubernetes Namespace object, it will replace <code>${infra.kubernetes.namespace}</code> with
+    the value entered in the Infrastructure Definition <strong>Namespace</strong> field,
+    creating a Kubernetes Namespace object using the name. Next, Harness will deploy
+    the other Kubernetes objects to that namespace.</p><div class="note-callout">If
+    you omit the <code>namespace</code> key and value from a manifest in your Service,
+    Harness automatically uses the namespace you entered in the Harness Environment
+    Infrastructure Definition settings&#39; <strong>Namespace</strong> field.</div><p></p><p></p>'
+  slug: workflow-variables-expressions
+  tags:
+  - Kubernetes
+  - ${k8s.primaryServiceName}
+  - ${k8s.stageServiceName}
+  - ${k8s.virtualServiceName}
+  - ${k8s.canaryDestination}
+  - ${k8s.stableDestination}
+  - Istio
+  -  Destination Rule
+  - ${infra.kubernetes.namespace}
+  - namespace
+  is_live: true

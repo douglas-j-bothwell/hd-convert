@@ -1,0 +1,62 @@
+type: article
+article_id: 3rz2vrfxtq
+user_id: mfr0nxh4be
+category_id: 0v0om5p9af
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: New Docs Added Recently
+slug: what-s-new
+description: The following topics have been adding to the docs recently. August 2021
+  Config-As-Code Using REST APIs. Recent YAML Schema Changes. Extracting Characters
+  from Harness Variable Expressions. Artifact C…
+short_version: The following topics have been adding to the docs recently. August
+  2021 Config-As-Code Using REST APIs. Recent YAML Schema Changes. Extracting Characters
+  from Harness Variable Expressions. Artifact C…
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-18T20:37:52.256399Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: New Docs Added Recently
+  description: ""
+  short_version: ""
+  body: '<p>The following topics have been adding to the docs recently.</p><h3>August
+    2021</h3><ul><li><a href="/article/bbmhnoqrzw-config-as-code-using-rest-apis">Config-As-Code
+    Using REST APIs</a></li><li><a href="/article/wkp9blw8pf-recent-yaml-schema-changes">Recent
+    YAML Schema Changes</a></li><li><a href="/article/myk24wycif-extracting-characters-from-harness-variable-expressions">Extracting
+    Characters from Harness Variable Expressions</a></li><li><a href="/article/3rz2d3g5qu-artifact-collection-tech-ref">Artifact
+    Collection Tech Ref</a></li><li><a href="/article/scrsak5124-publish-pipeline-events-to-an-http-endpoint">Publish
+    Pipeline Events to an HTTP Endpoint</a></li><li><a href="/article/n43s95h2aj-use-approvals-api">Use
+    Approvals API</a></li><li><strong>Environments Comparison</strong> in <a href="/article/c3s245o7z8-main-and-services-dashboards">Monitor
+    Deployments in Dashboards</a></li></ul><h3>July 2021</h3><ul><li><a href="/article/6ujb3c70fh-what-can-i-deploy-in-kubernetes">What
+    Can I Deploy in Kubernetes?</a></li><li><a href="/article/sbvn6uwcq1-deploy-helm-charts-using-api">Deploy
+    Helm Charts Using the API</a></li></ul><h3>June 2021</h3><ul><li><a href="/article/s7ususmloy-view-account-info-and-subscribe-to-downtime-alerts">View
+    Account Info and Subscribe to Downtime Alerts</a></li><li><a href="/article/xxwna12fso-add-packaged-helm-charts">Custom
+    Fetching and Preprocessing of Helm Charts</a></li><li><a href="/article/3j9vt6eno6-workflow-phase-and-step-name-restrictions">Workflow,
+    Phase, and Step Name Restrictions</a></li><li><a href="/article/r61qs08x2p-secure-delegates-with-tokens">Secure
+    Delegates with Tokens</a></li><li><a href="/article/k89ioqv8fw-add-an-azure-dev-ops-repo">Add
+    an Azure DevOps Repo</a></li></ul><h3>May 2021</h3><ul><li><a href="/article/pmndpu61bk-prune-kubernetes-resources">Prune
+    Kubernetes Resources</a></li></ul><h3>April 2021</h3><ul><li><a href="/article/a6onutvbem-terragrunt-provisioning-with-harness">Terragrunt
+    Provisioning with Harness</a></li><li><a href="/article/4602gl9ds3-kubernetes-cluster-on-prem-add-ingress-controller-service-annotations">Kubernetes
+    Cluster On-Prem: Add Ingress Controller Service Annotations</a></li></ul><h3>March
+    2021</h3><ul><li><a href="/category/3i7h1lzlt2-azure-arm">Azure ARM Provisioning</a></li><li><a
+    href="/category/4on0a5avqo-azure-blueprint-provisioning">Azure Blueprint Provisioning</a></li><li><a
+    href="/article/8y73f4o4ph-add-hashi-corp-vault-signed-ssh-certificate-keys">Add
+    HashiCorp Vault Signed SSH Certificate Keys</a></li><li><a href="/article/53qqnebrak-deploy-kubernetes-manifests-packaged-with-artifacts">Add
+    Packaged Kubernetes Manifests</a></li><li><a href="/category/z4lta2vnfk">Cloud
+    Cost Management (formerly Continuous Efficiency) APIs</a></li><li><a href="/article/07vhqhs1xy-use-infrastructure-definition-api">Use
+    Infrastructure Definition API</a></li><li><a href="/article/mtr398a9cl-slack-approvals">Slack
+    Approvals in Workflows and Pipelines</a></li></ul><p></p>'
+  slug: what-s-new
+  tags: []
+  is_live: true

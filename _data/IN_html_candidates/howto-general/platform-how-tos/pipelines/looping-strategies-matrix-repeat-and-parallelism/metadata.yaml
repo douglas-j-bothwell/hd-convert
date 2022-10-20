@@ -1,0 +1,87 @@
+type: article
+article_id: eh4azj73m4
+user_id: xwmdbyp4x8
+category_id: kncngmy17o
+author:
+  name: Doug Bothwell
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: 'Looping Strategies Overview: Matrix, Repeat, and Parallelism'
+slug: looping-strategies-matrix-repeat-and-parallelism
+description: Looping strategies enable you to run a stage or step multiple times with
+  different inputs. Looping speeds up your pipelines and makes them easier to read
+  and maintain.
+short_version: Looping strategies enable you to run a Stage or Step multiple times
+  with different inputs. Looping speeds up your pipelines and makes them easier to
+  read and maintain.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-23T13:58:13.843327Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 'Looping Strategies Overview: Matrix, Repeat, and Parallelism'
+  description: Looping strategies enable you to run a stage or step multiple times
+    with different inputs. Looping speeds up your pipelines and makes them easier
+    to read and maintain.
+  short_version: Looping strategies enable you to run a Stage or Step multiple times
+    with different inputs. Looping speeds up your pipelines and makes them easier
+    to read and maintain.
+  body: '<div class="note-callout">Currently, this feature is behind a Feature Flag.
+    Contact <a href="mailto:support@harness.io" target="_blank">Harness Support</a> to
+    enable the feature.</div><p>Looping strategies enable you to run a Stage or Step
+    multiple times with different inputs. This eliminates the need to copy the same
+    Stage or Step for each variation you need. It also makes the Pipeline more readable,
+    clean, and easy to maintain. Looping strategies enable use cases such as:</p><ul><li>You
+    want to test a UI feature in multiple browsers and platforms. You can define a
+    matrix that specifies the browsers and platforms to test.</li><li>You want to
+    build artifacts for multiple JDK versions in the same Build Stage.</li><li>You
+    have a Build Pipeline with 20 unit tests. To speed up execution, you want to run
+    the tests in parallel across 4 jobs that run 5 tests each.</li></ul><h3>Looping
+    Strategy Types</h3><p>Harness supports the following strategies.</p><h4>Matrix</h4><p>Matrix
+    strategies are highly flexible and applicable for both CD and CI Pipelines.</p><p>First
+    you define a matrix of configurations that you want the Stage or Step to run.
+    Each axis has a user-defined tag — <code>env</code>, <code>service</code>, <code>platform</code>,
+    <code>browser</code>, <code>jdk</code>, etc. — and a list of values.  You can
+    use variables such as <code>&lt;+matrix.jdk&gt;</code> in a Build and Push Step
+    or <code>&lt;+matrix.env&gt;</code> and <code>&lt;+matrix.service&gt;</code> in
+    a Deploy Stage.</p><p>When a Pipeline runs, it creates multiple copies of the
+    Stage or Step and runs them in parallel. You can use the<code>exclude</code> keyword
+    to filter out some combinations. You can also use the <code>maxConcurrency</code>
+    keyword to limit the number of parallel runs.</p><pre class="hljs yaml">matrix:
+    <br/>  service: [svc1, svc2, svc3]<br/>  env: [env1, env2]<br/>  exclude: # don’t
+    run [svc1, env1] or [svc3, env3]<br/>   - service: svc1 <br/>     env: env1 <br/>   -
+    service: svc3 <br/>     env: env2 <br/>  maxConcurrency: 2 # run up to 2 jobs
+    in parallel based on your resources<br/># example run:<br/># testgroup0 -&gt;
+    testgroup2<br/># testgroup1 -&gt; testgroup3 </pre><p></p><h4>Parallelism</h4><p>Parallelism
+    strategies are useful for CI Build Stages that include a lot of tests. Suppose
+    your Stage includes over 100 tests. You can specify the following to split your
+    tests into 10 groups and test 5 groups at a time.</p><pre class="hljs yaml">parallelism:
+    10<br/>  maxConcurrency: 5<br/># example run:<br/># testgroup0 -&gt; testgroup5<br/>#
+    testgroup1 -&gt; testgroup6<br/># testgroup2 -&gt; testgroup7<br/># testgroup3
+    -&gt; testgroup8<br/># testgroup4 -&gt; testgroup9</pre><p></p><h4>Repeat</h4><p>Repeat
+    strategies are alternative methods for defining Matrix or Parallelism or one-dimensional
+    Matrix strategies.</p><p>For example, you can define a Parallelism strategy as
+    follows :</p><pre class="hljs yaml">repeat: <br/>  times: 6<br/>  maxConcurrency:
+    3<br/><br/># this is functionally equivalent to<br/># parallelism: 6<br/>#    maxConcurrency:
+    3</pre><p></p><p>You can iterate through a list of values with the keyword <code>items</code>
+    . You can then use the variable <code>&lt;+repeat.item&gt;</code> to access each
+    value in the list.</p><pre class="hljs yaml">repeat: <br/>  items: [ &#34;18&#34;,
+    &#34;17&#34;, &#34;16&#34;, &#34;15&#34;, &#34;14&#34;, &#34;13&#34;, &#34;12&#34;,
+    &#34;11&#34;, &#34;10&#34;, &#34;9&#34; ]<br/>  maxConcurrency: 5</pre><p></p><h3>See
+    Also</h3><ul><li><a href="https://docs.harness.io/article/q7i0saqgw4" target="_blank">Best
+    Practices for Looping Strategies</a></li><li><a href="https://docs.harness.io/article/kay7z1bi01/preview"
+    target="_blank">How to Run a Run a Stage or Step Multiple Times using a Matrix</a></li><li><a
+    href="https://harness.helpdocs.io/article/kce8mgionj" target="_blank">Speed Up
+    CI Test Pipelines Using Parallelism</a></li><li><a href="https://harness.helpdocs.io/article/g3m7pjq79y"
+    target="_blank">Optimizing CI Build Times</a></li></ul><p></p><p></p>'
+  slug: looping-strategies-matrix-repeat-and-parallelism
+  tags: []
+  is_live: true

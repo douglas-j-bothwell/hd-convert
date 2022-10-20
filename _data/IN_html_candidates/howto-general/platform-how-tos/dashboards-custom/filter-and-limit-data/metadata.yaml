@@ -1,0 +1,32 @@
+type: article
+article_id: ry57i1qk8y
+user_id: slcpusem6b
+category_id: id0hnxv6sg
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Filter and Limit Data
+slug: filter-and-limit-data
+description: ""
+short_version: ""
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T22:45:26.754879Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Filter and Limit Data
+  description: ""
+  short_version: ""
+  body: ""
+  slug: filter-and-limit-data
+  tags: []
+  is_live: true

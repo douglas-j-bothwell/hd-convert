@@ -1,0 +1,75 @@
+type: article
+article_id: jxe5z9domw
+user_id: znazf3hcp9
+category_id: uj8bqz9j0q
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Scale Kubernetes Pods
+slug: scale-kubernetes-replicas
+description: Update the number of Kubernetes pods running.
+short_version: Update the number of Kubernetes pods running.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-04-08T21:26:48.56676Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Scale Kubernetes Pods
+  description: Update the number of Kubernetes pods running.
+  short_version: Update the number of Kubernetes pods running.
+  body: '<p>When you deploy a Kubernetes workload using Harness, the number of pods
+    you want is set in your manifests and in the deployment steps.</p><p>With the
+    <strong>Scale</strong> step, you can scale this number of running pods up or down
+    by count or percentage.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#step_1_add_scale_step">Step 1: Add Scale Step</a></li><li>
+    <a href="#step_2_pick_count_or_percentage">Step 2: Pick Count or Percentage</a></li><li>
+    <a href="#step_3_set_the_number_of_pods">Step 3: Set the Number of Pods</a></li><li>
+    <a href="#step_4_specify_resources_to_scale">Step 4: Specify Resources to Scale</a></li><li>
+    <a href="#notes">Notes</a></li><li> <a href="#next_steps">Next Steps</a></li></ul><h3>Before
+    You Begin</h3><ul><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a></li></ul><h3>Step 1: Add Scale Step</h3><p>In your Harness stage,
+    in Execution, click <strong>Add Step</strong>, and select <strong>K8s</strong>
+    <strong>Scale</strong>. The <strong>K8s Scale</strong> settings appear.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/jxe5z9domw/1629315914364/clean-shot-2021-08-18-at-12-45-05.png"/></figure><p>Name
+    the step and then provide the scaling strategy, described below.</p><h3>Step 2:
+    Pick Count or Percentage</h3><p>The <strong>K8s Scale</strong> step updates the
+    number of instances running, either by count or percentage.</p><p>In <strong>Instances</strong>,
+    select <strong>Instance Count</strong> or <strong>% Percentage</strong>.</p><ul><li><strong>Instance
+    Count</strong>: The number is simply the number of pods.</li><li><strong>Percentage</strong>:
+    A percentage of the pods defined in your Harness Service <strong>Manifests</strong>
+    files.</li></ul><h3>Step 3: Set the Number of Pods</h3><p>In <strong>Instances</strong>,
+    enter the number of pods to scale up or down compared to the number of instances
+    specified <em>before</em> the <strong>K8s Scale</strong> step.</p><p>The number
+    may come from the manifest in Service or a previous step, whichever set the number
+    of pods right before the <strong>K8s Scale</strong> step.</p><p>For example, in
+    you have <code>replicas: 4</code> in a manifest, and you enter <strong>50</strong>
+    <strong>PERCENT</strong> in <strong>Instances</strong>, then 2 pods are deployed
+    in this step.</p><div class="note-callout">If you have an odd number of instances,
+    such as 3 instances, and then enter 50% in <strong>K8s Scale</strong>, the number
+    of instances is scaled down to 2.</div><h3>Step 4: Specify Resources to Scale</h3><p>In
+    <strong>Workload</strong>, enter the name of the resource in the format <code>[namespace/]Kind/Name</code>,
+    with <code>namespace</code> optional. For example: </p><p><code>my-namespace/Deployment/harness-example-deployment-canary</code></p><p>You
+    can scale Deployment, DaemonSet, or StatefulSet.</p><p>You can only enter one
+    resource in <strong>Workload</strong>. To scale another resource, add another
+    <strong>K8s Scale</strong> step.</p><p>In <strong>Workload</strong>, you can use
+    a Harness expression for the output of another step, like the <strong>K8s Canary</strong>
+    step, in <strong>Workload</strong>. </p><p>For example, here is a deployed Canary
+    step where you can copy the workload expression:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/jxe5z9domw/1629316928621/clean-shot-2021-08-18-at-13-01-22.png"/></figure><p></p><p>The
+    expression will look something like this:</p><p><code>&lt;+pipeline.stages.Canary.spec.execution.steps.canaryDepoyment.steps.canaryDeployment.output.canaryWorkload&gt;</code></p><p>Enter
+    that expression in <strong>Workload</strong> and Harness will scale that workload.</p><h3>Notes</h3><ul><li>You
+    can scale down to <strong>0</strong> to remove all instances.</li></ul><h3>Next
+    Steps</h3><ul><li><a href="/article/eaj0xuegln-delete-kubernetes-resources">Delete
+    Kubernetes Resources</a></li><li><a href="/article/922mtcvank-kubernetes-delegate-step">Canary
+    Delete Step</a></li></ul><p></p>'
+  slug: scale-kubernetes-replicas
+  tags: []
+  is_live: true

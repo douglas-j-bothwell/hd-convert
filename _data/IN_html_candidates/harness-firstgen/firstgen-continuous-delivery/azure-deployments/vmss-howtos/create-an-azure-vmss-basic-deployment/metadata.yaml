@@ -1,0 +1,210 @@
+type: article
+article_id: 74htogyjad
+user_id: mfr0nxh4be
+category_id: 4o8zim2tfr
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Create an Azure VMSS Basic Deployment
+slug: create-an-azure-vmss-basic-deployment
+description: Currently, this feature is behind the Feature Flag AZURE_VMSS. Contact
+  Harness Support to enable the feature.. A Basic virtual machine scale set (VMSS)
+  deployment sets up a new VMSS using the image y…
+short_version: Currently, this feature is behind the Feature Flag AZURE_VMSS. Contact
+  Harness Support to enable the feature.. A Basic virtual machine scale set (VMSS)
+  deployment sets up a new VMSS using the image y…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-11-15T22:35:41.609905Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create an Azure VMSS Basic Deployment
+  description: ""
+  short_version: ""
+  body: '<p></p><div class="note-callout">Currently, this feature is behind the Feature
+    Flag <code>AZURE_VMSS</code>. Contact <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=support@harness.io"
+    target="_blank">Harness Support</a> to enable the feature. </div><p></p><p>A Basic
+    virtual machine scale set (VMSS) deployment sets up a new VMSS using the image
+    you supplied in <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a> and the base VMSS template you selected
+    in <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a>.</p><p>You specify the range of instances
+    you want for the new VMSS and then the percentage or count for the actual deployment.</p><div
+    class="note-callout">For other deployment strategies, see <a href="/article/ebq6gwgs5r-create-an-azure-vmss-canary-deployment">Create
+    an Azure VMSS Canary Deployment</a>, and <a href="/article/9op1u6dgks-create-an-azure-vmss-blue-green-deployment">Create
+    an Azure VMSS Blue/Green Deployment</a>.</div><p>In this topic:</p><ul><li><a
+    href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#before_you_begin">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#undefined">Supported
+    Platforms and Technologies</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#step_1_create_the_basic_workflow">Step
+    1: Create the Basic Workflow</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#step_2_azure_virtual_machine_scale_set_setup">Step
+    2: Azure Virtual Machine Scale Set Setup</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#option_use_variable_expressions_in_settings">Option:
+    Use Variable Expressions in Settings</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#step_3_upgrade_virtual_machine_scale_set">Step
+    3: Upgrade Virtual Machine Scale Set</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#step_4_deploy">Step
+    4: Deploy</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#review_harness_revision_tags">Review:
+    Harness Revision Tags</a></li><li><a href="https://docs.harness.io/article/74htogyjad-create-an-azure-vmss-basic-deployment#option_templatize_the_workflow">Option:
+    Templatize the Workflow</a></li></ul><h3>Before You Begin</h3><ul><li> <a href="/article/1h0723zsvm-azure-virtual-machine-scale-set-deployments">Azure
+    Virtual Machine Scale Set Deployments Overview</a></li><li> <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a></li><li> <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a></li><li><a href="/article/d5hob1zuip-connect-to-your-azure-vmss">Connect
+    to Azure for VMSS Deployments</a></li><li> <a href="/article/h9tkwmkrm7-delegate-installation">Harness
+    Delegate Overview</a></li><li> <a href="/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a></li></ul><h3 id="undefined">Supported Platforms and Technologies</h3><p>See <a
+    href="/article/220d0ojx5y-supported-platforms">Supported Platforms and Technologies</a>.</p><h3>Step
+    1: Create the Basic Workflow</h3><p>In your Harness Application, click <strong>Workflows</strong>,
+    and then click <strong>Add Workflow</strong>.</p><p>Enter the new Workflow&#39;s
+    settings.</p><h4>Name</h4><p>Enter a name for the Workflow. You will use this
+    name to locate the Workflow in Deployments and to add it to <a href="/article/zc1u96u6uj-pipeline-configuration">Pipelines</a>.</p><h4>Workflow
+    Type</h4><p>Select <strong>Basic</strong>. See <a href="/article/325x7awntc-deployment-concepts-and-strategies">Deployment
+    Concepts and Strategies</a>.</p><div class="note-callout">For other deployment
+    strategies, see <a href="/article/ebq6gwgs5r-create-an-azure-vmss-canary-deployment">Create
+    an Azure VMSS Canary Deployment</a>, and <a href="/article/9op1u6dgks-create-an-azure-vmss-blue-green-deployment">Create
+    an Azure VMSS Blue/Green Deployment</a>.</div><h4>Environment</h4><p>Select the
+    Environment you created in <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a>.</p><h4>Service</h4><p>Select the Service
+    you created in <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a>.</p><h4>Infrastructure Definition</h4><p>Select
+    the Infrastructure Definition you created in <a href="/article/2976rmk4kd-define-your-azure-vmss-target-infrastructure">Define
+    Your Azure VMSS Target Infrastructure</a>.</p><h4>Submit</h4><p>When you are done,
+    click <strong>Submit</strong>.</p><p>The steps for the Basic Workflow VMSS deployment
+    are generated automatically.</p><p>Next, we&#39;ll take a look at each step&#39;s
+    settings and how you can change them.</p><h3>Step 2: Azure Virtual Machine Scale
+    Set Setup</h3><p>The Azure Virtual Machine Scale Set Setup step is where you specify
+    the default settings for the new VMSS.</p><p>In particular, you specify the min,
+    max, and desired number of instances for the new VMSS.</p><p>These correspond
+    to the <strong>Instance limits</strong> settings in <strong>Auto created scale
+    condition</strong> in VMSS:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png"/></figure><p>Later,
+    in the <strong>Upgrade Virtual Machine Scale Set</strong> step, you will upgrade
+    the number of instances by a percentage or count of the desired instances.</p><h4>Name</h4><p>Enter
+    a name for the Workflow step.</p><h4>Virtual Machine Scale Set Name</h4><p>Enter
+    a name for the new VMSS. This is the name that will appear in the <strong>Virtual
+    machine scale sets</strong> blade in Azure.</p><div class="note-callout">Hyphens
+    in the names are converted to double underscores in Azure. For example, if you
+    enter <code>doc-basic</code> the name in Azure will be <code>doc__basic</code>.</div><p>The
+    first time you deploy, the name of the new VMSS is given the suffix <code>__1</code>.
+    Each time you deploy a new VMSS using the same Harness Infrastructure Definition,
+    the suffix is incremented, such as <code>__2</code>.</p><p>You can use the default
+    name, which is a concatenation of the names of your Application, Service, and
+    Environment: <code>${app.name}_${service.name}_${env.name}</code>.</p><div class="note-callout">For
+    information on naming and versioning, see <a href="/article/w67zx6mv87-azure-vmss-versioning-and-naming">Azure
+    VMSS Versioning and Naming</a>.</div><h4>Instances</h4><p>Select <strong>Fixed</strong>
+    or <strong>Same as already running Default Instances</strong>.</p><p>For <strong>Same
+    as already running Default instances</strong>, Harness determines if there is
+    a previous VMSS deployment for the same Infrastructure Definition. If one is present,
+    Harness takes the number of instances from there. If there is no previous deployment,
+    Harness uses the default of 6.</p><p>If there is more than one scaling policy
+    attached to the already running, previously deployed VMSS, Harness uses the policy
+    named <strong>Auto created scale condition</strong> or <strong>Profile1</strong>.</p><p><strong>Fixed</strong>
+    allows you to set the min, max, and desired number of instances for the new VMSS.</p><h5>No
+    Autoscaling Policy Attached to Base VMSS</h5><p>When deploying a new VMSS from
+    a base VMSS with no autoscaling policies (manual scaling), the following occurs:</p><ul><li>The
+    first deployment will create a default of six instances.</li><li>The next deployment
+    instance count will be the same as previous number of running instances.</li><li>This
+    new VMSS will still have no autoscaling policy attached since the base VMSS has
+    none. Only the instance number will change depending on the number of running
+    instances of the previous deployment.</li></ul><h4>Maximum Instances</h4><p>Specify
+    maximum instance count.</p><h4>Minimum Instances</h4><p>Specify minimum instance
+    count.</p><h4>Desired Instances</h4><p>Specify the desired instance count. This
+    is the same as default instance count in VMSS:</p><blockquote>In case there is
+    a problem reading the resource metrics and the current capacity is below the default
+    capacity, then to ensure the availability of the resource, Autoscale will scale
+    out to the default.</blockquote><blockquote>If the current capacity is already
+    higher than the default capacity, Autoscale will not scale in.</blockquote><h4>Resize
+    Strategy</h4><p>Select whether you want Harness to resize the new VMSS instances
+    first, or after it has downsized the old instances.</p><h4>Auto Scaling Steady
+    State Timeout</h4><p>Enter how long you want Harness to wait for this step to
+    finish. If the step&#39;s execution exceeds this timeout, Harness fails the deployment.</p><h3>Option:
+    Use Variable Expressions in Settings</h3><p>You can use <a href="/article/9dvxcegm90-variables">Harness
+    variable expressions</a>, such as <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow
+    variables</a>, in certain step settings.</p><p>When you deploy the Workflow, alone,
+    in a Pipeline, or by a <a href="/article/xerirloz9a-add-a-trigger-2">Trigger</a>,
+    you will be prompted to provide values for the variables.</p><p>To see if a Workflow
+    variable can be used in a setting, enter <code>$</code> or <code>${workflow.variables</code>
+    and see the available expressions.</p><h3>Step 3: Upgrade Virtual Machine Scale
+    Set</h3><p>Use the Upgrade Virtual Machine Scale Set step to set the desired instances
+    for the new VMSS.</p><p>You can select a percentage or count.</p><p>This is the
+    same as the <strong>Scale mode</strong> settings in <strong>Auto created scale
+    condition</strong> in VMSS:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/74htogyjad/1602620781424/image.png"/></figure><h4>Name</h4><p>Enter
+    a name for the Workflow step.</p><h4>Desired Instances</h4><p>Set the number of
+    instances that the VMSS will attempt to deploy and maintain.</p><ul><li>If you
+    select <strong>Count</strong>, enter the actual number of instances.</li><li>If
+    you select <strong>Percent</strong>, enter a percentage of the available capacity.</li></ul><p>Your
+    setting cannot exceed your <strong>Maximum Instances</strong> setting in the Workflow&#39;s
+    preceding <strong>Azure Virtual Machine Scale Set Setup</strong> step.</p><p>This
+    setting corresponds to the <strong>Maximum</strong> setting in <strong>Instance
+    limits</strong> in VMSS.</p><div class="note-callout">You can use <a href="/article/9dvxcegm90-variables">Harness
+    variable expressions</a>, such as <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow
+    variables</a>, in this setting.</div><h3>Step 4: Deploy</h3><ol><li>When you have
+    set up your Workflow, click <strong>Deploy</strong>.</li><li>In <strong>Artifacts</strong>,
+    select the image you supplied in <a href="/article/c43hmoj6ic-add-your-azure-vm-image-for-deployment">Add
+    Your Azure VM Image for Deployment</a>.</li><li>Click <strong>Submit</strong>.</li></ol><h4>Azure
+    Virtual Machine Scale Set Setup</h4><p>In <strong>Azure Virtual Machine Scale
+    Set Setup</strong>, you can see Harness look for a VMSS with the same name.</p><pre>Starting
+    Azure Virtual Machine Scale Set Setup<br/>Getting all Harness managed Virtual
+    Machine Scale Sets<br/>Found [0] Harness managed Virtual Machine Scale Sets<br/>New
+    revision of Virtual Machine Scale Set: [1]<br/>New Virtual Machine Scale Set will
+    be created with name: [doc__basic__1]<br/>Using user defined input min: [1], max:
+    [2] and desired: [1] for deployment</pre><p>If it finds a VMSS with the same name,
+    it prepares to create a new VMSS and increment its suffix by 1. Here is the second
+    deployment of doc__basic. You can see a new name <code>doc__basic__2</code>.</p><pre>Starting
+    Azure Virtual Machine Scale Set Setup<br/>Getting all Harness managed Virtual
+    Machine Scale Sets<br/>Found [1] Harness managed Virtual Machine Scale Sets<br/>Getting
+    the most recent active Virtual Machine Scale Set with non zero capacity<br/>Found
+    most recent active Virtual Machine Scale Set: [doc__basic__1]<br/>New revision
+    of Virtual Machine Scale Set: [2]<br/>New Virtual Machine Scale Set will be created
+    with name: [doc__basic__2]<br/>Using user defined input min: [1], max: [2] and
+    desired: [1] for deployment</pre><p>If Harness finds an old VMSS with a non-zero
+    capacity, it will downscale it to 0 as part of the Resize Strategy.</p><p>Next,
+    you can see Harness create the new VMSS using the base VMSS template to selected
+    in the Infrastructure Definition and the image you selected in the Service:</p><pre>Start
+    getting gallery image references id [/subscriptions/1234567891011/resourceGroups/devVMSSResourceGroup/providers/Microsoft.Compute/galleries/devVMSSGallery/images/devVMLinuxDefinition/versions/1.0.0]<br/>Using
+    gallery image id [/subscriptions/1234567891011/resourceGroups/devVMSSResourceGroup/providers/Microsoft.Compute/galleries/devVMSSGallery/images/devVMLinuxDefinition/versions/1.0.0],
+    publisher [Harness], offer [Harness-Offer],sku [Harness-SKU], osState [Generalized]<br/>Getting
+    base Virtual Machine Scale Set [devScaleSet]<br/>Creating new Virtual Machine
+    Scale Set: [doc__basic__1]<br/>New Virtual Machine Scale Set: [doc__basic__1]
+    created successfully</pre><p></p><h4>Upgrade Virtual Machine Scale Set</h4><p>In
+    Upgrade Virtual Machine Scale Set, you can see the new VMSS upscaled to its desired
+    instances:</p><pre>Starting Azure VMSS Deploy<br/>Clearing scaling policy for
+    scale set: [doc__basic__1]<br/>Set VMSS: [doc__basic__1] desired capacity to [1]<br/><br/>Successfully
+    set desired capacity<br/><br/>Checking the status of VMSS: [doc__basic__1] VM
+    instances<br/><br/>Virtual machine instance: [doc__basic__1_1] provisioning state:
+    [Creating]<br/>Virtual machine instance: [doc__basic__1_0] provisioning state:
+    [Updating]<br/><br/>Received success response from Azure for VMSS: [doc__basic__1]
+    update capacity<br/><br/>Virtual machine instance: [doc__basic__1_0] provisioning
+    state: [Updating]<br/>Virtual machine instance: [doc__basic__1_0] provisioning
+    state: [Updating]<br/>Virtual machine instance: [doc__basic__1_0] provisioning
+    state: [Provisioning succeeded]<br/><br/>All the VM instances of VMSS: [doc__basic__1]
+    are provisioned successfully<br/>Attaching scaling policy to VMSS: [doc__basic__1]
+    as number of Virtual Machine instances has reached to desired capacity<br/><br/>Total
+    number of new instances deployed for Scale Set: [doc__basic__1] is [1] <br/>Total
+    number of instances of old Scale Set: [] is [0]<br/><br/>No deployment error.
+    Execution success<br/>No scale set found with the name = [], hence skipping<br/>No
+    scale set found with the name = [], hence skipping</pre><p>Lastly, Harness downscales
+    the previous version. In the following example, we have deployed <code>doc__basic__2</code>
+    and so <code>doc__basic__1</code> is downscaled:</p><pre>Clearing scaling policy
+    for scale set: [doc__basic__1]<br/>Set VMSS: [doc__basic__1] desired capacity
+    to [0]<br/>Successfully set desired capacity<br/><br/>Checking the status of VMSS:
+    [doc__basic__1] VM instances<br/>Virtual machine instance: [doc__basic__1_0] provisioning
+    state: [Provisioning succeeded]<br/>Virtual machine instance: [doc__basic__1_0]
+    provisioning state: [Deleting]<br/>Virtual machine instance: [doc__basic__1_0]
+    provisioning state: [Deleting]<br/>All the VM instances of VMSS: [doc__basic__1]
+    are deleted successfully<br/>Not attaching scaling policy to VMSS: [doc__basic__1]
+    while down sizing it</pre><p>Congratulations. Your deployment was successful.</p><div
+    class="note-callout">For information on naming and versioning, see <a href="/article/w67zx6mv87-azure-vmss-versioning-and-naming">Azure
+    VMSS Versioning and Naming</a>.</div><h3>Option: Templatize the Workflow</h3><p>You
+    can parameterize the Workflow&#39;s settings to turn it into a template. When
+    it is deployed, values are provided for the parameters.</p><p>See <a href="/article/bov41f5b7o-templatize-a-workflow-new-template">Templatize
+    a Workflow</a>.</p><h3>Configure As Code</h3><p>To see how to configure the settings
+    in this topic using YAML, configure the settings in the UI first, and then click
+    the YAML editor button (<span style="color:#fb9e00" data-hd-color="#fb9e00"><strong>&lt;/&gt;</strong></span>).</p>'
+  slug: create-an-azure-vmss-basic-deployment
+  tags: []
+  is_live: true

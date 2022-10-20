@@ -1,0 +1,130 @@
+type: article
+article_id: 8tdwp6ntwz
+user_id: xwmdbyp4x8
+category_id: rv2jo2hoiy
+author:
+  name: Doug Bothwell
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: Manage Input Sets and Triggers in Git Experience
+slug: manage-input-sets-in-simplified-git-experience
+description: Once you have saved your Pipeline in your repo, you can set up your Input
+  Sets and Triggers. You can set up your Input Set definitions in your repo along
+  with your Pipeline. You can then set up your…
+short_version: Once you have saved your Pipeline in your repo, you can set up your
+  Input Sets and Triggers. You can set up your Input Set definitions in your repo
+  along with your Pipeline. You can then set up your…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-25T08:37:40.687328Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Manage Input Sets and Triggers in Git Experience
+  description: ""
+  short_version: ""
+  body: '<p>Once you have saved your Pipeline in your repo, you can set up your Input
+    Sets and Triggers. You can set up your Input Set definitions in your repo along
+    with your Pipeline. You can then set up your Triggers to use specific Input Sets
+    in your repo.</p><p>This topic covers a simple workflow for setting up your Input
+    Sets and Triggers. It does not cover these topics in detail. For details on those,
+    see:</p><ul><li><a href="https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays">Run
+    Pipelines using Input Sets and Overlays</a></li><li><a href="https://ngdocs.harness.io/article/10y3mvkdvk-trigger-pipelines-using-custom-payload-conditions">Trigger
+    Pipelines using Git Event Payloads</a></li></ul><h3>Before You Begin</h3><p>You&#39;ll
+    need the following:</p><ul><li>A Git repo with at least one branch and a Personal
+    Access Token (PAT) for your account. Harness needs the PAT to use the Git platform
+    APIs. The PAT is encrypted using a Harness Secret Manager. Your Git Personal Access
+    Token is stored in your Harness secret and is a private key to which only you
+    have access. This secret cannot be accessed or referenced by any other user.<div
+    class="note-callout">Make sure your repo has at least one branch, such as main
+    or master. For most Git providers, you simply add a README file to the repo, and
+    the branch is created.</div></li><li>A Harness Pipeline with Git Experience enabled.
+    In this how-to, you will cross-check your updates in both your codebase and in
+    the Harness UI. See <a href="https://newdocs.helpdocs.io/article/grfeel98am/preview"
+    target="_blank">Harness Git Experience QuickStart</a>.</li></ul><h3>Initial Setup</h3><h4>Step
+    1: Select the Branch</h4><p>When you edit your Pipeline in the Harness UI, you
+    are editing a branched version of that Pipeline. Make sure that you are editing
+    in the correct branch. You can switch branches using the branch picker in the
+    top left.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/nfll9xyzol/1654356824432/sim-git-exp-branch-picker.png"/></figure><h4>Step
+    2: Create an Input Set</h4><p>With Git Experience enabled, any Input Sets you
+    create get stored in the same repo and branch as the Pipeline definition. In this
+    step, you will create a simple Input Set and save it with your Pipeline.</p><p>Click
+    <strong>Run</strong>. The Run Pipeline screen appears.</p><p>Under Build Type,
+    select Git Branch.</p><p>For the Branch Name, select <strong>Expression</strong>
+    and enter <code>&lt;+trigger.targetBranch&gt;</code> as a runtime expression.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/8tdwp6ntwz/1654630634634/01-define-input-set.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click
+    <strong>Save as Input Set</strong>. In the popup that appears, enter the name
+    of the Input Set. (Note that the Yaml Path field auto-populates with the path
+    (.harness/) and filename based on the name you enter.)</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8tdwp6ntwz/1654630815947/01-save-input-set.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Click
+    <strong>Save</strong>. The Save Input Sets to Git screen appears.</p><p>Select
+    <strong>Commit to an existing branch</strong> and click <strong>Save</strong>.
+    The Input Set is now saved with your Pipeline under <code>.harness</code> in your
+    repo and branch.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8tdwp6ntwz/1654631241327/03-pipeline-and-input-set-in-repo.png"/></figure><p>In
+    the Run Pipeline screen, click <strong>Cancel</strong>.</p><h4>Step 3: Create
+    a Trigger for the Pipeline</h4><p>Now that you have a Pipeline and Input Set in
+    your default branch, create a Trigger that uses the Input Set you just created.</p><p>In
+    the Pipeline Studio, create a new Trigger as described in <a href="https://ngdocs.harness.io/article/10y3mvkdvk"
+    target="_blank">Trigger Pipelines using Git Event Payload Conditions</a>.</p><p>In
+    the Pipeline Input tab, select the Input Set you just created and click <strong>Create
+    Trigger</strong>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8tdwp6ntwz/1654826047802/04-new-trigger-all-branches.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure><p>You
+    now have a Pipeline, Input Set, and Trigger that you can use in new branches that
+    you create from the default branch. When a webhook payload arrives, the Trigger
+    selects the branch to use based on the Pipeline Reference Branch field (<code>&lt;+trigger.branch&gt;</code>)
+    and the Git Branch field in the Input Set (<code>&lt;+trigger.branch&gt;</code>).</p><h3>Example
+    Workflow: Create a Custom Pipeline in a New Branch</h3><p>Suppose you&#39;re a
+    developer working on a new feature in your own branch. You want your Pipeline
+    to run some additional tests on your code before it generates an artifact. In
+    this example workflow, we customize the Pipeline and Input Set in a new branch.
+    Then we create a Trigger specifically for that branch.</p><h4>Step 1: Check <code>.harness</code>
+    in in the New Branch</h4><p>This workflow assumes that your branch has a <code>.harness</code>
+    subfolder with the same Pipeline and Input Set as <code>main</code>.</p><p>If
+    you created the new branch from <code>main</code> <em>after</em> you did the initial
+    setup described above, proceed to the next step.</p><p>If you created the new
+    branch from <code>main</code> <em>before</em> you did the initial setup, commit
+    the <code>.harness</code> folder in <code>main</code> to the new branch.</p><h4>Step
+    2: Update the Pipeline</h4><p>In the Pipeline Studio, check the branch pull-down
+    to make sure you&#39;re in the correct branch. (You might need to refresh the
+    page to see the new branch.)</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/oi9lc9klsd/1655676251146/06-branch-picker.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Update
+    the Pipeline with the branch-specific behavior you want the Pipeline to perform.
+    (In this example workflow, you would add some Run Test Steps to your Build Stage.)</p><p>When
+    you finish updating, click <strong>Save</strong> and save the Pipeline in your
+    new branch.</p><h4>Step 3: Create a Branch-Specific Trigger</h4><p>In this step,
+    you will create a Trigger specifically for the new branch. Do the following:</p><ul><li>In
+    the Configuration tab, include the branch in the trigger name. For example, <strong>build-on-push-to-my-new-feature-branch</strong>.</li><li>In
+    the Conditions tab, set the Condition to trigger on the specified branch only.
+    If you want to trigger on a Pull Request, for example, set the Target Branch field
+    to <code>my-new-feature-branch</code>.<br/>You might also want to set the Changed
+    Files field to exclude the .harness folder. This will ensure that updates to your
+    Harness configs don&#39;t trigger unwanted builds.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8tdwp6ntwz/1655735718071/07-trigger-conditio.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></figure></li><li>In
+    the Pipeline Input tab, specify the branch name in the <strong>Pipeline Reference
+    Branch</strong> field.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/oi9lc9klsd/1655677259878/08-pipeline-reference-branch.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure></li></ul><h3>Notes</h3><p>Review
+    the following notes in case you encounter issues using Git Experience with Input
+    Sets.</p><h4>Pipeline Reference Branch Field</h4><p>When Git Experience is enabled
+    for your Pipeline, the Pipeline Input tab includes the <strong>Pipeline Reference
+    Branch</strong> field. This field is set to <code>&lt;+trigger.branch&gt;</code>
+    by default. This means that any Build started by this Trigger uses the Pipeline
+    and Input Set definitions in the branch specified in the webhook payload.</p><p>This
+    default is applicable <em>only</em> if the Trigger is webhook-based. For all other
+    Trigger types, you need to enter a specific branch name.</p><h4>Create Input Set
+    before Creating Trigger</h4><p>If you want to use an Input Set as part of a Trigger,
+    create and sync the Input Set before creating the Trigger.</p><p>For more details,
+    go to <a href="/article/5nz7j3e1yc-manage-a-harness-pipeline-repo-using-git-experience">Manage
+    a Harness Pipeline Repo Using Git Experience</a>.</p><p></p>'
+  slug: manage-input-sets-in-simplified-git-experience
+  tags: []
+  is_live: true

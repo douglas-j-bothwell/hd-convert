@@ -1,0 +1,84 @@
+type: article
+article_id: bo4qbrcggv
+user_id: 2te4j9f9g7
+category_id: 48wnu4u0tj
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Add a Secret Manager
+slug: add-secrets-manager
+description: This document explains how to store and use encrypted secrets (such as
+  access keys) using the built-in Harness Secrets Manager, AWS KMS, Google Cloud KMS,
+  HashiCorp Vault, Azure Key Vault, CyberArk, and SSH via Kerberos.
+short_version: This document explains how to store and use encrypted secrets (such
+  as access keys) using the built-in Harness Secrets Manager, AWS KMS, Google Cloud
+  KMS, HashiCorp Vault, Azure Key Vault, CyberArk, and SSH via Kerberos.
+tags:
+- KMS
+- Secrets Management
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:53:31.842616Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add a Secret Manager
+  description: This document explains how to store and use encrypted secrets (such
+    as access keys) using the built-in Harness Secrets Manager, AWS KMS, Google Cloud
+    KMS, HashiCorp Vault, Azure Key Vault, CyberArk, and SSH via Kerberos.
+  short_version: This document explains how to store and use encrypted secrets (such
+    as access keys) using the built-in Harness Secrets Manager, AWS KMS, Google Cloud
+    KMS, HashiCorp Vault, Azure Key Vault, CyberArk, and SSH via Kerberos.
+  body: '<p>Harness includes a built-in Secret Management feature that enables you
+    to store encrypted secrets, such as access keys, and use them in your Harness
+    Connectors and Pipelines.</p><p>Looking for specific secret managers? See:</p><ul><li><a
+    href="/article/pt52h8sb6z-add-an-aws-kms-secrets-manager">Add an AWS KMS Secret
+    Manager</a></li><li><a href="/article/s65mzbyags-add-hashicorp-vault">Add a HashiCorp
+    Vault Secret Manager</a></li><li><a href="/article/53jrd1cv4i-azure-key-vault">Add
+    an Azure Key Vault Secret Manager</a></li><li><a href="/article/cyyym9tbqt-add-google-kms-secrets-manager">Add
+    Google KMS as a Harness Secret Manager</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager">Add
+    an AWS Secrets Manager</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li><li><a href="/article/hngrlb7rd6-harness-secret-manager-overview">Harness
+    Secret Management Overview</a></li></ul><h3>Step 1: Configure Secret Manager</h3><ol><li>Select
+    your <strong>Account</strong> or <strong>Organization</strong> or <strong>Project</strong>.</li><li>Select <strong>Connectors</strong>
+    in <strong>Setup</strong><strong>.</strong></li><li>Create new <strong>Connector.</strong>
+    The <strong>Connectors</strong> page appears<strong>.</strong></li><li>Select
+    a Secret Manager type under <strong>Secret Managers</strong>. See:</li></ol><ul><li><a
+    href="/article/pt52h8sb6z-add-an-aws-kms-secrets-manager">Add an AWS KMS Secret
+    Manager</a></li><li><a href="/article/s65mzbyags-add-hashicorp-vault">Add a HashiCorp
+    Vault Secret Manager</a></li><li><a href="/article/53jrd1cv4i-azure-key-vault">Add
+    an Azure Key Vault Secret Manager</a></li><li><a href="/article/cyyym9tbqt-add-google-kms-secrets-manager">Add
+    Google KMS as a Harness Secret Manager</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager">Add
+    an AWS Secrets Manager</a></li></ul><ol><li style="counter-increment:li 4" start="5">Provide
+    the account access information for the new secret manager.</li><li>If you choose
+    to set this secret manager as the default, select <strong>Use as Default Secret
+    Manager</strong>.</li><li>Click <strong>Finish</strong>.</li></ol><p>When a new
+    Default Secret Manager is set up, only new Cloud Provider and/Connector secret
+    fields are encrypted and stored in the new Default Secret Manager. Cloud Providers
+    and Connectors that were created before the modification, are unaffected. Where
+    is the Secret for the Secret Manager Stored?</p><p>Harness stores all your secrets
+    in your Secret Manager.</p><p>The secret you use to connect Harness to your Secret
+    Manager (password, etc) is stored in the Harness Default Secret Manager.</p><div
+    class="note-callout">You can&#39;t add secrets to the Org or Project scopes using
+    an Account or Org Scope Secret Manager.</div><h3>Next Steps</h3><ul><li>Adding
+    Secret Managers<ul><li><a href="/article/pt52h8sb6z-add-an-aws-kms-secrets-manager">Add
+    an AWS KMS Secret Manager</a></li><li><a href="/article/s65mzbyags-add-hashicorp-vault">Add
+    a HashiCorp Vault Secret Manager</a></li><li><a href="/article/53jrd1cv4i-azure-key-vault">Add
+    an Azure Key Vault Secret Manager</a></li><li><a href="/article/cyyym9tbqt-add-google-kms-secrets-manager">Add
+    Google KMS as a Harness Secret Manager</a></li><li><a href="/article/a73o2cg3pe-add-an-aws-secret-manager">Add
+    an AWS Secrets Manager</a></li></ul></li><li>Managing Secrets<ul><li><a href="/article/osfw70e59c-add-use-text-secrets">Add
+    Text Secrets</a></li><li><a href="/article/77tfo7vtea-add-file-secrets">Add File
+    Secrets</a></li><li><a href="/article/xmp9j0dk8b-add-use-ssh-secrets">Add SSH
+    Keys</a></li></ul></li></ul><p></p>'
+  slug: add-secrets-manager
+  tags:
+  - KMS
+  - Secrets Management
+  is_live: true

@@ -1,0 +1,339 @@
+type: article
+article_id: jud4rz7wl4
+user_id: mfr0nxh4be
+category_id: 9i5thr0ot2
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Target Delegates to Specific Namespaces
+slug: target-delegates-to-specific-namespaces
+description: Configure Kubernetes Delegates to deploy into specific namespaces.
+short_version: Configure Kubernetes Delegates to deploy into specific namespaces.
+tags: []
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T22:34:45.230881Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Target Delegates to Specific Namespaces
+  description: Configure Kubernetes Delegates to deploy into specific namespaces.
+  short_version: Configure Kubernetes Delegates to deploy into specific namespaces.
+  body: "<p>By default, Harness Kubernetes Delegates deploy to all namespaces in a
+    Kubernetes cluster. This topic describes how to configure Kubernetes Delegates
+    to deploy into specific namespaces.</p>\n<p>In this topic:</p>\n<ul>\n  <li><a
+    href=\"#before_you_begin\">Before You Begin</a></li>\n  <li><a href=\"#visual_summary\">Visual
+    Summary</a>\n    <ul>\n      <li><a href=\"#central_model\">Central Model</a></li>\n
+    \     <li><a href=\"#distributed_model\">Distributed Model</a></li>\n    </ul>\n
+    \ </li>\n  <li><a href=\"#review_harness_connections_to_kubernetes\">Review: Harness
+    Connections to Kubernetes</a>\n    <ul>\n      <li><a href=\"#inherit_from_selected_delegate\">Inherit
+    from selected Delegate</a></li>\n      <li><a href=\"#enter_manually\">Enter Manually</a></li>\n
+    \   </ul>\n  </li>\n  <li><a href=\"#step_1_create_service_account\">Step 1: Create
+    Service Account</a></li>\n  <li><a href=\"#step_2_create_role_and_role_binding\">Step
+    2: Create Role and RoleBinding</a></li>\n  <li><a href=\"#option_1_use_the_service_account_token\">Option
+    1: Use the Service Account Token</a></li>\n  <li><a href=\"#option_2_add_service_account_to_delegate_spec\">Option
+    2: Add Service Account to Delegate Spec</a></li>\n  <li><a href=\"#notes\">Notes</a></li>\n
+    \ <li><a href=\"#see_also\">See Also</a></li>\n</ul>\n<h3>Before You Begin</h3>\n<ul>\n
+    \ <li><a href=\"/article/2k7lnc7lvl-delegates-overview\">Delegates Overview</a></li>\n
+    \ <li><a href=\"/article/f9bd10b3nj-install-a-kubernetes-delegate\">Install a
+    Kubernetes Delegate</a></li>\n</ul>\n<h3>Visual Summary</h3>\n<p>Let&#39;s take
+    a quick look at the two ways the Delegate can deploy to namespaces in a cluster.</p>\n<h4>Central
+    Model</h4>\n<p>By default, the Delegate resides in a namespace in the target cluster
+    with a service account attached to it. The service account uses a ClusterRole
+    for permission to deploy to all namespaces in the cluster.</p>\n<p>The is called
+    this the central model. Here&#39;s a simple illustration of the central model:</p>\n<p></p>\n<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/p91u0bxtaf/1581641324015/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure>\n<p>The
+    central model is simple and efficient, but it doesn&#39;t let you restrict teams
+    to deploying into specific namespaces. Any team member can deploy to any namespace.</p>\n<p>As
+    an alternative, you can use a distributed model.</p>\n<h4>Distributed Model</h4>\n<p>This
+    model places a Delegate in each namespace in the cluster. It limits each Delegate
+    to deploying into its own namespace.</p>\n<p>Here&#39;s the illustration of the
+    distributed model:</p>\n<p></p>\n<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/p91u0bxtaf/1581641790397/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure>\n<p>In
+    this model, each team uses their own Delegate for their deployments into their
+    own namespace.</p>\n<p>The distributed model is more complex, but it prevents
+    a team member from deploying into the wrong namespace.</p>\n<h3>Review: Harness
+    Connections to Kubernetes</h3>\n<p>First, we&#39;ll review how Harness connects
+    to the target Kubernetes cluster using the Delegate.</p>\n<p>For the Delegate
+    to perform operations on a target Kubernetes cluster, it requires one of the following:</p>\n<ul>\n
+    \ <li>A service account. The default service account created by the Kubernetes
+    and Helm Delegates uses the Kubernetes <strong>cluster-admin</strong> role.</li>\n
+    \ <li>Service account token.</li>\n  <li>Username and password.</li>\n  <li>CA
+    certificate, client certificate, and client key.</li>\n</ul>\n<p>For this topic,
+    we&#39;ll focus on the service account.</p>\n<p>The Harness Kubernetes and Helm
+    Delegates are designed to create the Kubernetes resources they need when you install
+    them. This includes the namespace, service account, and a ClusterRole that enables
+    the Delegate to deploy to any namespaces in the cluster.</p><pre>apiVersion: rbac.authorization.k8s.io/v1<br/>kind:
+    ClusterRoleBinding<br/>metadata:<br/>  name: harness-delegate-ng-cluster-admin<br/>subjects:<br/>
+    \ - kind: ServiceAccount<br/>    name: default<br/>    namespace: harness-delegate-ng<br/>roleRef:<br/>
+    \ kind: ClusterRole<br/>  name: cluster-admin<br/>  apiGroup: rbac.authorization.k8s.io</pre>\n<p></p>\n<p>This
+    ClusterRoleBinding binds the service account with the <strong>cluster-admin</strong>
+    ClusterRole. The cluster-admin ClusterRole exists by default in your Kubernetes
+    cluster, and allows superuser operations in all of the cluster resources.</p>\n<div
+    class=\"note-callout\">For other type of Delegates (Shell Script, Docker), you
+    need to create the Kubernetes resources yourself and then use the service account
+    when setting up the Harness Kubernetes Cluster Connector.</div>\n<p>Once a Delegate
+    is installed and running, you can add a Harness Kubernetes Cluster Connector to
+    connect to the target cluster.</p>\n<p>There are two ways for the Kubernetes Cluster
+    Connector to get credentials:</p>\n<ul>\n  <li>Inherit from selected Delegate</li>\n
+    \ <li>Enter manually</li>\n</ul>\n<p>See <a href=\"/article/sjjik49xww-kubernetes-cluster-connector-settings-reference\">Kubernetes
+    Cluster Connector Settings Reference</a>.</p>\n<p>Both methods can use the service
+    account to provide either the central or distributed models.</p>\n<h4>Inherit
+    from selected Delegate</h4>\n<p><strong>Supported Delegate types:</strong> Kubernetes,
+    ECS, and Helm Delegate.</p>\n<div class=\"note-callout\">The ECS and Helm Delegates
+    haven&#39;t been added to Harness NextGen at this time.</div>\n<p>In this option,
+    the Connector inherits the service account created when you installed the Delegate.</p>\n<h4>Enter
+    Manually</h4>\n<p><strong>Supported Delegate types:</strong> Shell Script, Docker,
+    ECS, Kubernetes, Helm.</p>\n<div class=\"note-callout\">The Shell Script, Docker,
+    ECS, and Helm Delegates haven&#39;t been added to Harness NextGen at this time.</div>\n<p>In
+    this option, the Connector uses the credentials that you enter manually. The Delegate
+    uses these credentials to send deployment tasks to the cluster.</p>\n<p>The Delegate
+    can be outside or within the target cluster. </p>\n<p>Some examples:</p>\n<ul>\n
+    \ <li>Shell Script Delegate on a VM.</li>\n  <li>Docker Image Delegate outside
+    the target cluster. </li>\n  <li>Kubernetes Delegate in a pod outside the target
+    cluster. </li>\n</ul>\n<div class=\"note-callout\">Providing the <strong>Master
+    URL</strong> is mandatory. This is the Kubernetes master node URL.</div>\n<p>The
+    remaining steps in this topic explain how to create the Kubernetes resources needed
+    for the service account used by the Delegates in the distributed model.</p>\n<h3>Step
+    1: Create Service Account</h3>\n<p>To restrict the Delegate to deploy to a specific
+    namespace, first you create the namespace, if it isn&#39;t already created.</p><pre>apiVersion:
+    v1<br/>kind: Namespace<br/>metadata:<br/>  name: mynamespace</pre>\n<p></p>\n<p>Next,
+    you create the service account in that namespace for the Delegate.</p>\n<p></p><pre>apiVersion:
+    v1<br/>kind: ServiceAccount<br/>metadata:<br/>  name: mynamespace-delegate-sa<br/>
+    \ namespace: mynamespace</pre>\n<h3>Step 2: Create Role and RoleBinding</h3>\n<p>By
+    default, the Delegate can deploy to all namespaces. Its service account uses the
+    <strong>cluster-admin</strong> ClusterRole. This method enables the central model.</p>\n<p>In
+    the distributed model, you restrict the Delegate to a specific namespace by using
+    the following:</p>\n<ul>\n  <li>A Role in the namespace that grants access to
+    items in that namespace only.</li>\n  <li>A RoleBinding in the namespace. It binds
+    the Role in that namespace to the service account you created.</li>\n</ul><pre>kind:
+    Role<br/>apiVersion: rbac.authorization.k8s.io/v1beta1<br/>metadata:<br/>  name:
+    default-full-access<br/>  namespace: mynamespace<br/>rules:<br/>- apiGroups: [&#34;&#34;,
+    &#34;extensions&#34;, &#34;apps&#34;, &#34;autoscaling&#34;, &#34;rbac.authorization.k8s.io&#34;,
+    &#34;roles.rbac.authorization.k8s.io&#34;]<br/>  resources: [&#34;*&#34;]<br/>
+    \ verbs: [&#34;*&#34;]<br/>- apiGroups: [&#34;batch&#34;]<br/>  resources:<br/>
+    \ - jobs<br/>  - cronjobs<br/>  verbs: [&#34;*&#34;]<br/> <br/>---<br/>kind: RoleBinding<br/>apiVersion:
+    rbac.authorization.k8s.io/v1beta1<br/>metadata:<br/>  name: default-view<br/>
+    \ namespace: mynamespace<br/>subjects:<br/>- kind: ServiceAccount<br/>  name:
+    mynamespace-delegate-sa<br/>  namespace: mynamespace<br/>roleRef:<br/>  apiGroup:
+    rbac.authorization.k8s.io<br/>  kind: Role<br/>  name: default-full-access</pre>\n<p></p>\n<p>The
+    service account is bound to a Role that limits it to the namespace.</p>\n<p>Now
+    you have two options:</p>\n<ul>\n  <li><strong>Option 1:</strong> Install a Delegate
+    outside the namespace and simply enter the service account token in the Kubernetes
+    Cluster Connector.</li>\n  <li><strong>Option 2:</strong> Install a Kubernetes
+    Delegate in the namespace using the service account. You simply reference the
+    service account in the Delegate spec. You can then have the Kubernetes Cluster
+    Connector inherit credentials from the Delegate.</li>\n</ul>\n<h3>Option 1: Use
+    the Service Account Token</h3>\n<p>If you are using the <strong>Specify master
+    URL and credentials</strong> option in the Kubernetes Connector, select <strong>Service
+    Account</strong> in <strong>Authentication</strong>, and then use the service
+    account in the <strong>Service Account Token</strong> setting.</p>\n<p></p>\n<figure><img
+    src=\"https://files.helpdocs.io/i5nl071jo5/articles/jud4rz7wl4/1630366270099/clean-shot-2021-08-30-at-16-30-44.png\"/></figure>\n<p>The
+    following shell script is a quick method for obtaining the service account token.
+    Run this script wherever you run kubectl to access the cluster.</p>\n<p>Set the <code>SERVICE_ACCOUNT_NAME</code> and <code>NAMESPACE</code> values
+    to the values in your infrastructure:</p><pre>SERVICE_ACCOUNT_NAME=default<br/>NAMESPACE=mynamespace<br/>SECRET_NAME=$(kubectl
+    get sa &#34;${SERVICE_ACCOUNT_NAME}&#34; --namespace &#34;${NAMESPACE}&#34; -o
+    json | jq -r &#39;.secrets[].name&#39;)<br/>TOKEN=$(kubectl get secret &#34;${SECRET_NAME}&#34;
+    --namespace &#34;${NAMESPACE}&#34; -o json | jq -r &#39;.data[&#34;token&#34;]&#39;
+    | base64 -d)<br/>echo $TOKEN</pre>\n<p></p>\n<p>Next, enter the service account
+    token in the Kubernetes Cluster Connector.</p>\n<h3>Option 2: Add Service Account
+    to Delegate Spec</h3>\n<p>In you are using the <strong>Use the credentials of
+    a specific Harness Delegate</strong> option in the Kubernetes Connector, add the
+    service account to the Delegate YAML. See <code>serviceAccountName: mynamespace-delegate-sa</code>
+    below:</p><pre>---<br/>apiVersion: apps/v1<br/>kind: StatefulSet<br/>metadata:<br/>
+    \ labels:<br/>    harness.io/app: harness-delegate<br/>    harness.io/account:
+    wsxvws<br/>    harness.io/name: demo-delegate<br/>  # Name must contain the six
+    letter account identifier: wsxvws<br/>  name: demo-delegate-wsxvws<br/>  namespace:
+    harness-delegate<br/>spec:<br/><strong>  serviceAccountName: mynamespace-delegate-sa</strong><br/>
+    \ replicas: 1<br/>...</pre>\n<p></p>\n<p>When you download the Kubernetes Delegate
+    YAML from Harness, you get the TAR file. Once you extract the file, you get the
+    harness-delegate.yaml file.</p>\n<p>By default, the harness-delegate.yaml uses
+    a role with the <code>default</code> service account and <code>harness-delegate-ng</code>
+    namespace.</p>\n<p>As discussed above, to restrict the Delegate to a single namespace,
+    you&#39;ll create a namespace, service account, Role, and RoleBinding, and then
+    reference the service account in the Delegate spec.</p>\n<p>Edit the harness-delegate.yaml
+    file to create these new resources.</p>\n<p>Here is an example of the Kubernetes
+    Delegate YAML that creates all the necessary resources (account information should
+    be changed):</p>\n<div class=\"hd--md\" data-hd-markdown=\"&lt;details&gt;\n  &lt;summary
+    style=&#34;font-size: 1.25rem;outline: none;border: none; color: #00adea; margin-bottom:20px&#34;&gt;Kubernetes
+    Delegate YAML Sample&lt;/summary&gt;\n\n&lt;pre&gt;\napiVersion: v1\nkind: Namespace\nmetadata:\n
+    \ name: mynamespace\n\n---\napiVersion: v1\nkind: ServiceAccount\nmetadata:\n
+    \ name: mynamespace-delegate-sa\n  namespace: mynamespace\n\n---\nkind: Role\napiVersion:
+    rbac.authorization.k8s.io/v1beta1\nmetadata:\n  name: default-full-access\n  namespace:
+    mynamespace\nrules:\n- apiGroups: [&#34;&#34;, &#34;extensions&#34;, &#34;apps&#34;,
+    &#34;autoscaling&#34;, &#34;rbac.authorization.k8s.io&#34;, &#34;roles.rbac.authorization.k8s.io&#34;]\n
+    \ resources: [&#34;*&#34;]\n  verbs: [&#34;*&#34;]\n- apiGroups: [&#34;batch&#34;]\n
+    \ resources:\n  - jobs\n  - cronjobs\n  verbs: [&#34;*&#34;]\n \n---\nkind: RoleBinding\napiVersion:
+    rbac.authorization.k8s.io/v1beta1\nmetadata:\n  name: default-view\n  namespace:
+    mynamespace\nsubjects:\n- kind: ServiceAccount\n  name: mynamespace-delegate-sa\n
+    \ namespace: mynamespace\nroleRef:\n  apiGroup: rbac.authorization.k8s.io\n  kind:
+    Role\n  name: default-full-access\n  \n---\napiVersion: v1\nkind: Secret\nmetadata:\n
+    \ name: demo-delegate-proxy\n  namespace: mynamespace\n  kubernetes.io/service-account.name:
+    mynamespace-delegate-sa\ntype: Opaque\ndata:\n  # Enter base64 encoded username
+    and password, if needed\n  PROXY_USER: &#34;&#34;\n  PROXY_PASSWORD: &#34;&#34;\n\n---\napiVersion:
+    apps/v1\nkind: StatefulSet\nmetadata:\n  labels:\n    harness.io/app: harness-delegate\n
+    \   harness.io/account: wsxvws\n    harness.io/name: demo-delegate\n  # Name must
+    contain the six letter account identifier: wsxvws\n  name: demo-delegate-wsxvws\n
+    \ namespace: harness-delegate\nspec:\n  serviceAccountName: mynamespace-delegate-sa\n
+    \ replicas: 1\n  selector:\n    matchLabels:\n      harness.io/app: harness-delegate\n
+    \     harness.io/account: wsxvws\n      harness.io/name: demo-delegate\n  serviceName:
+    &#34;&#34;\n  template:\n    metadata:\n      labels:\n        harness.io/app:
+    harness-delegate\n        harness.io/account: wsxvws\n        harness.io/name:
+    demo-delegate\n    spec:\n      containers:\n      - image: harness/delegate:latest\n
+    \       imagePullPolicy: Always\n        name: harness-delegate-instance\n        resources:\n
+    \         limits:\n            cpu: &#34;1&#34;\n            memory: &#34;8Gi&#34;\n
+    \       readinessProbe:\n          exec:\n            command:\n              -
+    test\n              - -s\n              - delegate.log\n          initialDelaySeconds:
+    20\n          periodSeconds: 10\n        livenessProbe:\n          exec:\n            command:\n
+    \             - bash\n              - -c\n              - &#39;[[ -e /opt/harness-delegate/msg/data/watcher-data
+    &amp;&amp; $(($(date +%s000) - $(grep heartbeat /opt/harness-delegate/msg/data/watcher-data
+    | cut -d &#34;:&#34; -f 2 | cut -d &#34;,&#34; -f 1))) -lt 300000 ]]&#39;\n          initialDelaySeconds:
+    240\n          periodSeconds: 10\n          failureThreshold: 2\n        env:\n
+    \       - name: ACCOUNT_ID\n          value: wsxvws\n        - name: ACCOUNT_SECRET\n
+    \         value: 123abc\n        - name: MANAGER_HOST_AND_PORT\n          value:
+    https://qa.harness.io\n        - name: WATCHER_STORAGE_URL\n          value: https://qa.harness.io/public/qa/premium/watchers\n
+    \       - name: WATCHER_CHECK_LOCATION\n          value: current.version\n        -
+    name: REMOTE_WATCHER_URL_CDN\n          value: https://qa.harness.io/public/shared/watchers/builds\n
+    \       - name: DELEGATE_STORAGE_URL\n          value: https://qa.harness.io\n
+    \       - name: DELEGATE_CHECK_LOCATION\n          value: delegateqa.txt\n        -
+    name: DEPLOY_MODE\n          value: KUBERNETES\n        - name: DELEGATE_NAME\n
+    \         value: doc-harness-dev-cd\n        - name: DELEGATE_GROUP_ID\n          value:
+    mVsCmHbzRIqBTQ5HT3OywA\n        - name: DELEGATE_DESCRIPTION\n          value:
+    &#34;&#34;\n        - name: DELEGATE_PROFILE\n          value: &#34;7DZBQN8wTG6x3ui-fymHaQ&#34;\n
+    \       - name: DELEGATE_TYPE\n          value: &#34;KUBERNETES&#34;\n        -
+    name: DELEGATE_SIZE\n          value: &#34;MEDIUM&#34;\n        - name: DELEGATE_SESSION_IDENTIFIER\n
+    \         value: &#34;BMcqW9WlRB2MWbkT27BrUA&#34;\n        - name: DELEGATE_TASK_LIMIT\n
+    \         value: &#34;50&#34;\n        - name: DELEGATE_ORG_IDENTIFIER\n          value:
+    &#34;default&#34;\n        - name: DELEGATE_PROJECT_IDENTIFIER\n          value:
+    &#34;Docs&#34;\n        - name: PROXY_HOST\n          value: &#34;&#34;\n        -
+    name: PROXY_PORT\n          value: &#34;&#34;\n        - name: PROXY_SCHEME\n
+    \         value: &#34;&#34;\n        - name: NO_PROXY\n          value: &#34;&#34;\n
+    \       - name: PROXY_MANAGER\n          value: &#34;true&#34;\n        - name:
+    PROXY_USER\n          valueFrom:\n            secretKeyRef:\n              name:
+    doc-harness-dev-cd-proxy\n              key: PROXY_USER\n        - name: PROXY_PASSWORD\n
+    \         valueFrom:\n            secretKeyRef:\n              name: doc-harness-dev-cd-proxy\n
+    \             key: PROXY_PASSWORD\n        - name: POLL_FOR_TASKS\n          value:
+    &#34;false&#34;\n        - name: HELM_DESIRED_VERSION\n          value: &#34;&#34;\n
+    \       - name: CF_PLUGIN_HOME\n          value: &#34;&#34;\n        - name: USE_CDN\n
+    \         value: &#34;true&#34;\n        - name: CDN_URL\n          value: https://qa.harness.io\n
+    \       - name: JRE_VERSION\n          value: 1.8.0_242\n        - name: HELM3_PATH\n
+    \         value: &#34;&#34;\n        - name: HELM_PATH\n          value: &#34;&#34;\n
+    \       - name: CF_CLI6_PATH\n          value: &#34;&#34;\n        - name: CF_CLI7_PATH\n
+    \         value: &#34;&#34;\n        - name: KUSTOMIZE_PATH\n          value:
+    &#34;&#34;\n        - name: OC_PATH\n          value: &#34;&#34;\n        - name:
+    KUBECTL_PATH\n          value: &#34;&#34;\n        - name: ENABlE_CE\n          value:
+    &#34;false&#34;\n        - name: GRPC_SERVICE_ENABLED\n          value: &#34;true&#34;\n
+    \       - name: GRPC_SERVICE_CONNECTOR_PORT\n          value: &#34;8080&#34;\n
+    \       - name: CLIENT_TOOLS_DOWNLOAD_DISABLED\n          value: &#34;false&#34;\n
+    \       - name: DELEGATE_NAMESPACE\n          valueFrom:\n            fieldRef:\n
+    \             fieldPath: metadata.namespace\n      restartPolicy: Always\n\n&lt;/pre&gt;\n\n&lt;/details&gt;\">\n
+    \ <details>\n    <summary style=\"font-size: 1.25rem;outline: none;border: none;
+    color: #00adea; margin-bottom:20px\">Kubernetes Delegate YAML Sample</summary>\n
+    \   <pre><br/>\napiVersion: v1<br/>\nkind: Namespace<br/>\nmetadata:<br/>\n  name:
+    mynamespace<br/>\n<br/>\n---<br/>\napiVersion: v1<br/>\nkind: ServiceAccount<br/>\nmetadata:<br/>\n
+    \ name: mynamespace-delegate-sa<br/>\n  namespace: mynamespace<br/>\n<br/>\n---<br/>\nkind:
+    Role<br/>\napiVersion: rbac.authorization.k8s.io/v1beta1<br/>\nmetadata:<br/>\n
+    \ name: default-full-access<br/>\n  namespace: mynamespace<br/>\nrules:<br/>\n-
+    apiGroups: [&#34;&#34;, &#34;extensions&#34;, &#34;apps&#34;, &#34;autoscaling&#34;,
+    &#34;rbac.authorization.k8s.io&#34;, &#34;roles.rbac.authorization.k8s.io&#34;]<br/>\n
+    \ resources: [&#34;*&#34;]<br/>\n  verbs: [&#34;*&#34;]<br/>\n- apiGroups: [&#34;batch&#34;]<br/>\n
+    \ resources:<br/>\n  - jobs<br/>\n  - cronjobs<br/>\n  verbs: [&#34;*&#34;]<br/>\n
+    <br/>\n---<br/>\nkind: RoleBinding<br/>\napiVersion: rbac.authorization.k8s.io/v1beta1<br/>\nmetadata:<br/>\n
+    \ name: default-view<br/>\n  namespace: mynamespace<br/>\nsubjects:<br/>\n- kind:
+    ServiceAccount<br/>\n  name: mynamespace-delegate-sa<br/>\n  namespace: mynamespace<br/>\nroleRef:<br/>\n
+    \ apiGroup: rbac.authorization.k8s.io<br/>\n  kind: Role<br/>\n  name: default-full-access<br/>\n
+    \ <br/>\n---<br/>\napiVersion: v1<br/>\nkind: Secret<br/>\nmetadata:<br/>\n  name:
+    demo-delegate-proxy<br/>\n  namespace: mynamespace<br/>\n  kubernetes.io/service-account.name:
+    mynamespace-delegate-sa<br/>\ntype: Opaque<br/>\ndata:<br/>\n  # Enter base64
+    encoded username and password, if needed<br/>\n  PROXY_USER: &#34;&#34;<br/>\n
+    \ PROXY_PASSWORD: &#34;&#34;<br/>\n<br/>\n---<br/>\napiVersion: apps/v1<br/>\nkind:
+    StatefulSet<br/>\nmetadata:<br/>\n  labels:<br/>\n    harness.io/app: harness-delegate<br/>\n
+    \   harness.io/account: wsxvws<br/>\n    harness.io/name: demo-delegate<br/>\n
+    \ # Name must contain the six letter account identifier: wsxvws<br/>\n  name:
+    demo-delegate-wsxvws<br/>\n  namespace: harness-delegate<br/>\nspec:<br/>\n  serviceAccountName:
+    mynamespace-delegate-sa<br/>\n  replicas: 1<br/>\n  selector:<br/>\n    matchLabels:<br/>\n
+    \     harness.io/app: harness-delegate<br/>\n      harness.io/account: wsxvws<br/>\n
+    \     harness.io/name: demo-delegate<br/>\n  serviceName: &#34;&#34;<br/>\n  template:<br/>\n
+    \   metadata:<br/>\n      labels:<br/>\n        harness.io/app: harness-delegate<br/>\n
+    \       harness.io/account: wsxvws<br/>\n        harness.io/name: demo-delegate<br/>\n
+    \   spec:<br/>\n      containers:<br/>\n      - image: harness/delegate:latest<br/>\n
+    \       imagePullPolicy: Always<br/>\n        name: harness-delegate-instance<br/>\n
+    \       resources:<br/>\n          limits:<br/>\n            cpu: &#34;1&#34;<br/>\n
+    \           memory: &#34;8Gi&#34;<br/>\n        readinessProbe:<br/>\n          exec:<br/>\n
+    \           command:<br/>\n              - test<br/>\n              - -s<br/>\n
+    \             - delegate.log<br/>\n          initialDelaySeconds: 20<br/>\n          periodSeconds:
+    10<br/>\n        livenessProbe:<br/>\n          exec:<br/>\n            command:<br/>\n
+    \             - bash<br/>\n              - -c<br/>\n              - &#39;[[ -e
+    /opt/harness-delegate/msg/data/watcher-data &amp;&amp; $(($(date +%s000) - $(grep
+    heartbeat /opt/harness-delegate/msg/data/watcher-data | cut -d &#34;:&#34; -f
+    2 | cut -d &#34;,&#34; -f 1))) -lt 300000 ]]&#39;<br/>\n          initialDelaySeconds:
+    240<br/>\n          periodSeconds: 10<br/>\n          failureThreshold: 2<br/>\n
+    \       env:<br/>\n        - name: ACCOUNT_ID<br/>\n          value: wsxvws<br/>\n
+    \       - name: ACCOUNT_SECRET<br/>\n          value: 123abc<br/>\n        - name:
+    MANAGER_HOST_AND_PORT<br/>\n          value: https://qa.harness.io<br/>\n        -
+    name: WATCHER_STORAGE_URL<br/>\n          value: https://qa.harness.io/public/qa/premium/watchers<br/>\n
+    \       - name: WATCHER_CHECK_LOCATION<br/>\n          value: current.version<br/>\n
+    \       - name: REMOTE_WATCHER_URL_CDN<br/>\n          value: https://qa.harness.io/public/shared/watchers/builds<br/>\n
+    \       - name: DELEGATE_STORAGE_URL<br/>\n          value: https://qa.harness.io<br/>\n
+    \       - name: DELEGATE_CHECK_LOCATION<br/>\n          value: delegateqa.txt<br/>\n
+    \       - name: DEPLOY_MODE<br/>\n          value: KUBERNETES<br/>\n        -
+    name: DELEGATE_NAME<br/>\n          value: doc-harness-dev-cd<br/>\n        -
+    name: DELEGATE_GROUP_ID<br/>\n          value: mVsCmHbzRIqBTQ5HT3OywA<br/>\n        -
+    name: DELEGATE_DESCRIPTION<br/>\n          value: &#34;&#34;<br/>\n        - name:
+    DELEGATE_PROFILE<br/>\n          value: &#34;7DZBQN8wTG6x3ui-fymHaQ&#34;<br/>\n
+    \       - name: DELEGATE_TYPE<br/>\n          value: &#34;KUBERNETES&#34;<br/>\n
+    \       - name: DELEGATE_SIZE<br/>\n          value: &#34;MEDIUM&#34;<br/>\n        -
+    name: DELEGATE_SESSION_IDENTIFIER<br/>\n          value: &#34;BMcqW9WlRB2MWbkT27BrUA&#34;<br/>\n
+    \       - name: DELEGATE_TASK_LIMIT<br/>\n          value: &#34;50&#34;<br/>\n
+    \       - name: DELEGATE_ORG_IDENTIFIER<br/>\n          value: &#34;default&#34;<br/>\n
+    \       - name: DELEGATE_PROJECT_IDENTIFIER<br/>\n          value: &#34;Docs&#34;<br/>\n
+    \       - name: PROXY_HOST<br/>\n          value: &#34;&#34;<br/>\n        - name:
+    PROXY_PORT<br/>\n          value: &#34;&#34;<br/>\n        - name: PROXY_SCHEME<br/>\n
+    \         value: &#34;&#34;<br/>\n        - name: NO_PROXY<br/>\n          value:
+    &#34;&#34;<br/>\n        - name: PROXY_MANAGER<br/>\n          value: &#34;true&#34;<br/>\n
+    \       - name: PROXY_USER<br/>\n          valueFrom:<br/>\n            secretKeyRef:<br/>\n
+    \             name: doc-harness-dev-cd-proxy<br/>\n              key: PROXY_USER<br/>\n
+    \       - name: PROXY_PASSWORD<br/>\n          valueFrom:<br/>\n            secretKeyRef:<br/>\n
+    \             name: doc-harness-dev-cd-proxy<br/>\n              key: PROXY_PASSWORD<br/>\n
+    \       - name: POLL_FOR_TASKS<br/>\n          value: &#34;false&#34;<br/>\n        -
+    name: HELM_DESIRED_VERSION<br/>\n          value: &#34;&#34;<br/>\n        - name:
+    CF_PLUGIN_HOME<br/>\n          value: &#34;&#34;<br/>\n        - name: USE_CDN<br/>\n
+    \         value: &#34;true&#34;<br/>\n        - name: CDN_URL<br/>\n          value:
+    https://qa.harness.io<br/>\n        - name: JRE_VERSION<br/>\n          value:
+    1.8.0_242<br/>\n        - name: HELM3_PATH<br/>\n          value: &#34;&#34;<br/>\n
+    \       - name: HELM_PATH<br/>\n          value: &#34;&#34;<br/>\n        - name:
+    CF_CLI6_PATH<br/>\n          value: &#34;&#34;<br/>\n        - name: CF_CLI7_PATH<br/>\n
+    \         value: &#34;&#34;<br/>\n        - name: KUSTOMIZE_PATH<br/>\n          value:
+    &#34;&#34;<br/>\n        - name: OC_PATH<br/>\n          value: &#34;&#34;<br/>\n
+    \       - name: KUBECTL_PATH<br/>\n          value: &#34;&#34;<br/>\n        -
+    name: ENABlE_CE<br/>\n          value: &#34;false&#34;<br/>\n        - name: GRPC_SERVICE_ENABLED<br/>\n
+    \         value: &#34;true&#34;<br/>\n        - name: GRPC_SERVICE_CONNECTOR_PORT<br/>\n
+    \         value: &#34;8080&#34;<br/>\n        - name: CLIENT_TOOLS_DOWNLOAD_DISABLED<br/>\n
+    \         value: &#34;false&#34;<br/>\n        - name: DELEGATE_NAMESPACE<br/>\n
+    \         valueFrom:<br/>\n            fieldRef:<br/>\n              fieldPath:
+    metadata.namespace<br/>\n      restartPolicy: Always<br/>\n<br/>\n</pre>\n  </details>\n</div>\n<p>Next,
+    connect to your cluster and run the kubectl command to install the Delegate:</p>\n<p><code>kubectl
+    apply -f harness-delegate.yaml</code></p>\n<h3>Notes</h3>\n<p>You can also enable
+    a Delegate to deploy to namespaces outside its own. In this model, the Delegate
+    doesn&#39;t have to be in the same namespace as the deployment target.</p>\n<p>For
+    this method, do the following:</p>\n<ol>\n  <li>Create a service account for the
+    Delegate in the namespace where you&#39;ll install the Delegate. Let&#39;s call
+    this the <code>delegate-ns</code>. We&#39;ll call the deployment target namespace
+    <code>target</code>.</li>\n  <li>Create the service account in namespace <code>delegate-ns</code>.</li>\n
+    \ <li>Create a Role in namespace <code>target</code>.</li>\n  <li>Create a RoleBinding
+    in namespace <code>target</code>, with the following properties:<ol>\n      <li>RoleRef
+    pointing to the Role in the same namespace <code>target</code></li>\n      <li>Subject
+    pointing to the Delegate service account and namespace: <code>delegate-ns</code>.</li>\n
+    \   </ol>\n  </li>\n</ol>\n<h3>See Also</h3>\n<ul>\n  <li><a href=\"/article/s9j6cggx1p-connect-to-a-cloud-provider\">Connect
+    to a Cloud Provider</a></li>\n</ul>\n<p></p>"
+  slug: target-delegates-to-specific-namespaces
+  tags: []
+  is_live: true

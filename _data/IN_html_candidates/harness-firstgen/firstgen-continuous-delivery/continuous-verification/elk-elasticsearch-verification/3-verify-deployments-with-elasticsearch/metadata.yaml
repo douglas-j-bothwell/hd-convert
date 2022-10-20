@@ -1,0 +1,314 @@
+type: article
+article_id: e2eghvcyas
+user_id: mfr0nxh4be
+category_id: ytuafly1jg
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Verify Deployments with Elasticsearch
+slug: 3-verify-deployments-with-elasticsearch
+description: How to add ELK to a Harness Workflow, where Harness can analyze Elastic
+  data to verify, rollback, and improve deployments.
+short_version: Harness can analyze Elasticsearch data to verify, rollback, and improve
+  deployments.
+tags:
+- ELK
+- Elastic Stack
+- 'Elastic '
+- Deployment Verification
+- Workflow
+- verification
+- risk analysis
+- template
+- templatize
+- variable
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:46.915871Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Verify Deployments with Elasticsearch
+  description: How to add ELK to a Harness Workflow, where Harness can analyze Elastic
+    data to verify, rollback, and improve deployments.
+  short_version: Harness can analyze Elasticsearch data to verify, rollback, and improve
+    deployments.
+  body: '<p></p><p>Harness can analyze Elasticsearch data to verify, rollback, and
+    improve deployments. To apply this analysis to your deployments, you set up ELK
+    as a verification step in a Harness Workflow. This section covers setup steps,
+    and provides a summary of Harness verification results.</p><div class="tip-callout">In
+    order to obtain the names of the host(s), pod(s), or container(s) where your service
+    is deployed, the verification provider should be added to your workflow <em>after</em>
+    you have run at least one successful deployment.</div><p>In this topic:</p><ul><li>
+    <a href="#before_you_begin">Before You Begin</a></li><li> <a href="#visual_summary">Visual
+    Summary</a></li><li> <a href="#step_1_set_up_the_deployment_verification">Step
+    1: Set Up the Deployment Verification</a></li><li> <a href="#step_2_elasticsearch_server">Step
+    2: Elasticsearch Server</a></li><li> <a href="#step_3_search_keywords">Step 3:
+    Search Keywords</a></li><li> <a href="#step_4_query_type">Step 4: Query Type</a></li><li>
+    <a href="#step_5_index">Step 5: Index</a></li><li> <a href="#step_6_host_name_field">Step
+    6: Host Name Field</a></li><li> <a href="#step_7_message_field">Step 7: Message
+    Field</a></li><li> <a href="#step_8_expression_for_host_container_name">Step 8:
+    Expression for Host/Container name</a></li><li> <a href="#step_9_timestamp_field">Step
+    9: Timestamp Field</a></li><li> <a href="#step_10_timestamp_format">Step 10: Timestamp
+    Format</a></li><li> <a href="#step_11_test_expression_for_host_name">Step 11:
+    Test Expression for Host Name</a></li><li> <a href="#step_12_analysis_period">Step
+    12: Analysis Period</a></li><li> <a href="#step_13_baseline_for_risk_analysis">Step
+    13: Baseline for Risk Analysis</a></li><li> <a href="#step_14_algorithm_sensitivity">Step
+    14: Algorithm Sensitivity</a></li><li> <a href="#step_15_execute_with_previous_steps">Step
+    15: Execute with previous steps</a></li><li> <a href="#step_16_include_instances_from_previous_phases">Step
+    16: Include instances from previous phases</a></li><li> <a href="#review_harness_expression_support_in_cv_settings">Review:
+    Harness Expression Support in CV Settings</a></li><li> <a href="#step_17_view_verification_results">Step
+    17: View Verification Results</a></li><li> <a href="#option_templatize_elk_verification">Option:
+    Templatize ELK Verification</a></li><li> <a href="#next_steps">Next Steps</a></li></ul><h3>Before
+    You Begin</h3><ul><li>See the <a href="/article/qdajtgsqfj-elasticsearch-verification-overview">Elasticsearch
+    Verification Overview</a>.</li></ul><p></p><h3>Visual Summary</h3><p>Here&#39;s
+    an example configuration of Elasticsearch deployment verification.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/e2eghvcyas/1580433139877/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p></p><h3>Step
+    1: Set Up the Deployment Verification</h3><p>To add an ELK verification step to
+    your Workflow:</p><ol><li>Ensure that you have added ELK Elasticsearch as a Verification
+    Provider, as described in <a href="#verification_provider_setup">Verification
+    Provider Setup</a>.</li><li>In your Workflow, under <strong>Verify Service</strong>,
+    click <strong>Add Verification</strong>.</li><li>In the resulting <strong>Add
+    Step</strong> settings, select <strong>Log Analysis</strong> &gt; <strong>ELK</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/e2eghvcyas/1580433105706/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>Click
+    <strong>Next</strong>. The <strong>Configure</strong> <strong>ELK</strong> settings
+    appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/e2eghvcyas/1580433139877/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p></p><h3>Step
+    2: Elasticsearch Server</h3><p>Select the server you added when you set up the
+    ELK verification provider earlier in <a href="/article/dagmgqw5ag-1-elasticsearch-connection-setup">Connect
+    to Elasticsearch</a>.</p><p>You can also enter <a href="/article/9dvxcegm90-variables">variable
+    expressions</a>, such as: <code>${serviceVariable.elk_connector_name}</code>.</p><div
+    class="note-callout">If the <strong>Elasticsearch Server</strong> field contains
+    an expression, the <strong>Index</strong> field must also use an expression.</div><p></p><h3>Step
+    3: Search Keywords</h3><p>Enter search keywords for your query, such as <strong>error</strong>
+    or <strong>exception</strong>.</p><p>The keywords are searched against the logs
+    identified in the <strong>Message</strong> field of the dialog (see below).</p><p>You
+    can also enter variable expressions, such as: <code>error OR ${serviceVariable.error_type}</code></p><p>For
+    an advanced query, enter an Elasticsearch JSON query. You can use JSON to create
+    complex queries beyond keywords. The following example looks for the substring
+    <strong>error</strong> in the field <strong>log</strong>:</p><p><code>{&#34;regexp&#34;:{&#34;log&#34;:
+    {&#34;value&#34;:&#34;error&#34;}}}</code></p><p></p><div class="note-callout">Do
+    not use wildcards in queries for Elasticsearch. ElasticSearch documentation indicates
+    that wildcard queries can become very expensive on the resources and take down
+    the cluster.</div><p></p><h3>Step 4: Query Type</h3><p>Select query type for the
+    value entered in the <strong>Host Name Field</strong>. The queries accept text,
+    numerics, and dates. For MATCH and MATCH_PHRASE types, the input is analyzed and
+    the query is constructed.</p><ol><li><strong>TERM</strong> finds documents that
+    contain the exact term specified in the entered value. See <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html#query-dsl-term-query">ELK
+    documentation on TERM queries</a> for more information.</li><li><strong>MATCH_PHRASE</strong>
+    finds documents that contain the terms specified in the exact order of entries
+    in the analyzed text. See <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html#_phrase">ELK
+    documentation on MATCH_PHRASE queries</a> for more information.</li><li><strong>MATCH</strong>
+    finds documents that contain the entries in the analyzed text in any order. See
+    <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html">ELK
+    documentation on MATCH queries</a> for more information.</li></ol><h3>Step 5:
+    Index</h3><p>Enter the the index to search. This field is automatically populated
+    from the index templates, if available.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/xpftsz2cte/1554231252730/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can also enter variable expressions, such as: <code>${service.name}</code></p><div
+    class="note-callout">If the <strong>Elasticsearch Server</strong> field contains
+    an expression, the <strong>Index</strong> field must also use an expression.</div><p>If
+    there are no index templates, or if you do not have administrator privileges with
+    ELK, enter the index manually:</p><ol><li>To locate indices, in <strong>Kibana</strong>,
+    click <strong>Management</strong>.</li><li>Click <strong>Index Patterns</strong>.
+    The <strong>Index Patterns</strong> page appears.</li><li>Copy the name of one
+    of the Index patterns.</li><li>In <strong>Harness</strong>, in the <strong>ELK</strong>
+    dialog, paste the name of the Index pattern into <strong>Indices</strong>.</li></ol><p></p><h3>Step
+    6: Host Name Field</h3><p>Enter the field name used in the ELK logs that refers
+    to the host/pod/container ELK is monitoring.</p><h4>Select Key from Example</h4><p>To
+    find the hostname in Kibana and enter it in Harness, do the following:</p><ol><li>In
+    <strong>Kibana</strong>, click <strong>Discover</strong>.</li><li>In the search
+    field, search for <strong>error</strong> or <strong>exception</strong>.</li><li>In
+    the results, locate the host name of the host/container/pod where ELK is monitoring.
+    For example, when using Kubernetes, the pod name field <strong>kubernetes.pod_name</strong>
+    is used.</li><li>In <strong>Harness</strong>, in the <strong>ELK</strong> dialog,
+    next to <strong>Host Name Field</strong>, click <strong>Guide From Example</strong>.
+    The <strong>Host Name Field</strong> popover appears.</li><li>In the JSON response,
+    click on the name of the label that maps to the host/container/pod in your log
+    search results. Using our Kubernetes example, under <strong>pod</strong>, you
+    would click the first <strong>name</strong> label.<br/>The <strong>Host Name Field</strong>
+    is filled with the JSON label for the hostname.</li></ol><h4>Paste Custom JSON
+    Response</h4><p>If you do not want to get the sample record from the server configuration
+    and select the required object, you can use your own JSON object.</p><p>Click
+    <strong>Paste Custom JSON Response</strong> and paste your custom valid JSON object
+    in the text field. It will appear in the dialog and you can select to use it.</p><p>Make
+    sure the styling of the JSON object is valid as the input field strictly validates
+    the entry.</p><h3>Step 7: Message Field</h3><p>Enter the field by which the messages
+    are usually indexed. This is typically a <strong>log</strong> field. You can also
+    enter variable expressions, such as: <code>${serviceVariable.message_field}</code>.</p><p>To
+    find the field in <strong>Kibana</strong> and enter it in <strong>Harness</strong>,
+    do the following:</p><ol><li>In <strong>Kibana</strong>, click <strong>Discover</strong>.</li><li>In
+    the search field, search for <strong>error or exception</strong>.</li><li>In the
+    results, locate a log for the host/container/pod ELK is monitoring. For example,
+    in the following Kubernetes results in Kibana, the messages are indexed under
+    the <strong>log</strong> field.</li><li>In <strong>Harness</strong>, in the <strong>ELK</strong>
+    dialog, next to <strong>Message Field</strong>, click <strong>Guide From Example</strong>.
+    The <strong>Message Field</strong> popover appears.</li><li>In the JSON response,
+    click on the name of the label that maps to the log in your Kibana results. Using
+    our Kubernetes example, you would click the <strong>log</strong> label.<br/>The
+    label is added to the <strong>Message Field</strong>.</li></ol><p>You can also
+    paste your own JSON object by clicking <strong>Paste Custom JSON Response</strong>.</p><h3>Step
+    8: Expression for Host/Container name</h3><p>Add an expression that evaluates
+    to the host name value for the field you entered in the <strong>Host Name Field</strong>
+    above. The default expression is <strong>${instance.host.hostName}</strong>.</p><div
+    class="tip-callout">In order to obtain the names of the host where your service
+    is deployed, the verification provider should be added to your workflow <strong>after</strong>
+    you have run at least one successful deployment.</div><p>To ensure that you pick
+    the right field when using <strong>Guide From Example</strong>, you can use a
+    host name from the ELK log messages as a guide.</p><p></p><div class="note-callout">For
+    AWS EC2 hostnames, use the expression <code>${instance.hostName</code>}.</div><p>To
+    use <strong>Guide From Example</strong> for a host name expression, do the following:</p><ol><li>In
+    <strong>Kibana</strong>, click <strong>Discover</strong>.</li><li>In the search
+    field, search for <strong>error or exception</strong>.</li><li>In the results,
+    locate the name of the host/container/pod ELK is monitoring. For example, when
+    using Kubernetes, the pod name field <strong>kubernetes.pod_name</strong> displays
+    the value you need.<br/>The expression that you provide in <strong>Expression
+    for Host/Container Name</strong> should evaluate to the name here, although the
+    suffixes can differ.</li><li>In <strong>Harness</strong>, in your workflow ELK
+    dialog, click <strong>Guide From Example</strong>. The <strong>Expression for
+    Host Name</strong> popover appears.<br/>The dialog shows the service, environment,
+    and service infrastructure used for this workflow.</li><li>In <strong>Host</strong>,
+    click the name of the host to use when testing verification. The hostname will
+    be similar to the hostname you used for the <strong>Host Name Field</strong>,
+    as described earlier in this procedure. The suffixes can be different.</li><li>Click
+    <strong>SUBMIT</strong>. The JSON for the host appears. Look for the <strong>host</strong>
+    section.<br/>You want to use a <strong>name</strong> label in the <strong>host</strong>
+    section. Do not use a host name label outside of that section.</li><li>To identify
+    which label to use to build the expression, compare the host/pod/container name
+    in the JSON with the hostname you use when configuring <strong>Host Name Field</strong>.</li><li>In
+    the <strong>Expression for Host Name</strong> popover, click the <strong>name</strong>
+    label to select the expression. Click back in the main dialog to close the <strong>Guide
+    From Example</strong>. The expression is added to the <strong>Expression for Host/Container
+    name</strong> field.<br/>For example, if you clicked the <strong>name</strong>
+    label, the expression <strong>${host.name}</strong> is added to the <strong>Expression
+    for Host/Container name</strong> field.</li></ol><p>You can also paste your own
+    JSON object by clicking <strong>Paste Custom JSON Response</strong>.</p><h3>Step
+    9: Timestamp Field</h3><p>Enter either a static value (such as <code>@timestamp</code>),
+    or a variable expression such as: <code>${serviceVariable.timestamp_field}</code>.</p><div
+    class="note-callout"> If you are using a timestamp in the <strong>Timestamp Field</strong>
+    that is not formatted as epoch/Unix timestamp (the default), then you must enter
+    the format you are using in the <strong>Timestamp Format</strong> setting. The
+    format is used to parse the timestamp in <strong>Timestamp Field</strong>.</div><p>You
+    can also paste your own JSON object by clicking <strong>Paste Custom JSON Response</strong>.</p><h3>Step
+    10: Timestamp Format</h3><p>Enter the format for the <strong>timestamp</strong>
+    field in the Elasticsearch record. You can also enter a variable expression, such
+    as: <code>${serviceVariable.timestamp_format_field}</code>.</p><p>If you are entering
+    a literal format, use Kibana to determine the format. In Kibana, use the <strong>Discover</strong>
+    &gt; <strong>Filter</strong> feature to construct your timestamp range:</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/xpftsz2cte/1535655366319/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Format
+    Examples:</p><p><strong>Timestamp:</strong> 2018-08-24T21:40:20.123Z. <strong>Format:</strong>
+    yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSX</p><p><strong>Timestamp:</strong> 2018-08-30T21:57:23+00:00.
+    <strong>Format:</strong> yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSXXX</p><p>For more information,
+    see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.x/common-options.html#date-math"
+    target="_blank">Date Math</a> from Elastic.</p><p>You can also paste your own
+    JSON object by clicking <strong>Paste Custom JSON Response</strong>.</p><h3>Step
+    11: Test Expression for Host Name</h3><p>At the bottom of the dialog, click <strong>Test</strong>.</p><p>A
+    new <strong>Expression for Host Name</strong> popover appears.</p><p>In <strong>Host</strong>,
+    select the same host you selected last time, and then click <strong>RUN</strong>.
+    Verification for the host is found.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/xpftsz2cte/1535657483051/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>If
+    you receive an error, it is likely because you selected the wrong label in <strong>Expression
+    for Host/Container Name</strong> or <strong>Host Name Field</strong>. Resolve
+    the error as needed.</p><p>Click <strong>Analysis Details</strong>.</p><h3>Step
+    12: Analysis Period</h3><p>Set the duration for the verification step. If a verification
+    step exceeds the value, the workflow <a href="/article/m220i1tnia-workflow-configuration#failure_strategy">Failure
+    Strategy</a> is triggered. For example, if the Failure Strategy is <strong>Ignore</strong>,
+    then the verification state is marked <strong>Failed</strong> but the workflow
+    execution continues.</p><p>Harness waits 2-3 minutes before beginning the analysis
+    to avoid initial deployment noise. This is a standard with monitoring tools.</p><h3>Step
+    13: Baseline for Risk Analysis</h3><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV
+    Strategies, Tuning, and Best Practices</a>.</p><p>For Canary Analysis and Previous
+    Analysis, analysis happens at the host/node/pod level. For Predictive Analysis,
+    data collection happens at the host/node/pod level but analysis happens at the
+    application or service level. Consequently, for data collection, provide a query
+    that targets the logs for the host using fields such as <strong>SOURCE_HOST</strong> in <strong>Field
+    name for Host/Container</strong>.</p><h3>Step 14: Algorithm Sensitivity</h3><p>Select
+    the sensitivity that will result in the most useful results for your analysis.</p><p>See
+    <a href="/article/0avzb5255b-cv-strategies-and-best-practices#algorithm_sensitivity_and_failure_criteria">CV
+    Strategies, Tuning, and Best Practices</a>.</p><h3>Step 15: Execute with previous
+    steps</h3><p>Check this checkbox to run this verification step in parallel with
+    the previous steps in <strong>Verify Service</strong>.</p><h3>Step 16: Include
+    instances from previous phases</h3><p>If you are using this verification step
+    in a multi-phase deployment, select this checkbox to include instances used in
+    previous phases when collecting data. Do not apply this setting to the first phase
+    in a multi-phase deployment.</p><p>Click <strong>Submit</strong>.</p><h3>Review:
+    Harness Expression Support in CV Settings</h3><p>You can use expressions (<code>${...}</code>)
+    for <a href="/article/7bpdtvhq92-workflow-variables-expressions">Harness built-in
+    variables</a> and custom <a href="/article/eb3kfl8uls-service-configuration">Service</a>
+    and <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow</a>
+    variables in the settings of Harness Verification Providers.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1586812006289/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Expression
+    support lets you template your Workflow verification steps. You can add custom
+    expressions for settings, and then provide values for those settings at deployment
+    runtime. Or you can use Harness built-in variable expressions and Harness will
+    provide values at deployment runtime automatically.</p><h3>Step 17: View Verification
+    Results</h3><p>Once you have deployed your workflow (or pipeline) using the New
+    Relic verification step, you can automatically verify cloud application and infrastructure
+    performance across your deployment.</p><h4>Workflow Verification</h4><p>To see
+    the results of Harness machine-learning evaluation of your ELK verification, in
+    your workflow or pipeline deployment you can expand the <strong>Verify Service</strong>
+    step and then click the <strong>ELK</strong> step.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/xpftsz2cte/1535665135142/image.png"/></figure><h4>Continuous
+    Verification</h4><p>You can also see the evaluation in the <strong>Continuous
+    Verification</strong> dashboard. The workflow verification view is for the DevOps
+    user who developed the workflow. The <strong>Continuous Verification</strong>
+    dashboard is where all future deployments are displayed for developers and others
+    interested in deployment analysis.</p><p>To learn about the verification analysis
+    features, see the following sections.</p><h4>Transaction Analysis</h4><table><tbody><tr><td><p><strong>Execution
+    details:</strong> See the details of verification execution. Total is the total
+    time the verification step took, and Analysis duration is how long the analysis
+    took.</p><p><strong>Risk level analysis:</strong> Get an overall risk level and
+    view the cluster chart to see events.</p><p><strong>Transaction-level summary:</strong>
+    See a summary of each transaction with the query string, error values comparison,
+    and a risk analysis summary.</p></td><td><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/xpftsz2cte/1535665317967/image.png"/></figure></td></tr></tbody></table><h4>Execution
+    Analysis</h4><table><tbody><tr><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497249316/image.png"/></figure></td><td><p><strong>Event
+    type:</strong> Filter cluster chart events by Unknown Event, Unexpected Frequency,
+    Anticipated Event, Baseline Event, and Ignore Event.</p><p><strong>Cluster chart:</strong>
+    View the chart to see how the selected event contrast. Click each event to see
+    its log details.</p></td></tr></tbody></table><h4>Event Management</h4><table><tbody><tr><td><p><strong>Event-level
+    analysis:</strong> See the threat level for each event captured.</p><p><strong>Tune
+    event capture:</strong> Remove events from analysis at the service, workflow,
+    execution, or overall level.</p><p><strong>Event distribution:</strong> Click
+    the chart icon to see an event distribution including the measured data, baseline
+    data, and event frequency.</p></td></tr></tbody></table><h3>Option: Templatize
+    ELK Verification</h3><p>Once you have created an ELK verification step, you can
+    templatize certain settings. This enables you to use the ELK verification step
+    in the Workflow (and multiple Pipelines) without having to provide settings until
+    runtime.</p><p>You templatize settings by click the <strong>[T]</strong> icon
+    next to the setting.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/e2eghvcyas/1574464360890/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    settings are replaced by Workflow variables:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/e2eghvcyas/1574464377316/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    will now see them in the <strong>Workflow Variables</strong> section of the Workflow:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/e2eghvcyas/1574464407163/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>When
+    you deploy the Workflow, <strong>Start New Deployment</strong> prompts you to
+    enter values for templatize settings:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/e2eghvcyas/1574464438675/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can select the necessary settings and deploy the Workflow.</p><p>You can also
+    pass variables into a Workflow from a Trigger that can be used for templatized
+    values. For more information, see <a href="/article/revc37vl0f-passing-variable-into-workflows">Passing
+    Variables into Workflows and Pipelines from Triggers</a>.</p><p></p><h3>Next Steps</h3><ul><li><a
+    href="/article/emorpi9nd4-4-troubleshooting-elasticsearch">Troubleshooting Elasticsearch</a></li></ul><p></p>'
+  slug: 3-verify-deployments-with-elasticsearch
+  tags:
+  - ELK
+  - Elastic Stack
+  - 'Elastic '
+  - Deployment Verification
+  - Workflow
+  - verification
+  - risk analysis
+  - template
+  - templatize
+  - variable
+  is_live: true

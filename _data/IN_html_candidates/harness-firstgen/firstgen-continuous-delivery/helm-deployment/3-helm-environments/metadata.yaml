@@ -1,0 +1,125 @@
+type: article
+article_id: 134kx1k89d
+user_id: mfr0nxh4be
+category_id: 7gqn6m2t46
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: 3 - Helm Environments
+slug: 3-helm-environments
+description: Add a Harness Environment identifying the Cloud Provider and Kubernetes
+  cluster where Harness will deploy your Docker image.
+short_version: Add a Harness Environment where Harness will deploy your Docker image.
+tags:
+- Helm
+- Kubernetes
+- Environment
+- Infrastructure Definition
+- Service Infrastructure
+- values.yaml
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:31:43.146483Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 3 - Helm Environments
+  description: Add a Harness Environment identifying the Cloud Provider and Kubernetes
+    cluster where Harness will deploy your Docker image.
+  short_version: Add a Harness Environment where Harness will deploy your Docker image.
+  body: <div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/lbhf2h71at">NextGen</a>.</div><p>After you have set
+    up the Harness <a href="/article/svso08ogpb-2-helm-services">Service</a> for your
+    Helm deployment, you can add a Harness Environment that lists the Cloud Provider
+    and Kubernetes cluster where Harness will deploy your Docker image.</p><div class="note-callout">Harness
+    includes both Kubernetes and Helm deployments, and you can Helm charts in both.
+    Harness <a href="https://docs.harness.io/article/pc6qglyp5h-kubernetes-deployments-overview">Kubernetes
+    Deployments</a> allow you to use your own Helm chart (remote or local), and Harness
+    executes the Kubernetes API calls to build everything without Helm and Tiller
+    needing to be installed in the target cluster. See <a href="https://docs.harness.io/article/t6zrgqq0ny-kubernetes-services#helm_charts">Helm
+    Charts</a>.</div><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/134kx1k89d-3-helm-environments#create_a_new_harness_environment">Create
+    a New Harness Environment</a></li><li><a href="https://docs.harness.io/article/134kx1k89d-3-helm-environments#add_an_infrastructure_definition">Add
+    an Infrastructure Definition</a></li><li><a href="https://docs.harness.io/article/134kx1k89d-3-helm-environments#override_service_helm_values">Override
+    Service Helm Values</a></li><li><a href="https://docs.harness.io/article/134kx1k89d-3-helm-environments#next_step">Next
+    Step</a></li></ul><h3>Create a New Harness Environment</h3><p>You will define
+    the Infrastructure Definition for Harness to use when deploying the Docker image.</p><p>The
+    following procedure creates a Harness environment where you can deploy your Docker
+    image. For this guide, we will be using a Kubernetes cluster on Google Cloud Platform
+    for the deployment environment.</p><p>To add a Harness environment, do the following:</p><ol><li>In
+    your Harness application, click <strong>Environments</strong>. The <strong>Environments</strong>
+    page appears.</li><li>Click <strong>Add Environment</strong>. The <strong>Environment</strong>
+    settings appear.<br/><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/134kx1k89d/1588366584343/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Name</strong>, enter a name that describes the deployment environment,
+    for example, <strong>GCP-K8S-Helm</strong>.</li><li>In <strong>Environment Type</strong>,
+    select <strong>Non-Production</strong>.</li><li>Click <strong>SUBMIT</strong>.
+    The new Environment page appears.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zmrvylwqds/1539210535625/image.png"/></figure><p></p><h3>Add
+    an Infrastructure Definition</h3><p>​Infrastructure Definitions specify the target
+    deployment infrastructure for your Harness Services, and the specific infrastructure
+    details for the deployment, like VPC settings. </p><p>You define the Kubernetes
+    cluster to use for deployment as an ​Infrastructure Definition. For this guide,
+    we will use the GCP Cloud Provider you added and the Kubernetes cluster with Helm
+    installed.</p><p>To add the Infrastructure Definition, do the following:</p><ol><li>In
+    the Harness Environment, click <strong>Add Infrastructure Definition</strong>.
+    The <strong>Infrastructure Definition</strong> dialog appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568398274729/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Name</strong>, enter the name you will use to select this Infrastructure
+    Definition when you create a Workflow.</li><li>In <strong>Cloud Provider Type</strong>,
+    select <strong>Kubernetes Cluster</strong>.</li><li>In <strong>Deployment Type</strong>,
+    select <strong>Helm</strong>.</li><li>Click <strong>Use Already Provisioned Infrastructure</strong>.
+    If you were using a Harness <a href="https://docs.harness.io/article/o22jx8amxb-add-an-infra-provisioner">Infrastructure
+    Provisioner</a>, you would select <strong>Map Dynamically Provisioned Infrastructure</strong>.</li><li>In
+    <strong>Cloud Provider</strong>, select the Cloud Provider you added earlier,
+    such as <strong>Google Cloud Platform</strong>, etc.</li><li>In <strong>Cluster
+    Name</strong>, select the Kubernetes cluster where you want to deploy. This list
+    is populated using the Cloud Provider you selected.</li><li>In <strong>Namespace</strong>,
+    enter the name of the cluster namespace you want to use. As we noted in <a href="https://docs.harness.io/article/svso08ogpb-2-helm-services#values_yaml_override">Values
+    YAML Override</a>, you can enter a <code>${NAMESPACE}</code> variable in your
+    Service and Harness will replace it with the value you enter in <strong>Namespace</strong>
+    at runtime.</li><li>In <strong>Scope to specific Services</strong>, select the
+    Harness Service you created earlier.<br/><br/>The Infrastructure Definition will
+    look something like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568407061456/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>Submit</strong>. The new Infrastructure Definition is added to the Harness
+    Environment.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568407099991/image.png"/></figure><p>That
+    is all you have to do to set up the deployment Environment in Harness.</p><p>Now
+    that you have the Service and Environment set up. Now you can create the deployment
+    Workflow in Harness.</p><h3>Override Service Helm Values</h3><p>In the Harness
+    environment, you can override Helm values specified in the Harness service. This
+    can ensure that the Helm values used in the environment are consistent even if
+    multiple services with different Helm values use that environment.</p><p>To override
+    a service Helm value, do the following:</p><ol><li>In the Harness environment,
+    click <strong>Add Configuration Overrides</strong>. The <strong>Service Configuration
+    Override</strong> dialog appears.</li><li>In <strong>Service</strong>, click the
+    name of the service you want to override, or click <strong>All Services</strong>.
+    The dialog changes to provide <strong>Override Type</strong> options.</li><li>Click
+    <strong>Values YAML</strong>. For <strong>Local</strong>, a text area appears
+    where you can paste an entire value.yaml file or simply override one or more values,
+    such as a Docker image name. For the variables you can use in the text, see <a
+    href="https://docs.harness.io/article/svso08ogpb-2-helm-services#values_yaml_override">Values
+    YAML Override</a>.<br/><br/>For <strong>Remote</strong>, do the following:<ol><li>In <strong>Source
+    Repository</strong>, select the Git repo you added as a <a href="/article/ay9hlwbgwa-add-source-repo-providers">Source
+    Repo Provider</a>.</li><li>For <strong>Commit ID</strong>, select either <strong>Use</strong>
+    l<strong>atest from Branch</strong> and enter in the branch name, or <strong>Use</strong>
+    <strong>specific commit ID</strong> and enter in the <strong>commit ID</strong>.</li><li>In <strong>File
+    path</strong>, enter the path to the values.yaml file in the repo, including the
+    repo name, like <strong>helm/values.yaml</strong>.</li></ol></li></ol><p>For more
+    information, see <a href="https://docs.harness.io/article/m8ra49bqd5-4-helm-workflows#helm_values_priority">Helm
+    Values Priority</a>.</p><h3>Next Step</h3><ul><li><a href="/article/m8ra49bqd5-4-helm-workflows">4
+    - Helm Workflows and Deployments</a></li></ul><p></p>
+  slug: 3-helm-environments
+  tags:
+  - Helm
+  - Kubernetes
+  - Environment
+  - Infrastructure Definition
+  - Service Infrastructure
+  - values.yaml
+  is_live: true

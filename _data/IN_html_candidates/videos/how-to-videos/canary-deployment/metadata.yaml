@@ -1,0 +1,42 @@
+type: article
+article_id: bpqimh0ij5
+user_id: ""
+category_id: j9gk9otyed
+author:
+  name: ""
+  profile_image: ""
+title: Canary Deployment Video
+slug: canary-deployment
+description: Watch a 4-minute video demo of Canary deployment using Harness. To see
+  all of Harness' videos, visit our YouTube channel.
+short_version: Watch a 4-minute video demonstration of Canary deployment using Harness.
+tags:
+- video
+- Canary
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T18:03:56.617477Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Canary Deployment Video
+  description: Watch a 4-minute video demo of Canary deployment using Harness. To
+    see all of Harness' videos, visit our YouTube channel.
+  short_version: Watch a 4-minute video demonstration of Canary deployment using Harness.
+  body: <p>To see all of Harness&#39; videos, visit our <a href="https://www.youtube.com/channel/UCSs-WCBvdDdBi5QPX95B_Mw/videos">YouTube
+    channel</a>.</p><p></p><div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/e1hptSqSHwU/hqdefault.jpg"><iframe
+    width="200" height="113" src="https://www.youtube.com/embed/e1hptSqSHwU?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
+  slug: canary-deployment
+  tags:
+  - video
+  - Canary
+  is_live: true

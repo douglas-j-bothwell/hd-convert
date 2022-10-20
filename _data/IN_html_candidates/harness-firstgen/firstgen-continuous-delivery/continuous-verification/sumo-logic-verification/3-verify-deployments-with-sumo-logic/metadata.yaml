@@ -1,0 +1,205 @@
+type: article
+article_id: jwfw9qy5it
+user_id: mfr0nxh4be
+category_id: ux6clfhfhz
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Verify Deployments with Sumo Logic
+slug: 3-verify-deployments-with-sumo-logic
+description: How to add Sumo Logic to a Harness Workflow, where Harness can analyze
+  Sumo Logic metrics to verify, rollback, and improve deployments.
+short_version: Harness can analyze Sumo Logic metrics to verify, rollback, and improve
+  deployments.
+tags:
+- Sumo Logic
+- Verification Provider
+- verification
+- Deployment Verification
+- Workflow
+- log
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:46.461519Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Verify Deployments with Sumo Logic
+  description: How to add Sumo Logic to a Harness Workflow, where Harness can analyze
+    Sumo Logic metrics to verify, rollback, and improve deployments.
+  short_version: Harness can analyze Sumo Logic metrics to verify, rollback, and improve
+    deployments.
+  body: '<p></p><p>Harness can analyze Sumo Logic data to verify, rollback, and improve
+    deployments. To apply this analysis to your deployments, you set up Sumo Logic
+    as a verification step in a Harness Workflow. This section covers how to do so,
+    and provides a summary of Harness verification results.</p><div class="tip-callout">In
+    order to obtain the names of the host(s), pod(s), or container(s) where your service
+    is deployed, the verification provider should be added to your Workflow <em>after</em>
+    you have run at least one successful deployment.</div><p>In this topic:</p><ul><li>
+    <a href="#before_you_begin">Before You Begin</a></li><li> <a href="#visual_summary">Visual
+    Summary</a></li><li> <a href="#step_1_set_up_the_deployment_verification">Step
+    1: Set Up the Deployment Verification</a></li><li> <a href="#step_2_sumo_logic_server">Step
+    2: Sumo Logic Server</a></li><li> <a href="#step_3_search_keywords">Step 3: Search
+    Keywords</a></li><li> <a href="#step_4_field_name_for_host_container">Step 4:
+    Field name for Host/Container</a></li><li> <a href="#step_5_expression_for_host_container_name">Step
+    5: Expression for Host/Container name</a></li><li> <a href="#step_6_analysis_time_duration">Step
+    6: Analysis Time duration</a></li><li> <a href="#step_7_baseline_for_risk_analysis">Step
+    7: Baseline for Risk Analysis</a></li><li> <a href="#step_8_baseline_for_predictive_analysis">Step
+    8: Baseline for Predictive Analysis</a></li><li> <a href="#step_9_algorithm_sensitivity">Step
+    9: Algorithm Sensitivity</a></li><li> <a href="#step_10_execute_with_previous_steps">Step
+    10: Execute with previous steps</a></li><li> <a href="#step_11_include_instances_from_previous_phases">Step
+    11: Include instances from previous phases</a></li><li> <a href="#step_12_verify_your_settings">Step
+    12: Verify your Settings</a></li><li> <a href="#review_harness_expression_support_in_cv_settings">Review:
+    Harness Expression Support in CV Settings</a></li><li> <a href="#step_13_view_verification_results">Step
+    13: View Verification Results</a></li><li> <a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li>See the <a href="/article/wb2k4u4kxm-sumo-logic-verification-overview">Sumo
+    Logic Verification Overview</a>.</li><li>See <a href="/article/38qrwi7wu2-1-sumo-logic-connection-setup">Connect
+    to Sumo Logic</a>.</li></ul><p></p><h3>Visual Summary</h3><p>Here&#39;s an example
+    of Sumo Logic setup for verification.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/jwfw9qy5it/1580937647206/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p></p><h3>Step
+    1: Set Up the Deployment Verification</h3><p>To verify your deployment with Sumo
+    Logic, do the following:</p><ol><li>Ensure that you have added Sumo Logic as a
+    verification provider, as described in <a href="/article/38qrwi7wu2-1-sumo-logic-connection-setup">Sumo
+    Logic Connection Setup</a>.</li><li>In your Workflow, under <strong>Verify Service</strong>,
+    click <strong>Add Verification</strong>.</li><li>In the resulting <strong>Add
+    Step</strong> settings, select <strong>Log Analysis</strong> &gt; <strong>Sumo Logic</strong>.<figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/jwfw9qy5it/1580937282572/image.png"
+    style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure></li><li>Click
+    <strong>Next</strong>. The <strong>Configure </strong><strong>Sumo Logic</strong>
+    settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/jwfw9qy5it/1580937647206/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><h3>Step
+    2: Sumo Logic Server</h3><p>Select the Sumo Logic verification provider you added,
+    as described above.</p><h3>Step 3: Search Keywords</h3><p>Enter the keywords for
+    your search. Use the Sumo Logic search field and then copy your keywords into
+    the <strong>Sumo Logic</strong> dialog.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536614868102/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536614868102/image.png"/></a></figure><p>Example
+    keywords: <strong>*exception*</strong> and <strong>*error*</strong>.For more information,
+    see <a href="https://help.sumologic.com/Search/Get-Started-with-Search/How-to-Build-a-Search/Search-Syntax-Overview"
+    target="_blank">Search Syntax Overview</a> and <a href="https://help.sumologic.com/Search/Get-Started-with-Search/How-to-Build-a-Search/Keyword-Search-Expressions"
+    target="_blank">Keyword Search Expressions</a> from Sumo Logic.</p><h3>Step 4:
+    Field name for Host/Container</h3><p>Enter the message field that contains the
+    host name. You can find this in the Sumo Logic search. In the Sumo Logic search
+    field, start typing <strong>_source</strong> and see the metadata options:</p><figure><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536616077969/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536616077969/image.png"/></a></figure><p>Click
+    on the source host option, <strong>_sourceHost</strong>, and execute a query with
+    it.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536615424697/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536615424697/image.png"/></a></figure><p>View
+    the query results and confirm that the <strong>_sourceHost</strong> field returns
+    the name of the host. And then enter <strong>_sourceHost</strong> in the <strong>Field
+    name for Host/Container</strong> field.</p><h3>Step 5: Expression for Host/Container
+    name</h3><p>Add an expression that evaluates to the hostname value for the <strong>Message</strong>
+    field host information. For example, in Sumo Logic, if you look at an exception
+    <strong>Message</strong>, you will see a <strong>Host</strong> field:</p><figure><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536618144367/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536618144367/image.png"/></a></figure><p>In
+    the service infrastructure where your Workflow deployed your artifact (see <a
+    href="/article/n39w05njjv-environment-configuration#add_a_service_infrastructure"
+    target="_blank">Add a Service Infrastructure</a>), the hostname is listed in a
+    JSON <strong>name</strong> label under a <strong>host</strong> label.Locate the
+    <strong>name</strong> label that displays the same value as the <strong>Host</strong>
+    field in your Sumo Logic <strong>Message</strong>. Locate the path to that <strong>name</strong>
+    label and use it as the expression in <strong>Expression for Host/Container name</strong>.The
+    default expression is <strong>${instance.host.hostName}</strong>.</p><p></p><div
+    class="note-callout">For AWS EC2 hostnames, use the expression <code>${instance.hostName</code>}.</div><h3>Step
+    6: Analysis Time duration</h3><p>Set the duration for the verification step. If
+    a verification step exceeds the value, the Workflow&#39;s <a href="/article/m220i1tnia-workflow-configuration#failure_strategy">Failure
+    Strategy</a> is triggered. For example, if the Failure Strategy is <strong>Ignore</strong>,
+    then the verification state is marked <strong>Failed</strong> but the Workflow
+    execution continues.</p><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices#analysis_time_duration">CV
+    Strategies, Tuning, and Best Practices</a>.</p><h3>Step 7: Baseline for Risk Analysis</h3><p>See
+    <a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV Strategies,
+    Tuning, and Best Practices</a>.</p><h3>Step 8: Baseline for Predictive Analysis</h3><p>This
+    option appears if you selected <strong>Predictive Analysis</strong> in <strong>Baseline
+    for Risk Analysis</strong>. Specify the time unit Harness should use to pull logs
+    to set as the baseline for predictive analysis, such as <strong>Last 30 minutes</strong>.</p><p>A
+    few notes about selecting the time unit for <strong>Baseline for Predictive Analysis</strong>:</p><ul><li>The
+    greater the length of time you specify for a <strong>Predictive Analysis</strong>
+    baseline (in <strong>Baseline for Predictive Analysis</strong>), the longer it
+    takes Harness to run the analysis. If you select <strong>Last 24 hours</strong>,
+    it could take up to 15 or more minutes to perform predictive analysis.</li><li>The
+    greater the length of time you specify for a Predictive Analysis baseline, the
+    more API calls Harness makes to the verification provider. Harness makes API calls
+    to verification providers to obtain logs grouped in 15 minutes batches. If you
+    specify a long amount of time for a Predictive Analysis baseline, Harness will
+    need to make a lot of API calls to the verification provider. For example, if
+    you select <strong>Last 24 hours</strong> as the baseline for Predictive Analysis,
+    then Harness will make 96 API calls to collect that data.</li></ul><h3>Step 9:
+    Algorithm Sensitivity</h3><p>Select the sensitivity that will result in the most
+    useful results for your analysis.</p><p>See <a href="/article/0avzb5255b-cv-strategies-and-best-practices#algorithm_sensitivity_and_failure_criteria">CV
+    Strategies, Tuning, and Best Practices</a>.</p><h3>Step 10: Execute with previous
+    steps</h3><p>Check this checkbox to run this verification step in parallel with
+    the previous steps in <strong>Verify Service</strong>.</p><h3>Step 11: Include
+    instances from previous phases</h3><p>If you are using this verification step
+    in a multi-phase deployment, select this checkbox to include instances used in
+    previous phases when collecting data. Do not apply this setting to the first phase
+    in a multi-phase deployment.</p><h3>Step 12: Verify your Settings</h3><p>Click
+    <strong>Test</strong>. Harness verifies the settings you entered.</p><p>When you
+    are finished, click <strong>Submit</strong>. The <strong>Sumo Logic</strong> verification
+    step is added to your Workflow.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536616356074/image.png"/></figure><div
+    class="note-callout">If you select <strong>Predictive Analysis</strong> in <strong>Baseline
+    for Risk Analysis</strong>, the time unit range is displayed in the <strong>Details</strong>
+    section of the results. See <strong>Baseline</strong> in the image below:</div><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1552605632216/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Review:
+    Harness Expression Support in CV Settings</h3><p>You can use expressions (<code>${...}</code>)
+    for <a href="/article/7bpdtvhq92-workflow-variables-expressions">Harness built-in
+    variables</a> and custom <a href="/article/eb3kfl8uls-service-configuration">Service</a>
+    and <a href="/article/766iheu1bk-add-workflow-variables-new-template">Workflow</a>
+    variables in the settings of Harness Verification Providers.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1586812006289/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p>Expression support lets
+    you template your Workflow verification steps. You can add custom expressions
+    for settings, and then provide values for those settings at deployment runtime.
+    Or you can use Harness built-in variable expressions and Harness will provide
+    values at deployment runtime automatically.</p><h3>Step 13: View Verification
+    Results</h3><p>Once you have deployed your Workflow (or Pipeline) using the Sumo
+    Logic verification step, you can automatically verify cloud application and infrastructure
+    performance across your deployment. For more information, see <a href="/article/m220i1tnia-workflow-configuration#deploy_a_workflow">Add
+    a Workflow</a> and <a href="/article/zc1u96u6uj-pipeline-configuration#deploy_a_pipeline">Add
+    a Pipeline</a>.</p><h4>Workflow Verification</h4><p>To see the results of Harness
+    machine-learning evaluation of your Sumo Logic verification: In your Workflow
+    or Pipeline deployment, you can expand the <strong>Verify Service</strong> step,
+    and then click the <strong>Sumo Logic</strong> step.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536616733454/image.png"/></figure><h4>Continuous
+    Verification</h4><p>You can also see the evaluation in the <strong>Continuous
+    Verification</strong> dashboard. The Workflow verification view is for the DevOps
+    user who developed the Workflow. The <strong>Continuous Verification</strong>
+    dashboard is where all future deployments are displayed for developers and others
+    interested in deployment analysis.</p><p>To learn about the verification analysis
+    features, see the following sections.</p><h4>Transaction Analysis</h4><table><tbody><tr><td><p><strong>Execution
+    details:</strong> See the details of verification execution. Total is the total
+    time the verification step took, and Analysis duration is how long the analysis
+    took.</p><p><strong>Risk level analysis:</strong> Get an overall risk level and
+    view the cluster chart to see events.</p><p><strong>Transaction-level summary:</strong>
+    See a summary of each transaction with the query string, error values comparison,
+    and a risk analysis summary.</p></td><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9kqxldnrmx/1536618604425/image.png"/></figure></td></tr></tbody></table><h4>Execution
+    Analysis</h4><table><tbody><tr><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497249316/image.png"/></figure></td><td><p><strong>Event
+    type:</strong> Filter cluster chart events by Unknown Event, Unexpected Frequency,
+    Anticipated Event, Baseline Event, and Ignore Event.</p><p><strong>Cluster chart:</strong>
+    View the chart to see how the selected event contrasts with other events. Click
+    each event to see its log details.</p></td></tr></tbody></table><h4>Event Management</h4><table><tbody><tr><td><p><strong>Event-level
+    analysis:</strong> See the threat level for each event captured.</p><p><strong>Tune
+    event capture:</strong> Remove events from analysis at the Service, Workflow,
+    execution, or overall level.</p><p><strong>Event distribution:</strong> Click
+    the chart icon to see an event distribution including the measured data, baseline
+    data, and event frequency.</p></td></tr></tbody></table><h3>Next Steps</h3><ul><li><a
+    href="/article/0avzb5255b-cv-strategies-and-best-practices#algorithm_sensitivity_and_failure_criteria">CV
+    Strategies, Tuning, and Best Practices</a></li><li><a href="/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code</a></li><li><a href="/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a></li></ul><p></p>'
+  slug: 3-verify-deployments-with-sumo-logic
+  tags:
+  - Sumo Logic
+  - Verification Provider
+  - verification
+  - Deployment Verification
+  - Workflow
+  - log
+  is_live: true

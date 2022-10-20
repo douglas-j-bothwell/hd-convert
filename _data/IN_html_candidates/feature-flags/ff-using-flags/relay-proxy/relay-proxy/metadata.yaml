@@ -1,0 +1,131 @@
+type: article
+article_id: q0kvq8nd2o
+user_id: vt9reb71i4
+category_id: 0dqv0mh8xu
+author:
+  name: Clare Wilkinson
+  email: clare.wilkinson@harness.io
+  profile_image: https://www.gravatar.com/avatar/0ff8d5897ddf326bd94ba0e62e7d2841?d=mm&s=150
+title: Relay Proxy Overview
+slug: relay-proxy
+description: This topic describes what is Relay Proxy and how to use it with Harness
+  Feature Flags (FF).
+short_version: This topic describes what is Relay Proxy and how to use it with Harness
+  Feature Flags (FF).
+tags:
+- Relay Proxy
+- Proxy
+- feature flag
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-25T13:59:28.736856Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Relay Proxy Overview
+  description: This topic describes what is Relay Proxy and how to use it with Harness
+    Feature Flags (FF).
+  short_version: This topic describes what is Relay Proxy and how to use it with Harness
+    Feature Flags (FF).
+  body: '<p>This topic describes what is Relay Proxy and how to use it with Harness
+    Feature Flags (FF).</p><p>The Relay Proxy enables your apps to connect directly
+    to Feature Flag services without having to make a significant number of outbound
+    connections to FF services. The Relay Proxy establishes a connection to the Feature
+    Flags configuration data and relays that connection to clients in an organization&#39;s
+    network.</p><h3>Why use the Relay Proxy?</h3><p>In the following cases, you might
+    want to set up Relay Proxy:</p><ul><li><strong>Air-gap Deployments</strong>: You
+    can deploy the proxy in your network if you don&#39;t have or can&#39;t allow
+    external access to your apps. Local apps connect directly to the proxy, and the
+    proxy has external access to the remote feature flag service to synchronize configuration.</li><li><strong>Offline
+    Mode</strong>: This is identical to air-gaped, except that the proxy does not
+    have a connection to the internet. In that scenario, the configuration must be
+    loaded from the outside using configuration files. Configuration files are used
+    to link your programmes to the proxy.</li><li><strong>High Availability / Reliability</strong>:
+    The feature flag service is extremely reliable. We will fail over to the failover
+    cluster in the event of a major failure. However, in the event of a full network
+    loss, the Relay Proxy ensures that your apps continue to run even after restarts.</li></ul><p>If
+    you decide to use the Relay Proxy, make sure it has a good place in your network
+    design. For your app to run, it needs to be able to contact the Relay Proxy, and
+    the architecture differs depending on the type of app. For example, if you want
+    to link the Relay Proxy to any client-side apps, don&#39;t put it inside a firewall.</p><h3>Relay
+    Proxy architecture</h3><details><summary>Diagram of the Relay Proxy architecure</summary><div><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/q0kvq8nd2o/1641815845703/screenshot-2022-01-10-at-5-26-46-pm.png"
+    style="max-height:60%;max-width:60%;display:block;margin-left:0;margin-right:auto"
+    alt="A diagram of the Relay Proxy architecture. " data-hd-height="60%" data-hd-width="60%"
+    data-hd-align="left"/></figure></div></details><p>The FF Relay Proxy resides between
+    the SDKs and the hosted Harness Feature Flag services. On startup, proxy loads
+    the necessary data from the FF services to ensure that it is completely functional
+    even if the network connection drops temporarily.</p><p>The Proxy creates an instance
+    of the Go SDK for each API key that’s passed to it as a part of the <a href="/article/q0kvq8nd2o-configure-relay-proxy#configuration_variables"
+    target="_blank">Proxy Configuration</a>, and each instance of the SDK uses the
+    Cache implementation. The Go SDK then takes care of populating this cache on startup
+    and keeping it up to current whenever the remote service changes. When the Go
+    SDK starts up, it retrieves all of the Features and Segments and then sends a
+    request to the remote server to listen for any updates. Whenever there is an update
+    in the remote service, it sends out an event, and when the embedded SDK sees one
+    of these events, it sends a request to the remote service to get the most recent
+    flag values and save them to the cache.</p><p>The Proxy can also use streaming
+    functionality if it is configured with Redis. To view the variables that you need
+    to configure for Redis, go to <a href="/article/q0kvq8nd2o-configure-relay-proxy#configuration_variables"
+    target="_blank">Proxy Configuration</a> .</p><h4>Configuration variables</h4><p>The
+    configuration variables used in the proxy are listed in the following table:</p><table><tbody><tr><td><p><strong>Environment
+    Variable</strong></p></td><td><p><strong>Type</strong></p></td><td><p><strong>Flag</strong></p></td><td><p><strong>Example</strong></p></td><td><p><strong>Usage</strong></p></td></tr><tr><td><p>ACCOUNT_IDENTIFIER</p></td><td><p>string</p></td><td><p>-account-identifier</p></td><td><p>zAbbD-FLS425IEO7OLzXYz</p></td><td><p>The
+    Account that you want the Proxy to pull down and load config for</p></td></tr><tr><td><p>ORG_IDENTIFIER</p></td><td><p>string</p></td><td><p>-org-identifier</p></td><td><p>featureflagsqa</p></td><td><p>The
+    Organization that you want the Proxy to pull down and load config for</p></td></tr><tr><td><p>ADMIN_SERVICE</p></td><td><p>string</p></td><td><p>-admin-service</p></td><td><p>https://qa/harness.io/gateway/cf</p></td><td><p>Used
+    for creating the Client that interacts with the FeatureFlags Admin Service to
+    retrieve Target and AuthConfig</p></td></tr><tr><td><p>SERVICE_TOKEN</p></td><td><p>string</p></td><td><p>-service-token</p></td><td><p>ZHNvdWZoNjczMjR0aGZiLWk1NC0tMGRzZg==</p></td><td><p>Token
+    that the Proxy can use to authenticate with the Admin service</p></td></tr><tr><td><p>AUTH_SECRET</p></td><td><p>string</p></td><td><p>-auth-secret</p></td><td><p>somethingSecret</p></td><td><p>To
+    authenticate the connection between your SDK and the Proxy, the Proxy generates
+    an authentication token (JWT) that is signed with the AUTH_SECRET you set in your
+    configuration. </p><p>When the Proxy receives the authentication token, it verifies
+    that it is signed using the AUTH_SECRET.  If it isn’t, the token is rejected as
+    invalid.</p></td></tr><tr><td><p>SDK_BASE_URL</p></td><td><p>string</p></td><td><p>-sdkBaseUrl</p></td><td><p>https://config.feature-flags-qa.harness.io/api/1.0</p></td><td><p>The
+    Base URL that the internal Go SDK connects to</p></td></tr><tr><td><p>SDK_EVENTS_URL</p></td><td><p>string</p></td><td><p>-sdkEventsUrl</p></td><td><p>https://event.feature-flags.qa.harness.io/api/1.0</p></td><td><p>The
+    Event URL that the internal Go SDK connects to</p></td></tr><tr><td><p>API_KEYS</p></td><td><p>string</p></td><td><p>-apiKey</p></td><td><p>5ecb5049-e071-4beb-ae43-381aa8f0d3a2,
+    a7cb7fc6-c4fa-4ecb-b01f-068456f3e500</p></td><td><p></p><p></p><p>The API Keys
+    of the environments you want to configure the Proxy to work with.</p><p></p><p>For
+    example, create an SDK key called Proxy Key in your Environment and pass it in
+    via the <code>API_KEYS</code> env. Then all the other applications in that Environment
+    would be able to use the Proxy.</p></td></tr><tr><td><p>TARGET_POLL_DURATION</p></td><td><p>int</p></td><td><p>target-poll-duration</p></td><td><p>30</p></td><td><p>Time
+    in seconds that determines how frequently the Proxy polls Feature Flags to get
+    the latest Targets</p></td></tr><tr><td><p>REDIS_ADDRESS</p></td><td><p>string</p></td><td><p>redis-address</p></td><td><p>localhost:6379</p></td><td><p>Configures
+    the Proxy to use Redis rather than an in-memory cache.</p><p></p><p>Configuring
+    the Proxy with Redis also enables streaming</p></td></tr><tr><td><p>REDIS_PASSWORD</p></td><td><p>string</p></td><td><p>redis-password</p></td><td><p>a-secret</p></td><td><p>(Optional)
+    This is required only if the Redis server is password protected</p></td></tr><tr><td><p>REDIS_DB</p></td><td><p>int</p></td><td><p>redis-db</p></td><td><p>1</p></td><td><p>(Optional)
+    After connecting to the Redis server, it allows you to select which database to
+    use. In most cases using the default database is desired</p></td></tr><tr><td><p>FLAG_STREAM_ENABLED</p></td><td><p>boolean</p></td><td><p>flag-stream-enabled</p></td><td><p>true</p></td><td><p>Allows
+    the proxy to get flag updates by connecting to Harness in streaming mode.</p><p>This
+    variable defaults to <code>true</code>. While updating Harness flags, if you have
+    networking issues when receiving streaming events, set this to <code>false</code>.</p></td></tr><tr><td><p>FLAG_POLL_INTERVAL</p></td><td><p>int</p></td><td><p>flag-poll-interval</p></td><td><p>5</p></td><td><p>How
+    often (in minutes) the proxy polls for flag updates. This variable applies only
+    if FLAG_STREAM_ENABLED is set to <code>false</code>.</p></td></tr><tr><td><p>GENERATE_OFFLINE_CONFIG</p></td><td><p>boolean</p></td><td><p>generate-offline-config</p></td><td><p>false</p></td><td><p>Generates
+    a directory for storing configuration data to use in offline mode.</p><p>If set
+    to <code>true</code> the proxy generates the offline configuration directory,
+    then terminates.</p><p>Set to <code>false</code> as default.</p></td></tr></tbody></table><h3>What
+    data does the Relay Proxy store?</h3><p>The Proxy stores authentication, feature,
+    Target, and Target Group configurations in a cache.</p><ul><li>Keys are stored
+    against a map of fields and values in the feature, Target, and Target Group settings.</li><li>The
+    authentication configuration is stored as a key-value pair, with the key being
+    a hashed API key and the value being an environment ID.</li></ul><p>When the proxy
+    starts, an embedded Go server SDK retrieves the Feature and Segment config and
+    populates the cache.</p><h3>How does the Relay Proxy fetch client and server SDK
+    configuration details?</h3><p>Client and Server SDKs fetch the evaluation details
+    in the same way as they would if they were interacting with the FF Services on
+    ff-server.</p><h3>Blog post</h3><p>For more information about the Relay Proxy,
+    go to our blog post <a href="https://harness.io/blog/in-depth-feature-flags-relay-proxy/"
+    target="_blank">In-Depth: Harness Feature Flags Relay Proxy</a>.</p><h3>Next step</h3><p>After
+    you understand the basics of the Relay Proxy, you can then <a href="/article/rae6uk12hk-deploy-relay-proxy">deploy
+    it</a>.</p><p></p>'
+  slug: relay-proxy
+  tags:
+  - Relay Proxy
+  - Proxy
+  - feature flag
+  is_live: true

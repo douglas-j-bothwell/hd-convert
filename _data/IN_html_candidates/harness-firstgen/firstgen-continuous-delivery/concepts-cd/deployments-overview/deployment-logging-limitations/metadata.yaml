@@ -1,0 +1,49 @@
+type: article
+article_id: h3b4wttuk5
+user_id: mfr0nxh4be
+category_id: cwefyz0jos
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Deployment Logging Limitations
+slug: deployment-logging-limitations
+description: 'This content is for Harness FirstGen. Switch to NextGen. This topic
+  lists the deployment log size, export, and viewing limits. Limitations. Harness
+  deployment logging has the following limitations: A…'
+short_version: 'This content is for Harness FirstGen. Switch to NextGen. This topic
+  lists the deployment log size, export, and viewing limits. Limitations. Harness
+  deployment logging has the following limitations: A…'
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T21:22:15.853769Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Deployment Logging Limitations
+  description: ""
+  short_version: ""
+  body: <p></p><div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/n06yruxm0d">NextGen</a>.</div><p>This topic lists
+    the deployment log size, export, and viewing limits.</p><h3>Limitations</h3><p>Harness
+    deployment logging has the following limitations:</p><ul><li>A hard limit of 25MB
+    for logs produced by 1 Workflow step. Logs beyond this limit will be skipped and
+    not available for download as well.</li><li>Harness always saves the final log
+    line that contains the status (Success, Failure, etc) even if logs go beyond the
+    limit.</li><li>In cases where the final log line is itself very large and logs
+    are already beyond max limit (25MB), Harness shows a limited portion of the line
+    from the end (10KB of data for the log line).</li></ul><h3>Viewing Large Logs</h3><p>For
+    any completed Workflow displayed in <strong>Deployments</strong>, you can expand
+    the log section. The most recent log information is displayed first. You can scroll
+    to see older logs information.</p><h3>See Also</h3><p><a href="/article/pe7vgjs6sv-export-deployment-logs">Export
+    Deployment Logs</a></p>
+  slug: deployment-logging-limitations
+  tags: []
+  is_live: true

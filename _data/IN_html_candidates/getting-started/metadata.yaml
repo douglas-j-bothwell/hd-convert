@@ -1,0 +1,14 @@
+type: category
+category_id: kx4hs8bn38
+parent_category_id: ""
+title: Get started
+description: ""
+slug: getting-started
+is_featured: true
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1570215303263/start.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Get started
+  description: ""
+  slug: getting-started

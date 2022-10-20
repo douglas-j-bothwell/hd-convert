@@ -1,0 +1,215 @@
+type: article
+article_id: ga3ccymwce
+user_id: slcpusem6b
+category_id: l2p3i03l4a
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Harness StartExecution API Deep Dive
+slug: use-harness-start-execution-api
+description: This topic describes how to start executions using the StartExecution
+  Harness API. You can start a Workflow and a Pipeline using APIs. For more information,
+  see Trigger Workflows or Pipelines Using G…
+short_version: This topic describes how to start executions using the StartExecution
+  Harness API. You can start a Workflow and a Pipeline using APIs. For more information,
+  see Trigger Workflows or Pipelines Using G…
+tags:
+- StartExecution API
+- GraphQL API
+- Harness
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:01.540417Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness StartExecution API Deep Dive
+  description: ""
+  short_version: ""
+  body: "<p>This topic describes how to start executions using the <code>StartExecution</code>
+    Harness API.</p><p>You can start a Workflow and a Pipeline using APIs. For more
+    information, see <a href=\"/article/s3leksekny-trigger-workflow-or-a-pipeline-using-api\">Trigger
+    Workflows or Pipelines Using GraphQL API</a> and <a href=\"https://community.harness.io/t/deployment-api-is-live/419\">Harness
+    Blog Post</a>. The API access is tied to an <a href=\"/article/smloyragsm-api-keys\">API
+    Key</a> created in the Access Management section in Continuous Security.</p><h3>Use
+    Cases</h3><ul><li>Incorporate an API call in your Jenkins or another system to
+    fire off the deployment (system to system interaction)</li><li>Create your own
+    in-house CLI tool to trigger deployments</li><li>Start an execution using GraphQL
+    queries via Harness API Explorer</li></ul><h3>Authentication</h3><p>You can authenticate
+    using <strong>Logged-in User Session</strong> or <strong>Use API Key.</strong>
+    The authentication determines what data you can query and retrieve via API. By
+    default, when you launch the <strong>API Explorer</strong>, you authenticate using
+    a session key.</p><p>For more information, see <a href=\"/article/2rmd5i0e0h-harness-api-explorer#step_1_authenticate\">Authenticate</a>.</p><h3>Authorization</h3><p>The
+    API authorization uses the API Token. The API token can be scoped to a Harness
+    user group or multiple user groups.</p><p>For list APIs, the data is returned
+    based on your permissions. You are only allowed to see what your user group is
+    authorized to read and have access to.</p><h4>Example</h4><p>Add an API key scoped
+    to two different permission groups:</p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840049087/35529-d-199855-b-5-ce-5-b-8103-e-75892239-e-9-b-055-bb-6.png\"/></figure><p>Below,
+    the user can see the key with the <strong>Permissions Inherited from</strong>
+    field:</p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840050781/c-635-ab-4-f-3-f-7-e-7354-bae-542-eb-9-b-08-bbc-0-f-1-c-5-f-3-e-4-2-690-x-50.png\"/></figure><p>The
+    permissions for these groups are tied to the token. The user or system that uses
+    the token will only be authorized to perform the specific actions.</p><p>These
+    user groups do not have permissions to execute a production Pipeline. When deploying
+    the Pipeline with the key, the API throws an error stating that the user is not
+    authorized to deploy.</p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840051757/7-fbb-2-bffad-9-a-3841-b-9-fd-790-f-65318-dc-1-daaa-49-d-0-2-690-x-387.png\"/></figure><p></p><h4>Note</h4><ul><li>The
+    authorization and authentication of the API don’t apply to any specific portion,
+    the entire API follows this model.</li><li>Admins can rotate the API keys to avoid
+    them being stale. To rotate, simply delete the old API key and create a new one.</li></ul><h3>Sample
+    Queries</h3><p>Here are the sample queries:</p><h4>Get Pipelines By Name</h4><p>This
+    sample query returns Pipeline name and the variables associated with it.</p><h5>Request</h5><pre>{<br/>
+    \ pipelineByName(applicationId: &#34;iIfYmHDqTj6Gsygtwt4VRQ&#34;, pipelineName:
+    &#34;Guestbook Pipeline&#34;) {<br/>    id<br/>    name<br/>    pipelineVariables
+    {<br/>      name<br/>      type<br/>      required<br/>    }<br/>  }<br/>}</pre><h5>Response</h5><pre>{<br/>
+    \ &#34;data&#34;: {<br/>    &#34;pipelineByName&#34;: {<br/>      &#34;id&#34;:
+    &#34;YdK1ONo9TnyzIK5-plsnAg&#34;,<br/>      &#34;name&#34;: &#34;Guestbook Pipeline&#34;,<br/>
+    \     &#34;pipelineVariables&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;skipCV&#34;,<br/>          &#34;type&#34;: &#34;Text&#34;,<br/>          &#34;required&#34;:
+    false<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;hotfix&#34;,<br/>
+    \         &#34;type&#34;: &#34;Text&#34;,<br/>          &#34;required&#34;: false<br/>
+    \       },<br/>        {<br/>          &#34;name&#34;: &#34;branch&#34;,<br/>
+    \         &#34;type&#34;: &#34;Text&#34;,<br/>          &#34;required&#34;: false<br/>
+    \       }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h4>Get Workflow By Name</h4><p>This
+    sample query returns Workflow name and the variables associated with it.</p><h5>Request</h5><pre>{<br/>
+    \ workflowByName(applicationId: &#34;iIfYmHDqTj6Gsygtwt4VRQ&#34;, workflowName:
+    &#34;K8s Rolling Deployment&#34;) {<br/>    id<br/>    name<br/>    workflowVariables
+    {<br/>      name<br/>      type<br/>      required<br/>    }<br/>  }<br/>}<br/></pre><h5>Response</h5><pre>{<br/>
+    \ &#34;data&#34;: {<br/>    &#34;workflowByName&#34;: {<br/>      &#34;id&#34;:
+    &#34;VzViT24gTluKWNFpdrL95A&#34;,<br/>      &#34;name&#34;: &#34;K8s Rolling Deployment&#34;,<br/>
+    \     &#34;workflowVariables&#34;: [<br/>        {<br/>          &#34;name&#34;:
+    &#34;Environment&#34;,<br/>          &#34;type&#34;: &#34;Environment&#34;,<br/>
+    \         &#34;required&#34;: true<br/>        },<br/>        {<br/>          &#34;name&#34;:
+    &#34;Service&#34;,<br/>          &#34;type&#34;: &#34;Service&#34;,<br/>          &#34;required&#34;:
+    true<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;InfraDefinition_KUBERNETES&#34;,<br/>
+    \         &#34;type&#34;: &#34;Infrastructure definition&#34;,<br/>          &#34;required&#34;:
+    true<br/>        },<br/>        {<br/>          &#34;name&#34;: &#34;hotfix&#34;,<br/>
+    \         &#34;type&#34;: &#34;Text&#34;,<br/>          &#34;required&#34;: false<br/>
+    \       },<br/>        {<br/>          &#34;name&#34;: &#34;branch&#34;,<br/>
+    \         &#34;type&#34;: &#34;Text&#34;,<br/>          &#34;required&#34;: false<br/>
+    \       },<br/>        {<br/>          &#34;name&#34;: &#34;skipCV&#34;,<br/>
+    \         &#34;type&#34;: &#34;Text&#34;,<br/>          &#34;required&#34;: false<br/>
+    \       }<br/>      ]<br/>    }<br/>  }<br/>}</pre><h3>Deploy Fargate Production
+    Pipeline</h3><p>This example has no Workflow variables, just a plain deployment.</p><p>First
+    query by the Application name to retrieve the Application ID and PipelineID.</p><pre>query
+    {<br/>  applicationByName(name:&#34;Harness Demo&#34;){<br/>    id<br/>    name<br/>
+    \   pipelines(limit:4){<br/>      nodes{<br/>        id<br/>        description<br/>
+    \     }<br/>    }<br/>  }<br/>}</pre><p>After getting the information, create
+    <code>startExecution</code> mutation to execute the deployment.</p><p>You need
+    to pass the Application ID and Pipeline ID as an input. Based on your mutation,
+    the notes, execution ID, and Application ID are returned.</p><p></p><pre>startExecution
+    (input:$startExecution){<br/>    clientMutationId<br/>    execution {<br/>      notes<br/>
+    \     id<br/>      application{<br/>        id<br/>      }<br/>    }<br/>  }<br/>}</pre><p></p><p><strong>Request</strong></p><p>For
+    the parameters to execute the query, pass the below information:</p><pre>{<br/>
+    \ &#34;startExecution&#34;: {<br/>    &#34;applicationId&#34;: &#34;&lt;YOUR APPLICATION
+    ID&gt;&#34;,<br/>    &#34;notes&#34;: &#34;Demo&#34;,<br/>    &#34;executionType&#34;:
+    &#34;PIPELINE&#34;,<br/>    &#34;entityId&#34;: &#34;&lt;YOUR PIPELINE ID&gt;&#34;,<br/>
+    \   &#34;serviceInputs&#34;: {<br/>      &#34;name&#34;: &#34;fargate-nginx&#34;,<br/>
+    \     &#34;artifactValueInput&#34;: {<br/>        &#34;buildNumber&#34;: {<br/>
+    \         &#34;buildNumber&#34;: &#34;1.10.1&#34;,<br/>          &#34;artifactSourceName&#34;:
+    &#34;library_nginx&#34;<br/>        },<br/>        &#34;valueType&#34;: &#34;BUILD_NUMBER&#34;<br/>
+    \       }<br/>    }<br/>    }<br/>}</pre><p></p><p><strong>Response</strong></p><p>Payload
+    and the Pipeline executed are returned.</p><pre>{<br/>  &#34;data&#34;: {<br/>
+    \   &#34;startExecution&#34;: {<br/>      &#34;clientMutationId&#34;: null,<br/>
+    \     &#34;execution&#34;: {<br/>        &#34;notes&#34;: &#34;Demo&#34;,<br/>
+    \       &#34;id&#34;: &#34;&lt;YOUR EXECUTION ID&gt;&#34;,<br/>        &#34;application&#34;:
+    {<br/>          &#34;id&#34;: &#34;&lt;YOUR APPLICATION ID&gt;&#34;<br/>        }<br/>
+    \     }<br/>    }<br/>  }<br/>}</pre><p>You can also see your deployment in the
+    Continuous Deployment page.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1608716303343/screenshot-2020-12-23-at-3-08-10-pm.png\"/></figure><h3>Deploy
+    a Pipeline with Variables</h3><p>The below sample shows how to deploy a Pipeline
+    with variables.</p><h5>Query</h5><pre>mutation($startExecution: StartExecutionInput!){<br/>
+    \ startExecution (input:$startExecution){<br/>    clientMutationId<br/>    execution
+    {<br/>      notes<br/>      status<br/>      startedAt<br/>      id<br/>      application{<br/>
+    \       id<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Query with Variables</h5><pre>{<br/>
+    \  &#34;name&#34;:&#34;skipCV&#34;,<br/>   &#34;variableValue&#34;:{<br/>      &#34;type&#34;:&#34;NAME&#34;,<br/>
+    \     &#34;value&#34;:&#34;true&#34;<br/>   }<br/>},<br/>{<br/>   &#34;name&#34;:&#34;branch&#34;,<br/>
+    \  &#34;variableValue&#34;:{<br/>      &#34;value&#34;:&#34;master&#34;,<br/>
+    \     &#34;type&#34;:&#34;NAME&#34;<br/>   }<br/>},<br/>{<br/>   &#34;name&#34;:&#34;hotfix&#34;,<br/>
+    \  &#34;variableValue&#34;:{<br/>      &#34;value&#34;:&#34;false&#34;,<br/>      &#34;type&#34;:&#34;NAME&#34;<br/>
+    \  }<br/>         }<br/>      ]<br/>   }<br/>}</pre><p></p><p>Proof that the Workflow
+    variables are passed:</p><p><strong>Branch</strong></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840053356/a-6-b-3-e-9417-e-06389-d-4-b-2-ce-59788863-af-29-b-820542.png\"/></figure><p></p><p><strong>H</strong><strong>ot
+    fix</strong></p><p>Since it was set to false all the stages are deployed.</p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840054460/7-cd-1-f-0-d-70194-f-157-c-58-af-8-cd-405-e-538-fa-16-c-1-d-36-2-690-x-58.png\"/></figure><p><strong>skipCV</strong></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840055864/18088-d-8-fcfe-97-c-7-e-0-e-7-c-6-e-700553-bd-19199847-ab.png\"/></figure><p></p><p>The
+    end result:</p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840056887/6-cb-0-c-466914-bfd-363-e-3410-bbd-4-c-1215-b-0466-ef-79-2-690-x-180.png\"/></figure><h3>Deploy
+    a Workflow with Variables</h3><p>The following sample shows how to deploy a Workflow
+    with variables.</p><h5>Query for the Execution</h5><p></p><pre>mutation ($startExecution:
+    StartExecutionInput!) {<br/>  startExecution(input: $startExecution) {<br/>    clientMutationId<br/>
+    \   execution {<br/>      notes<br/>      status<br/>      startedAt<br/>      id<br/>
+    \     application {<br/>        id<br/>      }<br/>    }<br/>  }<br/>}</pre><h5>Query
+    Variables</h5><p></p><pre>{<br/>   &#34;startExecution&#34;:{<br/>      &#34;applicationId&#34;:&#34;iIfYmHDqTj6Gsygtwt4VRQ&#34;,<br/>
+    \     &#34;notes&#34;:&#34;Demo&#34;,<br/>      &#34;executionType&#34;:&#34;WORKFLOW&#34;,<br/>
+    \     &#34;entityId&#34;:&#34;VzViT24gTluKWNFpdrL95A&#34;,<br/>      &#34;serviceInputs&#34;:{<br/>
+    \        &#34;name&#34;:&#34;guestbook&#34;,<br/>         &#34;artifactValueInput&#34;:{<br/>
+    \           &#34;buildNumber&#34;:{<br/>               &#34;buildNumber&#34;:&#34;v6&#34;,<br/>
+    \              &#34;artifactSourceName&#34;:&#34;guestbook&#34;<br/>            },<br/>
+    \           &#34;valueType&#34;:&#34;BUILD_NUMBER&#34;<br/>         }<br/>      },<br/>
+    \     &#34;variableInputs&#34;:[<br/>         {<br/>            &#34;name&#34;:&#34;Environment&#34;,<br/>
+    \           &#34;variableValue&#34;:{<br/>               &#34;type&#34;:&#34;NAME&#34;,<br/>
+    \              &#34;value&#34;:&#34;dev&#34;<br/>            }<br/>         },<br/>
+    \        {<br/>            &#34;name&#34;:&#34;InfraDefinition_KUBERNETES&#34;,<br/>
+    \           &#34;variableValue&#34;:{<br/>               &#34;type&#34;:&#34;NAME&#34;,<br/>
+    \              &#34;value&#34;:&#34;k8s-dev&#34;<br/>            }<br/>         },<br/>
+    \        {<br/>            &#34;name&#34;:&#34;Service&#34;,<br/>            &#34;variableValue&#34;:{<br/>
+    \              &#34;type&#34;:&#34;NAME&#34;,<br/>               &#34;value&#34;:&#34;guestbook&#34;<br/>
+    \           }<br/>         },<br/>         {<br/>            &#34;name&#34;:&#34;hotfix&#34;,<br/>
+    \           &#34;variableValue&#34;:{<br/>               &#34;type&#34;:&#34;NAME&#34;,<br/>
+    \              &#34;value&#34;:&#34;false&#34;<br/>            },<br/>            &#34;name&#34;:&#34;branch&#34;,<br/>
+    \           &#34;variableValue&#34;:{<br/>               &#34;type&#34;:&#34;NAME&#34;,<br/>
+    \              &#34;value&#34;:&#34;master&#34;<br/>            },<br/>            &#34;name&#34;:&#34;skipCV&#34;,<br/>
+    \           &#34;variableValue&#34;:{<br/>               &#34;type&#34;:&#34;NAME&#34;,<br/>
+    \              &#34;value&#34;:&#34;true&#34;<br/>            }<br/>         }<br/>
+    \     ]<br/>   }<br/>}<br/></pre><p><strong>Proof of Execution</strong></p><p>The
+    value was <strong>master</strong> for <strong>branch</strong>. The <strong>branch</strong>
+    is successfully passed:</p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840058120/b-7-f-1-c-539-c-712171-e-616-f-994-f-36-d-8-a-6-c-840-babc-8-f.png\"/></figure><p>The
+    Prometheus step is skipped due to the set condition. <strong>skipCV</strong> was
+    set to <strong>true</strong>.</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1609822914053/screenshot-2021-01-05-at-10-28-29-am.png\"/></figure><h3>Check
+    the Status of Deployments Via API</h3><p>You can use the following queries to
+    check the deployment status.</p><h4>For Pipeline Execution</h4><pre>query{<br/>
+    \ execution(executionId: &#34;QzhqUddfQiKMxJdEzZC3bg&#34;) {<br/>    id<br/>    ...
+    on PipelineExecution {<br/>      id<br/>      status<br/>    }<br/>  }<br/>}<br/></pre><h4>For
+    Workflow Execution</h4><pre>{<br/>  execution(executionId:&#34;_Mffj1GZQd-VgNN_XWA7NQ&#34;){<br/>
+    \   id<br/>    status<br/>    ... on WorkflowExecution {<br/>      id<br/>      outcomes{<br/>
+    \       nodes{<br/>          execution {<br/>            id<br/>            endedAt<br/>
+    \           startedAt<br/>          }<br/>        }<br/>      }<br/>    }<br/>
+    \ }<br/>}</pre><h3>Scripts for CLI Tools or System to System Interaction</h3><p>Here
+    is a sample script with the <code>startExecution</code> API call:</p><pre>#ARGUMENTS<br/>APPLICATIONID=&#34;&lt;YOUR
+    APPLICATION ID&gt;&#34;<br/>PIPELINEID=&#34;&lt;YOUR PIPELINE ID&gt;&#34;<br/>BUILDNO=&#34;&lt;YOUR
+    BUILD NO&gt;&#34;<br/>SERVICENAME=&#34;&lt;YOUR SERVICE NAME&gt;&#34;<br/>ARTIFACTSOURCENAME=&#34;&lt;YOUR
+    ARTIFACT SOURCE&gt;&#34;<br/># Execute Pipeline<br/>func_execute_pipeline(){<br/>\tcurl
+    --request POST \\<br/>\t  --url &#39;https://app.harness.io/gateway/api/graphql?accountId=&#39;$HARNESS_ACCOUNT_ID&#39;&#39;
+    \\<br/>\t  --header &#39;content-type: application/json&#39; \\<br/>\t  --header
+    &#39;x-api-key:&#39;$HARNESS_KEY&#39; \\<br/>\t  --data &#39;{&#34;query&#34;:&#34;\\nmutation($startExecution:
+    StartExecutionInput!){\\n  startExecution (input:$startExecution){\\n    clientMutationId\\n
+    \   execution {\\n      notes\\n      id\\n      application{\\n        id\\n
+    \     }\\n    }\\n  }\\n}&#34;,&#34;variables&#34;:{&#34;startExecution&#34;:{&#34;applicationId&#34;:&#34;&#39;$APPLICATIONID&#39;&#34;,&#34;notes&#34;:&#34;Demo&#34;,&#34;executionType&#34;:&#34;PIPELINE&#34;,&#34;entityId&#34;:&#34;&#39;$PIPELINEID&#39;&#34;,&#34;serviceInputs&#34;:{&#34;name&#34;:&#34;&#39;$SERVICENAME&#39;&#34;,&#34;artifactValueInput&#34;:{&#34;buildNumber&#34;:{&#34;buildNumber&#34;:&#34;&#39;$BUILDNO&#39;&#34;,&#34;artifactSourceName&#34;:&#34;&#39;$ARTIFACTSOURCENAME&#39;&#34;},&#34;valueType&#34;:&#34;BUILD_NUMBER&#34;}}}}}&#39;<br/>}</pre><p>Here
+    is a sample script for <code>Get Application By Name</code>:</p><pre># Get Application
+    By Name<br/>APPNAME=&#34;&lt;YOUR APP NAME&gt;&#34;<br/>func_getAppByName(){<br/>curl
+    --request POST \\<br/>  --url &#39;https://app.harness.io/gateway/api/graphql?accountId=&#39;$HARNESS_ACCOUNT_ID&#39;&#39;
+    \\<br/>  --header &#39;content-type: application/json&#39; \\<br/>  --header &#39;x-api-key:&#39;$HARNESS_KEY&#39;
+    \\<br/>  --data &#39;{&#34;query&#34;:&#34;query {\\n  applicationByName(name:\\&#34;&#39;$APPNAME&#39;\\&#34;){\\n
+    \   id\\n    name\\n    pipelines(limit:4){\\n      nodes{\\n        id\\n        description\\n
+    \     }\\n    }\\n  }\\n}\\n\\n&#34;}&#39;<br/>}<br/></pre><p></p><p>You can use
+    tools like <a href=\"https://insomnia.rest/download/#mac\">Insomnia</a> or <a
+    href=\"https://www.postman.com/downloads/\">Postman</a> to generate these CURL
+    commands. Here, Insomnia is used.</p><ol><li>Click on the <strong>Arrow</strong>
+    key next to your command and select from the drop-down list.<figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840059132/df-5-c-8-db-0019149-ead-3-c-6-ff-086-c-672-b-05-db-4-c-85-e-4.png\"/></figure></li><li>Click
+    <strong>Copy as Curl</strong> and it&#39;s copied to your clipboard.<figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/articles/ga3ccymwce/1620840060243/777471606465-f-487169-f-8-edaf-5-d-86-b-2-cd-158790-f-2-690-x-311.png\"/></figure></li><li>Paste
+    the command.<br/><br/><pre>curl --request POST \\<br/>  --url &#39;https://app.harness.io/gateway/api/graphql?accountId=&lt;ACOUNTID&gt;
+    \\<br/>  --header &#39;content-type: application/json&#39; \\<br/>  --header &#39;x-api-key:
+    &lt;API_KEY&gt;&#39; \\<br/>  --data &#39;{&#34;query&#34;:&#34;\\nmutation($startExecution:
+    StartExecutionInput!){\\n  startExecution (input:$startExecution){\\n    clientMutationId\\n
+    \   execution {\\n      notes\\n      status\\n      startedAt\\n      id\\n      application{\\n
+    \       id\\n      }\\n    }\\n  }\\n}&#34;,&#34;variables&#34;:{&#34;startExecution&#34;:{&#34;applicationId&#34;:&#34;iIfYmHDqTj6Gsygtwt4VRQ&#34;,&#34;notes&#34;:&#34;Demo&#34;,&#34;executionType&#34;:&#34;WORKFLOW&#34;,&#34;entityId&#34;:&#34;VzViT24gTluKWNFpdrL95A&#34;,&#34;serviceInputs&#34;:{&#34;name&#34;:&#34;guestbook&#34;,&#34;artifactValueInput&#34;:{&#34;buildNumber&#34;:{&#34;buildNumber&#34;:&#34;v6&#34;,&#34;artifactSourceName&#34;:&#34;guestbook&#34;},&#34;valueType&#34;:&#34;BUILD_NUMBER&#34;}},&#34;variableInputs&#34;:[{&#34;name&#34;:&#34;Environment&#34;,&#34;variableValue&#34;:{&#34;type&#34;:&#34;NAME&#34;,&#34;value&#34;:&#34;dev&#34;}},{&#34;name&#34;:&#34;InfraDefinition_KUBERNETES&#34;,&#34;variableValue&#34;:{&#34;type&#34;:&#34;NAME&#34;,&#34;value&#34;:&#34;k8s-dev&#34;}},{&#34;name&#34;:&#34;Service&#34;,&#34;variableValue&#34;:{&#34;type&#34;:&#34;NAME&#34;,&#34;value&#34;:&#34;guestbook&#34;}},{&#34;name&#34;:&#34;skipCV&#34;,&#34;variableValue&#34;:{&#34;type&#34;:&#34;NAME&#34;,&#34;value&#34;:&#34;true&#34;}}]}}}&#39;<br/></pre></li></ol><p></p>"
+  slug: use-harness-start-execution-api
+  tags:
+  - StartExecution API
+  - GraphQL API
+  - Harness
+  is_live: true

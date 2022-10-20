@@ -1,0 +1,159 @@
+type: article
+article_id: g26sp2ay68
+user_id: ""
+category_id: iu2v9nlefv
+author:
+  name: ""
+  profile_image: ""
+title: Add Application Stacks
+slug: catalog
+description: Add an application stack or catalog to define the solution stack to use
+  when deploying your service.
+short_version: Add an application stack or catalog to define the solution stack to
+  use when deploying your service.
+tags:
+- application stack
+- catalog
+- solution stack
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T19:02:09.848359Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Application Stacks
+  description: Add an application stack or catalog to define the solution stack to
+    use when deploying your service.
+  short_version: Add an application stack or catalog to define the solution stack
+    to use when deploying your service.
+  body: |-
+    <p>Use an application stack or catalog as the solution stack when deploying your application, such as Tomcat 7. You can add an application stack in one of the following ways:</p>
+    <ul>
+      <li>Add the application stack when you create your Harness Service from the Harness built-in application stack. Harness includes several common application stacks, such as Tomcat 7.</li>
+      <li>Add your own application stack from the <strong>Setup</strong> option.</li>
+    </ul>
+    <p>In this topic:</p>
+    <ul>
+      <li>
+        <a href="#before_you_begin">Before You Begin</a>
+      </li>
+      <li>
+        <a href="#review_permissions">Review: Permissions</a>
+      </li>
+      <li>
+        <a href="#option_1_add_an_application_stack_when_adding_service">Option 1: Add an Application Stack when Adding Service</a>
+      </li>
+      <li>
+        <a href="#option_2_add_an_application_stack_from_the_setup">Option 2: Add an Application Stack from the Setup</a>
+      </li>
+    </ul>
+    <h3>Before You Begin</h3>
+    <ul>
+      <li>
+        <a href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a>
+      </li>
+      <li>
+        <a href="https://docs.harness.io/article/eb3kfl8uls-service-configuration">Services</a>
+      </li>
+    </ul>
+    <h3>Review: Permissions</h3>
+    <p>In order to manage Application Stacks in Harness, a Harness User must belong to a User Group that has the Account Permission <strong>Manage Application Stacks</strong> enabled.</p>
+    <p>See
+      <a href="/article/ven0bvulsj-users-and-permissions">Managing Users and Groups (RBAC)</a>.</p>
+    <h3>Option 1: Add an Application Stack when Adding Service</h3>
+    <p>Add the application stack when you create your Harness Service.</p>
+    <p></p>
+    <figure>
+      <img src="https://files.helpdocs.io/kw8ldg1itf/articles/g26sp2ay68/1579911948110/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/>
+    </figure>
+    <p>You can choose to include your application stack as part of the artifact you attach to your Harness Service. In this case, when you create a Service, leave the <strong>Application Stack</strong> field empty (do not choose any of the options in that list).</p>
+    <p>The <strong>Application Stack</strong> dialog has the following fields.</p>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <p><strong>Field</strong></p>
+          </td>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><strong>Family</strong></p>
+          </td>
+          <td>
+            <p>Click the name of the application stack family.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><strong>Version</strong></p>
+          </td>
+          <td>
+            <p>Enter the version number, such as Tomcat 6.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><strong>Name</strong></p>
+          </td>
+          <td>
+            <p>Enter a name for the application stack.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><strong>Description</strong></p>
+          </td>
+          <td>
+            <p>Enter a description for the application stack.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><strong>App Stack Archive File</strong></p>
+          </td>
+          <td>
+            <p>Upload the app stack file. For example, here are the Tomcat app stack files for
+              <a href="https://tomcat.apache.org/download-80.cgi">Apache</a>.</p>
+            <p>The file must be in TAR or ZIP format.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><strong>MD5</strong></p>
+          </td>
+          <td>
+            <p>Enter the checksum to ensure transition and storage.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+    <h3>Option 2: Add an Application Stack from the Setup</h3>
+    <p>To add an application stack or catalog, do the following:</p>
+    <ol>
+      <li>Click <strong>Setup</strong>.</li>
+      <li>In <strong>Account</strong>, click <strong>Application Stacks</strong>.</li>
+      <li>Click <strong>Add Application Stack</strong>.</li>
+    </ol>
+    <p>The <strong>Application Stack</strong> dialog appears.</p>
+    <p></p>
+    <figure>
+      <img src="https://files.helpdocs.io/kw8ldg1itf/articles/c0s1dwlqyv/1586107105618/screenshot-2020-04-05-at-10-48-00-pm.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/>
+    </figure>
+    <p>Refer to the table in Option 1 for details on each of the settings.</p>
+  slug: catalog
+  tags:
+  - application stack
+  - catalog
+  - solution stack
+  is_live: true

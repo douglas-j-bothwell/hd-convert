@@ -1,0 +1,57 @@
+type: article
+article_id: 181zspq0b6
+user_id: mfr0nxh4be
+category_id: j1q21aler1
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Build and Deploy Pipeline How-tos
+slug: build-and-deploy-pipelines-overview
+description: Overview of how an Artifact Build and Deploy Pipeline builds and deploys
+  a build to a deployment environment.
+short_version: Overview of how an Artifact Build and Deploy Pipeline builds and deploys
+  a build to a deployment environment.
+tags:
+- Jenkins
+- Artifact
+- Build
+- Deploy Workflow
+- Build and Deploy
+- WAR
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:54.363273Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Build and Deploy Pipeline How-tos
+  description: Overview of how an Artifact Build and Deploy Pipeline builds and deploys
+    a build to a deployment environment.
+  short_version: Overview of how an Artifact Build and Deploy Pipeline builds and
+    deploys a build to a deployment environment.
+  body: <p>The following How-tos guide you through Build and Deploy Pipeline tasks:</p><ul><li><a
+    href="/article/xiys9djs0h-1-harness-accountsetup">Connect to Your Artifact Build
+    and Deploy Pipeline Platforms</a></li><li><a href="/article/xhh8oi4bkh-2-service-and-artifact-source">Add
+    Your Build and Deploy Pipeline Artifacts</a></li><li><a href="/article/obqhjaabnl-3-build-workflow">Create
+    the Build Workflow for Build and Deploy Pipelines</a></li><li><a href="/article/fav3v3jx3d-4-environment">Define
+    Your Build and Deploy Pipeline Target Infrastructure</a></li><li><a href="/article/q6rtl33634-5-deploy-workflow">Create
+    the Deploy Workflow for Build and Deploy Pipelines</a></li><li><a href="/article/slkhuejdkw-6-artifact-build-and-deploy-pipelines">Create
+    the Build and Deploy Pipeline</a></li></ul><p>To see the concept of Harness Build
+    and Deploy Pipeline deployment, see <a href="/article/0tphhkfqx8-artifact-build-and-deploy-pipelines-overview">Artifact
+    Build and Deploy Pipelines Overview</a>.</p>
+  slug: build-and-deploy-pipelines-overview
+  tags:
+  - Jenkins
+  - Artifact
+  - Build
+  - Deploy Workflow
+  - Build and Deploy
+  - WAR
+  is_live: true

@@ -1,0 +1,14 @@
+type: category
+category_id: 9lw749jubn
+parent_category_id: zp7kxav23x
+title: Variables and Expressions
+description: Harness built-in expressions and functions.
+slug: variables
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1537571743867/depricate.png
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Variables and Expressions
+  description: Harness built-in expressions and functions.
+  slug: variables

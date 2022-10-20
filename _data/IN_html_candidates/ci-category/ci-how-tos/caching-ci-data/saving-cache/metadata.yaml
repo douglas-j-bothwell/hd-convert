@@ -1,0 +1,139 @@
+type: article
+article_id: qibyllcmza
+user_id: mfr0nxh4be
+category_id: 01tyeraya4
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Save and Restore Cache from S3
+slug: saving-cache
+description: 'To solve [problem], [general description of How-to solution]. In this
+  topic: Before You Begin. Visual Summary. Step 1: Title. Step 2: Title. Next Steps.
+  Before You Begin. Your target environment must…'
+short_version: 'To solve [problem], [general description of How-to solution]. In this
+  topic: Before You Begin. Visual Summary. Step 1: Title. Step 2: Title. Next Steps.
+  Before You Begin. Your target environment must…'
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-05-25T19:45:13.269264Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Save and Restore Cache from S3
+  description: 'To solve [problem], [general description of How-to solution]. In this
+    topic: Before You Begin. Visual Summary. Step 1: Title. Step 2: Title. Next Steps.
+    Before You Begin. Your target environment must…'
+  short_version: 'To solve [problem], [general description of How-to solution]. In
+    this topic: Before You Begin. Visual Summary. Step 1: Title. Step 2: Title. Next
+    Steps. Before You Begin. Your target environment must…'
+  body: '<p>Caching has two primary benefits:</p><ul><li>It can make your jobs run
+    faster by reusing the expensive fetch operation data from previous jobs. </li><li>It
+    enables you to share data across Stages.</li></ul><p>In a Harness CI Pipeline,
+    you can save the cache to an AWS S3 bucket in one Stage using the <strong>Save
+    Cache to S3</strong> step, and restore it in the same or another Stage using <strong>Restore
+    Cache from S3 step</strong>. </p><p>The topic explains how to configure the <strong>Save
+    Cache to S3</strong> and <strong>Restore Cache from S3</strong> steps in CI using
+    a two-stage Pipeline.</p><div class="note-callout">You cannot share access credentials
+    or other <a href="https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets">Text
+    Secrets</a> across Stages.</div><p></p><h3>Before You Begin</h3><ul><li><a href="https://newdocs.helpdocs.io/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></li><li><a href="https://newdocs.helpdocs.io/article/yn4x8vzw3q-ci-stage-settings">CI
+    Stage Settings</a></li><li><a href="https://newdocs.helpdocs.io/category/rg8mrhqm95-set-up-build-infrastructure">Set
+    Up Build Infrastructure</a></li><li><a href="https://newdocs.helpdocs.io/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li></ul><h3>Limitations</h3><ul><li>You cannot
+    share access credentials or other <a href="https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets">Text
+    Secrets</a> across Stages.</li><li>Use a dedicated bucket for your Harness cache
+    operations. Do not save files to the bucket manually. The Retrieve Cache operation
+    will fail if the bucket includes any files that do not have a Harness cache key.</li></ul><h3>Review:
+    YAML Example</h3><p>If you want to configure your Pipeline in YAML, in <strong>Pipeline
+    Studio,</strong> click <strong>YAML</strong>. </p><p>The following YAML file creates
+    a Pipeline with two Stages: Save Cache and Restore Cache. Copy the following YAML,
+    paste it in the Harness YAML editor, and modify its based on your Pipeline requirements.</p><pre
+    class="hljs yaml">pipeline:<br/>    name: Save and Restore AWS<br/>    identifier:
+    Save_and_Restore_AWS<br/>    projectIdentifier: Example<br/>    orgIdentifier:
+    default<br/>    tags: {}<br/>    stages:<br/>        - stage:<br/>              identifier:
+    s3_save_cache<br/>              name: s3_save_cache<br/>              type: CI<br/>              variables:<br/>                  -
+    name: AWS_ACCESS_KEY<br/>                    type: String<br/>                    value:
+    &lt;+input&gt;<br/>                  - name: AWS_SECRET_KEY<br/>                    type:
+    Secret<br/>                    value: &lt;+input&gt;<br/>              spec:<br/>                  sharedPaths:<br/>                      -
+    /shared<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                identifier: createBucket<br/>                                name:
+    create bucket<br/>                                type: Run<br/>                                spec:<br/>                                    command:
+    |<br/>                                        aws configure set aws_access_key_id
+    $AWS_ACCESS_KEY<br/>                                        aws configure set
+    aws_secret_access_key $AWS_SECRET_KEY<br/>                                        aws
+    configure set default.region us-west-2<br/>                                        aws
+    s3 rb s3://harnesscie-cache-tar --force || true<br/>                                        aws
+    s3 mb s3://harnesscie-cache-tar<br/>                                    envVariables:<br/>                                        HOME:
+    /shared<br/>                                    connectorRef: &lt;+input&gt;<br/>                                    image:
+    amazon/aws-cli:2.0.6<br/>                          - step:<br/>                                identifier:
+    rootFile<br/>                                name: create file at slash<br/>                                type:
+    Run<br/>                                spec:<br/>                                    command:
+    |<br/>                                        echo hello world &gt; /shared/cache<br/>                                    connectorRef:
+    &lt;+input&gt;<br/>                                    image: alpine<br/>                          -
+    step:<br/>                                identifier: saveCacheTar<br/>                                name:
+    save cache<br/>                                type: SaveCacheS3<br/>                                spec:<br/>                                    region:
+    us-west-2<br/>                                    connectorRef: &lt;+input&gt;<br/>                                    bucket:
+    harnesscie-cache-tar<br/>                                    sourcePaths:<br/>                                        -
+    src/main/resources<br/>                                        - /shared/cache<br/>                                    key:
+    cache-tar<br/>                                    archiveFormat: Tar<br/>                  infrastructure:<br/>                      type:
+    KubernetesDirect<br/>                      spec:<br/>                          connectorRef:
+    &lt;+input&gt;<br/>                          namespace: default<br/>                  cloneCodebase:
+    true<br/>        - stage:<br/>              identifier: s3_restore_cache<br/>              name:
+    s3 restore cache<br/>              type: CI<br/>              variables:<br/>                  -
+    name: AWS_ACCESS_KEY<br/>                    type: String<br/>                    value:
+    &lt;+input&gt;<br/>                  - name: AWS_SECRET_KEY<br/>                    type:
+    Secret<br/>                    value: &lt;+input&gt;<br/>              spec:<br/>                  sharedPaths:<br/>                      -
+    /shared<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                identifier: restoreCacheTar<br/>                                name:
+    restore<br/>                                type: RestoreCacheS3<br/>                                spec:<br/>                                    region:
+    us-west-2<br/>                                    connectorRef: &lt;+input&gt;<br/>                                    bucket:
+    harnesscie-cache-tar<br/>                                    key: cache-tar<br/>                                    failIfKeyNotFound:
+    true<br/>                                    archiveFormat: Tar<br/>                  infrastructure:<br/>                      useFromStage:
+    s3_save_cache<br/>                  cloneCodebase: false</pre><p></p><p>If you
+    want to configure your Pipeline in the Harness UI, go to <strong>Pipeline Studio</strong>
+    and click the <strong>VISUAL</strong> tab at the top of the screen.</p><h3>Step
+    1: Open the Build Stage</h3><p>In your Harness Pipeline, open the Stage where
+    you want to save the cache.</p><h3>Step 2: Define the Build Farm Infrastructure</h3><p>In
+    the Infrastructure tab, define the build farm for the codebase.</p><p>The following
+    step uses a Kubernetes cluster build farm.</p><p>See <a href="https://ngdocs.harness.io/article/x7aedul8qs-kubernetes-cluster-build-infrastructure-setup">Define
+    Kubernetes Cluster Build Infrastructure</a>.</p><h3>Step 3: Save Cache to S3</h3><p>In
+    Execution, click <strong>Add Step</strong>, and select <strong>Save Cache to S3</strong>.
+    Here you configure S3 bucket, keys, and source paths to enable Harness to save
+    the cache to S3.</p><p>For step settings, see <a href="https://ngdocs.harness.io/article/qtvjvrp9sn-save-cache-to-s-3-step-settings">Save
+    Cache to S3 Settings.</a></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qibyllcmza/1625206915954/rb-8-xz-xoq-t-9-p-7-ph-9-fnls-w-4-g-pms-urw-v-5-j-ura-ar-ip-t-h-3-f-7-yn-lyoz-yhve-6-o-z-9-sefk-f-2-kul-pen-rki-fmo-hq-8-yj-c-2-le-i-4-yy-a-0-ra-25-hb-qoi-uruc-tyr-domj-gl-moiec-vi-jzpk-y-542-imk-u"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure><p></p><h3>Step
+    4: Restore Cache from S3 Stage</h3><p>In your Pipeline, click <strong>Add Stage</strong>
+    where you want to restore the saved cache from S3. </p><p>In <strong>Execution</strong>,
+    click <strong>Add Step</strong>, and select <strong>Restore Cache from S3</strong>.
+    Here you configure the keys for the S3 bucket where you saved your cache.</p><p>For
+    step settings, see <a href="/article/zlpx6lli6d-restore-cache-from-s-3-step-settings">Restore
+    Cache Step Settings</a>.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qibyllcmza/1636688998165/z-z-463-f-n-851-z-qgiskzdy-eof-xmd-cg-ebx-ny-r-ltcom-nh-1-ymgbs-xu-nfhpd-48-hvb-yj-6-nu-pe-uj-0-iav-g-2-efhx-sxi-ol-pmg-gwzx-ggw-0-m-6-r-29-g-bj-la-ql-ebq-4-w-5-lq-4-obf-6-w-1-tli-q-06-u-dnhhbzw"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>When
+    you are done, click <strong>Apply Changes</strong>.</p><h3>Step 5: Run Pipeline</h3><p>Click
+    <strong>Save</strong> to save the changes, then click <strong>Run Pipeline</strong>. </p><h3>Step
+    6: View the Results</h3><p>You can see the logs for the Pipeline as it runs.</p><h4>Save
+    Cache Stage Output</h4><p>In the Save Cache stage, you can see the logs for Save
+    Cache to S3 step in the Pipeline as it runs.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qibyllcmza/1636688942744/5-q-su-6-x-4-lor-32-aq-vhehh-7-hv-fl-q-0-ib-wmj-x-7-wt-6-hid-9-b-rpf-sjaqi-8-z-5-o-rw-o-af-2-d-byln-o-3-t-dfcsa-e-34-rn-xw-jggn-i-e-ci-8-g-8-n-bs-htvk-vgpvnt-go-epn-wf-d-9-zoqa-jlqul-o-0-ys-54"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><pre>level=info
+    name=drone-cache ts=2021-11-11T07:08:02.169728067Z caller=rebuilder.go:93 component=plugin
+    component=rebuilder msg=&#34;cache built&#34; took=217.977195ms</pre><p></p><h4>Restore
+    Cache Stage Output</h4><p>In the Restore Cache stage, you can see the logs for
+    Restore Saved Cache from the S3 step in the Pipeline as it runs.</p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/qibyllcmza/1636688932988/r-pelu-1-vp-uyknq-citu-4-m-ox-0-w-orpby-1-n-ra-eo-aiwp-ev-hh-fiyvz-dyzjjba-1-j-uc-h-9-qhop-sheyuhvsvn-swf-ilqtt-yn-v-22-kw-k-9-qa-3-o-gvew-5-ffg-3-n-9-jmfi-1-jjrzg-7-fy-xyk-ddkas-aqw-ry"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><pre>level=info
+    name=drone-cache ts=2021-11-11T07:08:15.915788644Z caller=restorer.go:94 component=plugin
+    component=restorer msg=&#34;cache restored&#34; took=439.384074ms</pre><h3>See
+    Also</h3><ul><li><a href="/article/v0agy0hlyj-save-cache-in-gcs">Save and Restore
+    Cache from GCS</a></li></ul><p></p>'
+  slug: saving-cache
+  tags: []
+  is_live: true

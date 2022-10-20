@@ -1,0 +1,112 @@
+type: article
+article_id: brwfq82umt
+user_id: mfr0nxh4be
+category_id: vbcmo6ltg7
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Azure Kubernetes Service (AKS) Deployments Overview
+slug: azure-kubernetes-service-aks-deployments-overview
+description: A summary of Harness AKS implementation.
+short_version: A summary of Harness AKS implementation.
+tags:
+- AKS
+- Azure kubernetes
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-18T21:51:10.042787Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Azure Kubernetes Service (AKS) Deployments Overview
+  description: A summary of Harness AKS implementation.
+  short_version: A summary of Harness AKS implementation.
+  body: '<p></p><div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/m7nkbph0ac">NextGen</a>.</div><p>This topic describes
+    the concept of a Harness Azure Kubernetes Service (AKS) deployment by describing
+    the high-level steps involved.</p><div class="note-callout">For a vendor-agnostic,
+    Harness Kubernetes deployment, see our <a href="/article/wnr5n847b1-kubernetes-overview">Kubernetes
+    Deployments Overview</a> doc.</div><p>For a quick tutorial, see the <a href="/article/7in9z2boh6-kubernetes-quickstart">Kubernetes
+    Quickstart</a>.</p><p>For detailed instructions on using AKS in Harness, see the
+    <a href="/category/gk062j3isk-azure-deployments">Azure How-tos</a>.</p><div class="note-callout">This
+    guide covers new the <strong>Version 2</strong> features of Harness&#39; Kubernetes
+    implementation for AKS. For Version 1 Kubernetes see <a href="/article/dtu3ud1ok7-kubernetes-and-harness-faq">Harness
+    Kubernetes v1 FAQ</a>. For Helm deployment features, see <a href="/article/2aaevhygep-helm-quickstart">Helm
+    Quickstart</a>.</div><h3>Before You Begin</h3><p>Before learning about Harness
+    Azure Kubernetes Service (AKS) deployments, you should have an understanding of
+    <a href="/article/4o7oqwih6h-harness-key-concepts">Harness Key Concepts</a>.</p><h3
+    id="what_does_harness_need_before_you_start">What Does Harness Need Before You
+    Start?</h3><p>A Harness AKS deployment requires the following:</p><ol><li>Artifact:
+    For example, a Docker image on Azure ACR.</li><li>Kubernetes cluster: You will
+    need a target cluster for the Harness Delegate, your application, and your Kubernetes
+    workloads. A Kubernetes Delegate requires at least 8GB RAM, and so your cluster
+    should have enough RAM to host the Delegate and your applications and workloads.</li></ol><h3
+    id="what_does_harness_deploy">What Does Harness Deploy?</h3><p>Harness takes the
+    artifacts and Kubernetes manifests you provide and deploys them to the target
+    AKS cluster. You can simply deploy Kubernetes objects via manifests and you can
+    provide manifests using remote sources and Helm charts.</p><table><tbody><tr><td><p>Azure
+    deployment in Harness Manager</p></td><td><p>The same deployment in Kubernetes
+    Dashboard</p></td></tr><tr><td><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/kiuft72fr5/1578087921012/image.png"/></figure></td><td><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/v13edrsui8/1551917982807/image.png"/></figure></td></tr></tbody></table><p></p><p>See
+    <a href="/article/6ujb3c70fh">What Can I Deploy in Kubernetes?</a>.</p><p></p><h3>What
+    Does a Harness AKS Deployment Involve?</h3><p>The following list describes the
+    major steps of a Harness AKS deployment:</p><p></p><table><tbody><tr><td><p><strong>Step</strong></p></td><td><p><strong>Name</strong></p></td><td><p><strong>Description
+    and Links</strong></p></td></tr><tr><td><p>1</p></td><td><p>Install the Harness
+    Kubernetes <strong>Delegate</strong> in your AKS cluster. </p></td><td><p>Typically,
+    the Kubernetes Delegate is installed in the target AKS cluster where you will
+    deploy your application(s).</p></td></tr><tr><td><p>2</p></td><td><p>Add a Harness <strong>Artifact
+    Server</strong> or Harness <strong>Azure Cloud Provider</strong>.</p></td><td><p>The
+    Harness <strong>Artifact Server</strong> is for artifact servers such as a Docker
+    Registry Artifact Server. Harness connects to the Docker registry where your Docker
+    images are located, or the public Docker Hub.</p><p>If you want to obtain your
+    artifacts from an ACR container, use an <strong>Azure Cloud Provider</strong>.</p></td></tr><tr><td><p>3</p></td><td><p>Add
+    a <strong>Kubernetes Cluster</strong> <strong>Cloud Provider</strong>.</p></td><td><p>A Cloud
+    Provider is a connection to your Kubernetes cluster.</p><p>You can add a Kubernetes
+    Cluster Cloud Provider (recommended) or a Cloud Provider for the cloud platform
+    where the cluster is hosted, such as an Azure Cloud Provider. A Kubernetes Cluster
+    Cloud Provider will connect to any cluster on any platform.</p><p>In you use a
+    Kubernetes Cluster Cloud Provider, you can use the Delegate installed in your
+    cluster for authentication.</p></td></tr><tr><td><p>4</p></td><td><p>Create the
+    Harness <strong>Application</strong> for your AKS CD Pipeline.</p></td><td><p>The
+    Harness Application represents a group of microservices/containers, their deployment
+    pipelines, and all the building blocks for those pipelines. Harness represents
+    your release process using a logical group of one or more entities: Services,
+    Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners.
+    Applications organize all of the entities and configurations in Harness CD.</p></td></tr><tr><td><p>5</p></td><td><p>Create
+    the Harness <strong>Service</strong> using the <strong>Kubernetes</strong> Deployment
+    Type.</p></td><td><p>Add your Kubernetes manifests and any config variables and
+    files.</p><p>You can use remote manifests stored in a source repo or Helm charts
+    in a Helm repo.</p></td></tr><tr><td><p>6</p></td><td><p>Create the Harness <strong>Environment</strong> and
+    Infrastructure Definition for your target AKS cluster, and any overrides.</p></td><td><p>Using
+    the Harness Cloud Provider you set up, you can select the target AKS cluster and
+    namespace for your deployment.</p><p>You can also override any Service settings,
+    such as manifest values. This enables you to use a single Service with multiple
+    Harness Environments.</p></td></tr><tr><td><p>7</p></td><td><p>Create the Canary,
+    Blue/Green, or Rollout deployment Harness <strong>Workflow</strong>.</p></td><td><p>The
+    Workflow deploys the artifact(s) and Kubernetes workloads defined in the Harness
+    Service to the cluster and namespace in the Harness Infrastructure Definition.</p><p>See
+    <a href="/article/x87732ti68-4-azure-workflows-and-deployments">Azure Workflows
+    and Deployments</a>.</p><p>For additional Workflows, see the vendor-agnostic steps
+    in the following:</p><ul><li><a href="/article/2xp0oyubjj-create-a-kubernetes-canary-deployment">Create
+    a Kubernetes Canary Deployment</a></li><li><a href="/article/ukftzrngr1-create-a-kubernetes-blue-green-deployment">Create
+    a Kubernetes Blue/Green Deployment</a></li><li><a href="/article/dl0l34ge8l-create-a-kubernetes-rolling-deployment">Create
+    a Kubernetes Rolling Deployment</a></li></ul></td></tr><tr><td><p>8</p></td><td><p>Deploy
+    the Workflow.</p></td><td><p>Once you&#39;ve deployed a Workflow, learn how to
+    improve your AKS CD:</p><ul><li><a href="/article/m220i1tnia-workflow-configuration">Workflows</a></li><li><a
+    href="/article/xerirloz9a-add-a-trigger-2">Triggers</a></li><li><a href="/article/o22jx8amxb-add-an-infra-provisioner">Infrastructure
+    Provisioners Overview</a></li></ul></td></tr></tbody></table><h3>Next Steps</h3><p>Read
+    the following topics to build on what you&#39;ve learned:</p><ul><li><a href="/category/gk062j3isk-azure-deployments">Azure
+    (AKS) How-tos</a></li><li><a href="/article/7in9z2boh6-kubernetes-quickstart">Kubernetes
+    Quickstart</a></li></ul><p></p>'
+  slug: azure-kubernetes-service-aks-deployments-overview
+  tags:
+  - AKS
+  - Azure kubernetes
+  is_live: true

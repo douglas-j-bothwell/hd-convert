@@ -1,0 +1,96 @@
+type: article
+article_id: nh868x8jim
+user_id: wz6xkfcc9i
+category_id: ep5nt3dyrb
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Connect to Datadog as a Custom APM
+slug: connect-to-datadog-as-a-custom-apm
+description: Currently, Datadog-Harness integration is for Kubernetes deployments
+  only. To use Datadog with other deployment types, such as ECS, use the following
+  example of how to use the Custom Metrics Provider…
+short_version: Currently, Datadog-Harness integration is for Kubernetes deployments
+  only. To use Datadog with other deployment types, such as ECS, use the following
+  example of how to use the Custom Metrics Provider…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:20.025228Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Connect to Datadog as a Custom APM
+  description: ""
+  short_version: ""
+  body: '<p></p><p>Currently, Datadog-Harness integration is for Kubernetes deployments
+    only. To use Datadog with other deployment types, such as ECS, use the following
+    example of how to use the Custom Metrics Provider with Datadog.</p><p>In this
+    topic:</p><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a
+    href="#step_1_add_datadog_as_a_custom_verification_provider">Step 1: Add Datadog
+    as a Custom Verification Provider</a></li><li><a href="#step_2_display_name">Step
+    2: Display Name</a></li><li><a href="#step_3_base_url">Step 3: Base URL</a></li><li><a
+    href="#step_4_parameters">Step 4: Parameters</a></li><li><a href="#step_5_validation_path">Step
+    5: Validation Path</a></li><li><a href="#see_also">See Also</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li>See <a href="/article/e87u8c63z4-custom-verification-overview">Custom
+    Verification Overview</a>.</li></ul><p></p><h3>Step 1: Add Datadog as a Custom
+    Verification Provider</h3><p>To add a Custom Metrics Provider using Datadog, do
+    the following:</p><ol><li>In Harness Manager, click <strong>Setup</strong> &gt; <strong>Connectors</strong>
+    &gt; <strong>Verification Providers</strong>.</li><li>Click <strong>Add Verification
+    Provider</strong>, and click <strong>Custom Verification</strong>. The <strong>Metrics
+    Data Provider</strong> dialog appears.</li><li>In <strong>Type</strong>, select <strong>Metrics
+    Data Provider</strong>.</li></ol><h3>Step 2: Display Name</h3><p>In <strong>Display
+    Name</strong>, give the Verification Provider a name. You will use this name to
+    select this provider in a Workflow.</p><h3>Step 3: Base URL</h3><p>In <strong>Base
+    URL</strong>, enter <code>https://app.datadoghq.com/api/v1/</code>.</p><h3>Step
+    4: Parameters</h3><p>In <strong>Parameters</strong>, click <strong>Add Parameters</strong>,
+    and add the following parameters.</p><table><tbody><tr><td><p><strong>Key</strong></p></td><td><p><strong>Value</strong></p></td><td><p><strong>Encrypted
+    Value</strong></p></td></tr><tr><td><p>api_key</p></td><td><p>Enter the API key.</p></td><td><p>Checked</p></td></tr><tr><td><p>application_key</p></td><td><p>Enter
+    the application key.</p></td><td><p>Checked</p></td></tr></tbody></table><p>If
+    you need help obtaining the API and Application keys, see the following:</p><h4>API
+    Key</h4><p>To create an API key in Datadog, do the following:</p><ol><li>In <strong>Datadog</strong>,
+    mouseover <strong>Integrations</strong>, and then click <strong>APIs</strong>.<div
+    class="hd--html"><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948073865/image.png"></a><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948073865/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948073865/image.png"
+    data-hd-height="50%" data-hd-width="50%" style="box-sizing: inherit; border: 1px
+    solid grey; vertical-align: middle; margin: 5px; padding: 5px !important; max-width:
+    50%; height: auto !important; max-height: 50%;"/></a></figure></div>The <strong>APIs</strong> page
+    appears.<div class="hd--html"><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948132206/image.png"></a><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948132206/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948132206/image.png"
+    data-hd-height="50%" data-hd-width="50%" style="box-sizing: inherit; border: 1px
+    solid grey; vertical-align: middle; margin: 5px; padding: 5px !important; max-width:
+    50%; height: auto !important; max-height: 50%;"/></a></figure></div></li><li>In <strong>API
+    Keys</strong>, in <strong>New API key</strong>, enter the name for the new API
+    key, such as <strong>Harness</strong>, and then click <strong>Create API key</strong>.</li><li>Copy
+    the API key and, in <strong>Harness</strong>, paste it into the <strong>Value</strong> field.</li></ol><h4>Application
+    Key</h4><p>To create an application key in Datadog, do the following:</p><ol><li>In <strong>Datadog</strong>,
+    mouseover <strong>Integrations</strong>, and then click <strong>APIs</strong>.
+    The <strong>APIs</strong> page appears.<div class="hd--html"><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948211513/image.png"></a><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948211513/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/rougsx3tir/1536948211513/image.png"
+    data-hd-height="50%" data-hd-width="50%" style="box-sizing: inherit; border: 1px
+    solid grey; vertical-align: middle; margin: 5px; padding: 5px !important; max-width:
+    50%; height: auto !important; max-height: 50%;"/></a></figure></div></li><li>In <strong>Application
+    Keys</strong>, in <strong>New application key</strong>, enter a name for the application
+    key, such as <strong>Harness</strong>, and click <strong>Create Application Key</strong>.</li><li>Copy
+    the API key and, in <strong>Harness</strong>, paste it into the <strong>Value</strong> field.</li></ol><h3>Step
+    5: Validation Path</h3><p>In <strong>Validation Path</strong>, enter <code>metrics?from=1527102292</code>.
+    This is the epoch seconds value used to ensure an HTTP 200 response with the credentials
+    validated.</p><p>When you are finished, the dialog will look something like this:</p><figure><a
+    href="https://files.helpdocs.io/kw8ldg1itf/articles/qxo546rm6h/1556137336699/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/qxo546rm6h/1556137336699/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></a></figure><p>Click
+    <strong>Submit</strong>.</p><h3>See Also</h3><ul><li><a href="/article/h2crh8rvbr-verify-deployments-with-datadog-as-a-custom-apm">Verify
+    Deployments with Datadog as a Custom APM</a>.</li></ul><p></p>'
+  slug: connect-to-datadog-as-a-custom-apm
+  tags: []
+  is_live: true

@@ -1,0 +1,58 @@
+type: article
+article_id: 6ujb3c70fh
+user_id: mfr0nxh4be
+category_id: yp3yaavhla
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: What Can I Deploy in Kubernetes?
+slug: what-can-i-deploy-in-kubernetes
+description: In Harness, a managed Kubernetes workload is a Deployment, StatefulSet,
+  or DaemonSet object deployed and managed to steady state. Harness Canary and Blue/Green
+  Workflow default steps support a single…
+short_version: In Harness, a managed Kubernetes workload is a Deployment, StatefulSet,
+  or DaemonSet object deployed and managed to steady state. Harness Canary and Blue/Green
+  Workflow default steps support a single…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2021-09-24T18:43:57.711554Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: What Can I Deploy in Kubernetes?
+  description: ""
+  short_version: ""
+  body: '<p>In Harness, a <strong>managed</strong> Kubernetes workload is a Deployment,
+    StatefulSet, or DaemonSet object deployed and managed to steady state.</p><p>Harness
+    Canary and Blue/Green Workflow default steps support a single <strong>Deployment</strong>
+    <u>or</u> <strong>StatefulSet</strong> workload as a managed entity.</p><p>Rolling
+    Workflow default steps support Deployment, StatefulSet, or DaemonSet as <strong>managed</strong>
+    workloads, but not Jobs.</p><p>You can deploy any Kubernetes workload in any Workflow
+    type by using a Harness <a href="/article/ttn8acijrz-versioning-and-annotations#annotations">annotation</a> to
+    make it unmanaged (<code>harness.io/direct-apply</code>).</p><p>The <a href="/article/4vjgmjcj6z-deploy-manifests-separately-using-apply-step">Apply
+    Step</a> can deploy any workloads or objects in any Workflow type as a managed
+    workload, including <a href="/article/qpv2jfdjgm-run-kubernetes-jobs">Jobs</a>.
+    Workloads deployed with the Apply step are not rollback on failure.</p><p><strong>OpenShift:</strong>
+    Harness supports OpenShift <a href="https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html"
+    target="_blank">DeploymentConfig</a> in OpenShift clusters as a managed workload
+    across Canary, Blue Green, and Rolling deployment strategies. Please use <code>apiVersion:
+    apps.openshift.io/v1</code> and not <code>apiVersion: v1</code>.</p><p>See <a
+    href="/article/p756zrn9vc">Using OpenShift with Harness Kubernetes</a>.</p><h3>Rolling
+    vs Apply</h3><p>The following table lists the differences between the Rollout
+    Deployment step (default in a Rolling Workflow type) and the Apply step (which
+    may be used in any Workflow type).</p><table><tbody><tr><td><p></p></td><td><p><strong>Jobs</strong></p></td><td><p><strong>Rollback</strong></p></td><td><p><strong>Track
+    to Steady State</strong></p></td></tr><tr><td><p><strong>Rollout Deployment step</strong></p></td><td><p>No</p></td><td><p>Yes</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>Apply
+    step</strong></p></td><td><p>Yes</p></td><td><p>No</p></td><td><p>Yes, by default.
+    </p><p>You can the skip steady state check using the <strong>Skip Steady State
+    Check</strong> option. </p></td></tr></tbody></table><p></p><p></p>'
+  slug: what-can-i-deploy-in-kubernetes
+  tags: []
+  is_live: true

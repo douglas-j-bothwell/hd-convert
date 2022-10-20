@@ -1,0 +1,115 @@
+type: article
+article_id: fkvso46bok
+user_id: mfr0nxh4be
+category_id: 2d7y1cr09y
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Using Manual Harness Approval Stages
+slug: adding-harness-approval-stages
+description: Approve or reject a Pipeline at any point in its execution using Manual
+  Approval Stages. During deployment, the User Group members use the Harness Manager
+  to approve or reject the Pipeline deployment manually.
+short_version: Approve or reject a Pipeline at any point in its execution using Manual
+  Approval Stages.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-13T21:16:22.150372Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Using Manual Harness Approval Stages
+  description: Approve or reject a Pipeline at any point in its execution using Manual
+    Approval Stages. During deployment, the User Group members use the Harness Manager
+    to approve or reject the Pipeline deployment manually.
+  short_version: Approve or reject a Pipeline at any point in its execution using
+    Manual Approval Stages.
+  body: '<p>You can specify Harness User Group(s) to approve or reject a Pipeline
+    at any point in its execution. During deployment, the User Group members use the
+    Harness Manager to approve or reject the Pipeline deployment manually.</p><p>Approvals
+    are added in between Stages to prevent the Pipeline execution from proceeding
+    without an approval.</p><p>For example, in a <a href="/article/x0d77ktjw8-ci-pipeline-quickstart">Build
+    Pipeline</a>, you might want to add an approval stage between a Build Stage and
+    an Integration Test Stage.</p><p>Other approval methods are:</p><ul><li><a href="/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages">Manual
+    Harness Approval Steps in CD Stages</a>: add Approval steps to a stage for manual
+    intervention.</li><li><a href="/article/2lhfk506r8-adding-jira-approval-stages">Adding
+    Jira Approval Stages and Steps</a>: add Jira Approval stages and steps.</li></ul><h3>Before
+    You Begin</h3><ul><li><a href="/article/2chyf1acil-add-a-stage">Add a Stage</a></li></ul><h3>Visual
+    Summary</h3><p>Here&#39;s a Manual Approval Stage step during the execution of
+    a Pipeline:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/43pzzhrcbv/1621893748315/image.png"/></figure><p>An
+    approver can approve/reject the stage, stopping the Pipeline. The approver can
+    also add comments and define variables for use by subsequent approvers and steps.</p><p>Here&#39;s
+    a quick video that walks you through setting up and running the step:</p><p></p><div
+    class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/4K0yeCye04o/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/4K0yeCye04o?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p>Here&#39;s
+    what a Manual Approval Stage and step looks like in YAML:</p><details><summary>YAML
+    Example</summary><div><pre>- stage:<br/>      name: Manual Stage<br/>      identifier:
+    Manual_Stage<br/>      description: &#34;&#34;<br/>      type: Approval<br/>      spec:<br/>          execution:<br/>              steps:<br/>                  -
+    step:<br/>                        name: Approval<br/>                        identifier:
+    approval<br/>                        type: HarnessApproval<br/>                        timeout:
+    1d<br/>                        spec:<br/>                            approvalMessage:
+    |-<br/>                                Please review the following information<br/>                                and
+    approve the pipeline progression<br/>                            includePipelineExecutionHistory:
+    true<br/>                            approvers:<br/>                                minimumCount:
+    1<br/>                                disallowPipelineExecutor: false<br/>                                userGroups:<br/>                                    -
+    docs<br/>                            approverInputs:<br/>                                -
+    name: myvar<br/>                                  defaultValue: myvalue<br/>      failureStrategies:
+    []</pre></div></details><h3>Step 1: Add Approval Stage</h3><p>In a CD Pipeline,
+    click <strong>Add Stage</strong>.</p><p>Click <strong>Approval</strong>.</p><p>Enter
+    a name and then click <strong>Harness Approval</strong>. The <strong>Harness Approval</strong>
+    stage appears, containing a new <strong>Approval</strong> step.</p><p>Click the
+    <strong>Approval</strong> step.</p><h3>Step 2: Set Timeout</h3><p>Set a default
+    for the step timeout. Leave enough time for the Users in <strong>Approvers</strong>
+    to see and respond to the waiting step.</p><p>The default timeout for an Approval
+    step is <strong>1d</strong> (24 hours). You can use <code><strong>w</strong></code>  for
+    week, <code><strong>d</strong></code>  for day, <code><strong>h</strong></code>  for
+    hour, <code><strong>m</strong></code>  for minutes, <code><strong>s</strong></code>  for
+    seconds and <code><strong>ms</strong></code> for milliseconds. For example, 1d
+    for one day.</p><div class="note-callout">The maximum timeout duration is 24 days.</div><p>The
+    timeout countdown appears when the step in executed.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/43pzzhrcbv/1621637126501/image.png"/></figure><p></p><h3>Option:
+    Add Message</h3><p>In <strong>Approval Message</strong>, add the message for the
+    Users in <strong>Approvers</strong>.</p><h3>Option: Include Pipeline Execution
+    History in Approval Details</h3><p>Enable this option to provide approvers with
+    the execution history for this Pipeline. This can help approvers make their decision.</p><h3>Step
+    3: Select Approvers</h3><p>In <strong>Approvers</strong>, in <strong>User Groups</strong>,
+    select the Harness User Groups across Project/Org/Account scope, that will approve
+    the step.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/fkvso46bok/1629390556717/screenshot-2021-08-19-at-9-58-36-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>Number of approvers</strong>, enter how many of the Users in the User
+    Groups must approve the step.</p><h3>Option: Prevent Approval by Pipeline Executor</h3><p>If
+    you don&#39;t want the User that initiated the Pipeline execution to approve this
+    step, select the <strong>Disallow the executor from approving the pipeline</strong>
+    option.</p><h3>Option: Approver Inputs</h3><p>You can enter variables and when
+    the approver views the step they can provide new values for the variables.</p><p>If
+    there are multiple approvers, the first approver sees the variables as you entered
+    them in the step. If the first approver enters new values, the next approver sees
+    the values the first approver entered.</p><p>A third approver will see all of
+    the variables the first and second approver provided.</p><p>The variable values
+    entered by the final approver populate the expressions created from the inputs.</p><p>For
+    example, if there were three approvers and you added a Shell Script step that
+    referenced the input variables with an expression, the expression would render
+    the variable values entered by the final, third approver.</p><p>You can reference
+    input variables using the <code>approverInputs</code> expression:</p><p><code>&lt;+pipeline.stages.[stage_name].spec.execution.steps.[step_name].output.approverInputs.[variable_name]&gt;</code></p><p>These
+    variables can serve as inputs to later stages of the same Pipeline, where they
+    support conditional execution or user overrides. </p><p>For example, in a subsequent
+    step&#39;s <strong>Conditional Execution</strong> settings, you could use an expression
+    that only runs the step if the expression evaluates to 1.</p><p><code>&lt;+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo&gt;
+    == 1</code></p><h3>Option: Advanced Settings</h3><p>See:</p><ul><li><a href="/article/i36ibenkq2-step-skip-condition-settings">Step
+    Skip Condition Settings</a></li><li><a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    Failure Strategy Settings</a></li><li><a href="/article/nnuf8yv13o-select-delegates-with-selectors">Select
+    Delegates with Selectors</a></li></ul><h3>See Also</h3><ul><li><a href="/article/43pzzhrcbv-using-harness-approval-steps-in-cd-stages">Using
+    Manual Harness Approval Steps in CD Stages</a></li><li><a href="/article/urdkli9e74-update-jira-issues-in-cd-stages">Update
+    Jira Issues in CD Stages</a></li></ul><p></p>'
+  slug: adding-harness-approval-stages
+  tags: []
+  is_live: true

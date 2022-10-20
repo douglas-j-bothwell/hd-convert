@@ -1,0 +1,632 @@
+type: article
+article_id: 1e536z41av
+user_id: mfr0nxh4be
+category_id: kx4hs8bn38
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Supported platforms and technologies
+slug: supported-platforms-and-technologies
+description: This topic lists Harness support for platforms, methodologies, and related
+  technologies.
+short_version: This topic lists Harness support for platforms, methodologies, and
+  related technologies.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-09T11:12:51.446352Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Supported platforms and technologies
+  description: This topic lists Harness support for platforms, methodologies, and
+    related technologies.
+  short_version: This topic lists Harness support for platforms, methodologies, and
+    related technologies.
+  body: |-
+    <p>This topic lists Harness support for platforms, methodologies, and related technologies for NextGen modules.</p><h3>Continuous Delivery (CD)</h3><p>The following table lists Harness support for deployment platforms, artifacts, strategies, and related technologies.</p><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> Deployment Type/Platform</th>
+          <th> Artifact Servers and Repos</th>
+          <th> Infrastructure</th>
+          <th> Strategies</th>
+          <th> Verification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p> <a href="/category/qfj6m1k2c4-cd-kubernetes-category">Kubernetes</a></p>
+          </td>
+          <td>
+            <ul>
+              <li>Docker Hub</li>
+              <li>ECR</li>
+              <li>GCR</li>
+              <li>ACR</li>
+              <li>Nexus 3 (Docker Repo)</li>
+              <li>Artifactory (Docker Repo)</li>
+              <li>Custom Repository</li>
+            </ul>
+            <p> <strong>Manifest Resources:</strong></p>
+            <ul>
+              <li>Kustomize</li>
+              <li>Helm (see Helm support below)</li>
+              <li>OpenShift Template</li>
+            </ul>
+          </td>
+          <td>
+            <p> <strong>Static Infrastructure:</strong></p>
+            <ul>
+              <li>GKE</li>
+              <li>AKS</li>
+              <li>Other Kubernetes Compliant Clusters</li>
+              <li>EKS</li>
+              <li>OpenShift version 3.11, 4.x</li>
+              <li>Minikube</li>
+              <li>Kubernetes Operations (kops)</li>
+            </ul>
+            <p> <strong>Dynamic Infrastructure:</strong></p>
+            <ul>
+              <li>GKE using Terraform</li>
+              <li>AWS EKS using CloudFormation</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>Rolling</li>
+              <li>Canary</li>
+              <li>Blue/Green</li>
+            </ul>
+            <p>See <a href="#notes">Note on Kubernetes</a> for more deatils.</p>
+          </td>
+          <td>
+            <p> <strong>Rolling:</strong></p>
+            <ul>
+              <li>Previous Analysis - Synthetic Load</li>
+            </ul>
+            <p> <strong>Canary:</strong></p>
+            <ul>
+              <li>Canary Analysis - Realtime Load</li>
+            </ul>
+            <p> <strong>Blue/Green:</strong></p>
+            <ul>
+              <li>Previous Analysis - Synthetic Load</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><a href="/article/cifa2yb19a">Helm v3.0</a></p>
+          </td>
+          <td>
+            <p> <strong>Docker Image Repo:</strong></p>
+            <ul>
+              <li>Docker Hub</li>
+              <li>ECR</li>
+              <li>GCR</li>
+              <li>ACR</li>
+              <li>Nexus 3 (Docker Repo)</li>
+              <li>Artifactory (Docker Repo)</li>
+              <li>Custom Repository</li>
+            </ul>
+            <p> <strong>Helm Chart Package Repo:</strong></p>
+            <ul>
+              <li>Artifactory (as a Helm HTTP Server)</li>
+              <li>Nexus (as a Helm HTTP Server)</li>
+              <li>OCI (as a Helm HTTP Server)</li>
+              <li>AWS S3</li>
+              <li>GCS</li>
+              <li>HTTP Server</li>
+            </ul>
+            <p> <strong>Helm Source Repo:</strong></p>
+            <ul>
+              <li>Github</li>
+              <li>GitLab</li>
+              <li>Bitbucket</li>
+              <li> <span style="color:#f44e3b" data-hd-color="#f44e3b">Code Commit (Not Certified)</span></li>
+              <li> <span style="color:#f44e3b" data-hd-color="#f44e3b">Google Cloud Source Repository (Not Certified)</span></li>
+            </ul>
+          </td>
+          <td>
+            <p> <strong>Static Infrastructure:</strong></p>
+            <ul>
+              <li>GKE</li>
+              <li>AKS</li>
+              <li>Other Kubernetes Compliant Clusters</li>
+              <li>EKS</li>
+              <li>OpenShift v4.x</li>
+              <li>Minikube</li>
+              <li>Kubernetes Operations (kops)</li>
+            </ul>
+            <p> <strong>Dynamic Infrastructure:</strong></p>
+            <ul>
+              <li>GKE using Terraform</li>
+              <li>AWS EKS using CloudFormation</li>
+            </ul>
+          </td>
+          <td>
+            <p> <strong>Using Harness Kubernetes:</strong></p>
+            <ul>
+              <li>Rolling</li>
+              <li>Canary</li>
+              <li>Blue/Green</li>
+            </ul>
+            <p> <strong>Using native Helm Command:</strong></p>
+            <ul>
+              <li>Basic along with steady state check</li>
+            </ul>
+          </td>
+          <td>
+            <p> Previous Analysis - Synthetic Load</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><a href="/article/5fnx4hgwsa">Serverless Lambda</a></p>
+          </td>
+          <td>
+            <p>Artifactory (ZIP files)</p>
+            <p>AWS ECR (Docker images)</p>
+          </td>
+          <td>
+            <p>AWS Lambda</p>
+          </td>
+          <td>
+            <p>Rolling</p>
+          </td>
+          <td>
+            <p> Previous Analysis - Synthetic Load</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p> <a href="/article/muegjde97q">Azure Web App</a></p>
+          </td>
+          <td>
+            <p> <strong>Container and non-container:</strong></p>
+            <ul>
+              <li>Docker Registry</li>
+              <li>Artifactory</li>
+              <li>Azure Container Registry</li>
+              <li>Nexus</li>
+              <li>GCR</li>
+              <li>AWS ECR</li>
+            </ul>
+          </td>
+          <td>
+            <p> <strong>Static Infrastructure:</strong><br/>Azure App Services</p>
+          </td>
+          <td>
+            <ul>
+              <li>Canary</li>
+              <li>Blue/Green</li>
+              <li>Basic</li>
+            </ul>
+          </td>
+          <td>
+            <p> <strong>Basic:</strong></p>
+            <ul>
+              <li>Previous Analysis - Synthetic Load</li>
+            </ul>
+            <p> <strong>Canary:</strong></p>
+            <ul>
+              <li>Canary Analysis - Realtime Load</li>
+            </ul>
+            <p> <strong>Blue/Green:</strong></p>
+            <ul>
+              <li>Previous Analysis - Synthetic Load</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table></div><h4 id="deployment_notes">Deployment notes</h4><p>The following notes clarify support of some platform features.</p><h5 id="notes">Kubernetes</h5><p>See <a href="/article/efnlvytc6l-what-can-i-deploy-in-kubernetes">What Can I Deploy in Kubernetes?</a>.</p><h5>Kubernetes version support</h5><p>The following versions are tested and supported for Kubernetes Canary, Rolling, and Blue/Green deployments:</p><ul><li>1.13.0</li><li>1.14.0</li><li>1.15.0</li><li>1.16.0</li><li>1.17.0</li><li>1.18.0</li><li>1.19.4</li><li>1.20.0</li><li>1.21.0</li><li>1.22.0</li><li>1.23.0</li><li>1.24.3</li></ul><p>For details on other tools and version included in Harness, see <a href="#sd_ks_installed_with_the_delegate">SDKs installed with the Delegate</a>.</p><p>Guidelines:</p><ul><li>Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.24.3, and so Harness supports 1.23, 1.22, and 1.21.</li><li>Harness supports any other versions of Kubernetes you are using on a best effort basis.</li><li>Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.</li></ul><h5 id="note_on_helm">Helm</h5><p>Helm chart dependencies are not supported in Git source repositories (Harness <a href="/category/xyexvcc206">Code Repo Connectors</a>). Helm chart dependencies are supported in Helm Chart Repositories.</p><h5 id="notes-artifacts">Artifact servers, repos, and artifacts</h5><p>Harness uses <strong>Metadata only</strong> when downloading artifact sources.</p><p>For pulling Docker images from Docker repos, Harness has a limit of 10000 for private Docker repos, and 250 for public (no username or password required) Docker repos.</p><h5>Terraform version support</h5><p>Harness supports the following Terraform versions:</p><ul><li>11</li><li>12</li><li>13</li><li>14</li></ul><div class="note-callout">Some Harness features might require specific Terraform versions.</div><h5>Azure AKS clusters</h5><p>To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (AKS property <code>disableLocalAccounts=false</code>).</p><h3>GitOps</h3><p>Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync state with your live Kubernetes cluster.</p><p>GitOps supports the following:</p><ul><li>Source Repositories:<ul><li>All Git providers.</li><li>HTTP Helm repos.</li></ul></li><li>Target clusters:<ul><li>Kubernetes clusters hosted on any platform:<ul><li>GKE.</li><li>AKS.</li><li>EKS.</li><li>Other Kubernetes-compliant clusters.</li><li>OpenShift version 3.11, 4.x.</li><li>Minikube.</li><li>Kubernetes Operations (kops).</li></ul></li></ul></li><li>Repository Certificates:<ul><li>TLS Certificate (PEM format).</li><li>SSH Known Host Entry.</li></ul></li><li>GnuPG Keys:<ul><li>GnuPG Public Key Data (ASCII-armored).</li></ul></li></ul><p>See <a href="https://newdocs.helpdocs.io/article/w1vg9l1j7q-harness-git-ops-basics">Harness GitOps Basics</a> and <a href="https://newdocs.helpdocs.io/article/pptv7t53i9-harness-cd-git-ops-quickstart">Harness CD GitOps Quickstart</a></p><h3>Continuous Integration (CI)</h3><p>The following table lists Harness support for CI platforms, repos, registries, and related technologies.</p><p></p><div class="hd--html"><table class="blueTable table table-responsive" border="0" bordercolor="#eee">
+      <thead>
+        <tr>
+          <th>Source Code Management (SCM)</th>
+          <th>Artifact Repos</th>
+          <th>Container Registries</th>
+          <th>Build Farm Platforms</th>
+          <th>Testing Frameworks Supported</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul>
+              <li>GitLab</li>
+              <li>Bitbucket</li>
+              <li>GitHub</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>Artifactory</li>
+              <li>AWS S3</li>
+              <li>GCP GCS</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>Amazon Elastic Container Registry (ECR)</li>
+              <li>Google Container Registry (GCR)</li>
+              <li>Docker registries (e.g. Docker Hub)</li>
+              <li>Other</li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li>Kubernetes cluster (platform agnostic)</li>
+              <li>Amazon Elastic Kubernetes Service (Amazon EKS)</li>
+              <li>Google Kubernetes Engine (GKE)</li>
+              <li>AWS Linux and Windows VMs</li>
+              <li>Red Hat OpenShift 4</li>
+            </ul>
+          </td>
+          <td>
+            <p>Currently, Harness supports:</p>
+            <ul>
+              <li>Bazel</li>
+              <li>Maven</li>
+              <li>Gradle</li>
+            </ul>
+            <p> More frameworks will be supported soon.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table></div><p></p><h3 id="verification">Continuous Verification</h3><p>Harness supports the following metrics and logging platforms.</p><h4>Metrics providers</h4><p>The following table lists Harness support for metrics platforms (APMs).</p><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> Metrics Provider Name</th>
+          <th> Metric Pack</th>
+          <th> Deployment Verification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <a href="/article/916vrl4l76-verify-deployments-with-app-dynamics">AppDynamics</a></td>
+          <td> Business Transactions</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="https://ngdocs.harness.io/article/916vrl4l76">AppDynamics</a></td>
+          <td> JVM and Infra Metrics</td>
+          <td> <span style="color:#fb9e00" data-hd-color="#fb9e00">Supported via Custom Metrics</span></td>
+        </tr>
+        <tr>
+          <td> <a href="/article/p8lqq2il39-verify-deployments-with-new-relic">New Relic</a></td>
+          <td> Business Transactions</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> New Relic</td>
+          <td> Insights</td>
+          <td> <span style="color:#fb9e00" data-hd-color="#fb9e00">Supported via Custom Metrics</span></td>
+        </tr>
+        <tr>
+          <td> <a href="/article/owqpo59gp5-verify-deployments-with-google-cloud-operations">Google Cloud Operations (GCP)</a></td>
+          <td> Infrastructure Metrics</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> Google Cloud Operations (GCP)</td>
+          <td> Custom metrics from explorer</td>
+          <td> <span style="color:#f44e3b" data-hd-color="#f44e3b">No</span></td>
+        </tr>
+        <tr>
+          <td> <a href="https://ngdocs.harness.io/article/e9z7944qhw">Prometheus</a></td>
+          <td> Custom metrics from Prometheus</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="https://ngdocs.harness.io/article/z3kpdn6vcb">Datadog</a></td>
+          <td> Docker Infra Metrics</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="https://ngdocs.harness.io/article/eamwqs2x5a">Dynatrace</a></td>
+          <td> Performance</td>
+          <td> Yes</td>
+        </tr>
+      </tbody>
+    </table></div><h4>Log providers</h4><p>Most logging platforms are also supported.</p><table class="blueTable"><tbody><tr><td><p><strong>Log Provider Name</strong></p></td><td><p><strong>Deployment Verification</strong></p></td></tr><tr><td><p><a href="/article/mvjds2f3hb-verify-deployments-with-splunk">Splunk</a></p></td><td><p>Yes</p></td></tr><tr><td><p><a href="/article/owqpo59gp5-verify-deployments-with-google-cloud-operations">Google Cloud Operations (GCP)</a></p></td><td><p>Yes</p></td></tr></tbody></table><p></p><h4>Custom health sources</h4><p>Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.</p><p>See <a href="/article/n67y68fopr-verify-deployments-with-custom-health-metrics">Verify Deployments with Custom Health Source</a>.</p><h3>Service Reliability Management</h3><p>Harness supports the following Health Sources and Change Sources.</p><h4>Health sources</h4><p> A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.</p><p>Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The <a href="/article/n67y68fopr-verify-deployments-with-custom-health-metrics">Custom Health Source</a> lets you customize APMs of your choice.</p><h5>Metrics providers and logging tools</h5><p>Currently, Harness supports the following APMs and logging tools:</p><ul><li>AppDynamics</li><li>Prometheus</li><li>Dynatrace</li><li>Splunk</li><li>Custom Health Source</li><li>Google Cloud Operations (formerly Stackdriver)</li><li>New Relic</li><li>Datadog</li></ul><p>More tools will be added soon.</p><h4>Change sources</h4><p>A Change Source monitors change events related to deployments, infrastructure changes, and incidents. Following Change Sources are supported:</p><ul><li>Harness CD NextGen</li><li>Harness CD</li><li>PagerDuty</li></ul><h3>Security Testing Orchestration</h3><p>See <a href="/article/0k0iubnzql-security-step-settings-reference">Security Step Settings Reference</a>.</p><h3>Feature Flags</h3><p>Harness Feature Flags support <a href="https://ngdocs.harness.io/article/rvqprvbq8f-client-side-and-server-side-sdks" target="_blank">client-side and server-side SDKs</a> for a number of programming languages.</p><h4>Client-side SDKs</h4><p>The following table lists the Client-side Feature Flag SDKs Harness supports.</p><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> SDK</th>
+          <th> Documentation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <a href="https://github.com/harness/ff-android-client-sdk" target="_blank">Android</a></td>
+          <td> <a href="/article/74t18egxbi-android-sdk-reference" target="_blank">Android SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td> <a href="https://github.com/harness/ff-ios-client-sdk" target="_blank">iOS</a></td>
+          <td> <a href="/article/6qt2v8g92m-ios-sdk-reference" target="_blank">iOS SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td> <a href="https://github.com/harness/ff-flutter-client-sdk" target="_blank">Flutter</a></td>
+          <td> <a href="/article/mmf7cu2owg-flutter-sdk-reference" target="_blank">Flutter SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/harness/ff-javascript-client-sdk" target="_blank">Javascript</a></td>
+          <td><a href="/article/bmlvsxhp13-java-script-sdk-references" target="_blank">Javascript SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/harness/ff-react-native-client-sdk" target="_blank">React Native</a></td>
+          <td><a href="/article/z2w6uj9mzb-react-native-sdk-reference" target="_blank">React Native SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/harness/ff-xamarin-client-sdk" target="_blank">Xamarin</a></td>
+          <td><a href="/article/x9mh0o785u-xamarin-sdk-reference" target="_blank">Xamarin SDK Reference</a></td>
+        </tr>
+      </tbody>
+    </table></div><h4> Server-side SDKs</h4><p>The following table lists the Server-side Feature Flag SDKs Harness supports.</p><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> SDK</th>
+          <th> Documentation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <a href="https://github.com/harness/ff-dotnet-server-sdk" target="_blank">.NET</a></td>
+          <td> <a href="/article/c86rasy39v-net-sdk-reference" target="_blank">.NET SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td> <a href="https://github.com/harness/ff-golang-server-sdk" target="_blank">Go</a></td>
+          <td> <a href="/article/4c8wljx60w-feature-flag-sdks-go-application" target="_blank">Go SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td> <a href="https://github.com/harness/ff-java-server-sdk" target="_blank">Java</a></td>
+          <td><a href="/article/i7et9ebkst-integrate-feature-flag-with-java-sdk" target="_blank">Java SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/harness/ff-nodejs-server-sdk" target="_blank">Node.js</a></td>
+          <td><a href="/article/3v7fclfg59-node-js-sdk-reference" target="_blank">Node.js SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/harness/ff-python-server-sdk" target="_blank">Python</a></td>
+          <td><a href="/article/hwoxb6x2oe-python-sdk-reference" target="_blank">Python SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/harness/ff-ruby-server-sdk" target="_blank">Ruby</a></td>
+          <td><a href="/article/uora4f0f22-ruby-sdk-reference" target="_blank">Ruby SDK Reference</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://github.com/harness/ff-php-server-sdk" target="_blank">PHP</a></td>
+          <td><a href="/article/3qrik15pkz-php-sdk-reference" target="_blank">PHP SDK Reference</a></td>
+        </tr>
+      </tbody>
+    </table></div><h3>Harness Chaos Engineering</h3><p>Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom, Workflow templates.</p><p>See <a href="/article/v64rj2maiz-harness-chaos-engineering-basics">Harness Chaos Engineering Basics (Public Preview)</a>, <a href="/article/da85u0cbhx-harness-chaos-engineering-quickstart-public-preview">Harness Chaos Engineering Quickstart (Public Preview)</a>.</p><h3>Collaboration</h3><p>The following table lists Harness support for collaboration tools.</p><p>Most providers are used in both Pipeline Notification Strategies and User Group notifications:</p><ul><li><a href="/article/4bor7kyimj-notify-users-of-pipeline-events">Add a Pipeline Notification Strategy</a></li><li><a href="/article/h5n2oj8y5y-send-notifications-using-slack">Send Notifications Using Slack</a></li><li><a href="/article/xcb28vgn82-send-notifications-to-microsoft-teams">Send Notifications to Microsoft Teams</a></li></ul><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> Provider Name</th>
+          <th> Notification</th>
+          <th> Approval/Change Management</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <a href="/article/xcb28vgn82">Microsoft Teams</a></td>
+          <td> Yes</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/4bor7kyimj">Email</a></td>
+          <td> Yes</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/h5n2oj8y5y">Slack</a></td>
+          <td> Yes</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/2lhfk506r8">Jira</a></td>
+          <td> Yes</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/h1so82u9ub">ServiceNow</a></td>
+          <td> N/A</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/4bor7kyimj">PagerDuty</a></td>
+          <td> Yes</td>
+          <td> N/A</td>
+        </tr>
+      </tbody>
+    </table></div><p></p><h3 id="access_control">Access control</h3><p>The following table lists Harness support for SSO protocols and tools.</p><p>See <a href="/article/g8ajhy6msi-manage-access-control">Add and Manage Access Control</a>.</p><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> SSO Type</th>
+          <th> SSO Providers</th>
+          <th> Authentication Supported</th>
+          <th> Authorization (Group Linking) Supported</th>
+          <th> SCIM Provisioning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <a href="/article/mlpksc7s6c">SAML 2.0</a></td>
+          <td> Okta</td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td> Coming soon</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> Azure Active Directory</td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td> Coming soon</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> Others</td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td> <span style="color:#f44e3b" data-hd-color="#f44e3b">No</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> OneLogin</td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td> Coming soon</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/rb33l4x893">OAuth 2.0</a></td>
+          <td> Github</td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> GitLab</td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> Bitbucket</td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> Google</td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> Azure</td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> LinkedIn</td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td>LDAP<br/> (<span style="color:#fb9e00" data-hd-color="#fb9e00">Delegate connectivity needed</span>)</td>
+          <td> Active Directory</td>
+          <td> Coming soon</td>
+          <td> Coming soon</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> Open LDAP</td>
+          <td> Coming soon</td>
+          <td> Coming soon</td>
+          <td> N/A</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td> Oracle LDAP</td>
+          <td> Coming soon</td>
+          <td> Coming soon</td>
+          <td> N/A</td>
+        </tr>
+      </tbody>
+    </table></div><p></p><h3 id="secret_management">Secret management</h3><p>The following table lists Harness support for cloud platform secrets management services.</p><div class="note-callout">See <a href="/article/hngrlb7rd6-harness-secret-manager-overview">Harness Secrets Management Overview</a>.</div><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> Provider Name</th>
+          <th> Key Encryption Support</th>
+          <th> Encrypted Data Storaged with Harness</th>
+          <th> Support for Referencing Existing Secrets</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <a href="/article/pt52h8sb6z">AWS KMS</a></td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td> No</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/a73o2cg3pe">AWS Secret Manager</a></td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/s65mzbyags">Hashicorp Vault</a></td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/53jrd1cv4i">Azure Key Vault</a></td>
+          <td> Yes</td>
+          <td> No</td>
+          <td> Yes</td>
+        </tr>
+        <tr>
+          <td> <a href="/article/cyyym9tbqt">Google KMS</a></td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td> No</td>
+        </tr>
+      </tbody>
+    </table></div><h3 id="on_prem">Harness Self-Managed Enterprise Edition</h3><p>The following table lists the major support features for Harness Self-Managed Enterprise Edition offerings.</p><div class="hd--html"><table class="blueTable">
+      <thead>
+        <tr>
+          <th> Solution</th>
+          <th> Supported Platform</th>
+          <th> Connected*</th>
+          <th> HA Supported**</th>
+          <th> Monitoring</th>
+          <th> Disaster Recovery</th>
+          <th> Auto Restart</th>
+          <th> Features Under Controlled Release</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <a href="/category/v313myup55">Kubernetes Cluster</a></td>
+          <td> Kubernetes<br/> - GKE<br/> - AKS<br/> - EKS</td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td>Prometheus, Grafana</td>
+          <td>Supported</td>
+          <td>Supported</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td> <a href="/category/ubhcaw8n0l">Virtual Machine (VM)</a></td>
+          <td> Linux VM (3 VM minimum)</td>
+          <td> Yes</td>
+          <td> Yes</td>
+          <td>Prometheus, Grafana</td>
+          <td>Supported</td>
+          <td>Supported</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table></div><p></p><p></p><h3>SDKs installed with the Delegate</h3><p>Harness Delegate includes binaries for the SDKs that are required for deployments with Harness-supported integrations. These include binaries for Helm, ChartMuseum, <code>kubectl</code>, Kustomize, and so on.</p><h5>Kubernetes Deployments</h5><p>For Kubernetes deployments, the following SDKs/tools are included in the Delegate.</p><ul><li>kubectl: v1.13, v1.19</li><li>Helm: v2.13.1, v3.1.2, v3.8.0</li><li>Kustomize: v3.5.4, v4.0.0</li><li>OpenShift: v4.2.16</li></ul><p>The versions can be found in this public GitHub repo: <a href="https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools" target="_blank">https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools</a></p><p>For details on updating the default tool versions, go to <a href="/article/yte6x6cyhn-run-scripts-on-delegates">Install Software on the Delegate with Initialization Scripts</a>.</p><p>For Kubernetes deployments, the following SDKs/tools are certified.</p><table><tbody><tr><td><p><strong>Manifest Type</strong></p></td><td><p><strong>Required Tool/SDK</strong></p></td><td><p><strong>Certified Version</strong></p></td></tr><tr><td><p>Kubernetes</p></td><td><p>kubectl</p></td><td><p>v1.24.3</p></td></tr><tr><td><p></p></td><td><p>go-template</p></td><td><p>v0.4</p></td></tr><tr><td><p>Helm</p></td><td><p>kubectl</p></td><td><p>v1.24.3</p></td></tr><tr><td><p></p></td><td><p>helm</p></td><td><p>v3.9.2</p></td></tr><tr><td><p>Helm (chart is stored in GCS or S3)</p></td><td><p>kubectl</p></td><td><p>v1.24.3</p></td></tr><tr><td><p></p></td><td><p>helm</p></td><td><p>v3.9.2</p></td></tr><tr><td><p></p></td><td><p>chartmuseum</p></td><td><p>v0.8.2 and v0.12.0</p></td></tr><tr><td><p>Kustomize</p></td><td><p>kubectl</p></td><td><p>v1.24.3</p></td></tr><tr><td><p></p></td><td><p>kustomize</p></td><td><p>v4.5.4</p></td></tr><tr><td><p>OpenShift</p></td><td><p>kubectl</p></td><td><p>v1.24.3</p></td></tr><tr><td><p></p></td><td><p>oc</p></td><td><p>v4</p></td></tr></tbody></table><p></p><h5>Native Helm deployments</h5><p>For <a href="/article/lbhf2h71at-native-helm-quickstart">Native Helm deployments</a>, the following SDKs/tools are certified.</p><p></p><table><tbody><tr><td><p><strong>Manifest Type</strong></p></td><td><p><strong>Required Tool/SDK</strong></p></td><td><p><strong>Certified Version</strong></p></td></tr><tr><td><p>Helm Chart</p></td><td><p>helm</p></td><td><p>v3.9.2</p></td></tr><tr><td><p></p></td><td><p>kubectl</p><p>Required if Kubernetes version is 1.16+ and the <code>HELM_STEADY_STATE_CHECK_1_16</code> feature flag is enabled.</p></td><td><p>v1.24.3</p></td></tr></tbody></table><p></p><h5>Install a Delegate with custom SDK and 3rd-party tool binaries</h5><p>To support customization, Harness provides a Harness Delegate image that does not include any third-party SDK binaries. We call this image the <u>No Tools Image</u>.</p><p>Using the No Tools Image and Delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the <code>INIT_SCRIPT</code> environment variable in the Delegate YAML.</p><p>For steps on using the No Tools Delegate image and installing specific SDK versions, see <a href="/article/ql86a0iqta-install-a-delegate-with-3-rd-party-tool-custom-binaries">Install a Delegate with 3rd Party Tool Custom Binaries</a>.</p><h3>Supported browsers</h3><p>The following browsers are supported:</p><ul><li><strong>Chrome</strong>: latest version</li><li><strong>Firefox</strong>: latest version</li><li><strong>Safari</strong>: latest version</li><li>All Chromium-based browsers.</li></ul><p>Mobile browsers are not supported.</p><h4>Supported screen resolution</h4><p>Minimum supported screen resolution is 1440x900.</p><p></p><p></p>
+  slug: supported-platforms-and-technologies
+  tags: []
+  is_live: true

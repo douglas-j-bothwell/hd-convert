@@ -1,0 +1,85 @@
+type: article
+article_id: 8bldcebkkf
+user_id: wz6xkfcc9i
+category_id: o9x167at52
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: View Secrets Usage
+slug: managing-harness-secrets
+description: You can view a Secret's Setup Usage, Runtime Usage, and Change Logs.
+  You can also delete a Secret.
+short_version: You can view a Secret's Setup Usage, Runtime Usage, and Change Logs.
+  You can also delete a Secret.
+tags:
+- secrets usage
+- runtime usage
+- secret usage
+- secret use
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:25.913621Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: View Secrets Usage
+  description: You can view a Secret's Setup Usage, Runtime Usage, and Change Logs.
+    You can also delete a Secret.
+  short_version: You can view a Secret's Setup Usage, Runtime Usage, and Change Logs.
+    You can also delete a Secret.
+  body: '<p>You can view a Secret&#39;s Setup Usage, Runtime Usage, and Change Logs.
+    You can also delete a Secret.</p><p>In this topic:</p><ul><li><a href="#before_you_begin">Before
+    You Begin</a></li><li><a href="#step_1_view_a_secret_s_setup_usage">Step 1: View
+    a Secret&#39;s Setup Usage</a></li><li><a href="#step_2_view_a_secret_s_runtime_usage">Step
+    2: View a Secret&#39;s Runtime Usage</a></li><li><a href="#step_3_view_a_secret_s_change_log">Step
+    3: View a Secret&#39;s Change Log</a></li><li><a href="#option_deleting_harness_secrets">Option:
+    Deleting Harness Secrets</a></li></ul><h3>Before You Begin</h3><ul><li>See the
+    overview of <a href="/article/au38zpufhr-secret-management">Secrets Management</a>.</li></ul><p></p><h3>Step
+    1: View a Secret&#39;s Setup Usage</h3><ol><li>In Harness, click<strong> Security</strong>,
+    and then click <strong>Secrets Management</strong>.</li><li>In <strong>Secrets
+    Management</strong>, click <strong>Encrypted Text</strong>. The list of Encrypted
+    Texts appear.</li><li>In the <strong>Setup Usage</strong> column, click the number
+    corresponding to the secret to view the usage of the secret.</li></ol><p>The <strong>Setup
+    Usage</strong> window appears and displays the following details:</p><ul><li><strong>Type</strong>
+    - The type of element, such as Connector or Cloud Provider.</li><li><strong>Usage</strong>
+    - Where the secret has been used<ul><li><strong>Name</strong> - Name of the Application</li><li><strong>Field</strong>
+    - field where the secret has been used as part of the setup process</li></ul></li></ul><p>If
+    the Secret has been used as a <strong>Service Configuration Variable</strong>,
+    it displays the Service where the Secret has been used and the variable name.</p><p>For
+    Encrypted Files, the <strong>Setup Usage</strong> displays the following details:</p><ul><li><strong>Type</strong>
+    - Service Configuration File</li><li><strong>Usage</strong> details<ul><li><strong>Service</strong>
+    - Name of the Service</li><li><strong>Relative File Path</strong> - The variable
+    defining the relative file path</li></ul></li></ul><p>If the secret has not been
+    used already, the number will be 0 and no details will be displayed.</p><div class="note-callout">Only
+    Encrypted Text secrets used in Service Config Variables are counted in Setup Usage.</div><h3>Step
+    2: View a Secret&#39;s Runtime Usage</h3><p>In the Run Time Usage column, click
+    the number to view the run time usage details of the secret.</p><p>The Run Time
+    Usage window displays a list of deployments where the secret has been used and
+    the triggered time for each deployment. Click the Deployment Name to access the
+    deployment.</p><p>If the secret has not been used for deployments already, the
+    number will be 0 and no details will be displayed.</p><div class="note-callout">Only
+    Encrypted Text secrets used in Service Config Variables are counted in Runtime
+    Usage.</div><h3>Step 3: View a Secret&#39;s Change Log</h3><p>In the <strong>Change
+    Log</strong> column, click the number associated with the secret. The <strong>Change
+    Log</strong> window appears. It shows the following details:</p><p>Name of the
+    user who changed the Secret</p><p>Time when the Secret was changed</p><p>The specific
+    details of the change, such as whether the password was created, changed, or modified.</p><h3>Option:
+    Deleting Harness Secrets</h3><p>In the row where the Secret appears, click <strong>X</strong>
+    that appears in the last column to delete the Secret. The <strong>Confirm Delete</strong>
+    window appears.</p><p>Click <strong>Confirm</strong> to delete the Secret.</p><div
+    class="note-callout">When you delete an Encrypted Text secret, Harness only checks
+    to see if it is used in Service Config Variables.</div><p></p>'
+  slug: managing-harness-secrets
+  tags:
+  - secrets usage
+  - runtime usage
+  - secret usage
+  - secret use
+  is_live: true

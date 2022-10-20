@@ -1,0 +1,153 @@
+type: article
+article_id: q002wjjl4d
+user_id: mfr0nxh4be
+category_id: qfj6m1k2c4
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add and Override Values YAML Files
+slug: add-and-override-values-yaml-files
+description: You can use values files for Kubernetes and Helm deployments in Harness.
+  For Kubernetes manifests, the values file uses Go templating to template manifest
+  files. See Example Kubernetes Manifests usin…
+short_version: You can use values files for Kubernetes and Helm deployments in Harness.
+  For Kubernetes manifests, the values file uses Go templating to template manifest
+  files. See Example Kubernetes Manifests usin…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-06-09T18:59:10.445448Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add and Override Values YAML Files
+  description: ""
+  short_version: ""
+  body: '<p>You can use values files for Kubernetes and Helm deployments in Harness.</p><p>For
+    Kubernetes manifests, the values file uses Go templating to template manifest
+    files. See <a href="/article/qvlmr4plcp-example-kubernetes-manifests-using-go-templating">Example
+    Kubernetes Manifests using Go Templating</a>.</p><p>For Helm charts, the values
+    file defines the default values for parsing the Kubernetes templates (manifests)
+    when deploying the Helm chart. See <a href="/article/7owpxsaqar-deploy-helm-charts">Deploy
+    Helm Charts</a>.</p><div class="note-callout">Harness supports Kubernetes and
+    Helm charts without requiring Helm or Tiller and Kubernetes and Helm have equal
+    support for all Harness deployment strategies.</div><p>You can overlay and override
+    multiple values files in a stage&#39;s Service in a few ways. For example, by
+    overlaying multiple files and by replacing file paths dynamically at runtime.</p><p>This
+    topic describes how to add values files, how to override them at the Service and
+    Environment, and how to override them at Pipeline runtime.</p><h3>Before You Begin</h3><ul><li><a
+    href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes CD Quickstart</a></li><li><a
+    href="/article/cifa2yb19a-helm-cd-quickstart">Helm CD Quickstart</a></li></ul><h3>Limitations</h3><ul><li>For
+    Kubernetes deployments, the values.yaml file used in Harness doesn&#39;t support
+    Helm templating, only Go templating.</li><li>Helm templating is fully supported
+    in the remote Helm charts you add to your Harness Service. If you add a Helm chart
+    and a values.yaml, the values.yaml can use Helm templating.</li></ul><h3>Review:
+    Propagate and Override between Stages</h3><p>This topic covers adding and overriding
+    the values.yaml files you add to a Harness Service, but you can also propagate
+    and override entire Services.</p><p>See <a href="/article/t57uzu1i41-propagate-and-override-cd-services">Propagate
+    and Override CD Services</a>.</p><p></p><h3>Review: Values Files with Kubernetes
+    and Helm Charts</h3><p>Let&#39;s take a quick look at how values files are used
+    with Kubernetes and Helm charts in Harness.</p><h4>Kubernetes</h4><p>You can use
+    values.yaml files with your Kubernetes manifests in Harness. This allows you to
+    define several Kubernetes resources as a set.</p><pre>files/<br/>|-values.yaml<br/>|-templates/<br/>
+    |-deployment.yaml<br/> |-namespace.yaml<br/> |-service.yaml</pre><p></p><p>Harness
+    evaluates the values.yaml files you add just like Helm does with its values file.
+    Values.yaml files added to Harness don&#39;t use Helm templating, but instead
+    use <a href="https://godoc.org/text/template" target="_blank">Go templating</a> and <a
+    href="/article/lml71vhsim">Harness built-in variable expressions</a>. This removes
+    the need for Helm or Tiller to be installed.</p><h4>Helm Charts</h4><p>The typical
+    Helm chart uses the following files:</p><pre>chart/              # Helm chart
+    folder<br/>|-Chart.yaml        # chart definition<br/>|-requirements.yaml # optional
+    charts to deploy with your chart<br/>|-values.yaml       # values for the template
+    variables<br/>|-templates/        # directory containing the template files (Kubernetes
+    manifests)</pre><p></p><p>Harness support Helm charts using Helm templating. Harness
+    will evaluate the Helm chart just like Helm. You do not need to install Helm on
+    the Harness Delegate pod/host. Harness manages Helm for you.</p><p>Here&#39;s
+    a quick video that shows how to add Values YAML files for Kubernetes and Helm
+    Charts. </p><p></p><div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/dVk6-8tfwJc/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/dVk6-8tfwJc?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h3>Review: Artifacts
+    with Manifests and Charts</h3><p>You can hardcode the deployment artifact in your
+    values.yaml file just as you might in a typical Helm deployment.</p><p>Or you
+    can add a path to the artifact in Harness and use a <a href="/article/lml71vhsim-harness-variables">Harness
+    expression</a> in your values.yaml to refer to that path.</p><p>When Harness executes
+    the Pipeline, the Harness Delegate resolves the expression and pulls the artifact
+    onto the target pods.</p><p>Adding artifacts to Harness is covered in <a href="/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments">Add
+    Container Images as Artifacts for Kubernetes Deployments</a>.</p><p>Once you&#39;ve
+    added the artifact to Harness, you add the Harness expression <code>&lt;+artifact.image&gt;</code>
+    in your values.yaml using the <code>image</code> label: <code>image: &lt;+artifact.image&gt;</code>.</p><p>For
+    example:</p><pre>name: myapp<br/>replicas: 2<br/><br/>image: &lt;+artifact.image&gt;<br/>dockercfg:
+    &lt;+artifact.imagePullSecret&gt;<br/>...</pre><p></p><p>Artifacts and manifests
+    are discussed in detail in <a href="/article/ssbq0xh0hx-define-kubernetes-manifests">Add
+    Kubernetes Manifests</a>.</p><h3>Step: Add Values YAML</h3><p>You can add one
+    or more Values YAML files in two ways:</p><ul><li><strong>Same repo:</strong>
+    If the Values YAML are in the same repo as your Kubernetes manifests or Helm Charts,
+    you can add them when you add those files. You simply use the Values YAML setting.<br/><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/q002wjjl4d/1654801127040/clean-shot-2022-06-09-at-11-58-25.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li><strong>Different
+    repos:</strong> If the Values YAML are in a repo separate from your Kubernetes
+    manifests or Helm Charts, or you just want to add them separately, you can them
+    by selecting the Values YAML manifest type.<br/>We&#39;ll cover this option below.</li></ul><p>In
+    your CD stage, click <strong>Service</strong>.</p><p>In <strong>Service Definition</strong>,
+    select <strong>Kubernetes</strong>.</p><p>In <strong>Manifests</strong>, click <strong>Add
+    Manifest</strong>.</p><p>In <strong>Specify Manifest Type</strong>, select <strong>Values
+    YAML</strong>, and click <strong>Continue.</strong></p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/q002wjjl4d/1629410338991/clean-shot-2021-08-19-at-14-58-44.png"/></figure><p>In
+    <strong>Specify Values YAML Store</strong>, select the Git repo provider you&#39;re
+    using and then create or select a Connector to that repo. The different Connectors
+    are covered in <a href="/article/zbhehjzsnv-connect-to-code-repo">Connect to a
+    Git Repo</a>.</p><div class="note-callout">If you haven&#39;t set up a Harness
+    Delegate, you can add one as part of the Connector setup. This process is described
+    in <a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes CD Quickstart</a>, <a
+    href="https://ngdocs.harness.io/article/cifa2yb19a-helm-cd-quickstart">Helm CD
+    Quickstart</a> and <a href="https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Kubernetes Delegate</a>.</div><p>Once you&#39;ve selected a Connector, click
+    <strong>Continue</strong>.</p><p>In <strong>Manifest Details</strong>, you tell
+    Harness where the values.yaml is located.</p><p>In <strong>Manifest Identifier</strong>,
+    enter a name that identifies the file, like <strong>values</strong>.</p><p>In
+    <strong>Git Fetch Type</strong>, select a branch or commit Id for the manifest,
+    and then enter the Id or branch.</p><div class="note-callout">For <strong>Specific
+    Commit ID</strong>, you can also use a <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging"
+    target="_blank">Git commit tag</a>.</div><p>In <strong>File Path</strong>, enter
+    the path to the values.yaml file in the repo.</p><p>You can enter multiple values
+    file paths by clicking <strong>Add File</strong>. At runtime, Harness will compile
+    the files into one values file.</p><p>If you use multiple files, the highest priority
+    is given from the last file, and the lowest priority to the first file. For example,
+    if you have 3 files and the second and third files contain the same <code>key:value</code>
+    as the first file, the third file&#39;s <code>key:value</code> overrides the second
+    and first files.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/q002wjjl4d/1629415839097/clean-shot-2021-08-19-at-16-30-28.png"/></figure><p>Click
+    <strong>Submit</strong>.</p><p>The values file(s) are added to the Service.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/q002wjjl4d/1629411342335/clean-shot-2021-08-19-at-15-15-21.png"/></figure><p></p><h3>Option:
+    Override Values in an Environment</h3><p>You can override the values YAML file
+    for a stage&#39;s Environment by mapping the Environment name to the values file
+    or folder. Next, you use the <code>&lt;+env.name&gt;</code> Harness expression
+    in the values YAML path.</p><p>Let&#39;s look at an example.</p><p>Here is a repo
+    with three values files, dev.yaml, qa.yaml. prod.yaml. In the <strong>File Path</strong> for
+    the values file, you use the <code>&lt;+env.name&gt;</code> expression. Next,
+    in the <strong>Environment</strong> setting, you add three Environments, one for
+    each YAML file name.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/q002wjjl4d/1629411476564/image.png"/></figure><p>When
+    you select an Environment, such as <strong>qa</strong>, the name of the Environment
+    is used in <strong>File Path</strong> and resolves to <strong>qa.yaml</strong>.
+    At runtime, the <strong>qa.yaml</strong> values file is used.</p><p>Instead of
+    selecting the Environment in the <strong>Infrastructure</strong> each time, you
+    can set the Environment as a <strong>Runtime Input</strong> and then enter <strong>dev</strong>, <strong>qa</strong>,
+    or <strong>prod</strong> at runtime. See <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a>.</p><h3>Option: Override Values at Runtime</h3><p>You can make the
+    values file path a <strong>Runtime Input</strong> and simply enter the name of
+    the values file when you run the Pipeline. See <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a>.</p><p>In <strong>Manifest Details</strong> for the values file, in
+    <strong>File Path</strong>, select <strong>Runtime Input</strong>. At runtime,
+    you simply enter the name of the values file to use.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/q002wjjl4d/1629411560038/image.png"/></figure><h3>See
+    Also</h3><ul><li><a href="/article/7owpxsaqar-deploy-helm-charts">Deploy Helm
+    Charts</a></li><li><a href="/article/t57uzu1i41-propagate-and-override-cd-services">Propagate
+    and Override CD Services</a></li></ul><p></p>'
+  slug: add-and-override-values-yaml-files
+  tags: []
+  is_live: true

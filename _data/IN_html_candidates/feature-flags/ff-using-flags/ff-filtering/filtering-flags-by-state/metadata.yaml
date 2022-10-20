@@ -1,0 +1,67 @@
+type: article
+article_id: 2s5qt02s74
+user_id: vt9reb71i4
+category_id: t5s8pv9gjb
+author:
+  name: Clare Wilkinson
+  email: clare.wilkinson@harness.io
+  profile_image: https://www.gravatar.com/avatar/0ff8d5897ddf326bd94ba0e62e7d2841?d=mm&s=150
+title: Filter Flags by State
+slug: filtering-flags-by-state
+description: 'To help manage your Feature Flags, you can use the filter tiles on the
+  Harness Platform to filter your Flags based on the following states: Figure 1: The
+  Flag overview dashboard State Description All…'
+short_version: 'To help manage your Feature Flags, you can use the filter tiles on
+  the Harness Platform to filter your Flags based on the following states: Figure
+  1: The Flag overview dashboard State Description All…'
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-17T10:17:06.866734Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Filter Flags by State
+  description: ""
+  short_version: ""
+  body: '<p>To help manage your Feature Flags, you can use the filter tiles on the
+    Harness Platform to filter your Flags based on the following states: </p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/2s5qt02s74/1657802380832/uevlqjl-nh-7-urh-kh-jr-3-ee-yqq-hb-vx-55-pvt-pwb-hu-0-lxxrf-sa-w-13-hpp-it-ese-yx-6-oy-fsdrl-awq-pq-7-lz-2-o-qma-2-zco-yc-8-p-8-lz-pniyc-jngl-3-jea-qbdo-8-ibjqs-ulo-gbix-l-wntb-dxghbgoqjl-hygeh-1-qnc"
+    style="max-height:70%;max-width:70%;display:block;margin-left:0;margin-right:auto"
+    alt="A screenshot of the Feature Flag states dashboard. " data-hd-height="70%"
+    data-hd-width="70%" data-hd-align="left"/></figure><p><em>Figure 1: The Flag overview
+    dashboard</em></p><table><tbody><tr><td><p><strong>State</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>All
+    Flags</p></td><td><p>All of the Flags that you’ve created.</p></td></tr><tr><td><p>Enabled
+    Flags</p></td><td><p>Flags that are currently toggled on. </p></td></tr><tr><td><p>Permanent
+    Flags</p></td><td><p>Flags you intend to stay in your systems indefinitely and
+    that you marked as permanent when creating them. Permanent flags are never marked
+    as stale.</p></td></tr><tr><td><p>Recently Changed Flags</p></td><td><p>Flags
+    that have been changed in the last 24 hours. Changes include enabling or disabling
+    a Flag, or adding new Rules or Targets.</p></td></tr><tr><td><p>Active Flags</p></td><td><p>Flags
+    that have been evaluated in the last 7 days</p></td></tr><tr><td><p>Potentially
+    Stale Flags</p></td><td><p>Flags are marked as potentially stale if in the past
+    60 days:</p><ul><li>They haven&#39;t been changed or evaluated.</li><li>Their
+    default rules or target rules haven’t been added to or updated.</li><li>They haven’t
+    been toggled on or off.</li></ul></td></tr></tbody></table><p></p><div class="warning-callout">A
+    Flag can be marked as both Active and Potentially Stale if it has been Evaluated
+    via an SDK but no other changes have been made in over 60 days.  For example,
+    if you Evaluated <code>Flag_A</code> yesterday using an SDK, but haven’t made
+    any changes on the Harness Platform in over three months, the Flag will be marked
+    as Active and Potentially Stale on the Platform. </div><h3>Filter your Flags</h3><p>To
+    view filter your Flags:</p><ol><li>Go to your project on the Harness Platform.</li><li>Click
+    on <strong>Feature Flags</strong>.</li><li>Click on the filter you want to use. </li><li>A
+    list of the relevant Flags are displayed.</li></ol><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/2s5qt02s74/1657802369150/1-tjm-8-zvkw-6-o-8-bb-8-otdcf-2-it-19-r-k-4-dett-0-h-mb-49-roeuc-xucugqvlvoje-hsdo-wx-bot-mn-1-jl-xy-at-fui-ktkb-z-1-iy-71-et-jnqe-ljj-is-7-exf-lgs-cj-2-ebi-tmbbsc-2-cmnf-9-p-aj-k-3-uom-8-qk-502-x-ma-1-ow"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    alt="A screenshot of the Permanent Flags tile selected to filter for permanent
+    flags." data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure><p><em>Figure
+    2: A filtered list of Flags</em></p><p> </p>'
+  slug: filtering-flags-by-state
+  tags: []
+  is_live: true

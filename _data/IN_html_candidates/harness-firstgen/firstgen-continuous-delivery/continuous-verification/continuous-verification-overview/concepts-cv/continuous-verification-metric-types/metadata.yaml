@@ -1,0 +1,117 @@
+type: article
+article_id: 9e14ilkngd
+user_id: wz6xkfcc9i
+category_id: zxxvl8vahz
+author:
+  name: Chakravarthy Tenneti
+  profile_image: https://www.gravatar.com/avatar/790db061bb8f8fb094e4d4b19a390f3b?d=mm&s=150
+title: Continuous Verification Metric Types
+slug: continuous-verification-metric-types
+description: Use CV Custom Metrics to monitor risks and anomalies that occur during
+  the deployment verification.
+short_version: Use CV Custom Metrics to monitor risks and anomalies that occur during
+  the deployment verification.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:20.836043Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Continuous Verification Metric Types
+  description: Use CV Custom Metrics to monitor risks and anomalies that occur during
+    the deployment verification.
+  short_version: Use CV Custom Metrics to monitor risks and anomalies that occur during
+    the deployment verification.
+  body: <p></p><p>While adding a service verification step in your Workflow, you can
+    select the metrics that you like to be monitored, specify thresholds, and monitor
+    the anomalies that occur during the deployment verification.</p><p>You can also
+    add your Custom metrics to Harness 24/7 Service Guard in your Harness Application
+    Environment.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#identifying_the_anomalies">Identifying the Anomalies</a></li><li>
+    <a href="#error_rate">Error Rate</a></li><li> <a href="#response_time">Response
+    Time</a></li><li> <a href="#throughput">Throughput</a></li><li> <a href="#infra_infrastructure">Infra/Infrastructure</a></li><li>
+    <a href="#apdex">Apdex</a></li></ul><h3>Before You Begin</h3><ul><li class="c4">See 
+    <a href="https://www.google.com/url?q=https://docs.harness.io/article/ina58fap5y-what-is-cv&amp;sa=D&amp;ust=1596624436180000&amp;usg=AOvVaw2-B986HwZG0UmYlOCU41s7">Continuous
+    Verification Overview</a>.</li><li>See  <a href="https://www.google.com/url?q=https://docs.harness.io/article/e87u8c63z4-custom-verification-overview&amp;sa=D&amp;ust=1596624436181000&amp;usg=AOvVaw1hDkv2iuHflv6VWR5AZT5g">Custom
+    Verification Overview</a>.</li></ul><p></p><h3>Identifying the Anomalies</h3><p>When
+    you select a metric, the previously deployed host data or baseline is used as
+    a yardstick for identifying the anomalies during this verification. While any
+    change can be flagged as an anomaly, the learning engine takes into account the
+    significance of the change and the ratio associated with the existing pattern. All
+    the metrics that lie within the default threshold values will be excluded from
+    the analysis and will always result in low risk.</p><h4><strong>Default Delta</strong></h4><p>It
+    is the absolute deviation from the previous value. It is the absolute value calculated
+    by subtracting the previous value from the current value. If this Delta value
+    is less than the ratio, it will not be identified as an anomaly. If this value
+    is higher than the ratio, analysis is run on the data to figure out the anomaly.</p><p>The
+    formula for <strong>Default Delta</strong> is represented as follows:</p><p> <code>allow
+    if abs(y - x ) &lt; ratio</code></p><h4><strong>Default Ratio</strong></h4><p>It
+    is the ratio of the deviation from the previous value. It should be ideally less
+    than the minimal threshold value that you set during the verification configuration. If
+    this value is higher than the threshold value, machine learning algorithms are
+    run to identify the anomalies and highlight them.</p><p>The formula for <strong>Default
+    Ratio</strong> is represented as follows:</p><p><code>allow if abs (y - x)/x &lt;
+    min_threshold_ratio</code></p><p>Here is a tabular summary of the various metrics,
+    their thresholds, and the allowed Delta and Ratio computations. The x value for
+    the metrics indicates the base value from the previous analysis. The y value is
+    the new value derived from the current analysis.</p><p> </p><table><tbody><tr><td><p><strong>Metric
+    Type</strong></p></td><td><p><strong>Type of Values</strong></p></td><td><p><strong>Deviation
+    Type</strong></p></td><td><p><strong>Default Delta</strong></p></td><td><p><strong>Default
+    Ratio</strong></p></td></tr><tr><td><p>Error rate</p></td><td><p>Web / Business
+    transactions</p></td><td><p>Higher is bad</p></td><td><p>0</p></td><td><p>0</p></td></tr><tr><td><p>Response
+    Times</p></td><td><p>Web / Business transactions</p></td><td><p>Higher is bad</p></td><td><p>20</p></td><td><p>.2</p></td></tr><tr><td><p>Throughput</p></td><td><p>Web
+    / Business transactions</p></td><td><p>Lower is bad</p></td><td><p>20</p></td><td><p>.2</p></td></tr><tr><td><p>Infra</p></td><td><p>Cpu,
+    memory ....</p></td><td><p>Higher and Lower is bad</p></td><td><p>20</p></td><td><p>.2</p></td></tr><tr><td><p>Apdex</p></td><td><p>value
+    between 0 and 1</p></td><td><p>Lower is bad</p></td><td><p>0</p></td><td><p>.2</p></td></tr></tbody></table><p></p><div
+    class="note-callout">If the default thresholds are not relevant to your setup
+    and do not make sense with these formulae, you can set up Custom Thresholds or
+    Fail Fast Thresholds. For more information, see <a href="https://docs.harness.io/article/z2n6mnf7u0-custom-thresholds">Apply
+    Custom Thresholds to Deployment Verification</a>.</div><h3>Error Rate</h3><p>Error
+    rate indicates the number of errors. There is no threshold associated with this
+    metric. Unlike the other metrics, there is no <strong>Default Delta</strong> or
+    <strong>Default Ratio</strong> against which this metric is measured. If there
+    is a deviation from the previous value, analysis done on all the data without
+    any filtering to find if there are any anomalies.</p><p>For example, if the previous
+    verification cycle had 10 errors, and if 2 more errors occur in this cycle, further
+    analysis is done to identify the anomalies.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/9e14ilkngd/1600817375691/image.png"/></figure><p>In
+    this example, the number of <strong>Errors per Minute</strong> increased from
+    4 to 10.33 and hence it is flagged as a <strong>High Risk</strong> transaction.</p><h3>Response
+    Time</h3><p>This metric considers the response time of web/business transactions.
+    Usually, a higher value is considered as an anomaly.</p><p>Response Time indicates
+    the time spent for the transaction from the beginning of a request. Usually, higher
+    response times indicate issues in performance.</p><p>For example, if the value
+    of <strong>Response Time</strong> was 20 in the previous run and it increased
+    to 30, it will not be flagged as an anomaly. The difference or delta in this case
+    is less than the previous run. If you calculate the ratio of difference, it is
+    not significant either. Unless the Response Time value crosses the ratio and the
+    delta is high, the anomaly is not flagged.</p><h3>Throughput</h3><p>Throughput
+    indicates the number of successful requests per minute to your web server. The
+    throughput values different from application data to web/browser data as a single
+    user request may result in multiple requests by the application.</p><p>If the
+    number of requests per minute comes down, it is considered as an anomaly using
+    the <strong>Default Delta</strong> and <strong>Default Ratio</strong> formulae.</p><h3>Infra/Infrastructure</h3><p>This
+    value measures the errors in infrastructure such as CPU, memory, and HTTP errors.</p><p>If
+    the memory usage or CPU usage is low, it is flagged as a High Risk anomaly, because
+    it is an indicator of some other factor that might be underperforming. Unless
+    there is a fundamental intentional change, it is highly unusual to have sudden
+    change or reduction in the usage of Infrastructural resources. Harness CV indicates
+    the need to identify such indirect factors using this anomaly.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/9e14ilkngd/1600817414360/image.png"/></figure><p>In
+    this example, you can notice that the CPU utilization value decreased from 255.91
+    to 95.04. Unless, there has been a deliberate change in the code or resources,
+    this is usually highly unlikely to happen. Hence, it is flagged as a <strong>High
+    Risk</strong> transaction.</p><h3>Apdex</h3><p>The Apdex value is usually between
+    0 and 1. A lower Apdex score indicates that the performance is not as expected.</p><p>Apdex
+    measures user satisfaction with the response time. It indicates the measured response
+    time against a specified threshold value.</p>
+  slug: continuous-verification-metric-types
+  tags: []
+  is_live: true

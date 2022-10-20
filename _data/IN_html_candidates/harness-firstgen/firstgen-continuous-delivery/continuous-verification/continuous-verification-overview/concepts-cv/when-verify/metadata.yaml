@@ -1,0 +1,50 @@
+type: article
+article_id: 95vzen6l4m
+user_id: x5amubrz4l
+category_id: zxxvl8vahz
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: When Does Harness Verify Deployments?
+slug: when-verify
+description: Harness' Deployment Verification feature validates your service instances
+  right after deployment. Harness' 24/7 Service Guard continuously validates your
+  service as a whole.
+short_version: 'Covers Harness'' short- and long-term verification features: Deployment
+  Verification and 24/7 Service Guard.'
+tags:
+- verification
+- Deployment Verification
+- 24/7 Service Guard
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T23:45:05.181139Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: When Does Harness Verify Deployments?
+  description: Harness' Deployment Verification feature validates your service instances
+    right after deployment. Harness' 24/7 Service Guard continuously validates your
+    service as a whole.
+  short_version: 'Covers Harness'' short- and long-term verification features: Deployment
+    Verification and 24/7 Service Guard.'
+  body: |-
+    <p>This topic covers Harness&#39; two complementary verification components, Deployment Verification and 24/7 Service Guard.</p><div class="hd--html"><p></p> <a href="/article/trmrvs1egp-why-cv" class="previous-button">« Previous</a> <a href="/article/6r02s541an-how-cv" class="next-button">Next »</a>
+    <p></p></div><p></p><p>Sections in this topic:</p><ul><li><a href="#when">Short- and Long-Term Verification</a></li><li><a href="#deployment_verification">Deployment Verification</a></li><li><a href="#24_7_service_guard">24/7 Service Guard</a></li><li><a href="#next_steps">Next Up</a></li></ul><div class="hd--md" data-hd-markdown="&lt;span id=&#34;when&#34;&gt;&lt;/span&gt;"><p><span id="when"></span></p>
+    </div><h3>Short- and Long-Term Verification</h3><p>Harness&#39; Continuous Verification enables you to verify your services&#39; health over two timeframes. At deployment time, Harness&#39; <strong>Deployment Verification</strong> feature validates your artifacts, and then validates the individual service instances to which you&#39;ve deployed.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/nkzv30ka5p/1578729124146/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Over the long term, Harness&#39; <strong>24/7 Service Guard</strong> feature continuously validates your service as a whole.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/nkzv30ka5p/1578728944181/image.png" style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><p></p><p>You can use both or either of these verification types. Both types use the <a href="/article/5vp1f7zt0a-cv-providers">Verification Providers</a> you set up in Harness.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;deployment_verification&#34;&gt;&lt;/span&gt;"><p><span id="deployment_verification"></span></p>
+    </div><h3>Deployment Verification</h3><p>Deployment Verification verifies the first 15 minutes of deployments. Deployment verification is set up using a Harness Workflow.</p><p>For an excellent example of Deployment Verification, see the Harness Blog post, <a href="https://harness.io/customers/case-studies/automated-ci-cd-rollback/" target="_blank">How Build.com Rolls Back Production in 32 Seconds</a>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/nkzv30ka5p/1578728205302/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Video Webinar</h4><p>This video Webinar covers how Harness Continuous Delivery leverages unsupervised machine learning to verify production deployments, based on users&#39; APM and log data.</p><div class="hd--html"><iframe width="280" height="157" src="https://www.youtube.com/embed/ZO5otWQ4PIc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;24_7_service_guard&#34;&gt;&lt;/span&gt;"><p><span id="24_7_service_guard"></span></p>
+    </div><h3>24/7 Service Guard</h3><p>Harness&#39; 24/7 Service Guard feature verifies your live, production application continuously. You set up 24/7 Service Guard verification in a Harness <a href="/article/n39w05njjv-environment-configuration">Environment</a>.</p><h4>Video Summary</h4><p>Here&#39;s a 2-minute video summary of how 24/7 Service Guard works:</p><div class="hd--html"><iframe width="560" height="315" src="https://www.youtube.com/embed/yi8J4nZAXxw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p><h4>24/7 Service Guard in Depth</h4><p>For an introduction to 24/7 Service Guard&#39;s uses cases and design, see the Harness Blog post, <a href="https://harness.io/2018/12/harness-24-7-service-guard-empowers-developers-with-total-operational-control/" target="_blank">Harness 24/7 Service Guard Empowers Developers with Total Operational Control</a>.</p><p>For further details about how to use 24/7 Service Guard in combination with other Harness capabilities, see the <a href="/article/dajt54pyxd-24-7-service-guard-overview">24/7 Service Guard Overview</a> topic.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;next_steps&#34;&gt;&lt;/span&gt;"><p><span id="next_steps"></span></p>
+    </div><h3>Next Up</h3><p>Next, read details about:</p><ul><li><a href="/article/6r02s541an-how-cv">How Does Harness Perform Continuous Verification?</a></li></ul><p></p>
+  slug: when-verify
+  tags:
+  - verification
+  - Deployment Verification
+  - 24/7 Service Guard
+  is_live: true

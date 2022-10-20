@@ -1,0 +1,463 @@
+type: article
+article_id: 1m3p7phdqo
+user_id: mfr0nxh4be
+category_id: 72au717ux5
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Shell Script Provisioner
+slug: shell-script-provisioner
+description: "Guide to using shell scripts as infrastructure provisioners for your
+  Harness Applications' Canary deployments. Includes setup examples for a physical
+  data center, AWS ECS, and \nKubernetes on Google Cloud."
+short_version: Guide to using shell scripts as infrastructure provisioners for your
+  Harness Applications' Canary deployments. Includes setup examples for a physical
+  data center, AWS ECS, and GKE.
+tags:
+- Infrastructure Provisioner
+- Shell Script
+- Service Mapping
+- Canary
+- Infrastructure Definition
+- Environment
+- Delegate
+- Cloud Provider
+- data center
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-08-12T18:30:25.558132Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Shell Script Provisioner
+  description: "Guide to using shell scripts as infrastructure provisioners for your
+    Harness Applications' Canary deployments. Includes setup examples for a physical
+    data center, AWS ECS, and \nKubernetes on Google Cloud."
+  short_version: Guide to using shell scripts as infrastructure provisioners for your
+    Harness Applications' Canary deployments. Includes setup examples for a physical
+    data center, AWS ECS, and GKE.
+  body: '<p>Harness has first-class support for Terraform and AWS CloudFormation provisioners,
+    but to support different provisioners, or your existing shell script implementations,
+    Harness includes the Shell Script Infrastructure Provisioner.</p><p>This document
+    explains how to use the Harness Shell Script Infrastructure Provisioner in your
+    Harness Application.</p><div class="note-callout">The Shell Script Provisioner
+    supports the following deployment platforms: Physical Data Centers, AWS EC2, ECS,
+    Lambda, and Kubernetes on Google Cloud Platform (GKE).</div><h3>Overview</h3><p>When
+    you set up a Shell Script Provisioner in Harness, you add a shell script that
+    the Harness Delegate uses to query your provisioner for a JSON collection describing
+    your infrastructure (VPCs, DNS names, subnets, etc). Normally, the JSON will exist
+    in your custom provisioner, such as a database, but for this topic, we&#39;ll
+    use AWS as an example.</p><p>For example, here is a shell script that pulls EC2
+    instance information from AWS:</p><pre class="hljs bash">apt-get -y install awscli<br/>aws
+    configure set aws_access_key_id $access_key<br/>aws configure set aws_secret_access_key
+    $secret_key<br/>aws configure set region us-east-1<br/>aws ec2 describe-instances
+    --filters Name=tag:Name,Values=harness-provisioner &gt; &#34;$PROVISIONER_OUTPUT_PATH&#34;</pre><p>The
+    Harness environment variable <code>&#34;$PROVISIONER_OUTPUT_PATH&#34;</code> is
+    initialized by Harness and stores the JSON collection returned by your script.</p><div
+    class="note-callout">Currently, Harness supports Bash shell scripts. PowerShell
+    will be added soon.</div><p>This script returns a JSON array describing the instances:</p><pre
+    class="hljs json">{<br/>  &#34;Instances&#34;: [<br/>    {<br/>      ...<br/>      &#34;Status&#34;:
+    &#34;online&#34;,<br/>      &#34;InstanceId&#34;: &#34;4d6d1710-ded9-42a1-b08e-b043ad7af1e2&#34;,<br/>      &#34;SshKeyName&#34;:
+    &#34;US-West-2&#34;,<br/>      &#34;InfrastructureClass&#34;: &#34;ec2&#34;,<br/>      &#34;RootDeviceVolumeId&#34;:
+    &#34;vol-d08ec6c1&#34;,<br/>      &#34;InstanceType&#34;: &#34;t1.micro&#34;,<br/>      &#34;CreatedAt&#34;:
+    &#34;2015-02-24T20:52:49+00:00&#34;,<br/>      &#34;AmiId&#34;: &#34;ami-35501205&#34;,<br/>      &#34;PublicDnsName&#34;:
+    &#34;ec2-192-0-2-0.us-west-2.compute.amazonaws.com&#34;,<br/>      &#34;Hostname&#34;:
+    &#34;ip-192-0-2-0&#34;,<br/>      &#34;Ec2InstanceId&#34;: &#34;i-5cd23551&#34;,<br/>      &#34;SubnetId&#34;:
+    &#34;subnet-b8de0ddd&#34;,<br/>      &#34;SecurityGroupIds&#34;: [<br/>        &#34;sg-c4d3f0a1&#34;<br/>      ...<br/>    },<br/>  ]<br/>}</pre><p>Next,
+    in Harness, you map the keys from the JSON host objects to Shell Script Provisioner
+    fields to tell Harness where to obtain the values for your infrastructure settings,
+    such as hostname and subnet.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554917391086/image.png"/></figure><p>At
+    runtime, Harness queries your provisioner using your script and stores the returned
+    JSON collection on the Harness Delegate as a file. Harness then uses the JSON
+    key values to define the instructure for your deployment environment as it creates
+    that environment in your target platform.</p><p>Here is a high-level summary of
+    the setup steps involved:</p><ol><li><strong>Delegate and Cloud Provider</strong>
+    - Install a Harness Delegate where it can connect to your infrastructure provisioner
+    and query it for the JSON infrastructure information. Add a Harness Cloud Provider
+    that connects to the platform where the infrastructure will be deployed.</li><li><strong>Application
+    and Service</strong> - Create a Harness Application to manage your deployment.
+    Add a Service to your Application. The type of Service you select determines how
+    you map JSON keys in the Shell Script Provisioner <strong>Service Mappings</strong>.
+    For example, an ECS Service will require different mapping settings than a Kubernetes
+    Service.</li><li><strong>JSON and Script Prep</strong> - Prepare the JSON file
+    to be retrieved by Harness. Prepare the shell script to pull the JSON to Harness.</li><li><strong>Shell
+    Script Provisioner</strong> - Add a Shell Script provisioner to your Application.<ol><li>Add
+    the shell script to the Shell Script provisioner to query your provisioner and
+    retrieve the JSON infrastructure information.</li><li>Add Service Mappings. The
+    mapping method depends on the Service and Deployment Type you select.</li></ol></li><li><strong>Environment</strong>
+    - Add an Environment to your Application that uses the Shell Script Provisioner
+    in its Infrastructure Definition.</li><li><strong>Workflow</strong> - Add a Workflow
+    to your Application that applies the Shell Script Provisioner.</li></ol><p></p><h3>Delegate
+    and Cloud Provider Setup</h3><p>To use the Harness Shell Script Provisioner there
+    are certain Delegate and Cloud Provider setup steps that must be performed.</p><h4>Delegate
+    Requirements</h4><p>To deploy using a Shell Script Provisioner, ensure the following
+    Delegate configuration is set up:</p><ul><li>Install a Harness Delegate on a host
+    that can connect to the provisioner your shell script will query. Once you have
+    installed your Delegate, open a terminal on its host and run your shell script
+    to ensure that it will execute at runtime.</li><li>Ensure the same Delegate, or
+    another Delegate, can connect to your target deployment environment.</li></ul><p>For
+    information on setting up the Harness Delegate, see <a href="/article/h9tkwmkrm7-delegate-installation">Delegate
+    Installation and Management</a>.</p><h4>Cloud Provider Requirements</h4><p>Harness
+    Cloud Providers are used in the Harness Environment, in <strong>Infrastructure
+    Definition</strong>. You will select the <strong>Cloud Provider</strong> to use
+    when deploying your Infrastructure Definition.</p><p>To ensure that your Cloud
+    Provider and Infrastructure Provisioner are in sync, this topic will show you
+    how to do the following:</p><ol><li>Set up a Cloud Provider (AWS, Physical Data
+    Center, etc) for your connection to your deployment environment. For more information,
+    see <a href="/article/whwnovprrb-cloud-providers">Add Cloud Providers</a>.</li><li>Later,
+    when you set up your Environment Infrastructure Definition, select the same Cloud
+    Provider.</li></ol><h4>Delegate and Cloud Provider Setup</h4><p>The simplest method
+    to ensure that your Delegate and Cloud Provider support your Infrastructure Provisioner
+    is to install a Delegate in your deployment environment, verify that its host
+    can connect to the provisioner you plan to query, and then use the same Delegate
+    for the Cloud Provider authentication credentials. This method uses Delegate Selectors
+    or the Delegate name. For more information, see <a href="/article/h9tkwmkrm7-delegate-installation">Delegate
+    Installation and Management</a>.</p><p>To set up your Delegate and Cloud Provider,
+    do the following:</p><ol><li>Install the Delegate.<ol><li>In Harness, click <strong>Setup</strong>,
+    and then click <strong>Harness Delegates</strong>.</li><li>Click <strong>Download
+    Delegate</strong> and select the Delegate type.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1553815282174/image.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure></li><li>There
+    are different installation steps depending on which Delegate type you select.
+    For details on setting up each type, see <a href="/article/h9tkwmkrm7-delegate-installation">Delegate
+    Installation and Management</a>.</li><li>Once the Delegate is installed, open
+    a terminal on its host and test the shell script you plan to use to pull the provisioner
+    JSON collection. For example, the following script obtains the JSON for AWS EC2
+    instances:</li></ol><pre>apt-get -y install awscli<br/>aws configure set aws_access_key_id
+    $access_key<br/>aws configure set aws_secret_access_key $secret_key<br/>aws configure
+    set region us-east-1<br/>aws ec2 describe-instances --filters Name=tag:Name,Values=harness-provisioner</pre><ol><li
+    style="counter-increment:li 4" start="5">Verify that the script returns the JSON
+    collection. If it does, then the Delegate will be successful when executing the
+    script at runtime. If the script fails, troubleshoot the network connection between
+    the Delegate host and the provisioner host or service.</li></ol></li><li>Add the
+    Cloud Provider.<ol><li>In Harness, click <strong>Setup</strong>, and then click
+    <strong>Cloud Providers</strong>.</li><li>Click <strong>Add Cloud Provider</strong>.
+    The <strong>Cloud Provider</strong> dialog appears.</li><li>Select the Cloud Provider
+    type you want to use.</li><li>In <strong>Display Name</strong>, enter the name
+    to identify the Cloud Provider when you select it in your Harness Environment
+    later.<br/><br/>For a Physical Data Center Cloud Provider, no credentials are
+    required here. Instead, you add an SSH secret in Harness Secrets Management, and
+    select that later in your Harness Environment in <strong>Connection Attributes</strong>.
+    For more information, see <a href="/article/au38zpufhr-secret-management">Secrets
+    Management</a>.</li><li>Click <strong>SUBMIT</strong> when you are done.</li></ol></li></ol><h5>SSH
+    Connection Credentials</h5><p>When you set up a Physical Data Center Cloud Provider
+    in Harness, you do not enter SSH credentials. Instead, you add SSH credentials
+    in Harness Secrets Management. For example, here is a SSH Configuration from Secrets
+    Management.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554315511841/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>For
+    steps on adding SSH credentials, see <a href="/article/au38zpufhr-secret-management">Secrets
+    Management</a>.</p><h3>Application and Service Setup</h3><p>Any Harness Application
+    and Service setup can be used with a Harness Infrastructure Provisioner. If you
+    do not already have an Application and Service set up, use the following articles:</p><ul><li>
+    <a href="/article/bucothemly-application-configuration">Application Checklist</a></li><li>
+    <a href="/article/eb3kfl8uls-service-configuration">Services</a></li></ul><h3>Shell
+    Script Provisioner Setup</h3><p>This section will walk you through a detailed
+    setup of a Shell Script Provisioner for a deployment to a Physical Data Center,
+    and provide examples of the other supported platforms.</p><p>For all of the supported
+    platforms, setting up the Shell Script Infrastructure Provisioner involves the
+    following steps:</p><ol><li>Add your shell script to pull the JSON collection
+    from your provisioner.</li><li>Map the relevant JSON keys from the JSON to your
+    Harness fields.</li></ol><p>To set up a Shell Script Infrastructure Provisioner,
+    do the following:</p><ol><li>In your Harness Application, click <strong>Infrastructure
+    Provisioners</strong>.</li><li>Click <strong>Add Infrastructure Provisioner</strong>,
+    and then click <strong>Shell Script</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1553894372282/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>In
+    this dialog, you will enter the shell script to pull the JSON collection from
+    your provisioner.</li><li>In <strong>Name</strong>, enter a name for the Shell
+    Script Provisioner, such as <strong>Example Shell Script Provisioner</strong>.
+    You will use this name later when you select this Shell Script Provisioner in
+    your Harness Environment and Workflow.</li><li>Click <strong>NEXT</strong>. The
+    <strong>Script</strong> section appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1553894684750/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Script</strong>, enter the shell script to pull the JSON collection from
+    your provisioner. This shell script will be executed at runtime by the Harness
+    Delegate on its host. This should be a shell script you have run on the Delegate
+    host to ensure that the host can connect to your provisioner.</li></ol><p>Let&#39;s
+    look at an example script:</p><pre>apt-get -y install awscli<br/>aws configure
+    set aws_access_key_id $access_key<br/>aws configure set aws_secret_access_key
+    $secret_key<br/>aws configure set region us-west-1<br/>aws ec2 describe-instances
+    --instance-ids i-0beacf0f260edd19f &gt; &#34;$PROVISIONER_OUTPUT_PATH&#34;</pre><p>The
+    script should return a JSON array containing the host information Harness needs
+    to provision, such as:</p><pre>{<br/>  &#34;Instances&#34;: [<br/>    {<br/>      ...<br/>      &#34;Status&#34;:
+    &#34;online&#34;,<br/>      &#34;InstanceId&#34;: &#34;4d6d1710-ded9-42a1-b08e-b043ad7af1e2&#34;,<br/>      &#34;SshKeyName&#34;:
+    &#34;US-West-2&#34;,<br/>      &#34;InfrastructureClass&#34;: &#34;ec2&#34;,<br/>      &#34;RootDeviceVolumeId&#34;:
+    &#34;vol-d08ec6c1&#34;,<br/>      &#34;InstanceType&#34;: &#34;t1.micro&#34;,<br/>      &#34;CreatedAt&#34;:
+    &#34;2015-02-24T20:52:49+00:00&#34;,<br/>      &#34;AmiId&#34;: &#34;ami-35501205&#34;,<br/>      &#34;PublicDnsName&#34;:
+    &#34;ec2-192-0-2-0.us-west-2.compute.amazonaws.com&#34;,<br/>      &#34;Hostname&#34;:
+    &#34;ip-192-0-2-0&#34;,<br/>      &#34;Ec2InstanceId&#34;: &#34;i-5cd23551&#34;,<br/>      &#34;SubnetId&#34;:
+    &#34;subnet-b8de0ddd&#34;,<br/>      &#34;SecurityGroupIds&#34;: [<br/>        &#34;sg-c4d3f0a1&#34;<br/>      ...<br/>    },<br/>  ]<br/>}
+    </pre><p>The environment variable <code>&#34;$PROVISIONER_OUTPUT_PATH&#34;</code> is
+    initialized by Harness and stores the JSON collection returned by your script.
+    You are simply writing a file to <code>&#34;$PROVISIONER_OUTPUT_PATH&#34;</code>.</p><div
+    class="note-callout">Put quotes around <code>$PROVISIONER_OUTPUT_PATH</code> as
+    a best practice. The quotes are only required if the value of the variable will
+    have spaces in it, but they cause no problem in any case.</div><p>The above example
+    uses AWS, but the example is included here to demonstrate a simple script to obtain
+    a JSON collection.</p><p>There are two access key variables in the script example,
+    <code>$access_key</code> and <code>$secret_key</code>. You can set these variables
+    here and when this Infrastructure Provisioner is added to a Workflow, a user will
+    select the Harness Encrypted Text secrets to use for each variable. We&#39;ll
+    do this next.</p><ol><li style="counter-increment:li 5" start="6">Once you have
+    entered your script, click <strong>NEXT</strong>. The <strong>Variables</strong>
+    section appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1553897127782/image.png"
+    style="max-height:505;max-width:50%" data-hd-height="505" data-hd-width="50%"/></figure></li><li>Click
+    in the <strong>Name</strong> column, and enter the key name without the <code>$</code>,
+    such as <code>access_key</code>.</li><li>Click in the <strong>Type</strong> column,
+    and choose <strong>Encrypted Text</strong>.</li><li>Repeat the steps for the other
+    variable, <code>secret_key</code>. When you are done, the <strong>Variables</strong>
+    section will look something like this:</li></ol><p></p><p></p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1553897597656/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><div
+    class="note-callout">When you select the Provisioner in a Harness Workflow, you
+    will be prompted to provide the values for the variables. You can select secrets
+    from the Harness Secrets Management. See <a href="/article/au38zpufhr-secret-management">Secrets
+    Management</a>. Selecting the Provisioner in a Harness Workflow is covered later
+    in this topic.</div><p>As an alternative, you can reference secrets directly in
+    your script using the Harness variable, <code>${secrets.getValue(&#34;&lt;name&gt;&#34;)}</code>.
+    For example:</p><pre>apt-get -y install awscli<br/>aws configure set aws_access_key_id
+    ${secrets.getValue(&#34;access_key&#34;)}<br/>aws configure set aws_secret_access_key
+    ${secrets.getValue(&#34;secret_key&#34;)}<br/>aws configure set region us-west-1<br/>aws
+    ec2 describe-instances --instance-ids i-0beacf0f260edd19f &gt; &#34;$PROVISIONER_OUTPUT_PATH&#34;</pre><p>Ensure
+    that the Usage Scope for any Harness Secret you use is set to the Application
+    using the Infrastructure Provisioner. For more information, see <a href="/article/au38zpufhr-secret-management">Secrets
+    Management</a>.</p><p>When you have entered your variables in the Shell Script
+    Provisioner <strong>Variables</strong> section, click <strong>NEXT</strong>, and
+    then click <strong>SUBMIT</strong>. The Shell Script Provisioner appears.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1553900415471/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Environment
+    Setup and Infrastructure Definitions</h3><p>With Infrastructure Definitions, you
+    map Shell Script script outputs as part of the Infrastructure Definition in a
+    Harness Environment.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1570237781234/image.png"/></figure><p>In
+    this section we will show you how to set up an Infrastructure Definition that
+    maps the keys from the JSON collection your provisioner script returns with the
+    platform-specific keys needed by Harness for deployment.</p><p>For Service mappings
+    in an ​Infrastructure Definition, you map the keys from the JSON collection your
+    script returns with the platform-specific keys needed by Harness for deployment.</p><p>For
+    example, to deploy to a Physical Data Center, Harness requires that you provide
+    a key from the JSON collection and map it to a Harness <strong>Hostname</strong>
+    field. You can add any additional mappings that will help your deployment.</p><p>The
+    following Service mapping maps a <code>PublicDnsName</code> key to the <strong>Hostname</strong>
+    field in Harness, and a <code>SubnetId</code> key from the JSON to a <strong>SubnetId</strong>
+    field in Harness.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568935204392/image.png"/></figure><p>The
+    type of service mappings required depend on what Deployment Type and Cloud Provider
+    Type you use in Infrastructure Definition. A Service mapping to a Physical Data
+    Center will require different mappings than an AWS Cloud Provider.</p><p>In this
+    section, we provide examples of mappings for different Deployment Types and Cloud
+    Providers.</p><h5>Physical Data Center</h5><p>This section describes how to configure
+    a Service Mapping that uses a <strong>Physical Data Center</strong> Cloud Provider.</p><p>The
+    following information is required for the Service Mapping:</p><ul><li><strong>Hostname</strong>
+    - Harness requires the JSON key that indicates the hostname value.</li></ul><p>To
+    set up a Service Mapping for a Physical Data Center Cloud Provider, do the following:</p><ol><li>In
+    your Harness Application, in your Environment , click add Infrastructure Definition.
+    The Infrastructure Definition dialog appears.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568935337182/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Name</strong>, enter the name of the Infrastructure Definition. This is
+    the name you will select when you create a Workflow or Workflow Phase.</li><li>In
+    <strong>Cloud Provider Type</strong>, select <strong>Physical Data Center</strong>.</li><li>In
+    <strong>Deployment Type</strong>, select <strong>Secure Shell (SSH)</strong>.</li><li>Select
+    <strong>Map Dynamically Provisioned Infrastructure</strong> to use the Shell Script
+    Infrastructure Provisioner you created.</li><li>In <strong>Provisioner</strong>,
+    select the Shell Script Infrastructure Provisioner you created.</li><li>In <strong>Cloud
+    Provider</strong>, select the Cloud Provider you set up to connect Harness to
+    your Physical Data Center.</li><li>In <strong>Host Connection Attributes</strong>,
+    select the SSH credentials you set up in <a href="https://docs.harness.io/article/1m3p7phdqo-shell-script-provisioner#ssh_connection_credentials">SSH
+    Connection Credentials</a>.</li><li>In <strong>Host Object Array Path</strong>,
+    enter the JSON path to the JSON array object for the host.</li></ol><p>For example,
+    the following JSON object contains an Instances array with two items (the JSON
+    is abbreviated):</p><pre class="hljs json">{<br/>  &#34;Instances&#34;: [<br/>    {<br/>      &#34;StackId&#34;:
+    &#34;71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f&#34;,<br/>      ...<br/>      &#34;InfrastructureClass&#34;:
+    &#34;ec2&#34;,<br/>      &#34;RootDeviceVolumeId&#34;: &#34;vol-d08ec6c1&#34;,<br/>      &#34;SubnetId&#34;:
+    &#34;subnet-b8de0ddd&#34;,<br/>      &#34;InstanceType&#34;: &#34;t1.micro&#34;,<br/>      &#34;CreatedAt&#34;:
+    &#34;2015-02-24T20:52:49+00:00&#34;,<br/>      &#34;AmiId&#34;: &#34;ami-35501205&#34;,<br/>      &#34;Hostname&#34;:
+    &#34;ip-192-0-2-0&#34;,<br/>      &#34;Ec2InstanceId&#34;: &#34;i-5cd23551&#34;,<br/>      &#34;PublicDns&#34;:
+    &#34;ec2-192-0-2-0.us-west-2.compute.amazonaws.com&#34;,<br/>      &#34;SecurityGroupIds&#34;:
+    [<br/>        &#34;sg-c4d3f0a1&#34;<br/>      ],<br/>      ...<br/>    },<br/>    {<br/>      &#34;StackId&#34;:
+    &#34;71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f&#34;,<br/>      ...<br/>      &#34;InfrastructureClass&#34;:
+    &#34;ec2&#34;,<br/>      &#34;RootDeviceVolumeId&#34;: &#34;vol-e09dd5f1&#34;,<br/>      &#34;SubnetId&#34;:
+    &#34;subnet-b8de0ddd&#34;,<br/>      &#34;InstanceProfileArn&#34;: &#34;arn:aws:iam::123456789102:instance-profile/aws-opsworks-ec2-role&#34;,<br/>      &#34;InstanceType&#34;:
+    &#34;c3.large&#34;,<br/>      &#34;CreatedAt&#34;: &#34;2015-02-24T21:29:33+00:00&#34;,<br/>      &#34;AmiId&#34;:
+    &#34;ami-9fc29baf&#34;,<br/>      &#34;SshHostDsaKeyFingerprint&#34;: &#34;fc:87:95:c3:f5:e1:3b:9f:d2:06:6e:62:9a:35:27:e8&#34;,<br/>      &#34;Ec2InstanceId&#34;:
+    &#34;i-8d2dca80&#34;,<br/>      &#34;PublicDns&#34;: &#34;ec2-192-0-2-1.us-west-2.compute.amazonaws.com&#34;,<br/>      &#34;SecurityGroupIds&#34;:
+    [<br/>        &#34;sg-b022add5&#34;,<br/>        &#34;sg-b122add4&#34;<br/>      ],<br/>      ...<br/>    }<br/>  ]<br/>}</pre><p>We
+    want to point to the first item in the JSON file using its index, and so we use
+    <code>Instances</code>.</p><div class="tip-callout">To ensure that you referring
+    to the correct item in your array, test your <strong>Host Object Array Path</strong>
+    using your JSON collection and an online validator such as <a href="https://jsoneditoronline.org/"
+    target="_blank">JSON Editor Online</a>.</div><p>In <strong>Host Object Array Path</strong>,
+    the path will look like this:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568935730219/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Now
+    that you have provided a path to the host object, you can map its JSON keys in
+    <strong>Host Attributes</strong>. For Physical Data Center, only the <strong>Hostname</strong>
+    field is mandatory.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554153310703/image.png"
+    style="max-height:505;max-width:50%" data-hd-height="505" data-hd-width="50%"/></figure><ol><li
+    style="counter-increment:li 6" start="7">In the row for <strong>Hostname</strong>,
+    click <strong>Enter JSON Path</strong>, and enter the name of the key in the JSON
+    array that lists the hostname you want to use. For example, you could use key
+    name <strong>PublicDnsName</strong> from the earlier example:</li></ol><pre class="hljs
+    json"> {<br/>  &#34;Instances&#34;: [<br/>    {<br/>      &#34;StackId&#34;: &#34;71c7ca72-55ae-4b6a-8ee1-a8dcded3fa0f&#34;,<br/>      ...<br/>      &#34;SubnetId&#34;:
+    &#34;subnet-b8de0ddd&#34;,<br/>      &#34;InstanceType&#34;: &#34;t1.micro&#34;,<br/>      &#34;CreatedAt&#34;:
+    &#34;2015-02-24T20:52:49+00:00&#34;,<br/>      &#34;AmiId&#34;: &#34;ami-35501205&#34;,<br/>      &#34;Hostname&#34;:
+    &#34;ip-192-0-2-0&#34;,<br/>      &#34;Ec2InstanceId&#34;: &#34;i-5cd23551&#34;,<br/>      &#34;<strong>PublicDnsName</strong>&#34;:
+    &#34;ec2-192-0-2-0.us-west-2.compute.amazonaws.com&#34;,<br/>      &#34;SecurityGroupIds&#34;:
+    [<br/>        &#34;sg-c4d3f0a1&#34;<br/>      ],<br/>      ...<br/>    },</pre><ol><li
+    style="counter-increment:li 7" start="8">Map any other key names you want to use
+    when creating the host(s) in the infrastructure. The following image shows how
+    you can map multiple keys to <strong>Host Attributes</strong>.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568935204392/image.png"/></figure><p></p><div
+    class="note-callout">You can reference any mapped Field Name after the <strong>Select
+    Nodes</strong> step in your Workflow using the expression <code>${host.properties.&lt;name&gt;}</code>,
+    such as <code>${host.properties.SubnetId}</code>. For example, you could add a
+    Shell Script step to a Workflow that outputs the values for all the mapped Fields.</div><ol><li
+    style="counter-increment:li 8" start="9">Click <strong>NEXT</strong>, and then
+    click <strong>SUBMIT</strong>. The Infrastructure Definition and its Service mapping
+    is listed:</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568935834390/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Now
+    that the Infrastructure Provisioner and an Infrastructure Definition with a Service
+    mapping are created, you can use it in the Environment and Workflow of your Harness
+    Application.</p><h5>AWS ECS</h5><p>You can set up mappings like you did with the
+    Physical Data Center with other Harness Cloud Providers, such as AWS ECS. In every
+    case, you simply need to provide the path to the JSON key you want to map to the
+    required Harness fields.</p><p>Here is an example of an AWS ECS EC2 mapping where
+    each field contains a JSON path to a specific key.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568936738535/image.png"/></figure><h5>Kubernetes
+    on Google Cloud</h5><p>Mapping to Kubernetes on Google Cloud (GKE) simply requires
+    the Kubernetes cluster name and namespace.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568936904201/image.png"/></figure><h3>Workflow
+    Setup</h3><div class="note-callout">The Shell Script Provisioner is supported
+    in Canary and Basic Deployment type Workflows. For AMI/ASG and ECS deployments,
+    it is also supported in Blue/Green Deployment type Workflows.</div><p>Once your
+    Shell Script Infrastructure Provisioner has been added to an Environment in your
+    Harness Application, it can be used in Workflows.</p><p>For Canary Deployments,
+    you add the Shell Script Infrastructure Provisioner as a pre-deployment step in
+    the Workflow.</p><p>In this section we will look at how to use a Shell Script
+    Infrastructure Provisioner in a Canary Workflow.</p><h4>Canary Workflow</h4><p>Using
+    the Shell Script Infrastructure Provisioner in a Canary Workflow involves adding
+    the Shell Script Infrastructure Provisioner as a pre-deployment step before the
+    phases of the Workflow, or within each phase.</p><p>In this section, we&#39;ll
+    create a Canary Workflow and add the Shell Script Infrastructure Provisioner as
+    a pre-deployment step before the first phase of the Workflow.</p><p>To use the
+    Shell Script Infrastructure Provisioner in a Canary Workflow, do the following:</p><ol><li>In
+    the Harness Application containing your Shell Script Infrastructure Provisioner,
+    click <strong>Workflows</strong>.</li><li>Click <strong>Add Workflow</strong>.</li><li>In
+    the <strong>Workflow</strong> dialog, add a name, and then, in <strong>Workflow
+    Type</strong>, select <strong>Canary Deployment</strong>. The dialog fields change
+    for a Canary deployment.</li><li>In <strong>Environment</strong>, select the Environment
+    where you used your Shell Script Infrastructure Provisioner to dynamically provision
+    the Infrastructure Definition. When you are done, the dialog will look something
+    like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554493235599/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>SUBMIT</strong>. The Workflow appears. At the top of the Workflow steps
+    is the <strong>Pre-deployment Steps</strong> where we will add the Shell Script
+    Provisioner.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554332533083/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Pre-deployment Steps</strong>, click <strong>Add Step</strong>. The <strong>Add
+    Command</strong> dialog appears. In the dialog, under <strong>Provisioners</strong>,
+    the Shell Script Provisioner is listed.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554324756067/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>Shell Script Provision</strong>. The <strong>Shell Script Provision</strong>
+    settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1617654372167/image.png"/></figure></li><li>In
+    <strong>Provisioner</strong>, select the Shell Script Provisioner you created.</li><li>In
+    <strong>Timeout</strong>, enter how long you want Harness to attempt to use the
+    provisioner before failing the deployment. If the Delegate cannot reach the provisioner
+    at all, or if the script does not work, it will fail immediately.</li><li>In <strong>Delegate
+    Selectors</strong>, enter the Selectors of the Delegate(s) you want to execute
+    this step. See <a href="/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors">Select
+    Delegates with Selectors</a>.</li><li>Click <strong>Output in the Context</strong>.
+    The <strong>Output in the Context</strong> settings appear.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554335526537/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>The
+    <strong>Output in the Context</strong> settings let you take the shell script
+    output from your Shell Script Provisioner and assign it to a variable. Next, you
+    can scope the variable to Pipeline, Workflow, or Phase.</li><li>To use the <strong>Output
+    in the Context</strong> settings, in <strong>Variable Name</strong>, enter a name
+    such as <strong>demo</strong>, and in <strong>Scope</strong>, select <strong>Workflow</strong>,
+    and then click <strong>NEXT</strong>.<br/>Now you can display the output of the
+    shell script within its scope by using the format <code>${context.var_name}</code>,
+    such as <code>${context.demo}</code>.<br/><br/>For example, here is the setup
+    for the <strong>Output in the Context</strong> settings, the use of the variable
+    <code>${context.demo}</code> in a Shell Script step elsewhere in the Workflow,
+    and the output in the deployed Shell Script step.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554398553477/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>NEXT</strong>. The <strong>Variables</strong> section appears. If you
+    used variables in your Shell Script Provisioner, the variables are listed in the
+    <strong>Variables</strong> section. You must provide values for the variables.<br/><br/>For
+    example, the following image shows a Shell Script Provisioner with two variables,
+    <code>access_key</code> and <code>secret_key</code>, on the right, and their corresponding
+    settings in the <strong>Variables</strong> section of the Canary Workflow step
+    on the left:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554334148190/image.png"/></figure></li><li>For
+    each variable, click in the <strong>Value</strong> column and add or select a
+    value. If the variable is just text, enter a value. If the variable is encrypted
+    text, the available values in the dropdown are taken from the Encrypted Text entries
+    in Harness Secrets Management. For more information, see <a href="/article/au38zpufhr-secret-management">Secrets
+    Management</a>. When you are finished, the Variables section will look something
+    like this:<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554335191245/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><div
+    class="note-callout">You can use Workflow variables in the <strong>Value</strong>
+    settings. See <a href="/article/766iheu1bk-add-workflow-variables-new-template">Set
+    Workflow Variables</a>.</div><ol><li style="counter-increment:li 13" start="14">Click
+    <strong>NEXT</strong>, and then click <strong>SUBMIT</strong>. The Shell Script
+    Provisioner step is added to the Workflow.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554335316227/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><p>The
+    Shell Script Provisioner is now added as a step in the Workflow.</p><p>For each
+    Phase in a Canary Workflow, you specify a Service and Infrastructure Definition
+    for the Phase execution. You can specify the same Infrastructure Definition that
+    uses your Shell Script Provisioner.</p><p>For example, in the Workflow, in <strong>Deployment
+    Phases</strong>, click <strong>Add Phase</strong>. The <strong>Workflow Phase</strong>
+    dialog appears.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568954202768/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>Service</strong>, select the Service to be deployed in this Phase. The
+    Service must be the same Service type that is used in the Infrastructure Definition
+    that uses your Shell Script Provisioner.</p><p>In <strong>Infrastructure Definition</strong>,
+    select the Infrastructure Definition that uses your Shell Script Provisioner.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/other/1568954146814/image.png" style="max-height:50%;max-width:50%"
+    data-hd-height="50%" data-hd-width="50%"/></figure><p>Click <strong>SUBMIT</strong>.
+    The Phase is created using the Infrastructure Definition that uses your Shell
+    Script Provisioner.</p><p>Add any other Canary Workflow Phases you require, and
+    then Deploy your Workflow. The Workflow will use the Shell Script Provisioner
+    to create the Service Mappings it requires and create the infrastructure for your
+    deployment.</p><h3>Deployment Example</h3><p>The following Canary Workflow deployment
+    uses the Shell Script Provisioner as part of its deployment.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554418756504/image.png"/></figure><p>Let&#39;s
+    look at each stage of the deployment.</p><p>In the <strong>Pre-Deployment</strong>
+    phase, you can see the <strong>Shell Script Provision</strong> step using the
+    Shell Script Provisioner script to obtain the JSON array.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554418911529/image.png"/></figure><p>In
+    this example, the <strong>Shell Script Provision</strong> step setting, <strong>Output
+    in the Context</strong>, was used to put the Shell Script Provisioner script JSON
+    output into a variable, and echo that variable in a <strong>Shell Script</strong>
+    step in the Workflow. If you click the <strong>Shell Script</strong> step in the
+    Workflow, the JSON obtained by the Shell Script Provisioner script is displayed:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554420401297/image.png"/></figure><p>Next,
+    in <strong>Phase 1</strong> of the Canary Workflow, we can see in the result of
+    the <strong>Service Mapping</strong> from our Shell Script Provisioner (or <a
+    href="https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition">Infrastructure
+    Definition</a>) in the <strong>Select Nodes</strong> step. The following images
+    show how the JSON key <code>PublicDnsName</code> was mapped to the Harness field
+    <code>Hostname</code>, which is then used to select the node for deployment.</p><p>Here
+    is an example using Service Mapping in the Infrastructure Provisioner:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554419980889/image.png"/></figure><p>Here
+    is an example using the <a href="https://docs.harness.io/article/n39w05njjv-environment-configuration#add_an_infrastructure_definition">Infrastructure
+    Definition</a> Service mapping:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/other/1568954802992/image.png"/></figure><p>Lastly,
+    in the <strong>Install</strong> step of the Workflow, you can see that the same
+    hostname identifies the target host where the artifact was deployed successfully.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/1m3p7phdqo/1554420120923/image.png"/></figure><p>Now
+    you have seen an example of how the Shell Script Provisioner was used to provision
+    the deployment environment and target host using a simple JSON array.</p><h3>Next
+    Steps</h3><ul><li><a href="/article/9dvxcegm90-variables">Variables and Expressions
+    in Harness</a></li><li><a href="/article/myw4h9u05l-verification-providers-list">Continuous
+    Verification</a></li></ul><p></p>'
+  slug: shell-script-provisioner
+  tags:
+  - Infrastructure Provisioner
+  - Shell Script
+  - Service Mapping
+  - Canary
+  - Infrastructure Definition
+  - Environment
+  - Delegate
+  - Cloud Provider
+  - data center
+  is_live: true

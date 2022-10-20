@@ -1,0 +1,233 @@
+type: article
+article_id: lbhf2h71at
+user_id: mfr0nxh4be
+category_id: c9j6jejsws
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Native Helm Deployment Tutorial
+slug: native-helm-quickstart
+description: Learn how to perform Native Helm deployments using Harness.
+short_version: Learn how to perform Native Helm deployments using Harness.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-07T22:33:33.272012Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Native Helm Deployment Tutorial
+  description: Learn how to perform Native Helm deployments using Harness.
+  short_version: Learn how to perform Native Helm deployments using Harness.
+  body: '<div class="note-callout">Currently, this feature is behind the Feature Flag
+    <code>NG_NATIVE_HELM</code>. Contact <a href="mailto:support@harness.io" target="_blank">Harness
+    Support</a> to enable the feature.</div><p>This quickstart shows you how to perform
+    <u>Native</u> Helm deployments using Harness.</p><p>Harness includes both Kubernetes
+    and Native Helm deployments, and you can use Helm charts in both. Here&#39;s the
+    difference:</p><ul><li><strong>Kubernetes with Helm:</strong> Harness Kubernetes
+    deployments allow you to use your own Helm values.yaml or Helm chart (remote or
+    local), and Harness executes the Kubernetes kubectl calls to build everything
+    without Helm and Tiller needing to be installed in the target cluster. You can
+    perform all deployment strategies (Rolling, Canary, Blue Green).<br/>See <a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a>, <a href="/article/cifa2yb19a-helm-cd-quickstart">Helm Chart
+    CD Quickstart</a>.</li><li><strong>Native Helm:</strong> <ul><li>For Harness Native Helm
+    V2 deployments, you must always have Helm and Tiller running on one pod in your
+    target cluster and Tiller makes the API calls to Kubernetes. You can perform a
+    Rolling deployment strategy only (no Canary or Blue Green).<div class="note-callout">If
+    you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate
+    pod. For steps on installing software on the Delegate, go to <a href="/article/yte6x6cyhn-run-scripts-on-delegates">Install
+    Software on the Delegate with Initialization Scripts</a>.</div></li><li>For Harness
+    Native Helm v3 deployments, you no longer need Tiller, but you are still limited
+    to the Rolling deployment strategy.<ul><li><strong>Versioning:</strong> Harness
+    Kubernetes deployments version all objects, such as ConfigMaps and Secrets. Native Helm
+    does not.</li><li><strong>Rollback:</strong> Harness Kubernetes deployments will
+    roll back to the last successful version. Native Helm will not. If you did 2 bad
+    Native Helm deployments, the 2nd one will just rollback to the 1st. Harness will
+    roll back to the last <u>successful</u> version.</li></ul></li></ul></li></ul><div
+    class="note-callout">Harness supports Helm v2 and v3.</div><h3>Objectives</h3><p>You&#39;ll
+    learn how to:</p><ul><li>Install and launch a Harness Kubernetes Delegate in your
+    target cluster.</li><li>Set up a Native Helm Pipeline.</li><li>Run the new Native
+    Helm Pipeline and deploy a Docker image to your target cluster.</li></ul><h3>Before
+    You Begin</h3><p>Review <a href="https://docs.harness.io/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a> to establish a general understanding of Harness.</p><p>You will
+    need a target Kubernetes cluster where you will deploy NGINX:</p><details><summary>Set
+    up your Kubernetes cluster</summary><div><p>You&#39;ll need a target Kubernetes
+    cluster for Harness. Ensure your cluster meets the following requirements:</p><ul><li><strong>Number
+    of nodes:</strong> 3.</li><li><strong>Machine type:</strong> 4vCPU</li><li><strong>Memory:</strong> 4vCPUs,
+    16GB memory, 100GB disk. In GKE, the <strong>e2-standard-4</strong> machine type
+    is enough for this quickstart.</li><li><strong>Networking:</strong> outbound HTTPS
+    for the Harness connection to <strong>app.harness.io</strong>, <strong>github.com</strong>,
+    and <strong>hub.docker.com</strong>. Allow TCP port 22 for SSH.</li><li>A <strong>Kubernetes
+    service account</strong> with permission to create entities in the target namespace
+    is required. The set of permissions should include <code>list</code>, <code>get</code>, <code>create</code>,
+    and <code>delete</code> permissions. In general, the cluster-admin permission
+    or namespace admin permission is enough.<br/>For more information, see <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles"
+    target="_blank">User-Facing Roles</a> from Kubernetes.</li></ul></div></details><h3>Step
+    1: Create the Deploy Stage</h3><p>Pipelines are collections of stages. For this
+    quickstart, we&#39;ll create a new Pipeline and add a single stage.</p><div class="note-callout"><strong>Create
+    a Project for your new CD Pipeline:</strong> if you don&#39;t already have a Harness
+    Project, create a Project for your new CD Pipeline. Ensure that you add the <strong>Continuous
+    Delivery</strong> module to the Project. See <a href="/article/36fw2u92i4">Create
+    Organizations and Projects</a>.</div><p>In your Harness Project, click <strong>Deployments</strong>,
+    and then click <strong>Create a</strong> <strong>Pipeline</strong>.</p><figure><a
+    href="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1615228603202/image.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1615228603202/image.png"/></a></figure><p>Enter
+    the name <strong>Native Helm Example</strong> and click <strong>Start</strong>.</p><p>Your
+    Pipeline appears.</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1612830356414/image.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1612830356414/image.png"/></a></figure><p>Click <strong>Add
+    Stage</strong> and select <strong>Deploy</strong>.</p><p>Enter the name <strong>quickstart</strong>,
+    make sure <strong>Service</strong> is selected, and then click <strong>Set Up
+    Stage</strong>.</p><p>The new stage settings appear.</p><p>In <strong>About the</strong> <strong>Service</strong>,
+    click <strong>New Service</strong>.</p><div class="note-callout">Let&#39;s take
+    a moment and review Harness Services and Service Definitions (which are explained
+    below). Harness Services represent your microservices/apps logically. You can
+    add the same Service to as many stages are you need. Service Definitions represent
+    your artifacts, manifests, and variables physically. They are the actual files
+    and variable values.<br/><br/>By separating Services and Service Definitions,
+    you can propagate the same Service across stages while changing the artifacts,
+    manifests, and variables with each stage.</div><p>Give the Service the name <strong>quickstart</strong> and
+    click <strong>Save</strong>.</p><p>Once you have created a Service, it is persistent
+    and can be used throughout the stages of this or any other Pipeline in the Project.</p><p>In <strong>Deployment
+    Type</strong>, click <strong>Native Helm</strong>. Now your Service looks like
+    this:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/lbhf2h71at/1639516962152/clean-shot-2021-12-14-at-13-22-29-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Next,
+    we&#39;ll add the NGINX Helm chart for the deployment.</p><h3>Step 2: Add the
+    Helm Chart and Delegate</h3><p>You can add a Harness Delegate inline when you
+    configure the first setting that needs it. For example, when we add a Helm chart,
+    we will add a Harness Connector to the HTTP server hosting the chart. This Connector
+    uses a Delegate to verify credentials and pull charts, so we&#39;ll install the
+    Delegate, too.</p><p>In <strong>Manifests</strong>, click <strong>Add Manifest</strong>.
+    The manifest types appear.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/lbhf2h71at/1639517041730/clean-shot-2021-12-14-at-13-23-56-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can select a Helm Values YAML file or a Helm chart. For this quickstart, we&#39;ll
+    use a publicly available Helm chart.</p><div class="note-callout">The process
+    isn&#39;t very different between these options. For Values YAML, you simply provide
+    the Git branch and path to the Values YAML file.</div><p>Click <strong>Helm Chart</strong>
+    and then click <strong>Continue</strong>.</p><p>In <strong>Specify Helm Chart
+    Store</strong>, click <strong>HTTP Helm</strong>.</p><p>We&#39;re going to be
+    pulling a Helm chart for NGINX from the Bitnami repo at <code>https://charts.bitnami.com/bitnami</code>.
+    You don&#39;t need any credentials for pulling the public chart.</p><p>Click <strong>New
+    HTTP Helm Repo Connector</strong>.</p><p>In the <strong>HTTP Helm Repo Connector</strong>,
+    in <strong>Name</strong>, enter <strong>helm-chart-repo</strong>, and click <strong>Continue</strong>.</p><p>In <strong>Helm
+    Repository URL</strong>, enter <code>https://charts.bitnami.com/bitnami</code>.</p><p>In <strong>Authentication</strong>,
+    select <strong>Anonymous</strong>.</p><p>Click <strong>Continue</strong>.</p><p>Now
+    we&#39;ll install and register a new Harness Delegate in your target cluster.</p><p>In <strong>Set
+    Up Delegates</strong>, click <strong>Install new Delegate</strong>.</p><p>The
+    Delegate wizard appears.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/lbhf2h71at/1639525135149/clean-shot-2021-12-14-at-15-38-42-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click <strong>Kubernetes</strong>,
+    and then click <strong>Continue</strong>.</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1625011757330/clean-shot-2021-06-29-at-17-09-10.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1625011757330/clean-shot-2021-06-29-at-17-09-10.png"/></a></figure><p>Enter
+    a name for the Delegate, like <strong>quickstart</strong>, click the <strong>Small</strong> size.</p><p>Click <strong>Continue</strong>.</p><p>Click <strong>Download
+    YAML file</strong>. The YAML file for the Kubernetes Delegate will download to
+    your computer as an archive.</p><p>Open a terminal and navigate to where the Delegate
+    file is located.</p><p>You will connect to your cluster using the terminal so
+    you can simply run the YAML file on the cluster.</p><p>In the same terminal, log
+    into your Kubernetes cluster. In most platforms, you select the cluster, click <strong>Connect</strong>,
+    and copy the access command.</p><p>Next, install the Harness Delegate using the <strong>harness-delegate.yaml</strong> file
+    you just downloaded. In the terminal connected to your cluster, run this command:</p><pre
+    class="hljs cs">kubectl apply -f harness-delegate.yaml</pre><p>You can find this
+    command in the Delegate wizard:</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1625006899148/clean-shot-2021-06-29-at-15-48-13.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/knunou9j30/1625006899148/clean-shot-2021-06-29-at-15-48-13.png"/></a></figure><p>The
+    successful output is something like this:</p><pre class="hljs cpp">% kubectl apply
+    -f harness-delegate.yaml<br/>namespace/harness-delegate unchanged<br/>clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin
+    unchanged<br/>secret/k8s-quickstart-proxy unchanged<br/>statefulset.apps/k8s-quickstart-sngxpn
+    created<br/>service/delegate-service unchanged</pre><p>In Harness, click <strong>Verify</strong>.
+    It will take a few minutes to verify the Delegate. Once it is verified, close
+    the wizard.</p><p>Back in <strong>Set Up Delegates</strong>, you can select the
+    new Delegate.</p><p>In the list of Delegates, you can see your new Delegate and
+    its tags.</p><p>Select the <strong>Connect using Delegates with the following
+    Tags</strong> option.</p><p>Enter the tag of the new Delegate and click <strong>Save
+    and Continue</strong>.</p><p>When you are done, the Connector is tested. If it
+    fails, your Delegate might not be able to connect to <code>https://charts.bitnami.com/bitnami</code>.
+    Review its network connectivity and ensure it can connect.</p><div class="note-callout">If
+    you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate
+    pod. For steps on installing software on the Delegate, go to <a href="/article/yte6x6cyhn-run-scripts-on-delegates">Install
+    Software on the Delegate with Initialization Scripts</a>.</div><p>Click <strong>Continue</strong>.</p><p>In <strong>Manifest
+    Details</strong>, enter the following settings can click <strong>Submit</strong>.</p><p></p><table><tbody><tr><td><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/cifa2yb19a/1618347865369/image.png"/></figure></td><td><ul><li><strong>Manifest
+    Identifier</strong>: enter <strong>nginx</strong>.</li><li><strong>Helm Chart
+    Name</strong>: enter <strong>nginx</strong>.</li><li><strong>Helm Chart Version</strong>:
+    enter <strong>8.8.1</strong>.</li><li><strong>Helm Version</strong>: select <strong>Version
+    3</strong>.</li></ul></td></tr></tbody></table><p></p><p>The Helm chart is added
+    to the Service Definition.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/cifa2yb19a/1626111625402/clean-shot-2021-07-12-at-10-40-15.png"/></figure><p>Next,
+    we can target your Kubernetes cluster for deployment.</p><h3>Step 3: Define Your
+    Target Cluster</h3><p>In <strong>Infrastructure</strong>, in <strong>Environment</strong>,
+    click <strong>New Environment</strong>.</p><p>In <strong>Name</strong>, enter
+    <strong>quickstart</strong>, select <strong>Non-Production</strong>, and click
+    <strong>Save</strong>.</p><p>In <strong>Infrastructure Definition</strong>, select
+    the <strong>Kubernetes</strong>.</p><p>In <strong>Cluster Details</strong>, click
+    <strong>Select Connector</strong>. We&#39;ll create a new Kubernetes Connector
+    to your target platform. We&#39;ll use the same Delegate you installed earlier.</p><p>Click
+    <strong>New Connector</strong>.</p><p>Enter a name for the Connector and click
+    <strong>Continue</strong>.</p><p>In <strong>Details</strong>, select <strong>Use
+    the credentials of a specific Harness Delegate</strong>, and then click <strong>Continue</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/cifa2yb19a/1626112553211/clean-shot-2021-07-12-at-10-55-31.png"/></figure><p>In
+    <strong>Set Up Delegates</strong>, select the Delegate you added earlier by entering
+    one of its Tags.</p><p>Click <strong>Save and Continue</strong>. The Connector
+    is tested. Click <strong>Finish</strong>.</p><p>Select the new Connector and click
+    <strong>Apply Selector</strong>.</p><p>In <strong>Namespace</strong>, enter <strong>default</strong>
+    or the namespace you want to use in the target cluster.</p><p>In <strong>Release
+    Name</strong>, enter <strong>quickstart</strong>.</p><p>Click <strong>Next</strong>.
+    The deployment strategy options appear.</p><h3>Step 4: Add a Helm Deployment Step</h3><p>We&#39;re
+    going to use a Rolling <a href="/article/0zsf97lo3c-deployment-concepts">deployment
+    strategy</a>, so click <strong>Rolling</strong>, and click <strong>Apply</strong>.</p><p>The
+    <strong>Helm Deployment</strong> step is added to <strong>Execution</strong>.</p><p>That&#39;s
+    it. Now you&#39;re ready to deploy.</p><h3>Step 5: Deploy and Review</h3><p>Click
+    <strong>Save</strong> to save your Pipeline.</p><p>Click <strong>Run</strong>.</p><p>Click
+    <strong>Run Pipeline</strong>.</p><p>Harness verifies the connections and then
+    runs the Pipeline.</p><div class="note-callout">Toggle <strong>Console View</strong> to
+    watch the deployment with more detailed logging.</div><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/lbhf2h71at/1639524465389/clean-shot-2021-12-14-at-15-27-31-2-x.png"/></figure><p>Click
+    the <strong>Helm Deployment</strong> step and expand <strong>Wait for Steady State</strong>.</p><p>You
+    can see <code>Status : quickstart-quickstart deployment &#34;quickstart-quickstart&#34;
+    successfully rolled out.</code></p><p>Congratulations! The deployment was successful.</p><p>In
+    your Project&#39;s Deployments, you can see the deployment listed.</p><h3>Review:
+    Spec Requirements for Steady State Check and Versioning</h3><p>Harness requires
+    that the <code>release</code> label be used in <strong>every</strong> Kubernetes
+    spec to ensure that Harness can identify a release, check its steady state, and
+    perform verification and rollback on it.</p><div class="warning-callout">Ensure
+    that the <code>release</code> label is in every Kubernetes object&#39;s manifest.
+    If you omit the <code>release</code> label from a manifest, Harness cannot track
+    it.</div><p>The <a href="https://helm.sh/docs/chart_template_guide/builtin_objects/"
+    target="_blank">Helm built-in Release object</a> describes the release and allows
+    Harness to identify each release. For this reason, the <code>release: {{ .Release.Name
+    }}</code> label must be used in your Kubernetes spec.</p><details><summary>See
+    these Service and Deployment object examples:</summary><div><pre class="hljs yaml">{{-
+    if .Values.env.config}}<br/>apiVersion: apps/v1<br/>kind: Deployment<br/>metadata:<br/>  name:
+    {{ template &#34;todolist.fullname&#34; . }}<br/>  labels:<br/>    app: {{ template
+    &#34;todolist.name&#34; . }}<br/>    chart: {{ template &#34;todolist.chart&#34;
+    . }}<br/>    release: &#34;{{ .Release.Name }}&#34;<br/>    harness.io/release:
+    {{ .Release.Name }}<br/>    heritage: {{ .Release.Service }}<br/>spec:<br/>  replicas:
+    {{ .Values.replicaCount }}<br/>  selector:<br/>    matchLabels:<br/>      app:
+    {{ template &#34;todolist.name&#34; . }}<br/>      release: {{ .Release.Name }}<br/>  template:<br/>    metadata:<br/>      labels:<br/>        app:
+    {{ template &#34;todolist.name&#34; . }}<br/>        release: {{ .Release.Name
+    }}<br/>        harness.io/release: {{ .Release.Name }}<br/>    spec:<br/>      {{-
+    if .Values.dockercfg}}<br/>      imagePullSecrets:<br/>      - name: {{.Values.name}}-dockercfg<br/>      {{-
+    end}}<br/>      containers:<br/>        - name: {{ .Chart.Name }}<br/>          image:
+    {{.Values.image}}<br/>          imagePullPolicy: {{ .Values.pullPolicy }}<br/>          {{-
+    if or .Values.env.config .Values.env.secrets}}<br/>          envFrom:<br/>          {{-
+    if .Values.env.config}}<br/>          - configMapRef:<br/>              name:
+    {{.Values.name}}<br/>          {{- end}}<br/>          {{- if .Values.env.secrets}}<br/>          -
+    secretRef:<br/>              name: {{.Values.name}}<br/>          {{- end}}<br/>          {{-
+    end}}<br/>...<br/>apiVersion: v1<br/>kind: Service<br/>metadata:<br/>  name: {{
+    template &#34;todolist.fullname&#34; . }}<br/>  labels:<br/>    app: {{ template
+    &#34;todolist.name&#34; . }}<br/>    chart: {{ template &#34;todolist.chart&#34;
+    . }}<br/>    release: {{ .Release.Name }}<br/>    heritage: {{ .Release.Service
+    }}<br/>spec:<br/>  type: {{ .Values.service.type }}<br/>  ports:<br/>    - port:
+    {{ .Values.service.port }}<br/>      targetPort: http<br/>      protocol: TCP<br/>      name:
+    http<br/>  selector:<br/>    app: {{ template &#34;todolist.name&#34; . }}<br/>    release:
+    {{ .Release.Name }}</pre></div></details><p></p><p>The <strong>Release name</strong>
+    setting in the stage <strong>Infrastructure</strong> is used as the Helm Release
+    Name to identify and track the deployment per namespace:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/lbhf2h71at/1651707139332/clean-shot-2022-05-04-at-16-32-03.png"/></figure><h3>Next
+    Steps</h3><p>See <a href="https://ngdocs.harness.io/category/qfj6m1k2c4">Kubernetes
+    How-tos</a> for other deployment features.</p>'
+  slug: native-helm-quickstart
+  tags: []
+  is_live: true

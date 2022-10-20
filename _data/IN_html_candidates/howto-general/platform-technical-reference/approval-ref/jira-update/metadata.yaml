@@ -1,0 +1,47 @@
+type: article
+article_id: ynabn2r9b9
+user_id: mfr0nxh4be
+category_id: r8mi3j15it
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Jira Update Step Settings
+slug: jira-update
+description: 'This topic provides settings and permissions for the [context]. In this
+  topic: [Name of Entity] [Setting label name]. [Setting label name]. [Setting label
+  name].. Related Reference Material. [Name of…'
+short_version: 'This topic provides settings and permissions for the [context]. In
+  this topic: [Name of Entity] [Setting label name]. [Setting label name]. [Setting
+  label name].. Related Reference Material. [Name of…'
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T21:40:30.879274Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Jira Update Step Settings
+  description: ""
+  short_version: ""
+  body: <p></p><p>This topic provides settings and permissions for the [context].</p><p>In
+    this topic:</p><ul><li><a href="#anchor_1">[Name of Entity]</a><ul><li><a href="#anchor_2">[Setting
+    label name]</a></li><li><a href="#anchor_3">[Setting label name]</a></li><li><a
+    href="#anchor_4">[Setting label name]</a></li></ul></li><li><a href="#related">Related
+    Reference Material</a></li></ul><p></p><h3>[Name of Entity/Setting/etc]</h3><p>[screenshot
+    of entity, such as Cloud Provider or User Group Permissions table]</p><h4>[Setting
+    label name]</h4><p>This setting....</p><p>To obtain the information for this setting,
+    in [3rd party tool], do the following:</p><h4>[Setting label name]</h4><p>This
+    setting....</p><p>To obtain the information for this setting, in [3rd party tool],
+    do the following:</p><h4>[Setting label name]</h4><p>This setting....</p><p>To
+    obtain the information for this setting, in [3rd party tool], do the following:</p><h3>See
+    Also</h3><ul><li>[links to Harness topics]</li><li>[links to 3rd party docs]</li></ul><p></p>
+  slug: jira-update
+  tags: []
+  is_live: true

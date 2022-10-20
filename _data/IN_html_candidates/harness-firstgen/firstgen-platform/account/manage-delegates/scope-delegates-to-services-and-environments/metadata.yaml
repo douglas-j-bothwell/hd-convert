@@ -1,0 +1,139 @@
+type: article
+article_id: a3hst4m829
+user_id: mfr0nxh4be
+category_id: gyd73rp7np
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Scope Delegates to Services and Environments
+slug: scope-delegates-to-services-and-environments
+description: By default, Harness always uses the best Delegate to execute tasks. In
+  some case, you want to ensure that a specific Delegate is used whenever a specific
+  Harness Application, Service or Environment i…
+short_version: By default, Harness always uses the best Delegate to execute tasks.
+  In some case, you want to ensure that a specific Delegate is used whenever a specific
+  Harness Application, Service or Environment i…
+tags:
+- scoping rules
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T18:58:21.795514Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Scope Delegates to Services and Environments
+  description: ""
+  short_version: ""
+  body: '<p>By default, Harness always uses the best Delegate to execute tasks. In
+    some case, you want to ensure that a specific Delegate is used whenever a specific
+    Harness Application, Service or Environment is used.</p><p>To ensure that specific
+    Delegates are used with specific Harness entities, you can add scoping rules to
+    a Delegate Profile that identify those entities. Next, you apply that Profile
+    to Delegates. Those Delegate are now scoped to those entities.</p><div class="note-callout">For
+    more information, see <a href="/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates">How
+    Does Harness Manager Pick Delegates?</a></div><p>In this topic:</p><ul><li> <a
+    href="#before_you_begin">Before You Begin</a></li><li> <a href="#visual_summary">Visual
+    Summary</a></li><li> <a href="#undefined">Supported Platforms and Technologies</a></li><li>
+    <a href="#review_required_permissions">Review: Required Permissions</a></li><li>
+    <a href="#review_scoping_rules">Review: Scoping Rules</a></li><li> <a href="#step_1_add_delegate_profile">Step
+    1: Add Delegate Profile</a></li><li> <a href="#step_2_add_scoping_rules_to_profile">Step
+    2: Add Scoping Rules to Profile</a></li><li> <a href="#step_3_add_profile_to_delegates">Step
+    3: Add Profile to Delegates</a></li><li> <a href="#example_scoped_entities_information_in_deployments">Example:
+    Scoped Entities Information in Deployments</a></li></ul><h3>Before You Begin</h3><ul><li>
+    <a href="/article/h9tkwmkrm7-delegate-installation">Harness Delegate Overview</a></li><li>
+    <a href="/article/h9tkwmkrm7-delegate-installation#how_does_harness_manager_pick_delegates">How
+    Does Harness Manager Pick Delegates?</a></li><li> <a href="/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles">Run
+    Scripts on Delegates using Profiles</a></li><li> <a href="/article/2uhtcqzaio-approve-or-reject-harness-delegates">Approve
+    or Reject Harness Delegates</a></li><li> <a href="/article/nzuhppobyg-map-tasks-to-delegates-and-profiles">Delegate
+    Task Category Mapping</a></li><li> <a href="/article/bucothemly-application-configuration">Create
+    an Application</a></li><li> <a href="/article/eb3kfl8uls-service-configuration">Add
+    Specs and Artifacts using a Harness Service</a></li><li> <a href="/article/n39w05njjv-environment-configuration">Add
+    an Environment</a></li></ul><h3>Visual Summary</h3><p>The following video walks
+    you through this procedure quickly.</p><p></p><div class="hd--embed" data-provider="YouTube"
+    data-thumbnail="https://i.ytimg.com/vi/NjP-jofVLdE/hqdefault.jpg"><iframe width="
+    459" height="344" src="https://www.youtube.com/embed/NjP-jofVLdE?feature=oembed"
+    frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><h3 id="undefined">Supported
+    Platforms and Technologies</h3><p>See <a href="/article/220d0ojx5y-supported-platforms">Supported
+    Platforms and Technologies</a>.</p><h3>Review: Required Permissions</h3><p>There
+    are different User Group Account and Application Permissions required for the
+    different steps in creating a Delegate Profile, adding a scoping rule, and applying
+    the Profile to a Delegate.</p><p>Ensure that you have the permissions required
+    before performing the steps in this topic.</p><div class="note-callout">RBAC in
+    Harness is cumulative. A User account might belong to several User Groups that
+    provide the needed permissions cumulatively.</div><p>For information on setting
+    up User Group permissions, see <a href="/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a>.</p><table><tbody><tr><td><p>Task</p></td><td><p>Permission</p></td></tr><tr><td><p>Create
+    and Manage Delegate Profiles</p></td><td><p>User Group <strong>Account Permission</strong>:</p><p><code>Manage
+    Delegate Profiles</code></p></td></tr><tr><td><p>Define Scoping Rules in a Profile</p></td><td><p>User
+    Group <strong>Application Permission</strong> must match Applications, Services,
+    and Environments used in Scoping Rule.</p><p>For example, let&#39;s say there
+    is a Scoping Rule for:</p><ul><li>Application A</li><li>Production Environment
+    Types</li><li>Environment 1</li></ul><p>The User Group Application Permissions
+    should be:</p><ul><li><strong>Permission Types:</strong> Environments</li><li><strong>Applications</strong>:
+    Application A</li><li><strong>Filter:</strong> Production Environments</li><li><strong>Actions</strong>:
+    All (Create, Read, Update, Delete)</li></ul><p>Or</p><ul><li><strong>Permission
+    Types:</strong> All Permission Types</li><li><strong>Applications:</strong> All
+    Applications</li><li><strong>Actions:</strong> All (Create, Read, Update, Delete)</li></ul></td></tr><tr><td><p>Apply
+    Profile to Delegate</p></td><td><p>User Group <strong>Account Permission</strong>:</p><p><code>Manage
+    Delegates</code></p></td></tr></tbody></table><p></p><h3>Review: Scoping Rules</h3><p>Review
+    the following ways that scoping rules impact Delegates.</p><h4>Scoping</h4><p>Once
+    you apply a Profile that uses scoping rules to a Delegate, then the scoping rules
+    of that Profile apply to that Delegate. The scoping rules of a Profile apply only
+    to Delegates that use that Profile.</p><h4>Exclusions</h4><p>A Delegate that is
+    scoped via its Profile will not be used for any Application, Service, or Environment
+    outside its scope.</p><h4>Multiple Scopes</h4><p>If you use multiple scoping rules
+    in a Profile, each scoping rule within a profile is separated by an OR condition.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/a3hst4m829/1607560754561/image.png"/></figure><p>When
+    Harness evaluates each scoping rule, it must find an exact match for the task
+    it is performing. Harness begins with the first rule and continues through each
+    rule to find a match.</p><h3>Step 1: Add Delegate Profile</h3><ol><li>In Harness,
+    click <strong>Setup</strong>, and then click <strong>Harness Delegates</strong>.</li><li>Click
+    <strong>Delegate Profiles</strong>.</li><li>Click <strong>Add Delegate Profiles</strong>.</li></ol><p>This
+    topic covers the <strong>Scoping Rules</strong> of the Profile. For information
+    on other settings, see:</p><ul><li> <a href="/article/yd4bs0pltf-run-scripts-on-the-delegate-using-profiles">Run
+    Scripts on Delegates using Profiles</a></li><li> <a href="/article/2uhtcqzaio-approve-or-reject-harness-delegates">Approve
+    or Reject Harness Delegates</a></li></ul><h3>Step 2: Add Scoping Rules to Profile</h3><p>The
+    scoping rule scopes the Profile to a specific Harness Application, Service, and
+    Environment.</p><p>You can add one Scoping Rule for each Harness Application and
+    its Services and Environments.</p><p>If you are new to Harness, review the following:</p><ul><li>
+    <a href="/article/bucothemly-application-configuration">Create an Application</a></li><li>
+    <a href="/article/eb3kfl8uls-service-configuration">Add Specs and Artifacts using
+    a Harness Service</a></li><li> <a href="/article/n39w05njjv-environment-configuration">Add
+    an Environment</a></li></ul><ol><li>Ensure that your User account belongs to a
+    User Group(s) that has the permissions required to scope the profile to the Applications,
+    Services, and Environment you want to use. See <a href="#review_required_permissions">Review:
+    Required Permissions</a> above.</li><li>In <strong>Scoping Rules</strong>, click
+    <strong>Scoping Rule</strong>.</li><li>In <strong>Application</strong>, click
+    the Harness Application containing the Services and Environments you want to add
+    to the rule.<br/>If you want to scope the Delegate to all Services and Environments
+    in this Application, you are done. Click <strong>Submit</strong>.</li><li>In <strong>Service</strong>,
+    select the Services you want to add to the scope.</li><li>In <strong>Environment</strong>,
+    select <strong>All</strong>, <strong>Production</strong>, or <strong>Non-Production</strong>.</li><li>Select
+    the Environments to add to the scope.</li><li>To add another scoping rule, click
+    <strong>Scoping Rule</strong>.</li><li>When you are done, click <strong>Submit</strong>.</li></ol><p>The
+    Profile is added to the Delegate Profiles list.</p><p>If you hover over a rule
+    in <strong>Scoping Rules</strong>, the rule is summarized.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/a3hst4m829/1607551678139/image.png"/></figure><h3>Step
+    3: Add Profile to Delegates</h3><p>Now that you have a Profile with a scoping
+    rule, you can add the Profile to a Delegate to ensure that Delegate is used according
+    to the Profile&#39;s scoping rule.</p><ol><li>In Harness, click <strong>Setup</strong>,
+    and then click <strong>Harness Delegates</strong>.</li><li>In <strong>Delegates</strong>,
+    locate the Delegate that you want to scope using the Profile.</li><li>In <strong>Profile</strong>,
+    select the Profile with the scoping rule.</li></ol><p>The Delegate is now scoped
+    according to that Profile&#39;s scoping rules.</p><h3>Example: Scoped Entities
+    Information in Deployments</h3><p>You can see the scoping applies to a Workflow
+    step&#39;s task in <strong>Deployments</strong>.</p><p>Click the Workflow step,
+    and then in the Details section, click more options (︙), and click <strong>View
+    Delegate Selection</strong>. </p><p>Hover over the information icon of the execution
+    to see its scope:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/a3hst4m829/1609786157436/image.png"/></figure><p></p><p></p>'
+  slug: scope-delegates-to-services-and-environments
+  tags:
+  - scoping rules
+  is_live: true

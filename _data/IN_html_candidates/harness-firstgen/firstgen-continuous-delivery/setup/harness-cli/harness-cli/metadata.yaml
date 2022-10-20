@@ -1,0 +1,302 @@
+type: article
+article_id: 8pdh1t7j5x
+user_id: mfr0nxh4be
+category_id: zpuqjaa3kf
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness CLI (deprecated, but don't delete)
+slug: harness-cli
+description: The Harness CLI (Command Line Interface) allows you to interact with
+  your Harness Applications and deployments using a command line rather than the Harness
+  Manager.
+short_version: The Harness CLI (Command Line Interface) allows you to interact with
+  your Harness Applications and deployments using a command line rather than the Harness
+  Manager.
+tags:
+- CLI
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:35.987795Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness CLI (deprecated, but don't delete)
+  description: The Harness CLI (Command Line Interface) allows you to interact with
+    your Harness Applications and deployments using a command line rather than the
+    Harness Manager.
+  short_version: The Harness CLI (Command Line Interface) allows you to interact with
+    your Harness Applications and deployments using a command line rather than the
+    Harness Manager.
+  body: "<p>The Harness CLI (Command Line Interface) allows you to interact with your
+    Harness Applications and deployments using a command line rather than the Harness
+    Manager.</p><p>In this topic:</p><ul><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#harness_cli_features\">Harness
+    CLI Features</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#install_the_harness_cli_using_homebrew\">Install
+    the Harness CLI using Homebrew</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#download_the_harness_cli_binary_using_c_url\">Download
+    the Harness CLI Binary using cURL</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#cli_authentication\">CLI
+    Authentication</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#command_reference\">Command
+    Reference</a><ul><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#harness_login\">harness
+    login</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#harness_get\">harness
+    get</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#harness_deploy\">harness
+    deploy</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#harness_deploy_info\">harness
+    deploy info</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#harness_approve\">harness
+    approve</a></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#harness_reject\">harness
+    reject</a></li></ul></li><li><a href=\"https://docs.harness.io/article/8pdh1t7j5x-harness-cli#automation_using_cli\">Automation
+    using CLI</a></li></ul><h3>Harness CLI Features</h3><p>You can use the Harness
+    CLI to do the following:</p><ul><li><strong>Authenticate:</strong><ul><li>Log
+    into your Harness account using username and password. Currently, Harness CLI
+    does not support the other authentication methods supported by Harness Manager,
+    such as LDAP, SSO, and SAML.</li></ul></li><li><strong>Deploy:</strong><ul><li>Deploy
+    a Pipeline or Workflow.</li><li>List deployment info such as Application, Workflow,
+    Pipeline, and Workflow variables.</li></ul></li><li><strong>List:</strong><ul><li>List
+    your Applications, Services, Environments, Infrastructure Definitions, Workflows,
+    and Pipelines.</li></ul></li><li><strong>Approve:</strong><ul><li>List, approve,
+    reject, and add comments to pending Approvals.</li></ul></li><li><strong>Automate:</strong><ul><li>Write
+    scripts to automate Harness operations covered by the Harness CLI commands.</li></ul></li></ul><h4>What
+    Can&#39;t I do with Harness CLI?</h4><p>Currently, the Harness CLI has the following
+    limitations:</p><ul><li>Manage or list Account and Shared Resources information,
+    such as Users, SSO settings, Cloud Providers, Connectors, Templates, Alerts, Delegates,
+    and Tags.</li><li>Create or modify Application components.</li><li>Monitor Continuous
+    Verification.</li></ul><h3>Install the Harness CLI using Homebrew</h3><p>To install
+    the Harness CLI on a Mac using Homebrew, do the following:</p><ol><li> <a href=\"https://docs.brew.sh/Homebrew-on-Linux\"
+    target=\"_blank\">Install</a> or <a href=\"https://docs.brew.sh/FAQ\" target=\"_blank\">update</a>
+    (<code>brew upgrade</code>) Brew.</li><li>Tap the Harness repository: <code>brew
+    tap wings-software/homebrew-tap</code></li><li>Install the Harness CLI: <code>brew
+    install harness</code><ol><li>If desired, upgrade the Harness CLI: <code>brew
+    upgrade harness</code></li></ol></li></ol><p>You will see output similar to: <code>harness
+    has been installed as /usr/local/bin/harness</code></p><p>Enter <code>harness
+    --version</code> to view the version number of the Harness CLI.</p><p>The <code>harness
+    --help</code> command displays the CLI help:</p><pre class=\"hljs bash\">Command
+    Line Utility for Harness Operations<br/><br/>Usage:<br/>  harness [command]<br/><br/>Available
+    Commands:<br/>  approve     Approve a pending approval corresponding to a workflow/pipeline<br/>
+    \ deploy      Deploys a workflow/pipeline corresponding to an application<br/>
+    \ get         Retrieves data about a specified entity<br/>  help        Help about
+    any command<br/>  login       Enables the user to login to the harness CLI<br/>
+    \ reject      Reject a pending approval corresponding to a workflow/pipeline<br/><br/>Flags:<br/>
+    \ -h, --help      help for harness<br/>      --version   version for harness</pre><h4>Requirements</h4><p>Currently,
+    Harness distributes its CLI using the <a href=\"https://docs.brew.sh/Installation\"
+    target=\"_blank\">Homebrew</a> package manager on Mac.</p><p>The binaries for
+    Harness CLI are available on Github for all operating systems: <a href=\"https://github.com/wings-software/harness-cli-binaries\">https://github.com/wings-software/harness-cli-binaries</a>.</p><h3>Download
+    the Harness CLI Binary using cURL</h3><p>To download the Harness CLI binary on
+    Mac/Linux, use the following cURL command:</p><p><code>curl https://raw.githubusercontent.com/wings-software/harness-cli-binaries/master/harnesscli_1.0.0_Linux_x86_64.tar.gz
+    &gt; harnesscli.tar.gz</code></p><div class=\"note-callout\">Ensure you set the
+    PATH variable, or copy the binary to the <strong>bin</strong> directory.</div><p>You
+    can extract the TAR file using <code>tar -zxvf harnesscli.tar.gz</code>.</p><p>To
+    start using Harness CLI, simply run <code>./harness</code>.</p><h3>CLI Authentication</h3><div
+    class=\"tip-callout\">Currently, Harness CLI does not support all of the authentication
+    methods supported by Harness Manager, such as LDAP, SSO, and SAML. You can only
+    authenticate using a username (email address) and password.</div><p>Use your Harness
+    username (registered email address) and password with the <code>harness login</code>
+    command to log into your Harness account:</p><pre class=\"hljs bash\">harness
+    login -u &#34;johndoe@harness.io&#34; -p &#34;mypassword&#34;<br/>Logged in Successfully
+    to app.harness.io</pre><div class=\"note-callout\">You can also enter <code>harness
+    login</code> and you will be prompted for the username and password.</div><p>Once
+    you are logged in, you can use the Harness CLI commands described in this document.</p><p>For
+    <strong>Harness On-Prem</strong>, you might also want to use the <code>-d</code>
+    option to specify a domain. For example, if your On-Prem domain is named <strong>internal.harness.io</strong>,
+    you would log in like this:</p><p><code>harness login -u &#34;johndoe@harness.io&#34;
+    -p &#34;mypassword&#34; -d &#34;internal.harness.io&#34;</code></p><h3>Command
+    Reference</h3><p>This section is a reference for the Harness CLI commands. You
+    can use <code>harness --help</code> to view commands in the CLI help.</p><h4>harness
+    login</h4><p>Logs into your Harness account.</p><h5>Usage</h5><p><code>harness
+    login &lt;options&gt; [parameters]</code></p><h5>Options</h5><table><tbody><tr><td><p><strong>Option
+    and Shorthand Syntax</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><code>--username</code>
+    , <code>-u</code></p></td><td><p>Username</p></td></tr><tr><td><p><code>--password</code>
+    , <code>-p</code></p></td><td><p>Password</p></td></tr><tr><td><p><code>--domain</code>,
+    <code>-d</code></p></td><td><p>Change the login domain. This is used for Harness
+    On-Prem. It is not needed for SaaS logins.</p></td></tr></tbody></table><h5>Examples</h5><p><code>harness
+    login</code></p><p><code>harness login -u &#34;johndoe@harness.io&#34; -p &#34;mypassword&#34;</code></p><p><code>harness
+    login -u &#34;johndoe@harness.io&#34; -p &#34;mypassword&#34; -d &#34;onprem.harness.io&#34;</code></p><h5>Sample
+    Output</h5><p><code>Logged in Successfully</code></p><h4>harness get</h4><p>List
+    information on Harness Application components and deployments.</p><h5>Usage</h5><p><code>harness
+    get [subcommand]</code></p><h5>Subcommands and Options</h5><p></p><table><tbody><tr><td><p><strong>Subcommand</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><code>applications</code></p></td><td><p>Lists
+    all Applications.</p><p>Example: <code>harness get applications</code></p></td></tr><tr><td><p><code>approvals</code></p></td><td><p>Lists
+    all pending approvals.</p><p>Example: <code>harness get approvals</code></p></td></tr><tr><td><p><code>artifacts</code></p></td><td><p>Lists
+    all artifacts corresponding to a specific Service.</p><p>Example: <code>harness
+    get artifacts -s &lt;serviceId&gt;</code></p></td></tr><tr><td><p><code>deployments</code></p></td><td><p>Lists
+    the 20 most recent deployments.</p><p>Example: <code>harness get deployments</code></p></td></tr><tr><td><p><code>services</code></p></td><td><p>Lists
+    the Services for a specified Application The parameter <code>-a</code> specifies
+    the Application for which Services are listed.</p><p>Example: <code>harness get services
+    -a &lt;appId&gt;</code></p></td></tr><tr><td><p><code>environments</code></p><p></p></td><td><p>Lists
+    the Environments for a specified Application (specified using the parameter <code>-a</code>).</p><p>Example: <code>harness
+    get environments -a &lt;appId&gt;</code></p></td></tr><tr><td><p><code>infradefinitions</code></p><p>Only
+    for Harness accounts migrated to <a href=\"/article/okjgg4hcve-migrating-from-service-infrastructures-to-infrastructure-definitions\">Infrastructure
+    Definitions</a>.</p></td><td><p>Lists the <a href=\"/article/v3l3wqovbe-infrastructure-definitions\">Infrastructure
+    Definitions</a> corresponding to a specific Application and an Environment. Both
+    Application ID and Environment ID are required.</p><p>Example: <code>harness get infradefinitions
+    -a &lt;appId&gt; -e &lt;envId&gt;</code></p></td></tr><tr><td><p><code>inframappings</code></p><p>Only
+    for Harness accounts that use <a href=\"/article/mt3pt3gad5-service-infrastructures\">Service
+    Infrastructures</a> because they have not been migrated to <a href=\"/article/okjgg4hcve-migrating-from-service-infrastructures-to-infrastructure-definitions\">Infrastructure
+    Definitions</a>. </p></td><td><p>Lists the Service Infrastructures for a specific
+    Application, Environment, and Service. Application ID, Environment ID, and Service
+    ID are required.</p><p>Example: <code>harness get inframappings -a &lt;appId&gt;
+    -e &lt;envId&gt; -s &lt;serviceId&gt;</code></p></td></tr><tr><td><p><code>workflows</code></p></td><td><p>List
+    the Workflows for a specified Application. The parameter <code>-a</code> specifies
+    the Application for which Workflows are listed.</p><p>Example: <code>harness get workflows
+    -a &lt;appId&gt;</code></p></td></tr><tr><td><p><code>pipelines</code></p></td><td><p>Lists
+    the Pipelines for a specified Application. The parameter <code>-a</code> specifies
+    the Application for which Pipelines are listed.</p><p>Example: <code>harness get pipelines
+    -a &lt;appId&gt;</code></p></td></tr></tbody></table><h5>Examples</h5><p><code>harness
+    get applications</code></p><p><code>harness get workflows -a &#34;xxxxSmUISimoRrJL6NL73w&#34;</code></p><p><code>harness
+    get services -a &#34;xxxxSmUISimoRrJL6NL73w&#34;</code></p><h5>harness get applications
+    Sample Output</h5><p>The following examples use Linux grep and sed to display
+    the Application ID using the Application name.</p><pre class=\"hljs bash\">harness
+    get applications | grep &#34;Harness Sample App&#34;<br/>223\tHarness Sample App\t\t_NEHJ50CTbKX-OCTBKI4oA<br/><br/>harness
+    get applications | grep &#34;Harness Sample App&#34; | sed -E &#34;s/.*Harness
+    Sample App[[:blank:]]+//&#34;<br/>_NEHJ50CTbKX-OCTBKI4oA</pre><h5>harness get
+    approvals Sample Output</h5><pre class=\"hljs bash\">harness get approvals<br/>S.No.\t\tApproval
+    Title\t\t\tExecution ID\t\tApproval ID\t\t\t\t<br/>1\t\tDeploy File-TF needs approval\tA1tS81MQT-KZfqSVlLaThA\tDaM3UhisSLKKdEI-Iko3vQ</pre><h5>harness
+    get artifacts Sample Output</h5><pre class=\"hljs bash\">harness get artifacts
+    -s SQXSjomfR9iyvShMWvHAJQ<br/>S.No.\tArtifact Source Name\t\tArtifact Type\tBuild\tArtifactId\t\t\t\t<br/>1\tharnessqa/hello-world-server\tACR\t\t1.0\t2P1IulJGRWqjmlEwqn779A</pre><p></p><h5>harness
+    get deployments Sample Output</h5><pre class=\"hljs bash\">harness get deployments<br/>S.No.\tDeployment
+    Name\t\t\tDeployment Type\t\tApplication Name\tEnvironment Name\tStatus\t\tTriggered
+    at\t\t\tTriggered by\t\tExecution ID\t\t\t\t<br/>1\tDeploy File-TF\t\t\tWORKFLOW\t\tExampleApp\t\tFile-Based\t\tRUNNING\t\tFri
+    Oct 11 12:38:11 PDT 2019\tMichael Cretzman\tA1tS81MQT-KZfqSVlLaThA\t\t<br/>2\tDeploy
+    File-TF\t\t\tWORKFLOW\t\tExampleApp\t\tFile-Based\t\tFAILED\t\tFri Oct 11 12:37:47
+    PDT 2019\tMichael Cretzman\tX3y-1AsWTnOV1Y4A9hgSfg</pre><h5>harness get services
+    Sample Output</h5><p>The following example uses Linux grep and sed to find an
+    Application ID using the Application name and store it in a variable <code>APPID</code>.
+    Next, the variable is used in <code>harness get services</code>:</p><pre class=\"hljs
+    bash\">APPID=` harness get applications | grep &#34;Harness Sample App&#34; |
+    sed -E &#34;s/.*Harness Sample App[[:blank:]]+//&#34; `<br/><br/>harness get services
+    -a $APPID<br/>S.No.\t\tService Name\t\tService ID\t\t\t\t<br/>1\t\tTo-Do List
+    K8s\t\tQjRQNXtnRiO6Nb63CNSwSw</pre><h5>harness get environments Sample Output</h5><pre
+    class=\"hljs bash\">APPID=` harness get applications | grep &#34;Harness Sample
+    App&#34; | sed -E &#34;s/.*Harness Sample App[[:blank:]]+//&#34; `<br/><br/>harness
+    get environments -a $APPID<br/>S.No.\t\tEnvironment Name\tEnvironment ID\t\t\t\t<br/>1\t\tprod\t\t\t7HHUvQQHQSit8UcOeFR4QQ\t\t<br/>2\t\tqa\t\t\t2Fyctf-kTSadE4l15awzcg</pre><h5>harness
+    get workflows Sample Output</h5><pre class=\"hljs bash\">APPID=` harness get applications
+    | grep &#34;Harness Sample App&#34; | sed -E &#34;s/.*Harness Sample App[[:blank:]]+//&#34;
+    `<br/><br/>harness get workflows -a $APPID<br/>S.No.\t\tWorkflow Name\t\t\tWorkflow
+    Type\tWorkflow ID\t\t\t\t<br/>1\t\tTo-Do List K8s Canary\t\tCANARY\t\tTVOlkuhoR1mque7xiFqwmw\t\t<br/>2\t\tTo-Do
+    List K8s Rolling\t\tROLLING\t\tA__CeH2jR72x9CK8a97PsQ</pre><h5>harness get pipelines
+    Sample Output</h5><pre class=\"hljs bash\">APPID=` harness get applications |
+    grep &#34;Harness Sample App&#34; | sed -E &#34;s/.*Harness Sample App[[:blank:]]+//&#34;
+    `<br/><br/>harness get pipelines -a $APPID<br/>S.No.\t\tPipeline Name\t\tPipeline
+    ID\t\t\t\t<br/>1\t\tK8s Prod Pipeline\tVvU2uB-kQOeDqf4SHkjd_w</pre><h4>harness
+    deploy</h4><p>Deploys a Harness Workflow or Pipeline. This command is the same
+    as the <strong>Start New Deployment</strong> dialog in a Workflow or Pipeline
+    in the Harness Manager:</p><p></p><figure><img src=\"https://files.helpdocs.io/kw8ldg1itf/other/1571069338469/image.png\"
+    style=\"max-height:50%;max-width:50%\" data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p>Just
+    as with the Harness Manager, the <code>harness deploy</code> command requires
+    that you specify an artifact to be deployed.</p><h5>Usage</h5><p><code>harness
+    deploy &lt;options&gt; [parameters]</code></p><h5>Options</h5><p>You must specify
+    a Harness Application, either a Workflow or Pipeline, and any artifacts.</p><p></p><table><tbody><tr><td><p><strong>Option
+    and Shorthand Syntax</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><code>--application</code>,
+    <code>-a</code> </p></td><td><p>Application containing the Pipeline or Workflow
+    you want to deploy.</p></td></tr><tr><td><p><code>--artifacts</code>, <code>-A</code> 
+    (string array)</p></td><td><p>Artifacts to be deployed.</p></td></tr><tr><td><p><code>--pipeline</code>,
+    <code>-p</code></p></td><td><p>Pipeline to be deployed.</p></td></tr><tr><td><p><code>--workflow</code>,
+    <code>-w</code></p></td><td><p>Workflow to be deployed.</p></td></tr><tr><td><p><code>--configFile</code>,
+    <code>-c</code></p></td><td><p>Takes the config file path as the input.</p><p>Example:
+    <code>harness deploy --configFile /Users/johndoe/Desktop/deploy.yaml</code></p><p>For
+    an example config file, see Examples below.</p></td></tr><tr><td><p><code>--variables</code>,
+    <code>-v</code> (string array)</p></td><td><p>Workflow variables in the format
+    <code>variable_name:variable_value</code></p></td></tr></tbody></table><h5>Examples</h5><p>Deploy
+    using typical commands:</p><p><code>harness deploy -a &#34;VlsYedU4Q_2zD-GjLKAp-A&#34;
+    -p &#34;wDRG-hGbQDus_onGYREXBw&#34; --artifacts &#34;hCA01UywRl62b57Vmh1Hxw&#34;
+    --artifacts &#34;Rrz3BbixRWWJRpkTk3bl-g&#34;</code></p><p> Deploy using config
+    file:</p><p><code>harness deploy --configFile /Users/johndoe/Desktop/deploy.yaml</code></p><p>Here
+    is a sample config file:</p><pre class=\"hljs python\">application: VlsYedU4Q_2zD-GjLKAp-A<br/>workflow:
+    Eh4MAqm1QX6wYH5XWeQpiA<br/>artifacts:<br/>  - hCA01UywRl62b57Vmh1Hxw<br/>  - Rrz3BbixRWWJRpkTk3bl-g<br/>variables:<br/>
+    \ - environment:djsbr8kfbas9sebw<br/>  - workflowvariable:variableValue</pre><p>The
+    config file has the following requirements:</p><ul><li>The file must be YAML with
+    the yaml extension.</li><li>The file may contain the same options and parameters
+    you would enter in the command.</li><li>If required options and parameters are
+    omitted, you will be prompted for missing options and parameters.</li><li>Only
+    the options and parameters listed for <code>harness deploy</code> above may be
+    used.</li></ul><h5>Sample Output</h5><pre class=\"hljs bash\">harness deploy -a
+    &#34;FjprBZJ4TPqDtxRePundnQ&#34; -p &#34;VvU2uB-kQOeDqf4SHkjd_w&#34;<br/>Execution
+    ID: NRkmqlrNQ_-g-RIKITX2rA<br/>Execution Link: https://app.harness.io/#/account/lnFZRF6jQO6tQnB9znMALw/app/FjprBZJ4TPqDtxRePundnQ/pipeline-execution/NRkmqlrNQ_-g-RIKITX2rA/workflow-execution/sjW3p-sLSiCV-OB6gh3vkA/details</pre><p>You
+    can paste the Execution Link into your browser to see the deployment in Harness
+    Manager.</p><h4>harness deploy info</h4><p>Provide information about the Services
+    and variables involved in the deployment. This command helps you identify which
+    variables and artifacts to provide when running a deployment.</p><p>In the case
+    of a templatized Workflow, where component information such as Service, Infrastructure
+    Definition/Service Infrastructure, and Environment must be supplied at runtime,
+    you must provide the template variables in <code>harness deploy info</code>.</p><h5>Usage</h5><p><code>harness
+    deploy info &lt;options&gt; [parameters]</code></p><h5>Options</h5><table><tbody><tr><td><p><strong>Option
+    and Shorthand Syntax</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><code>--application</code>,
+    <code>-a</code></p></td><td><p>Specifies the application containing the deployment.</p></td></tr><tr><td><p><code>--pipeline</code>,
+    <code>-p</code></p></td><td><p>Specifies the Pipeline to be deployed.</p></td></tr><tr><td><p><code>--workflow</code>,
+    <code>-w</code></p></td><td><p>Specifies the Workflow to be deployed.</p></td></tr><tr><td><p><code>--variables</code>,
+    <code>-v</code></p></td><td><p>Specifies the Workflow variables in the format <code>variable_name:variable_value</code>.</p></td></tr></tbody></table><h5>Example</h5><p>The
+    following example provides information on a Workflow:</p><p><code>harness deploy
+    info -a &#34;FjprBZJ4TPqDtxRePundnQ&#34; -w &#34;TVOlkuhoR1mque7xiFqwmw&#34;</code></p><p>The
+    following example provides Service and Environment variable values for a templatized
+    Workflow:</p><p><code>harness deploy info --application ZQx9DFlATai4KSAc7CHoyw
+    --workflow f_KmcZoUS4Oz3gC3vs1nEw --variables &#34;Environment:DCKdjNpWRUuHK9e9lP7Fww&#34;
+    --variables &#34;Service:auzfiy6WR6qGmgvkC41hWA&#34;</code></p><h5>Sample Output</h5><p>The
+    following example provides information on a Workflow:</p><pre>harness deploy info
+    -a &#34;FjprBZJ4TPqDtxRePundnQ&#34; -w &#34;TVOlkuhoR1mque7xiFqwmw&#34;<br/><br/>Workflow
+    does not have variables<br/><br/>Please provide an artifact for the following
+    Services:<br/><br/>S.No.\tService Name\tService ID\t<br/><br/>1\tTo-Do List K8s\tQjRQNXtnRiO6Nb63CNSwSw</pre><p>The
+    output <code>Workflow does not have variables</code> simply states that there
+    are no Workflow variables.</p><p>The output <code>Please provide an artifact for
+    the following Services</code> simply identifies that in order for you to deploy
+    the Workflow, you must provide an artifact for the Service configured in the Workflow.
+    This is similar to deploying a Workflow in the Harness Manager:</p><p></p><figure><img
+    src=\"https://files.helpdocs.io/kw8ldg1itf/other/1571069338469/image.png\" style=\"max-height:50%;max-width:50%\"
+    data-hd-height=\"50%\" data-hd-width=\"50%\"/></figure><p></p><h4>harness approve</h4><p>Approve
+    pending Workflow or Pipeline approval steps in an active deployment and provide
+    a comment.</p><h5>Usage</h5><p><code>harness approve &lt;options&gt;</code></p><h5>Options</h5><table><tbody><tr><td><p><strong>Option
+    and Shorthand Syntax</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><code>--approval-id</code>,
+    <code>-i</code></p></td><td><p>The ID of the Approval you want to approve.</p></td></tr><tr><td><p><code>--comment</code>
+    , <code>-c</code></p></td><td><p>Add a comment to the approval.</p></td></tr></tbody></table><h5>Example</h5><p><code>harness
+    approve -i FDEyH3aGQfWsWzOMntjGPA -c &#34;Everything looks fine, approving&#34;</code></p><h5>Sample
+    Output</h5><pre>harness approve -i YlR8mpA2Sg6W7kSyr2HeIg -c &#34;Looks good&#34;<br/>Execution
+    status: SUCCESS<br/>Execution ID: v0apzQrLSMiVcuu2y023IQ<br/>Execution Link: https://app.harness.io/#/account/lnFZRF6jQO6tQnB9znMALw/app/fCLnFhwsTryU-HEdKDVZ1g/env/99TFSMfVRfOIbqJreffg6g/executions/v0apzQrLSMiVcuu2y023IQ/details</pre><h4>harness
+    reject</h4><p>Reject pending Workflow or Pipeline approval steps in an active
+    deployment and provide a comment.</p><h5>Usage</h5><p><code>harness reject &lt;options&gt;</code></p><h5>Options</h5><table><tbody><tr><td><p><strong>Option
+    and Shorthand Syntax</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p><code>--approval-id</code>,
+    <code>-i</code></p></td><td><p>The ID of the approval to reject.</p></td></tr><tr><td><p><code>--comment</code>
+    , <code>-c</code></p></td><td><p>Add a comment to the approval of interest.</p></td></tr></tbody></table><h5>Example</h5><p><code>harness
+    reject -i ckOFDRn7Tuq1_Tg-Sz-NUA -c &#34;release requirements changed&#34;</code></p><h5>Sample
+    Output</h5><pre>harness reject -i ckOFDRn7Tuq1_Tg-Sz-NUA -c &#34;release requirements
+    changed&#34;<br/>Execution status: REJECTED<br/>Execution ID: EhGRaDUHQviz2vmqwpruTw<br/>Execution
+    Link: https://app.harness.io/#/account/lnFZRF6jQO6tQnB9znMALw/app/fCLnFhwsTryU-HEdKDVZ1g/env/99TFSMfVRfOIbqJreffg6g/executions/EhGRaDUHQviz2vmqwpruTw/details</pre><h3>Automation
+    using CLI</h3><p>The Harness CLI is designed to work as a scripting tool where
+    you can use Bash programming to construct an automated deployment script.</p><div
+    class=\"note-callout\">A variable in Bash can contain a number, a character, or
+    a string of characters. You do not need to declare a variable. Simply assigning
+    a value to its reference will declare it.</div><h4>Piping Example</h4><p>The following
+    examples use piping to get the Workflows for an Application.</p><p>Example 1:</p><pre>harness
+    get workflows -a $(harness get applications | grep &#34;Harness Sample App&#34;
+    | awk &#39;{print $5}&#39;)<br/>S.No.\t\tWorkflow Name\t\t\tWorkflow Type\tWorkflow
+    ID\t\t\t\t<br/>1\t\tTo-Do List K8s Canary\t\tCANARY\t\tTVOlkuhoR1mque7xiFqwmw\t\t<br/>2\t\tTo-Do
+    List K8s Rolling\t\tROLLING\t\tA__CeH2jR72x9CK8a97PsQ</pre><p>Example 2:</p><pre>harness
+    get workflows -a $(harness get applications | grep &#34;Harness Sample App&#34;
+    | sed -E &#34;s/.*Harness Sample App[[:blank:]]+//&#34;)<br/>S.No.\t\tWorkflow
+    Name\t\t\tWorkflow Type\tWorkflow ID\t\t\t\t<br/>1\t\tTo-Do List K8s Canary\t\tCANARY\t\tTVOlkuhoR1mque7xiFqwmw\t\t<br/>2\t\tTo-Do
+    List K8s Rolling\t\tROLLING\t\tA__CeH2jR72x9CK8a97PsQ</pre><h4>Advanced Example</h4><p>The
+    script example below does the following:</p><ol><li>Logs into Harness.</li><li>Obtains
+    an Application ID.</li><li>Uses the Application ID to get the Workflow ID.</li><li>Uses
+    the Workflow ID to deploy the Workflow.</li><li>Uses the resulting Execution ID
+    to report the deployment&#39;s success.</li></ol><pre class=\"hljs bash\">#!/bin/sh<br/>​<br/>LOGIN=`harness
+    login -u &#34;admin@harness.io&#34; -p &#34;admin&#34; -d &#34;localhost:9090&#34;`<br/>APPID=`
+    harness get applications | grep &#34;Harness Sample App&#34; | sed -E &#34;s/.*Harness
+    Sample App[[:blank:]]+//&#34; `<br/>echo &#34;*************************************************&#34;<br/>echo
+    &#34;Fetching ApplicationId&#34;<br/>echo &#34;ApplicationId: &#34; $APPID<br/>echo
+    &#34; &#34;<br/> <br/>echo &#34;Fetching OrchestrationId&#34;<br/>ORCHESTRATIONID=`
+    harness get workflows -a $APPID | grep -i &#34;multi-artifact&#34; | sed -E &#34;s/.*multi-artifact[[:blank:]]+//&#34;
+    | awk &#39;{print $2}&#39;`<br/>echo &#34;OrchestrationId: &#34; $ORCHESTRATIONID<br/>echo
+    &#34; &#34;<br/> <br/>echo &#34;Triggering Depoyment&#34;<br/>EXECUTIONID=`./harness
+    deploy -a $APPID -w $ORCHESTRTIONID | grep &#34;Execution ID:&#34; | sed -E &#34;s/.*Execution
+    ID:[[:blank:]]+//&#34; | awk &#39;{print $1}&#39;`<br/>echo &#34;Deployment Triggered&#34;<br/>echo
+    &#34;OrchestrationId: &#34; $ORCHESTRTIONID<br/>echo &#34;Deployment completed
+    Successfully&#34;<br/>echo &#34; &#34;<br/> <br/>./harness get deployments -i
+    $EXECUTIONID<br/>echo &#34;get deploy completed Successfully&#34;<br/>echo &#34;
+    &#34;<br/> <br/>echo &#34;*************************************************&#34;</pre><div
+    class=\"note-callout\">Linux users can download the Harness CLI binary from:<br/><code>curl
+    https://raw.githubusercontent.com/wings-software/harness-cli-binaries/master/harnesscli_1.0.0_Linux_x86_64.tar.gz
+    &gt; harnesscli.tar.gz</code></div><p></p><p></p><p></p><p></p><p></p><p></p>"
+  slug: harness-cli
+  tags:
+  - CLI
+  is_live: true

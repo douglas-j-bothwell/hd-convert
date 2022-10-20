@@ -1,0 +1,87 @@
+type: article
+article_id: 6ib8n1n1k6
+user_id: mfr0nxh4be
+category_id: n03qfofd5w
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Add Container Images for Kubernetes Deployments
+slug: add-container-images-for-kubernetes-deployments
+description: Add containers to Harness for your Kubernetes deployments.
+short_version: Add containers to Harness for your Kubernetes deployments.
+tags:
+- kubernetes artifact source
+- add containers
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:48:52.413228Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Add Container Images for Kubernetes Deployments
+  description: Add containers to Harness for your Kubernetes deployments.
+  short_version: Add containers to Harness for your Kubernetes deployments.
+  body: '<div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/category/qfj6m1k2c4">NextGen</a>.</div><p></p><p>To add container
+    images to Harness for your Kubernetes deployments, you add a Harness <strong>Artifact
+    Server</strong>. The Artifact Server uses your container registry account to connect
+    to your container registry (Docker registry, AWS ECR, Google GCR, Azure Container
+    Registry, etc).</p><p>Once you have the Artifact Server set up, you add the container
+    image artifact using a Harness Service <strong>Artifact Source</strong>.</p><p>In
+    this topic:</p><ul><li><a href="#before_you_begin">Before You Begin</a></li><li><a
+    href="#step_1_add_the_artifact_server">Step 1: Add the Artifact Server</a></li><li><a
+    href="#step_2_create_the_harness_kubernetes_service">Step 2: Create the Harness
+    Kubernetes Service</a></li><li><a href="#step_3_add_the_artifact_source">Step
+    3: Add the Artifact Source</a></li><li><a href="#next_steps">Next Steps</a></li></ul><h3>Before
+    You Begin</h3><p>Ensure you have reviewed and set up the following:</p><ul><li><a
+    href="/article/m383u53mp1-connect-to-your-target-kubernetes-platform">Connect
+    to Your Target Kubernetes Platform</a>. You must have a Harness Kubernetes Delegate
+    running in your target Kubernetes cluster.</li><li><a href="/article/wnr5n847b1-kubernetes-overview">Kubernetes
+    Deployments Overview</a></li></ul><h3>Step 1: Add the Artifact Server</h3><p>Harness
+    supports all of the popular container registries. You add your container registry
+    account as a Harness Artifact Server.</p><p>For steps on setting up each container
+    registry, see <a href="/article/7dghbx1dbl-configuring-artifact-server">Add Artifact
+    Servers</a>.</p><p>In the following step, we use the Docker Registry Artifact
+    Server.</p><h3>Step 2: Create the Harness Kubernetes Service</h3><ol><li>In Harness,
+    click <strong>Setup</strong>, and then click <strong>Add Application</strong>.</li><li>Enter
+    a name for the Application and click <strong>Submit</strong>.</li><li>Click <strong>Services</strong>,
+    and then click <strong>Add Service</strong>. The <strong>Add Service</strong>
+    settings appear.</li></ol><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/4ifq51cp0i/1580881851308/image.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure><ol><li
+    style="counter-increment:li 3" start="4">In <strong>Name</strong>, enter a name
+    for the Service.</li><li>In <strong>Deployment Type</strong>, select <strong>Kubernetes</strong>,
+    and then ensure <strong>Enable Kubernetes V2</strong> is selected.</li><li> Click
+    <strong>Submit</strong>. The new Harness Kubernetes Service is created.</li></ol><h3>Step
+    3: Add the Artifact Source</h3><p>To demonstrate how to add the Artifact Source,
+    we use a Docker Registry Artifact Server.</p><p>For the settings for all Artifact
+    Sources, see <a href="/article/7dghbx1dbl-configuring-artifact-server">Add Artifact
+    Servers</a>.</p><ol><li>In the Harness Kubernetes Service, click <strong>Add</strong>
+    <strong>Artifact Source</strong>, and select <strong>Docker Registry</strong>.
+    The <strong>Docker Registry</strong> settings appear. Enter the following settings:</li></ol><ul><li>In <strong>Name</strong>,
+    let Harness generate a name for the source or enter a custom name.</li><li>In <strong>Source
+    Server</strong>, select the Artifact Server. In this example, we are using a Docker
+    Registry with a connection to Docker Hub.</li><li>In <strong>Docker Image Name</strong>,
+    enter the image name. Official images in public repos such as Docker Hub need
+    the label <strong>library</strong>. For example, <strong>library/nginx</strong>.</li></ul><ol><li
+    style="counter-increment:li 1" start="2">Click <strong>SUBMIT</strong>. The Artifact
+    Source is added.</li></ol><p><strong>Recommended</strong> — View the build history
+    for the artifact by clicking <strong>Artifact History</strong>, and then using
+    <strong>Manually Pull Artifact</strong> to pull the artifact.</p><figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550103306045/image.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/zmca0zai3s/1550103306045/image.png"/></a></figure><p></p><p>In
+    addition to artifact sources taken from Artifact Servers, you can use a Shell
+    Script to query a custom artifact repository. See <a href="/article/jizsp5tsms-custom-artifact-source">Custom
+    Artifact Source</a>.</p><h3>Next Steps</h3><ul><li><a href="/article/g3bw9z659p-pull-an-image-from-a-private-registry-for-kubernetes">Pull
+    an Image from a Private Registry for Kubernetes</a></li></ul><p></p>'
+  slug: add-container-images-for-kubernetes-deployments
+  tags:
+  - kubernetes artifact source
+  - add containers
+  is_live: true

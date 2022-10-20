@@ -1,0 +1,64 @@
+type: article
+article_id: rt449t1xhy
+user_id: mfr0nxh4be
+category_id: 85tr1q4hin
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Kubernetes Rollback
+slug: kubernetes-rollback
+description: If a Harness Kubernetes deployment fails, Harness will rollback to the
+  last successful version of your workload.
+short_version: If a Harness Kubernetes deployment fails, Harness will rollback to
+  the last successful version of your workload.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-16T22:48:31.422666Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Kubernetes Rollback
+  description: If a Harness Kubernetes deployment fails, Harness will rollback to
+    the last successful version of your workload.
+  short_version: If a Harness Kubernetes deployment fails, Harness will rollback to
+    the last successful version of your workload.
+  body: '<p>If a Harness Kubernetes deployment fails, Harness will rollback to the
+    last successful version of your workload.</p><p>Harness follows standard Kubernetes
+    behavior during rollback. See <a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-undo-em-"
+    target="_blank">kubectl rollout undo</a>.</p><h3>Workload Rollback Only</h3><div
+    class="note-callout"><strong>Rollback rolls back workloads only.</strong> If there
+    are other objects or operations executed in your stage, Harness does not roll
+    those back.</div><p>For details on Harness Kubernetes workloads, see <a href="/article/efnlvytc6l-what-can-i-deploy-in-kubernetes">What
+    Can I Deploy in Kubernetes?</a>.</p><h3>Scaling and Rollback</h3><p>Each time
+    Harness deploys, the deployment gets new replicas that get scaled up and the old
+    replicas are scaled down.</p><p>By default, Kubernetes keeps the last 10 revisions
+    as <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"
+    target="_blank">ReplicaSets</a>.</p><p>When Harness performs rollback it identifies
+    which revision number to use (<code>rollback-to</code>). Harness identifies that
+    last successful ReplicaSet, and selects it to be scaled up.</p><h3>Rollback and
+    Artifacts</h3><p>The artifact(s) used for the replicas that are scaled up as part
+    of rollback are simply the artifact(s) from the time that version was deployed.</p><h3>Blue/Green
+    Rollbacks</h3><p>In the case of Blue/Green, the resources are not versioned because
+    a Blue/Green deployment uses <strong>rapid rollback</strong>: network traffic
+    is simply routed back to the original instances.</p><p>You do not need to redeploy
+    previous versions of the service/artifact and the instances that comprised their
+    environment.</p><h3>Rolling Rollback Step</h3><p>You can add a <strong>Rolling</strong>
+    <strong>Rollback</strong> step to roll back the workloads deployed by the <a href="/article/xsla71qg8t-create-a-kubernetes-rolling-deployment">Rolling
+    Deployment</a> step.</p><p>Simply add this step where you want to initiate a rollback.
+    Note that this step applies to the deployments of the Rolling Deployment command,
+    and not the <a href="/article/00el61pzok-deploy-manifests-separately-using-apply-command">Apply
+    Step</a>.</p><h3>See Also</h3><ul><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a></li><li><a href="/category/qfj6m1k2c4-cd-kubernetes-category">Kubernetes
+    How-tos</a></li><li><a href="/article/u29v1uc1mh-kubernetes-deployments-overview">Kubernetes
+    Deployments Overview</a></li></ul><p></p>'
+  slug: kubernetes-rollback
+  tags: []
+  is_live: true

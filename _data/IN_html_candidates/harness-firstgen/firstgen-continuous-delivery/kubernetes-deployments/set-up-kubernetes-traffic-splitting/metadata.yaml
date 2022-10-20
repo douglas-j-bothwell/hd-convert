@@ -1,0 +1,205 @@
+type: article
+article_id: 1qfb4gh9e8
+user_id: mfr0nxh4be
+category_id: n03qfofd5w
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Set Up Kubernetes Traffic Splitting with Istio
+slug: set-up-kubernetes-traffic-splitting
+description: Gradually migrate traffic between application versions.
+short_version: Gradually migrate traffic between application versions.
+tags:
+- DestinationRule
+- VirtualService
+- ${k8s.virtualServiceName}
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:49.101137Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Kubernetes Traffic Splitting with Istio
+  description: Gradually migrate traffic between application versions.
+  short_version: Gradually migrate traffic between application versions.
+  body: '<p>Harness provides traffic splitting to gradually migrate traffic between
+    application versions.</p><p>Harness supports Istio 1.2 and above.</p><div class="note-callout">Not
+    using Istio? No problem. See <a href="/article/tkubd954r6-traffic-splitting-without-istio">Traffic
+    Splitting Without Istio</a>.</div><p>In a <a href="/article/2xp0oyubjj-create-a-kubernetes-canary-deployment">Kubernetes
+    Canary</a> or <a href="/article/ukftzrngr1">Blue/Green</a> deployment, as the
+    new application is verified, you can shift traffic from the previous version to
+    a new version.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#limitations">Limitations</a></li><li> <a href="#step_1_review_istio">Step
+    1: Review Istio</a></li><li> <a href="#step_2_add_destination_rule_manifest">Step
+    2: Add DestinationRule Manifest</a></li><li> <a href="#step_3_add_virtual_service_manifest">Step
+    3: Add VirtualService Manifest</a></li><li> <a href="#step_4_review_weighting">Step
+    4: Review Weighting</a></li><li> <a href="#step_5_add_gateway_manifest">Step 5:
+    Add Gateway Manifest</a></li><li> <a href="#step_6_add_traffic_split_step">Step
+    6: Add Traffic Split Step</a></li><li> <a href="#step_7_define_virtual_service_name">Step
+    7: Define Virtual Service Name</a></li><li> <a href="#option_delegate_selector">Option:
+    Delegate Selector</a></li><li> <a href="#step_8_set_destinations_and_weights">Step
+    8: Set Destinations and Weights</a></li><li> <a href="#option_1_use_subsets">Option
+    1: Use Subsets</a></li><li> <a href="#option_2_use_multiple_traffic_split_steps">Option
+    2: Use Multiple Traffic Split Steps</a></li><li> <a href="#notes">Notes</a></li><li>
+    <a href="#next_steps">Next Steps</a></li></ul><h3>Before You Begin</h3><ul><li><a
+    href="/article/2xp0oyubjj-create-a-kubernetes-canary-deployment">Create a Kubernetes
+    Canary Deployment</a></li><li><a href="/article/2j2vi5oxrq-define-kubernetes-manifests">Define
+    Kubernetes Manifests</a></li></ul><h3>Limitations</h3><p>Traffic Splitting is
+    supported for Harness Canary and Blue/Green deployment strategies only. It is
+    not supported with the Rolling Update strategy.</p><h3>Step 1: Review Istio</h3><p>In
+    Istio, traffic splitting is set in each VirtualService using route rules:</p><pre
+    class="hljs properties">apiVersion: networking.istio.io/v1alpha3<br/>kind: VirtualService<br/>metadata:<br/>  name:
+    reviews<br/>spec:<br/>  hosts:<br/>    - reviews<br/>  http:<br/>  - route:<br/>    -
+    destination:<br/>        host: reviews<br/>        subset: v1<br/>      weight:
+    75<br/>    - destination:<br/>        host: reviews<br/>        subset: v2<br/>      weight:
+    25</pre><p>In Harness, you can use a simple DestinationRule and a VirtualService
+    without route rules, and then specify the routing in the Workflow that uses the
+    VirtualService, via the Traffic Split step:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256686406/image.png"/></figure><p>Setting
+    up Traffic Splitting involves adding a standard traffic management manifest to
+    your Harness Service, and then using the Traffic Split step in your Workflow.</p><h3>Step
+    2: Add DestinationRule Manifest</h3><p>In your Harness Service, add a manifest
+    for a simple <a href="https://istio.io/docs/reference/config/networking/v1alpha3/destination-rule/#DestinationRule">DestinationRule</a> without
+    route rules. It will act as a template using the Service values.yaml file for
+    names via its <code>{{.Values.name}}</code> placeholder.</p><p>Here is a simple
+    DestinationRule:</p><pre class="hljs properties">apiVersion: networking.istio.io/v1alpha3<br/>kind:
+    DestinationRule<br/>metadata:<br/>  annotations:<br/>    harness.io/managed: &#34;true&#34;<br/>  name:
+    {{.Values.name}}-destinationrule<br/>spec:<br/>  host: {{.Values.name}}-svc<br/>  trafficPolicy:<br/>    loadBalancer:<br/>      simple:
+    RANDOM</pre><h4>harness.io/managed: true Required</h4><p>Note the use of the <code>harness.io/managed:
+    &#34;true&#34;</code> annotation. This is <strong>required</strong> for Harness
+    to identify this DestinationRule as managed.</p><p>This annotation is used to
+    identify which DestinationRule or VirtualService Harness should update during
+    traffic splitting when there are more than one.</p><p>Harness requires that the
+    managed VirtualService have only one route in the <code>http</code> list in order
+    to know which one to update.</p><p>If the DestinationRule/VirtualService uses <code>harness.io/managed:
+    &#34;false&#34;</code>, that is the same as if <code>harness.io/managed</code> were
+    omitted. In this case, Harness will not perform any traffic shifting.</p><div
+    class="note-callout">The quotations around &#34;true&#34; and &#34;false&#34;
+    are mandatory.</div><h3>Step 3: Add VirtualService Manifest</h3><p>Next, in your
+    Harness Service, add a manifest for a simple <a href="https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/">VirtualService</a> without
+    route rules. As with the DestinationRule manifest, it will act as a template using
+    the Service values.yaml file for names via its <code>{{.Values.name}}</code> placeholder.</p><p>Here
+    is a simple VirtualService:</p><pre class="hljs makefile">apiVersion: networking.istio.io/v1alpha3<br/>kind:
+    VirtualService<br/>metadata:<br/>  annotations:<br/>    harness.io/managed: &#34;true&#34;<br/>  name:
+    {{.Values.name}}-virtualservice<br/>spec:<br/>  gateways:<br/>  - {{.Values.name}}-gateway<br/>  hosts:<br/>  -
+    test.com<br/>  http:<br/>  - route:<br/>    - destination:<br/>        host: {{.Values.name}}-svc</pre><h4>harness.io/managed:
+    true Required</h4><p>Note the use of the <code>harness.io/managed: &#34;true&#34;</code>
+    annotation. This is <strong>required</strong> for Harness to identify this DestinationRule
+    as managed.</p><p>This annotation is used to identify which DestinationRule or
+    VirtualService Harness should update during traffic splitting when there are more
+    than one.</p><p>Harness requires that the managed VirtualService have only one
+    route in the <code>http</code> list in order to know which one to update.</p><p>If
+    the DestinationRule/VirtualService uses <code>harness.io/managed: &#34;false&#34;</code>,
+    that is the same as if <code>harness.io/managed</code> were omitted. In this case,
+    Harness will not perform any traffic shifting.</p><div class="note-callout">The
+    quotations around &#34;true&#34; and &#34;false&#34; are mandatory.</div><h3>Step
+    4: Review Weighting</h3><p>You do not need to enter weights in the <code>destination</code>
+    section.</p><p>By default, Harness adds a weight value of 100 for the existing
+    (stable) service and 0 for the (canary) service, regardless of whether you use
+    the Traffic Split step.</p><p>Here is a sample from the deployment log of a VirtualService
+    without weights specified that where Harness has applied weights.</p><pre class="hljs
+    bash">- destination:<br/>    host: &#34;anshul-traffic-split-demo-svc&#34;<br/>    subset:
+    &#34;stable&#34;<br/>  weight: 100<br/>- destination:<br/>    host: &#34;anshul-traffic-split-demo-svc&#34;<br/>    subset:
+    &#34;canary&#34;<br/>  weight: 0</pre><p>If you do specify weights in your VirtualService,
+    Harness will still use its defaults for Canary deployments and you can use the
+    Traffic Split to change the weights.</p><h3>Step 5: Add Gateway Manifest</h3><p>The
+    VirtualService includes a reference to a Gateway object.</p><p>Typically, you
+    will also add a Gateway manifest to your Service, describing the load balancer
+    for the mesh receivingHTTP/TCP connections. The Gateway manifest can also use
+    the values.yaml placeholder:</p><pre class="hljs properties">apiVersion: networking.istio.io/v1alpha3<br/>kind:
+    Gateway<br/>metadata:<br/>  name: {{.Values.name}}-gateway<br/>spec:<br/>  selector:<br/>    istio:
+    ingressgateway<br/>  servers:<br/>  - port:<br/>      number: 80<br/>      name:
+    http<br/>      protocol: HTTP<br/>    hosts:<br/>    - &#34;*&#34;</pre><p>That&#39;s
+    all you need to set up simple traffic management in your Harness Kubernetes Service.
+    Next, you use the Traffic Split step in your Workflow to control routing weights
+    for the existing service and the new service you are deploying.</p><h3>Step 6:
+    Add Traffic Split Step</h3><p>You perform traffic management in your Workflow
+    using the Traffic Split step.</p><p>You can use the Traffic Split step anywhere
+    in your Workflow, but you will typically apply it the <strong>Verify</strong> section
+    after the <strong>Canary Deployment</strong> step was successful.</p><ol><li>To
+    add the Traffic Split step, in your Workflow, click <strong>Add Step</strong>.</li><li>Select <strong>Traffic
+    Split</strong>. The <strong>Traffic Split</strong> settings appear.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256764375/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    7: Define Virtual Service Name</h3><p>By default, the Traffic Split step includes
+    Harness variables to refer the VirtualService set up in the Service the Workflow
+    is deploying, and the named destination service subsets Harness deploys.</p><p>In <strong>Virtual
+    Service Name</strong>, Traffic Split takes the name of the VirtualService set
+    up in the Service:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256686406/image.png"/></figure><p>The
+    variable <code>${k8s.virtualServiceName}</code> refers to the value of the name
+    label in your VirtualService manifest in the Harness Service.</p><p>If you have
+    multiple VirtualService manifests in your Harness Service <strong>Manifests</strong>,
+    you can enter the name of the VirtualService you want to use manually.</p><h3>Option:
+    Delegate Selector</h3><p>If your Workflow Infrastructure Definition&#39;s Cloud
+    Provider uses a Delegate Selector (supported in Kubernetes Cluster and AWS Cloud
+    Providers), then the Workflow uses the selected Delegate for all of its steps.</p><p>In
+    these cases, you shouldn&#39;t add a Delegate Selector to any step in the Workflow.
+    The Workflow is already using a Selector via its Infrastructure Definition&#39;s
+    Cloud Provider.</p><p>If your Workflow Infrastructure Definition&#39;s Cloud Provider
+    isn&#39;t using a Delegate Selector, and you want this Workflow step to use a
+    specific Delegate, do the following:</p><p>In <strong>Delegate Selector</strong>,
+    select the Selector for the Delegate(s) you want to use. You add Selectors to
+    Delegates to make sure that they&#39;re used to execute the command. For more
+    information, see <a href="/article/c3fvixpgsl-select-delegates-for-specific-tasks-with-selectors">Select
+    Delegates with Selectors</a>.</p><p>Harness will use Delegates matching the Selectors
+    you add.</p><p>If you use one Selector, Harness will use any Delegate that has
+    that Selector.</p><p>If you select two Selectors, a Delegate must have both Selectors
+    to be selected. That Delegate might also have other Selectors, but it must have
+    the two you selected.</p><div class="note-callout">You can use expressions for
+    Harness built-in variables or Account Default variables in <strong>Delegate Selectors</strong>.
+    When the variable expression is resolved at deployment runtime, it must match
+    an existing Delegate Selector.<br/><br/>For example, if you have a Delegate Selector <strong>prod</strong> and
+    the Workflow is using an Environment also named <strong>prod</strong>, the Delegate
+    Selector can be <code>${env.name}</code>. This is very useful when you match Delegate
+    Selectors to Application component names such as Environments, Services, etc.
+    It&#39;s also a way to template the Delegate Selector setting.</div><p></p><h3>Step
+    8: Set Destinations and Weights</h3><p>In <strong>Destination</strong>, Harness
+    provides two variables:</p><ul><li><code>${k8s.canaryDestination}</code> - Refers
+    to the new Kubernetes service the Workflow is deploying.</li><li><code>${k8s.stableDestination}</code> -
+    Refers to the previous Kubernetes service.</li></ul><p>Harness will use these
+    variables to initialize destinations and then apply the traffic split by adding
+    destination subsets and weights into the VirtualService it deploys.</p><p>Here
+    is an example of a Traffic Split step and the logs from its deployment showing
+    how the destinations are initialized and then applied by Traffic Split:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580256924274/image.png"/></figure><p>That&#39;s
+    all that is needed to set up Traffic Splitting.</p><h3>Option 1: Use Subsets</h3><p>In
+    cases where you are using multiple subsets in destination rules and you want to
+    assign different values to them, you can use your own subsets in Traffic Split
+    as well. Here is a simple example:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1580257269510/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    only requirement of Destination field values is that they contain a host, subset
+    and are valid YAML. See  <a href="https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/#Destination">Destination</a> from
+    Istio for details.</p><h3>Option 2: Use Multiple Traffic Split Steps</h3><p>You
+    can use multiple Traffic Split steps in your Workflow to change the routing to
+    your old and new service versions. Here is an example with Approval steps between
+    each Traffic Split step:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zwn6qgtqca/1561395163754/image.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure><h3>Notes</h3><ul><li><strong>Canary
+    Delete and Traffic Management</strong> — If you are using the <strong>Traffic
+    Split</strong> step or doing Istio traffic shifting using the <strong>Apply step</strong>,
+    move the <strong>Canary Delete</strong> step from <strong>Wrap Up</strong> section
+    of the <strong>Canary</strong> phase to the <strong>Wrap Up</strong> section of
+    the <em>Primary</em> phase (the phase containing the Rollout Deployment step).<br/>Moving
+    the <strong>Canary Delete</strong> step to the <strong>Wrap Up</strong> section
+    of the Primary phase will prevent any traffic from being routed to deleted pods
+    before traffic is routed to stable pods in the Primary phase.</li><li><strong>HTTP
+    in the VirtualService</strong> — For traffic management using the Traffic Split
+    step, Harness only supports HTTP in the VirtualService manifest. If you want to
+    use HTTPS or TLS, you can use another manifest and apply it using the Apply Step.</li></ul><p>For
+    more information, see <a href="/article/2xp0oyubjj-create-a-kubernetes-canary-deployment">Create
+    a Kubernetes Canary Deployment</a>, <a href="/article/4vjgmjcj6z-deploy-manifests-separately-using-apply-step">Deploy
+    Manifests Separately using Apply Step</a>, and <a href="/article/78oginrhsh-delete-kubernetes-resources">Delete
+    Kubernetes Resources</a>.</p><h3>Next Steps</h3><ul><li><a href="/article/tkubd954r6-traffic-splitting-without-istio">Traffic
+    Splitting Without Istio</a></li></ul><p></p>'
+  slug: set-up-kubernetes-traffic-splitting
+  tags:
+  - DestinationRule
+  - VirtualService
+  - ${k8s.virtualServiceName}
+  is_live: true

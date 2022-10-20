@@ -1,0 +1,49 @@
+type: article
+article_id: mt3pt3gad5
+user_id: mfr0nxh4be
+category_id: 1eqg76ac72
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: 'Service Infrastructures (Note: Replaced Functionality)'
+slug: service-infrastructures
+description: Service Infrastructures are a legacy method for specifying a target deployment
+  infrastructure. Infrastructure Definition is Harness' replacement technique.
+short_version: Service Infrastructures are a legacy method for specifying a target
+  deployment infrastructure.
+tags:
+- Cloud Provider
+- Service Infrastructure
+- Environment
+- cluster
+- namespace
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:35.96689Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 'Service Infrastructures (Note: Replaced Functionality)'
+  description: Service Infrastructures are a legacy method for specifying a target
+    deployment infrastructure. Infrastructure Definition is Harness' replacement technique.
+  short_version: Service Infrastructures are a legacy method for specifying a target
+    deployment infrastructure.
+  body: <p></p><div class="warning-callout"><a href="/article/v3l3wqovbe-infrastructure-definitions">Infrastructure
+    Definition</a> replaces Service Infrastructure as the method for defining your
+    target infrastructure. Currently, Infrastructure Definition is behind a feature
+    flag. Contact Harness Support to migrate to Infrastructure Definitions.</div><p></p>
+  slug: service-infrastructures
+  tags:
+  - Cloud Provider
+  - Service Infrastructure
+  - Environment
+  - cluster
+  - namespace
+  is_live: true

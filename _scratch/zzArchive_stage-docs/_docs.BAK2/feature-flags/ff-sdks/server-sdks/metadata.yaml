@@ -1,0 +1,14 @@
+type: category
+category_id: kkiqy1f6d7
+parent_category_id: rtce97j1wu
+title: Server SDK Guides
+description: ""
+slug: server-sdks
+is_featured: false
+icon: https://files.helpdocs.io/kw8ldg1itf/other/1666182348502/server-sdk-guide.svg
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Server SDK Guides
+  description: ""
+  slug: server-sdks

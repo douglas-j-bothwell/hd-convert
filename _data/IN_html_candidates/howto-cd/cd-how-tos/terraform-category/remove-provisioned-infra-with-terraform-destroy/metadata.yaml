@@ -1,0 +1,75 @@
+type: article
+article_id: j75xc704c8
+user_id: mfr0nxh4be
+category_id: jcu7twh2t6
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Remove Provisioned Infra with the Terraform Destroy Step
+slug: remove-provisioned-infra-with-terraform-destroy
+description: Add a Terraform Destroy step to remove any provisioned infrastructure.
+short_version: Add a Terraform Destroy step to remove any provisioned infrastructure.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-14T17:45:16.946213Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Remove Provisioned Infra with the Terraform Destroy Step
+  description: Add a Terraform Destroy step to remove any provisioned infrastructure.
+  short_version: Add a Terraform Destroy step to remove any provisioned infrastructure.
+  body: '<p>You can add a <strong>Terraform Destroy</strong> step to remove any provisioned
+    infrastructure, just like running the <code>terraform destroy</code> command.
+    See <a href="https://www.terraform.io/docs/commands/destroy.html" target="_blank">destroy</a> from
+    Terraform.</p><p>The <strong>Terraform Destroy</strong> step is independent of
+    any other Terraform provisioning steps. It&#39;s not restricted to removing the
+    infrastructure deployed in its stage. It can remove any infrastructure you&#39;ve
+    provisioned using Harness.</p><h3>Before You Begin</h3><ul><li><a href="/article/boug6e884h-terraform-provisioning-with-harness">Terraform
+    Provisioning with Harness</a></li><li><a href="/article/uznls2lvod-provision-infra-dynamically-with-terraform">Provision
+    Target Deployment Infra Dynamically with Terraform</a></li><li><a href="/article/hdclyshiho-run-a-terraform-plan-with-the-terraform-apply-step">Provision
+    with the Terraform Apply Step</a></li></ul><h3>Important: Install Terraform on
+    Delegates</h3><p>Terraform must be installed on the Delegate to use a Harness
+    Terraform Provisioner. You can install Terraform manually or use the <code>INIT_SCRIPT</code> environment
+    variable in the Delegate YAML.</p><p>See <a href="/article/yte6x6cyhn-run-scripts-on-delegates">Install
+    Software on the Delegate with Initialization Scripts</a>.</p><pre class="hljs
+    apache"># Install TF<br/>curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip<br/>unzip
+    terraform_0.12.25_linux_amd64.zip<br/>mv ./terraform /usr/bin/<br/># Check TF
+    install<br/>terraform --version</pre><h3>Review: What Gets Destroyed?</h3><p>When
+    you add Terraform Plan and Apply steps, you specify the Terraform script that
+    Harness will use for provisioning. You add a <strong>Provisioner Identifier</strong>
+    to each step to identify the provisioning.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/uznls2lvod/1627076789966/clean-shot-2021-07-23-at-14-46-10.png"/></figure><p>When
+    you destroy the provisioned infrastructure, you specify the same <strong>Provisioner
+    Identifier</strong> in the Terraform Destroy step. The Provisioner Identifier
+    enables Harness to locate the same Terraform script used for provisioning.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/j75xc704c8/1627422412989/clean-shot-2021-07-27-at-14-46-40.png"/></figure><p></p><p></p><h3>Step
+    1: Add the Terraform Destroy Step</h3><p>You can add the Terraform Destroy step
+    in the following places:</p><ul><li>The <strong>Execution</strong> steps of a
+    stage.</li><li>The steps of an <strong>Infrastructure</strong>&#39;s <strong>Dynamic
+    Provisioning</strong> section.</li><li>The <strong>Rollback</strong> steps of
+    a stage&#39;s <strong>Execution</strong> or <strong>Infrastructure</strong> using
+    <strong>Dynamic Provisioning</strong>.</li></ul><p>In <strong>Name</strong>, enter
+    a name for the step. You can use the name to reference the Terraform Destroy settings.</p><h3>Step
+    2: Configuration Type</h3><p>There are three options:</p><ul><li><strong>Inline:</strong>
+    Removes the provisioned resources you identify using <strong>Provisioner Identifier</strong>
+    and other settings.</li><li><strong>Inherit from Plan:</strong> Removes the resources
+    defined in the Harness <strong>Terraform Plan</strong> step that you identify
+    using <strong>Provisioner Identifier</strong>. Similar to <code>terraform plan
+    -destroy</code>.</li><li><strong>Inherit from Apply:</strong> Removes the resources
+    defined in the Harness Terraform Apply step that you identify using <strong>Provisioner
+    Identifier</strong>. Similar to <code>terraform destroy</code>.</li></ul><h3>Step
+    3: Reference the Provisioner Identifier</h3><p>In <strong>Provisioner Identifier</strong>,
+    enter the same Provisioner Identifier you used in the Terraform Apply step that
+    provisioning the resources you want to destroy.</p><p>Click <strong>Apply Changes</strong>.</p><p>The
+    Terraform Destroy step is added.</p><h3>See Also</h3><ul><li><a href="/article/jgi6d73noy-rollback-provisioned-infra-with-the-terraform-rollback-step">Rollback
+    Provisioned Infra with the Terraform Rollback Step</a></li></ul><p></p>'
+  slug: remove-provisioned-infra-with-terraform-destroy
+  tags: []
+  is_live: true

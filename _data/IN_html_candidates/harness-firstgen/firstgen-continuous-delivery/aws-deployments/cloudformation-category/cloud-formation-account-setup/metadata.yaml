@@ -1,0 +1,163 @@
+type: article
+article_id: 308nblm0vc
+user_id: mfr0nxh4be
+category_id: hupik7gwhc
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Set Up Your Harness Account for CloudFormation
+slug: cloud-formation-account-setup
+description: Set up the Delegate, Repo, and Cloud Provider for CloudFormation.
+short_version: Set up the Delegate, Repo, and Cloud Provider for CloudFormation.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-07-18T22:16:23.044634Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set Up Your Harness Account for CloudFormation
+  description: Set up the Delegate, Repo, and Cloud Provider for CloudFormation.
+  short_version: Set up the Delegate, Repo, and Cloud Provider for CloudFormation.
+  body: '<div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/vynj4hxt98">NextGen</a>.</div><p>The first step in
+    integrating your CloudFormation templates and processes is setting up the necessary
+    Harness account components: Delegates, Cloud Providers, and Source Repo Providers.</p><p>This
+    topic describes how to set up these components for CloudFormation.</p><p>Once
+    your account is set up, you can begin integrating your CloudFormation templates.
+    See  <a href="/article/wtper654tn-add-cloud-formation-templates">Add CloudFormation
+    Templates</a>.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before
+    You Begin</a></li><li> <a href="#visual_summary">Visual Summary</a></li><li> <a
+    href="#review_limitations">Review: Limitations</a></li><li> <a href="#step_1_set_up_harness_delegates">Step
+    1: Set Up Harness Delegates</a><ul><li> <a href="#permissions">Permissions</a></li></ul></li><li>
+    <a href="#step_2_set_up_the_aws_cloud_provider">Step 2: Set Up the AWS Cloud Provider</a><ul><li>
+    <a href="#permissions_2">Permissions</a></li></ul></li><li> <a href="#step_3_add_template_resource">Step
+    3: Add Template Resource</a><ul><li> <a href="#option_1_use_aws_s3">Option 1:
+    Use AWS S3</a></li><li> <a href="#option_2_use_your_git_repo">Option 2: Use Your
+    Git Repo</a></li></ul></li><li> <a href="#next_steps">Next Steps</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li> <a href="/article/4o7oqwih6h-harness-key-concepts">Harness
+    Key Concepts</a></li><li> <a href="/article/qj0ems5hmg-cloud-formation-provisioning-with-harness">CloudFormation
+    Provisioning with Harness</a></li><li> <a href="/article/h9tkwmkrm7-delegate-installation">Delegate
+    Installation and Management</a></li><li> <a href="/article/whwnovprrb-cloud-providers">Add
+    Cloud Providers</a></li><li> <a href="/article/ay9hlwbgwa-add-source-repo-providers">Add
+    Source Repo Providers</a></li></ul><p></p><h3>Visual Summary</h3><p>This topic
+    describes the Harness account setup steps that you perform before you start to
+    add your CloudFormation templates.</p><p>Once your Harness account is set up,
+    CloudFormation provisioning in Harness is as follows:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/308nblm0vc/1589571720467/image.png"/></figure><h3>Review:
+    Limitations</h3><ul><li>Harness CloudFormation integration does not support AWS
+    Serverless Application Model (SAM) templates. Only standard <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html#w2ab1b5c15b7">AWS
+    CloudFormation templates</a>.</li><li>Harness Infrastructure Provisioners are
+    only supported in Canary and Multi-Service deployment types. For AMI deployments,
+    Infrastructure Provisioners are also supported in Blue/Green deployments.</li></ul><h3>Step
+    1: Set Up Harness Delegates</h3><p>There are many types of Delegates, but for
+    CloudFormation, the Shell Script and ECS Delegates are used most often.</p><p>The
+    Harness AWS Cloud Provider can connect Harness to your AWS account, and Source
+    Repo if needed, using these Delegates. For more information, see <a href="/article/h9tkwmkrm7-delegate-installation">Delegate
+    Installation and Management</a> and <a href="/article/whwnovprrb-cloud-providers">Add
+    Cloud Providers</a>.</p><p>The Delegate should be installed where it can connect
+    to the provisioned environment it creates.</p><p>Ideally, this is the same subnet
+    as the instances you will provision, but if you are provisioning the subnet then
+    you can put the Delegate in the same VPC and ensure that it can connect to the
+    provisioned subnet using security groups.</p><p>To set up the Delegate, do the
+    following:</p><ol><li>Install the Delegate on a host where it will have connectivity
+    to your provisioned instances. To install a Delegate, follow the steps in <a href="/article/h9tkwmkrm7-delegate-installation">Delegate
+    Installation and Management</a> using a Shell Script or ECS Delegate. Once the
+    Delegate is installed, it will be listed on the <strong>Harness Delegates</strong>
+    page.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/78g32khjcu/1559344455345/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>When
+    you add a Harness AWS Cloud Provider, you will set up the Cloud Provider to assume
+    the IAM role used by the Delegate. This is done using a Delegate Selector. For
+    steps on installing a Delegate Selector, see <a href="/article/h9tkwmkrm7-delegate-installation">Delegate
+    Installation and Management</a>.</li></ol><p>When you are done, the Delegate listing
+    will look something like this:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/78g32khjcu/1585940704811/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Permissions</h4><p>The
+    Delegate requires permissions according to the target deployment service (ECS,
+    EC2, Lambda).</p><p>For ECS Delegates, you can add an IAM role to the ECS Delegate
+    task definition. For more information, see  <a href="https://docs.harness.io/article/h9tkwmkrm7-delegate-installation#trust_relationships_and_roles">Trust
+    Relationships and Roles</a>.</p><p>If you will use AWS S3 as the source for your
+    CloudFormation templates, then the IAM role used by the Delegate will also need
+    policies to read templates from AWS S3. This is described below in <a href="#step_3_add_template_resource">Step
+    3: Add Template Resource</a>.</p><h3>Step 2: Set Up the AWS Cloud Provider</h3><p>For
+    a CloudFormation deployment, Harness can use a single AWS Cloud Provider to connect
+    to your AWS account and do the following:</p><ul><li>Obtain artifacts from Elastic
+    Container Registry (ECR) or S3.</li><li>Obtain the CloudFormation template from
+    S3.</li><li>Provision infrastructure in AWS.</li><li>Deploy to the provisioned
+    infrastructure in AWS.</li></ul><p>When you create the AWS Cloud Provider, you
+    can enter the platform account information for the Cloud Provider to use as credentials,
+    or you can use a Delegate running in your AWS infrastructure to provide the IAM
+    role for the Cloud Provider.</p><p>With CloudFormation, you are building an infrastructure
+    on a platform that requires specific permissions, and so the account used by the
+    AWS Cloud Provider (either by username and password or Delegate IAM role) needs
+    the required policies.</p><p>For example, to create AWS EC2 AMI instances, the
+    account/role needs the <strong>AmazonEC2FullAccess</strong> policy.</p><p>See
+    the list of policies in <a href="/article/whwnovprrb-cloud-providers">Add Cloud
+    Providers</a>.</p><p>For steps on adding an AWS Cloud Provider, see <a href="https://docs.harness.io/article/whwnovprrb-cloud-providers#amazon_web_services_aws_cloud">Amazon
+    Web Services (AWS) Cloud</a>.</p><p>When the AWS Cloud Provider uses the installed
+    Delegate for credentials via the Delegate&#39;s Selector, it assumes the IAM role
+    used to add the Delegate.</p><h4>Permissions</h4><p>The AWS Cloud Provider must
+    have <strong>create</strong> permissions for the resources you are planning to
+    create using the CloudFormation template.</p><p>As discussed earlier, for Harness
+    AWS Cloud Providers, you can install the Delegate in your AWS VPC and have the
+    Cloud Provider assume the permissions used by the Delegate.</p><p>Just ensure
+    that the IAM role assigned to the Delegate host (EC2 or ECS) has <strong>create</strong>
+    permissions for the resources you are planning to create using the CloudFormation
+    template.</p><h3>Step 3: Add Template Resource</h3><p>CloudFormation templates
+    are added to Harness by either pasting them into a text field, using an AWS S3
+    URL that points to the template, or using a Git repo.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/308nblm0vc/1589835221717/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Setting
+    up and AWS S3 and Git connections are described below.</p><div class="note-callout">Connections
+    to AWS CodeCommit are made in Harness Source Repo Providers, not as an AWS Cloud
+    Provider.</div><h4>Option 1: Use AWS S3</h4><p>You can use the same AWS Cloud
+    Provider to provision your AWS deployment environment and access the S3 bucket
+    URL.</p><p>The AWS Cloud Provider will need credentials to access the S3 bucket.</p><p>These
+    policies are required:</p><ul><li>The Managed Policy <strong>AmazonS3ReadOnlyAccess</strong>.</li><li>The
+    <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies">Customer
+    Managed Policy</a> you create using <code>ec2:DescribeRegions</code>.</li><li>The
+    Customer Managed Policy you create using <code>cloudformation:GetTemplateSummary</code>.</li></ul><div
+    class="note-callout">The AWS  <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html">IAM
+    Policy Simulator</a> is a useful tool for evaluating policies and access.</div><p><strong>Policy
+    Name</strong>: <code>AmazonS3ReadOnlyAccess</code>.</p><p><strong>Policy ARN:</strong> <code>arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess</code>.</p><p><strong>Description:</strong> Provides
+    read-only access to all buckets via the AWS Management Console.</p><p><strong>Policy
+    JSON:</strong></p><pre class="hljs json">{<br/>  &#34;Version&#34;: &#34;2012-10-17&#34;,<br/>  &#34;Statement&#34;:
+    [<br/>    {<br/>      &#34;Effect&#34;: &#34;Allow&#34;,<br/>      &#34;Action&#34;:
+    [<br/>        &#34;s3:Get*&#34;,<br/>        &#34;s3:List*&#34;<br/>      ],<br/>      &#34;Resource&#34;:
+    &#34;*&#34;<br/>    }<br/>  ]<br/>}</pre><p><strong>Policy Name:</strong> <code>HarnessS3</code>.</p><p><strong>Description:</strong> Harness
+    S3 policy that uses EC2 permissions. This is a customer-managed policy you must
+    create. In this example we have named it <code>HarnessS3</code>.</p><p><strong>Policy
+    JSON:</strong></p><pre class="hljs json">{<br/>    &#34;Version&#34;: &#34;2012-10-17&#34;,<br/>    &#34;Statement&#34;:
+    [<br/>        {<br/>            &#34;Sid&#34;: &#34;VisualEditor0&#34;,<br/>            &#34;Effect&#34;:
+    &#34;Allow&#34;,<br/>            &#34;Action&#34;: &#34;ec2:DescribeRegions&#34;,<br/>            &#34;Resource&#34;:
+    &#34;*&#34;<br/>        }<br/>    ]<br/>}</pre><div class="note-callout">If you
+    want to use an S3 bucket that is in a separate account than the account used to
+    set up the AWS Cloud Provider, you can grant cross-account bucket access. For
+    more information, see  <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/example-walkthroughs-managing-access-example2.html"
+    target="_blank">Bucket Owner Granting Cross-Account Bucket Permissions</a> from
+    AWS.</div><p><strong>Policy Name:</strong> <code>HarnessCloudFormation</code>.</p><p><strong>Description:</strong>
+    Returns information about a new or existing template. See <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetTemplateSummary.html"
+    target="_blank">GetTemplateSummary</a> from AWS.</p><p><strong>Policy JSON:</strong></p><pre
+    class="hljs json">{<br/>    &#34;Version&#34;: &#34;2012-10-17&#34;,<br/>    &#34;Statement&#34;:
+    [<br/>        {<br/>            &#34;Effect&#34;: &#34;Allow&#34;,<br/>            &#34;Action&#34;:
+    [<br/>                &#34;cloudformation:GetTemplateSummary&#34;<br/>            ],<br/>            &#34;Resource&#34;:
+    &#34;*&#34;<br/>        }<br/>    ]<br/>}</pre><p>See <a href="/article/whwnovprrb-cloud-providers">Add
+    Cloud Providers</a>.</p><p>The policies can be added to the AWS account you use
+    to set up the AWS Cloud Provider. If the AWS Cloud Provider is using the Delegate
+    for credentials, then the role applied to the Delegate host must have the policies.</p><p>The
+    following links provide useful information for ensuring access between EC2 instances
+    and S3 buckets:</p><ul><li> <a href="https://aws.amazon.com/blogs/security/verify-resource-based-permissions-using-the-iam-policy-simulator/">Verify
+    Resource-Based Permissions Using the IAM Policy Simulator</a></li><li> <a href="https://aws.amazon.com/premiumsupport/knowledge-center/s3-instance-access-bucket/">How
+    can I grant my Amazon EC2 instance access to an Amazon S3 bucket in another AWS
+    account?</a></li></ul><h4>Option 2: Use Your Git Repo</h4><p>If you want to use
+    a Git repo as the source of your CloudFormation templates, you need to add a connection
+    to your repo as a Harness Source Repo Provider.</p><p>See <a href="/article/ay9hlwbgwa-add-source-repo-providers">Add
+    Source Repo Providers</a>.</p><h3>Next Steps</h3><ul><li> <a href="/article/wtper654tn-add-cloud-formation-templates">Add
+    CloudFormation Templates</a></li></ul><p></p>'
+  slug: cloud-formation-account-setup
+  tags: []
+  is_live: true

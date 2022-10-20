@@ -1,0 +1,55 @@
+type: article
+article_id: l5ai0zfw68
+user_id: u10w77i7vp
+category_id: v313myup55
+author:
+  name: Katherine Enos
+  profile_image: https://www.gravatar.com/avatar/854cdb03d99ded9ecd30fa9cf06a5298?d=mm&s=150
+title: Support for Kubernetes
+slug: harness-self-managed-support-policy-for-kubernetes
+description: This topic describes what Kubernetes versions Harness supports for its
+  Harness Self-Managed Enterprise Edition editions.
+short_version: This topic describes what Kubernetes versions Harness supports for
+  its Harness Self-Managed Enterprise Edition editions.
+tags:
+- on-premises
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-14T16:03:45.973713Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Support for Kubernetes
+  description: This topic describes what Kubernetes versions Harness supports for
+    its Harness Self-Managed Enterprise Edition editions.
+  short_version: This topic describes what Kubernetes versions Harness supports for
+    its Harness Self-Managed Enterprise Edition editions.
+  body: <p>This topic describes Harness support for Kubernetes in Harness Self-Managed
+    Enterprise Edition.</p><h3>Supported Kubernetes Versions</h3><ul><li>Harness supports
+    Kubernetes open source versions 1.19, 1.18, and 1.17.</li><li>Harness provides
+    support for the three Kubernetes versions released before the last stable Kubernetes
+    release. For example, Kubernetes v.1.19 is the most recent stable release. This
+    means that Harness additionally supports Kubernetes versions 1.18, 1.17, and 1.16.</li><li>For
+    Self-Managed Enterprise Edition using KOTS installation, Harness supports Kubernetes
+    version 1.21.</li><li>Harness supports the other versions of Kubernetes you use
+    on a best-effort basis.</li><li>Harness commits to support new minor versions
+    within three months of the first stable release. For example, if the stable release
+    of 1.19.0 occurs on August 15th, Harness extends compatibility by November 15th.</li></ul><h3>Terms
+    of Support</h3><p>Harness does not introduce changes that break compatibility
+    with supported versions. For example, Harness does not use features from Kubernetes
+    version 1.18 that do not work in Kubernetes version 1.16.</p><p>Installation and
+    upgrade pre-flight checks provide warnings when you use Kubernetes versions that
+    are not supported.</p><p>In cases where you encounter a problem that is related
+    to an incompatibility issue, you must upgrade your cluster. Harness will not issue
+    a patch to accommodate the use of unsupported Kubernetes versions.</p>
+  slug: harness-self-managed-support-policy-for-kubernetes
+  tags:
+  - on-premises
+  is_live: true

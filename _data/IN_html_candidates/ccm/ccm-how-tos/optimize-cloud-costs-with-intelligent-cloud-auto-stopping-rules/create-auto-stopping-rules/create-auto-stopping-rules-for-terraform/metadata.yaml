@@ -1,0 +1,169 @@
+type: article
+article_id: 90zwlg096d
+user_id: slcpusem6b
+category_id: biypfy9p1i
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Create AutoStopping Rules with Terraform
+slug: create-auto-stopping-rules-for-terraform
+description: Describes how to create an AutoStopping Rules for Terraform.
+short_version: Describes how to create an AutoStopping Rules for Terraform.
+tags:
+- Terraform
+- Autostopping rules
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-12T22:37:34.934682Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create AutoStopping Rules with Terraform
+  description: Describes how to create an AutoStopping Rules for Terraform.
+  short_version: Describes how to create an AutoStopping Rules for Terraform.
+  body: '<p>AutoStopping Rules make sure that your non-production resources run only
+    when used, and never when idle. It also allows you to run your workloads on fully
+    orchestrated spot instances without any worry of spot interruptions.</p><p>This
+    topic describes how to create AutoStopping Rules with Terraform using scripts.</p><h3>Before
+    You Begin</h3><ul><li><a href="/article/wzr5tz0ero-auto-stopping-rules">AutoStopping
+    Rules Overview</a></li><li><a href="/article/7025n9ml7z-create-autostopping-rules-aws">Create
+    AutoStopping Rules for AWS</a></li><li><a href="/article/r5x5pvuqfn-create-auto-stopping-rules-for-azure">Create
+    AutoStopping Rules for Azure</a></li></ul><p>Perform the following steps to create
+    AutoStopping Rules for Terraform.</p><h3>Step 1: Install Terraform for AutoStopping
+    Rules</h3><p>To use Terraform you first need to install it. To install Terraform,
+    download the appropriate package for your Operating System:</p><ul><li>Darwin:
+    <a href="https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.0/tf_1.1.0_darwin_amd64.zip">https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.0/tf_1.1.0_darwin_amd64.zip</a></li><li>Linux:
+    <a href="https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.0/tf_1.1.0_linux_amd64.zip">https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.0/tf_1.1.0_linux_amd64.zip</a></li><li>Windows:
+    <a href="https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.0/tf_1.1.0_windows_amd64.zip">https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/1.1.0/tf_1.1.0_windows_amd64.zip</a></li></ul><p>For
+    more information on installing Terraform, see <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started">Install
+    Terraform for AWS</a> and <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/azure-get-started">Install
+    Terraform for Azure</a>.</p><h3>Step 2: Create an API Key</h3><p>To use a Harness
+    API key, do the following:</p><ol><li>In Harness Manager, click <strong>Security</strong>,
+    and then click <strong>Access Management</strong>.</li><li>Click <strong>API Keys</strong>.</li><li>Click <strong>Add
+    API Key</strong>.</li><li>In the <strong>Add API Key</strong> settings, enter
+    a name and select your User Group.</li><li>Click <strong>Submit</strong>. The
+    new API key is created.</li><li>To copy the API key, first click the Eye icon
+    to reveal the key&#39;s value.</li><li>Next, click the Copy icon beside the key.
+    This copies the key&#39;s value to your clipboard.</li></ol><h3>Step 3: Obtain
+    Harness Account Identifier</h3><ol><li>In Harness Manager, click <strong>Try NextGen</strong>.</li><li>In
+    Harness NextGen, navigate to <strong>Account Settings</strong>.</li><li>Copy your
+    <strong>Account ID</strong> from the <strong>Account Overview</strong>.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/90zwlg096d/1631536745259/screenshot-2021-09-13-at-6-08-49-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>You
+    need to enter the Account ID in the script.</li></ol><h3>Step 4: Run the Script</h3><p>Here
+    are some of the sample scripts for different scenarios:</p><h4>Create AutoStopping
+    Rules for an Instance</h4><p>The following sample script creates AutoStopping
+    rules for an instance.</p><p>Specify the following details:</p><ul><li><strong>Token</strong>:
+    Specify the <a href="/article/90zwlg096d-create-auto-stopping-rules-for-terraform#step_2_create_an_api_key">API
+    Key</a>.</li><li><strong>API_URL</strong>: Specify the endpoint.</li><li><strong>Account
+    Identifier</strong>: Specify the <a href="/article/90zwlg096d-create-auto-stopping-rules-for-terraform#step_3_obtain_harness_account_identifier">Account
+    ID</a>.</li><li><strong>Name</strong>: Specify a name for your AutoStopping Rule.</li><li><strong>Fulfilment</strong>:
+    Specify the instance fulfillment type, <strong>On-Demand</strong> or <strong>Spot</strong>.</li><li><strong>Hosted
+    Zone ID</strong>: Specify the domain name for your Route 53 hosted zone.</li><li><strong>Resource_ID</strong>:
+    Specify the instance ID.</li><li><strong>Routing</strong>: Specify listeners information.</li><li><strong>(Optional)
+    Health Check</strong>: Health check makes sure that the specified parameters are
+    met before stopping the instances. Health check status should be successful for
+    the AutoStopping rules to come into effect.</li></ul><p></p><pre>terraform {<br/>  required_providers
+    {<br/>    harness-ccm = {<br/>      source = &#34;harness.io/ccm/harness-ccm&#34;<br/>      version
+    = &#34;0.0.4&#34;<br/>    }<br/>  }<br/>}<br/>provider &#34;harness-ccm&#34; {<br/>  token
+    = &#34;&lt;<em>paste your token her</em>e&gt;&#34;<br/>  api_url = &#34;https://app.harness.io/gateway/lw/api&#34;<br/>  account_identifier
+    = &#34;&lt;<em>paste your account id</em>&gt;&#34;<br/>}<br/><br/>resource &#34;harness-ccm_autostopping_rule&#34;
+    &#34;rule_i1&#34; {<br/>  name = &#34;&lt;<em>enter a name for your autostopping
+    rule</em>&gt;&#34;<br/>  fulfilment = &#34;ondemand&#34;<br/>  disabled = false<br/>  cloud_account_id
+    = &#34;&lt;<em>enter your cloud account ID</em>&gt;&#34;<br/>  load_balancer =
+    &#34;&lt;<em>enter your load balancer</em>&gt;&#34;<br/>  custom_domain_providers
+    {<br/>    route53 {<br/>      hosted_zone_id = “/hostedzone/<em>YourValueHere</em>”<br/>    }<br/>  }<br/>  filter
+    {<br/>      resource_id = &lt;<em>enter your instance ID</em>&gt;<br/>  }<br/>  routing
+    {<br/>    source_protocol = &#34;http&#34;<br/>    target_protocol = &#34;http&#34;<br/>    source_port
+    = 80<br/>    target_port = 80<br/>    action = &#34;forward&#34;<br/>  }<br/>  routing
+    {<br/>    source_protocol = &#34;https&#34;<br/>    target_protocol = &#34;http&#34;<br/>    source_port
+    = 443<br/>    target_port = 80<br/>    action = &#34;forward&#34;<br/>  }<br/>
+    <br/>}<br/><br/>resource &#34;harness-ccm_autostopping_rule&#34; &#34;rule_i2&#34;
+    {<br/>  name = &#34;&#34;<br/>  fulfilment = &#34;ondemand&#34;<br/>  disabled
+    = false<br/>  org_id = &#34;&#34;<br/>  project_id = &#34;&#34;<br/>  cloud_account_id
+    = &#34;&#34;<br/>  load_balancer = &#34;&#34;<br/>  <br/>  filter {<br/>    tag
+    {<br/>      key = &#34;Name&#34;<br/>      value = &#34;aws_instance_i2&#34;<br/>    }<br/>  }<br/>  routing
+    {<br/>    source_protocol = &#34;http&#34;<br/>    target_protocol = &#34;http&#34;<br/>    source_port
+    = 80<br/>    target_port = 80<br/>    action = &#34;forward&#34;<br/>  }<br/>  routing
+    {<br/>    source_protocol = &#34;https&#34;<br/>    target_protocol = &#34;http&#34;<br/>    source_port
+    = 443<br/>    target_port = 80<br/>    action = &#34;forward&#34;<br/>  }<br/>  health
+    {<br/>    protocol = &#34;http&#34;<br/>    port = 8080<br/>    timeout = 30<br/>    path
+    = &#34;/&#34;<br/>    status_code_from = 200<br/>    status_code_to = 399<br/>  }<br/>}</pre><h4>Create
+    AWS Instances and Enable AutoStopping Rules for the Instances</h4><p>The following
+    sample script creates AWS instances and enables AutoStopping rules for those instances.</p><p></p><pre>terraform
+    {<br/>  required_providers {<br/>    harness-ccm = {<br/>      source = &#34;harness.io/ccm/harness-ccm&#34;<br/>      version
+    = &#34;0.0.1&#34;<br/>    }<br/>  }<br/>}<br/>provider &#34;harness-ccm&#34; {<br/>  token
+    = &#34;&#34;<br/>  api_url = &#34;https://uat.harness.io/gateway/lw/api&#34;<br/>  account_identifier
+    = &#34;&#34;<br/>}<br/>provider &#34;aws&#34; {<br/>  region = &#34;ap-south-1&#34;<br/>  access_key
+    = &#34;&#34;<br/>  secret_key = &#34;&#34;<br/>}<br/>data &#34;aws_ami&#34; &#34;ubuntu&#34;
+    {<br/>  most_recent = true<br/>  filter {<br/>    name   = &#34;name&#34;<br/>    values
+    = [&#34;ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*&#34;]<br/>  }<br/>  filter
+    {<br/>    name   = &#34;virtualization-type&#34;<br/>    values = [&#34;hvm&#34;]<br/>  }<br/>  owners
+    = [&#34;099720109477&#34;] # Canonical<br/>}<br/>resource &#34;aws_instance&#34;
+    &#34;i1&#34; {<br/>  ami           = data.aws_ami.ubuntu.id<br/>  instance_type
+    = &#34;t2.micro&#34;<br/>  availability_zone = &#34;ap-south-1a&#34;<br/>  key_name
+    = &#34;ry-jupyter&#34;<br/>  vpc_security_group_ids = [ &#34;&#34; ]<br/>  user_data
+    = &lt;&lt;EOF<br/>        #!/bin/bash<br/>        apt-get -y install nginx<br/>  EOF<br/>  tags
+    = {<br/>    Name = &#34;aws_instance_i1&#34;<br/>  }<br/>}<br/>resource &#34;aws_instance&#34;
+    &#34;i2&#34; {<br/>  ami           = data.aws_ami.ubuntu.id<br/>  instance_type
+    = &#34;t2.micro&#34;<br/>  availability_zone = &#34;ap-south-1a&#34;<br/>  key_name
+    = &#34;ry-jupyter&#34;<br/>  vpc_security_group_ids = [ &#34;&#34; ]<br/>  user_data
+    = &lt;&lt;EOF<br/>        #!/bin/bash<br/>        apt-get -y install nginx<br/>  EOF<br/>  tags
+    = {<br/>    Name = &#34;aws_instance_i2&#34;<br/>  }<br/>}<br/>resource &#34;harness-ccm_autostopping_rule&#34;
+    &#34;rule_i1&#34; {<br/>  name = &#34;&#34;<br/>  fulfilment = &#34;ondemand&#34;<br/>  disabled
+    = false<br/>  org_id = &#34;&#34;<br/>  project_id = &#34;&#34;<br/>  cloud_account_id
+    = &#34;&#34;<br/>  load_balancer = &#34;&#34;<br/>  <br/>  filter {<br/>      resource_id
+    = &lt;something&gt;<br/>  }<br/>  routing {<br/>    source_protocol = &#34;http&#34;<br/>    target_protocol
+    = &#34;http&#34;<br/>    source_port = 80<br/>    target_port = 80<br/>    action
+    = &#34;forward&#34;<br/>  }<br/>  routing {<br/>    source_protocol = &#34;https&#34;<br/>    target_protocol
+    = &#34;http&#34;<br/>    source_port = 443<br/>    target_port = 80<br/>    action
+    = &#34;forward&#34;<br/>  }<br/>  lifecycle {<br/>    ignore_changes = [<br/>      host_name,<br/>      filter,<br/>    ]<br/>  }<br/>}<br/><br/>resource
+    &#34;harness-ccm_autostopping_rule&#34; &#34;rule_i2&#34; {<br/>  name = &#34;&#34;<br/>  fulfilment
+    = &#34;ondemand&#34;<br/>  disabled = false<br/>  org_id = &#34;&#34;<br/>  project_id
+    = &#34;&#34;<br/>  cloud_account_id = &#34;&#34;<br/>  load_balancer = &#34;&#34;<br/>  <br/>  filter
+    {<br/>    tag {<br/>      key = &#34;Name&#34;<br/>      value = &#34;aws_instance_i2&#34;<br/>    }<br/>  }<br/>  routing
+    {<br/>    source_protocol = &#34;http&#34;<br/>    target_protocol = &#34;http&#34;<br/>    source_port
+    = 80<br/>    target_port = 80<br/>    action = &#34;forward&#34;<br/>  }<br/>  routing
+    {<br/>    source_protocol = &#34;https&#34;<br/>    target_protocol = &#34;http&#34;<br/>    source_port
+    = 443<br/>    target_port = 80<br/>    action = &#34;forward&#34;<br/>  }<br/>  <br/>}</pre><h4>Create
+    AutoStopping Rules for Auto Scaling Groups</h4><p>The following sample script
+    creates an AutoStopping rule for Auto Scaling Groups (ASGs).</p><p></p><pre>terraform
+    {<br/>  required_providers {<br/>    harness-ccm = {<br/>      source = &#34;harness.io/ccm/harness-ccm&#34;<br/>      version
+    = &#34;0.0.4&#34;<br/>    }<br/>  }<br/>}<br/>provider &#34;harness-ccm&#34; {<br/>  token
+    = &#34;&#34;<br/>  api_url = &#34;https://ce-dev.harness.io/gateway/lw/api&#34;<br/>  account_identifier
+    = &#34;&#34;<br/>}<br/><br/>resource &#34;harness-ccm_autostopping_rule&#34; &#34;rule_i3&#34;
+    {<br/>  name = &#34;ASG Server Nginx 1&#34;<br/>  fulfilment = &#34;ondemand&#34;<br/>  disabled
+    = false<br/>  cloud_account_id = &#34;&#34;<br/>  load_balancer = &#34;&#34;<br/>  custom_domain_providers
+    {<br/>    route53 {<br/>      hosted_zone_id = &#34;/hostedzone/Z06070943NA512B2KHEHF&#34;<br/>    }<br/>  }<br/>  custom_domains
+    = &#34;&#34;<br/>  scaling_group {<br/>    id = &#34;&lt;arn of the ASG&gt;&#34;<br/>    name
+    = &#34;&#34;<br/>    capacity {<br/>      max = &#34;3&#34;<br/>      min = &#34;1&#34;<br/>      desired
+    = &#34;2&#34;<br/>    }<br/>    <br/>    target_group {<br/>      id = &#34;&lt;arn
+    of the TG&gt;&#34;<br/>      port = &#34;80&#34;<br/>      protocol = &#34;http&#34;<br/>    }<br/>    region
+    = &#34;ap-south-1&#34;<br/>  }<br/>  routing {<br/>    source_protocol = &#34;http&#34;<br/>    target_protocol
+    = &#34;http&#34;<br/>    source_port = 80<br/>    target_port = 80<br/>    action
+    = &#34;forward&#34;<br/>  }<br/> <br/>  health {<br/>    protocol = &#34;http&#34;<br/>    port
+    = 8080<br/>    timeout = 30<br/>    path = &#34;/&#34;<br/>    status_code_from
+    = 200<br/>    status_code_to = 399<br/>  }<br/>}</pre><p></p><h4>Create AutoStopping
+    Rules for ECS</h4><p>The following sample script creates an AutoStopping rule
+    for ECS.</p><p></p><pre>terraform {<br/>  required_providers {<br/>    harness-ccm
+    = {<br/>      source = &#34;harness.io/ccm/harness-ccm&#34;<br/>      version
+    = &#34;1.0.1&#34;<br/>    }<br/>  }<br/>}<br/><br/>provider &#34;harness-ccm&#34;
+    {<br/>  token = &#34;&lt;harness api token&gt;&#34;<br/>  account_identifier =
+    &#34;&lt;harness account identifier&gt;&#34;<br/>}<br/><br/>resource &#34;harness-ccm_autostopping_rule&#34;
+    &#34;RuleName&#34; {<br/>  name = &#34;Terraform Ecs rule&#34;<br/>  kind = &#34;containers&#34;<br/>  cloud_account_id
+    = &#34;&lt;harness cloud account connector id&gt;&#34;<br/>  idle_time_mins =
+    10<br/><br/>  load_balancer = &#34;&lt;load balancer host name&gt;&#34;<br/><br/>  container
+    {<br/>    cluster = &#34;&lt;ECS Cluster Name&gt;&#34;<br/>    service = &#34;&lt;Ecs
+    Service Name&gt;&#34;<br/>    task_count = 1<br/>    region = &#34;us-east-1&#34;<br/>  }<br/>}<br/></pre><p></p>'
+  slug: create-auto-stopping-rules-for-terraform
+  tags:
+  - Terraform
+  - Autostopping rules
+  is_live: true

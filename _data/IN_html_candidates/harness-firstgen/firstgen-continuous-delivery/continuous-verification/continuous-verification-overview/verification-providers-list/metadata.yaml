@@ -1,0 +1,134 @@
+type: article
+article_id: myw4h9u05l
+user_id: mfr0nxh4be
+category_id: rfqhfm9od5
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: CV Summary and Provider Support
+slug: verification-providers-list
+description: Summary of CV (Continuous Verification) methods and providers, with links
+  to blog posts covering Harness Machine Learning and specific integrations.
+short_version: Summary of CV (Continuous Verification) methods and providers.
+tags:
+- Deployment Verification
+- 24/7 Service Guard
+- APM
+- application performance monitoring
+- Machine Learning
+- verification
+- Verification Provider
+- log
+- health
+- AppDynamics
+- New Relic
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:23:35.15136Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CV Summary and Provider Support
+  description: Summary of CV (Continuous Verification) methods and providers, with
+    links to blog posts covering Harness Machine Learning and specific integrations.
+  short_version: Summary of CV (Continuous Verification) methods and providers.
+  body: <div class="warning-callout">This topic is deprecated. Please see the Concepts
+    sequence that begins with <a href="/article/ina58fap5y-what-is-cv">What Is Continuous
+    Verification (CV)?</a> and ends with <a href="/article/5vp1f7zt0a-cv-providers">Who
+    Are Harness&#39; Verification Providers?</a></div><p></p><p>This topic provides
+    a brief summary of Harness CV methods, and lists the APM and logging providers
+    that integrate with Harness.</p><p>In this topic:</p><ul><li><a href="https://docs.harness.io/article/myw4h9u05l-verification-providers-list#cv_methods_summary">CV
+    Methods Summary</a><ul><li><a href="https://docs.harness.io/article/myw4h9u05l-verification-providers-list#deployment_verification">Deployment
+    Verification</a></li><li><a href="https://docs.harness.io/article/myw4h9u05l-verification-providers-list#24_7_service_guard">24/7
+    Service Guard</a></li><li><a href="https://docs.harness.io/article/myw4h9u05l-verification-providers-list#analysis_methods_and_best_practices">Analysis
+    Methods and Best Practices</a></li></ul></li><li><a href="https://docs.harness.io/article/myw4h9u05l-verification-providers-list#supported_providers">Supported
+    Providers</a></li><li><a href="https://docs.harness.io/article/myw4h9u05l-verification-providers-list#blog_articles">Blog
+    Articles</a></li></ul><h3>CV Methods Summary</h3><p>Harness Continuous Verification
+    has two methods, <strong>Deployment Verification</strong> and <strong>24/7 Service
+    Guard</strong>. You can use both or either of the methods. Both verification types
+    use the Verification Providers you set up in Harness.</p><h4>Deployment Verification</h4><p>Deployment
+    Verification verifies the first 15 minutes of deployments. Deployment verification
+    is set up using a Harness Workflow.</p><p>For an excellent example of Deployment
+    Verification, see the Harness Blog post, <a href="https://harness.io/2018/01/how-build-com-rolls-back-in-production/"
+    target="_blank">How Build.com Rolls Back Production in 32 Seconds</a>.</p><h5>Video
+    Webinar</h5><p>The following Webinar provides an introduction to how Harness Continuous
+    Delivery leverages unsupervised machine learning to verify production deployments
+    for customers using their APM and log data.</p><div class="hd--html"><iframe width="280"
+    height="157" src="https://www.youtube.com/embed/ZO5otWQ4PIc" frameborder="0" allow="accelerometer;
+    autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h4>24/7
+    Service Guard</h4><p>24/7 Service Guard provides 24/7 verification of your live,
+    production application. You set up 24/7 Service Guard verification in a Harness
+    Environment.</p><p>For more information, see our <a href="/category/kam4aj3pd4-24-7-service-guard">24/7
+    Service Guard documentation</a>, and the Harness Blog post, <a href="https://harness.io/2018/12/harness-24-7-service-guard-empowers-developers-with-total-operational-control/"
+    target="_blank">Harness 24/7 Service Guard Empowers Developers with Total Operational
+    Control</a>.</p><h5>Video Summary</h5><div class="hd--html"><iframe width="560"
+    height="315" src="https://www.youtube.com/embed/yi8J4nZAXxw" frameborder="0" allow="accelerometer;
+    autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h4>Analysis
+    Methods and Best Practices</h4><p>Harness CV uses a number of analysis methods
+    and provides controls for you to tune them for your deployments. See <a href="/article/0avzb5255b-cv-strategies-and-best-practices">CV
+    Strategies, Tuning, and Best Practices</a>.</p><h3>Supported Providers</h3><p>The
+    following list provides links to the CV topics for each verification provider.</p><ul><li><a
+    href="/article/2zxfjt67yb-app-dynamics-verification-overview">AppDynamics</a></li><li><a
+    href="/article/jn0axefdat-stackdriver-and-harness-overview">Stackdriver</a></li><li><a
+    href="/article/q6ti811nck-cloud-watch-verification-overview">CloudWatch</a></li><li><a
+    href="/article/ong5rbbn49-datadog-verification-overview">Datadog</a></li><li><a
+    href="/article/ht3amzjvle-new-relic-verification-overview">New Relic</a></li><li><a
+    href="/article/dujtd6ek5p-splunk-verification-overview">Splunk</a></li><li><a
+    href="/article/r3xtgg0e2k-dynatrace-verification-overview">Dynatrace</a></li><li><a
+    href="/article/wb2k4u4kxm-sumo-logic-verification-overview">Sumo Logic</a></li><li><a
+    href="/article/qdajtgsqfj-elasticsearch-verification-overview">Elasticsearch</a></li><li><a
+    href="/article/ac5piurukt-bugsnag-verification-overview">Bugsnag</a></li><li><a
+    href="/article/5uh79dplbj-prometheus-verification-overview">Prometheus</a></li><li><a
+    href="/article/s9qjvicmod-instana-verification-overview">Instana</a></li><li><a
+    href="/article/e87u8c63z4-custom-verification-overview">Custom Verification</a></li></ul><h3>Blog
+    Articles</h3><p>The following blog articles cover a range of Verification Providers,
+    and discuss Harness Continuous Verification functionality.</p><h4>Machine Learning
+    and Continuous Delivery</h4><p> <a href="https://harness.io/2017/11/can-apply-machine-learning-continuous-delivery/">Can
+    you apply Machine Learning to Continuous Delivery?</a></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/myw4h9u05l/1620840211483/splunk-example.jpg"/></figure><p>Interested
+    in turning your deployment canary into a cybernetic living organism? Awesome,
+    this blog is for you.</p><h4>Harness Eliminates False Positives</h4><p> <a href="https://harness.io/2018/04/how-harness-eliminates-false-positives-with-neural-nets/"
+    target="_blank">How Harness Eliminates False Positives with Neural Nets</a></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/myw4h9u05l/1620840212092/neural-nets.jpg"/></figure><p>For
+    the past 10 months at Harness, we have been analyzing application log events to
+    help customers detect anomalies and verify their production deployments. To do
+    this, our algorithms have been based on textual similarity and occurrence frequencies.
+    Harness has native integration for popular log aggregation tools such as Splunk,
+    ELK, Sumo Logic and so on.</p><h4>Dynatrace</h4><p> <a href="https://harness.io/2018/02/harness-extends-continuous-verification-dynatrace/">Harness
+    Extends Continuous Verification To Dynatrace</a></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/myw4h9u05l/1620840212638/blog-dt.jpg"/></figure><p>One
+    of our early customers, Build.com, used to verify production deployments with
+    5-6 team leads manually analyzing monitoring data and log files. This process
+    took each team lead 60 minutes, and occurred 3 times a week. That’s 1,080 minutes,
+    or 18 hours, of team lead time spent on verification. With Harness, Build.com
+    reduced verification time to just 15 minutes, and also enabled automatic rollback
+    to occur in production.</p><h4>AppDynamics</h4><p> <a href="https://harness.io/2018/05/introducing-harness-service-impact-verification-for-appdynamics/">Introducing
+    Harness Service Impact Verification for AppDynamics</a></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/myw4h9u05l/1620840213271/payment-verification.jpg"/></figure><p>AppDynamics
+    announced a new partnership with Harness to help customers embrace continuous
+    delivery and understand the business impact of every application deployment.</p><h4>Prometheus</h4><p>
+    <a href="https://harness.io/2018/05/automating-deployment-health-checks-with-prometheus-and-harness-continuous-delivery/">Automating
+    Deployment Health Checks with Prometheus and Harness Continuous Delivery</a></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/myw4h9u05l/1620840213835/configure-prometheus.jpg"/></figure><p>Overview
+    of Harness&#39; integration with Prometheus, the open-source monitoring project.</p><h4>Datadog</h4><p>
+    <a href="https://harness.io/2018/05/harness-extends-continuous-verification-datadog/">Harness
+    Extends Continuous Verification To Datadog</a></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/myw4h9u05l/1620840214451/datadog-detail.jpg"/></figure><p>Overview
+    of Harness&#39; integration with Datadog APM.</p>
+  slug: verification-providers-list
+  tags:
+  - Deployment Verification
+  - 24/7 Service Guard
+  - APM
+  - application performance monitoring
+  - Machine Learning
+  - verification
+  - Verification Provider
+  - log
+  - health
+  - AppDynamics
+  - New Relic
+  is_live: true

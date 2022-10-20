@@ -1,0 +1,87 @@
+type: article
+article_id: tot87l7e6k
+user_id: mfr0nxh4be
+category_id: n03qfofd5w
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Set up Kubernetes Ingress Rules
+slug: set-up-kubernetes-ingress-rules
+description: Add your Ingress rules to your Harness Kubernetes deployments.
+short_version: Add your Ingress rules to your Harness Kubernetes deployments.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:49.084958Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Set up Kubernetes Ingress Rules
+  description: Add your Ingress rules to your Harness Kubernetes deployments.
+  short_version: Add your Ingress rules to your Harness Kubernetes deployments.
+  body: '<p>Route traffic using the Ingress rules defined in your Harness Kubernetes
+    Service.</p><p>In this topic:</p><ul><li> <a href="#before_you_begin">Before You
+    Begin</a></li><li> <a href="#step_1_add_a_service_manifest">Step 1: Add a Service
+    Manifest</a></li><li> <a href="#step_2_add_an_ingress_manifest">Step 2: Add an
+    Ingress Manifest</a></li><li> <a href="#notes">Notes</a></li></ul><h3>Before You
+    Begin</h3><ul><li><a href="/article/1qfb4gh9e8-set-up-kubernetes-traffic-splitting">Set
+    Up Kubernetes Traffic Splitting</a></li><li><a href="/article/2j2vi5oxrq-define-kubernetes-manifests">Define
+    Kubernetes Manifests</a></li><li>If you are new to Ingress, see <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/"
+    target="_blank">Ingress</a> from Kubernetes.</li></ul><div class="note-callout">A
+    Harness Service is different from a Kubernetes service. A Harness Service includes
+    the manifests and container used for deployment. A Kubernetes service enables
+    applications running in a Kubernetes cluster to find and communicate with each
+    other, and the outside world. To avoid confusion, a Harness Service is always
+    capitalized in Harness documentation. A Kubernetes service is not.</div><h3>Step
+    1: Add a Service Manifest</h3><p>For Ingress Rules, you simply add your Kubernetes
+    service and Ingress manifests to your Harness Service, and then refer to the service
+    name in the Ingress manifest.</p><p>Here is the Kubernetes service manifest. Note
+    the service name <code>my-svc</code>:</p><pre class="hljs properties">apiVersion:
+    <span class="hljs-string" style="box-sizing:inherit;color:rgb(223, 80, 0)" data-hd-color="rgb(223,
+    80, 0)">v1</span><br/>kind: <span class="hljs-string" style="box-sizing:inherit;color:rgb(223,
+    80, 0)" data-hd-color="rgb(223, 80, 0)">Service</span><br/>metadata:<br/>  <span
+    class="hljs-attr" style="box-sizing:inherit;color:rgb(121, 93, 163)" data-hd-color="rgb(121,
+    93, 163)">name</span>: <span class="hljs-string" style="box-sizing:inherit;color:rgb(223,
+    80, 0)" data-hd-color="rgb(223, 80, 0)">my-svc</span><br/>spec:<br/>  <span class="hljs-meta"
+    style="box-sizing:inherit;color:rgb(150, 152, 150)" data-hd-color="rgb(150, 152,
+    150)">ports</span>:<br/>  <span class="hljs-meta" style="box-sizing:inherit;color:rgb(150,
+    152, 150)" data-hd-color="rgb(150, 152, 150)">-</span> <span class="hljs-string"
+    style="box-sizing:inherit;color:rgb(223, 80, 0)" data-hd-color="rgb(223, 80, 0)">name:
+    my-port</span><br/>    <span class="hljs-attr" style="box-sizing:inherit;color:rgb(121,
+    93, 163)" data-hd-color="rgb(121, 93, 163)">port</span>: <span class="hljs-string"
+    style="box-sizing:inherit;color:rgb(223, 80, 0)" data-hd-color="rgb(223, 80, 0)">8080</span><br/>    <span
+    class="hljs-attr" style="box-sizing:inherit;color:rgb(121, 93, 163)" data-hd-color="rgb(121,
+    93, 163)">protocol</span>: <span class="hljs-string" style="box-sizing:inherit;color:rgb(223,
+    80, 0)" data-hd-color="rgb(223, 80, 0)">TCP</span><br/>    <span class="hljs-attr"
+    style="box-sizing:inherit;color:rgb(121, 93, 163)" data-hd-color="rgb(121, 93,
+    163)">targetPort</span>: <span class="hljs-string" style="box-sizing:inherit;color:rgb(223,
+    80, 0)" data-hd-color="rgb(223, 80, 0)">my-container-port</span><br/>  <span class="hljs-meta"
+    style="box-sizing:inherit;color:rgb(150, 152, 150)" data-hd-color="rgb(150, 152,
+    150)">selector</span>:<br/>    <span class="hljs-attr" style="box-sizing:inherit;color:rgb(121,
+    93, 163)" data-hd-color="rgb(121, 93, 163)">app</span>: <span class="hljs-string"
+    style="box-sizing:inherit;color:rgb(223, 80, 0)" data-hd-color="rgb(223, 80, 0)">my-deployment</span><br/>  <span
+    class="hljs-attr" style="box-sizing:inherit;color:rgb(121, 93, 163)" data-hd-color="rgb(121,
+    93, 163)">type</span>: <span class="hljs-string" style="box-sizing:inherit;color:rgb(223,
+    80, 0)" data-hd-color="rgb(223, 80, 0)">ClusterIP</span></pre><p>The service name <strong>my-svc</strong> will
+    be referred to in the Ingress manifest.</p><h3>Step 2: Add an Ingress Manifest</h3><p>Add
+    an Ingress manifest that refers to the service name. In our example, the service
+    name is <code>my-svc</code>:</p><pre class="hljs makefile">apiVersion: extensions/v1beta1<br/>kind:
+    Ingress<br/>metadata:<br/> name: my-ingress<br/> annotations:<br/>  kubernetes.io/ingress.class:
+    <span class="hljs-string" style="box-sizing:inherit;color:rgb(223, 80, 0)" data-hd-color="rgb(223,
+    80, 0)">&#34;nginx&#34;</span><br/>spec:<br/>  rules:<br/>  - http:<br/>     paths:<br/>     -
+    path: /my/path<br/>       backend:<br/>        serviceName: my-svc<br/>        servicePort:
+    8080</pre><h3>Notes</h3><ul><li>Using the values.yaml file and Go templating,
+    you would simply add the service name and any other key values to the values.yaml
+    file and then replace them in both manifests with the variable. For examples of
+    using Go templating, see <a href="/article/mwy6zgz8gu-use-go-templating-in-kubernetes-manifests">Use
+    Go Templating in Kubernetes Manifests</a>.</li></ul><p></p>'
+  slug: set-up-kubernetes-ingress-rules
+  tags: []
+  is_live: true

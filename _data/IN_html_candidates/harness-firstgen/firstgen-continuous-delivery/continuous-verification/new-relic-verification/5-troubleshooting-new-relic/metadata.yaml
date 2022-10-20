@@ -1,0 +1,62 @@
+type: article
+article_id: 3d5sv5p9pf
+user_id: mfr0nxh4be
+category_id: 1nci5420c8
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Troubleshooting New Relic
+slug: 5-troubleshooting-new-relic
+description: Resolutions to common problems in configuring New Relic as a Harness
+  verification provider.
+short_version: Resolutions to common configuration problems with New Relic.
+tags:
+- New Relic
+- NEWRELIC_CONFIGURATION_ERROR
+- No node with name ${hostName} found reporting to new relic
+- No node with name ${hostName} found
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:46.533684Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Troubleshooting New Relic
+  description: Resolutions to common problems in configuring New Relic as a Harness
+    verification provider.
+  short_version: Resolutions to common configuration problems with New Relic.
+  body: '<p>The following are resolutions to common configuration problems.</p><h3>Workflow
+    Step Test Error</h3><p>When you click <strong>TEST</strong> in the <strong>New
+    Relic</strong> workflow dialog <strong>Expression for Host Name</strong> popover,
+    you should get provider information:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497435985/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    following error message can occur when testing the New Relic verification step
+    in your workflow:</p><pre>NEWRELIC_CONFIGURATION_ERROR: Error while saving New
+    Relic configuration. No node with name ${hostName} found reporting to new relic</pre><p>Here
+    is the error in the Expression for Host Name popover:</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497541398/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Cause</h4><p>The
+    expression in the <strong>Expression for Host/Container name</strong> field is
+    incorrect. Typically, this occurs when the wrong hostName label is selected to
+    create the expression in the <strong>Expression for Host/Container name</strong>
+    field.</p><h4>Solution</h4><p>Following the steps in <a href="#guide_from_example">Guide
+    From Example</a> again to select the correct expression. Ensure that the <strong>hostName</strong>
+    label selected is under the <strong>host</strong> section of the YAML.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/uw64fijctw/1535497775617/image.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><h3>Next
+    Steps</h3><ul><li><a href="/article/htvzryeqjw-configuration-as-code">Configuration
+    as Code</a></li><li><a href="/article/ven0bvulsj-users-and-permissions">Managing
+    Users and Groups (RBAC)</a></li></ul><p></p>'
+  slug: 5-troubleshooting-new-relic
+  tags:
+  - New Relic
+  - NEWRELIC_CONFIGURATION_ERROR
+  - No node with name ${hostName} found reporting to new relic
+  - No node with name ${hostName} found
+  is_live: true

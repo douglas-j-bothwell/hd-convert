@@ -1,0 +1,72 @@
+type: article
+article_id: w4krvu96i3
+user_id: he1u8tt50c
+category_id: yb32qiprs8
+author:
+  name: Kim Fields
+  profile_image: https://www.gravatar.com/avatar/a94054e52da12d65caa918458548f7f2?d=mm&s=150
+title: Early Access Features
+slug: early-access
+description: Learn about the new early access features in all Harness modules. Early
+  access features require a feature flag. September 7th, 2022 Harness Platform. You
+  can now create a Harness Custom Secret Manage…
+short_version: Learn about the new early access features in all Harness modules. Early
+  access features require a feature flag. September 7th, 2022 Harness Platform. You
+  can now create a Harness Custom Secret Manage…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-09-08T04:57:37.261792Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Early Access Features
+  description: ""
+  short_version: ""
+  body: '<p>Learn about the new early access features in all Harness modules. Early
+    access features require a feature flag.</p><h3>September 7th, 2022</h3><h4>Harness
+    Platform</h4><p>You can now create a Harness Custom Secret Manager in Next Gen.
+    (PL-25545)</p><p>You can onboard any secret manager with Harness and reference
+    their secrets in Harness using a Shell Script.</p><p>This is behind the feature
+    flag CUSTOM_SECRET_MANAGER_NG.</p><p>See <a href="/article/mg09uspsx1-custom-secret-manager">Add
+    a Custom Secret Manager</a>.</p><h3>July 7th, 2022</h3><h4>Harness Platform</h4><p><strong>Reuse
+    of identifiers after deletion</strong></p><p>Customers will now be able to reuse
+    identifiers of deleted entities. Previously, we took the approach to soft-delete
+    entities, which prevented users from reusing identifiers after deletion. Now we
+    hard-delete entities, which allows customers to reuse identifiers after deletion.</p><p>However,
+    caution must be exercised while reusing identifiers as any history of the deleted
+    entity in audit logs now maps to the new entity using the same identifier.</p><p>This
+    functionality is behind a feature flag: HARDDELETEENTITIES</p><h3>June 16, 2022</h3><h4>Harness
+    Platform</h4><p><strong>Simplified Git Experience</strong></p><p>Harness Git Experience
+    lets you store configurations for your resources like Pipelines, Input Sets in
+    Git. You can choose Git as the source of truth and use your Git credentials to
+    access and modify your configurations.</p><p>With Harness Git Experience, you
+    can select the repository and branch from where you want to execute your Pipelines,
+    hence simplifying your Pipeline execution by seamless access to your Harness resources
+    and their configurations stored in Git.</p><p>For more information, refer to <a
+    href="https://docs.harness.io/article/xl028jo9jk-git-experience-overview">Harness
+    Git Experience Overview</a>.</p><p>This functionality is behind a feature flag:
+    NG_GIT_EXPERIENCE</p><h3>February 24, 2022</h3><h4>Harness Platform</h4><p><strong>Variables
+    panel in the Template Studio</strong></p><p>Create and manage all the variables
+    used in the stage templates with the variables panel in the Template Studio.</p><p>For
+    more information, refer to <a href="https://docs.harness.io/article/s3wrqjsg43-add-a-stage-template#option_variables">Variables</a>.</p><p>This
+    functionality is behind a feature flag: NG_TEMPLATES</p><h3>February 1, 2022</h3><h4>Continuous
+    Delivery</h4><p><strong>Support for Native Help deployments</strong></p><p>Harness
+    now supports Native Helm deployments in NG. You must always have Helm and Tiller
+    running on one pod in your target cluster and Tiller makes the API calls to Kubernetes.
+    You can only perform a Rolling deployment strategy. You can run commands like
+    helm install, helm upgrade, etc with relevant command flags. Previously only K8s
+    Helm was supported in NG. In CG, Harness supports various Helm Chart stores like
+    HTTP Helm, S3, GCS, etc.</p><p>For more information, refer to <a href="https://docs.harness.io/article/lbhf2h71at-native-helm-quickstart">Native
+    Helm Deployment Tutorial</a>.</p><p>This functionality is behind a feature flag:
+    NG_NATIVE_HELM</p>'
+  slug: early-access
+  tags: []
+  is_live: true

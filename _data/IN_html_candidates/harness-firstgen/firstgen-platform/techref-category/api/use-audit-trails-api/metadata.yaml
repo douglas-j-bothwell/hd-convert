@@ -1,0 +1,74 @@
+type: article
+article_id: k9d2zjdnw8
+user_id: slcpusem6b
+category_id: l2p3i03l4a
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Use Audit Trails API
+slug: use-audit-trails-api
+description: Lists common audit trail queries.
+short_version: Lists common audit trail queries.
+tags:
+- API
+- GraphQL API
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:21:24.043822Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Use Audit Trails API
+  description: Lists common audit trail queries.
+  short_version: Lists common audit trail queries.
+  body: '<p>This topic lists common audit trail queries.</p><p>In this topic:</p><ul><li><a
+    href="https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#undefined">Before
+    You Begin</a></li><li><a href="https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#generic_change_set">Generic
+    Change Set</a></li><li><a href="https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#user_change_set">User
+    Change Set</a></li><li><a href="https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#api_key_change_set">API
+    Key Change Set</a></li><li><a href="https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#git_change_set">Git
+    Change Set</a></li><li><a href="https://docs.harness.io/article/k9d2zjdnw8-use-audit-trails-api#other_examples">Other
+    Examples</a></li></ul><h3 id="undefined">Before You Begin</h3><ul><li><a href="/article/tm0w6rruqv-harness-api">​Introduction
+    to Harness GraphQL API</a></li><li><a href="/article/2rmd5i0e0h-harness-api-explorer">Harness
+    API Explorer</a></li><li><a href="/article/kn8wsu80n4-api-schema-and-structure">API
+    Schema and Structure</a></li></ul><h3>Generic Change Set</h3><p>This query shows
+    how to retrieve the 100 most recent audit records and generic change set information.</p><pre
+    class="hljs apache">{<br/>  audits(limit: 100, offset: 0) {<br/>    nodes {<br/>      id<br/>      changes
+    {<br/>        appId<br/>        resourceName<br/>        operationType<br/>      }<br/>      triggeredAt<br/>      ...
+    on GenericChangeSet {<br/>        request {<br/>          resourcePath<br/>          remoteIpAddress<br/>          responseStatusCode<br/>        }<br/>      }<br/>    }<br/>  }<br/>}</pre><h3>User
+    Change Set</h3><p>This query shows how to retrieve the 100 most recent audit records
+    and user change set information.</p><pre class="hljs apache">{<br/>  audits(limit:
+    100, offset: 0) {<br/>    nodes {<br/>      id<br/>      changes{<br/>        appId<br/>        resourceName<br/>        operationType<br/>      }<br/>      triggeredAt<br/>      request{<br/>        resourcePath<br/>        remoteIpAddress<br/>        responseStatusCode<br/>      }<br/>      ...
+    on UserChangeSet {<br/>        triggeredBy {<br/>          name<br/>          id<br/>          userGroups(limit:
+    5, offset: 0) {<br/>            nodes {<br/>              name<br/>            }<br/>          }<br/>        }<br/>      }<br/>    }<br/>  }<br/>}</pre><h3>API
+    Key Change Set</h3><p>This query shows how to retrieve the 100 most recent audit
+    records and API key change set information.</p><pre class="hljs apache">{<br/>  audits(limit:
+    100, offset: 0) {<br/>    nodes {<br/>      id<br/>      changes {<br/>        appId<br/>        resourceName<br/>        operationType<br/>      }<br/>      triggeredAt<br/>      request
+    {<br/>        resourcePath<br/>        remoteIpAddress<br/>        responseStatusCode<br/>      }<br/>      ...
+    on ApiKeyChangeSet {<br/>        id<br/>        apiKeyId<br/>        changes {<br/>          createdAt<br/>          resourceName<br/>          resourceType<br/>        }<br/>      }<br/>    }<br/>  }<br/>}</pre><h3>Git
+    Change Set</h3><p>This query shows how to retrieve the 100 most recent audit records
+    and Git change set information.</p><pre class="hljs apache">{<br/>  audits(limit:
+    100, offset: 0) {<br/>    nodes {<br/>      id<br/>      changes {<br/>        appId<br/>        resourceName<br/>        operationType<br/>      }<br/>      triggeredAt<br/>      request
+    {<br/>        resourcePath<br/>        remoteIpAddress<br/>        responseStatusCode<br/>      }<br/>      ...
+    on GitChangeSet{<br/>        gitCommitId<br/>        author<br/>        repoUrl<br/>      }<br/>    }<br/>  }<br/>}</pre><h3>Other
+    Examples</h3><p>The <code>audits</code> API enables you to retrieve and export
+    records from Harness&#39; Audit Trail. This first sample query has no time filters.</p><pre
+    class="hljs apache">{<br/>  audits(limit:5){<br/>    nodes{<br/>      id<br/>      triggeredAt<br/>      request{<br/>        url<br/>        resourcePath<br/>        requestMethod<br/>        remoteIpAddress<br/>        requestMethod<br/>      }<br/>      changes{<br/>        appId<br/>        appName<br/>        operationType<br/>      }<br/>    }<br/>    pageInfo{<br/>      hasMore<br/>      limit<br/>      total<br/>      offset<br/>    }<br/>  }<br/>}</pre><p>This
+    second query shows filtering by a specific time range (UNIX epochs).</p><pre class="hljs
+    apache">{<br/>  audits(<br/>    filters:{<br/>      time: {<br/>        specific:{<br/>          from:1577567777550<br/>          to:
+    1577567829417<br/>        }<br/>      }<br/>    }<br/>    limit:20){<br/>    nodes{<br/>      id<br/>      triggeredAt<br/>      request{<br/>        url<br/>        resourcePath<br/>        requestMethod<br/>        remoteIpAddress<br/>        requestMethod<br/>      }<br/>      changes{<br/>        appId<br/>        <br/>        resourceId<br/>        appName<br/>        operationType<br/>      }<br/>    }<br/>    pageInfo{<br/>      hasMore<br/>      limit<br/>      total<br/>      offset<br/>    }<br/>  }<br/>}</pre><p></p><p>This
+    third query demonstrates filtering by a relative time offset.</p><pre class="hljs
+    apache">{<br/>  audits(<br/>    filters:{<br/>      time: {<br/>        relative:{<br/>          timeUnit:WEEKS<br/>          noOfUnits:
+    2<br/>        }<br/>      }<br/>    }<br/>    limit:20){<br/>    nodes{<br/>      id<br/>      triggeredAt<br/>      request{<br/>        url<br/>        resourcePath<br/>        requestMethod<br/>        remoteIpAddress<br/>        requestMethod<br/>      }<br/>      changes{<br/>        appId<br/>        resourceId<br/>        appName<br/>        operationType<br/>      }<br/>    }<br/>    pageInfo{<br/>      hasMore<br/>      limit<br/>      total<br/>      offset<br/>    }<br/>  }<br/>}</pre><p></p>'
+  slug: use-audit-trails-api
+  tags:
+  - API
+  - GraphQL API
+  is_live: true

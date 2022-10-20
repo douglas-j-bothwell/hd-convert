@@ -1,0 +1,138 @@
+type: article
+article_id: gd9skrjb4g
+user_id: mfr0nxh4be
+category_id: r04ke134bi
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Refine Deployment Verification Analysis
+slug: refine-deployment-verification-analysis
+description: Change the priority of a log event in Workflow deployment. Also covers
+  the Remove from Baseline option, the Mark as Not a Risk option, and submitting and
+  reviewing feedback on events' priorities.
+short_version: Change the priority of a log event in Workflow deployment.
+tags:
+- Deployment Verification
+- Workflow
+- CV
+- Continuous Verification
+- Add Feedback Note
+- risk level
+- View Feedback
+- Mark as Not a Risk
+- Remove from Baseline
+- log
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-05-12T17:22:07.129944Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Refine Deployment Verification Analysis
+  description: Change the priority of a log event in Workflow deployment. Also covers
+    the Remove from Baseline option, the Mark as Not a Risk option, and submitting
+    and reviewing feedback on events' priorities.
+  short_version: Change the priority of a log event in Workflow deployment.
+  body: '<p>You can refine the priority or category of an event in the Workflow deployment.</p><div
+    class="tip-callout">For information on changing event priorities in 24/7 Service
+    Guard, see <a href="/article/4r2a5nc6q0-refine-24-7-service-guard-verification-analysis">Refine
+    24/7 Service Guard Verification Analysis</a>. Event classifications are covered
+    in <a href="/article/339hy0kbnu-verification-event-classifications">Verification
+    Event Classifications</a>. For an overview of verification analysis feedback,
+    see <a href="/article/q1m740uwca-harness-verification-feedback-overview">Harness
+    Verification Feedback Overview</a>.</div><p>In this topic:</p><ul><li><a href="#review_permissions_required">Review:
+    Permissions Required</a></li><li><a href="#step_1_change_event_priority_in_a_deployment">Step
+    1: Change Event Priority in a Deployment</a></li><li><a href="#option_remove_from_baseline">Option:
+    Remove from Baseline</a></li><li><a href="#option_mark_as_not_a_risk">Option:
+    Mark as Not a Risk</a></li><li><a href="#option_update_the_event_priority">Option:
+    Update the Event Priority</a></li><li><a href="#option_add_feedback_note">Option:
+    Add Feedback Note</a></li><li><a href="#step_2_review_deployment_verification_feedback">Step
+    2: Review Deployment Verification Feedback</a></li></ul><h3>Review: Permissions
+    Required</h3><p>To mark an event as not a risk (<strong>Mark as Not a Risk</strong>)
+    or change its priority setting (<strong>P0</strong>, <strong>P1</strong>, etc),
+    a Harness User must be a member of a User Group with the following User Group
+    <strong>Application Permissions</strong>:</p><p></p><table><tbody><tr><td><p><strong>Permission
+    Types</strong></p></td><td><p><strong>Applications</strong></p></td><td><p><strong>Filters</strong></p></td><td><p><strong>Actions</strong></p></td></tr><tr><td><p><strong>Services</strong></p></td><td><p><code>&lt;Name
+    of Application&gt;</code></p></td><td><p><code>&lt;Name of Service being deployed&gt;</code></p></td><td><p><strong>Update</strong></p></td></tr><tr><td><p><strong>Environments</strong></p></td><td><p><code>&lt;Name
+    of Application&gt;</code></p></td><td><p><code>&lt;Name of Environment where Service
+    is deployed&gt;</code></p></td><td><p><strong>Update</strong></p></td></tr></tbody></table><p>
+    For example, the User Group Application Permissions might look like this:</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/4r2a5nc6q0/1604013953099/image.png"/></figure><p></p><h3>Step
+    1: Change Event Priority in a Deployment</h3><p>To change the priority of an event
+    in a Deployment, do the following:</p><ol><li>In Harness Manager, click <strong>Continuous
+    Deployments</strong>. </li><li>Click the name of the Workflow deployment (or Pipeline
+    containing the Workflow) that deployed the Service you are interested in reviewing. </li><li>In
+    the deployment, click the verification step you want to refine to view its <strong>Analysis</strong>.</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574192107411/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><ol><li
+    style="counter-increment:li 3" start="4">Review the <strong>Analysis</strong>
+    to determine if the priority of any events need to be changed.</li><li>To change
+    the risk assessment for an event, click the risk assessment icon:</li></ol><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1620840126190/aca-f-6-f-w-1-tr-thj-9-rrq-xpq-6-gtx-ah-9-s-tzcbli-bcq-llc-7-d-8-ap-sle-7-q-esm-rfi-btgl-kb-zj-9-zw-snj-uopmtl-1-fxdz-bz-fd-y-3-r-2-yr-jvk-3-uci-4-y-9-cu-1-q-2-h-xs-qq-7-xfeljxcsx-fx-6-p-o-0-zzczfz-g"/></figure><p>The
+    event details dialog appears:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1620840126517/cnk-gpg-ty-esz-2-xd-vj-r-1-pgmbltj-j-6-th-9-y-fby-ply-6-x-f-279-y-fmx-8-m-opp-4-bxtnrb-wzouk-zt-3986-yt-suwytpfqt-g-8-iah-ckxm-h-4-gipoatqsi-qov-uvt-jmg-4-sr-7-sgqu-bev-oiy-7-l-7-fy-zao-8"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><ol><li
+    style="counter-increment:li 5" start="6">Select a different priority setting.
+    For details on the different verification settings, see <a href="/article/339hy0kbnu-verification-event-classifications">Verification
+    Event Classifications</a>.</li></ol><p>The options in the dialog are described
+    below.</p><h3>Option: Remove from Baseline</h3><p>This option appears if the event
+    was marked as <strong>Not a Risk</strong>.<br/></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1620840126875/1-i-x-8-q-4-i-2-eic-7-fzm-v-5-y-7-ev-94-tvf-lwyk-bk-u-3-c-1-z-8-dvmzz-7-mu-4-w-w-y-1-su-8-wx-9-uc-gz-9-whxz-aa-xbg-3-gl-f-49-jog-fmt-dmkyfq-jr-gwi-m-ufucqw-wvoc-wiz-lzthsgs-rz-4-etc-87-rm-2-qi-1-9"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>If
+    you consider this event to be a risk, click Remove from baseline and assign a
+    priority to the event.</p><h3>Option: Mark as Not a Risk</h3><p>This option appears
+    if the event was marked with a priority (P0-P5).</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574192607308/image.png"/></figure><p>Priority
+    events fail deployments (as do Anomalous Events) .If the event should not fail
+    the deployment, select <strong>Mark as Not a Risk</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574194426575/image.png"/></figure><p>The
+    next time this deployment is run, this event will be marked as a <strong>Known
+    Event</strong> and added to the baseline for comparison with future deployments.</p><h3>Option:
+    Update the Event Priority</h3><p>This option is available if an event has a priority
+    assigned to it (P0-P5).</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574192697192/image.png"/></figure><p><strong>Update
+    the Event Priority</strong> lets you change the priority for the event. All priority
+    events fail deployments, but using the priority levels helps to reveal the different
+    levels in the Deployments page. The priority level colors are also reflected in
+    the 24/7 Service Guard heatmap:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1620840126985/st-qo-dslg-lafym-my-cipssv-jq-6-hbkrpyo-09-c-969-b-8-raqv-tz-qfh-p-oukka-8-t-hnfl-b-9-r-5-z-je-7-dme-ekhq-zjy-8-c-48-x-feab-uzhl-1-dqp-5-c-yvj-1-sgb-loqys-n-88-g-tcbxnf-vxzmqtyd-w-8-gfi"/></figure><h3>Option:
+    Add Feedback Note</h3><p>You can add notes to each event using the <strong>Add
+    Feedback Note</strong> option.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574193977998/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    note will remain with the event in future deployments.</p><h3>Step 2: Review Deployment
+    Verification Feedback</h3><p>Once you have changed the priority or classification
+    of an event, the event is listed in the Continuous Deployment Feedback dialog
+    for the verification step Analysis.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574200273765/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>To
+    review the Continuous Verification feedback, do the following:</p><ol><li>In Harness
+    Manager, click <strong>Continuous Deployments</strong> to open a deployment.</li><li>Click
+    a deployment&#39;s name to open it, and then expand the deployment steps until
+    you find the verification you want to review. Click the verification step to display
+    its <strong>Analysis</strong>.</li><li>Click the more options menu (<strong>︙</strong>)
+    and then click <strong>View Feedback</strong>. </li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574200183866/image.png"/></figure><p></p><p>The
+    <strong>Continuous Verification Feedback</strong> dialog appears.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574200273765/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><ol><li
+    style="counter-increment:li 3" start="4">Review the Execution Analysis to determine
+    if any events need to be changed.</li><li>To change the risk assessment for an
+    event, click feedback icon.</li></ol><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/gd9skrjb4g/1574200322046/image.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>The
+    event title will change to indicate who updated it by adding your name to <strong>Updated
+    priority by &lt;User name&gt;</strong>.</p><p>All future verifications will use
+    the new priority setting for similar events (similar by text similarity).</p>'
+  slug: refine-deployment-verification-analysis
+  tags:
+  - Deployment Verification
+  - Workflow
+  - CV
+  - Continuous Verification
+  - Add Feedback Note
+  - risk level
+  - View Feedback
+  - Mark as Not a Risk
+  - Remove from Baseline
+  - log
+  is_live: true

@@ -1,0 +1,73 @@
+type: article
+article_id: u80hwpf1wq
+user_id: vt9reb71i4
+category_id: skrwlcueml
+author:
+  name: Clare Wilkinson
+  email: clare.wilkinson@harness.io
+  profile_image: https://www.gravatar.com/avatar/0ff8d5897ddf326bd94ba0e62e7d2841?d=mm&s=150
+title: Edit the Details of Your Flags
+slug: edit-and-delete-a-feature-flag
+description: 'After you have created a Flag, you can edit the following details of
+  it: Flag Name. Description. Whether or not it is marked as permanent. This topic
+  describes how to edit these details on the Harnes…'
+short_version: 'After you have created a Flag, you can edit the following details
+  of it: Flag Name. Description. Whether or not it is marked as permanent. This topic
+  describes how to edit these details on the Harnes…'
+tags:
+- feature flag
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-17T09:03:34.782665Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Edit the Details of Your Flags
+  description: ""
+  short_version: ""
+  body: |-
+    <p>After you have created a Flag, you can edit the following details of it:</p>
+    <ul>
+      <li>Flag Name</li>
+      <li>Description</li>
+      <li>Whether or not it is marked as permanent</li>
+    </ul>
+    <p>This topic describes how to edit these details on the Harness Platform.</p>
+    <h3>Edit the Details of a Flag</h3>
+    <p>To edit a Flag:</p>
+    <ol>
+      <li>In Harness, go to <strong>Feature Flags</strong>.</li>
+      <li>In your Project, click <strong>Feature Flags</strong>. All your current Flags are listed.</li>
+      <li>Next to the Flag you want to edit, click <strong>more</strong> <strong>options (</strong><strong>︙</strong><strong>).</strong></li>
+      <li>Click <strong>Edit</strong>. The Flag details page appears, then click <strong>more</strong> <strong>options (</strong><strong>︙</strong><strong>).</strong>
+      </li>
+    </ol>
+     <figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/u80hwpf1wq/1660572694398/2022-08-15-15-09-51.png" style="display:block;margin-left:0;margin-right:auto" alt="A screenshot of the Flag details page, with the more options icon highlighted." data-hd-align="left"/></figure>
+    <p><em>Figure 1: More options for editing a Flag</em></p>
+    <ol>
+      <li start="5" style="counter-increment:li 4">Edit the relevant details.</li>
+    </ol>
+    <figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/u80hwpf1wq/1660572729308/2022-08-15-15-09-21.png" style="max-height:20%;max-width:20%;display:block;margin-left:0;margin-right:auto" alt="The Edit Flags Details page." data-hd-height="20%" data-hd-width="20%" data-hd-align="left"/></figure>
+    <p><em>Figure 2: Details you can edit for a Flag</em></p>
+    <ol>
+      <li style="counter-increment:li 5" start="6">Click <strong>Save</strong>.</li>
+    </ol>
+    <h3>See also</h3>
+    <p>You can also:</p>
+    <ul>
+      <li><a href="/article/8bf3us11kz-manage-variations" target="_blank">Edit your Flag Variations</a></li>
+      <li><a href="/article/iijdahygdm-add-prerequisites-to-feature-flag" target="_blank">Add Prerequisite Flags</a></li>
+      <li><a href="/category/xw2hz815l8-ff-target-management" target="_blank">Manage Your Targets</a></li>
+    </ul>
+    <p></p>
+  slug: edit-and-delete-a-feature-flag
+  tags:
+  - feature flag
+  is_live: true

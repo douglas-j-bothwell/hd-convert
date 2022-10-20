@@ -1,0 +1,99 @@
+type: article
+article_id: gfk52g74xt
+user_id: mfr0nxh4be
+category_id: kncngmy17o
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Run Pipelines using Input Sets and Overlays
+slug: run-pipelines-using-input-sets-and-overlays
+description: Input Sets and Overlays allow you to create a Pipeline template that
+  can use different runtime variable values for different services, codebases, target
+  environments, and goals.
+short_version: Create a Pipeline template that can use different runtime variable
+  values for different services, codebases, target environments, and goals.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T22:30:28.797229Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Run Pipelines using Input Sets and Overlays
+  description: Input Sets and Overlays allow you to create a Pipeline template that
+    can use different runtime variable values for different services, codebases, target
+    environments, and goals.
+  short_version: Create a Pipeline template that can use different runtime variable
+    values for different services, codebases, target environments, and goals.
+  body: '<p>Harness Input Sets are collections of runtime variables and values that
+    can be provided to Pipelines before execution.</p><p>An Input Set includes all
+    the runtime inputs that are not permanent in the Pipeline. Runtime inputs are
+    the settings that you would be prompted to provide when you executed the Pipeline
+    manually.</p><p>Overlays are groups of Input Sets. Overlays enable you to provide
+    several input sets when executing a Pipeline.</p><p>Input Sets and Overlays allow
+    you to create a Pipeline template that can use different runtime input values
+    for different services, codebases, target environments, and goals.</p><p>In this
+    topic:</p><p></p><ul><li><a href="https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#step_1_create_the_input_sets">Step
+    1: Create the Input Sets</a><ul><li><a href="https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#ya_ml_example">YAMl
+    Example</a></li></ul></li><li><a href="https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#step_2_create_an_overlay">Step
+    2: Create an Overlay</a></li><li><a href="https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#step_3_run_the_pipeline_using_input_set_or_overlay">Step
+    3: Run the Pipeline using Input Set or Overlay</a></li><li><a href="https://ngdocs.harness.io/article/gfk52g74xt-run-pipelines-using-input-sets-and-overlays#limitations">Limitations</a></li></ul><p></p><h3>Before
+    You Begin</h3><ul><li><a href="/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></li><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a></li><li><a href="/article/3fqwa8et3d-input-sets">Input Sets
+    and Overlays</a></li><li><a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a></li></ul><h3>Step 1: Create the Input Sets</h3><p>You can create an
+    Input Set in two ways:</p><ul><li>From the <strong>Run Pipeline</strong> page:</li></ul><ol><li>Configure
+    your Pipeline and click <strong>Run</strong>.</li><li>Enter values for the required
+    runtime inputs.</li><li>Click <strong>Save as Input Set</strong>. The Input Set
+    setup appears.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gfk52g74xt/1622238594982/image.png"/></figure></li><li>Enter
+    a name, description, and tags for the new Input Set, and then click <strong>Save</strong>.</li></ol><ul><li>By
+    simply creating an Input Set:</li></ul><ol><li>In <strong>Pipeline Studio</strong>,
+    click <strong>Input Sets</strong>.</li><li>Click <strong>New Input Set</strong>
+    and select <strong>Input Set</strong>.</li><li>Enter values for the required runtime
+    inputs and click <strong>Save</strong>.</li></ol><h4>YAMl Example</h4><details><summary>YAML
+    Example</summary><div><pre class="hljs yaml">inputSet:<br/>    name: service<br/>    tags:
+    {}<br/>    identifier: service<br/>    pipeline:<br/>        identifier: BG_example<br/>        stages:<br/>            -
+    stage:<br/>                  identifier: nginx<br/>                  type: Deployment<br/>                  spec:<br/>                      serviceConfig:<br/>                          serviceDefinition:<br/>                              type:
+    Kubernetes<br/>                              spec:<br/>                                  manifests:<br/>                                      -
+    manifest:<br/>                                            identifier: manifests<br/>                                            type:
+    K8sManifest<br/>                                            spec:<br/>                                                store:<br/>                                                    type:
+    Git<br/>                                                    spec:<br/>                                                        branch:
+    main<br/>                                  variables:<br/>                                      -
+    name: foo<br/>                                        type: String<br/>                                        value:
+    bar<br/>                          serviceRef: nginx<br/>                      infrastructure:<br/>                          environmentRef:
+    quickstart<br/>                  variables:<br/>                      - name:
+    stagevar<br/>                        type: String<br/>                        value:
+    &#34;&#34;</pre></div></details><p></p><p></p><h3>Step 2: Create an Overlay</h3><p>Once
+    you have multiple Input Sets set up you can combine them into an Overlay.</p><p>In
+    an Overlay, you select the order in which to apply several Input Sets.</p><p>When
+    you run a Pipeline using an Overlay, the Inputs Sets are applied in the order
+    specified in the Overlay. The first Inputs Set is used and then subsequent Inputs
+    Sets override any previously specified or empty values.</p><p></p><h3>Step 3:
+    Run the Pipeline using Input Set or Overlay</h3><p>When you have created your
+    Input Sets and Overlays, you can run the Pipeline using them.</p><p>You can select
+    Input Sets and Overlays in two ways:</p><ul><li>From the <strong>Run Pipeline</strong>
+    page:</li></ul><ol><li>In <strong>Pipeline Studio</strong>, click <strong>Run</strong>.</li><li>In
+    the <strong>Run Pipeline</strong> page, click the Input Sets option.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gfk52g74xt/1622242899546/image.png"/></figure></li><li>Click
+    an Input Set(s) or Overlay(s) to apply their settings.</li><li>Click <strong>Run
+    Pipeline</strong>.</li></ol><ul><li>From the <strong>Input Sets</strong> list:</li></ul><ol><li>In
+    <strong>Pipeline Studio</strong>, click <strong>Input Sets</strong>.</li><li>In
+    the Input Set or Overlay you want to use, click <strong>Run Pipeline</strong>.<br/>You
+    can also use the Input Sets option here.</li><li>Change any settings you want
+    and click <strong>Run Pipeline</strong>.</li></ol><p> The Pipeline is run with
+    the Input Set(s) or Overlay(s) settings.</p><p></p><h3>Limitations</h3><p>Only
+    runtime inputs are available in Input Sets. Most, but not all, Pipeline and Stage
+    settings can be defined as runtime inputs.</p><p>You can use any setting that
+    offers the <strong>Runtime input</strong> option:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gfk52g74xt/1622239179136/image.png"/></figure><h3></h3><p></p>'
+  slug: run-pipelines-using-input-sets-and-overlays
+  tags: []
+  is_live: true

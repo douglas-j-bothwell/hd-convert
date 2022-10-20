@@ -1,0 +1,764 @@
+[INFO] processing file  ./docs/continuous-delivery.md
+[INFO] processing file  ./docs/security-testing-orchestration.md
+[INFO] processing file  ./docs/platform.md
+[INFO] processing file  ./docs/feature-flags/ff-filtering/filtering-flags-by-state.md
+[INFO] processing file  ./docs/feature-flags/ff-security-compliance/gdpr-compliance.md
+[UPDATE_LINK_SUCCESS] Line  15 	 This topic describes the roles available for Feature Flags. For more information about RBAC works with Harness, go to [Access Management (RBAC) Overview](https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness) and for steps to implement Access Control, go to [Add and Manage Users](/article/hyoe7qcaz6-add-users).
+
+[UPDATE_LINK_SUCCESS] Line  15 	 This topic describes the roles available for Feature Flags. For more information about RBAC works with Harness, go to [Access Management (RBAC) Overview](https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness) and for steps to implement Access Control, go to [Add and Manage Users](https://docs.harness.io/article/hyoe7qcaz6-add-users).
+
+[UPDATE_LINK_SUCCESS] Line  41 	 * [Add and Manage Users](https://docs.harness.io/article/hyoe7qcaz6-add-users)
+
+[UPDATE_LINK_SUCCESS] Line  42 	 * [Add and Manage User Groups](https://docs.harness.io/article/dfwuvmy33m-add-user-groups)
+
+[UPDATE_LINK_SUCCESS] Line  43 	 * [Add and Manage Resource Groups](https://docs.harness.io/article/yp4xj36xro-add-resource-groups)
+
+[UPDATE_LINK_SUCCESS] Line  44 	 * [Add and Manage Roles](https://docs.harness.io/article/tsons9mu0v-add-manage-roles)
+
+[INFO] processing file  ./docs/feature-flags/ff-security-compliance/manage-access-control.md
+[UPDATE_LINK_SUCCESS] Line  11  updated:	 When you are finished with a Feature Flag, it's best practice to remove it to keep your Flags and application organised and tidy. This topic describes how to delete a Feature Flag on the Harness Platform and using [Git](../ff-git-experience/manage-featureflags-in-git-repos.md).
+
+[UPDATE_LINK_SUCCESS] Line  32  updated:	 If you [have set up Git Experience to manage your Flags](../ff-git-experience/manage-featureflags-in-git-repos.md) via a `.yaml` file on Git, you can delete Flags from there. To do this:
+
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/delete-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/enable-or-disable-a-feature-flag.md
+[UPDATE_LINK_SUCCESS] Line  45  updated:	 For information about Specific Targeting, go to [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md)1. Click **Save** to save your changes.
+
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/manage-variations.md
+[UPDATE_LINK_SUCCESS] Line  55  updated:	 * [Edit your Flag Variations](manage-variations.md)
+
+[UPDATE_LINK_SUCCESS] Line  56  updated:	 * [Add Prerequisite Flags](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md)
+
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/edit-and-delete-a-feature-flag.md
+[WARNING2] Line  57  Category link found, need to update:	 * [Manage Your Targets]**TODO:** Update category link (/category/xw2hz815l8-ff-target-management)
+
+[UPDATE_LINK_SUCCESS] Line  14 	 Currently, this feature is behind the Feature Flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness Policy Engine uses [Open Policy Agency (OPA)](https://www.openpolicyagent.org/docs/latest/) to store policies that you can then enforce on your Feature Flags. You can use Harness Policy Engine with the following [Harness entities](https://docs.harness.io/article/tygjin99y9-harness-entity-reference) on the Harness Platform:
+
+[UPDATE_LINK_SUCCESS] Line  31 	 For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)#### Before you begin
+
+[UPDATE_LINK_SUCCESS] Line  35 	 * [Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+
+[UPDATE_LINK_SUCCESS] Line  71 	 When you create the policy you can choose whether a Feature Flag receives only a warning message, or receives an error and can’t be saved when the policy isn’t met. For more information about how to do this, go to [Creating a Policy](https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags#step_1_creating_a_policy).* **Success**: You create a Feature Flag and name it `ABC-567`, which matches the naming regex you set. When you save the flag, the policy rule is evaluated, returns `Flag created`, and the flag is saved.
+
+[UPDATE_LINK_SUCCESS] Line  82 	 To understand how to add policies for Feature Flags, go to [Use Harness Policy Engine for Feature Flags](https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags).
+
+[INFO] processing file  ./docs/feature-flags/ff-using-policy-engine/harness-policy-engine.md
+[UPDATE_LINK_SUCCESS] Line  20 	 * [Add a Source Code Manager to your account.](https://docs.harness.io/article/p92awqts2x-add-source-code-managers)
+
+[UPDATE_LINK_SUCCESS] Line  21 	 * Follow the steps in [Configure GitSync in Harness](https://docs.harness.io/article/xl028jo9jk-git-experience-overview) to enable Git Experience and create a Git repository that contains a folder called `.harness`. Harness will automatically create a `flags.yaml` file within this folder and this is where you manage your Feature Flags.
+
+[UPDATE_LINK_SUCCESS] Line  141 	 For more information about using Git Experience, go to [Git Experience How-tos](https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos).
+
+[INFO] processing file  ./docs/feature-flags/ff-git-experience/manage-featureflags-in-git-repos.md
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  26  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  43  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  44  updated:	 * [Create a Client SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  69  updated:	 3. Configure the SDK options, if needed. For more details on what features you can configure for this SDK, go to [Configure the SDK](android-sdk-reference.md).
+
+[WARNING] Topic section removed from old link:  (/article/74t18egxbi-android-sdk-reference#configure_the_sdk)
+[UPDATE_LINK_SUCCESS] Line  77  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target, build it and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  146  updated:	 * `YOUR_API_KEY` - The client SDK key you created when [creating the Feature Flag](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[INFO] processing file  ./docs/feature-flags/client-sdks/android-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  20  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  21  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  35  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  36  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md)
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  98  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target that you want to Evaluate, build it using `cfTarget` and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  260  updated:	 When using your Feature Flag SDKs with a [Harness Relay Proxy](../relay-proxy/relay-proxy.md) you need to change the default URL.
+
+[INFO] processing file  ./docs/feature-flags/client-sdks/react-native-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  35  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  36  updated:	 * [Create a Client SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  109  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To create a Target, you **must enter an identifier** but you can optionally add a name and additional attributes.
+
+[INFO] processing file  ./docs/feature-flags/client-sdks/java-script-sdk-references.md
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  33  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  34  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md)
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[INFO] processing file  ./docs/feature-flags/client-sdks/xamarin-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  26  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  40  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  41  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  73  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target, build it and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  140  updated:	 * `apiKey` - The Client SDK Key you created when [creating the Feature Flag](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (https://ngdocs.harness.io/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[INFO] processing file  ./docs/feature-flags/client-sdks/flutter-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  33  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  34  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  161  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target, build it using `CfTarget.builder` and pass in arguments for the following:
+
+[INFO] processing file  ./docs/feature-flags/client-sdks/ios-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/ff-overview/cf-feature-flag-overview.md
+[UPDATE_LINK_SUCCESS] Line  23 	 You should be familiar with the [Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts) and how to [Create Organizations and Projects](/article/36fw2u92i4-create-an-organization).
+
+[UPDATE_LINK_SUCCESS] Line  23 	 You should be familiar with the [Harness' Key Concepts](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts) and how to [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization).
+
+[UPDATE_LINK_SUCCESS] Line  27 	 This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](https://docs.harness.io/article/36fw2u92i4-create-an-organization) to create one.
+
+[UPDATE_LINK_SUCCESS] Line  33 	 1. Under **Feature Flags,** select an existing project or [Create a new project](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_3_create_a_project).
+
+[UPDATE_LINK_SUCCESS] Line  47 	 3. To add Approval Stage, go to [Manual Harness Approval Stages](https://docs.harness.io/article/fkvso46bok-adding-harness-approval-stages).
+
+[UPDATE_LINK_SUCCESS] Line  53 	 Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+
+[UPDATE_LINK_SUCCESS] Line  92  updated:	 	For more information, go to [**Manage Variations for Feature Flags.**](../update-feature-flags/manage-variations.md)
+
+[UPDATE_LINK_SUCCESS] Line  93  updated:	 	3. **Serve Variations to Target Group**, Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation. For more information, go to [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md).
+
+[UPDATE_LINK_SUCCESS] Line  94  updated:	 	4. **Serve Percentage Rollout**, use **Percentage Rollout** to distribute users dynamically between variations. For more information, go to [Percentage Rollout](../ff-target-management/targeting-users-with-flags.md).
+
+[WARNING] Topic section removed from old link:  (/article/xf3hmxbaji-targeting-users-with-flags#percentage_rollouts)
+[UPDATE_LINK_SUCCESS] Line  120 	 For more information, go to [Send Notifications using Slack](https://docs.harness.io/article/h5n2oj8y5y-send-notifications-using-slack).
+
+[UPDATE_LINK_SUCCESS] Line  126 	 For more information, go to [Send Notifications using Email](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_email_notifications).
+
+[UPDATE_LINK_SUCCESS] Line  132 	 For more information, go to [Send Notifications using PagerDuty](https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_pager_duty_notifications).
+
+[UPDATE_LINK_SUCCESS] Line  140 	 For more information, go to [Send Notifications using Microsoft Teams](https://docs.harness.io/article/xcb28vgn82-send-notifications-to-microsoft-teams).
+
+[UPDATE_LINK_SUCCESS] Line  157 	 For more information, go to [Schedule Pipeline using triggers](https://docs.harness.io/article/4z9mf24m1b-schedule-pipelines-using-cron-triggers).
+
+[INFO] processing file  ./docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline.md
+[UPDATE_LINK_SUCCESS] Line  55  updated:	 | [JavaScript](../client-sdks/java-script-sdk-references.md) | [Java](/article/i7et9ebkst-integrate-feature-flag-with-java-sdk) |
+
+[UPDATE_LINK_SUCCESS] Line  55  updated:	 | [JavaScript](../client-sdks/java-script-sdk-references.md) | [Java](../server-sdks/integrate-feature-flag-with-java-sdk.md) |
+
+[UPDATE_LINK_SUCCESS] Line  56  updated:	 | [iOS](../client-sdks/ios-sdk-reference.md) | [Go](/article/4c8wljx60w-feature-flag-sdks-go-application) |
+
+[UPDATE_LINK_SUCCESS] Line  56  updated:	 | [iOS](../client-sdks/ios-sdk-reference.md) | [Go](../server-sdks/feature-flag-sdks-go-application.md) |
+
+[UPDATE_LINK_SUCCESS] Line  57  updated:	 | [Android](../client-sdks/android-sdk-reference.md) | [.NET](/article/c86rasy39v-net-sdk-reference) |
+
+[UPDATE_LINK_SUCCESS] Line  57  updated:	 | [Android](../client-sdks/android-sdk-reference.md) | [.NET](../server-sdks/net-sdk-reference.md) |
+
+[UPDATE_LINK_SUCCESS] Line  58  updated:	 | [Flutter](../client-sdks/flutter-sdk-reference.md) | [Python](/article/hwoxb6x2oe-python-sdk-reference) |
+
+[UPDATE_LINK_SUCCESS] Line  58  updated:	 | [Flutter](../client-sdks/flutter-sdk-reference.md) | [Python](../server-sdks/python-sdk-reference.md) |
+
+[UPDATE_LINK_SUCCESS] Line  59  updated:	 | [React Native](../client-sdks/react-native-sdk-reference.md) | [Node.js](/article/3v7fclfg59-node-js-sdk-reference) |
+
+[UPDATE_LINK_SUCCESS] Line  59  updated:	 | [React Native](../client-sdks/react-native-sdk-reference.md) | [Node.js](../server-sdks/node-js-sdk-reference.md) |
+
+[UPDATE_LINK_SUCCESS] Line  60  updated:	 | [Xamarin SDK Reference](../client-sdks/xamarin-sdk-reference.md) | [Ruby SDK Reference](/article/uora4f0f22-ruby-sdk-reference) |
+
+[UPDATE_LINK_SUCCESS] Line  60  updated:	 | [Xamarin SDK Reference](../client-sdks/xamarin-sdk-reference.md) | [Ruby SDK Reference](../server-sdks/ruby-sdk-reference.md) |
+
+[UPDATE_LINK_SUCCESS] Line  61  updated:	 |  | [PHP](../server-sdks/php-sdk-reference.md) |
+
+[INFO] processing file  ./docs/feature-flags/sdk-overview/client-side-and-server-side-sdks.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/sdk-version-policy.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/communication-sdks-harness-feature-flags.md
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  37  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  38  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md)
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  87  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target, build it and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  152  updated:	 When initializing the SDK, you can also configure it to use the Harness Relay Proxy, for more information about how to do this, go to [Use the Relay Proxy](integrate-feature-flag-with-java-sdk.md). 
+
+[WARNING] Topic section removed from old link:  (/article/i7et9ebkst-integrate-feature-flag-with-java-sdk#use_the_relay_proxy)
+[INFO] processing file  ./docs/feature-flags/server-sdks/integrate-feature-flag-with-java-sdk.md
+[UPDATE_LINK_SUCCESS] Line  27  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  28  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  29  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  30  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  49  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  50  updated:	 * [Create a server SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md)
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  86  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target, build it and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  284  updated:	 When using your Feature Flag SDKs with a [Harness Relay Proxy](../relay-proxy/relay-proxy.md) you need to change the default ConfigURL and EventURL that we use. You can pass the URLs in when initializing the SDK, for example: 
+
+[INFO] processing file  ./docs/feature-flags/server-sdks/net-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  37  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
+
+[UPDATE_LINK_SUCCESS] Line  38  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md)
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  54  updated:	 3. (Optional) Configure the SDK options. For more details on what features you can configure for this SDK, go to [Configure the SDK](python-sdk-reference.md).
+
+[WARNING] Topic section removed from old link:  (/article/hwoxb6x2oe-python-sdk-reference#configure_the_sdk)
+[UPDATE_LINK_SUCCESS] Line  72  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md). To add a Target, build it and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  205  updated:	 When using your Feature Flag SDKs with a [Harness Relay Proxy](../relay-proxy/relay-proxy.md) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. To do this:
+
+[INFO] processing file  ./docs/feature-flags/server-sdks/python-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  21  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  40  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  41  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-an-sdk-key.md)
+
+[UPDATE_LINK_SUCCESS] Line  76  updated:	 For more information about Targets, see [Target Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target, build it and pass in arguments for the following:
+
+[INFO] processing file  ./docs/feature-flags/server-sdks/php-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  19  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  20  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  21  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  33  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
+
+[UPDATE_LINK_SUCCESS] Line  34  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md)
+
+[WARNING] Topic section removed from old link:  (https://docs.harness.io/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  57  updated:	 4. (Optional) Configure the SDK options. For more details on what features you can configure for this SDK, go to [Configure the SDK](node-js-sdk-reference.md).
+
+[WARNING] Topic section removed from old link:  (/article/3v7fclfg59-node-js-sdk-reference#configure_the_sdk)
+[UPDATE_LINK_SUCCESS] Line  88  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md).To add a Target, build it and pass in arguments for the following:
+
+[INFO] processing file  ./docs/feature-flags/server-sdks/node-js-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  36  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+
+[UPDATE_LINK_SUCCESS] Line  37  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  60  updated:	 2. (Optional) Configure the SDK options. For more details on what features you can configure for this SDK, go to [Configure the SDK](feature-flag-sdks-go-application.md).
+
+[WARNING] Topic section removed from old link:  (/article/4c8wljx60w-feature-flag-sdks-go-application#configure_the_sdk)
+[UPDATE_LINK_SUCCESS] Line  87  updated:	 Enabling analytics is currently not available using the Go SDK.For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md).
+
+[WARNING] Topic section removed from old link:  (/article/4c8wljx60w-feature-flag-sdks-go-application#additional_options)
+[UPDATE_LINK_SUCCESS] Line  106  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md). To add a Target, build it and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  225  updated:	 When using your Feature Flag SDKs with a [Harness Relay Proxy](../relay-proxy/relay-proxy.md) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. For example:
+
+[INFO] processing file  ./docs/feature-flags/server-sdks/feature-flag-sdks-go-application.md
+[UPDATE_LINK_SUCCESS] Line  21  updated:	 * [Feature Flags Overview](../ff-overview/cf-feature-flag-overview.md)
+
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 * [Getting Started with Feature Flags](../ff-getting-started/getting-started-with-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  35  updated:	 * [Create a Feature Flag on the Harness Platform](../ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
+
+[UPDATE_LINK_SUCCESS] Line  36  updated:	 * [Create an SDK key and make a copy of it](../ff-creating-flag/create-a-feature-flag.md)
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  92  updated:	 For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md).
+
+[WARNING] Topic section removed from old link:  (https://docs.harness.io/article/4c8wljx60w-feature-flag-sdks-go-application#additional-options)
+[UPDATE_LINK_SUCCESS] Line  105  updated:	 For more information about Targets, go to [Targeting Users With Flags](../ff-target-management/targeting-users-with-flags.md). To add a Target, build it and pass in arguments for the following:
+
+[UPDATE_LINK_SUCCESS] Line  193  updated:	 When using your Feature Flag SDKs with a [Harness Relay Proxy](../relay-proxy/relay-proxy.md) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. For example:
+
+[INFO] processing file  ./docs/feature-flags/server-sdks/ruby-sdk-reference.md
+[UPDATE_LINK_SUCCESS] Line  16  updated:	 This topic describes how to add Targets to an Environment. After you’ve added the Target, you can add it to a [Target Group](add-target-groups.md) or to a [Feature Flag](https://ngdocs.harness.io/article/xf3hmxbaji-targeting-users-with-flags). 
+
+[UPDATE_LINK_SUCCESS] Line  16  updated:	 This topic describes how to add Targets to an Environment. After you’ve added the Target, you can add it to a [Target Group](add-target-groups.md) or to a [Feature Flag](targeting-users-with-flags.md). 
+
+[UPDATE_LINK_SUCCESS] Line  65  updated:	 A Target is identified by a name and an identifier. Make sure your Target names and identifiers conform to the regex explained in [Review Regex Requirements for Target Names and Identifiers](add-targets.md).
+
+[WARNING] Topic section removed from old link:  (https://ngdocs.harness.io/article/dbk9uoaid3-add-targets#review_regex_requirements_for_target_names_and_identifiers)
+[UPDATE_LINK_SUCCESS] Line  73  updated:	 5. In **Identifier**, enter a unique identifier for your Target. When [Targeting Users with Flags](targeting-users-with-flags.md) or [Managing Target Groups](/article/5qz1qrugyk-add-target-groups), the Targets are identified by the identifier you give them.
+
+[UPDATE_LINK_SUCCESS] Line  73  updated:	 5. In **Identifier**, enter a unique identifier for your Target. When [Targeting Users with Flags](targeting-users-with-flags.md) or [Managing Target Groups](add-target-groups.md), the Targets are identified by the identifier you give them.
+
+[UPDATE_LINK_SUCCESS] Line  125  updated:	 * [Add them to Target Groups](add-target-groups.md)
+
+[UPDATE_LINK_SUCCESS] Line  126  updated:	 * [Target Users with Flags](targeting-users-with-flags.md)
+
+[INFO] processing file  ./docs/feature-flags/ff-target-management/add-targets.md
+[WARNING2] Line  19  Category link found, need to update:	 You can add a Target using Harness UI. Alternatively, you can add a Target and define its attributes in your application's code directly [using a Feature Flag SDK]**TODO:** Update category link (/category/rtce97j1wu-ff-sdks). The Targets added in your code are discovered automatically and populated in the Harness UI.
+
+[UPDATE_LINK_SUCCESS] Line  11  updated:	 While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.Target Groups are a collection of [Targets](add-targets.md) that allow you to serve Feature Flag Variations to a list of users in bulk. You can group Targets into a group either by picking individual Targets or by defining rules that automatically map Targets to a Target Group. For example, you can add individual Targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
+
+[UPDATE_LINK_SUCCESS] Line  19  updated:	 Make sure you've [created Targets to add to the Target Group](add-targets.md).
+
+[UPDATE_LINK_SUCCESS] Line  106  updated:	 After you have added the Targets and Target Groups, you can then [use them on your Feature Flags.](targeting-users-with-flags.md)
+
+[INFO] processing file  ./docs/feature-flags/ff-target-management/add-target-groups.md
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](../update-feature-flags/manage-variations.md).### Target specific users or Target Groups when a Flag is enabled
+
+[UPDATE_LINK_SUCCESS] Line  27  updated:	 To target specific users, you first need to add them as a Target or Target Group on the Harness platform. To do this, go to [Adding Targets](add-targets.md) and [Managing Target Groups](/article/5qz1qrugyk-add-target-groups). 
+
+[UPDATE_LINK_SUCCESS] Line  27  updated:	 To target specific users, you first need to add them as a Target or Target Group on the Harness platform. To do this, go to [Adding Targets](add-targets.md) and [Managing Target Groups](add-target-groups.md). 
+
+[INFO] processing file  ./docs/feature-flags/ff-target-management/targeting-users-with-flags.md
+[UPDATE_LINK_SUCCESS] Line  32  updated:	 The Proxy creates an instance of the Go SDK for each API key that’s passed to it as a part of the [Proxy Configuration](relay-proxy.md), and each instance of the SDK uses the Cache implementation. The Go SDK then takes care of populating this cache on startup and keeping it up to current whenever the remote service changes. When the Go SDK starts up, it retrieves all of the Features and Segments and then sends a request to the remote server to listen for any updates. Whenever there is an update in the remote service, it sends out an event, and when the embedded SDK sees one of these events, it sends a request to the remote service to get the most recent flag values and save them to the cache.
+
+[WARNING] Topic section removed from old link:  (/article/q0kvq8nd2o-configure-relay-proxy#configuration_variables)
+[UPDATE_LINK_SUCCESS] Line  34  updated:	 The Proxy can also use streaming functionality if it is configured with Redis. To view the variables that you need to configure for Redis, go to [Proxy Configuration](relay-proxy.md) .
+
+[WARNING] Topic section removed from old link:  (/article/q0kvq8nd2o-configure-relay-proxy#configuration_variables)
+[UPDATE_LINK_SUCCESS] Line  80  updated:	 After you understand the basics of the Relay Proxy, you can then [deploy it](deploy-relay-proxy.md).
+
+[INFO] processing file  ./docs/feature-flags/relay-proxy/relay-proxy.md
+[UPDATE_LINK_SUCCESS] Line  16  updated:	 This topic describes how to deploy and start the [Relay Proxy](relay-proxy.md). For an overview, go to the [Relay Proxy Overview](relay-proxy.md).
+
+[UPDATE_LINK_SUCCESS] Line  16  updated:	 This topic describes how to deploy and start the [Relay Proxy](relay-proxy.md). For an overview, go to the [Relay Proxy Overview](relay-proxy.md).
+
+[UPDATE_LINK_SUCCESS] Line  147 	 * **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](https://docs.harness.io/article/e5p4hdq6bd-add-and-manage-service-account#create_a_service_account).
+
+[UPDATE_LINK_SUCCESS] Line  149 	 * **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org).
+
+[UPDATE_LINK_SUCCESS] Line  150  updated:	 * **api-keys**: Enter you server SDK key. For more information, go to [Add and Manage API Keys](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key)
+[UPDATE_LINK_SUCCESS] Line  151 	 * **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](https://docs.harness.io/article/bo4qbrcggv-add-secrets-manager).
+
+[INFO] processing file  ./docs/feature-flags/relay-proxy/deploy-relay-proxy.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/update-your-billing-information.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/view-your-current-subscriptions.md
+[UPDATE_LINK_SUCCESS] Line  28  updated:	 | CI/CD Pipelines for rolling out your Flags | [Automated progressive delivery](../ff-build-pipeline/build-feature-flag-pipeline.md) | [Automated progressive delivery](../ff-build-pipeline/build-feature-flag-pipeline.md) |
+
+[UPDATE_LINK_SUCCESS] Line  28  updated:	 | CI/CD Pipelines for rolling out your Flags | [Automated progressive delivery](../ff-build-pipeline/build-feature-flag-pipeline.md) | [Automated progressive delivery](../ff-build-pipeline/build-feature-flag-pipeline.md) |
+
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/available-plans-for-feature-flags.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/access-your-subscription-invoices.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/create-a-new-subscription.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/cancel-a-subscription.md
+[UPDATE_LINK_SUCCESS] Line  11 	 Billing Admins can manage payments on the Harness Platform. To add a Billing Admin, use our [Role Based Access Control](https://docs.harness.io/article/hyoe7qcaz6-add-users) and add the user with a role of **Billing Admin**.
+
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/add-a-billing-admin.md
+[UPDATE_LINK_SUCCESS] Line  13  updated:	 Using online subscriptions, you can choose whether to be billed yearly or monthly, and can select the exact number of licenses you need for your developers and for monthly active users (MAUs). It’s as easy as signing in to the Harness Platform, choosing your [subscription plan](available-plans-for-feature-flags.md), and entering your billing details.  
+
+[UPDATE_LINK_SUCCESS] Line  19  updated:	 * [Create a new subscription](create-a-new-subscription.md)
+
+[UPDATE_LINK_SUCCESS] Line  20  updated:	 * [View your current subscriptions](view-your-current-subscriptions.md)
+
+[UPDATE_LINK_SUCCESS] Line  21  updated:	 * [View the usage of your subscriptions](view-the-usage-of-your-subscriptions.md)
+
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/subscriptions-overview.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/view-the-usage-of-your-subscriptions.md
+[UPDATE_LINK_SUCCESS] Line  38 	 5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org) and [Projects and Organizations](/article/7fibxie636-projects-and-organizations).
+
+[UPDATE_LINK_SUCCESS] Line  38 	 5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org) and [Projects and Organizations](https://docs.harness.io/article/7fibxie636-projects-and-organizations).
+
+[UPDATE_LINK_SUCCESS] Line  41 	 8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](https://docs.harness.io/article/yaornnqh0z-permissions-reference).
+
+[UPDATE_LINK_SUCCESS] Line  61  updated:	 Copy the SDK Key when you create it as it is available only after creation, once you leave the page, the key is redacted.You must create an SDK Key that matches the type of SDK you want to use. That is, you must create a Client SDK Key if you're using a Client SDK or you must create a Server SDK Key if you're using a Server SDK. For more information about the types of SDKs available, go to [Choose a Client-side or Server-side SDK](../sdk-overview/client-side-and-server-side-sdks.md).To create an SDK Key:
+
+[UPDATE_LINK_SUCCESS] Line  63  updated:	 1. Click on the **Environment** that you created in the [previous step](getting-started-with-feature-flags.md).
+
+[WARNING] Topic section removed from old link:  (/article/0a2u2ppp8s-getting-started-with-continuous-features#step_2_create_an_environment)
+[UPDATE_LINK_SUCCESS] Line  79 	 When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference).
+
+[UPDATE_LINK_SUCCESS] Line  91  updated:	 Once you have created your Flag type, optionally you can [manage targets](https://ngdocs.harness.io/category/xw2hz815l8-target-management) and modify the [variations](../update-feature-flags/manage-variations.md), [rules](https://ngdocs.harness.io/article/xf3hmxbaji-targeting-users-with-flags), and [add prerequisites](https://ngdocs.harness.io/article/iijdahygdm-add-prerequisites-to-feature-flag) of your flag.### Use Harness Feature Flags SDKs with Java applications
+
+[UPDATE_LINK_SUCCESS] Line  91  updated:	 Once you have created your Flag type, optionally you can [manage targets](https://ngdocs.harness.io/category/xw2hz815l8-target-management) and modify the [variations](../update-feature-flags/manage-variations.md), [rules](../ff-target-management/targeting-users-with-flags.md), and [add prerequisites](https://ngdocs.harness.io/article/iijdahygdm-add-prerequisites-to-feature-flag) of your flag.### Use Harness Feature Flags SDKs with Java applications
+
+[UPDATE_LINK_SUCCESS] Line  91  updated:	 Once you have created your Flag type, optionally you can [manage targets](https://ngdocs.harness.io/category/xw2hz815l8-target-management) and modify the [variations](../update-feature-flags/manage-variations.md), [rules](../ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md) of your flag.### Use Harness Feature Flags SDKs with Java applications
+
+[UPDATE_LINK_SUCCESS] Line  166 	 The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference) and [Create a flag type](/article/1j7pdkqh7j-create-a-feature-flag#step_4_create_a_flag_type).
+
+[UPDATE_LINK_SUCCESS] Line  166  updated:	 The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference) and [Create a flag type](../ff-creating-flag/create-a-feature-flag.md).
+
+[WARNING] Topic section removed from old link:  (/article/1j7pdkqh7j-create-a-feature-flag#step_4_create_a_flag_type)
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/java-quickstart.md
+[WARNING2] Line  91  Category link found, need to update:	 Once you have created your Flag type, optionally you can [manage targets]**TODO:** Update category link (https://ngdocs.harness.io/category/xw2hz815l8-target-management) and modify the [variations](../update-feature-flags/manage-variations.md), [rules](../ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md) of your flag.### Use Harness Feature Flags SDKs with Java applications
+
+[WARNING2] Line  140  Category link found, need to update:	 	+ For more information about Targets, go to [Target Management]**TODO:** Update category link (/category/xw2hz815l8-target-management).
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 1. [Create a Project](../ff-creating-flag/create-a-project.md) to host your Flags in.
+
+[UPDATE_LINK_SUCCESS] Line  25  updated:	 2. [Create an Environment](../ff-creating-flag/create-an-environment.md) within your Project. You can have multiple Environments in a single Project.
+
+[UPDATE_LINK_SUCCESS] Line  26  updated:	 3. [Create an SDK Key](../ff-creating-flag/create-an-sdk-key.md) for your Environment. You use this to connect to a Feature Flag SDK.
+
+[UPDATE_LINK_SUCCESS] Line  27  updated:	 4. [Create a Feature Flag](../ff-creating-flag/create-a-feature-flag.md).
+
+[UPDATE_LINK_SUCCESS] Line  39  updated:	 * Modify [Variations](../update-feature-flags/manage-variations.md) and [Rules](https://ngdocs.harness.io/article/xf3hmxbaji-targeting-users-with-flags)
+
+[UPDATE_LINK_SUCCESS] Line  39  updated:	 * Modify [Variations](../update-feature-flags/manage-variations.md) and [Rules](../ff-target-management/targeting-users-with-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  40  updated:	 * [Add Prerequisites](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md)
+
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/getting-started-with-feature-flags.md
+[WARNING2] Line  28  Category link found, need to update:	 5. [Connect your application using one of our SDKs]**TODO:** Update category link (/category/rtce97j1wu-ff-sdks).
+
+[WARNING2] Line  38  Category link found, need to update:	 * [Manage Targets]**TODO:** Update category link (https://ngdocs.harness.io/category/xw2hz815l8-target-management)
+
+[UPDATE_LINK_SUCCESS] Line  42  updated:	 Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](../ff-build-pipeline/build-feature-flag-pipeline.md) or using the [Harness Policy Engine](https://docs.harness.io/article/4vx27jqwv2-harness-policy-engine). When creating roll out rules, it’s important to consider:
+
+[UPDATE_LINK_SUCCESS] Line  42  updated:	 Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](../ff-build-pipeline/build-feature-flag-pipeline.md) or using the [Harness Policy Engine](../ff-using-policy-engine/harness-policy-engine.md). When creating roll out rules, it’s important to consider:
+
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[UPDATE_LINK_SUCCESS] Line  66 	 ![An example flag description](https://files.helpdocs.io/kw8ldg1itf/articles/2ltqamulhy/1661338714659/dw-r-05-pdigi-tgo-wz-trp-xxe-whan-cos-0-vhqyiqo-tpcb-ps-cb-55-aobquz-9-zta-42-g-4-n-qe-3-u-a-54-syvb-myin-aew-8-x-8-qoal-ui-c-xsyojg-irovh-2-tsnpg-vl-22-fr-iho-db-vtifc-4-c-wxg-k-qxv-qkzz-spjda-sxyl-i)To help with this, you can use the [Harness Policy Engine to enforce descriptions](https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags) when creating a Flag.
+
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/feature-flag-best-practices.md
+[UPDATE_LINK_SUCCESS] Line  11  updated:	 After you’ve [created your Environment](create-an-environment.md), you need to create an SDK key for it. You need to use this SDK key in your application’s code to authenticate your connection to the Harness Feature Flag client. 
+
+[UPDATE_LINK_SUCCESS] Line  17  updated:	 3. In **Key Type**, select either **Client** or **Server** depending on the type of SDK you want to use. For more information about the SDK types Harness supports, go to [Chose a Client-side or Server-side SDK](../sdk-overview/client-side-and-server-side-sdks.md). If your organization needs to rotate the keys, you can choose to add more than one key for the same Environment.
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 After you have created an SDK Key, you can then [Create a Feature Flag](create-a-feature-flag.md).
+
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-an-sdk-key.md
+[UPDATE_LINK_SUCCESS] Line  25 	 1. [Created an Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+
+[UPDATE_LINK_SUCCESS] Line  26  updated:	 2. [Created a Project](create-a-project.md)
+
+[UPDATE_LINK_SUCCESS] Line  40  updated:	 * [Create an SDK Key](create-an-sdk-key.md) to authorize your application's access to the Feature Flag client.
+
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-an-environment.md
+[UPDATE_LINK_SUCCESS] Line  22  updated:	 1. [Created a Project](create-a-project.md)
+
+[UPDATE_LINK_SUCCESS] Line  23  updated:	 2. [Created an Environment](create-an-environment.md)
+
+[UPDATE_LINK_SUCCESS] Line  24  updated:	 3. [Created an SDK Key](create-an-sdk-key.md)
+
+[INFO] Topic not found, retaining link to docs.harness.io  (https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[UPDATE_LINK_SUCCESS] Line  58  updated:	 * [Manage the Variations of the Feature Flag](../update-feature-flags/manage-variations.md)
+
+[UPDATE_LINK_SUCCESS] Line  59  updated:	 * [Add Flag Prerequisites](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md)
+
+[UPDATE_LINK_SUCCESS] Line  60  updated:	 * [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md)
+
+[UPDATE_LINK_SUCCESS] Line  86  updated:	 * [Manage the Variations of the Feature Flag](../update-feature-flags/manage-variations.md)
+
+[UPDATE_LINK_SUCCESS] Line  87  updated:	 * [Add Flag Prerequisites](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md)
+
+[UPDATE_LINK_SUCCESS] Line  88  updated:	 * [Target Users with Flags](../ff-target-management/targeting-users-with-flags.md)
+
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-a-feature-flag.md
+[UPDATE_LINK_SUCCESS] Line  17 	 Before you create a Feature Flag, you must have [Created an Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](/article/g8ajhy6msi-manage-access-control).
+
+[UPDATE_LINK_SUCCESS] Line  17  updated:	 Before you create a Feature Flag, you must have [Created an Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../ff-security-compliance/manage-access-control.md).
+
+[UPDATE_LINK_SUCCESS] Line  26 	 2. In the **Organization** drop-down menu, select the Organization for your Project. If you need to create a new Organization, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org) and [Projects and Organizations](/article/7fibxie636-projects-and-organizations).
+
+[UPDATE_LINK_SUCCESS] Line  26 	 2. In the **Organization** drop-down menu, select the Organization for your Project. If you need to create a new Organization, go to [Create a Harness Organization](https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org) and [Projects and Organizations](https://docs.harness.io/article/7fibxie636-projects-and-organizations).
+
+[UPDATE_LINK_SUCCESS] Line  39  updated:	 For more information about the permissions for each role, go to [Manage Access Control](../ff-security-compliance/manage-access-control.md) and [Permissions Reference](https://ngdocs.harness.io/article/yaornnqh0z-permissions-reference).1. Click **Save and Continue**. Your Project is created.
+
+[INFO] Topic not found, retaining link to docs.harness.io  (https://ngdocs.harness.io/article/yaornnqh0z-permissions-reference)
+[UPDATE_LINK_SUCCESS] Line  47  updated:	 The next step for creating a Feature Flag is to [create an Environment within your Project.](create-an-environment.md)
+
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-a-project.md
+[INFO] processing file  ./docs/feature-flags/feature-flag.md
+[INFO] processing file  ./docs/feature-flags/ff-data/view-activities-of-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/ff-data/anonymous-users-maus.md
+[INFO] processing file  ./docs/feature-flags/ff-data/view-metrics.md
+[INFO] processing file  ./docs/feature-flags/ff-adding-prereqs/add-prerequisites-to-feature-flag.md
+[INFO] processing file  ./docs/service-reliability-management.md
+[INFO] processing file  ./docs/chaos-engineering/sample-docs.md
+[INFO] processing file  ./docs/intro.md
+[INFO] processing file  ./docs/cloud-cost-management/cloud-cost-management.md
+[INFO] processing file  ./docs/legal/terms-of-use.md
+[INFO] processing file  ./docs/continuous-integration/sample-docs.md
+[INFO] processing file  ./docs/feature-flags/ff-filtering/filtering-flags-by-state.md
+[INFO] processing file  ./docs/feature-flags/ff-security-compliance/gdpr-compliance.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hyoe7qcaz6-add-users)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hyoe7qcaz6-add-users)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/dfwuvmy33m-add-user-groups)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/yp4xj36xro-add-resource-groups)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/tsons9mu0v-add-manage-roles)
+[INFO] processing file  ./docs/feature-flags/ff-security-compliance/manage-access-control.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/delete-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/enable-or-disable-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/manage-variations.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/edit-and-delete-a-feature-flag.md
+[WARNING2] Line  57  Category link found, need to update:	 * [Manage Your Targets]**TODO:** Update category link **TODO:** Update category link (/category/xw2hz815l8-ff-target-management)
+
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/tygjin99y9-harness-entity-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags#step_1_creating_a_policy)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] processing file  ./docs/feature-flags/ff-using-policy-engine/harness-policy-engine.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/p92awqts2x-add-source-code-managers)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/xl028jo9jk-git-experience-overview)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
+[INFO] processing file  ./docs/feature-flags/ff-git-experience/manage-featureflags-in-git-repos.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/android-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/react-native-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/java-script-sdk-references.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/xamarin-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/flutter-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/ios-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/ff-overview/cf-feature-flag-overview.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_3_create_a_project)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/fkvso46bok-adding-harness-approval-stages)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/h5n2oj8y5y-send-notifications-using-slack)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_email_notifications)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_pager_duty_notifications)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/xcb28vgn82-send-notifications-to-microsoft-teams)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/4z9mf24m1b-schedule-pipelines-using-cron-triggers)
+[INFO] processing file  ./docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/client-side-and-server-side-sdks.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/sdk-version-policy.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/communication-sdks-harness-feature-flags.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/integrate-feature-flag-with-java-sdk.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/net-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/python-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/php-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/node-js-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/feature-flag-sdks-go-application.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/ruby-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/ff-target-management/add-targets.md
+[WARNING2] Line  19  Category link found, need to update:	 You can add a Target using Harness UI. Alternatively, you can add a Target and define its attributes in your application's code directly [using a Feature Flag SDK]**TODO:** Update category link **TODO:** Update category link (/category/rtce97j1wu-ff-sdks). The Targets added in your code are discovered automatically and populated in the Harness UI.
+
+[INFO] processing file  ./docs/feature-flags/ff-target-management/add-target-groups.md
+[INFO] processing file  ./docs/feature-flags/ff-target-management/targeting-users-with-flags.md
+[INFO] processing file  ./docs/feature-flags/relay-proxy/relay-proxy.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/e5p4hdq6bd-add-and-manage-service-account#create_a_service_account)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/bo4qbrcggv-add-secrets-manager)
+[INFO] processing file  ./docs/feature-flags/relay-proxy/deploy-relay-proxy.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/update-your-billing-information.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/view-your-current-subscriptions.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/available-plans-for-feature-flags.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/access-your-subscription-invoices.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/create-a-new-subscription.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/cancel-a-subscription.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hyoe7qcaz6-add-users)
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/add-a-billing-admin.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/subscriptions-overview.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/view-the-usage-of-your-subscriptions.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/7fibxie636-projects-and-organizations)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/yaornnqh0z-permissions-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/java-quickstart.md
+[WARNING2] Line  91  Category link found, need to update:	 Once you have created your Flag type, optionally you can [manage targets]**TODO:** Update category link **TODO:** Update category link (https://ngdocs.harness.io/category/xw2hz815l8-target-management) and modify the [variations](../update-feature-flags/manage-variations.md), [rules](../ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md) of your flag.### Use Harness Feature Flags SDKs with Java applications
+
+[WARNING2] Line  140  Category link found, need to update:	 	+ For more information about Targets, go to [Target Management]**TODO:** Update category link **TODO:** Update category link (/category/xw2hz815l8-target-management).
+
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/getting-started-with-feature-flags.md
+[WARNING2] Line  28  Category link found, need to update:	 5. [Connect your application using one of our SDKs]**TODO:** Update category link **TODO:** Update category link (/category/rtce97j1wu-ff-sdks).
+
+[WARNING2] Line  38  Category link found, need to update:	 * [Manage Targets]**TODO:** Update category link **TODO:** Update category link (https://ngdocs.harness.io/category/xw2hz815l8-target-management)
+
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/feature-flag-best-practices.md
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-an-sdk-key.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-an-environment.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-a-feature-flag.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/7fibxie636-projects-and-organizations)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://ngdocs.harness.io/article/yaornnqh0z-permissions-reference)
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-a-project.md
+[INFO] processing file  ./docs/feature-flags/feature-flag.md
+[INFO] processing file  ./docs/feature-flags/ff-data/view-activities-of-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/ff-data/anonymous-users-maus.md
+[INFO] processing file  ./docs/feature-flags/ff-data/view-metrics.md
+[INFO] processing file  ./docs/feature-flags/ff-adding-prereqs/add-prerequisites-to-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/ff-filtering/filtering-flags-by-state.md
+[INFO] processing file  ./docs/feature-flags/ff-security-compliance/gdpr-compliance.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vz5cq0nfg2-rbac-in-harness)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hyoe7qcaz6-add-users)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hyoe7qcaz6-add-users)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/dfwuvmy33m-add-user-groups)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/yp4xj36xro-add-resource-groups)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/tsons9mu0v-add-manage-roles)
+[INFO] processing file  ./docs/feature-flags/ff-security-compliance/manage-access-control.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/delete-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/enable-or-disable-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/manage-variations.md
+[INFO] processing file  ./docs/feature-flags/update-feature-flags/edit-and-delete-a-feature-flag.md
+[WARNING2] Line  57  Category link found, need to update:	 * [Manage Your Targets]**TODO:** Update category link **TODO:** Update category link **TODO:** Update category link (/category/xw2hz815l8-ff-target-management)
+
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/tygjin99y9-harness-entity-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags#step_1_creating_a_policy)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] processing file  ./docs/feature-flags/ff-using-policy-engine/harness-policy-engine.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/p92awqts2x-add-source-code-managers)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/xl028jo9jk-git-experience-overview)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/soavr3jh0i-git-experience-how-tos)
+[INFO] processing file  ./docs/feature-flags/ff-git-experience/manage-featureflags-in-git-repos.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/android-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/react-native-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/java-script-sdk-references.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/xamarin-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/flutter-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/client-sdks/ios-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/ff-overview/cf-feature-flag-overview.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_3_create_a_project)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/fkvso46bok-adding-harness-approval-stages)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/h5n2oj8y5y-send-notifications-using-slack)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_email_notifications)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/4bor7kyimj-notify-users-of-pipeline-events#option_pager_duty_notifications)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/xcb28vgn82-send-notifications-to-microsoft-teams)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/4z9mf24m1b-schedule-pipelines-using-cron-triggers)
+[INFO] processing file  ./docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/client-side-and-server-side-sdks.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/sdk-version-policy.md
+[INFO] processing file  ./docs/feature-flags/sdk-overview/communication-sdks-harness-feature-flags.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/integrate-feature-flag-with-java-sdk.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/net-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/python-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/php-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/node-js-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/feature-flag-sdks-go-application.md
+[INFO] processing file  ./docs/feature-flags/server-sdks/ruby-sdk-reference.md
+[INFO] processing file  ./docs/feature-flags/ff-target-management/add-targets.md
+[WARNING2] Line  19  Category link found, need to update:	 You can add a Target using Harness UI. Alternatively, you can add a Target and define its attributes in your application's code directly [using a Feature Flag SDK]**TODO:** Update category link **TODO:** Update category link **TODO:** Update category link (/category/rtce97j1wu-ff-sdks). The Targets added in your code are discovered automatically and populated in the Harness UI.
+
+[INFO] processing file  ./docs/feature-flags/ff-target-management/add-target-groups.md
+[INFO] processing file  ./docs/feature-flags/ff-target-management/targeting-users-with-flags.md
+[INFO] processing file  ./docs/feature-flags/relay-proxy/relay-proxy.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/e5p4hdq6bd-add-and-manage-service-account#create_a_service_account)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/bo4qbrcggv-add-secrets-manager)
+[INFO] processing file  ./docs/feature-flags/relay-proxy/deploy-relay-proxy.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/update-your-billing-information.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/view-your-current-subscriptions.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/available-plans-for-feature-flags.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/access-your-subscription-invoices.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/create-a-new-subscription.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/cancel-a-subscription.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/hyoe7qcaz6-add-users)
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/add-a-billing-admin.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/subscriptions-overview.md
+[INFO] processing file  ./docs/feature-flags/subscribe-ff/view-the-usage-of-your-subscriptions.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/7fibxie636-projects-and-organizations)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/yaornnqh0z-permissions-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/java-quickstart.md
+[WARNING2] Line  91  Category link found, need to update:	 Once you have created your Flag type, optionally you can [manage targets]**TODO:** Update category link **TODO:** Update category link **TODO:** Update category link (https://ngdocs.harness.io/category/xw2hz815l8-target-management) and modify the [variations](../update-feature-flags/manage-variations.md), [rules](../ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../ff-adding-prereqs/add-prerequisites-to-feature-flag.md) of your flag.### Use Harness Feature Flags SDKs with Java applications
+
+[WARNING2] Line  140  Category link found, need to update:	 	+ For more information about Targets, go to [Target Management]**TODO:** Update category link **TODO:** Update category link **TODO:** Update category link (/category/xw2hz815l8-target-management).
+
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/getting-started-with-feature-flags.md
+[WARNING2] Line  28  Category link found, need to update:	 5. [Connect your application using one of our SDKs]**TODO:** Update category link **TODO:** Update category link **TODO:** Update category link (/category/rtce97j1wu-ff-sdks).
+
+[WARNING2] Line  38  Category link found, need to update:	 * [Manage Targets]**TODO:** Update category link **TODO:** Update category link **TODO:** Update category link (https://ngdocs.harness.io/category/xw2hz815l8-target-management)
+
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/vb6ilyz194-using-harness-policy-engine-for-feature-flags)
+[INFO] processing file  ./docs/feature-flags/ff-getting-started/feature-flag-best-practices.md
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-an-sdk-key.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-an-environment.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://ngdocs.harness.io/article/li0my8tcz3-entity-identifier-reference)
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-a-feature-flag.md
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/36fw2u92i4-create-an-organization#step_1_create_a_harness_org)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://docs.harness.io/article/7fibxie636-projects-and-organizations)
+[INFO] Topic not found, retaining link to docs.harness.io  (https://ngdocs.harness.io/article/yaornnqh0z-permissions-reference)
+[INFO] processing file  ./docs/feature-flags/ff-creating-flag/create-a-project.md
+[INFO] processing file  ./docs/feature-flags/ff-data/view-activities-of-a-feature-flag.md
+[INFO] processing file  ./docs/feature-flags/ff-data/anonymous-users-maus.md
+[INFO] processing file  ./docs/feature-flags/ff-data/view-metrics.md
+[INFO] processing file  ./docs/feature-flags/ff-adding-prereqs/add-prerequisites-to-feature-flag.md
+[INFO] processing file  ./docs/chaos-engineering/sample-docs.md
+[INFO] processing file  ./docs/cloud-cost-management/cloud-cost-management.md
+[INFO] processing file  ./docs/legal/terms-of-use.md
+[INFO] processing file  ./docs/continuous-integration/sample-docs.md

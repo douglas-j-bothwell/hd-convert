@@ -1,0 +1,69 @@
+type: article
+article_id: zlymcu6bf1
+user_id: x5amubrz4l
+category_id: 49yov609ez
+author:
+  name: Michael Katz
+  profile_image: https://www.gravatar.com/avatar/17fb3fc86ca54443de0da47ef350d8f0?d=mm&s=150
+title: Authentication Settings
+slug: authentication-settings
+description: Control access to your organization's Harness account by SSO (single
+  sign-on) provider, email domain, 2FA (two-factor authentication), and password policies
+  (strength, expiration, and lockout).
+short_version: Administrators can use Authentication Settings to restrict access to
+  an organization's Harness account. The options you choose will apply to all your
+  account's users.
+tags:
+- SSO
+- 'single sign-on '
+- 2FA
+- multi-factor authentication
+- password
+- Email
+- domain
+- users
+- security
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-09-01T15:15:45.51931Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Authentication Settings
+  description: Control access to your organization's Harness account by SSO (single
+    sign-on) provider, email domain, 2FA (two-factor authentication), and password
+    policies (strength, expiration, and lockout).
+  short_version: Administrators can use Authentication Settings to restrict access
+    to an organization's Harness account. The options you choose will apply to all
+    your account's users.
+  body: |-
+    <div class="tip-callout">This content is for Harness <a href="https://docs.harness.io/article/1fjmm4by22">FirstGen</a>. Switch to <a href="/article/gdob5gvyco-authentication-overview">NextGen</a>.</div><p>Administrators can use Authentication Settings to restrict access to an organization&#39;s Harness account. The options you choose will apply to all your account&#39;s users. These options include:</p><ul><li>Enabling specific SSO (single sign-on) mechanisms and providers.</li><li>Enforcing password policies (strength, expiration, and lockout).</li><li>Enforcing 2FA (two factor authentication).</li><li>Restricting logins by specified email domains.</li></ul><p>This topic covers these options in the following sections:</p><ul><li><a href="#accessing">Accessing Authentication Settings</a></li><li><a href="#sso_providers">Enabling SSO Providers</a></li><li><a href="#password_policy">Enforcing Password Policies</a></li><li><a href="#2fa">Enforcing Two Factor Authentication</a></li><li><a href="#domain">Restricting Email Domains</a></li></ul><div class="note-callout">To modify Authentication Settings, you must be logged into Harness as a member of the Administrators User Group. For details about Harness&#39; role-based access control, see <a href="https://docs.harness.io/article/ven0bvulsj-users-and-permissions">Managing Users and Groups (RBAC)</a>.</div><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;accessing&#34;&gt;&lt;/span&gt;"><p><span id="accessing"></span></p>
+    </div><h3>Accessing Authentication Settings</h3><p>To open Authentication Settings, select <strong>Continuous Security</strong> &gt; <strong>Access Management</strong>, then click the <strong>Authentication Settings</strong> panel.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1578094921976/image.png"/></figure><p></p><p>The resulting <strong>Authentication Settings</strong> page will display options like those shown here (and described below):</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1578094944626/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><div class="tip-callout">The <strong>Authentication Settings</strong> page consolidates several options from separate locations in earlier Harness versions.</div><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;sso_providers&#34;&gt;&lt;/span&gt;"><p><span id="sso_providers"></span></p>
+    </div><h3>Enabling SSO Providers</h3><p>In the <strong>SSO Providers</strong> section, you can enable Harness logins via a range of single sign-on mechanisms. Enable the <strong>Allow login via public OAuth providers</strong> slider to expose sliders for enabling individual <a href="/article/02ehq56x6d-single-sign-on-sso-with-oauth-2-0">OAuth partners</a>.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1578094999174/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Click <strong>Add SSO Providers</strong> to enable <a href="/article/zy8yjcrqzg-single-sign-on-sso-with-saml">SAML</a>- or <a href="/article/85rycqfiqg-sso-ldap">LDAP-based</a> logins.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1578095025030/image.png"/></figure><p>To enable a SAML or LDAP provider, you will be prompted to first disable any configured public OAuth providers. For details on all the options in this <strong>SSO Providers</strong> section, see <a href="/article/g1cg16xovh-sso-provider-overview">SSO Provider Overview</a> and its linked pages.</p><p></p><div class="tip-callout">Disabling <em>all</em> SSO login options will automatically enable <a href="#password_policy">username/password-based logins</a> (described below) as a fallback authentication mechanism.</div><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;password_policy&#34;&gt;&lt;/span&gt;"><p><span id="password_policy"></span></p>
+    </div><h3>Enforcing Password Policies</h3><p>The <strong>Allow login using Harness username/password</strong> slider enables Harness&#39; default, native authentication mechanism. When this is enabled, you&#39;ll see additional controls to govern the following password requirements:</p><ul><li><a href="#quality">Quality</a> (strength).</li><li><a href="#expiration">Expiration</a> (refresh) period.</li><li><a href="#lockout_policy">Lockout Policy</a> after failed logins.</li></ul><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560917212852/image.png"/></figure><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;quality&#34;&gt;&lt;/span&gt;"><p><span id="quality"></span></p>
+    </div><h4>Enforcing Password Strength</h4><p>Select <strong>Enforce password strength</strong> to open the dialog shown below. This offers a field where you can specify and enforce minimum password length, and independent controls to require Harness passwords to include at least one uppercase letter, lowercase letter, numeral, and/or non-alphanumeric character.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560918044265/image.png" style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure><p></p><p>If you enforce <strong>Have at least 1 special character</strong>, each password must include one (or more) of the following characters: <code>~!@#$%^&amp;*_-+=`|\(){}[]:;&#34;&#39;&lt;&gt;,.?/</code></p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;expiration&#34;&gt;&lt;/span&gt;"><p><span id="expiration"></span></p>
+    </div><h4>Enforcing Password Expiration</h4><p>Select <strong>Periodically expire passwords</strong> to set an interval at which users must refresh their Harness passwords. In the same dialog, you can also set an advance notification interval.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560919913376/image.png" style="max-height:75%;max-width:75%" data-hd-height="75%" data-hd-width="75%"/></figure><p></p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;unlock&#34;&gt;&lt;/span&gt;"><p><span id="unlock"></span></p>
+    </div><h5>Enabling Password Reset</h5><p>Administrators can email password-reset links to users whose passwords have expired. To do so:</p><ol><li>Select <strong>Continuous Security</strong> &gt; <strong>Access Management</strong> &gt; <strong>Users</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/twiondoa88/1561424598199/image.png"/></figure></li><li>Click the More Options ⋮ menu beside the user you want to unlock, then click <strong>Email Password Rest Link</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1564534555166/image.png"/></figure></li><li>Select <strong>Confirm</strong> in the resulting dialog.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1564534529965/image.png" style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li></ol><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;lockout_policy&#34;&gt;&lt;/span&gt;"><p><span id="lockout_policy"></span></p>
+    </div><h4>Enforcing Lockout After Failed Logins</h4><p>Select <strong>Enforce lockout policy</strong> to open the dialog shown below. It offers independent controls over the lockout trigger (how many failed logins), lockout time, and notifications to locked-out users and to Harness <a href="/article/kf828e347t-notification-groups">user groups</a>.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560920982562/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Once you click <strong>SUBMIT</strong> in any of these dialogs, the <strong>Password Policy</strong> section will display the selections you&#39;ve made. This example shows all restrictions enabled:</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1578095114477/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>To change individual settings, click any panel&#39;s More Options ⋮ menu, then click <strong>Edit</strong>. This reopens the corresponding dialog.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560922163583/image.png"/></figure><div class="hd--md" data-hd-markdown="&lt;span id=&#34;unlock&#34;&gt;&lt;/span&gt;"><p><span id="unlock"></span></p>
+    </div><h5>Unlocking Locked Users</h5><p>Administrators can manually unlock users without waiting for the configured login clearing period to elapse. To do so:</p><ol><li>Select <strong>Continuous Security</strong> &gt; <strong>Access Management</strong> &gt; <strong>Users</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/twiondoa88/1561424598199/image.png"/></figure></li><li>Click the More Options ⋮ menu beside the user you want to unlock, then click <strong>Unlock</strong>.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/twiondoa88/1561443859456/image.png"/></figure></li><li>In the resulting dialog, confirm that you want to unlock this user.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/twiondoa88/1561425199971/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li></ol><div class="hd--md" data-hd-markdown="&lt;span id=&#34;2fa&#34;&gt;&lt;/span&gt;"><p><span id="2fa"></span></p>
+    </div><h3>Enforcing Two Factor Authentication</h3><p>If you enable options in the page&#39;s bottom <strong>Security Options</strong> section, these options will govern all logins—whether through <a href="#sso_providers">SSO providers</a> or through <a href="#password_policy">Harness username/password</a> combinations.</p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560923730983/image.png"/></figure><p></p><p>Select <strong>Enforce two factor authentication</strong> if you choose to set up account-wide 2FA. For details, see <a href="/article/h0ie5q5lkl-login-settings#enforce_2fa_account_wide">Two Factor Authentication</a>.</p><p></p><div class="hd--md" data-hd-markdown="&lt;span id=&#34;domain&#34;&gt;&lt;/span&gt;"><p><span id="domain"></span></p>
+    </div><h3>Restricting Email Domains</h3><p>Select <strong>Restrict users to email domains</strong> if you want to to whitelist (allowlist) only certain domains as usable in login credentials. In the dialog shown below, build your allowlist by simply typing your chosen domains into the <strong>Domains</strong> multi-select field.</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560927710024/image.png" style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>After you click <strong>SUBMIT</strong>, the <strong>Security Options</strong> panel will confirm the domains you&#39;ve whitelisted:</p><p></p><p></p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/zlymcu6bf1/1560928164206/image.png"/></figure><p></p><p>Remember that your resulting allowlist will impose a further filter on logins to Harness via both SSO providers and Harness username/passwords.</p><p>As with the <a href="#password_policy">Password Policy</a> settings, you can modify your domain selections by clicking the More Options ⋮ menu, then clicking <strong>Edit</strong> to reopen the dialog.</p><p></p>
+  slug: authentication-settings
+  tags:
+  - SSO
+  - 'single sign-on '
+  - 2FA
+  - multi-factor authentication
+  - password
+  - Email
+  - domain
+  - users
+  - security
+  is_live: true

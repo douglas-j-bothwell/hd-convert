@@ -1,0 +1,251 @@
+type: article
+article_id: hiyi6xvj36
+user_id: slcpusem6b
+category_id: 2yrql0zhj0
+author:
+  name: Archana Singh
+  profile_image: https://www.gravatar.com/avatar/e323facc5a711ac44c46e58dcb52aa3e?d=mm&s=150
+title: Create an AWS Connector for AutoStopping Rules
+slug: connect-to-an-aws-connector
+description: Connectors allow Harness to connect to your deployment environments,
+  such as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. This topic
+  describes how to link your AWS cloud account to Harness.
+short_version: Connectors allow Harness to connect to your deployment environments,
+  such as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. This topic
+  describes how to link your AWS cloud account to Harness.
+tags:
+- AWS
+- Autostopping rules
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-05-09T06:27:16.789953Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create an AWS Connector for AutoStopping Rules
+  description: Connectors allow Harness to connect to your deployment environments,
+    such as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. This topic
+    describes how to link your AWS cloud account to Harness.
+  short_version: Connectors allow Harness to connect to your deployment environments,
+    such as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. This topic
+    describes how to link your AWS cloud account to Harness.
+  body: '<p>Connectors allow Harness to connect to your deployment environments, such
+    as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. To create an AutoStopping
+    Rule for your AWS instances, you first need to connect Harness to your AWS account.
+    This topic describes how to connect your AWS cloud account to Harness.</p><p>In
+    this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#add_an_aws_connector">Add
+    an AWS Connector</a><ul><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#step_1_overview">Step
+    1: Overview</a></li><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#step_2_cost_and_usage_report">Step
+    2: Cost and Usage Report</a></li><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#step_3_select_features">Step
+    3: Select Features</a></li><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#step_4_create_cross_account_role">Step
+    4: Create Cross-Account Role</a></li><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#step_5_test_connection">Step
+    5: Test Connection</a></li></ul></li><li><a href="https://ngdocs.harness.io/article/hiyi6xvj36-connect-to-an-aws-connector#next_steps">Next
+    Steps</a></li></ul><h3>Before You Begin</h3><ul><li><a href="/article/wzr5tz0ero-auto-stopping-rules">AutoStopping
+    Rules Overview</a></li></ul><h3>Add an AWS Connector</h3><p>Perform the following
+    steps to add an AWS connector for AutoStopping Rules:</p><ol><li>In <strong>Cloud
+    Costs</strong>, click <strong>New AutoStopping Rule</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hiyi6xvj36/1627917097777/screenshot-2021-08-02-at-8-40-48-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>In
+    <strong>AutoStopping Rules</strong>, select <strong>AWS</strong>. It is the cloud
+    account in which your workloads are running that you want to manage using AutoStopping
+    Rules.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hiyi6xvj36/1633498726320/screenshot-2021-10-06-at-11-08-02-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>Connect to your AWS account</strong> drop-down list and then click <strong>New
+    Connector</strong>.</li></ol><h4>Step 1: Overview</h4><ol><li>In <strong>AWS Connector</strong>,
+    in <strong>Overview</strong>, enter the <strong>Connector</strong> <strong>Name</strong>.
+    The name will appear in CCM Perspectives to identify this cloud provider.</li><li>In
+    <strong>Specify the AWS account ID</strong>, enter your AWS account ID and click
+    <strong>Continue</strong>. To find your AWS account ID, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId">Finding
+    your AWS account ID</a>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hiyi6xvj36/1633511261805/screenshot-2021-10-06-at-2-37-16-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><h4>Step
+    2: Cost and Usage Report</h4><p>Cost and Usage Report (CUR) provides detailed
+    billing data across AWS accounts to help you analyze your spending. You need to
+    enter the <strong>cost and usage report name</strong> and <strong>cost and usage
+    S3 bucket name</strong> in Harness. To get these details, do the following:</p><ol><li>In
+    <strong>Cost and Usage Report</strong>, click <strong>Launch AWS console</strong>
+    to log into your AWS account.</li><li>In <strong>AWS Cost and Usage Reports</strong>,
+    click <strong>Create Report</strong>.<figure><a href="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593247638364/screenshot-2020-06-27-at-12-47-26-pm.png"><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5ql31pdjcm/1593247638364/screenshot-2020-06-27-at-12-47-26-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></a></figure></li><li>Enter
+    the <strong>Report Name</strong>. This is the CUR name that you need to enter
+    in Harness.</li><li>In <strong>Additional report details</strong>, select the
+    checkbox <strong>Include resource IDs</strong> to include the IDs of each individual
+    resource in the report.</li><li>In <strong>Data refresh settings</strong>, select
+    the checkbox <strong>Automatically refresh your Cost &amp; Usage Report when charges
+    are detected for previous months with closed bills</strong>.</li><li>Click <strong>Next</strong>.<br/><br/>When
+    you are done with the <strong>Report content</strong> step, it will look something
+    like this:<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1632799614933/screenshot-2021-09-28-at-8-56-20-am.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>In
+    the <strong>S3 bucket</strong>, click <strong>Configure</strong>.</li><li>In <strong>Configure
+    S3 Bucket</strong>, in <strong>Create a bucket</strong>, enter the <strong>S3
+    bucket name</strong>. This is the cost and usage S3 bucket name that you need
+    to enter in Harness. For more information on S3 bucket naming requirements, see <a
+    href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html">Amazon
+    S3 Bucket Naming Requirements</a>.</li><li>Select <strong>Region</strong> from
+    the drop-down list and click <strong>Next</strong>. It is recommended to select <strong>US
+    East</strong> (<strong>N. Virginia</strong>).<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625817602710/screenshot-2021-07-09-at-1-29-03-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>In <strong>Verify
+    policy</strong>, select the checkbox <strong>I have confirmed that this policy
+    is correct</strong> and click <strong>Save</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625817842853/screenshot-2021-07-09-at-1-31-11-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Enter
+    the report path prefix that you want to be prepended to the name of your report.</li><li>Select <strong>Hourly</strong> in <strong>Time
+    granularity</strong>.</li><li>Select <strong>Overwrite Existing Report</strong> in <strong>Report
+    versioning</strong>.</li><li>Do not select any value in <strong>Enable report
+    data integration for</strong>.</li><li>Select <strong>GZIP</strong> in the <strong>Compression
+    type</strong>.</li><li>Click <strong>Next</strong>.<br/><br/>When you are done
+    with the <strong>Delivery options</strong> step, it will look something like this:<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625850563649/screenshot-2021-07-09-at-1-35-53-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Review
+    your report details and click <strong>Review and Complete</strong>.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625823491297/screenshot-2021-07-09-at-1-37-00-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure>Your
+    report is listed in AWS Cost and Usage Reports.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625818364978/screenshot-2021-07-09-at-1-37-51-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Enter
+    the <strong>Cost and Usage Report Name</strong> (as entered in step 3) and <strong>Cost
+    and Usage S3 Bucket Name</strong> (as entered in step 8) in Harness.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625818328989/screenshot-2021-07-09-at-1-41-28-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><h4>Step
+    3: Select Features</h4><p>Select the Cloud Cost Management features that you would
+    like to use on your AWS account. Based on your selection Harness requires specific
+    permissions for the cross-account role. See <a href="/article/80vbt5jv0q-set-up-cost-visibility-for-aws#review_aws_access_permissions">Review:
+    AWS Access Permissions</a>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hiyi6xvj36/1633512792813/screenshot-2021-10-06-at-3-02-51-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p></p><p>CCM
+    offers the following features:</p><p></p><p></p><table><tbody><tr><td><p><strong>Cost
+    Visibility (Required)</strong></p></td><td><p>This feature is available by default
+    and requires access to the CUR report. Provides the following capabilities:</p><p></p><ul><li>Insights
+    into AWS costs by services, accounts, etc.</li><li>Root cost analysis using cost
+    perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and
+    forecasts</li><li>Alert users using Email and Slack notification</li></ul></td></tr><tr><td><p><strong>AWS
+    ECS and Resource Inventory Management (Optional)</strong></p></td><td><p>This
+    feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights
+    provided by inventory management can be consumed by Finance teams to understand
+    the resource utilization across the board.</p><p></p><ul><li>Breakdown by ECS
+    cluster cost, Service, Task, Launch Type (EC2, Fargate)</li><li>Insight into EC2
+    instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS
+    Volumes and Snapshots inventory dashboards. For more information, see <a href="/article/xbekog2ith-view-aws-ec-2-inventory-cost-dashboard">View
+    AWS EC2 Inventory Cost Dashboard</a>, <a href="/article/itn49ytd8u-orphaned-ebs-volumes-and-snapshots-dashboard">Orphaned
+    EBS Volumes and Snapshots Dashboard</a>, and <a href="/article/mwhraec911-view-aws-ec-2-instance-metrics">View
+    AWS EC2 Instance Metrics Dashboard</a>.</li></ul></td></tr><tr><td><p><strong>AWS
+    resource optimization using AutoStopping rules (Required for AutoStopping Rules)</strong></p></td><td><p>This
+    feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances
+    and auto-scaling groups. For more information, see <a href="/article/7025n9ml7z-create-autostopping-rules-aws">Create
+    AutoStopping Rules for AWS</a>.</p><p></p><ul><li>Orchestrate VMs and ASGs based
+    on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular
+    savings visibility</li></ul></td></tr></tbody></table><p></p><p>Make your selection
+    and click <strong>Continue</strong>.</p><h4>Step 4: Create Cross-Account Role</h4><p>Harness
+    uses the secure cross-account role to access your AWS account. The role includes
+    a restricted policy to access the cost and usage reports and resources for the
+    sole purpose of cost analysis and cost optimization.</p><ol><li>In <strong>Create
+    Cross Account Role</strong>, click <strong>Launch Template in AWS console</strong>.</li><li>In <strong>Quick
+    create stack</strong>, in <strong>Capabilities</strong>, select the acknowledgment,
+    and click <strong>Create stack</strong>.<div class="note-callout">It is recommended
+    that you do not modify any value in the <strong>Quick create stack</strong> page.<br/><br/><br/>The
+    value for <code>BillingEnabled</code>, <code>EventsEnabled</code>, and <code>OptimizationEnabled</code>
+    varies depending on the features that you have selected in the <a href="/article/80vbt5jv0q-set-up-cost-visibility-for-aws#step_3_select_features">Select
+    Features step</a>.</div><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625849363280/screenshot-2021-07-09-at-10-18-58-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    the <strong>Stacks</strong> page, from the <strong>Outputs</strong> tab copy the <strong>Value</strong>
+    of <strong>CrossAccountRoleArn Key</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625824586201/screenshot-2021-07-09-at-3-26-06-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure></li><li>In
+    <strong>Role ARN</strong>, enter the <strong>Cross-Account Role ARN</strong> that
+    you copied from the <strong>Output</strong>s tab (previous step) in Harness.</li><li>The
+    <strong>External ID</strong> is generated dynamically for your account. For example, <code>harness:111111111111:lnFZRF6jQO6tQnB9xxXXXx</code> .<div
+    class="note-callout">Do not modify the value of <strong>External ID</strong>.</div><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625826333902/screenshot-2021-07-09-at-3-54-52-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>Click
+    <strong>Save and Continue</strong>.</li></ol><h4>Step 5: Test Connection</h4><p>The
+    validation and verification happen in this step. Once the validation and verification
+    are completed, click <strong>Finish</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1625826679832/screenshot-2021-07-09-at-2-04-39-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Your
+    connector is now listed under <strong>Connect to your AWS account</strong> drop-down
+    list.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/hiyi6xvj36/1633513671896/screenshot-2021-10-06-at-3-17-26-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h3>Step:
+    Create Multiple Connectors in an AWS Account</h3><p>Harness CCM also provides
+    the flexibility to create multiple Connectors using a stack set configured at
+    the master account level. It involves the following steps:</p><ul><li>Create a
+    stack set</li><li>Create an API Key in Harness</li><li>Add an Admin Role</li><li>Run
+    the cURL Command to create connectors using the Roles created in the AWS accounts
+    via API</li></ul><h4>Step 1: Create a Stack Set in AWS</h4><p>Perform the following
+    steps to create a stack set in AWS:</p><ol><li>Launch create stack set template
+    using the following link:<br/><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create</a></li><li>In
+    <strong>Choose a template</strong>, in <strong>Permissions</strong>, select <strong>Service-managed
+    permissions</strong>.</li><li>In <strong>Prerequisite - Prepare template</strong>,
+    select <strong>Template is ready</strong>.</li><li>In the <strong>Specify template</strong>,
+    in the <strong>Template source</strong>, select <strong>Amazon S3 URL</strong>.</li><li>In
+    the <strong>Amazon S3 URL</strong> enter the following URL and click <strong>Next</strong>.<br/><code>https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate.yaml</code><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1651723129898/screenshot-2022-05-05-at-9-28-24-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>In
+    <strong>Specify StackSet details</strong>, in <strong>StackSet</strong> <strong>name</strong>,
+    enter a stack set name. For example, <code>harness-ce-iam-stackset</code>.</li><li>In
+    <strong>Parameters</strong>, specify the following details:<ol><li>Set <strong>BillingEnabled</strong>
+    to false.</li><li>Leave the <strong>BucketName</strong> empty.</li><li>Set <strong>EventsEnabled</strong>
+    to true.</li><li> In <strong>ExternalID</strong> enter your &lt;<em>Harness Account
+    ID&gt;</em>, for example, <code>harness:111122225555</code> .</li><li>In <strong>LambdaExecutionRoleName</strong>,
+    enter Lambda execution role name, for example, <code>HarnessCELambdaExecutionRole</code>.
+    The Lambda execution role name must begin with <code>Harness</code>.</li><li>Set
+    <strong>OptimizationEnabled</strong> to true.</li><li><strong>PrincipalBilling</strong>
+    is auto-generated for your AWS account. Do not edit the Principal Billing details.
+    For example, <code>arn:aws:iam::123451231355:root</code>.</li><li>In <strong>RoleName</strong>,
+    enter the role name, for example, <code>HarnessCERole</code>. The role name must
+    begin with Harness e.g., HarnessCERole, HarnessManagedRole.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1651678007697/screenshot-2022-05-04-at-8-56-33-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol></li><li>Once
+    you&#39;ve entered all the details, click <strong>Next</strong>.</li><li>In <strong>Configure
+    StackSet options</strong>, in <strong>Managed execution</strong>, select <strong>Active</strong>
+    and click <strong>Next</strong>.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1651723477788/screenshot-2022-05-05-at-9-34-16-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Set deployment options</strong>, in <strong>Add stacks to stack set</strong>,
+    select <strong>Deploy new stacks</strong>.</li><li>In <strong>Deployment targets</strong>,
+    select <strong>Deploy to organization</strong> (recommended). You can select <strong>Deploy
+    to Organizational Units (OUs)</strong> to limit the monitoring clusters to a particular
+    OU or a subset of linked accounts.</li><li>In <strong>Automatic deployment</strong>,
+    select <strong>Enabled</strong>.</li><li>In <strong>Account removal behavior</strong>,
+    select <strong>Delete Stacks</strong>.</li><li>Select a <strong>region</strong> from
+    the drop-down list and click <strong>Next</strong>.</li><li>In <strong>Deployment
+    Options</strong>, in <strong>Region Concurrency</strong>, select <strong>Sequential</strong>.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1651723676530/screenshot-2022-05-05-at-9-37-41-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li><li>Review
+    the details, select acknowledgment, and click <strong>Submit</strong>.</li></ol><h4>Step
+    2: Create an API Key in Harness</h4><ol><li>In Harness, click <strong>Home</strong>.</li><li>In <strong>Account
+    Setup</strong>, click <strong>Access Control</strong>.</li><li>Click <strong>Service
+    Accounts</strong> and then click the service account to which you want to add
+    a new API Key. For step-by-step instructions to add a new Service Account, see <a
+    href="https://ngdocs.harness.io/article/e5p4hdq6bd">Add and Manage Service Accounts</a>.</li><li>In
+    the Service Account&#39;s settings page, click <strong>API Key</strong>.</li><li>In
+    the <strong>New API Key</strong> settings, enter <strong>Name, Description,</strong> and <strong>Tags</strong>.</li><li>Click <strong>Save</strong>.
+    The new API Key is created.<br/><br/>Once you&#39;ve created an API Key for your
+    Service Account, generate a Token for this API Key.</li><li>To generate a Token
+    for this API Key, click <strong>Token</strong> below the API Key you just created.<ol><li>In
+    the <strong>New Token</strong> settings, enter Name, Description, and Tags.</li><li>To
+    set an expiration date for this token, select <strong>Set Expiration Date</strong>.</li><li>Enter
+    date in <strong>Expiration Date (mm/dd/yyyy)</strong>.</li><li>Click <strong>Generate
+    Token</strong>.</li><li>Your new Token is generated.<figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/tdoad7xrh9/1625893969426/screenshot-2021-07-10-at-10-33-16-am.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/tdoad7xrh9/1625893969426/screenshot-2021-07-10-at-10-33-16-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></a></figure></li></ol><div
+    class="note-callout">You cannot see this token value after you close this dialog.
+    Make sure to copy and store the generated token value securely.</div></li></ol><p>You
+    need to enter this Token when running your cURL command.</p><h4>Step 3: Add an
+    Admin Role to the Service Account</h4><p>Ensure that you&#39;ve added the Admin
+    role to this Service Account. For more information, see <a href="/article/tsons9mu0v-add-manage-roles">Add
+    and Manage Roles</a>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/80vbt5jv0q/1651680903213/screenshot-2022-05-04-at-9-44-50-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h4>Step
+    4: Run the cURL Command</h4><p>Run the following command for each AWS Account
+    ID and IAM Role Pair:</p><p></p><pre>curl -i -X POST \<br/>  &#39;https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=&lt;CustomerHarnessAccountID&gt;&#39;
+    \<br/>  -H &#39;Content-Type: application/json&#39; \<br/>  -H &#39;x-api-key:
+    &lt;Enter your API Key Token&gt;&#39; \<br/>  -d &#39;{<br/>  &#34;connector&#34;:{<br/>    &#34;name&#34;:&#34;AWSConnector-&lt;AWSAccountId&gt;&#34;,<br/>    &#34;identifier&#34;:&#34;AWSConnector_&lt;AWSAccountId&gt;&#34;,<br/>    &#34;spec&#34;:{<br/>      &#34;crossAccountAccess&#34;:{<br/>        &#34;crossAccountRoleArn&#34;:&#34;&lt;Enter
+    the Role Created in the Account&gt;&#34;,<br/>        &#34;externalId&#34;:&#34;&lt;Enter
+    ExternalID oused when creating the IAM Role&gt;&#34;<br/>      },<br/>      &#34;awsAccountId&#34;:&#34;&lt;AWSAccountId&gt;&#34;,<br/>      &#34;curAttributes&#34;:{<br/>        &#34;reportName&#34;:&#34;&#34;,<br/>        &#34;s3BucketName&#34;:&#34;&#34;<br/>      },<br/>      &#34;featuresEnabled&#34;:[<br/>        &#34;VISIBILITY&#34;,<br/>        &#34;OPTIMIZATION&#34;<br/>      ]<br/>    },<br/>    &#34;type&#34;:&#34;CEAws&#34;<br/>  }<br/>}&#39;</pre><h3>Next
+    Steps</h3><ul><li><a href="/article/7025n9ml7z-create-autostopping-rules-aws">Create
+    AutoStopping Rules for AWS</a></li><li><a href="/article/ehmi6kiynl-autostopping-dashboard">Use
+    AutoStopping Rules Dashboard</a></li></ul><p></p>'
+  slug: connect-to-an-aws-connector
+  tags:
+  - AWS
+  - Autostopping rules
+  is_live: true

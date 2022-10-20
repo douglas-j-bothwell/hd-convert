@@ -1,0 +1,136 @@
+type: article
+article_id: j1cu2xakq3
+user_id: 2c4rk0cied
+category_id: km6d9j54ms
+author:
+  name: Renu Bhaskaran
+  profile_image: https://www.gravatar.com/avatar/7d21186ef4e85110a0bd60a931c90361?d=mm&s=150
+title: View Service Health
+slug: view-service-health
+description: 'The Service Health dashboard under Monitored Services in the Change
+  Intelligence module enables you to observe and track the health of your service
+  entities. Using this dashboard you can: Track the h…'
+short_version: 'The Service Health dashboard under Monitored Services in the Change
+  Intelligence module enables you to observe and track the health of your service
+  entities. Using this dashboard you can: Track the h…'
+tags: []
+show_toc: true
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-03-14T07:16:24.283858Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: View Service Health
+  description: 'The Service Health dashboard under Monitored Services in the Change
+    Intelligence module enables you to observe and track the health of your service
+    entities. Using this dashboard you can: Track the h…'
+  short_version: 'The Service Health dashboard under Monitored Services in the Change
+    Intelligence module enables you to observe and track the health of your service
+    entities. Using this dashboard you can: Track the h…'
+  body: '<p>The Service Health dashboard under <strong>Monitored Services</strong>
+    in the <span style="color:#333333" data-hd-color="#333333"><strong>S</strong></span><strong>ervice
+    Reliability Management</strong> module enables you to observe and track the health
+    of a Monitored Service. </p><p>Using this dashboard you can:</p><ul><li>Track
+    the overall health of your services, spot anomalies, and take timely action</li><li>Track
+    change events that impact your Monitored Service</li><li>Observe and analyze dependencies
+    between applications, infrastructure, and data</li><li>View metrics to analyze
+    patterns, historic trends, performance changes, and correlate factors of your
+    services over a period.</li><li>View log data that helps you debug and narrow
+    down issues.</li></ul><p>This topic describes the steps to view the <strong>Overall
+    Health Score</strong> of your services and associated environments.</p><p>In this
+    topic:</p><ul><li><a href="https://ngdocs.harness.io/article/j1cu2xakq3-view-service-health#undefined">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/j1cu2xakq3-view-service-health#undefined">Step:
+    View Service Health</a></li></ul><h3 id="undefined">Before You Begin</h3><ul><li><a
+    href="/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart">Health
+    Monitoring Quickstart</a></li><li><a href="/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring">Change
+    monitoring Quickstart</a></li></ul><h3 id="undefined">Step: View Service Health</h3><p>Perform
+    the following steps to view the health of your service.</p><ol><li>Open a Harness
+    Project with the Service you want to monitor and navigate to the <strong>Service
+    Reliability Management</strong> module.</li><li>Click <strong>Monitored Services</strong>.
+    You can see the list of all Monitored Services.</li><li>Click the Monitored Service
+    whose health is to be tracked. The <strong>Service Health</strong> dashboard is
+    displayed.</li></ol><p></p><ol><li style="counter-increment:li 3" start="4">Select <strong>Time
+    Range</strong> to filter the data based on pre-defined time range filters. You
+    can apply the following filters to narrow your selection further and retrieve
+    the desired data:</li></ol><ul><li>Last 4 hours</li><li>Last 24 hours</li><li>Last
+    3 days</li><li>Last 7 days</li><li>Last month</li></ul><p>Once you have selected
+    the <strong>Time Range</strong>, the data on the dashbaord refreshes automatically
+    with the latest data from the database. By default, <strong>Last 24 hours</strong> is
+    selected.</p><ol><li style="counter-increment:li 4" start="5">You can hover over
+    the timeline to view the latest health score along with date and time. The timeline
+    is divided into equal-length time slots based on the selected time range.<figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/j1cu2xakq3/1643354858768/health-score-timeline.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><p>The
+    score is computed based on change events like deployments, infrastructure changes,
+    and alerts associated with each of the service entities. The health score ranges
+    between 0 to 100. Color-coded severity values are used to represent service health
+    as shown below:</p><table><tbody><tr><td><p><strong>Severity</strong></p></td><td><p><strong>Color-Code</strong></p></td></tr><tr><td><p>Healthy</p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1639999363414/screenshot-2021-12-20-at-4-51-20-pm.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure></td></tr><tr><td><p>Observe</p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1639999398038/screenshot-2021-12-20-at-4-51-54-pm.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure></td></tr><tr><td><p>Needs
+    Attention</p></td><td><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1639999415659/screenshot-2021-12-20-at-4-51-32-pm.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure></td></tr><tr><td><p>Unhealthy</p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1639999433673/screenshot-2021-12-20-at-4-51-06-pm.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure></td></tr><tr><td><p>N/A</p></td><td><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1639999454018/screenshot-2021-12-20-at-4-52-29-pm.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:auto;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="center"/></figure></td></tr></tbody></table><p>If
+    the service health score is between 80 to 100, it indicates that the service is
+    healthy. Any other value indicates that the service is impacted with several outages. The
+    higher the health score, the healthier your service is.</p><ol><li style="counter-increment:li
+    5" start="6">To view the service health score for a specific time slot along with
+    the count of anomalies, metrics, and logs, click the time slot on the <strong>Health
+    Score Timeline</strong>. A time window gets selected which can be expanded or
+    contracted as per your requirement.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/j1cu2xakq3/1643352156958/screenshot-2022-01-28-at-12-12-13-pm.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ol><p>Click
+    <strong>Reset</strong> to return to the initial timeline data.</p><ol><li style="counter-increment:li
+    6" start="7">In <strong>Changes</strong>, you can view breakdown of the following
+    events:</li></ol><ul><li>Deployments such as ECS, Kubernetes, and Helm from Harness
+    CD Nextgen and Harness CD.</li><li>Infrastructure changes such as <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#event-v1-events-k8s-io">Kubernetes
+    events</a>, <a href="https://www.terraform.io/docs/enterprise/admin/logging.html#audit-logs">Terraform
+    audit logs</a>, <a href="https://docs.mongodb.com/manual/reference/audit-message/#system-event-audit-messages">MongoDB
+    audit events</a>, AWS CloudTrail, GCP audit logs and Azure audit logs.</li><li>Alerts
+    from PagerDuty<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/j1cu2xakq3/1643354961734/changes.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure></li></ul><ol><li
+    style="counter-increment:li 7" start="8">Click an event in the <strong>Changes</strong>
+    to drill down following details:</li></ol><ul><li>Time: Date and time at which
+    the event occurred</li><li>Name: Name of the event</li><li>Impact: Name of the
+    impacted Monitored Service</li><li>Source: Name of the source where the change
+    originated</li><li>Type: Change event type</li></ul><p>You can see the following
+    example of an infrastructure event.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1640325731729/screenshot-2021-12-24-at-11-31-43-am.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>You
+    can see a summarized view of infrastructure event with the following details:</p><ul><li>Name
+    of the Service, Environment, and Source</li><li>Time and date at which the event
+    was triggered</li><li>View the YAML file of the event</li><li>Compare the current
+    and previous YAML file</li><li>Health score timeline</li></ul><ol><li style="counter-increment:li
+    8" start="9">In the <strong>Service Dependency Graph</strong>, you can view dependencies
+    between applications, infrastructure, and data.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/na0f1xol5s/1640328093080/screenshot-2021-12-24-at-12-11-20-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></li><li>In
+    <strong>Metrics &amp; Logs</strong>, you can view metrics collected at regular
+    intervals and log data.</li></ol><p>You can further drill-down metrics using the
+    following filters:</p><table><tbody><tr><td><p><strong>Filter</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>All
+    Metrics</p></td><td><p>Displays all the metrics retrieved by the Health Sources.</p></td></tr><tr><td><p>Anomalous
+    Metrics</p></td><td><p>Displays the anomalous metrics retrieved by the Health
+    Sources.</p></td></tr></tbody></table><p></p><p>You can also view the health data
+    collected by a specific Health Source.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/j1cu2xakq3/1643353727864/screenshot-2022-01-28-at-12-38-28-pm.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure><p>You
+    can drill-down log data using the following filters:</p><table><tbody><tr><td><p><strong>Filter</strong></p></td><td><p><strong>Description</strong></p></td></tr><tr><td><p>All
+    Events</p></td><td><p>Displays all log events.</p></td></tr><tr><td><p>Known Events</p></td><td><p>Displays
+    only known log events.</p></td></tr><tr><td><p>Unknown Event</p></td><td><p>Displays
+    unknown log events.</p></td></tr><tr><td><p>Unexpected Frequency</p></td><td><p>Displays
+    log data with unexpected frequency.</p></td></tr></tbody></table><p></p>'
+  slug: view-service-health
+  tags: []
+  is_live: true

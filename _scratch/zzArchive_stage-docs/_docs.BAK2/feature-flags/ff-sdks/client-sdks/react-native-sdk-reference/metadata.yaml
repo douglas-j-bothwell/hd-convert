@@ -1,0 +1,196 @@
+type: article
+article_id: z2w6uj9mzb
+user_id: vt9reb71i4
+category_id: y1oewjcb0q
+author:
+  name: Clare Wilkinson
+  email: clare.wilkinson@harness.io
+  profile_image: https://www.gravatar.com/avatar/0ff8d5897ddf326bd94ba0e62e7d2841?d=mm&s=150
+title: React Native SDK Reference
+slug: react-native-sdk-reference
+description: This topic explains how to use the Harness Feature Flags SDK in your
+  React Native application.
+short_version: This topic explains how to use the Harness Feature Flags SDK in your
+  React Native application.
+tags:
+- feature flag
+- React Native
+- SDK
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-17T15:31:56.943297Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: React Native SDK Reference
+  description: This topic explains how to use the Harness Feature Flags SDK in your
+    React Native application.
+  short_version: This topic explains how to use the Harness Feature Flags SDK in your
+    React Native application.
+  body: '<p>This topic describes how to use the Harness Feature Flags SDK for your
+    React Native application. </p><p>For getting started quickly, you can use our
+    <a href="https://github.com/harness/ff-react-native-client-sdk" target="_blank">sample
+    code from the SDK README</a>. You can also <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository"
+    target="_blank">clone</a> and run a sample application from the <a href="https://github.com/harness/ff-react-native-client-sdk"
+    target="_blank">React Native SDK GitHub Repository</a>.</p><h3>Before You Begin</h3><ul><li><a
+    href="/article/0a2u2ppp8s-getting-started-with-continuous-features" target="_blank">Getting
+    Started with Feature Flags</a></li><li><a href="/article/7n9433hkc0-cf-feature-flag-overview"
+    target="_blank">Feature Flags Overview</a></li><li><a href="/article/rvqprvbq8f-client-side-and-server-side-sdks"
+    target="_blank">Client-Side and Server-Side SDKs</a></li><li><a href="/article/7ikyqtmjce-communication-sdks-harness-feature-flags"
+    target="_blank">Communication Strategy Between SDKs and Harness Feature Flags</a></li></ul><h3>Version</h3><div
+    class="note-callout">The current version of this SDK is <strong>1</strong><strong>.</strong><strong>0.2.</strong></div><h3>Prerequisites</h3><p>To
+    use this SDK, make sure you: </p><ul><li>Install <a href="https://reactjs.org/"
+    target="_blank">React 16</a> or newer.</li><li>Install <a href="https://reactnative.dev/docs/environment-setup"
+    target="_blank">React Native 0.63</a> or newer.</li><li><a href="https://github.com/harness/ff-react-native-client-sdk"
+    target="_blank">Download the SDK from our GitHub repository</a></li><li>Create
+    a React Native application, or <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">clone</a>
+    our <a href="https://github.com/harness/ff-react-native-client-sdk" target="_blank">sample
+    application</a>.</li><li><a href="/article/1j7pdkqh7j-create-a-feature-flag" target="_blank">Create
+    a Feature Flag on the Harness Platform</a>. If you are following along with the
+    SDK README sample code, make sure your flag is called <code>harnessappdemodarkmode</code>.</li><li><a
+    href="/article/1j7pdkqh7j-create-a-feature-flag#step_3_create_an_sdk_key" target="_blank">Create
+    an SDK key and make a copy of it</a></li></ul><h3>Install the SDK</h3><p>To set
+    up the React Native SDK, complete the following steps:</p><h4>Install directly
+    to the package.json file</h4><p>Install the React Native SDK by adding it to your
+    project&#39;s <code>package.json</code> file:</p><pre>&#34;ff-react-native-client-sdk&#34;:
+    &#34;1.0.2&#34;,</pre><p></p><h4>Install using npm</h4><p>You can also use <code>npm
+    install</code>:</p><pre>$ npm install --save ff-react-native-client-sdk</pre><p></p><h4>Install
+    on IOS</h4><p>For installing on iOS, run the following commands from the project
+    root folder:</p><pre>$ cd ios<br/>$ pod install</pre><p></p><h3>Initialize the
+    SDK</h3><p>To initialize the React Native SDK, you need to:</p><ol><li>Import
+    the <code>cfClientInstance</code> base instance. This provides all the features
+    of the SDK.</li><li>Add your Client SDK key to connect to your Harness Environment.</li><li>Add
+    a Target that you want to Evaluate against a Feature Flag.</li><li>(Optional)
+    Configure the SDK options.</li><li>Complete the initialization with the SDK using
+    the Client SDK Key, Target, and Configuration parameters you set.</li></ol><h4>Import
+    the base instance</h4><p>Use the following command to import the <code>cfClientInstance</code>
+    base instance:</p><pre>import cfClientInstance from &#39;ff-react-native-client-sdk&#39;;</pre><h4>Add
+    your Client SDK Key</h4><p>To connect to the correct Environment that you set
+    up on the Harness Platform, you need to add the Client SDK Key from that Environment.
+    Input the Client SDK Key into the <code>apiKey</code> parameter, for example:</p><pre>const
+    apiKey = &#34;YOUR_API_KEY&#34;;</pre><h4>Add a Target</h4><div class="tip-callout"><strong>What
+    is a Target?</strong><br/>Targets are used to control which users see which Variation
+    of a Feature Flag, for example, if you want to do internal testing, you can enable
+    the Flag for some users and not others. When creating a Target, you give it a
+    name and a unique identifier. Often Targets are users but you can create a Target
+    from anything that can be uniquely identified, such as an app or a machine.<br/><br/>For
+    more information about Targets, go to <a href="/article/xf3hmxbaji-targeting-users-with-flags"
+    target="_blank">Targeting Users With Flags</a>.</div><p>To add a Target that you
+    want to Evaluate, build it using <code>cfTarget</code> and pass in arguments for
+    the following:</p><table><tbody><tr><td><p><strong>Parameter</strong></p></td><td><p><strong>Description</strong></p></td><td><p><strong>Required?</strong></p></td><td><p><strong>Example</strong></p></td></tr><tr><td><p>identifier</p></td><td><p>Unique
+    ID for the Target.</p></td><td><p>Required</p></td><td><p><code>.identifier(&#34;HT_1&#34;)</code></p></td></tr></tbody></table><p></p><details><summary>Regex
+    requirements for Target names and identifiers</summary><div><strong>Identifier<br/></strong>Regex:
+    <code>^[A-Za-z0-9.@_-]*$<br/></code><br/>Must consist of only alphabetical characters,
+    numbers, and the following symbols:<br/>. (period)<br/>@ (at sign)<br/>- (dash)<br/>_
+    (underscore)<br/><br/>The characters can be lowercase or uppercase but cannot
+    include accented letters, for example <code>Cafe_789</code>.<br/><br/><strong>Name<br/></strong>Regex:
+    <code>^[\\p{L}\\d .@_-]*$<br/></code><br/>Must consist of only alphabetical characters,
+    numbers, and the following symbols:<br/>. (period)<br/>@ (at sign)<br/>- (dash)<br/>_
+    (underscore)<br/> (space)<br/><br/>The characters can be lowercase or uppercase
+    and can include accented letters, for example <code>Café_123</code>.</div></details><p>For
+    example:</p><pre>const cfTarget = new CfTarget();<br/>cfTarget.identifier = &#39;HT_1&#39;;</pre><p></p><h4>Configure
+    the SDK</h4><p>You can configure the following features of the SDK:</p><table><tbody><tr><td><p><strong>Name</strong></p></td><td><p><strong>Example</strong></p></td><td><p><strong>Description</strong></p></td><td><p><strong>Default
+    Value</strong></p></td></tr><tr><td><p>baseUrl</p></td><td><p style="box-sizing:border-box;font-family:ui-monospace,
+    SFMono-Regular, &#34;SF Mono&#34;, Menlo, Consolas, &#34;Liberation Mono&#34;,
+    monospace;font-size:13.6px;margin-top:0px;margin-bottom:0px;overflow-wrap:normal;padding:16px;overflow:auto;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px;word-break:normal;color:rgb(36,
+    41, 47);font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"><code>baseUrl
+    = &#34;</code><code>https://config.ff.harness.io/api/1.0&#34;</code><code>;</code></p></td><td><p>The
+    URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change
+    this to: <code>http://localhost:7000</code></p></td><td><p><code>https://config.ff.harness.io/api/1.0</code></p></td></tr><tr><td><p>eventUrl</p></td><td><p
+    style="box-sizing:border-box;font-family:ui-monospace, SFMono-Regular, &#34;SF
+    Mono&#34;, Menlo, Consolas, &#34;Liberation Mono&#34;, monospace;font-size:13.6px;margin-top:0px;margin-bottom:0px;overflow-wrap:normal;padding:16px;overflow:auto;line-height:1.45;background-color:var(--color-canvas-subtle);border-radius:6px;word-break:normal;color:rgb(36,
+    41, 47);font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"><code>eventUrl
+    = &#34;</code><code>https://events.ff.harness.io/api/1.0&#34;</code><code>;</code></p></td><td><p>The
+    URL for posting metrics data to the Feature Flag service. When using the Relay
+    Proxy, change this to: <code>http://localhost:7000</code></p></td><td><p><code>https://events.ff.harness.io/api/1.0</code></p></td></tr><tr><td><p>pollInterval</p></td><td><p><code>pollInterval
+    = 60;</code></p></td><td><p>The interval <strong>in seconds</strong> that we poll
+    for changes when you are using stream mode.</p></td><td><p><code>60</code> (seconds)</p></td></tr><tr><td><p>streamEnabled</p></td><td><p><code>streamEnabled
+    = true;</code></p></td><td><p>Set to <code>true</code> to enable streaming mode.</p><p>Set
+    to <code>false</code> to disable streaming mode.</p></td><td><p><code>true</code></p></td></tr><tr><td><p>analyticsEnabled</p></td><td><p><code>analyticsEnabled
+    = true;</code></p></td><td><p>Set to <code>true</code> to enable analytics.</p><p>Set
+    to <code>false</code> to disable analytics.</p><p><strong>Note</strong>: When
+    enabled, analytics data is posted every 60 seconds.</p></td><td><p><code>true</code></p></td></tr></tbody></table><p></p><p>Use
+    <code>cfConfiguration</code> to declare the configuration options you want to
+    use, for example:</p><pre>const cfConfiguration = new CfConfiguration();<br/>cfConfiguration.streamEnabled
+    = false;</pre><p></p><h4>Complete the initialization</h4><p>Complete the initialization
+    using the apiKey, cfConfiguration, and cfTarget variables, for example:</p><pre>const
+    result = await cfClientInstance.initialize(apiKey, cfConfiguration, cfTarget);</pre><h4>Sample
+    of initializing the SDK</h4><pre>import cfClientInstance, {CfConfiguration, CfTarget}
+    from &#39;ff-react-native-client-sdk&#39;;<br/><br/>const client = cfClientInstance;<br/><br/>const
+    cfConfiguration = new CfConfiguration();<br/>cfConfiguration.streamEnabled = true;<br/><br/>const
+    cfTarget = new CfTarget();<br/>cfTarget.identifier = &#39;Harness_Target_1&#39;;<br/><br/>const
+    apiKey = &#34;YOUR_API_KEY&#34;;<br/><br/>const result = await cfClientInstance.initialize(apiKey,
+    cfConfiguration, cfTarget);</pre><p></p><h3>Evaluate a Flag</h3><p>Evaluating
+    a Flag is when the SDK processes all Flag rules and returns the correct Variation
+    of that Flag for the Target you provide. </p><p>If a matching Flag can’t be found,
+    or the SDK can’t remotely fetch flags, the default value is returned. </p><p>There
+    are different methods for the different Variation types and for each method you
+    need to pass in:</p><ul><li>Identifier of the Flag you want to evaluate</li><li>The
+    default Variation</li></ul><h5>Evaluate a boolean Variation</h5><pre>//get boolean
+    evaluation<br/>let evaluation = await client.boolVariation(&#34;demo_bool_evaluation&#34;,
+    false)</pre><h5>Evaluate a number Variation</h5><pre>//get number evaluation<br/>let
+    numberEvaluation = await client.numberVariation(&#34;demo_number_evaluation&#34;,
+    0)</pre><h5>Evaluate a string Variation</h5><pre class="hljs swift">//get string
+    evaluation<br/>let stringEvaluation = await client.stringVariation(&#34;demo_string_evaluation&#34;,
+    &#34;default&#34;);</pre><h5>Evaluate a JSON Variation</h5><pre>//get json evaluation<br/>let
+    jsonEvaluation = await client.jsonVariation(&#34;demo_json_evaluation&#34;, {});</pre><h3>Listen
+    for events</h3><h4>Register the event listener</h4><p>Use <code>client.registerEventsListener</code>
+    to register a listener for different events that might be triggered by SDK.</p><p>The
+    possible events and their responses are outlined in the following table:</p><table><tbody><tr><td><p><strong>Event
+    Type</strong></p></td><td><p><strong>Return Value</strong></p></td></tr><tr><td><p>&#34;start&#34;</p></td><td><p>null</p></td></tr><tr><td><p>&#34;end&#34;</p></td><td><p>null</p></td></tr><tr><td><p>&#34;evaluation_polling&#34;</p></td><td><p>List</p></td></tr><tr><td><p>&#34;evaluation_change&#34;</p></td><td><p>EvaluationResponse</p></td></tr></tbody></table><p></p><h4>Close
+    the event listener</h4><p>When the listener is not needed, you can remove the
+    desired listener from the internal list to avoid unexpected behavior.</p><pre>client.unregisterListener(eventsListener)</pre><p></p><h3>Test
+    your app is connected to Harness</h3><p>When you receive a response showing the
+    current status of your Feature Flag, go to the Harness Platform and toggle the
+    Flag on and off. Then, check your app to verify if the Flag Variation displayed
+    is updated with the Variation you toggled.</p><h3>Close the SDK</h3><p>When SDK
+    is not needed, for example, when the app is not running, you can shut down the
+    SDK. This can avoid potential memory leaks.</p><pre>client.destroy()</pre><p></p><h3>Additional
+    options</h3><h4>Use the Harness Relay Proxy</h4><p>When using your Feature Flag
+    SDKs with a <a href="/article/q0kvq8nd2o-relay-proxy">Harness Relay Proxy</a> you
+    need to change the default URL.</p><p>To do this, import the following URL helper
+    functions:</p><pre>from featureflags.config import with_base_url<br/>from featureflags.config
+    import with_events_url</pre><p></p><p>Then pass them with the new URLs when creating
+    your client.</p><pre>    client = CfClient(api_key,<br/>                      with_base_url(&#34;https://config.feature-flags.uat.harness.io/api/1.0&#34;),<br/>                      with_events_url(&#34;https://event.feature-flags.uat.harness.io/api/1.0&#34;))</pre><h4>Use
+    our public API methods</h4><p>Our Public API exposes the following methods that
+    you can use:</p><pre>async initialize(apiKey: string, config: CfConfiguration,
+    target:CfTarget)</pre><p></p><pre>boolVariation(evalutionId: string, defaultValue?:
+    boolean)</pre><p></p><pre>stringVariation(evalutionId: string, defaultValue?:string)</pre><p></p><pre>numberVariation(evalutionId:
+    string, defaultValue?:number)</pre><p></p><pre>jsonVariation(evalutionId: string,
+    defaultValue: any)</pre><p></p><pre>registerEventsListener(listener: (type: string,
+    flags: any) =&gt; void)</pre><p></p><pre>unregisterListener(listener: (type: string,
+    flags: any) =&gt; void)</pre><p></p><pre>destroy()</pre><p></p><h3>Sample code
+    for a React application</h3><p>Here is a sample code for using Harness Feature
+    Flag SDKs with a React Native application. To learn more about using the sample
+    React application, go to the <a href="https://github.com/harness/ff-react-native-client-sdk"
+    target="_blank">React Native SDK GitHub repository</a>.</p><pre>import cfClientInstance,
+    {CfConfiguration, CfTarget} from &#39;@harnessio/ff-react-native-client-sdk&#39;;<br/><br/>export
+    default function App() {<br/>  const flagName = &#39;harnessappdemodarkmode&#39;;<br/><br/>  const
+    [client, setClient] = useState(null);<br/>  const [flagValue, setFlagValue] =
+    useState(null);<br/><br/>  async function initializeClient() {<br/>    let cfClient
+    = cfClientInstance;<br/>    let cfConfig = new CfConfiguration();<br/>    cfConfig.streamEnabled
+    = true;<br/><br/>    const cfTarget = new CfTarget();<br/>    cfTarget.identifier
+    = &#39;Harness RN Sample App&#39;<br/><br/>    const apiKey = &#34;your-client-sdk-key&#34;;<br/><br/>    try
+    {<br/>      await cfClientInstance.initialize(apiKey, cfConfig, cfTarget);<br/>    }
+    catch (err) {<br/>      console.log(err);<br/>    }<br/>    setClient(cfClient);<br/>  }<br/><br/>  async
+    function evalFlag() {<br/>    let res = await client.boolVariation(flagName, false);<br/>    setFlagValue(res.value);<br/>  }<br/><br/>  useEffect(()
+    =&gt; {<br/>    if (client == null) {<br/>      initializeClient();<br/>    }
+    else {<br/>      evalFlag();<br/>    }<br/>  });<br/><br/>  return (<br/>    &lt;View
+    style={styles.container}&gt;<br/>      &lt;Text&gt;<br/>        Feature flag &#39;{flagName}&#39;
+    is {JSON.stringify(flagValue)}<br/>      &lt;/Text&gt;<br/>    &lt;/View&gt;<br/>  );<br/>}<br/><br/>const
+    styles = StyleSheet.create({<br/>  container: {<br/>    flex: 1,<br/>    backgroundColor:
+    &#39;#fff&#39;,<br/>    alignItems: &#39;center&#39;,<br/>    justifyContent:
+    &#39;center&#39;,<br/>  },<br/>});</pre><p></p>'
+  slug: react-native-sdk-reference
+  tags:
+  - feature flag
+  - React Native
+  - SDK
+  is_live: true

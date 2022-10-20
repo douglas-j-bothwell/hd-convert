@@ -1,0 +1,119 @@
+type: article
+article_id: u29v1uc1mh
+user_id: znazf3hcp9
+category_id: qfj6m1k2c4
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Kubernetes Deployments Basics
+slug: kubernetes-deployments-overview
+description: The high-level steps involved in a Harness Kubernetes Deployment.
+short_version: The high-level steps involved in a Harness Kubernetes Deployment.
+tags:
+- Kubernetes Overview
+- Kubernetes CD
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-18T21:56:31.956217Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Kubernetes Deployments Basics
+  description: The high-level steps involved in a Harness Kubernetes Deployment.
+  short_version: The high-level steps involved in a Harness Kubernetes Deployment.
+  body: '<p>This topic describes the concept of a Harness Kubernetes deployment by
+    describing the high-level steps involved.</p><p>For a quick tutorial, see the
+    <a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes Deployment Tutorial</a>.</p><p>For
+    detailed instructions on using Kubernetes in Harness, see the <a href="https://ngdocs.harness.io/category/qfj6m1k2c4">Kubernetes
+    How-tos</a>.</p><h3>Before You Begin</h3><p>Before learning about, you should
+    have an understanding of the following:</p><ul><li><a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li></ul><h3>What Does Harness Need Before You Start?</h3><p>A
+    Harness Kubernetes deployment requires the following:</p><ol><li>Kubernetes manifests
+    and values YAML files.</li><li>Artifact, if not hardcoded in manifests or values
+    file. For example, a Docker image of NGINX from Docker Hub.</li><li>Kubernetes
+    cluster: You will need a target cluster for the Harness Delegate, your app, and
+    your Kubernetes workloads. Your cluster should have enough RAM to host the Delegate
+    and your apps and workloads.</li></ol><h3>What Does Harness Deploy?</h3><p>Harness
+    takes the artifacts and Kubernetes manifests you provide and deploys them to the
+    target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests.
+    You can provide manifests using remote sources and Helm charts.</p><h3>What is
+    a Workload in Harness?</h3><p>Harness deployments involve different strategies
+    and steps. These strategies and steps support different Kubernetes objects as
+    managed and unmanaged workloads.</p><p>See <a href="/article/efnlvytc6l-what-can-i-deploy-in-kubernetes">What
+    Can I Deploy in Kubernetes?</a> for details on each strategy and workload support.</p><p>The
+    following tables provide a useful summary.</p><h4>Managed Workloads Table</h4><p>In
+    Harness, a <strong>managed</strong> Kubernetes workload is a Kubernetes object
+    deployed and managed to steady state. If steady state is not reached, the deployment
+    is considered a failure and the Failure Strategy is executed (typically rollback).</p><p></p><table><tbody><tr><td><p></p></td><td><p><strong>Apply</strong></p></td><td><p><strong>Rolling</strong></p></td><td><p><strong>Rollback</strong></p></td><td><p><strong>Blue
+    Green</strong></p></td><td><p><strong>Canary</strong></p></td><td><p><strong>Scale</strong></p></td></tr><tr><td><p><strong>Deployment</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes:
+    1 Deployment or StatefulSet mandatory/allowed</p></td><td><p>Yes: 1 Deployment
+    or StatefulSet mandatory/allowed</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>StatefulSet</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes:
+    1 Deployment or StatefulSet mandatory/allowed</p></td><td><p>Yes: 1 Deployment
+    or StatefulSet mandatory/allowed</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>DaemonSet</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>No</p></td><td><p>No</p></td><td><p>Yes</p></td></tr><tr><td><p><strong>CRDs</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>No</p></td><td><p>No</p></td><td><p>No</p></td></tr><tr><td><p><strong>Any
+    Object</strong></p></td><td><p>Yes</p></td><td><p>No</p></td><td><p>No</p></td><td><p>No</p></td><td><p>No</p></td><td><p>No</p></td></tr></tbody></table><p></p><h4>Unmanaged
+    Workloads Table</h4><p>To deploy an object outside of the managed workloads in
+    any strategy, you use the Harness <a href="/article/u7h63vxg7z-kubernetes-annotations-and-labels">annotation</a> to
+    make it unmanaged: <code>harness.io/direct-apply: &#34;true&#34;|&#34;false&#34;</code>.
+    Set to <code>true</code> to make a manifest an unmanaged workload.</p><p>For example,
+    Harness Canary and Blue/Green steps support a single <strong>Deployment</strong>
+    <u>or</u> <strong>StatefulSet</strong> workload as a managed entity, but you can
+    deploy additional workloads as unmanaged using the <code>harness.io/direct-apply:true</code>
+    annotation.</p><p></p><table><tbody><tr><td><p></p></td><td><p><strong>Apply</strong></p></td><td><p><strong>Rolling</strong></p></td><td><p><strong>Rollback</strong></p></td><td><p><strong>Blue
+    Green</strong></p></td><td><p><strong>Canary</strong></p></td><td><p><strong>Scale</strong></p></td></tr><tr><td><p><strong>Any
+    Object</strong></p></td><td><p>Yes</p></td><td><p>Yes</p></td><td><p>No</p></td><td><p>Yes:
+    1 Deployment or StatefulSet mandatory/allowed</p></td><td><p>Yes: 1 Deployment
+    or StatefulSet mandatory/allowed</p></td><td><p>No</p></td></tr></tbody></table><p></p><p></p><h3>What
+    Does a Harness Kubernetes Deployment Involve?</h3><p>All the steps necessary can
+    be performed inline with creating your CD Pipeline. You can also set up resources
+    like Connectors in your Resources and then select them within your Pipeline.</p><p>The
+    following list describes the major steps of a Harness Kubernetes deployment. We
+    assume you have a <a href="/article/7fibxie636-projects-and-organizations">Harness
+    Project</a> set up.</p><p></p><table><tbody><tr><td><p><strong>Step</strong></p></td><td><p><strong>Name</strong></p></td><td><p><strong>Description
+    and Links</strong></p></td></tr><tr><td><p>1</p></td><td><p>Install the Harness
+    Kubernetes <strong>Delegate</strong> in your Kubernetes cluster. </p></td><td><p>Typically,
+    the Kubernetes Delegate is installed in the target cluster where you will deploy
+    your application(s).</p><p>See <a href="/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Kubernetes Delegate</a>.</p></td></tr><tr><td><p>2</p></td><td><p>Add Harness <strong>Connectors</strong>.</p></td><td><p>Add
+    a Harness <strong>Connector</strong> for you artifact repo and target cluster.</p><p>For
+    example, a Docker Registry Artifact Server that connects to the Docker registry
+    where your Docker images are located, or the public Docker Hub.</p><p>You can
+    connect to specific target cloud platforms hosting your cluster or simply make
+    a platform-agnostic connection to the cluster.</p><p>This can be done inline while
+    creating your Pipeline, or separately in your <strong>Resources</strong>.</p><p>See
+    <a href="/article/xxvnk67c5x-connect-to-an-artifact-repo">Connect to an Artifact
+    Repo</a> and <a href="/article/sjjik49xww-kubernetes-cluster-connector-settings-reference">Kubernetes
+    Cluster Connector Settings Reference</a>.</p></td></tr><tr><td><p>3</p></td><td><p>Define
+    the Harness <strong>Service</strong> using the Kubernetes Deployment Type.</p></td><td><p>Add
+    your Docker images and Kubernetes manifests and any config variables and files.</p><p>See
+    <a href="/article/4ifq51cp0i-add-artifacts-for-kubernetes-deployments">Add Container
+    Images for Kubernetes Deployments</a>.</p></td></tr><tr><td><p>6</p></td><td><p>Define
+    the Harness <strong>Environment</strong> and Infrastructure Definition for your
+    target Kubernetes clusters, and any overrides.</p></td><td><p>Using the Harness
+    Connector you set up, you can select the target Kubernetes cluster and namespace
+    for your deployment.</p><p>See <a href="/article/0ud2ut4vt2-define-your-kubernetes-target-infrastructure">Define
+    Your Kubernetes Target Infrastructure</a>.</p></td></tr><tr><td><p>7</p></td><td><p>Add
+    the Canary, Blue/Green, or Rollout steps to the Deploy stage.</p></td><td><p>The
+    stage deploys the artifact(s) and Kubernetes workloads defined in the Harness
+    Service to the cluster and namespace in the Infrastructure Definition.</p><p>See:</p><ul><li><a
+    href="/article/xsla71qg8t-create-a-kubernetes-rolling-deployment">Create a Kubernetes
+    Rolling Deployment</a></li><li><a href="/article/i5p4feil89-create-a-kubernetes-canary-deployment">Create
+    a Kubernetes Canary Deployment</a></li><li><a href="/article/mog5tnk5pi-create-a-kubernetes-blue-green-deployment">Create
+    a Kubernetes Blue/Green Deployment</a></li></ul></td></tr><tr><td><p>8</p></td><td><p>Deploy
+    the Pipeline.</p></td><td><p>Once you&#39;ve deployed a Pipeline, learn how to
+    improve your Kubernetes CD in <a href="https://ngdocs.harness.io/category/qfj6m1k2c4">Kubernetes
+    How-tos</a>.</p></td></tr></tbody></table><h3>Next Steps</h3><p>Read the following
+    topics to build on what you&#39;ve learned:</p><ul><li><a href="/article/knunou9j30-kubernetes-cd-quickstart">Kubernetes
+    CD Quickstart</a> tutorial</li><li><a href="https://ngdocs.harness.io/category/qfj6m1k2c4">Kubernetes
+    How-tos</a></li></ul><p></p>'
+  slug: kubernetes-deployments-overview
+  tags:
+  - Kubernetes Overview
+  - Kubernetes CD
+  is_live: true

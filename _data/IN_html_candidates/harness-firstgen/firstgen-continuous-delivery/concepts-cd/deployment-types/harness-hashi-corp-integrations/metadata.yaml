@@ -1,0 +1,50 @@
+type: article
+article_id: 97wr4kz3ew
+user_id: mfr0nxh4be
+category_id: vbcmo6ltg7
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Harness HashiCorp Integrations
+slug: harness-hashi-corp-integrations
+description: 'This content is for Harness FirstGen. Switch to NextGen. Harness integrates
+  with the following HashiCorp offerings: HashiCorp Terraform. Terraform allows infrastructure
+  to be expressed as code in a s…'
+short_version: 'This content is for Harness FirstGen. Switch to NextGen. Harness integrates
+  with the following HashiCorp offerings: HashiCorp Terraform. Terraform allows infrastructure
+  to be expressed as code in a s…'
+tags:
+- vault
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-18T22:10:21.438163Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Harness HashiCorp Integrations
+  description: ""
+  short_version: ""
+  body: '<p></p><div class="tip-callout">This content is for Harness <a href="/article/1fjmm4by22">FirstGen</a>.
+    Switch to <a href="/article/1e536z41av">NextGen</a>.</div><p>Harness integrates
+    with the following HashiCorp offerings:</p><h3>HashiCorp Terraform</h3><p>Terraform
+    allows infrastructure to be expressed as code in a simple, human readable language.</p><p>Harness
+    allows you to use Terraform to provision deployment target infrastructure and
+    any other components supported by Terraform.</p><p>See: <a href="/category/gkm7rtubpk-terraform-category">Terraform
+    Infrastructure Provisioner</a>.</p><h3>HashiCorp Vault</h3><p>Vault secures, stores,
+    and tightly controls access to tokens, passwords, certificates, API keys, and
+    other secrets in modern computing.</p><p>Harness allows you to use HashiCorp Vault
+    as your Harness secrets manager. Managing all secrets used in your Harness account
+    and deployments.</p><p>See: <a href="/article/am3dmoxywy-add-a-hashi-corp-vault-secrets-manager">Add
+    a HashiCorp Vault Secrets Manager</a>, <a href="/article/ehovbje4p1-use-hashi-corp-vault-secrets-manager-api">Use
+    HashiCorp Vault Secrets Manager API</a>.</p><p></p>'
+  slug: harness-hashi-corp-integrations
+  tags:
+  - vault
+  is_live: true

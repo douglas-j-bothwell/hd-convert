@@ -1,0 +1,32 @@
+type: article
+article_id: lm8tucmb62
+user_id: aira2g6l6r
+category_id: y6gyszr0kl
+author:
+  name: Lavanya Mandavilli
+  profile_image: https://www.gravatar.com/avatar/63349f0ac17fcc0d20247e1cac23e461?d=mm&s=150
+title: DOC-1748 View the Delegates Used in a Deployment
+slug: doc-1748-view-the-delegates-used-in-a-deployment
+description: TBD
+short_version: TBD
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-04T13:52:38.078378Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DOC-1748 View the Delegates Used in a Deployment
+  description: ""
+  short_version: ""
+  body: <p>TBD</p>
+  slug: doc-1748-view-the-delegates-used-in-a-deployment
+  tags: []
+  is_live: true

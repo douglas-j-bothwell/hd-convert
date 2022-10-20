@@ -1,0 +1,127 @@
+type: article
+article_id: 77xsb39287
+user_id: mfr0nxh4be
+category_id: 236edhb63y
+author:
+  name: Michael Cretzman
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Manage Pipelines in Git Repos (Deprecated)
+slug: manage-harness-pipelines-in-git-repos
+description: Create Pipelines and resources and store their YAML files in your Git
+  repo's branches and folders.
+short_version: Create Pipelines and resources and store their YAML files in your Git
+  repo's branches and folders.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T22:02:30.778995Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Manage Pipelines in Git Repos (Deprecated)
+  description: Create Pipelines and resources and store their YAML files in your Git
+    repo's branches and folders.
+  short_version: Create Pipelines and resources and store their YAML files in your
+    Git repo's branches and folders.
+  body: '<div class="note-callout">This version of Harness Git Experience has been
+    deprecated. To try out the latest version of Git Experience, see Harness Git Experience
+    Quickstart.​​</div><p>Once you have <a href="/article/hzajxmb3oj-enable-git-experience-in-a-project">enabled
+    Harness Git Experience</a> in your Project, you can create Pipelines and resources
+    and store their YAML files in your Git repo&#39;s branches and folders. Git is
+    the single source of truth. The Pipelines and resources are stored in the repo
+    first, and then synced with Harness.</p><p>This topic provides an example of adding
+    a Pipeline and storing it in the Git repo set up in the Harness Git Experience
+    for the Project. The process is the same for other resources.</p><p>In this topic:</p><ul><li><a
+    href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#limitations">Limitations</a></li><li><a
+    href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#visual_summary">Visual
+    Summary</a></li><li><a href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#step_1_create_the_pipeline">Step
+    1: Create the Pipeline</a></li><li><a href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#step_2_save_pipeline_to_git">Step
+    2: Save Pipeline to Git</a></li><li><a href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#step_3_view_the_pipeline_in_git">Step
+    3: View the Pipeline in Git</a></li><li><a href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#step_4_view_the_pipeline_in_git_experience">Step
+    4: View the Pipeline in Git Experience</a></li><li><a href="https://ngdocs.harness.io/article/77xsb39287-manage-harness-pipelines-in-git-repos#see_also">See
+    Also</a></li></ul><h3>Before You Begin</h3><p>Make sure that you&#39;ve added
+    a Source Code Manager (SCM) and enabled Harness Git Experience in your Project.</p><ul><li><a
+    href="/article/dm69dkv34g-harness-git-experience-quickstart">Harness Git Experience
+    Quickstart</a></li><li><a href="/article/p92awqts2x-add-source-code-managers">Add
+    Source Code Managers</a></li><li><a href="/article/hzajxmb3oj-enable-git-experience-in-a-project">Enable
+    Git Experience in a Project</a></li></ul><p></p><h3>Limitations</h3><p>Do not
+    enable Harness Git Experience on a Project that already has Pipelines and resources.
+    You must enable Harness Git Experience on a new Project when you first create
+    the Project.</p><p>This is a temporary limitation.</p><h3>Step 1: Create the Pipeline</h3><p>You
+    can&#39;t save Pipelines to Git until you have added a SCM to your Harness account
+    and enabled Harness Git Experience in your Project.</p><ul><li><a href="/article/p92awqts2x-add-source-code-managers">Add
+    Source Code Managers</a></li><li><a href="/article/hzajxmb3oj-enable-git-experience-in-a-project">Enable
+    Git Experience in a Project</a></li></ul><p>In your Harness Project, click <strong>Builds</strong>.
+    If you don&#39;t have the <strong>Builds</strong> module, use another module.</p><p>In
+    <strong>Builds</strong>, click <strong>Pipelines</strong>.</p><p>At the top of
+    the page is <strong>All Repositories</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/77xsb39287/1623969465388/clean-shot-2021-06-17-at-15-37-38.png"/></figure><p>You
+    select the repo and branch here to display the Pipelines stored in them. It does
+    not affect the repo and branch where you create a new Pipeline. You will select
+    that repo and branch in the <strong>Create New Pipeline</strong> settings next.</p><p>Click
+    <strong>+Pipelines</strong> to create a new Pipeline. The <strong>Create New Pipeline</strong>
+    settings appear.</p><p>Give the Pipeline a name such as <strong>Example</strong>.</p><p>In
+    <strong>Git Repository Details</strong>, select the repo and branch where you
+    want to store the Pipeline YAML file in. You will select a folder in that repo
+    and branch later.</p><p>Click <strong>Start</strong>.</p><p>We&#39;re simply demonstrating
+    Harness Git Experience so we&#39;ll create a very simple Pipeline.</p><p>Click
+    <strong>Add Stage</strong> and then click <strong>Build</strong>.</p><p>In <strong>About
+    Your Stage</strong>, enter the name <strong>helloworld</strong>.</p><p>Disable
+    <strong>Clone Codebase</strong>.</p><p>Click <strong>Set Up Stage</strong>.</p><p>Next,
+    you can just paste the following YAML into the Pipeline to create a very simple
+    Pipeline.</p><p>Click <strong>YAML</strong> and then paste in the follow YAML.</p><pre>pipeline:<br/>    name:
+    Example<br/>    identifier: Example<br/>    projectIdentifier: GitExp_Doc_Example<br/>    orgIdentifier:
+    default<br/>    tags: {}<br/>    stages:<br/>        - stage:<br/>              name:
+    helloworld<br/>              identifier: helloworld<br/>              description:
+    &#34;&#34;<br/>              type: CI<br/>              spec:<br/>                  cloneCodebase:
+    true<br/>                  execution:<br/>                      steps:<br/>                          -
+    step:<br/>                                type: Run<br/>                                name:
+    example<br/>                                identifier: example<br/>                                spec:<br/>                                    connectorRef:
+    &lt;+input&gt;<br/>                                    image: &lt;+input&gt;<br/>                                    command:
+    echo &#34;hello world&#34;<br/>                                    privileged:
+    false<br/>                  serviceDependencies: []<br/>                  infrastructure:<br/>                      type:
+    KubernetesDirect<br/>                      spec:<br/>                          connectorRef:
+    &lt;+input&gt;<br/>                          namespace: default</pre><p></p><p>Replace
+    <code>projectIdentifier: GitExp_Doc_Example</code> with identifier of your Project.</p><p>You
+    can see the Project ID right after <code>projects</code> in the URL of the page:</p><p><code>https://app.harness.io/.../projects/GitExp_Doc_Example/...</code></p><p>Click
+    <strong>Save</strong>.</p><p>The Pipeline is ready. Now we can save it to Git.</p><h3>Step
+    2: Save Pipeline to Git</h3><p>When you click <strong>Save</strong>, the <strong>Save
+    Pipelines to Git</strong> settings appear.</p><p>In <strong>Harness Folder</strong>,
+    select one of the folders set up in the Project&#39;s Git Experience settings.
+    See <a href="/article/hzajxmb3oj-enable-git-experience-in-a-project">Enable Git
+    Experience in a Project</a>.</p><p>The YAML file for the Pipeline will be saved
+    to this folder. But you can add subfolders in <strong>File Path</strong>.</p><p>In
+    <strong>File Path</strong>, enter a name for the YAML file, such as <code>Example.yaml</code>.
+    Harness will generate one automatically from the Pipeline name, but you can add
+    your own.</p><p>To enter a subfolder of the Harness Folder you selected, enter
+    the folder name in front of the file name like <code>mybuilds/Example.yaml</code>.</p><p>In
+    this example, we use <code>mybuilds/Example.yaml</code>.</p><p>In <strong>Commit
+    Details</strong>, enter a message.</p><p>In <strong>Select Branch to Commit</strong>,
+    commit to an existing or new branch.</p><ul><li><strong>Existing branch:</strong>
+    you can start a pull request if you like.</li><li><strong>New branch:</strong>
+    enter the new branch name. You can start a pull request if you like.</li></ul><p>Here&#39;s
+    a simple example:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/77xsb39287/1623972190240/clean-shot-2021-06-17-at-16-23-01.png"/></figure><p>Click
+    <strong>Save</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/77xsb39287/1623973042485/clean-shot-2021-06-17-at-16-37-14.png"/></figure><p>The
+    Pipeline is saved to the repo branch and folder.</p><h3>Step 3: View the Pipeline
+    in Git</h3><p>In your Git repo, locate the branch, folder, and file.</p><p>Harness
+    created a <strong>.harness</strong> folder under the folder you selected in <strong>Harness
+    Folder.</strong></p><p>If you added a folder to <strong>File Path</strong>, open
+    that folder.</p><p>Click the YAML file for your Pipeline. The YAML is displayed.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/77xsb39287/1623973191351/clean-shot-2021-06-17-at-16-39-31.png"/></figure><h3>Step
+    4: View the Pipeline in Git Experience</h3><p>In your Harness Project, click <strong>Project
+    Setup</strong>, and then click <strong>Git Management</strong>.</p><p>In <strong>Git
+    Management</strong>, click <strong>Entities</strong>.</p><p>In <strong>Entities
+    by repositories</strong>, expand the Project name.</p><p>The Pipeline is listed
+    along with its file path in the repo.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/77xsb39287/1623973642993/clean-shot-2021-06-17-at-16-47-11.png"/></figure><p>Now
+    you have a Pipeline stored in Git.</p><h3>See Also</h3><p>See <a href="/article/soavr3jh0i-git-experience-how-tos">Git
+    Experience How-tos</a>.</p><p></p>'
+  slug: manage-harness-pipelines-in-git-repos
+  tags: []
+  is_live: true

@@ -1,0 +1,177 @@
+type: article
+article_id: gvbaldmib5
+user_id: 2te4j9f9g7
+category_id: m8tm1mgn2g
+author:
+  name: Rashmi Nanda Sahoo
+  profile_image: https://www.gravatar.com/avatar/b7bfd905f8714099535f2ff657fa3975?d=mm&s=150
+title: Create a Pipeline Template
+slug: create-pipeline-template
+description: This quickstart walks you through the steps to create a Pipeline Template.
+short_version: This quickstart walks you through the steps to create a Pipeline Template.
+tags:
+- 'Template '
+- Pipeline Template
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-07-06T22:07:12.811823Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Create a Pipeline Template
+  description: This quickstart walks you through the steps to create a Pipeline Template.
+  short_version: This quickstart walks you through the steps to create a Pipeline
+    Template.
+  body: '<p>Harness Templates let you standardize builds for all your services and
+    distribute them across teams. Simply put, Templates are reusable builds with a
+    common configuration that conforms to organizational standards, making maintenance
+    easier and less prone to errors.</p><p>A Pipeline Template lets you distribute
+    reusable pipelines across your team or among multiple teams. Instead of building
+    pipelines from scratch, Pipeline templates simplify the process by having parameters
+    already built-in.</p><p>For example, you can automate your build and deploy services
+    by adding a Pipeline Template. You can link the following Templates to your Pipeline
+    Template:</p><ul><li>Build stage - To push the artifact to the registry, run tests,
+    and security scans.</li><li>Staging deploy stage - To deploy to Dev, QA.</li><li>Approval
+    stage - To add approval stages for PROD.</li><li>Prod deploy stage - To deploy
+    to Production.</li></ul><p>This topic walks you through the steps to create a
+    Pipeline Template.</p><h3>Before You Begin</h3><ul><li>Review <a href="/article/6tl8zyxeol-template">Templates
+    Overview</a> to understand different concepts of Templates.</li><li>Review <a
+    href="/article/yaornnqh0z-permissions-reference#sort=relevancy&amp;f:@commonsource=[NextGen%20Docs]">Permissions
+    Reference</a> to know about the permissions required to create a Template at various
+    scopes.</li><li>Review <a href="/category/kncngmy17o-pipelines">Pipelines and
+    Stages</a>.</li></ul><h3>Limitations</h3><p>Failure strategy and notification
+    settings can only be provided when you create a Template.</p><h3>Review: Permissions
+    Requirements</h3><p>You need Create/Edit, Delete, and Access permissions on Templates
+    to create a Pipeline Template. See <a href="/article/yaornnqh0z-permissions-reference#sort=relevancy&amp;f:@commonsource=[NextGen%20Docs]">Permissions
+    Reference</a>.</p><h3>Review: Pipeline Template Scope</h3><p>You can add Templates
+    at any <a href="https://ngdocs.harness.io/article/vz5cq0nfg2-rbac-in-harness">scope</a>
+    in Harness.</p><p>The following table shows what it means to add Templates at
+    different scopes or hierarchies:</p><table><tbody><tr><td><p><strong>Scope</strong></p></td><td><p><strong>When
+    to add Templates?</strong></p></td></tr><tr><td><p><strong>Account</strong></p></td><td><p>To
+    share Step/Stage/Pipeline Templates with users in the Account, as well as users
+    within the Organizations and Projects created within this Account.</p></td></tr><tr><td><p><strong>Organization</strong></p></td><td><p>To
+    share Step/Stage/Pipeline Templates with users in the Organization as well as
+    within the Projects created within the Org.</p></td></tr><tr><td><p><strong>Project</strong></p></td><td><p>To
+    share Step/Stage/Pipeline Templates with users within the Project.</p></td></tr></tbody></table><h3>Visual
+    Summary</h3><p>Here is a quick overview of Pipeline Templates:</p><ul><li>You
+    can add a Pipeline Template to Account, Org, or Project <a href="/article/vz5cq0nfg2-rbac-in-harness#rbac_scope">scope</a>.</li><li>You
+    can either link an existing Stage Template or add a stage to your Pipeline Template.</li><li>For
+    any new step that you add to your Pipeline stage, you can either link to a Step
+    Template or add a step.</li></ul><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651813660132/screenshot-2022-05-06-at-9-52-56-am.png"
+    style="max-height:70%;max-width:70%" data-hd-height="70%" data-hd-width="70%"/></figure><h3
+    id="undefined">Step 1: Add a Template</h3><p>First, we&#39;ll create a Project-level
+    Template in the Deployments module. You can do this in any Project.</p><p>Navigate
+    to the <strong>Deployments</strong> module and in <strong>Projects</strong> select
+    the desired project.</p><p>Select <strong>Templates</strong> under Project Setup.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1650611348609/screenshot-2022-04-22-at-12-38-54-pm.png"
+    style="max-height:20%;max-width:20%" data-hd-height="20%" data-hd-width="20%"/></figure><p>In
+    <strong>Templates</strong>, click <strong>New Template</strong>.</p><p>Select <strong>Pipeline</strong> to
+    create a Pipeline Template<strong>.</strong></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1650612133079/screenshot-2022-04-22-at-12-51-59-pm.png"
+    style="max-height:25%;max-width:25%" data-hd-height="25%" data-hd-width="25%"/></figure><p>The <strong>Create
+    New Pipeline Template</strong> settings appear.</p><p>In <strong>Name</strong>,
+    enter a name for the Pipeline. For example Quickstart.</p><p>In <strong>Version
+    Label</strong>, enter the version of the stage. For example v1. <a href="/article/6tl8zyxeol-template">Versioning</a>
+    a Template enables you to create a new Template without modifying the existing
+    one. For more information, see Versioning.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651167142596/screenshot-2022-04-28-at-11-01-36-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><div
+    class="note-callout">You&#39;ll see the Git Repository Details option only if
+    you&#39;re creating a Template on a Git-enabled Project. For more information
+    on Git Sync, see <a href="/article/utikdyxgfz-harness-git-experience-overview">Harness
+    Git Sync</a>.</div><p>In <strong>Git Repository Details</strong>, in <strong>Repository
+    Display Name</strong>, select your Git repository and Branch.</p><p>Once you&#39;ve
+    entered all the details, click <strong>Continue</strong>.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651167069614/screenshot-2022-04-28-at-11-00-54-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    2: Add a Stage</h3><p>Click <strong>Add Stage</strong>. The <strong>Select Stage
+    Type</strong> settings appear.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651163768510/screenshot-2022-04-28-at-10-04-00-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>Select
+    <strong>Deploy</strong>. The Deploy stage type is a CD Stage that enables you
+    to deploy any Service to your target environment.</p><div class="note-callout">You
+    can also select Build for CI, and Approval for Manual and Jira Approval Stages.
+    More options will be added soon. This document uses the Deploy stage type.</div><p></p><p>The
+    <strong>About Your Stage</strong> settings appear.</p><p>In <strong>Stage Name</strong>,
+    enter a name for your Stage.</p><p>Select the entity that this stage should deploy.
+    Currently, for Deploy, only Service can be deployed and it is selected by default.</p><p>Click
+    <strong>Set Up Stage</strong>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651160187454/screenshot-2022-04-28-at-9-06-08-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h3>Step
+    3: Add Service Details</h3><p>In <strong>About the Service</strong>, select the
+    Service that you want to deploy from the <strong>Specify Service</strong> drop-down
+    list. You can also use <a href="/article/f6yobn7iq0-runtime-inputs">Fixed Values,
+    Runtime Inputs, and Expressions</a>.</p><div class="note-callout"><strong>Use
+    Runtime Inputs instead of variable expressions:</strong> when you update Template
+    settings in a Stage or step Template, use <a href="/article/f6yobn7iq0-runtime-inputs">Runtime
+    Inputs</a> instead of variable expressions. When Harness tries to resolve variable
+    expressions to specific Stage-level settings using fully-qualified names, it can
+    cause issues at runtime. Every Pipeline where the Stage or step Template is inserted
+    must use the same names for fully-qualified name references to operate. With Runtime
+    Inputs, you can supply values for a setting at deployment runtime.</div><p>In
+    <strong>Service Definition</strong>, select the <strong>Deployment Type</strong>.
+    Deployment Type defines how your Service will be deployed.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651163892683/screenshot-2022-04-28-at-10-08-00-pm.png"
+    style="max-height:30%;max-width:30%" data-hd-height="30%" data-hd-width="30%"/></figure><p></p><h3>Step
+    4: Add Infrastructure Details</h3><p>In <strong>Infrastructure</strong>, in <strong>Specify
+    Environment</strong>, select the setting for your Pipeline execution, for example,
+    <strong>Runtime input</strong>. Harness Pipelines allow you to use <a href="/article/f6yobn7iq0-runtime-inputs">Fixed
+    Values, Runtime Inputs, and Expressions</a>. Environments represent your deployment
+    targets logically (QA, Prod, etc). You can add the same Environment to as many
+    stages as you need.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651164570536/screenshot-2022-04-28-at-10-14-44-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>In
+    <strong>Infrastructure Definition</strong>, select the method for Harness to reach
+    your Kubernetes Cluster. Infrastructure Definitions represent the physical infrastructure
+    of the Environment. They are the actual clusters, hosts, etc. For example, the
+    target Infrastructure Definition for a Kubernetes deployment. By separating Environments
+    and Infrastructure Definitions, you can use the same Environment in multiple stages
+    while changing the target infrastructure settings with each stage.</p><p>In <strong>Cluster
+    Details</strong>, enter <strong>Connector</strong> and <strong>Namespace</strong>
+    details. Harness Pipelines allow you to use <a href="/article/f6yobn7iq0-runtime-inputs">Fixed
+    Values, Runtime Inputs, and Expressions</a> also.</p><p>In <strong>Connector</strong>,
+    select a Connector from the drop-down list. To create a new Connector, see <a
+    href="/article/sjjik49xww-kubernetes-cluster-connector-settings-reference">Kubernetes
+    Cluster Connector Settings Reference</a> and <a href="/article/1gaud2efd4-add-a-kubernetes-cluster-connector">Add
+    a Kubernetes Cluster Connector</a>.</p><p>In <strong>Namespace</strong>, enter
+    the namespace. For example, default.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651166000392/screenshot-2022-04-28-at-10-39-30-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Click
+    <strong>Next</strong>. The <strong>Execution Strategies</strong> settings appear.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1650614503356/screenshot-2022-04-22-at-1-31-21-pm.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure><h3>Step
+    5: Define Execution Strategies</h3><p>In <strong>Execution Strategies</strong>,
+    select the deployment strategy for your Pipeline Template. We&#39;ve used <strong>Rolling</strong>
+    in this document. For more information on different execution strategies, see
+    <a href="/article/0zsf97lo3c-deployment-concepts">Deployment Concepts and Strategies</a>.</p><p>Click
+    <strong>Use Strategy</strong>.</p><p>Click <strong>Save</strong>. The Pipeline
+    Template is published successfully.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1651167276961/screenshot-2022-04-28-at-11-04-17-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>If
+    you&#39;re using a Project which is Git-enabled, you need to provide <strong>Save
+    Template to Git</strong> settings.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1650614943145/screenshot-2022-04-22-at-1-38-51-pm.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>In
+    <strong>Harness Folder</strong>, enter the name of the folder in your repo where
+    you want to sync. The Harness Folder is the default folder in the repository where
+    you are syncing your Project.</p><p>In <strong>File Path</strong>, enter a name
+    for the YAML file. For example, enter<code>Example.yaml</code>. Harness will generate
+    one automatically from the Pipeline name, but you can add your own.</p><p>In <strong>Commit
+    message</strong>, enter a message for the commit that adds this Connector.</p><p>Click
+    <strong>Save</strong>, and click <strong>Save</strong> again. You can save the
+    Pipeline in two ways:</p><ul><li>As new version</li><li>As a new Template</li></ul><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1650615457207/screenshot-2022-04-22-at-1-46-37-pm.png"
+    style="max-height:40%;max-width:40%" data-hd-height="40%" data-hd-width="40%"/></figure><p>Click
+    <strong>Save as new Template</strong>.</p><p><strong>Save as new Template</strong>
+    settings appear.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/gvbaldmib5/1650615620731/screenshot-2022-04-22-at-1-49-46-pm.png"
+    style="max-height:60%;max-width:60%" data-hd-height="60%" data-hd-width="60%"/></figure><p>Click
+    <strong>Continue</strong>. The Template is published successfully.</p><h3>Next
+    Step</h3><ul><li><a href="/article/1re7pz9bj8-use-a-template">Use a Template</a></li></ul><h3>See
+    Also</h3><ul><li><a href="/article/99y1227h13-run-step-template-quickstart">Create
+    a Step Template</a></li><li><a href="/article/zh49vfdy0a-harness-template-library">Create
+    an HTTP Step Template</a></li><li><a href="/article/s3wrqjsg43-add-a-stage-template">Create
+    a Stage Template</a></li></ul><p></p>'
+  slug: create-pipeline-template
+  tags:
+  - 'Template '
+  - Pipeline Template
+  is_live: true
