@@ -10,8 +10,9 @@ brew link node@16
 brew link --overwrite node@16
 brew switch
 
-#Run 
+#Run
 #https://github.com/facebook/docusaurus/issues/2848
+git clone https://github.com/harness/developer-hub.git
 
 cd developer-hub
 
