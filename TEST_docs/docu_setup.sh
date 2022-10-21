@@ -12,7 +12,9 @@ brew switch
 
 #Run 
 #https://github.com/facebook/docusaurus/issues/2848
+# https://github.com/harness/developer-hub.git
 
+git clone https://github.com/harness/developer-hub.git
 cd developer-hub
 
 #Install Yarn
