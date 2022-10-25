@@ -41,8 +41,7 @@ def addImageRefsFromMarkdownFile(mdFileName, imageURLsDict):
             # print('imageURL ', imageURLsDict[imageURL], 'in file ', mdFileName, 'imageURL added to list ', imageURLsDict[imageURL])
     return imageURLsDict
             
-# imageURLdict = yaml.safe_load(rd)
-# print(imageURLdict)
+
 imageURLsDict = {}
 
 for mdFilename in glob.iglob(_markdownFilesRoot + '**/**', recursive=True):
