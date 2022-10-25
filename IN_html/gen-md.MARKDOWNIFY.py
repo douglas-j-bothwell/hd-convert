@@ -17,9 +17,9 @@ import yaml
 # pip3 install markdownify
 # pip3 install pyyaml
 
-_htmlSourceRoot  = '.'
+_htmlSourceRoot  = './'
 _mdfTargetRoot = '../OUT_markdown/MODULE_NAME/' 
-_domFileName = '/.._data/_dom.LATEST.html'
+_domFileName = '../_data/_dom.LATEST.html'
 
 topicIDlist = []
 topicsPublished = 0

@@ -7,6 +7,14 @@ import glob
 import yaml
 import pprint
 
+# _topicLinkRE = re.compile('\((.*\/article\/[^)]*)\)')
+_topicLinkRE = re.compile('\((https:\/\/n?g?docs.harness.io\/article\/|/article\/).*?\)')
+# _topicLinkURL_RE = re.compile('\(https:\/\/n?g?docs.harness.io\/article\/.*?\)')
+# _topicLinkArticle_RE = re.compile('\(\/article\/.*?\)')
+_categoryLinkRE = re.compile('\((https:\/\/n?g?docs.harness.io\/category\/|/category\/).*?\)')
+# _topicCategoryURL_RE = re.compile('\(\/category\/.*?\.*?\)')
+
+
 '''
 https://regex101.com/
 test strings:
@@ -19,21 +27,16 @@ Since this example application is React, we can leverage the [JavaScript Feature
 (/article/ltt65r6k39-set-up-cost-visibility-for-kubernetes), [AWS](/article/80vbt5jv0q-set-up-cost-visibility-for-aws), [GCP](/article/kxnsritjls-set-up-cost-visibility-for-gcp), and [Azure](/article/v682mz6qfd-set-up-cost-visibility-for-azure)
 '''
 
+_topicIDRE = re.compile('helpdocs_topic_id:.*$')
+_mdRoot = './docs/'
+_topicMap = {}
+
 '''
 (.*?\/article\/[^)]*?)\)
 (https://ngdocs.harness.io/article/e7yidxmtmj-add-azure-connector#before_you_begin)
 (/article/e7yidxmtmj)
 (https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) or a [Canary Deployment](https://www.infoworld.com/article/3644449/how-canary-releases-enable-continuous-deployment.html)
 '''
-
-_topicLinkRE = re.compile('\((https:\/\/n?g?docs.harness.io\/article\/|/article\/).*?\)')
-_categoryLinkRE = re.compile('\((https:\/\/n?g?docs.harness.io\/category\/|/category\/).*?\)')
-# _topicCategoryURL_RE = re.compile('\(\/category\/.*?\.*?\)')
-# _topicLinkRE = re.compile('\((.*\/article\/[^)]*)\)')
-
-_topicIDRE = re.compile('helpdocs_topic_id:.*$')
-_mdRoot = './docs/'
-_topicMap = {}
 
 def getTopicMap(mdFileName):
     topicMap = {}
@@ -63,6 +66,12 @@ def getTopicFromID(topicID):
         return _topicMap[topicID]
     return False        
 
+'''
+(.*?\/article\/[^)]*?)\)
+(https://ngdocs.harness.io/article/e7yidxmtmj-add-azure-connector#before_you_begin)
+(/article/e7yidxmtmj)
+(https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) or a [Canary Deployment](https://www.infoworld.com/article/3644449/how-canary-releases-enable-continuous-deployment.html)
+'''
 def getTopicFileFromURL(reMatch):
     # print("[DEBUG] Start URL string: ", reMatch)
     reMatchElements = reMatch.split("/article/")
@@ -71,7 +80,7 @@ def getTopicFileFromURL(reMatch):
         afterArticleString.strip(')')
         strList = afterArticleString.split('-')
         topicID = strList[0]
-        # print("[DEBUG] urlString to getTopicFromID:\t", topicID)
+        # print("{DEBUG] urlString to getTopicFromID:\t", topicID)
         topicFile = getTopicFromID(topicID)
         if topicFile != False: 
             return topicFile               
@@ -113,7 +122,7 @@ def updateLinksArticle(mdFileName):
                     line = line.replace(curLink, newLink)
                     print("[UPDATE_LINK_SUCCESS] Line ", idx, " updated:\t", line)
                     if urlPointsToSection(curLink):                     
-                         print("[WARNING1] Topic section removed from old link: ", curLink)
+                         print("[WARNING] Topic section removed from old link: ", curLink)
                     updated = True
                     # print('---------------------------------------------------------')
                  else:
@@ -165,5 +174,5 @@ for mdFileName in glob.iglob(_mdRoot + '**/**', recursive=True):
         
 
 
-pp = pprint.PrettyPrinter(depth=4)
-pp.pprint(_topicMap)
+# pp = pprint.PrettyPrinter(depth=4)
+# pp.pprint(_topicMap)
