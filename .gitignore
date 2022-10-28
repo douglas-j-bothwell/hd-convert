@@ -1,1 +1,6 @@
 _scratch/
+IN_html
+OUT_markdown
+STAGE_docs
+_data
+_logs
