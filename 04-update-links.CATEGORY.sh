@@ -9,6 +9,6 @@ cd ./STAGE_docs/
 
 rm ../_logs/update-links.log
 echo "Starting python script: " 
-python3 update-links.DEV.py > ../_logs/update-links.log
-echo "python script ended, images updated."
+python3 update-links.CATEGORY.py > ../_logs/update-links.CATEGORY.log
+echo "python script ended, links updated."
 echo "========================================"
