@@ -9,6 +9,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install node
 
+brew install python3
 pip3 install markdownify
 pip3 install pyyaml
 
