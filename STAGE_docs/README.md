@@ -19,7 +19,10 @@ Workaround: In this case, I needed to download the files and update the links ma
 The image link in the markdown file must be followed by a whitespace or a newline
 In some cases, an image link will include the filename in the URL text section, so the image link is essentially repeated. For example: 
 
+```
 [![](https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610059179870/image.png)](https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610059179870/image.png
+```
+
 In this case, remove the filename in the text section so that the link appears like this:
 
 ![](https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610059179870/imag
