@@ -1,0 +1,84 @@
+type: article
+article_id: 5w7wbq3vok
+user_id: xwmdbyp4x8
+category_id: 4xo13zdnfx
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: Group CI Steps Using Step Groups
+slug: group-ci-steps-using-step-groups
+description: Add CI steps to Pipelines individually or as a step group. Steps in a
+  step group can be run serially or in parallel.
+short_version: Add CI steps to Pipelines individually or as a step group. Steps in
+  a step group can be run serially or in parallel.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-08-02T13:21:05.071161Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Group CI Steps Using Step Groups
+  description: Add CI steps to Pipelines individually or as a step group. Steps in
+    a step group can be run serially or in parallel.
+  short_version: Add CI steps to Pipelines individually or as a step group. Steps
+    in a step group can be run serially or in parallel.
+  body: '<p>You can add Steps to Pipelines individually or as a Step Group. You can
+    run Steps and Step Groups serially or in parallel. Unlike individual steps, a
+    step group can apply Conditional Execution (skip conditions) and Failure Strategy
+    to all steps in the group.</p><p>One key use case for Step Groups is to speed
+    up Pipelines that include a lot of tests. This is one of the <a href="https://docs.harness.io/article/g3m7pjq79y"
+    target="_blank">available methods</a> you can use to speed up your CI Pipelines.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1657563608718/example-groups.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></figure><h3>Important
+    Notes</h3><ul><li>Steps running in parallel cannot reference output data from
+    each other, since the data might not be available. A Step can reference outputs
+    only from other Steps that have already finished running.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1659044944227/example-flow-data.png"/></figure></li><li>You
+    cannot include a Step Group inside another Step Group, but you can arrange Steps
+    within a Group to run serially or in parallel.</li><li>You can run multiple Step
+    Groups in parallel.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1659051055336/example-step-groups-parallel.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></figure></li></ul><h3>Parallel
+    Steps, Step Groups, and Resource Consumption</h3><p>You should carefully consider
+    how a Pipeline reserves resources for Steps that run in parallel. The Pipeline
+    reserves memory and CPU resources in advance for each Stage. The amount of memory
+    and CPU reserved is determined by the highest utilization at any point in the
+    stage.</p><p>Consider the following Pipeline. In this case, the maximum consumption
+    takes place when Step Group 1 is running. Given this, the Pipeline reserves 1700Mi
+    of memory and 1200m of CPU. If the build infrastructure cannot reserve enough
+    resources, the Pipeline fails.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/5w7wbq3vok/1659048956597/example-resource-usage.png"/></figure><p></p><h3>Step
+    1: Add and Name the Step Group</h3><ul><li>In your stage, in <strong>Execution</strong>,
+    click <strong>Add Step</strong> and then click <strong>Step Group</strong>.</li></ul><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631557621484/clean-shot-2021-09-13-at-11-26-49.png"/></figure><ul><li>Enter
+    a name for the step group.</li></ul><h3>Step 2: Add Steps to the Step Group</h3><ul><li>Once
+    the step group is added, in its <strong>Execution</strong> section, in the new
+    step group, click <strong>Add Step</strong>.</li><li>Add any step and configure
+    its <strong>Advanced</strong> settings.</li></ul><p>A step&#39;s <strong>Advanced</strong>
+    settings override the <strong>Advanced</strong> settings of the step group.</p><h3>Option:
+    Conditional Execution</h3><p>A Step Group can have its own Conditional Execution
+    settings separate from the Stage settings. The Conditional Execution settings
+    of the step group apply to all of its steps. See <a href="/article/i36ibenkq2-step-skip-condition-settings">Step
+    Skip Condition Settings</a>.</p><p>The Conditional Execution settings of any step
+    in a step group override the settings of the Step Group itself.</p><p>If a Step
+    Group has no Conditional Execution settings defined, the Pipeline uses the Stage
+    settings.</p><h3>Option: Step Group Failure Strategy</h3><p>A Step Group can have
+    its own Failure Strategy separate from the Stage strategy.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631748494318/clean-shot-2021-09-15-at-16-28-05.png"/></figure><p>See
+    <a href="/article/htrur23poj-step-failure-strategy-settings" target="_blank">Step
+    Failure Strategy Settings</a>.</p><p>The Failure Strategy of any step in a step
+    group overrides the Failure Strategy of the step group.</p><p>If you do not use
+    a step group Failure Strategy, then the Stage&#39;s Failure Strategy is used.</p><h3>Referencing
+    Step Group Steps and Fields</h3><p>You reference steps in step groups using the
+    step group Id.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ihnuhrtxe3/1631747551695/clean-shot-2021-09-15-at-16-12-12.png"/></figure><p>The
+    FQN format is:</p><p><code>&lt;+execution.steps.&lt;</code><em><code>step-group-name</code></em><code>&gt;.steps.&lt;</code><em><code>step-name</code></em><code>&gt;.&lt;</code><em><code>field-name</code></em><code>&gt;</code></p><p>For
+    example, to reference the output variable in a Step that&#39;s a member of a Step
+    Group, the FQN would be:</p><p><code>&lt;+execution.steps.myStepGroup.steps.runStep1.output.outputVariables.outvariable1&gt;</code></p><p></p>'
+  slug: group-ci-steps-using-step-groups
+  tags: []
+  is_live: true

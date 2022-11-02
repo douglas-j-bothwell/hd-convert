@@ -1,0 +1,45 @@
+type: article
+article_id: gv6zctvy4c
+user_id: c5pqxi9gu9
+category_id: 4xo13zdnfx
+author:
+  name: Manish Jaiswal
+  email: manish.jaiswal@harness.io
+  profile_image: https://www.gravatar.com/avatar/a690002c3812e556fec2f79f91e5715e?d=mm&s=150
+title: CI Cluster Requirements
+slug: ci-cluster-requirement
+description: The resources required for the Kubernetes cluster depend on the number
+  of builds running in parallel, as well as the resources required for each build.
+  Below is a rough estimation of the resources re…
+short_version: The resources required for the Kubernetes cluster depend on the number
+  of builds running in parallel, as well as the resources required for each build.
+  Below is a rough estimation of the resources re…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-05-05T01:17:46.656644Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CI Cluster Requirements
+  description: ""
+  short_version: ""
+  body: <p>The resources required for the Kubernetes cluster depend on the number
+    of builds running in parallel, as well as the resources required for each build.</p><p>Below
+    is a rough estimation of the resources required, based on the number of daily
+    builds:</p><table><tbody><tr><td><p><strong>PRs/Day</strong></p></td><td><p><strong>Nodes
+    with 4 CPU, 8GB RAM,100GB disk</strong></p></td><td><p><strong>Nodes with 8 CPU,
+    16GB RAM, 200GB disk</strong></p></td></tr><tr><td><p>100</p></td><td><p>19 -
+    26</p></td><td><p>11 - 15</p></td></tr><tr><td><p>500</p></td><td><p>87 - 121</p></td><td><p>45
+    - 62</p></td></tr><tr><td><p>1000</p></td><td><p>172 - 239</p></td><td><p>89 -
+    123</p></td></tr></tbody></table><p></p><p></p>
+  slug: ci-cluster-requirement
+  tags: []
+  is_live: true

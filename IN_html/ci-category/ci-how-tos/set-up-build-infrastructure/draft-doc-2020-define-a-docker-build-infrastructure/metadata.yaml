@@ -1,0 +1,65 @@
+type: article
+article_id: xd8u17be5h
+user_id: xwmdbyp4x8
+category_id: rg8mrhqm95
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: DRAFT DOC-2020 Define a Docker Build Infrastructure
+slug: draft-doc-2020-define-a-docker-build-infrastructure
+description: You can define a CI build infrastructure on any Linux, MacOS, or Windows
+  host. This is the simplest build infrastructure to set up, and is well-suited for
+  developers who want to run builds on a local…
+short_version: You can define a CI build infrastructure on any Linux, MacOS, or Windows
+  host. This is the simplest build infrastructure to set up, and is well-suited for
+  developers who want to run builds on a local…
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-10-17T18:06:25.809619Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DRAFT DOC-2020 Define a Docker Build Infrastructure
+  description: ""
+  short_version: ""
+  body: '<p>You can define a CI build infrastructure on any Linux, MacOS, or Windows
+    host. This is the simplest build infrastructure to set up, and is well-suited
+    for developers who want to run builds on a local host such as a laptop.</p><h4>Important
+    Notes</h4><ul><li>The Docker Delegate has the following system requirements:<ul><li>Default
+    0.5 CPU.</li><li>Default 1.5GB. Ensure that you provide the minimum memory for
+    the Delegate and enough memory for the host/node system.</li></ul></li><li>You
+    need to download and install a Drone runner in addition to the delegate.</li><li>The
+    Docker delegate is bound by the total amount of memory and CPU on the local host.
+    If you run multiple builds and the host runs out of CPU or memory, some builds
+    will time out and fail. </li></ul><h3>Installing the Delegate </h3><ol><li>in
+    the Harness UI, go to the screen that corresponds to the scope of your delegate:
+    <strong>Account Settings,</strong> <strong>Account Settings &gt; Organizations</strong>,
+    or <strong>Project Setup</strong>. </li><li>Click <strong>New Delegate</strong>,
+    then select <strong>Docker</strong> for the delegate type and click <strong>Continue</strong>.
+    </li><li>Enter a delegate name and click <strong>Continue</strong>. </li><li>Download
+    the <strong>docker-compose.yml</strong> file that appears. </li><li>Update the
+    docker-compose.yml file as follows:<ol><li>For <code>DELEGATE TAGS=</code>, specify
+    one of the following: <code>macos-amd64</code> | <code>windows-amd64</code> | <code>linux-amd64</code></li><li><em>MacOS
+    only —</em> Add this setting to the <code>environment</code> list:<br/><code>-
+    RUNNER_URL=</code><a href="http://host.docker.internal:3000/" target="_blank"><code>http://host.docker.internal:3000</code></a></li><li><em>Linux
+    only —</em> Add the following line immediately after <code>restart: unless-stopped</code><br/><code>network_mode:
+    &#34;host&#34;</code></li></ol></li><li>To start the delegate, cd to the folder
+    where you downloaded the docker-compose file and then enter:<br/> <code>docker-compose
+    up -d</code></li><li>Download a Drone Runner executable from <a href="https://github.com/harness/drone-docker-runner/releases"
+    target="_blank">ttps://github.com/harness/drone-docker-runner/releases</a> .</li><li>Enable
+    execution permissions for the Runner. For example, on MacOS you can run the command  <code>sudo</code>
+    <code>chmod +x</code> <code>drone-docker-runner-darwin-amd64</code>.</li><li>Start
+    the runner binary. In Linux, you need to run as sudo.<ol><li>On MacOS, run <code>./drone-docker-runner-darwin-amd64
+    server &amp;</code></li></ol></li></ol><p></p>'
+  slug: draft-doc-2020-define-a-docker-build-infrastructure
+  tags: []
+  is_live: true

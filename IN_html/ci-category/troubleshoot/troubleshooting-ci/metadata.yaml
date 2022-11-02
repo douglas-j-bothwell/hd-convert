@@ -1,0 +1,47 @@
+type: article
+article_id: jx7ew69ypa
+user_id: c5pqxi9gu9
+category_id: 99m8m1s55y
+author:
+  name: Manish Jaiswal
+  email: manish.jaiswal@harness.io
+  profile_image: https://www.gravatar.com/avatar/a690002c3812e556fec2f79f91e5715e?d=mm&s=150
+title: Troubleshooting Continuous Integration (CI)
+slug: troubleshooting-ci
+description: This topic contains general troubleshooting information for error messages
+  and other issues that can arise. If you cannot find a resolution, please contact
+  Harness Support or Harness Community Forum.…
+short_version: This topic contains general troubleshooting information for error messages
+  and other issues that can arise. If you cannot find a resolution, please contact
+  Harness Support or Harness Community Forum.…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2021-08-24T16:32:25.488087Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Troubleshooting Continuous Integration (CI)
+  description: ""
+  short_version: ""
+  body: <p>This topic contains general troubleshooting information for error messages
+    and other issues that can arise.</p><div class="note-callout">If you cannot find
+    a resolution, please contact <a href="mailto:support@harness.io">Harness Support</a> or <a
+    href="https://community.harness.io/" target="_blank">Harness Community Forum</a>.</div><p>In
+    this topic, you will find help with the following:</p><ul><li><a href="https://ngdocs.harness.io/article/jx7ew69ypa/preview#test_suites">Test
+    Suites</a></li></ul><h3>Test Suites</h3><p>The following issues can occur when
+    parsing test suites in Harness CI.</p><h4>Test suites wrongly parsed</h4><p>The
+    parsed Test report in the Test tab comes strictly from the JUnit reports provided.
+    It is important to adhere to the standard format to improve test suite parsing.
+    </p><p>Refer to the standard <a href="https://llg.cubic.org/docs/junit/">JUnit
+    format</a>.</p>
+  slug: troubleshooting-ci
+  tags: []
+  is_live: true

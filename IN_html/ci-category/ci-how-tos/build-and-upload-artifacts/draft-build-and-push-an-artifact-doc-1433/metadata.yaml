@@ -1,0 +1,147 @@
+type: article
+article_id: vpecs3k6y3
+user_id: xwmdbyp4x8
+category_id: mi8eo3qwxm
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: DRAFT Build and Push an Artifact DOC-1433
+slug: draft-build-and-push-an-artifact-doc-1433
+description: 'Once you''ve defined a build farm in the CI stage''s Infrastructure,
+  you can add a Build and Push step to build your codebase and push the artifact to
+  a repo. For setting up a build farm, see: Set Up B…'
+short_version: 'Once you''ve defined a build farm in the CI stage''s Infrastructure,
+  you can add a Build and Push step to build your codebase and push the artifact to
+  a repo. For setting up a build farm, see: Set Up B…'
+tags: []
+show_toc: false
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-04-26T17:55:55.099613Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DRAFT Build and Push an Artifact DOC-1433
+  description: ""
+  short_version: ""
+  body: '<p>Once you&#39;ve defined a build farm in the CI stage&#39;s Infrastructure,
+    you can add a Build and Push step to build your codebase and push the artifact
+    to a repo.</p><p>For setting up a build farm, see: <a href="/category/rg8mrhqm95-set-up-build-infrastructure">Set
+    Up Build Infrastructure</a>.</p><p>This topic describes a simple one-step build
+    workflow, minus testing: build the code in a build farm and then push it to a
+    repo. For a quick summary of a build, push, and test Pipeline, see <a href="/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a>.</p><p>For details about each build and push step, see
+    <a href="/category/4xo13zdnfx-ci-technical-reference">CI Technical Reference</a>.</p><p>In
+    this topic:</p><ul><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#before_you_begin">Before
+    You Begin</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#visual_summary">Visual
+    Summary</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#step_1_create_the_ci_stage">Step
+    1: Create the CI Stage</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#step_2_add_the_codebase">Step
+    2: Add the Codebase</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#step_3_define_the_build_farm_infrastructure">Step
+    3: Define the Build Farm Infrastructure</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#step_4_add_the_build_and_push_step">Step
+    4: Add the Build and Push Step</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#option_add_a_tag_using_harness_expression">Option:
+    Add a Tag using Harness Expression</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#step_5_specify_codebase_branch_or_tag_at_pipeline_execution">Step
+    5: Specify Codebase Branch or Tag at Pipeline Execution</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#step_6_view_the_results">Step
+    6: View the Results</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#configure_as_code">Configure
+    As Code</a></li><li><a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#see_also">See
+    Also</a></li></ul><h3>Before You Begin</h3><p>You should be familiar with the
+    following:</p><ul><li><a href="/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></li><li><a href="/article/yn4x8vzw3q-ci-stage-settings">CI
+    Stage Settings</a></li><li><a href="/category/rg8mrhqm95-set-up-build-infrastructure">Set
+    Up Build Infrastructure</a></li><li><a href="/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li></ul><h3>Visual Summary</h3><p>Here&#39;s a
+    short video showing how to set up a Build and Push step.</p><p></p><div class="hd--embed"
+    data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/v3A4kF1Upqo/hqdefault.jpg"><iframe
+    width="200" height="150" src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+    gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><h3>Step 1: Create
+    the CI Stage</h3><p>In your Harness Pipeline, click <strong>Add Stage</strong>,
+    and then click <strong>CI</strong>.</p><h3>Step 2: Add the Codebase</h3><p>Do
+    one of the following:</p><ul><li>If this is the first CI stage in the Pipeline,
+    in the CI stage settings, enable <strong>Clone Codebase</strong>.</li><li>If you
+    have an existing Pipeline with a CI stage, click <strong>Codebase</strong>.</li></ul><p>In
+    <strong>Connector</strong>, select an existing Connector to your codebase repo,
+    or create a new one. See <a href="/category/xyexvcc206-ref-source-repo-provider">Code
+    Repo Connectors</a>.</p><p>You can see the URL for the repo account below <strong>Repository
+    Name</strong>. Don&#39;t add the URL into <strong>Repository Name</strong>.</p><p>In
+    <strong>Repository Name</strong>, enter the name of the repo containing the codebase.</p><p>For
+    example, if the account URL is <strong>https://github.com/mycompany</strong> and
+    the repo in that account is <strong>myapp</strong>, you would just enter <strong>myapp</strong>
+    in <strong>Repository Name</strong>.</p><p>You specify the codebase repo here,
+    but you enter the Git branch or tag when you deploy the Pipeline.</p><h3>Step
+    3: Define the Build Farm Infrastructure</h3><p>In the CI stage <strong>Infrastructure</strong>,
+    define the build farm for the codebase.</p><p>The following example uses a Kubernetes
+    cluster build farm.</p><p>In <strong>Select a Kubernetes Cluster</strong>, select,
+    or create, a Kubernetes Connector. See <a href="/article/sjjik49xww-kubernetes-cluster-connector-settings-reference">Kubernetes
+    Cluster Connector Settings Reference</a>.</p><p>This Connector connects Harness
+    to the cluster to use as the build farm.</p><p>In <strong>Namespace</strong>,
+    enter the Kubernetes namespace to use.</p><p>You can use a Runtime Input (<code>&lt;+input&gt;</code>)
+    or expression also. See <a href="/article/f6yobn7iq0-runtime-inputs">Runtime Inputs</a>.</p><p>See
+    <a href="/article/x7aedul8qs-kubernetes-cluster-build-infrastructure-setup">Define
+    Kubernetes Cluster Build Infrastructure</a>.</p><h3>Step 4: Add the Build and
+    Push Step</h3><p>In the stage&#39;s <strong>Execution</strong>, add a Build and
+    Push step.</p><p>For the step settings, see the following topics:</p><ul><li><a
+    href="/article/q6fr5bj63w-build-and-push-to-docker-hub-step-settings" target="_blank">Build
+    and Push an Image to Docker Registry Step Settings</a></li><li><a href="/article/66ykcm0sf0-build-and-push-to-gcr-step-settings">Build
+    and Push to GCR Step Settings</a></li><li><a href="/article/aiqbxaef15-build-and-push-to-ecr-step-settings">Build
+    and Push to ECR Step Settings</a></li></ul><p>For all Build and Push steps, you
+    select or create a Connector for the target repo, add repo-specific information,
+    and specify Dockerfile information.</p><h3>Option: Add a Tag using Harness Expression</h3><p>When
+    you push the image to a repo, you tag the image so you can identify it later.</p><p>For
+    example, in one stage you push the image, and in a future stage you pull it using
+    its name and tag so you can run integration tests on it.</p><p>You can tag the
+    image in any way, but a Harness expression can be very useful.</p><p>Let&#39;s
+    look at an example:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613427471797/image.png"/></figure><p>The <code>&lt;+pipeline.sequenceId&gt;</code> tags
+    this image in future stages. For example, <code>harnessdev/ciquickstart:&lt;+pipeline.sequenceId&gt;</code>.</p><p>In
+    the <a href="/article/vo4sjbd09g-configure-service-dependency-step-settings">Configure
+    Service Dependency</a> step in a future stage, you identify the image location
+    using <code>&lt;+pipeline.sequenceId&gt;</code>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613427622397/image.png"/></figure><p>The <code>&lt;+pipeline.sequenceId&gt;</code> is
+    a built-in Harness variable that represents the <strong>Build ID</strong> number,
+    for example <code>Build ID: 9</code>.</p><p>After the Pipeline runs you&#39;ll
+    see a Build ID:</p><figure><a href="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611614713927/image.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1611614713927/image.png"/></a></figure><p>And
+    this Build ID tags the image you push in one stage of your Pipeline, and pull
+    in the image in future stages of your Pipeline.</p><p>You&#39;ll also see the
+    ID as the tag on the image in your repo:</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613430740639/image.png"/></figure><p></p><h3>Step
+    5: Specify Codebase Branch or Tag at Pipeline Execution</h3><p>Once you click
+    <strong>Run Pipeline</strong>, provide the Git branch or tag to use for the execution.</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613428672695/image.png"/></figure><p>Enter
+    the branch or tag and click <strong>Run Pipeline</strong>.</p><h3>Step 6: View
+    the Results</h3><p>You can see the logs for the Build and Push step in the Pipeline
+    as it runs.</p><p>Here&#39;s an example that pushes to a Docker repository:</p><pre>/kaniko/executor
+    --dockerfile=Dockerfile --context=dir://. --destination=cretzman/ciquickstart:13<br/><br/>Retrieving
+    image manifest alpine:3.12        <br/>Retrieving image alpine:3.12                 <br/>Retrieving
+    image manifest alpine:3.12        <br/>Retrieving image alpine:3.12                 <br/>Built
+    cross stage deps: map[]                <br/>Retrieving image manifest alpine:3.12        <br/>Retrieving
+    image alpine:3.12                 <br/>Retrieving image manifest alpine:3.12        <br/>Retrieving
+    image alpine:3.12                 <br/>Executing 0 build triggers                   <br/>Unpacking
+    rootfs as cmd ADD go-sample-app /bin/ requires it. <br/>LABEL maintainer=&#34;John
+    Doe &lt;john.doe@example.com&gt;&#34; <br/>Applying label maintainer=John Doe
+    &lt;john.doe@example.com&gt; <br/>Using files from context: [/step-exec/workspace/go-sample-app]
+    <br/>ADD go-sample-app /bin/             <br/>Taking snapshot of files...                  <br/>ENTRYPOINT
+    [&#34;/bin/go-sample-app&#34;]</pre><p></p><p>On Docker Hub, you can see the image
+    that you pushed.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/8l31vtr4hi/1613430600476/image.png"/></figure><p>In
+    your Harness project&#39;s <strong>Builds</strong>, you can see the build listed.</p><h3>Configure
+    As Code</h3><p>Here&#39;s an example of the stage with a Build and Push step set
+    up:</p><pre>pipeline:<br/>  name: CI Quickstart<br/>  identifier: CI_Quickstart<br/>  properties:<br/>    ci:<br/>      codebase:<br/>        connectorRef:
+    account.CI_Quickstart<br/>        repoName: goHelloWorldServer<br/>        build:
+    &lt;+input&gt;<br/>  stages:<br/>    - stage:<br/>        name: Build Test and
+    Push<br/>        identifier: Build_Test_and_Push<br/>        type: CI<br/>        spec:<br/>          cloneCodebase:
+    true<br/>          execution:<br/>            steps:<br/>              - step:<br/>                  type:
+    BuildAndPushDockerRegistry<br/>                  name: Build and push image to
+    DockerHub<br/>                  identifier: Build_and_push_image_to_DockerHub<br/>                  spec:<br/>                    connectorRef:
+    account.Docker_Quickstart<br/>                    repo: cretzman/ciquickstart<br/>                    tags:<br/>                      -
+    &lt;+pipeline.sequenceId&gt;<br/>          infrastructure:<br/>            type:
+    KubernetesDirect<br/>            spec:<br/>              connectorRef: account.cidelegate<br/>              namespace:
+    harness-delegate-uat<br/>          serviceDependencies: []<br/>  projectIdentifier:
+    CI_Quickstart<br/>  orgIdentifier: default<br/></pre><p></p><h3>See Also</h3><ul><li><a
+    href="/article/1i1ttvftm4-run-step-settings">Run Step Settings</a></li></ul><p></p>'
+  slug: draft-build-and-push-an-artifact-doc-1433
+  tags: []
+  is_live: true

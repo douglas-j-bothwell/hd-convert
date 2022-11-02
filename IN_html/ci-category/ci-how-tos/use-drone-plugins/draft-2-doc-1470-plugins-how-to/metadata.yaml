@@ -1,0 +1,125 @@
+type: article
+article_id: qb73gci4kv
+user_id: xwmdbyp4x8
+category_id: ei5fgqxb0j
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: DRAFT2 DOC-1470 Plugins How-To
+slug: draft-2-doc-1470-plugins-how-to
+description: A plugin is a Docker container that performs a predefined task. Plugins
+  are essentially templated scripts that can be written in any programming language.
+  The Drone community maintains an extensive l…
+short_version: A plugin is a Docker container that performs a predefined task. Plugins
+  are essentially templated scripts that can be written in any programming language.
+  The Drone community maintains an extensive l…
+tags: []
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-03-30T12:43:41.113394Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DRAFT2 DOC-1470 Plugins How-To
+  description: ""
+  short_version: ""
+  body: '<p>A plugin is a Docker container that performs a predefined task. Plugins
+    are essentially templated scripts that can be written in any programming language.
+    The Drone community maintains an <a href="https://plugins.drone.io/" target="_blank">extensive
+    library</a> of plugins for specific CI workflows. You can customize and extend
+    your build processes using existing plugins or <a href="https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/"
+    target="_blank">write your own</a>.</p><p>This topic describes how to set up and
+    run plugins in your CI Pipelines.</p><h3>Before You Begin</h3><p>To install and
+    run a plugin, you need the following:</p><ul><li>A familiarity with basic Harness
+    CI concepts:<ul><li><a href="https://ngdocs.harness.io/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></li><li><a href="https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts">Learn
+    Harness&#39; Key Concepts</a></li></ul></li><li>A build infrastructure and Delegate
+    to run builds:<ul><li><a href="https://ngdocs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure">Set
+    Up Build Infrastructure</a></li><li><a href="https://ngdocs.harness.io/article/f9bd10b3nj-install-a-kubernetes-delegate">Install
+    a Kubernetes Delegate</a> <em>or</em> <a href="https://ngdocs.harness.io/article/cya29w2b99-install-a-docker-delegate">Install
+    a Docker Delegate</a></li></ul></li><li>A CI Pipeline with a Build Stage to run
+    the plugin:<ul><li><a href="https://ngdocs.harness.io/article/yn4x8vzw3q-ci-stage-settings">CI
+    Stage Settings</a></li></ul></li><li>You should create a text secret for any sensitive
+    information required by the plugin, such as a password or Personal Access Token.
+    You&#39;ll need to reference the secret ID when you set up the Plugin Step.<ul><li><a
+    href="https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets#add-and-reference-text-secrets">Add
+    and Use Text Secrets</a></li></ul></li></ul><h3>Workflow Description</h3><p>The
+    following steps describe the high-level workflow:</p><ol><li>Go to the Pipeline
+    and open the Build step where you want to run the plugin.</li><li>In the Execution
+    tab, click <strong>Add step</strong> and select <strong>Plugin</strong>.</li><li>Enter
+    the following:<ol><li><strong>Name:</strong> A unique, descriptive name.</li><li><strong>Container
+    Registry:</strong> A Connector to the image registry (such as Docker Hub) of the
+    plugin image.</li><li><strong>Image:</strong> The full image name, such as<code>dockerhubusername/my-plugin:2.3.1</code>.
+    The Step uses the latest image if you don&#39;t specify a tag.</li><li>Under Optional
+    Configuration &gt; Settings, add any other settings that are required as specified
+    in the docs for the specific plugin.</li></ol></li><li>Click <strong>Apply Changes</strong>
+    to apply your Stage settings, then <strong>Save</strong> to save the updated Pipeline</li><li>Run
+    the updated Pipeline and check the log output to verify that the Plugin Step works
+    as intended.</li></ol><h3>Simple Example: Download a File</h3><p>This example
+    describes how to run the Drone Downloads plugin, which downloads an archive to
+    your build infrastructure. You can use the following workflow to implement any
+    plugin.</p><ol><li>Go to the <a href="https://plugins.drone.io/">Drone Plugins
+    Hub</a> and read the description for the specific plugin. The description should
+    indicate the plugin image and the required settings.<br/>The <a href="https://plugins.drone.io/drone-plugins/drone-download/">Download
+    plugin doc</a> shows the image to use (<code>plugins/download</code>) and the
+    settings that the plugin supports: <code>source</code>, <code>destination</code>,
+    <code>username</code>, <code>password</code>, and so on.</li><li>Go to the Build
+    Stage in a CI Pipeline. In the Execute tab, add a <strong>Plugin</strong> step.</li><li>Configure
+    the Step as follows.</li></ol><ul><li><strong>Name:</strong> A unique, descriptive
+    name.</li><li><strong>Container Registry:</strong> A Connector to Docker Hub.</li><li><strong>Image:</strong>
+    The plugin image --in this case, <code>plugins/download</code></li><li>Under Optional
+    Configuration, add the following settings:<ul><li><code>source</code> = The artifact
+    to download.</li><li><code>destination</code> = Save the downloaded artifact to
+    this file.</li><li><code>username</code> = A valid username for the Git provider.</li><li><code>password</code>
+    = The ID of the text secret that contains the Git provider password, using the
+    convention described <a href="https://ngdocs.harness.io/article/osfw70e59c-add-use-text-secrets#step_3_reference_the_encrypted_text_by_identifier">here</a>.
+    For example: <code>&lt;+secrets.getValue(&#34;mygithubpersonalaccesstoken&#34;)&gt;</code><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/qb73gci4kv/1648505390017/plugin-config-basic-final.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure></li></ul></li></ul><ol><li
+    style="counter-increment:li 2" start="3">Click <strong>Apply Changes</strong>
+    to apply your Stage settings, then <strong>Save</strong> to save the updated Pipeline</li><li>Run
+    the updated Pipeline and check the log output to verify that the Plugin Step works
+    as intended.<figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qb73gci4kv/1648505703024/plugin-config-confirm-results.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure></li></ol><h3>Drone
+    Plugin YAML and CI Step YAML</h3><p>You can use the examples in <a href="https://plugins.drone.io/">Drone
+    plugin descriptions</a> to configure a Plugin Step in the Pipeline YAML editor.
+    The formats are slightly different, but close enough that translating Drone Plugin
+    definitions to Harness CI is fairly simple.</p><h4>Text Secrets in Drone vs. Harness
+    CI</h4><p>The following snippets illustrate the different ways that Drone and
+    Harness CI handle text secrets. The formats are slightly different, but close
+    enough that translating Drone Plugin definitions to Harness CI is fairly simple.
+    You can see additional examples in <a href="https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/">this
+    blog post</a>. </p><table><tbody><tr><td><p>Example from <a href="https://plugins.drone.io/drone-plugins/drone-download/">Drone
+    Download</a> description:</p><pre class="hljs yaml">steps:<br/>- name: download  <br/>  image:
+    plugins/download<br/>  settings:<br/>    username:<br/>     from_secret: username<br/>    password:<br/>      from_secret:
+    password<br/>    source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz                                  </pre></td><td><p></p></td></tr><tr><td><p>Equivalent
+    definition in Harness CI Pipeline. Note that this definition includes a few additional
+    fields and that some fields use different formats.</p><pre class="hljs yaml">  -
+    step:<br/>        type: Plugin<br/>        name: download-drone<br/>        identifier:
+    downloaddrone<br/>        spec:<br/>            connectorRef: mygithubconnector<br/>            image:
+    plugins/download<br/>            privileged: false<br/>            settings:<br/>                username:
+    &lt;+secrets.getValue(&#34;myusernamesecret&#34;)&gt;<br/>                password:
+    &lt;+secrets.getValue(&#34;mypasswordsecret&#34;)&gt;<br/>                source:
+    https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz</pre></td><td><p></p></td></tr></tbody></table><p></p><h4>Defining
+    Nested and List Setting</h4><p>You can specify nested and list settings in a Pipeline
+    YAML definition, as shown here. It&#39;s easier to define complex settings in
+    the YAML editor than the UI.</p><pre class="hljs yaml">settings:<br/>  mynestedsetting:<br/>    nextlevel:
+    <br/>      varname: 100<br/>  mylistsetting:<br/>   - itemone <br/>   - itemtwo</pre><p></p><p>The
+    settings appear in the UI like this:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qb73gci4kv/1648589152500/plugin-step-nested-settings.png"/></figure><h3>See
+    also</h3><ul><li><a href="https://plugins.drone.io/">Drone Community Plugins</a></li><li><a
+    href="/article/7kb90dkxw0-run-a-git-hub-action-in-cie" target="_blank">Run a GitHub
+    Action in CIE</a></li><li><a href="/article/8r5c3yvb8k-plugin-step-settings-reference"
+    target="_blank">Plugin Step Settings</a></li></ul><p></p>'
+  slug: draft-2-doc-1470-plugins-how-to
+  tags: []
+  is_live: true

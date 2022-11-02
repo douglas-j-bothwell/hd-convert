@@ -1,0 +1,91 @@
+type: article
+article_id: 66ykcm0sf0
+user_id: mfr0nxh4be
+category_id: 4xo13zdnfx
+author:
+  name: Michael Cretzman
+  email: michael.cretzman@harness.io
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: Build and Push to GCR Step Settings
+slug: build-and-push-to-gcr-step-settings
+description: This topic provides settings for the Build and Push to GCR Step, which
+  builds an image and pushes it to GCR. Requirements. This step assumes that the target
+  GCR registry meets the GCR requirements fo…
+short_version: This topic provides settings for the Build and Push to GCR Step, which
+  builds an image and pushes it to GCR. Requirements. This step assumes that the target
+  GCR registry meets the GCR requirements fo…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-05-04T21:54:03.109859Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Build and Push to GCR Step Settings
+  description: ""
+  short_version: ""
+  body: '<p>This topic provides settings for the Build and Push to GCR Step, which
+    builds an image and pushes it to GCR.</p><h3>Requirements</h3><p>This step assumes
+    that the target GCR registry meets the GCR requirements for pushing images. See
+    <a href="https://cloud.google.com/container-registry/docs/pushing-and-pulling"
+    target="_blank">Pushing and pulling images</a> from Google.</p><h3>Name</h3><p>The
+    unique name for this Connector.</p><h3>ID</h3><p>See <a href="/article/li0my8tcz3-entity-identifier-reference">Entity
+    Identifier Reference</a>.</p><h3>GCP Connector</h3><p>The Harness GCP Connector
+    to use to connect to GCR.  See <a href="/article/yykfduond6-gcs-connector-settings-reference">Google
+    Cloud Platform (GCP) Connector Settings Reference</a>.</p><h3>Host</h3><p>The
+    GCR registry hostname. For example, <code>us.gcr.io</code> hosts images in data
+    centers in the United States, in a separate storage bucket from images hosted
+    by <code>gcr.io</code>.</p><h3>Project ID</h3><p>The GCP <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects">Resource
+    Manager project ID</a>.</p><h3>Image Name</h3><p>The name of the image you want
+    to build.</p><h3>Tags</h3><p> <a href="https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t">Docker
+    build tag</a> (<code>-t</code>). Add each tag separately.</p><h3>Optional Configurations</h3><h4>Dockerfile</h4><p>The
+    name of the Dockerfile. If you don&#39;t provide a name, Harness assumes that
+    the Dockerfile is in the root folder of the codebase.</p><h4>Context</h4><p>Context
+    represents a directory containing a Dockerfile that kaniko uses to build your
+    image. For example, a<code>COPY</code> command in your Dockerfile should refer
+    to a file in the build context.</p><h4>Labels</h4><p> <a href="https://docs.docker.com/config/labels-custom-metadata/"
+    target="_blank">Docker object labels</a> to add metadata to the Docker image.</p><h4>Build
+    Arguments</h4><p>The <a href="https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg"
+    target="_blank">Docker build-time variables</a> (<code>--build-arg</code>).</p><figure><a
+    href="https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610058088594/image.png"><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/q6fr5bj63w/1610058088594/image.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></a></figure><h4>Target</h4><p>The
+    <a href="https://docs.docker.com/engine/reference/commandline/build/#specifying-target-build-stage---target"
+    target="_blank">Docker target build stage</a> (--target).</p><p>For example, <code>build-env</code>.</p><h4>Remote
+    Cache Image</h4><p>Harness enables remote Docker Layer Caching where each Docker
+    layer is uploaded as an image to a Docker repo you identify. If the same layer
+    is used in later builds, Harness downloads the layer from the Docker repo.</p><p>This
+    is different from other CI vendors that are limited to local caching and persistent
+    volumes.</p><p>You can also specify the same Docker repo for multiple Build and
+    Push steps, enabling them to share the same remote cache.</p><p>Remote Docker
+    Layer Caching can dramatically improve build time by sharing layers across Pipelines,
+    Stages, and steps.</p><p>Enter the name of the remote cache image (for example,
+    <code>gcr.io/project-id/&lt;image&gt;</code>).</p><div class="note-callout">The
+    Remote Cache Repository must be in the same account and organization as the build
+    image. For caching to work, the entered image name must exist.</div><h4>Run as
+    User</h4><p>Set the value to specify the user id for all processes in the pod,
+    running in containers. See <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod">Set
+    the security context for a pod</a>.</p><h4 id="undefined">Set container resources</h4><p>Maximum
+    resources limit values for the resources used by the container at runtime.</p><h5
+    id="undefined">Limit Memory</h5><p>Maximum memory that the container can use.
+    You can express memory as a plain integer or as a fixed-point number using the
+    suffixes <code>G</code> or <code>M</code>. You can also use the power-of-two equivalents <code>Gi</code> and <code>Mi</code>.</p><h5
+    id="undefined">Limit CPU</h5><p>The maximum number of cores that the container
+    can use. CPU limits are measured in cpu units. Fractional requests are allowed:
+    you can specify one hundred millicpu as <code>0.1</code> or <code>100m</code>.
+    See <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes"
+    target="_blank">Resource units in Kubernetes</a>.</p><h5 id="undefined">Timeout</h5><p>Timeout
+    for the step. Once the timeout is reached, the step fails, and the Pipeline execution
+    continues.</p><h3>See Also</h3><ul><li> <a href="/article/i36ibenkq2-step-skip-condition-settings">Step
+    Skip Condition Settings</a></li><li> <a href="/article/htrur23poj-step-failure-strategy-settings">Step
+    Failure Strategy Settings</a></li></ul><p></p><p></p>'
+  slug: build-and-push-to-gcr-step-settings
+  tags: []
+  is_live: true

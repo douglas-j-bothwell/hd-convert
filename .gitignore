@@ -1,7 +1,6 @@
 .DS_Store
 _scratch/
-IN_html
-OUT_markdown
-STAGE_docs
+OUT_markdown/MODULE_NAME
+STAGE_docs/docs
 _data
 _logs

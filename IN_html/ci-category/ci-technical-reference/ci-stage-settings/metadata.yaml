@@ -1,0 +1,175 @@
+type: article
+article_id: yn4x8vzw3q
+user_id: mfr0nxh4be
+category_id: 4xo13zdnfx
+author:
+  name: Michael Cretzman
+  email: michael.cretzman@harness.io
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: CI Build Stage Settings
+slug: ci-stage-settings
+description: This topic provides settings and permissions for a CI Build Stage. Permissions.
+  Role(s) required to create, retrieve, update, and delete data in Pipeline stage.
+  Project Admin, Project Member. Stage N…
+short_version: This topic provides settings and permissions for a CI Build Stage.
+  Permissions. Role(s) required to create, retrieve, update, and delete data in Pipeline
+  stage. Project Admin, Project Member. Stage N…
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-05-31T13:23:15.134187Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: CI Build Stage Settings
+  description: ""
+  short_version: ""
+  body: '<p>This topic provides settings and permissions for a CI Build Stage.</p><h3>Permissions</h3><p>Role(s)
+    required to create, retrieve, update, and delete data in Pipeline stage. Project
+    Admin, Project Member.</p><h3>Stage Name</h3><p>The unique name for this Stage.</p><h3>ID</h3><p>See
+    <a href="/article/li0my8tcz3-entity-identifier-reference">Entity Identifier Reference</a>.</p><h3>Description</h3><p>Text
+    string.</p><h3>Clone Codebase</h3><p>When you select this option, Harness automatically
+    clones your codebase repository before executing the steps of this stage.</p><p>No
+    special configuration is required.</p><p>If you don&#39;t select the option here,
+    you can select it in <strong>Stage Details</strong>.</p><h3>Configure Codebase</h3><p>These
+    settings specify the codebase for the Stage. See <a href="/article/6vks5ym7sq-edit-a-ci-pipeline-codebase-configuration"
+    target="_blank">Edit Codebase Configuration</a>.</p><h3>Connector</h3><p>A Harness
+    Connector that connects to the repository where the codebase is located.</p><h3>Repository
+    URL</h3><p>The full URL for the codebase.</p><h3>Stage Details</h3><p>The name
+    of the stage and the <strong>Clone Codebase</strong> option.</p><h4>Stage Name</h4><p>You
+    can edit the stage name.</p><h4>Description</h4><p>Text string.</p><h4>Tags</h4><p>See
+    <a href="/article/i8t053o0sq-tags-reference">Tags Reference</a>.</p><h4>Clone
+    Codebase</h4><p>Same as Clone Codebase above.</p><h3>Workspace</h3><p>Harness
+    automatically creates a temporary volume, known as your workspace, and clones
+    your codebase repository into this volume. The workspace is the current working
+    directory for each step in your Pipeline.</p><p>Enter a workspace volume, beginning
+    with a forward slash, such as <code>/vol</code>. If you enter <code>/vol</code>,
+    the workspace will be <code>/vol/harness</code>.</p><p>The workspace is ephemeral:
+    the Build creates the workspace when the Stage starts and destroys it when the
+    Stage ends.</p><p>Individual Steps can communicate and share state using the workspace
+    filesystem. The workspace is a volume, so filesystem changes persist across the
+    entire Stage.</p><h4>Share Paths</h4><p>You can add Shared Paths to share data
+    in folders outside the default workspace. For example, the maven <code>m2</code>
+    repo is stored in <code>/root/.m2</code> by default. If your Build Stage uses
+    Maven, you can specify the shared path<code>/root/.m2</code> so that all Steps
+    can access the repo.</p><h3>Variables</h3><p>Environment variables are available
+    to all steps in the stage. For an example use case, see <a href="https://ngdocs.harness.io/article/8l31vtr4hi-build-and-upload-an-artifact#option_build_a_docker_image_without_pushing">Option:
+    Build a Docker Image without Pushing</a>.</p><h3>Infrastructure</h3><div class="note-callout">This
+    functionality is limited temporarily to the platforms and settings you can see.
+    More functionality for this feature is coming soon.</div><p>Infrastructure is
+    where the build is run. It is a build farm. For example, a Kubernetes cluster.
+    The cluster uses a container to execute Run steps in the stage. See <a href="/article/1i1ttvftm4-run-step-settings">Run
+    Step Settings</a>.</p><h4>Kubernetes Cluster</h4><p>A Kubernetes cluster can be
+    used as a build farm. See <a href="/article/ia5dwx5ya8-set-up-a-kubernetes-cluster-build-infrastructure">Setting
+    up a Kubernetes Cluster Build Infrastructure</a>.</p><h4>Namespace</h4><p>The
+    Kubernetes namespace in the target cluster to use.</p><h4>Override Image Connector</h4><p>By
+    default, Harness pulls certain images from public Docker Hub repos that are needed
+    to run a build. You can override this by using a Connector that downloads these
+    images from the Harness Container Image Registry instead. This option is useful
+    when your default Delegate cannot access the public registry (due to security
+    policies in your organization, for example, or if your infrastructure is running
+    in a private cloud).</p><p>To override how the Build Stage pulls these images,
+    create a Connector as described in <a href="https://ngdocs.harness.io/article/my8n93rxnw">Connect
+    to Harness Container Image Registry Using Docker Connector</a>.</p><h3>Advanced</h3><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/yn4x8vzw3q/1633076205057/caa-89-e-18-4-b-79-4983-804-b-e-552-d-3356-c-0-f.png"
+    style="max-height:50%;max-width:50%;display:block;margin-left:0;margin-right:auto"
+    data-hd-height="50%" data-hd-width="50%" data-hd-align="left"/></figure><h4>Volumes</h4><p>A
+    list of the volumes you want to mount onto the pod running the Stage.</p><h5>Empty
+    Directory</h5><p>Mount a new <a href="https://kubernetes.io/docs/concepts/storage/volumes/#emptydir"
+    target="_blank"><code>emptyDir</code></a> volume that gets deleted when the Stage
+    finishes execution.</p><ul><li><strong>Mount Path:</strong> The volume path for
+    Step containers.</li><li><strong>Medium:</strong> The storage medium for the volume.
+    Leave blank to use the default medium for the host node, or enter <code>memory</code>
+    to mount a tmpfs (RAM-backed filesystem) on the host node.</li><li><strong>Size:</strong>
+    Maximum memory that the volume can use. You can express memory as a plain integer
+    or as a fixed-point number using the suffixes <code>G</code> or <code>M</code>.
+    You can also use the power-of-two equivalents <code>Gi</code> and <code>Mi</code>.
+    If not specified, the volume can use up to 50% of available memory on the host
+    node.</li></ul><h5>Host Path</h5><p>Mount a file or folder from the host node
+    filesystem.</p><div class="note-callout">It is good practice to avoid hostPath
+    volumes in most cases. See <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath"
+    target="_blank">hostPath</a> in the Kubernetes docs.</div><ul><li><strong>Mount
+    Path:</strong> The volume path for Step containers.</li><li><strong>Path:</strong>
+    The volume path on the host node.</li><li><strong>Path Type:</strong> To apply
+    a precheck on the specified path before mounting the volume, enter a supported
+    value such as <code>FileOrCreate</code>. Leave blank to skip any prechecks before
+    mounting.</li></ul><h5>Persistent Volume Claim</h5><p>Mount a <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/"
+    target="_blank">Persistent Volume</a> using a predefined Persistent Volume Claim.</p><ul><li><strong>Mount
+    Path:</strong> The volume path for Step containers.</li><li><strong>Claim Name:</strong>
+    Name of a PVC defined in your build infrastructure.</li><li><strong>Read Only:</strong>
+    Mount the volume in read-only mode.</li></ul><h4>Service Account Name</h4><p>The
+    Service Account for Step containers to use when communicating with the Kubernetes
+    API server. Leave blank to use the default service account for the namespace.</p><h4>Init
+    Timeout</h4><p>Timeout for the initialization phase. During this phase, Harness
+    downloads the build step images and spins up the containers to execute the build
+    steps.</p><h4>Annotations</h4><p>Kubernetes Annotation to the pod YAML used to
+    create the host pod for the Stage. See <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/">Annotation</a>.</p><h4>Labels</h4><p>Key/Value
+    pair that will be added to the Kubernetes pod YAM used to create the host pod
+    for the Stage. See <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/">Labels</a>.</p><h4>Automount
+    Service Account Token</h4><p>By default, Kubernetes mounts a token for the Service
+    Account when it creates a pod, which enables the pod to communicate with the Kubernetes
+    API server. When this option is disabled, the service account token will not get
+    mounted.</p><h4>Priority Class</h4><p>The <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass"
+    target="_blank"><code>PriorityClass</code></a> of the Stage pod in case resources
+    run out on the host node. Specify a PriorityClass from your build infrastructure.
+    You can also specify the predefined classes <code>system-cluster-critical</code> or <code>system-node-critical</code>,
+    which ensure that the Stage is always scheduled first.</p><p>If you leave this
+    field blank, the PriorityClass will be the <code>globalDefault</code> (if your
+    infrastructure has one defined) or 0, which is lowest priority.</p><h4>Container
+    Security Context</h4><p>Configure the <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
+    target="_blank">Security Context</a> for the Stage (pod) and Steps (containers):</p><ul><li><strong>Privileged:</strong>
+    Run all containers with the <a href="https://docs.docker.com/engine/reference/run/"
+    target="_blank"><code>--privileged</code></a> flag enabled. This flag is disabled
+    by default. You can override this setting in individual Run and Run Tests steps.</li><li><strong>Allow
+    Privilege Escalation:</strong> When enabled, a process can gain more privileges
+    than its parent process. This setting determines whether the <a href="https://kubernetes.io/docs/concepts/security/pod-security-policy/#privilege-escalation"
+    target="_blank"><code>no_new_privs</code></a> flag gets set on the container process.</li><li><strong>Add
+    Capabilities:</strong> The list of capabilities to add to each Step by default,
+    in addition to the runtime defaults. This field corresponds to the <a href="https://kubernetes.io/docs/concepts/security/pod-security-policy/#capabilities"
+    target="_blank"><code>DefaultAddCapabilities</code></a> option in Kubernetes.</li><li><strong>Drop
+    Capabilities:</strong> The list of capabilities that must be dropped from each
+    Step. This field corresponds to the <a href="https://kubernetes.io/docs/concepts/security/pod-security-policy/#capabilities"
+    target="_blank"><code>RequiredDropCapabilities</code></a> option in Kubernetes.</li><li><strong>Run
+    as Non-Root:</strong> Run all Steps as a non-root User. To specify a default User
+    Id for all containers, set the Run as User field.</li><li><strong>Read-Only Root
+    Filesystem:</strong> Run all Steps with a read-only root filesystem, with no writable
+    layer.</li><li><strong>Run as User:</strong> Run with this user Id for containers
+    in the pod. A typical example of a Run as User value would be 1000. To override
+    this default, set Run as User in individual Steps.</li></ul><h4>Node Selector</h4><p>A
+    list of <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector"
+    target="_blank"><code>nodeSelectors</code></a>, which whitelist the set of candidate
+    nodes based on your Stage pod requirements.</p><h4>Tolerations</h4><p>A list of
+    <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/"
+    target="_blank"><code>tolerations</code></a>, which allow (but do not require)
+    the pods to schedule onto nodes with matching taints.</p><h3>Execution</h3><p>The
+    Execution section is where you add the steps that are performed in this stage.</p><p>See
+    <a href="/category/4xo13zdnfx-ci-technical-reference">CI Technical Reference</a>.</p><h3>Build
+    Stage YAML Example</h3><p>Here&#39;s an example of a Build Stage definition taken
+    from a Pipeline YAML:</p><pre class="hljs yaml">        - stage:<br/>              name:
+    plugin-download-drone<br/>              identifier: plugindownloaddrone<br/>              type:
+    CI<br/>              spec:<br/>                  cloneCodebase: true<br/>                  infrastructure:<br/>                      type:
+    KubernetesDirect<br/>                      spec:<br/>                          connectorRef:
+    account.docexample<br/>                          namespace: default<br/>                          volumes:<br/>                              -
+    mountPath: /root/.m2<br/>                                type: EmptyDir<br/>                                spec:<br/>                                    medium:
+    &#34;&#34;<br/>                                    size: 10Gi<br/>                              -
+    mountPath: /var/run<br/>                                type: HostPath<br/>                                spec:<br/>                                    path:
+    /var/run<br/>                              - mountPath: /var/my-pv1<br/>                                type:
+    PersistentVolumeClaim<br/>                                spec:<br/>                                    claimName:
+    my-pv1<br/>                                    readOnly: true<br/>                          serviceAccountName:
+    myServiceAccountName<br/>                          automountServiceAccountToken:
+    true<br/>                          nodeSelector:<br/>                              kubernetes.io/os:
+    windows<br/>                          containerSecurityContext:<br/>                              capabilities:<br/>                                  drop:<br/>                                      -
+    ALL<br/>                  execution:<br/>                      steps:<br/></pre><h3>See
+    Also</h3><ul><li><a href="/category/4xo13zdnfx-ci-technical-reference">CI Technical
+    Reference</a></li><li><a href="/article/1i1ttvftm4-run-step-settings">Run Step
+    Settings</a></li></ul><p></p>'
+  slug: ci-stage-settings
+  tags: []
+  is_live: true

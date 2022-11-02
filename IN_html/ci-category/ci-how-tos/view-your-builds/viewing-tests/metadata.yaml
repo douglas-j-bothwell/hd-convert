@@ -1,0 +1,46 @@
+type: article
+article_id: sof7n3qjap
+user_id: mfr0nxh4be
+category_id: flam7377aq
+author:
+  name: Michael Cretzman
+  email: michael.cretzman@harness.io
+  profile_image: https://www.gravatar.com/avatar/2e8616837f4ee92be5d19ffe9b9ccba9?d=mm&s=150
+title: View Tests
+slug: viewing-tests
+description: When you run tests in your Pipeline using the Run and Run Tests Steps,
+  the Tests dashboard provides detailed test reporting. To publish test results, a
+  Run or Run Tests step must have its Report Path…
+short_version: When you run tests in your Pipeline using the Run and Run Tests Steps,
+  the Tests dashboard provides detailed test reporting. To publish test results, a
+  Run or Run Tests step must have its Report Path…
+tags: []
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2022-09-23T17:25:37.927469Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: View Tests
+  description: ""
+  short_version: ""
+  body: <p>When you run tests in your Pipeline using the <strong>Run</strong> and
+    <strong>Run Tests</strong> Steps, the <strong>Tests</strong> dashboard provides
+    detailed test reporting. </p><div class="note-callout">To publish test results,
+    a <a href="https://docs.harness.io/article/1i1ttvftm4#report_paths">Run</a> or
+    <a href="https://docs.harness.io/article/axzckflbt2#report_paths" target="_blank">Run
+    Tests</a> step must have its <strong>Report Paths</strong> variable set. Test
+    results are in JUnit format.</div><p>To view the dashboard, once a CI Pipeline
+    is executed, click <strong>Tests</strong>. </p><p><strong>Tests</strong> show
+    the overall summary of your test.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/sof7n3qjap/1625208024711/3-l-02-tnrlc-t-7-m-n-9-a-xo-dzo-wkty-myxo-5-h-97-juw-dph-5-bzd-1-j-8-ha-rqnb-5-uj-83-ac-hk-fen-1-gr-gwoirc-o-16-o-cl-3-k-k-qbtdvpfz-xfthk-onwqus-w-7-km-d-8-fnssjsv-lmc-inc-pb-lhsli-j-7-m-u"
+    style="max-height:80%;max-width:70%" data-hd-height="80%" data-hd-width="70%"/></figure><p></p>
+  slug: viewing-tests
+  tags: []
+  is_live: true

@@ -1,0 +1,156 @@
+type: article
+article_id: qr4h6kn6yd
+user_id: c5pqxi9gu9
+category_id: rp16qna22n
+author:
+  name: Manish Jaiswal
+  email: manish.jaiswal@harness.io
+  profile_image: https://www.gravatar.com/avatar/a690002c3812e556fec2f79f91e5715e?d=mm&s=150
+title: 'CI Enterprise Concepts: Old (Dont Delete)'
+slug: ci-enterprise-concepts
+description: Harness CI Enterprise (CIE) simplifies the development and testing of
+  code. In Harness Pipelines, you visually model your build and test processes as
+  CIE stages. Each stage includes steps for buildin…
+short_version: Harness CI Enterprise (CIE) simplifies the development and testing
+  of code. In Harness Pipelines, you visually model your build and test processes
+  as CIE stages. Each stage includes steps for buildin…
+tags: []
+show_toc: true
+is_private: false
+is_published: false
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: Article updated
+  source: API
+  triggered_at: 2021-09-27T10:25:17.022737Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: 'CI Enterprise Concepts: Old (Dont Delete)'
+  description: ""
+  short_version: ""
+  body: <p></p><p>Harness CI Enterprise (CIE) simplifies the development and testing
+    of code. In Harness Pipelines, you visually model your build and test processes
+    as CIE stages. Each stage includes steps for building, testing, and pushing your
+    code.</p><p>CIE executes steps as containers, packaging code, and dependencies
+    in isolation from other steps. You simply specify a container to use, and Harness
+    locates and launches the container in which the job will run. There is no longer
+    a dependency chain to manage with steps and plugins running in their own containers.</p><p>This
+    topic describes CIE concepts and provides a summary of the benefits of CIE.</p><p>In
+    this topic:</p><h3>Before You Begin</h3><p>Before learning about Harness CIE,
+    you should have an understanding of the following:</p><ul><li><a href="https://ngdocs.harness.io/article/hv2758ro4e-learn-harness-key-concepts">Harness
+    Key Concepts</a></li><li><a href="https://ngdocs.harness.io/article/j4nnt8jhby-drone-and-harness">Drone
+    and Harness</a></li></ul><h3>Visual Summary</h3><p>The following video walks you
+    through the Harness CI Enterprise.</p><p></p><div class="hd--embed" data-provider="Wistia"
+    data-thumbnail=""><iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true"
+    frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen=""
+    mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen=""
+    width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js"
+    async=""></script></div><p></p><h3>Overview</h3><p>Harness is a leading provider
+    of the Continuous Delivery-as-a-Service platform. Harness CIE extends this functionality
+    with Continuous Integration-as-a-Service. Harness CIE simplifies CI pipelines,
+    enabling you to model stages visually, and automates all processes of building
+    and testing software.</p><h3>Architecture</h3><p>Here&#39;s an example of an architecture
+    diagram of a Harness CIE setup: </p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qr4h6kn6yd/1632730840010/q-phq-g-447-y-ubt-id-06-hzlh-ex-kqm-60-ew-uhjza-8-sbi-xeyva-9-g-3-rz-v-6-klpc-ti-2-u-h-9-o-wg-0-xzz-4-heigzf-2-qf-fw-6-tyqy-piv-oulhv-h-ncq-k-2-onwbs-kdpbd-5-a-7-jz-5-dp-l-3-llj-2-rxt-vyvjj-u-s-0"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>The
+    Harness Delegate is at the center of all CI processes. The Delegate is a service
+    that runs in your environment, such as your local network, VPC, or cluster. The
+    Delegate connects all your code repos, artifacts, infrastructure, and cloud providers
+    with the <a href="https://ngdocs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview">Harness
+    Manager</a>. Most importantly, the Delegate performs all Harness CIE operations.</p><p>The
+    build farm has access to VCS (git), artifact repository to get dependencies for
+    building the artifacts. </p><p>The Delegate makes outbound connections to the
+    Harness Manager and receives your Pipeline&#39;s CIE operations to perform. </p><p>The
+    Delegate allocates resources on your build farm to run build jobs, and tests. </p><p>The
+    Delegate and the build farm send periodic status, logs, and metrics to Harness.
+    This information is used for DAG orchestration, debugging, health checks, analytics,
+    notifications, and ML model generation. </p><p>The build farm finally stores the
+    built docker images to your desired registry.</p><h3>Harness CIE Features</h3><h4>Test
+    Intelligence</h4><p>Test Intelligence (TI) reduces test time significantly by
+    running only the tests required to confirm the quality of the code changes that
+    triggered the build. TI selects tests that are needed to confirm the quality of
+    the code changes that triggered the build and ranks them in the best possible
+    order to increase the rate of fault detection. See <a href="https://newdocs.helpdocs.io/article/vtu9k1dsfa-test-intelligence-concepts">Test
+    Intelligence Overview</a>. </p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qr4h6kn6yd/1632730868502/uobh-xzoza-9-sbwf-1-dky-45-bqsnutdzxc-nk-akh-itd-zgp-rs-4-pgi-7-g-hxd-a-pziks-cm-4-wmr-ni-66-nxyb-xk-emd-m-u-0-zk-2-m-7-t-ugdk-p-1-w-pszdanb-gvfr-0-awhf-gj-90-uw-03-b-4-ru-844-q-ca-gvdl-u-s-0"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h4>Integrated
+    Platform</h4><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qr4h6kn6yd/1632730878824/7-t-5-wx-kzhan-o-7-xw-fa-zxa-gvhi-44-kuc-wqnn-oqos-cu-69-kg-a-6-sac-6-ho-y-217-z-3-tcl-xosmnpugk-jnsspa-xzbq-v-6-hhauwpt-bpi-onx-2-f-nbgc-9-ozhe-xprta-ypjzug-th-p-3-pqix-qnaap-d-3-lz-6-i-s-0"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>Harness
+    is seamlessly integrated with other Harness modules such as <a href="https://ngdocs.harness.io/article/0zsf97lo3c-deployment-concepts">Continuous
+    Delivery</a>, <a href="https://ngdocs.harness.io/category/7vy86n7cws-set-up-cloud-cost-management">Cloud
+    Cost Management</a>, and <a href="https://ngdocs.harness.io/article/7n9433hkc0-cf-feature-flag-overview">Feature
+    Flags</a>. You no longer have to navigate from application to application to follow
+    the steps of the pipeline. Harness platform offers unified CI/CD pipelines with
+    visual controls and approval gates.  </p><h4>Containerized Steps</h4><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/qr4h6kn6yd/1632730887605/vfe-liyhlsxle-b-682-ir-7-cc-1-dfj-izco-5-w-dmjrlkdnsq-ads-2-gnpk-r-4-jwj-q-6714-h-vpj-zpt-9-yi-8-n-2-xb-onu-wq-btlx-up-uet-twr-rmp-3-f-jfdv-ndng-2-z-6-i-we-snmxk-stmogw-a-qx-6-h-kfg-s-0"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><p>CI
+    Enterprise uses <a href="https://kubernetes.io/">Kubernetes</a> to run pipeline
+    steps as containers, making it language-agnostic. Containers are lightweight abstractions
+    of the host operating system that can package code and dependencies independently
+    of the steps. You can specify a container in the pipeline itself, and the agent
+    will fetch and start the container where the job runs. Because all of the steps
+    run in containers, and plugins have their own containers, you don&#39;t need to
+    worry about dependencies.</p><h4>Visual Pipeline Builder</h4><h2><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/qr4h6kn6yd/1632730895392/r-hyv-nm-10-t-6-hi-7-b-tkt-sg-2-kqyzk-ph-s-6-wjg-3-f-bo-ppyslx-eay-gxq-miz-9-x-6-y-56-w-ao-qxw-oglcxcpz-770-qlh-tgn-au-np-s-3-v-n-28-mz-no-3-ktue-z-4-w-mf-iym-ftoiabc-stf-td-jdl-lw-86-pn-snlgq-s-0"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure></h2><p> </p><p>Scripting
+    pipelines can be time-consuming and tedious. You may also be unaware of the sequence
+    of events. It&#39;s possible that things will get worse as the pipeline becomes
+    more complicated. As a result, CIE provides a graphical representation of the
+    pipeline with nested steps. You can build directly from the UI, or you can use
+    the YAML editor if you prefer. The YAML editor functions similarly to any other
+    IDE. With YAML, you can easily configure it as code.</p><h4>Harness Git Experience</h4><p>Harness
+    Git Experience provides seamless integration between your Harness Projects, Pipelines,
+    and resources and your Git repos. You can work entirely from Git or use a hybrid
+    method of Git and the Harness Manager. Harness CIE integrates with all the popular
+    source control management tools including GitHub, GitLab, and Bitbucket. To get
+    started, you need to activate the repository and include a .harness folder for
+    the configuration files. This will trigger a build within Harness CI once a commit
+    is detected. See <a href="https://ngdocs.harness.io/article/utikdyxgfz-harness-git-experience-overview">Git
+    Experience</a>.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qr4h6kn6yd/1632730905350/c-r-2-dpbn-svr-cldfbw-rp-5-ox-vh-ghz-5-fh-svd-zut-qrir-ztk-05-pd-89-p-4-d-11-wcuzpth-gc-55-t-1-tqm-1-ei-uiwf-yb-8-zed-du-0-z-ba-mzn-o-37-xaxj-og-1-p-tgu-x-se-ccwb-s-3-oa-lr-9-gxecb-pg-s-0"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p></p><h4>Harness
+    CIE Components</h4><h5>Stages</h5><p>Harness CIE allows you to create complex
+    pipelines by breaking them down into stages. You can create multiple stages by
+    combining various CI steps. Each stage includes steps for building, pushing, and
+    testing your code. The codebase configured in the first stage can be imported
+    into subsequent stages. This reduces redundancy and simplifies pipeline creation.
+    Check out the <a href="https://ngdocs.harness.io/article/yn4x8vzw3q-ci-stage-settings">CI
+    Stage Settings</a>.</p><h5>Steps</h5><p>A pipeline step is defined as a series
+    of commands used to carry out an action. The Run and Run Tests step executes one
+    or more commands on a container image. The commands are run within your git repository&#39;s
+    root directory. All steps in your pipeline share the root of your git repository,
+    also known as the workspace. In Harness CI, you can add a step or a combination
+    of steps to create a pipeline tailored to your specific requirements.</p><p>Harness
+    CIE provides the following options as Step Library.</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/qr4h6kn6yd/1632730923440/j-zhbga-hi-0-ozkc-g-4-d-8-b-qh-0-trfl-hsjxx-0-a-w-4-q-3-umnc-omcn-2-b-jb-ll-sw-1-ie-jw-hl-abaf-5-z-seq-6-g-04-nw-02-pva-wy-simv-igej-dcf-evxa-zjq-qhp-31-h-6-nbxpr-te-l-phdh-iwtytds-lg-1-n-1-a-s-0"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><h5>Shared
+    Path</h5><p>Shared Path in a stage allows you to share data in the stage. By default,
+    all of a stage’s steps use the same workspace to share data. By default, &#34;/harness&#34;
+    is the working directory and is shared by all the steps of the stage. For example,
+    the maven m2 repo is stored in /root/.m2 by default. So, you can specify the same
+    in shared paths/root/.m2 when using the maven install in a later stage.</p><p>If
+    you need to share additional paths between steps, you can add Shared Paths.</p><h5>Service
+    Dependencies</h5><p>If you decide to split your pipeline into multiple stages,
+    you need to make sure each stage has access to any dependencies. A typical use
+    case for service dependency is when your unit tests require running a Redis server.
+    Service Dependencies are also run in an isolated container so that you need not
+    handle the dependencies. See <a href="https://ngdocs.harness.io/article/vo4sjbd09g-configure-service-dependency-step-settings">Configure
+    Service Dependency</a>.</p><h5>Plugins</h5><p>Plugins are Docker containers that
+    perform predefined tasks and are configured as steps in your stage. Plugins can
+    be used to deploy code, publish artifacts, send notifications, and more. See <a
+    href="https://ngdocs.harness.io/article/8r5c3yvb8k-plugin-step-settings-reference">Plugin
+    Step Settings</a>.</p><h5>Caching</h5><p>Caching ensures faster job execution
+    by reusing data from previous jobs&#39; expensive fetch operations. Using the
+    <a href="https://ngdocs.harness.io/category/01tyeraya4-caching-ci-data">Save Cache
+    step</a> in Harness CI, you can save the cache to an AWS S3 or GCS bucket and
+    later restore it using the <a href="https://docs.google.com/document/u/0/d/1FV03gj0Jp0QJVq7DFpITsClVEn15T7qVgKcMyNvQ-Lc/edit">Restore
+    Cache step</a>.</p><h5>Artifactories</h5><p>Harness CIE offers popular artifactory
+    options such as JFrog, Amazon S3, and Google GCS to which you can push your artifacts.
+    Artifactories are set up as pipeline steps by using the Upload Artifacts step
+    from the step library.</p><h3>Try It Yourself</h3><p>Interested in trying CIE
+    yourself? No need to wait any longer! Book your <a href="https://harness.io/platform-demo-request-lp">Demo</a>
+    and give it a spin! </p><h3>See Also</h3><p><a href="https://ngdocs.harness.io/article/x0d77ktjw8-ci-pipeline-quickstart">CI
+    Pipeline Quickstart</a></p><p><a href="https://ngdocs.harness.io/article/vtu9k1dsfa-test-intelligence-concepts">Test
+    Intelligence</a></p>
+  slug: ci-enterprise-concepts
+  tags: []
+  is_live: true
