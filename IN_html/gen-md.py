@@ -124,7 +124,7 @@ def getFrontMatterString(ymlData):
         # need to replace colon character with ' — ' in description value, 
         # since the frontmatter is YAML. Otherwise Docusaurus chokes.
         description = ymlData['short_version']
-        description = description.replace(':',' &#8212; ' )
+        description = description.replace(':',' -- ' )
         frontMatter = frontMatter + "description: " + description + '\n'
         
         frontMatter = frontMatter + "tags: " + '\n'

@@ -17,6 +17,7 @@ with open(_imageRefsFile , 'r') as inFile:
 
 _mdRoot = './docs/'
 _imgMap = {}
+_download_cmds = []
 
 
 def getImage(imgURL, imageFileNameFull, mdFile):
@@ -31,6 +32,12 @@ def getImage(imgURL, imageFileNameFull, mdFile):
         return os.path.abspath(imageFileNameFull)
     else:
         print('[WARNING2] Image download failed:      ', imgURL)
+        print('\tTry the curl command, see end of log')
+        commentString = "# file not downloaded in " + mdFile
+        _download_cmds.append(commentString)
+        commandString = "curl -o " + imageFileNameFull + " " + imgURL 
+        _download_cmds.append(commandString)
+        
         return False    
     
 def stringListToFile(strList, fileName):
@@ -54,13 +61,15 @@ def addImageRefToCatalog(imgURL, mdFile):
     else:
         mdFileList = []
     mdFileList.append(mdFile)
+    '''
     if len(mdFileList) > 1:
         print('-------------------------')
         print('[WARNING1] Image URL referenced in multiple topics:      ', imgURL)
-        # print('Image filename:      ', imageFileNameFull)
+        print('Image filename:      ', imageFileNameFull)
         print('Topics list:')
         print(mdFileList)
-        print('-------------------------')
+        print('-------------------------')        
+    '''
     _imgMap[imgURL] = mdFileList
     return mdFileList
         
@@ -87,7 +96,7 @@ def getImageTarget(imgFileName):
 def updateImageRefsInFile(mdFileName): 
     with open(mdFileName, "r") as mdFile:
         mdLines = mdFile.readlines()
-    # # print("[DEBUG] mdFile = ", mdFileName)
+    # print("[DEBUG] mdFile = ", mdFileName)
 
     newMarkdown = []
     idx = 1
@@ -126,8 +135,13 @@ for mdFileName in glob.iglob(_mdRoot + '**/**', recursive=True):
          # # print('[DEBUG] Absolute directoryname: ', os.path.dirname(os.path.abspath(filename)))
          updateImageRefsInFile(os.path.abspath(mdFileName))         
          # print('[DEBUG] ------------------------  end processing ', os.path.basename(mdFileName))
-         print('')
+         # print('')
          # print("dest   = ", mdfn)
 
-pp = pprint.PrettyPrinter(depth=4)
-pp.pprint(_imgMap)
+
+print("Try the following commands to download these image files: ")
+pp1 = pprint.PrettyPrinter(depth=4)
+pp1.pprint(_download_cmds)
+
+pp2 = pprint.PrettyPrinter(depth=4)
+pp2.pprint(_imgMap)
