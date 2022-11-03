@@ -106,11 +106,11 @@ def getHelpDocsID(reMatch, splitOn):
     return False 
 
 def updateLine(mdFileName, line, idx, aDict):
+    newLine = line
     for match in re.finditer(_topicLinkRE, line):
          curLink = match.group()
          curLinkPlusDomain = False 
          newLinkLocalTarget = False
-         newLine = line
          # print ("[DEBUG1] curLink = ", curLink)
          # print("[DEBUG1] line ", idx, '\t', line)
          
@@ -120,7 +120,7 @@ def updateLine(mdFileName, line, idx, aDict):
          if ("docs.harness.io" in curLink) == False:
              curLinkPlusDomain = curLink.replace("(", "(https://docs.harness.io")
              # print("[INFO1] adding docs.harness.io to link.", idx, '\t', line)
-             print("[DEBUG1] curLinkPlusDomain = ", curLinkPlusDomain)    
+             print("[DEBUG1]Line ", idx, " link updated: ",  curLink, " > ", curLinkPlusDomain)    
 
          hd_ID = getHelpDocsID(curLink, "/article/")
          print("[DEBUG1] HelpDocs ID = ", hd_ID)
@@ -132,26 +132,29 @@ def updateLine(mdFileName, line, idx, aDict):
              newLinkLocalTarget = '(' + relPath + ')'                  
              # print("[DEBUG1] curLink = ", curLink)
              # print("[DEBUG1] HelpDocs ID = ", hd_ID)
-             print("[DEBUG1] newLinkLocalTarget updated:\t ", newLinkLocalTarget)
+             print("[DEBUG1]Line ", idx, " link updated: ",  curLink, " > ", newLinkLocalTarget)
          
          # step 3 -- if we created a new link, update the line.
          print("[DEBUG1] line ", idx, '\t', line)
          if newLinkLocalTarget != False:
-            line = line.replace(curLink, newLinkLocalTarget)
-            print("\n[UPDATE_LINK_SUCCESS1] Replaced with local target: ", idx, " updated:\t", line)
+            newLine = newLine.replace(curLink, newLinkLocalTarget)
+            print("\n[UPDATE_LINK_SUCCESS1] Replaced with local target:")
+            print("\tline ", idx, "original:\t", line)
+            print("\tline ", idx, "upated:\t", newLine)
             if urlPointsToSection(curLink):                     
                  print("[WARNING1] Original link target was a subsection, new link will point to top of page: ", curLink) 
-            print('\t', idx, " updated:\t", line) 
          else:
             if curLinkPlusDomain != False: 
-                line = line.replace(curLink, curLinkPlusDomain)     
-                print("\n[UPDATE_LINK_SUCCESS2] Added domain to link: ", idx, " updated:\t", line) 
+                newLine = newLine.replace(curLink, curLinkPlusDomain)     
+                print("\n[UPDATE_LINK_SUCCESS2] Added domain to link:")
+                print("\tline ", idx, "original:\t", line)
+                print("\tline ", idx, "upated:\t", newLine)
                 if urlPointsToSection(curLink):                     
                      print("[WARNING1] Original link target was a subsection, new link points to top of page:  ", curLink)
                 print('\t', idx, " updated:\t", line) 
             else: 
                 print("[DEBUG1] Link not updated: ", curLink)
-    return line
+    return newLine
 
 def updateTopic(mdFileName, aDict):
     updated = False

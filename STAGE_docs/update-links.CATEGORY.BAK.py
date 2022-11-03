@@ -36,6 +36,7 @@ _topicIDRE = re.compile('helpdocs_category_id:.*$')
 _mdRoot = './docs/'
 _topicMap = {}
 _categoryMap = {}
+_linksNotUpdated = []
 
 def getCategoryMap(mdRoot):
     categoryDict = {}
@@ -61,13 +62,13 @@ def getCategoryMap(mdRoot):
 def getHelpDocsID(reMatch, splitOn, cDict):
     
     reMatchElements = reMatch.split(splitOn)
-    print("[DEBUG] Start URL string: ", reMatch)
+    # print("[DEBUG] Start URL string: ", reMatch)
     if len(reMatchElements) == 2:
         afterArticleString = reMatchElements[1]
         afterArticleString.strip(')')
         strList = afterArticleString.split('-')
         hd_ID = strList[0]
-        print("[DEBUG] extracted hd_ID = ", hd_ID)
+        # print("[DEBUG] extracted hd_ID = ", hd_ID)
         if hd_ID in cDict: 
             return hd_ID
     return False 
@@ -84,23 +85,12 @@ def updateLine(mdFileName, line, idx, cDict):
     for match in re.finditer(_categoryLinkRE, line):
          curLink = match.group()
          newLine = newLine
-         curLinkPlusDomain = False 
          newLinkLocalTarget = False
          skipUpdate = False
          hd_ID = getHelpDocsID(curLink, "/category/", cDict)
          # print ("[DEBUG1] curLink = ", curLink)
          # print("[DEBUG1] line ", idx, '\t', line)
 
-         # step 1 -- Check if the matching link is already in an acceptable format
-         curLinkTest = curLink.strip('(')
-         curLinkTest = curLinkTest.strip(')')
-         if curLinkTest in cDict.values():
-             skipUpdate = True 
-
-         # step 1 -- If the HelpDocs ID is in the categories dictionary, we know the target category is local
-         #           replace the HelpDocs ID with the HDH category label
-         #        before: (/category/ljlkjdklk) 
-         #        after:  (/category/build-and-upload-artifacts)
          if hd_ID != False: 
             newLinkLocalTarget = cDict[hd_ID]
             newLinkLocalTarget = '(' + newLinkLocalTarget + ')' 
@@ -115,18 +105,10 @@ def updateLine(mdFileName, line, idx, cDict):
             print('\tupdated:  ', newLine) 
          else:
             # step 3 -- if there's no local category, but the current link needs the domain, replace curLink with curLinkPlusDomain. 
-            if skipUpdate == False:
-                print("\n[WARNING] Skipping link on line ", idx, ", you might need to update it manually ", idx)
-                print('\toriginal: ', line)
-            else: 
-                if ("docs.harness.io" in curLink) == False:
-                    curLinkPlusDomain = curLink.replace("(", "(https://docs.harness.io")     
-                    newLine = line.replace(curLink, curLinkPlusDomain)
-                    print("\n[UPDATE_LINK_SUCCESS2] Added domain to link on line ", idx)
-                    print('\toriginal: ', line)
-                    print('\tupdated:  ', newLine) 
-                else: 
-                    print("[DEBUG1] Link not updated: ", curLink)
+            print("\n[WARNING] Skipping link on line ", idx, ", you might need to update it manually. Remove this link, check if the category link is already in the catalog (see end of log), or add the domain https:/docs.harness.io to the link. ")
+            print('\toriginal: ', line)
+            if curLink not in _linksNotUpdated:
+                _linksNotUpdated.append(curLink)
     return newLine
 
 def updateTopic(mdFileName, cDict):
@@ -161,6 +143,10 @@ for mdFileName in glob.iglob(_mdRoot + '**/**', recursive=True):
         updateTopic(mdFileName, _categoryMap)
 
 
-pp = pprint.PrettyPrinter(depth=4)
-"\n\[DEBUG] ntopicMap ="
-pp.pprint(_categoryMap)
+"\n\n[DEBUG] ntopicMap ="
+pp1 = pprint.PrettyPrinter(depth=4)
+pp1.pprint(_categoryMap)
+
+"\n\\n[DEBUG] links not updated ="
+pp2 = pprint.PrettyPrinter(depth=4)
+pp2.pprint(_linksNotUpdated)
