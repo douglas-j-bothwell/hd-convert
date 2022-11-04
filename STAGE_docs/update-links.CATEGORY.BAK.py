@@ -88,7 +88,7 @@ def updateLine(mdFileName, line, idx, cDict):
          newLinkLocalTarget = False
          skipUpdate = False
          hd_ID = getHelpDocsID(curLink, "/category/", cDict)
-         # print ("[DEBUG1] curLink = ", curLink)
+         print ("[DEBUG1] curLink = ", curLink)
          # print("[DEBUG1] line ", idx, '\t', line)
 
          if hd_ID != False: 

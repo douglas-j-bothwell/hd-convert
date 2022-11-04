@@ -110,13 +110,14 @@ def updateLineWithLocalTarget(mdFileName, line, idx, cDict):
          if hd_ID != False: 
             newLinkLocalTarget = cDict[hd_ID]
             newLinkLocalTarget = '(' + newLinkLocalTarget + ')' 
-            print("[DEBUG] Category ID found. helpdocs ID = ", hd_ID, "\tnewLinkLocalTarget = ", newLinkLocalTarget)
+            print("[DEBUG3] Category ID found. curLink = ", curLink, " helpdocs ID = ", hd_ID, "\tnewLinkLocalTarget = ", newLinkLocalTarget)
                      
          # if we found a local category, replace curLink with newLinkLocalTarget.
          # print("[DEBUG1] line ", idx, '\t', line)
          if newLinkLocalTarget != False:
-            newLine = line.replace(curLink, newLinkLocalTarget)
-            print("\n[UPDATE_LINK_SUCCESS2] Replaced with local target:", idx)
+            curLink = curLink.replace("(https://docs.harness.io", "")
+            newLine = newLine.replace(curLink, newLinkLocalTarget)
+            print("\n[UPDATE_LINK_SUCCESS3] Replaced with local target:", idx)
             print('\tline ', idx, 'original: ', line)
             print('\tline ', idx, 'updated : ', newLine) 
          '''    
