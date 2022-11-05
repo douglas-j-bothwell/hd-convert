@@ -77,10 +77,6 @@ def getTopicFileFromURL(reMatch):
             return topicFile               
     return False 
     
-def urlPointsToSection(urlString):
-    if "#" in urlString:
-        return True 
-    return False
 
 def stringListToFile(strList, fileName):
     if (os.path.exists(fileName)):
@@ -89,6 +85,18 @@ def stringListToFile(strList, fileName):
     with open(fileName, 'w') as f:
         f.writelines(strList)
         
+def getSectionTag(reMatch):
+    
+    reMatchElements = reMatch.split("#")
+    if len(reMatchElements) == 2:
+        sectionTag = reMatchElements[1]
+        sectionTag = sectionTag.replace('_', '-')
+        sectionTag = sectionTag.strip(')')
+        print("[DEBUG4] section tag in ", reMatch, " found, returning ", sectionTag)
+        return sectionTag
+    return False
+
+
 def getHelpDocsID(reMatch, splitOn):
     
     reMatchElements = reMatch.split(splitOn)
@@ -102,8 +110,9 @@ def getHelpDocsID(reMatch, splitOn):
         # print( "[DEBUG] split_string = ", split_string )
         # print( "[DEBUG] hd_ID = ", hd_ID  )
         return hd_ID
-    print("[DEBUG] split on ", splitOn, " failed, returning FALSE")
+    print("[DEBUG2] split on ", splitOn, " failed, returning FALSE")
     return False 
+    
 
 def updateLine(mdFileName, line, idx, aDict):
     newLine = line
@@ -120,40 +129,35 @@ def updateLine(mdFileName, line, idx, aDict):
          if ("docs.harness.io" in curLink) == False:
              curLinkPlusDomain = curLink.replace("(", "(https://docs.harness.io")
              # print("[INFO1] adding docs.harness.io to link.", idx, '\t', line)
-             print("[DEBUG1]Line ", idx, " link updated: ",  curLink, " > ", curLinkPlusDomain)    
+             # print("[DEBUG1]Line ", idx, " link updated: ",  curLink, " > ", curLinkPlusDomain)    
 
          hd_ID = getHelpDocsID(curLink, "/article/")
          print("[DEBUG1] HelpDocs ID = ", hd_ID)
          if hd_ID in aDict: 
              newLinkLocalTarget = aDict[hd_ID]
-             print("[DEBUG1] newLinkLocalTarget found:\t", newLinkLocalTarget)                                  
+             print("[DEBUG3] newLinkLocalTarget found:\t", newLinkLocalTarget)                                  
              srcPath, srcFile = os.path.split(mdFileName)
              relPath = os.path.relpath(newLinkLocalTarget, srcPath)
-             newLinkLocalTarget = '(' + relPath + ')'                  
-             # print("[DEBUG1] curLink = ", curLink)
-             # print("[DEBUG1] HelpDocs ID = ", hd_ID)
-             print("[DEBUG1]Line ", idx, " link updated: ",  curLink, " > ", newLinkLocalTarget)
          
          # step 3 -- if we created a new link, update the line.
-         print("[DEBUG1] line ", idx, '\t', line)
          if newLinkLocalTarget != False:
+            sectionTag = getSectionTag(curLink)
+            if sectionTag != False:
+                sectionTag = newLinkLocalTarget + '#' + sectionTag                
+                print("[WARNING3] Original link points to subsection, tag might be incorrect: ", sectionTag) 
+                newLinkLocalTarget = '(' + relPath + sectionTag + ')'
+            else:
+                newLinkLocalTarget = '(' + relPath +  ')'                  
             newLine = newLine.replace(curLink, newLinkLocalTarget)
-            print("\n[UPDATE_LINK_SUCCESS1] Replaced with local target:")
-            print("\tline ", idx, "original:\t", line)
-            print("\tline ", idx, "upated:\t", newLine)
-            if urlPointsToSection(curLink):                     
-                 print("[WARNING1] Original link target was a subsection, new link will point to top of page: ", curLink) 
          else:
             if curLinkPlusDomain != False: 
                 newLine = newLine.replace(curLink, curLinkPlusDomain)     
-                print("\n[UPDATE_LINK_SUCCESS2] Added domain to link:")
-                print("\tline ", idx, "original:\t", line)
-                print("\tline ", idx, "upated:\t", newLine)
-                if urlPointsToSection(curLink):                     
-                     print("[WARNING1] Original link target was a subsection, new link points to top of page:  ", curLink)
-                print('\t', idx, " updated:\t", line) 
-            else: 
-                print("[DEBUG1] Link not updated: ", curLink)
+         if newLine != line:                
+            print("\n[UPDATE_LINK_SUCCESS3] line updated:")
+            print("\tline ", idx, "original:\t", line)
+            print("\tline ", idx, "upated:\t", newLine)
+            # else: 
+                # print("[DEBUG1] Link not updated: ", curLink)
     return newLine
 
 def updateTopic(mdFileName, aDict):
