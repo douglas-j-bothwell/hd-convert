@@ -65,9 +65,7 @@ If the image link is followed by a space or newline, the regex works as intended
 When you run the script and a file downloads successfully, it will update the following links. To revert to the originals, copy/paste this section from backup.txt file. 
 
 
-Here's a quick visual summary:
-
-![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407720427/clean-shot-2021-11-08-at-13-37-44.gif)#### Create API Key
+#### Create API Key
 
 
 Click each stage's steps to see the logs in real time.
