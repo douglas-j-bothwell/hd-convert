@@ -1,0 +1,810 @@
+
+
+[INFO] processing file  ./docs/continuous-integration/troubleshoot/troubleshooting-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/troubleshoot/optimizing-ci-build-times.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/run-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/background-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-cluster-requirement.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-git-clone-step.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-stage-settings.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  187 original:  See [CI Technical Reference](/category/4xo13zdnfx-ci-technical-reference).
+
+	line  187 updated :  See [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)  helpdocs ID =  4xo13zdnfx 	newLinkLocalTarget =  (/category/ci-technical-reference)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 187
+	line  187 original:  See [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference).
+
+	line  187 updated :  See [CI Technical Reference](https://docs.harness.io(/category/ci-technical-reference).
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  235 original:  * [CI Technical Reference](/category/4xo13zdnfx-ci-technical-reference)
+
+	line  235 updated :  * [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)  helpdocs ID =  4xo13zdnfx 	newLinkLocalTarget =  (/category/ci-technical-reference)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 235
+	line  235 original:  * [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+
+	line  235 updated :  * [CI Technical Reference](https://docs.harness.io(/category/ci-technical-reference)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-technical-reference/ci-stage-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/group-ci-steps-using-step-groups.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-build-image-updates.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/harness-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  213 original:  You can configure [Triggers](/category/oya6qhmmaw-trigger-category) in Harness for events in your Git repo. Harness automatically triggers a build whenever there's a new action on your Git repo. A **Pull Request Webhook Event** is when your build is automatically triggered in Harness due to a new pull event on your Git repo. See [Trigger Pipelines using Git Events](https://docs.harness.io/article/hndnde8usz-triggering-pipelines) to set up a **Trigger** in Harness.
+
+	line  213 updated :  You can configure [Triggers](https://docs.harness.io/category/oya6qhmmaw-trigger-category) in Harness for events in your Git repo. Harness automatically triggers a build whenever there's a new action on your Git repo. A **Pull Request Webhook Event** is when your build is automatically triggered in Harness due to a new pull event on your Git repo. See [Trigger Pipelines using Git Events](https://docs.harness.io/article/hndnde8usz-triggering-pipelines) to set up a **Trigger** in Harness.
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  293 original:  You can configure [Trigger](/category/oya6qhmmaw-trigger-category) in Harness for an event on your Git repo, and Harness will automatically trigger a build whenever there is a new action on your Git repo. A **Push Webhook Event** is when your build is automatically triggered in Harness due to a new push action on your Git repo. See [Trigger Pipelines using Git Events](https://docs.harness.io/article/hndnde8usz-triggering-pipelines) to set up a **Trigger** in Harness.
+
+	line  293 updated :  You can configure [Trigger](https://docs.harness.io/category/oya6qhmmaw-trigger-category) in Harness for an event on your Git repo, and Harness will automatically trigger a build whenever there is a new action on your Git repo. A **Push Webhook Event** is when your build is automatically triggered in Harness due to a new push action on your Git repo. See [Trigger Pipelines using Git Events](https://docs.harness.io/article/hndnde8usz-triggering-pipelines) to set up a **Trigger** in Harness.
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-test-intelligence/set-up-test-intelligence.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/codebase-configuration/create-and-configure-a-codebase.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/upload-artifacts-to-jfrog.md
+[DEBUG3] Category ID found. curLink =  (https://ngdocs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 22
+	line  22 original:  * [Set Up Build Infrastructure](https://ngdocs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)
+
+	line  22 updated :  * [Set Up Build Infrastructure](/category/set-up-build-infrastructure)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/upload-artifacts-to-jfrog.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-upload-an-artifact.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  22 original:  For setting up a build farm, see: [Set Up Build Infrastructure](/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  22 updated :  For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 22
+	line  22 original:  For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  22 updated :  For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  28 original:  For details about each build and push step, see [CI Technical Reference](/category/4xo13zdnfx-ci-technical-reference).
+
+	line  28 updated :  For details about each build and push step, see [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)  helpdocs ID =  4xo13zdnfx 	newLinkLocalTarget =  (/category/ci-technical-reference)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 28
+	line  28 original:  For details about each build and push step, see [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference).
+
+	line  28 updated :  For details about each build and push step, see [CI Technical Reference](https://docs.harness.io(/category/ci-technical-reference).
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  39 original:  * [Set Up Build Infrastructure](/category/rg8mrhqm95-set-up-build-infrastructure)
+
+	line  39 updated :  * [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 39
+	line  39 original:  * [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)
+
+	line  39 updated :  * [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure)
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  67 original:  In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](/category/xyexvcc206-ref-source-repo-provider).
+
+	line  67 updated :  In **Connector**, select an existing Connector to your codebase repo, or create a new one. See [Code Repo Connectors](https://docs.harness.io/category/xyexvcc206-ref-source-repo-provider).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-upload-an-artifact.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-push-to-gcr.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-drone-plugin-in-ci.md
+[DEBUG3] Category ID found. curLink =  (https://ngdocs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 33
+	line  33 original:  	+ [Set Up Build Infrastructure](https://ngdocs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)
+
+	line  33 updated :  	+ [Set Up Build Infrastructure](/category/set-up-build-infrastructure)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-drone-plugin-in-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-git-hub-action-in-cie.md
+[DEBUG3] Category ID found. curLink =  (https://ngdocs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 38
+	line  38 original:  * [Set Up Build Infrastructure](https://ngdocs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)
+
+	line  38 updated :  * [Set Up Build Infrastructure](/category/set-up-build-infrastructure)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-git-hub-action-in-cie.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-macos-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-azure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  47 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  47 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 47
+	line  47 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  47 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-a-script-in-a-ci-stage.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  39 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  39 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 39
+	line  39 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  39 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-a-script-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  42 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  42 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure)  helpdocs ID =  rg8mrhqm95 	newLinkLocalTarget =  (/category/set-up-build-infrastructure)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 42
+	line  42 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io/category/rg8mrhqm95-set-up-build-infrastructure).
+
+	line  42 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/saving-cache.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/save-cache-in-gcs.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/share-ci-data-across-steps-and-stages.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/view-your-builds/viewing-tests.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-basics.md
+[DEBUG3] Category ID found. curLink =  (https://ngdocs.harness.io/category/01tyeraya4-caching-ci-data)  helpdocs ID =  01tyeraya4 	newLinkLocalTarget =  (/category/share-and-cache-ci-data)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 55
+	line  55 original:  Caching ensures faster job execution by reusing data from expensive fetch operations in previous jobs. You can use Save Cache and Restore Cache steps to save a cache to a cloud storage bucket and restore it later. See [Cache CI Data](https://ngdocs.harness.io/category/01tyeraya4-caching-ci-data).
+
+	line  55 updated :  Caching ensures faster job execution by reusing data from expensive fetch operations in previous jobs. You can use Save Cache and Restore Cache steps to save a cache to a cloud storage bucket and restore it later. See [Cache CI Data](/category/share-and-cache-ci-data).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-basics.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-concepts.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  103 original:  Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](https://ngdocs.harness.io/category/01tyeraya4-caching-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](/category/01tyeraya4).
+
+	line  103 updated :  Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](https://ngdocs.harness.io/category/01tyeraya4-caching-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/01tyeraya4).
+
+[DEBUG3] Category ID found. curLink =  (https://ngdocs.harness.io/category/01tyeraya4-caching-ci-data)  helpdocs ID =  01tyeraya4 	newLinkLocalTarget =  (/category/share-and-cache-ci-data)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 103
+	line  103 original:  Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](https://ngdocs.harness.io/category/01tyeraya4-caching-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/01tyeraya4).
+
+	line  103 updated :  Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/01tyeraya4).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-quickstarts/ci-concepts.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/test-intelligence-concepts.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/drone-and-harness.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md
+
+
+[INFO] processing file  ./docs/continuous-integration/troubleshoot/troubleshooting-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/troubleshoot/optimizing-ci-build-times.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/run-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/background-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-cluster-requirement.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-git-clone-step.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-stage-settings.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  187 original:  See [CI Technical Reference](https://docs.harness.io(/category/ci-technical-reference).
+
+	line  187 updated :  See [CI Technical Reference](https://docs.harness.io(https://docs.harness.io/category/ci-technical-reference).
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  235 original:  * [CI Technical Reference](https://docs.harness.io(/category/ci-technical-reference)
+
+	line  235 updated :  * [CI Technical Reference](https://docs.harness.io(https://docs.harness.io/category/ci-technical-reference)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-technical-reference/ci-stage-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/group-ci-steps-using-step-groups.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-build-image-updates.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/harness-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-test-intelligence/set-up-test-intelligence.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/codebase-configuration/create-and-configure-a-codebase.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/upload-artifacts-to-jfrog.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  22 original:  * [Set Up Build Infrastructure](/category/set-up-build-infrastructure)
+
+	line  22 updated :  * [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/upload-artifacts-to-jfrog.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-upload-an-artifact.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  22 original:  For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+	line  22 updated :  For setting up a build farm, see: [Set Up Build Infrastructure](https://docs.harness.io(https://docs.harness.io/category/set-up-build-infrastructure).
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  28 original:  For details about each build and push step, see [CI Technical Reference](https://docs.harness.io(/category/ci-technical-reference).
+
+	line  28 updated :  For details about each build and push step, see [CI Technical Reference](https://docs.harness.io(https://docs.harness.io/category/ci-technical-reference).
+
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  39 original:  * [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure)
+
+	line  39 updated :  * [Set Up Build Infrastructure](https://docs.harness.io(https://docs.harness.io/category/set-up-build-infrastructure)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-upload-an-artifact.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-push-to-gcr.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-drone-plugin-in-ci.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  33 original:  	+ [Set Up Build Infrastructure](/category/set-up-build-infrastructure)
+
+	line  33 updated :  	+ [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-drone-plugin-in-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-git-hub-action-in-cie.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  38 original:  * [Set Up Build Infrastructure](/category/set-up-build-infrastructure)
+
+	line  38 updated :  * [Set Up Build Infrastructure](https://docs.harness.io/category/set-up-build-infrastructure)
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-git-hub-action-in-cie.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-macos-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-azure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  47 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+	line  47 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(https://docs.harness.io/category/set-up-build-infrastructure).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-a-script-in-a-ci-stage.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  39 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+	line  39 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(https://docs.harness.io/category/set-up-build-infrastructure).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-a-script-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  42 original:  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(/category/set-up-build-infrastructure).
+
+	line  42 updated :  In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](https://docs.harness.io(https://docs.harness.io/category/set-up-build-infrastructure).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/saving-cache.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/save-cache-in-gcs.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/share-ci-data-across-steps-and-stages.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/view-your-builds/viewing-tests.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-basics.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  55 original:  Caching ensures faster job execution by reusing data from expensive fetch operations in previous jobs. You can use Save Cache and Restore Cache steps to save a cache to a cloud storage bucket and restore it later. See [Cache CI Data](/category/share-and-cache-ci-data).
+
+	line  55 updated :  Caching ensures faster job execution by reusing data from expensive fetch operations in previous jobs. You can use Save Cache and Restore Cache steps to save a cache to a cloud storage bucket and restore it later. See [Cache CI Data](https://docs.harness.io/category/share-and-cache-ci-data).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-basics.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-concepts.md
+
+[UPDATE_LINK_SUCCESS1] Added domain to link:
+	line  103 original:  Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/01tyeraya4).
+
+	line  103 updated :  Caching ensures faster job execution by reusing data from previous jobs' expensive fetch operations. Using the [Save Cache steps](https://docs.harness.io/category/share-and-cache-ci-data) in Harness CI, you can save the cache to a cloud storage bucket and later restore it using the [Restore Cache steps](https://docs.harness.io/category/01tyeraya4).
+
+[INFO1] File updated:  ./docs/continuous-integration/ci-quickstarts/ci-concepts.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/test-intelligence-concepts.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/drone-and-harness.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md
+
+
+[INFO] processing file  ./docs/continuous-integration/troubleshoot/troubleshooting-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/troubleshoot/optimizing-ci-build-times.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/run-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/background-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-cluster-requirement.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-git-clone-step.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-stage-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/group-ci-steps-using-step-groups.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/ci-build-image-updates.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/harness-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-test-intelligence/set-up-test-intelligence.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/codebase-configuration/create-and-configure-a-codebase.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/upload-artifacts-to-jfrog.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-upload-an-artifact.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-push-to-gcr.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-drone-plugin-in-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-git-hub-action-in-cie.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-macos-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-azure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-a-script-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/saving-cache.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/save-cache-in-gcs.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/share-ci-data-across-steps-and-stages.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/view-your-builds/viewing-tests.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-test-intelligence/set-up-test-intelligence.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/codebase-configuration/create-and-configure-a-codebase.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/upload-artifacts-to-jfrog.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-upload-an-artifact.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/build-and-upload-artifacts/build-and-push-to-gcr.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-drone-plugin-in-ci.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/use-drone-plugins/run-a-git-hub-action-in-cie.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-macos-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-azure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/set-up-build-infrastructure/define-a-mac-os-build-infrastructure.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-a-script-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/saving-cache.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/save-cache-in-gcs.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/caching-ci-data/share-ci-data-across-steps-and-stages.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-how-tos/view-your-builds/viewing-tests.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-basics.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-concepts.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/test-intelligence-concepts.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/drone-and-harness.md
+
+
+[INFO] processing file  ./docs/continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md
+{'01tyeraya4': '/category/share-and-cache-ci-data',
+ '29nai2tbs6': '/category/test-intelligence',
+ '4xo13zdnfx': '/category/ci-technical-reference',
+ '7ljl8n7mzn': '/category/run-ci-scripts',
+ '99m8m1s55y': '/category/troubleshoot-ci',
+ 'ei5fgqxb0j': '/category/use-drone-plugins',
+ 'flam7377aq': '/category/view-your-builds',
+ 'mi8eo3qwxm': '/category/build-and-upload-artifacts',
+ 'ojaa8v6fwz': '/category/codebase-configuration',
+ 'pjovrkldfq': '/category/onboard-with-ci',
+ 'rg8mrhqm95': '/category/set-up-build-infrastructure',
+ 'u0ac86hcxq': '/category/execute-ci-pipelines',
+ 'zgffarnh1m': '/category/continuous-integration'}
+[]

@@ -47,7 +47,7 @@ def getTopicMap(mdFileName):
 def getTopicID(mdFileName):
     with open(mdFileName, "r") as mdFile:
         mdLines = mdFile.readlines()
-        # print("mdFile = ", mdFileName)
+        # print("[DEBUG] mdFile = ", mdFileName)
         for line in mdLines:
            for match in re.finditer(_topicIDRE, line):
               tLine = match.group()
@@ -64,8 +64,8 @@ def getTopicFromID(topicID):
     return False        
 
 def getTopicFileFromURL(reMatch):
-    # print("[DEBUG] Start URL string: ", reMatch)
     reMatchElements = reMatch.split("/article/")
+    # print("[DEBUG] Start URL string: ", reMatch)
     if len(reMatchElements) == 2:
         afterArticleString = reMatchElements[1]
         afterArticleString.strip(')')
@@ -143,7 +143,7 @@ def updateLine(mdFileName, line, idx, aDict):
          if newLinkLocalTarget != False:
             sectionTag = getSectionTag(curLink)
             if sectionTag != False:
-                sectionTag = newLinkLocalTarget + '#' + sectionTag                
+                sectionTag = '#' + sectionTag                
                 print("[WARNING3] Original link points to subsection, tag might be incorrect: ", sectionTag) 
                 newLinkLocalTarget = '(' + relPath + sectionTag + ')'
             else:

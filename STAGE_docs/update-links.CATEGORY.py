@@ -117,7 +117,7 @@ def updateLineWithLocalTarget(mdFileName, line, idx, cDict):
          if newLinkLocalTarget != False:
             curLink = curLink.replace("(https://docs.harness.io", "")
             newLine = newLine.replace(curLink, newLinkLocalTarget)
-            print("\n[UPDATE_LINK_SUCCESS3] Replaced with local target:", idx)
+            print("\n[UPDATE_LINK_SUCCESS2] Replaced with local target:", idx)
             print('\tline ', idx, 'original: ', line)
             print('\tline ', idx, 'updated : ', newLine) 
          '''    
