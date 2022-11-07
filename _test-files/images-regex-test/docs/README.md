@@ -26,6 +26,8 @@ _imgURLpattern = re.compile('https?:\/\/files.helpdocs.io\/.*\.(?:png|jpg)')
 2. Run the script and pipe to a log: `python3 get-images.TEST.py > test.log`
 3. The log shows errors for the images that it can't download. If an image is downloaded successfully, it goes into `docs/static`.
 
+(You'll need to view this README in a raw text editor to see what I'm talking about, GitHub is rendering the images but they're pointing to files on https://files.helpdocs.io, not local copies, which is what I'm looking to do...) 
+
 # TEST 1 -- No space or newline after image link
 
 ** Intended behavior:** Regex captures each individual link up to closing paren (2 matches) and downloads/saves the image
@@ -36,7 +38,7 @@ _imgURLpattern = re.compile('https?:\/\/files.helpdocs.io\/.*\.(?:png|jpg)')
 2. Select your Project and click on **Pipelines** and click on **Input Sets**.
 3. Click **New Input Set** and select **Import From Git**.![](https://files.helpdocs.io/kw8ldg1itf/articles/j7kdfi3640/1658829738986/screenshot-2022-07-26-at-3-30-31-pm.png)The **Import Input Set From Git** settings appear.![](https://files.helpdocs.io/kw8ldg1itf/articles/j7kdfi3640/1658830029315/screenshot-2022-07-26-at-11-18-41-am.png)
 
-# TEST 2 -- Image Link does have Filename Extension
+# TEST 2 -- Image Link does not have Filename Extension
 
 ** Intended behavior:** Regex captures the image up to the closing paren. 
 ** current behavior:**  Regex misses this reference b/c it doesn't include an extension (.jpg or .png)
@@ -54,9 +56,13 @@ You can see the logs for the Build and Push step in the Pipeline as it runs.
 # TEST 3 -- Successful downloads
 
 
-** Intended behavior:** If the image link is followed by a space or newline, the regex works as intended
+## Intended behavior
 
-** NOTE -- When you run the script and a file downloads successfully, it will update the following links. To revert to the originals, copy/paste this section from backup.txt file. **
+If the image link is followed by a space or newline, the regex works as intended
+
+## Note
+
+When you run the script and a file downloads successfully, it will update the following links. To revert to the originals, copy/paste this section from backup.txt file. 
 
 
 Here's a quick visual summary:
