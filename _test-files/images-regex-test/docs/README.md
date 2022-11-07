@@ -12,12 +12,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+
 # The issue
 
 I'm trying to create a regex that captures image URLs in the Harness docs in a "non-greedy" manner, up to the FIRST closing paren. The regex I've tried and tried to come up with a regex that works but haven't had any luck. The regex I'm using captures image URLs that include .jpg or png extension AND have a space or newline after the closing paren. These capture ~90% of the URLs, the ones that are correctly formatted. But there are still a lot of URLs that it's missing, and I believe it's all due to the regex used in the accompanying Python file:
 
 _imgURLpattern = re.compile('https?:\/\/files.helpdocs.io\/.*\.(?:png|jpg)')
 
+# Steps to Reproduce
+
+1. Go to the parent folder: `cd $GIT_REPO_HOME/hd-convert/_test-files/images-regex-test`
+2. Run the script and pipe to a log: `python3 get-images.TEST.py > test.log`
+3. The log shows errors for the images that it can't download. If an image is downloaded successfully, it goes into `docs/static`.
 
 # TEST 1 -- No space or newline after image link
 
@@ -49,12 +56,33 @@ You can see the logs for the Build and Push step in the Pipeline as it runs.
 
 ** Intended behavior:** If the image link is followed by a space or newline, the regex works as intended
 
+** NOTE -- When you run the script and a file downloads successfully, it will update the following links. To revert to the originals, copy/paste this section from backup.txt file. **
+
+
+Here's a quick visual summary:
+
+![](https://files.helpdocs.io/i5nl071jo5/articles/f0aqiv3td7/1636407720427/clean-shot-2021-11-08-at-13-37-44.gif)#### Create API Key
+
 
 Click each stage's steps to see the logs in real time.
 
-![](./static/images-00.png) Click **Console View** to see more details.
 
-![](./static/images-01.png)
 
-You can see the build number in the **Build and push image to Docker Hub** step used as an image tag. 
+![](./static/README-00.png)
+
+* Click **Set Up Stage**. The new stage is added to the Pipeline.
+
+ Click **Console View** to see more details.
+
+ * Under Select a Kubernetes Cluster, click **Select**.
+
+ ![](./static/README-01.png)
+
+ * Click **New Connector** and set up the new Connector as follows:
+ 	+ **Name:** ci-delegate
+ 	+ **Details:** Select **Use the credentials of a specific Harness Delegate**. You'll add this Delegate next.
+ 	+ **Delegates Setup:** Select the Kubernetes Delegate you added earlier using its Tags.
+ 	+ **Connection Test:** Wait for the test to finish and then click **Finish**. The new Connector is added to the Kubernetes Cluster field.
+ * In **Namespace**, enter the namespace `harness-delegate-ng`. Click **Next** to proceed to the Execution tab.
+
 

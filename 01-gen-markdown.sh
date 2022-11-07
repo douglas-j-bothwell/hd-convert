@@ -11,7 +11,7 @@ ls ./IN_html
 cd ./IN_html
 
 rm ../_logs/01a-gen-markdown.log
-RM ../_logs/01b-gen-categories.log
+rm ../_logs/01b-gen-categories.log
 
 echo "Starting python script: " 
 python3 gen-markdown.py > ../_logs/01a-gen-markdown.log
