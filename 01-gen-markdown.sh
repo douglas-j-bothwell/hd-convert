@@ -10,9 +10,13 @@ echo "Contents of IN_html:"
 ls ./IN_html
 cd ./IN_html
 
-rm ../_logs/gen-markdown.log
+rm ../_logs/01a-gen-markdown.log
+RM ../_logs/01b-gen-categories.log
+
 echo "Starting python script: " 
-python3 gen-md.py > ../_logs/gen-markdown.log
+python3 gen-markdown.py > ../_logs/01a-gen-markdown.log
+python3 gen-categories.py > ../_logs/01b-gen-categories.log
+
 # python3 gen-md.md.DOM-ONLY.py > ../_logs/gen-markdown.log
 echo "python script ended."
 echo "Contents of OUT_markdown/MODULE_NAME:"
