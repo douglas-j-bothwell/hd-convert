@@ -35,15 +35,17 @@ def getImage(imgURL, imageFileNameFull, mdFile):
     if res.status_code == 200:
         with open(imageFileNameFull,'wb') as f:
             shutil.copyfileobj(res.raw, f)
-        # # print('[DEBUG] Image downloaded:           ',imageFileNameFull)
+        print('[DEBUG] Image downloaded:           ',imageFileNameFull)
         return os.path.abspath(imageFileNameFull)
     else:
         print('[WARNING2] Image download failed:      ', imgURL)
+        '''
         print('\tTry the curl command, see end of log')
         commentString = "# file not downloaded in " + mdFile
         _download_cmds.append(commentString)
         commandString = "curl -o " + imageFileNameFull + " " + imgURL 
         _download_cmds.append(commandString)
+        '''
         
         return False    
     
