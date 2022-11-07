@@ -74,7 +74,7 @@ Click each stage's steps to see the logs in real time.
 
 
 
-![](./static/README-00.png)
+![](https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1625180234470/clean-shot-2021-07-01-at-15-57-04.png)
 
 * Click **Set Up Stage**. The new stage is added to the Pipeline.
 
@@ -82,7 +82,7 @@ Click each stage's steps to see the logs in real time.
 
  * Under Select a Kubernetes Cluster, click **Select**.
 
- ![](./static/README-01.png)
+ ![](https://files.helpdocs.io/i5nl071jo5/articles/x0d77ktjw8/1625180326375/clean-shot-2021-07-01-at-15-58-38.png)
 
  * Click **New Connector** and set up the new Connector as follows:
  	+ **Name:** ci-delegate
@@ -90,5 +90,7 @@ Click each stage's steps to see the logs in real time.
  	+ **Delegates Setup:** Select the Kubernetes Delegate you added earlier using its Tags.
  	+ **Connection Test:** Wait for the test to finish and then click **Finish**. The new Connector is added to the Kubernetes Cluster field.
  * In **Namespace**, enter the namespace `harness-delegate-ng`. Click **Next** to proceed to the Execution tab.
+
+
 
 
