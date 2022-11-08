@@ -1,0 +1,401 @@
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG1] HelpDocs ID =  knunou9j30
+[DEBUG1] HelpDocs ID =  cifa2yb19a
+[DEBUG1] HelpDocs ID =  uiqe6jz9o1
+[DEBUG1] HelpDocs ID =  re8kk0ex4k
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  43 original:	 * Install a [Harness Kubernetes (K8S) Delegate](/article/re8kk0ex4k-delegate-installation-overview) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
+
+	line  43 upated:	 * Install a [Harness Kubernetes (K8S) Delegate](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
+
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG4] section tag in  (/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo)  found, returning  step-4-create-an-slo
+[WARNING3] Original link points to subsection, tag might be incorrect:  #step-4-create-an-slo
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  48 original:	 You can skip to [Step 4](/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo) if you have already set up a Monitored Service.In the Harness Project with the Service you want to monitor, navigate to the **Service Reliability Management** module.
+
+	line  48 upated:	 You can skip to [Step 4](slo-management-quickstart.md#step-4-create-an-slo) if you have already set up a Monitored Service.In the Harness Project with the Service you want to monitor, navigate to the **Service Reliability Management** module.
+
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  54 original:	 ![](./static/slo-management-quickstart-01.png)You can also set up a Monitored Service in the [Verify step](/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+
+	line  54 upated:	 ![](./static/slo-management-quickstart-01.png)You can also set up a Monitored Service in the [Verify step](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG4] section tag in  (https://ngdocs.harness.io/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo)  found, returning  step-4-create-an-slo
+[WARNING3] Original link points to subsection, tag might be incorrect:  #step-4-create-an-slo
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  68 original:	 You can skip to [Step 4](https://ngdocs.harness.io/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo) if you have already added a Change Source or Health Source for your Monitored Service.A Change Source monitors change events related to deployments, infrastructure changes, and incidents.
+
+	line  68 upated:	 You can skip to [Step 4](slo-management-quickstart.md#step-4-create-an-slo) if you have already added a Change Source or Health Source for your Monitored Service.A Change Source monitors change events related to deployments, infrastructure changes, and incidents.
+
+[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  19 original:	 [SLO-driven](/article/trlszsj5lh-slo-management-quickstart) governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
+
+	line  19 upated:	 [SLO-driven](slo-management-quickstart.md) governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
+
+[DEBUG1] HelpDocs ID =  4o7oqwih6h
+[DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG4] section tag in  (/article/trlszsj5lh-slo-management-quickstart#step_5_create_an_slo)  found, returning  step-5-create-an-slo
+[WARNING3] Original link points to subsection, tag might be incorrect:  #step-5-create-an-slo
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  246 original:	 Now, [create an SLO](/article/trlszsj5lh-slo-management-quickstart#step_5_create_an_slo) for the Monitored Service.
+
+	line  246 upated:	 Now, [create an SLO](slo-management-quickstart.md#step-5-create-an-slo) for the Monitored Service.
+
+[DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  jws2znftay
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  291 original:	 * [Harness Governance Quickstart](/article/jws2znftay-harness-governance-quickstart)
+
+	line  291 upated:	 * [Harness Governance Quickstart](https://docs.harness.io/article/jws2znftay-harness-governance-quickstart)
+
+[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  27 original:	 * [SLO Management](/article/trlszsj5lh-slo-management-quickstart)
+
+	line  27 upated:	 * [SLO Management](slo-management-quickstart.md)
+
+[DEBUG1] HelpDocs ID =  lwi37ku94x
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  28 original:	 * [Change Impact Analysis](/article/lwi37ku94x-change-impact-analysis-quickstart)
+
+	line  28 upated:	 * [Change Impact Analysis](change-impact-analysis-quickstart.md)
+
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  29 original:	 * [Service Reliability Checks](/article/3xhqq9xllp-verify-deployments-with-the-verify-step)
+
+	line  29 upated:	 * [Service Reliability Checks](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step)
+
+[DEBUG1] HelpDocs ID =  d3m9uo4mx0
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  30 original:	 * [SLO Driven Governance](/article/d3m9uo4mx0-slo-driven-deployment-governance)
+
+	line  30 upated:	 * [SLO Driven Governance](slo-driven-deployment-governance.md)
+
+[DEBUG1] HelpDocs ID =  n67y68fopr
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  78 original:	 Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/article/n67y68fopr-verify-deployments-with-custom-health-metrics) lets you customize APMs of your choice.
+
+	line  78 upated:	 Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](https://docs.harness.io/article/n67y68fopr-verify-deployments-with-custom-health-metrics) lets you customize APMs of your choice.
+
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  98 original:	 * [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart)
+
+	line  98 upated:	 * [SLO Management Quickstart](slo-management-quickstart.md)
+
+[DEBUG1] HelpDocs ID =  lwi37ku94x
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  99 original:	 * [Change Impact Analysis Quickstart](/article/lwi37ku94x-change-impact-analysis-quickstart)
+
+	line  99 upated:	 * [Change Impact Analysis Quickstart](change-impact-analysis-quickstart.md)
+
+[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  30 original:	 * [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart)
+
+	line  30 upated:	 * [SLO Management Quickstart](slo-management-quickstart.md)
+
+[DEBUG1] HelpDocs ID =  re8kk0ex4k
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  34 original:	 * Install a [Harness Kubernetes (K8S) Delegate](/article/re8kk0ex4k-delegate-installation-overview) and ensure that this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled
+
+	line  34 upated:	 * Install a [Harness Kubernetes (K8S) Delegate](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) and ensure that this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled
+
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  49 original:	 You can also set up a Monitored Service in the [Verify step](/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+
+	line  49 upated:	 You can also set up a Monitored Service in the [Verify step](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+
+[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[DEBUG1] HelpDocs ID =  l8up27c7rn
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[DEBUG4] section tag in  (/article/l8up27c7rn-service-reliability-management-basics#sort=relevancy&f:@commonsource=[NextGen%20Docs])  found, returning  sort=relevancy&f:@commonsource=[NextGen%20Docs]
+[WARNING3] Original link points to subsection, tag might be incorrect:  #sort=relevancy&f:@commonsource=[NextGen%20Docs]
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  14 original:	 Error Tracking in the Harness [Service Reliability Management (SRM)](/article/l8up27c7rn-service-reliability-management-basics#sort=relevancy&f:@commonsource=[NextGen%20Docs]) module is a continuous reliability solution that enables you to identify, triage, and resolve errors in your Service. This helps to implement rapid code changes by ensuring that the code is always in a deployable state.
+
+	line  14 upated:	 Error Tracking in the Harness [Service Reliability Management (SRM)](../service-reliability-management-onboard/service-reliability-management-basics.md#sort=relevancy&f:@commonsource=[NextGen%20Docs]) module is a continuous reliability solution that enables you to identify, triage, and resolve errors in your Service. This helps to implement rapid code changes by ensuring that the code is always in a deployable state.
+
+[DEBUG1] HelpDocs ID =  cbj5uuzpbu
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[DEBUG4] section tag in  (/article/cbj5uuzpbu-error-tracking-in-srm#step_3_view_automated_root_cause_arc_screen)  found, returning  step-3-view-automated-root-cause-arc-screen
+[WARNING3] Original link points to subsection, tag might be incorrect:  #step-3-view-automated-root-cause-arc-screen
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  26 original:	 * Analyze and determine the root cause of detected issues using the [Automated Root Cause (ARC)](/article/cbj5uuzpbu-error-tracking-in-srm#step_3_view_automated_root_cause_arc_screen) screen.
+
+	line  26 upated:	 * Analyze and determine the root cause of detected issues using the [Automated Root Cause (ARC)](error-tracking-in-srm.md#step-3-view-automated-root-cause-arc-screen) screen.
+
+[DEBUG1] HelpDocs ID =  nx99xfcoxz
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[DEBUG4] section tag in  (/article/nx99xfcoxz-install-the-error-tracking-agent#compatibility_and_requirements)  found, returning  compatibility-and-requirements
+[WARNING3] Original link points to subsection, tag might be incorrect:  #compatibility-and-requirements
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  37 original:	 * [Compatibility and Requirements](/article/nx99xfcoxz-install-the-error-tracking-agent#compatibility_and_requirements).
+
+	line  37 upated:	 * [Compatibility and Requirements](install-the-error-tracking-agent.md#compatibility-and-requirements).
+
+[DEBUG1] HelpDocs ID =  nx99xfcoxz
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  38 original:	 * [Install an Error Tracking Agent](/article/nx99xfcoxz-install-the-error-tracking-agent).
+
+	line  38 upated:	 * [Install an Error Tracking Agent](install-the-error-tracking-agent.md).
+
+[DEBUG1] HelpDocs ID =  hngrlb7rd6
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  82 original:	 In **Encrypted Key**, click **Create or Select a Secret**. You can either select an existing API Key or create a new Secret by clicking **New Secret Text**. Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. You can choose to use your own secrets management solution, or the built-in Harness Secrets Manager.  For more details, see [Secret Management Overview](/article/hngrlb7rd6-harness-secret-manager-overview#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+
+	line  82 upated:	 In **Encrypted Key**, click **Create or Select a Secret**. You can either select an existing API Key or create a new Secret by clicking **New Secret Text**. Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. You can choose to use your own secrets management solution, or the built-in Harness Secrets Manager.  For more details, see [Secret Management Overview](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+
+[DEBUG1] HelpDocs ID =  tdoad7xrh9
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  88 original:	 In **Secret Value**, enter a value for the encrypted text. You can [create](/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
+
+	line  88 upated:	 In **Secret Value**, enter a value for the encrypted text. You can [create](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
+
+[DEBUG1] HelpDocs ID =  tdoad7xrh9
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  88 original:	 In **Secret Value**, enter a value for the encrypted text. You can [create](/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
+
+	line  88 upated:	 In **Secret Value**, enter a value for the encrypted text. You can [create](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
+
+[DEBUG1] HelpDocs ID =  nx99xfcoxz
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  112 original:	 See [Install an Error Tracking Agent](/article/nx99xfcoxz-install-the-error-tracking-agent).
+
+	line  112 upated:	 See [Install an Error Tracking Agent](install-the-error-tracking-agent.md).
+
+[DEBUG1] HelpDocs ID =  lwi37ku94x
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[DEBUG4] section tag in  (/article/lwi37ku94x-change-impact-analysis-quickstart#step_4_view_service_health)  found, returning  step-4-view-service-health
+[WARNING3] Original link points to subsection, tag might be incorrect:  #step-4-view-service-health
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  116 original:	 Once the Error Tracking Health Source is added, you can view the identified errors on the **Overall Health Score** timeline, in the [Service Health dashboard](/article/lwi37ku94x-change-impact-analysis-quickstart#step_4_view_service_health).
+
+	line  116 upated:	 Once the Error Tracking Health Source is added, you can view the identified errors on the **Overall Health Score** timeline, in the [Service Health dashboard](../service-reliability-management-onboard/change-impact-analysis-quickstart.md#step-4-view-service-health).
+
+[INFO1] File updated:  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+[DEBUG1] HelpDocs ID =  m4pbiqb4m9
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  17 original:	 * [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart)
+
+	line  17 upated:	 * [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart)
+
+[DEBUG1] HelpDocs ID =  fs64l16dbp
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  18 original:	 * [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring)
+
+	line  18 upated:	 * [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring)
+
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  19 original:	 * [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart)
+
+	line  19 upated:	 * [SLO Management Quickstart](../service-reliability-management-onboard/slo-management-quickstart.md)
+
+[DEBUG1] HelpDocs ID =  l8up27c7rn
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  20 original:	 * [Service Reliability Management Basics](/article/l8up27c7rn-service-reliability-management-basics)
+
+	line  20 upated:	 * [Service Reliability Management Basics](../service-reliability-management-onboard/service-reliability-management-basics.md)
+
+[DEBUG1] HelpDocs ID =  m4pbiqb4m9
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  37 original:	 See [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
+
+	line  37 upated:	 See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
+
+[DEBUG1] HelpDocs ID =  fs64l16dbp
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  37 original:	 See [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
+
+	line  37 upated:	 See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
+
+[DEBUG1] HelpDocs ID =  trlszsj5lh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  37 original:	 See [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
+
+	line  37 upated:	 See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](../service-reliability-management-onboard/slo-management-quickstart.md).
+
+[INFO1] File updated:  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG1] HelpDocs ID =  knunou9j30
+[DEBUG1] HelpDocs ID =  cifa2yb19a
+[DEBUG1] HelpDocs ID =  uiqe6jz9o1
+[DEBUG1] HelpDocs ID =  re8kk0ex4k
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+[DEBUG1] HelpDocs ID =  4o7oqwih6h
+[DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  jws2znftay
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[DEBUG1] HelpDocs ID =  n67y68fopr
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[DEBUG1] HelpDocs ID =  re8kk0ex4k
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[DEBUG1] HelpDocs ID =  hngrlb7rd6
+[DEBUG1] HelpDocs ID =  tdoad7xrh9
+[DEBUG1] HelpDocs ID =  tdoad7xrh9
+[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+[DEBUG1] HelpDocs ID =  m4pbiqb4m9
+[DEBUG1] HelpDocs ID =  fs64l16dbp
+[DEBUG1] HelpDocs ID =  m4pbiqb4m9
+[DEBUG1] HelpDocs ID =  fs64l16dbp
+[INFO1] File not updated:  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG1] HelpDocs ID =  knunou9j30
+[DEBUG1] HelpDocs ID =  cifa2yb19a
+[DEBUG1] HelpDocs ID =  uiqe6jz9o1
+[DEBUG1] HelpDocs ID =  re8kk0ex4k
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+[DEBUG1] HelpDocs ID =  4o7oqwih6h
+[DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  jws2znftay
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[DEBUG1] HelpDocs ID =  n67y68fopr
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[DEBUG1] HelpDocs ID =  re8kk0ex4k
+[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[DEBUG1] HelpDocs ID =  hngrlb7rd6
+[DEBUG1] HelpDocs ID =  tdoad7xrh9
+[DEBUG1] HelpDocs ID =  tdoad7xrh9
+[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+
+
+[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+[DEBUG1] HelpDocs ID =  m4pbiqb4m9
+[DEBUG1] HelpDocs ID =  fs64l16dbp
+[DEBUG1] HelpDocs ID =  m4pbiqb4m9
+[DEBUG1] HelpDocs ID =  fs64l16dbp
+[INFO1] File not updated:  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+{'cbj5uuzpbu': './docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md',
+ 'd3m9uo4mx0': './docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md',
+ 'l8up27c7rn': './docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md',
+ 'lwi37ku94x': './docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md',
+ 'nx99xfcoxz': './docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md',
+ 'trlszsj5lh': './docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md',
+ 'x4165z3hfp': './docs/service-reliability-management/srm-notifications/srm-notifications.md'}

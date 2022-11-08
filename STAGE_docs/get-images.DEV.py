@@ -9,12 +9,13 @@ import pprint
 
 _imgURLpattern = re.compile('https?:\/\/files.helpdocs.io\/.*\.(?:png|jpg)')
 
+# _imgURLpattern = re.compile('https:\/\/files.helpdocs.io[%5E/s)/]]*')
+
 '''
 _imageRefsFile = '../_data/_image-refs.TEST.yml'
 with open(_imageRefsFile , 'r') as inFile:
     _imgRefsDict = yaml.safe_load(inFile)
 '''
-
 _mdRoot = './docs/'
 _imgMap = {}
 _download_cmds = []
@@ -38,13 +39,14 @@ def getImage(imgURL, imageFileNameFull, mdFile):
         # # print('[DEBUG] Image downloaded:           ',imageFileNameFull)
         return os.path.abspath(imageFileNameFull)
     else:
+        # '''
         print('[WARNING2] Image download failed:      ', imgURL)
         print('\tTry the curl command, see end of log')
         commentString = "# file not downloaded in " + mdFile
         _download_cmds.append(commentString)
-        commandString = "curl -o " + imageFileNameFull + " " + imgURL 
+        commandString = "curl -o LOCAL_IMAGE_FILENAME " + imageFileNameFull + " " + imgURL 
         _download_cmds.append(commandString)
-        
+        # '''
         return False    
     
 def stringListToFile(strList, fileName):
@@ -150,11 +152,12 @@ def updateImageRefsInFile(mdFileName):
                 # print('')
                 line = line.replace(imgURL, imgTarget)
              else:
-                print("[WARNING2] Image not downloaded, reference not updated:")
-                print("\t URL  ", imgURL)
-                print("\t file ", os.path.basename(mdFileName))
-                print("\t line ", idx, ": ", line)
-                print('')
+                # print("[ERROR2] Image not downloaded, reference not updated:")
+                
+                print("\t Failed download: ", imgURL)
+                # print("\t file ", os.path.basename(mdFileName))
+                # print("\t line ", idx, ": ", line)
+                # print('')
         newMarkdown.append(line)
         idx += 1
             
@@ -166,7 +169,6 @@ def updateImageRefsInFile(mdFileName):
 # For each markdown file in the .docs folder, run updateImageRefsInFile
 for mdFileName in glob.iglob(_mdRoot + '**/**', recursive=True):
     if mdFileName.endswith('.md'):
-         print('')
          # print('[DEBUG]  ------------------------ processing ', os.path.basename(mdFileName))
          # # print("[DEBUG] markdown source = ", filename)
          # # print('[DEBUG] markdown full:     ',  os.path.abspath(mdFileName))
@@ -177,9 +179,10 @@ for mdFileName in glob.iglob(_mdRoot + '**/**', recursive=True):
          # print("dest   = ", mdfn)
 
 
-print("Try the following commands to download these image files: ")
-pp1 = pprint.PrettyPrinter(depth=4)
-pp1.pprint(_download_cmds)
+# print("Try the following commands to download these image files: ")
+# pp1 = pprint.PrettyPrinter(depth=4)
+for line in _download_cmds:
+    print(line)
 
 pp2 = pprint.PrettyPrinter(depth=4)
 pp2.pprint(_imgMap)
