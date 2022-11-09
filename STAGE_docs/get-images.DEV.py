@@ -7,16 +7,17 @@ import glob
 import yaml
 import pprint
 
-_imgURLpattern = re.compile('https?:\/\/files.helpdocs.io\/.*\.(?:png|jpg)')
+# _imgURLpattern = re.compile('https?:\/\/files.helpdocs.io\/.*\.(?:png|jpg)')
 
-# _imgURLpattern = re.compile('https:\/\/files.helpdocs.io[%5E/s)/]]*')
+
+_imgURLpattern = 'https:\/\/files.helpdocs.io[^\s)\]]*'
 
 '''
 _imageRefsFile = '../_data/_image-refs.TEST.yml'
 with open(_imageRefsFile , 'r') as inFile:
     _imgRefsDict = yaml.safe_load(inFile)
 '''
-_mdRoot = './docs/'
+_mdRoot = './docs'
 _imgMap = {}
 _download_cmds = []
 
@@ -42,10 +43,11 @@ def getImage(imgURL, imageFileNameFull, mdFile):
         # '''
         print('[WARNING2] Image download failed:      ', imgURL)
         print('\tTry the curl command, see end of log')
-        commentString = "# file not downloaded in " + mdFile
-        _download_cmds.append(commentString)
-        commandString = "curl -o LOCAL_IMAGE_FILENAME " + imageFileNameFull + " " + imgURL 
-        _download_cmds.append(commandString)
+        # commentString = "\n# file not downloaded in " + mdFile        
+        _download_cmds.append("\n#File not downloaded in " + mdFile)
+        _download_cmds.append("# Try editing and running this command. Replace the image index with a unique ID!")
+        _download_cmds.append("# Then update the URL in the markdown. It should point to (./static/FILENAME)")
+        _download_cmds.append("curl -o " + imageFileNameFull + " " + imgURL)
         # '''
         return False    
     
@@ -137,28 +139,32 @@ def updateImageRefsInFile(mdFileName):
     newMarkdown = []
     idx = 1
     for line in mdLines:
-        for match in re.finditer(_imgURLpattern, line):
-             imgURL = match.group()
+        newLine = line
+        allMatches = re.findall(_imgURLpattern, line)
+        for imgURL in allMatches:
              imgFileName = getimageFileNameFull(imgURL, mdFileName)
              if getImage(imgURL, imgFileName, mdFileName) != False: 
                 imgTarget = getImageTarget(imgFileName)
                 # print('')
                 # print('______________________________________________________')
-                # print("[DEBUG] mdFileName = ", mdFileName)
-                # print("[DEBUG] imgURL = ", imgURL)
-                # print("[DEBUG] imgTarget = ", imgTarget)
-                # print("imageFileName = ", imgFileName)
+                print("[DEBUG] mdFileName = ", mdFileName)
+                print("[DEBUG] imgURL = ", imgURL)
+                print("[DEBUG] imgTarget = ", imgTarget)
+                print("imageFileName = ", imgFileName)
                 # print('______________________________________________________')
                 # print('')
-                line = line.replace(imgURL, imgTarget)
+                newLine = newLine.replace(imgURL, imgTarget)
              else:
                 # print("[ERROR2] Image not downloaded, reference not updated:")
-                
-                print("\t Failed download: ", imgURL)
-                # print("\t file ", os.path.basename(mdFileName))
-                # print("\t line ", idx, ": ", line)
-                # print('')
-        newMarkdown.append(line)
+                print("[WARNING2] Failed download: ", imgURL)
+                print("\t file ", os.path.basename(mdFileName))
+                print("\t line ", idx, ": ", line)
+                print('')
+        if line != newLine:
+            print("[DEBUG] line updated:")
+            print("\t original ", idx, ": ", line) 
+            print("\t updated  ", idx, ": ", newLine)       
+        newMarkdown.append(newLine)
         idx += 1
             
     stringListToFile(newMarkdown, mdFileName)
