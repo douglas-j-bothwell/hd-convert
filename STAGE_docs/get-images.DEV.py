@@ -153,6 +153,10 @@ def updateImageRefsInFile(mdFileName):
                 print("imageFileName = ", imgFileName)
                 # print('______________________________________________________')
                 # print('')
+                if imgFileName.lower().endswith(('.png', '.jpg', '.jpeg')) == False:
+                    print("[WARNING3] Image file does not have a supported extension: ", imgFileName)
+                    print("\t Check the filename extension by running file -I ", imgFileName)
+                    print("\t Then add the extension to the image file and update the link in topic ", mdFileName)
                 newLine = newLine.replace(imgURL, imgTarget)
              else:
                 # print("[ERROR2] Image not downloaded, reference not updated:")
