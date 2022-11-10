@@ -62,14 +62,16 @@ def getCategoryMap(mdRoot):
 def getHelpDocsID(reMatch, splitOn, cDict):
     
     reMatchElements = reMatch.split(splitOn)
-    # print("[DEBUG] Start URL string: ", reMatch)
+    print("[DEBUG1] Start URL string: ", reMatch)
     if len(reMatchElements) == 2:
         afterArticleString = reMatchElements[1]
         afterArticleString.strip(')')
         strList = afterArticleString.split('-')
         hd_ID = strList[0]
-        # print("[DEBUG] extracted hd_ID = ", hd_ID)
+        hd_ID = hd_ID.strip(')')
+        print("[DEBUG1] extracted hd_ID = ", hd_ID)        
         if hd_ID in cDict: 
+            print("[DEBUG1] hd_ID is in Dict ", hd_ID)
             return hd_ID
     return False 
     
@@ -82,17 +84,31 @@ def stringListToFile(strList, fileName):
 
 def updateLineWithDomain(mdFileName, line, idx, cDict):
     newLine = line
+    linkIsInDictionary = False
+    linkNeedsDomain = True
     for match in re.finditer(_categoryLinkRE, line):
          curLink = match.group()
-         newLine = newLine
-
-         if ("docs.harness.io" in curLink) == False:
+         if curLink in cDict.values(): 
+             linkIsInDictionary = True
+             print("[DEBUG5] Skipping, link ", curLink, " is in dictionary with value ", cDict(curLink))
+         if "docs.harness.io" in curLink:
+             linkNeedsDomain = False
+             print("[DEBUG5] Skipping, link already has domain: ", curLink,)
+         if linkIsInDictionary == False and linkNeedsDomain == True:
+            print("\n[WARNING] The following link might need updating:")
+            print('\tFile: ', mdFileName)
+            print('\tline ', idx, 'original: ', line)
+            print("\t You need to add \'https://docs.harness.io\' to this link the category ID isn't in the following dictionary:")
+            print(cDict)
+            print('-----------------')
+            '''
             curLinkPlusDomain = curLink.replace("(", "(https://docs.harness.io")     
             newLine = newLine.replace(curLink, curLinkPlusDomain)
             print("\n[UPDATE_LINK_SUCCESS1] Added domain to link:")
             print('\tline ', idx, 'original: ', line)
-            print('\tline ', idx, 'updated : ', newLine) 
-        
+            print('\tline ', idx, 'updated : ', newLine)
+            ''' 
+         
     return newLine        
 
 
@@ -100,12 +116,11 @@ def updateLineWithLocalTarget(mdFileName, line, idx, cDict):
     newLine = line
     for match in re.finditer(_categoryLinkRE, line):
          curLink = match.group()
-         newLine = newLine
          newLinkLocalTarget = False
          skipUpdate = False
          hd_ID = getHelpDocsID(curLink, "/category/", cDict)
-         # print ("[DEBUG1] curLink = ", curLink)
-         # print("[DEBUG1] line ", idx, '\t', line)
+         print ("[DEBUG2] curLink = ", curLink)
+         print("[DEBUG2] line ", idx, '\t', line)
 
          if hd_ID != False: 
             newLinkLocalTarget = cDict[hd_ID]
@@ -115,19 +130,12 @@ def updateLineWithLocalTarget(mdFileName, line, idx, cDict):
          # if we found a local category, replace curLink with newLinkLocalTarget.
          # print("[DEBUG1] line ", idx, '\t', line)
          if newLinkLocalTarget != False:
-            curLink = curLink.replace("(https://docs.harness.io", "")
+            # curLink = curLink.replace("(https://docs.harness.io", "")
             newLine = newLine.replace(curLink, newLinkLocalTarget)
+            print("[DEBUG3] After replace. curLink = ", curLink, "\tnewLinkLocalTarget = ", newLinkLocalTarget)
             print("\n[UPDATE_LINK_SUCCESS2] Replaced with local target:", idx)
             print('\tline ', idx, 'original: ', line)
             print('\tline ', idx, 'updated : ', newLine) 
-         '''    
-         else:
-            # step 3 -- if there's no local category, but the current link needs the domain, replace curLink with curLinkPlusDomain. 
-            print("\n[WARNING] Skipping link on line ", idx, ", you might need to update it manually. Remove this link, check if the category link is already in the catalog (see end of log), or add the domain https:/docs.harness.io to the link. ")
-            print('\toriginal: ', line)
-            if curLink not in _linksNotUpdated:
-                _linksNotUpdated.append(curLink)
-         '''
     return newLine
 
 def updateTopic(mdFileName, cDict):
@@ -141,8 +149,10 @@ def updateTopic(mdFileName, cDict):
         for line in mdLines:
             newLine = updateLineWithDomain(mdFileName, line, idx, cDict)
             newLine = updateLineWithLocalTarget(mdFileName, newLine, idx, cDict)
+            
             newMarkdown.append(newLine)
             if (line != newLine):
+                print("[DEBUG4] newLine updated: ", newLine)
                 topicUpdated = True
             idx += 1
         stringListToFile(newMarkdown, mdFileName)
