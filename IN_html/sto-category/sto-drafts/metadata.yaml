@@ -1,0 +1,14 @@
+type: category
+category_id: n1ta989mha
+parent_category_id: txlccquh5c
+title: STO drafts
+description: ""
+slug: sto-drafts
+is_featured: false
+icon: ""
+permission_groups: []
+multilingual:
+- language_code: en
+  title: STO drafts
+  description: ""
+  slug: sto-drafts

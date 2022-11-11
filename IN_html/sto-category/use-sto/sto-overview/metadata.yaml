@@ -1,0 +1,61 @@
+type: article
+article_id: 2ap1uol6ti
+user_id: xwmdbyp4x8
+category_id: utstv3qzqt
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: STO Overview
+slug: sto-overview
+description: The STO Overview enables you to see all detected issues in your target
+  baselines. You can see a daily snapshot the distribution of issues over time, a
+  daily snapshot, and the most recent baseline scan\s.
+short_version: The STO Overview enables you to see all detected issues in your target
+  baselines.
+tags:
+- 'STO '
+show_toc: false
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-11-03T19:48:41.015294Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: STO Overview
+  description: The STO Overview enables you to see all detected issues in your target
+    baselines. You can see a daily snapshot the distribution of issues over time,
+    a daily snapshot, and the most recent baseline scan\s.
+  short_version: The STO Overview enables you to see all detected issues in your target
+    baselines.
+  body: <p>The STO Overview enables you to see all detected issues in your target
+    baselines.</p><figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/2ap1uol6ti/1667497048580/sto-overview.png"
+    style="display:block;margin-left:0;margin-right:auto" data-hd-align="left"/></figure><p>To
+    see all target baselines in the project, go to <strong>Security Tests</strong>
+    &gt; <strong>Test Targets</strong>. To see detected issues in a non-baseline target,
+    such as a feature or developer branch, go to the build results for that target
+    and click <strong>Security Tests</strong>.</p><ul><li><strong>Issue distribution
+    over time</strong> — Shows the daily distribution of all detected baseline issues
+    by severity.<ul><li>In this context, &#34;daily&#34; means from midnight GMT to
+    midnight GMT.</li><li>The STO deduplicates issues with the same root cause. Suppose
+    codebase A (main branch) and codebase B (main branch) contain the same vulnerability
+    inherited from the same open-source library. In this case, STO combines them into
+    one issue.</li></ul></li><li> <strong>Today&#39;s Snapshot</strong> — Shows all
+    issues detected in the most recent scans of each target baseline in the project.<ul><li>Suppose
+    the most recent baseline scans ran this morning (codebase A), last week (image
+    B), and two weeks ago (host C). In this case, the snapshot values are based on
+    all baseline issues detected in all three scans.</li></ul></li><li><strong>Target
+    Baselines</strong> — Shows the most recent scan for each target baseline in the
+    project.</li><li><strong>Failed Builds</strong> — Shows the most recent failed
+    builds that included scans of target baselines.</li><li><strong>Active Builds</strong>
+    — Shows active builds that include scans of target baselines.</li></ul><p></p>
+  slug: sto-overview
+  tags:
+  - 'STO '
+  is_live: true

@@ -1,0 +1,108 @@
+type: article
+article_id: ap7y94ap7h
+user_id: znazf3hcp9
+category_id: 8nywcs2sa7
+author:
+  name: Michael Cretzman
+  email: michael.cretzman+docs@harness.io
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: STO Basics
+slug: security-testing-orchestration-basics
+description: Enable DevOps and DevSecOps teams to left shift security testing.
+short_version: Enable DevOps and DevSecOps teams to left shift security testing.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-10-11T21:10:39.19918Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: STO Basics
+  description: Enable DevOps and DevSecOps teams to left shift security testing.
+  short_version: Enable DevOps and DevSecOps teams to left shift security testing.
+  body: '<p>Companies perform security testing to avoid introducing vulnerabilities
+    into the products their customers depend on. If a customer catches the security
+    issue instead of the company, trust is lost.</p><p>Harness Security Testing Orchestration
+    (STO) enables DevOps and DevSecOps teams to left shift security testing. STO orchestrates
+    scanning, intelligently deduplicating scanner output, prioritizing remediations,
+    and enforcing governance into your Pipeline. STO puts scanning directly into your
+    Pipelines to ensure that vulnerabilities are caught and fixed before your products
+    are ever released.</p><p>This topic describes the security scanning problems facing
+    developers and how STO provides the solutions they need.</p><h3>Common Scanning
+    Problems</h3><p>Many current security testing practices have the following issues:</p><ul><li><strong>Mostly
+    manual and standalone:</strong> scanners are run individually on parts of a release
+    manually, instead of integrated into the Pipeline and run automatically.</li><li><strong>Too
+    slow or delayed:</strong> identifying vulnerabilities is often done after the
+    vulnerabilities are released.</li><li><strong>Siloed visibility:</strong> multiple
+    tools for different types of scans reduces the overall visibility into your product&#39;s
+    vulnerabilities.</li><li><strong>Inconsistent Governance:</strong> developers
+    don&#39;t have guidance and governance to help them decide where scans should
+    be in their release process.</li><li><strong>Not integrated with CI/CD:</strong>
+    scans happen outside of the Pipeline instead of acting as gate checks.</li></ul><h4>Delayed
+    Feedback Loop</h4><p>Current security testing is challenging for DevOps teams
+    because most security testing is done right before code has reached production.
+    This is a delayed feedback loop.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ap7y94ap7h/1647988169396/clean-shot-2022-03-22-at-15-29-09.png"/></figure><p>All
+    of the release stages where security testing could have been applied are past,
+    and fixing the issue requires reworking each stage.</p><p>Developers need to move
+    forward but by the time the security testing feedback arrives it could be days
+    or weeks later and they have to stop current work and fix it.</p><h4>DevSecOps
+    Complexity Problem</h4><p>DevSecOps is too complicated because there are many
+    tools for so many types of scanning and the outputs from all these tools are disparate.
+    There is no uniform data format or language.</p><p></p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/ap7y94ap7h/1647988618571/clean-shot-2022-03-22-at-15-36-03.png"/></figure><p>Consequently,
+    developers don&#39;t have a deduplicated and prioritized list of vulnerabilities
+    to remedy.</p><p>So DevSecOps must normalize all the output, track exemptions,
+    and verifying fixes. This all requires DevSecOps synchronization with developers,
+    and it takes DevSecOps away from other work.</p><p>In addition, developers, PMs,
+    DevSecOps, and others have to act on the information provided from security testing,
+    but ensuring that these are the only vulnerabilities is challenging.</p><h3>Harness
+    Security Testing Orchestration (STO) Solution</h3><p>Harness STO enables DevOps
+    and DevSecOps teams to left shift security testing:</p><ul><li><strong>Test:</strong>
+    test code, OSS libraries, containers, and live apps with popular security scanners
+    as part of the CI/CD Pipeline. Harness orchestrates the scanners to ensure that
+    scanning is timely and easy to apply.</li><li><strong>Remediate:</strong> repair
+    security vulnerabilities by empowering developers with a prioritized list that
+    is intelligently deduplicated across all scanners. Harness provides dashboards
+    with clear security vulnerabilities identified.</li><li><strong>Govern:</strong>
+    use governance policies and real-time security dashboards for ensuring critical
+    security issues never make it to production. You can apply <a href="/article/1d3lmhv4jl-harness-governance-overview">Harness
+    existing OPA policy governance</a> to enforce your security testing practices.</li></ul><p>With
+    Harness STO, you are scanning at any stage in the CI/CD Pipeline, and providing
+    developers with deduplicated and prioritized vulnerabilities:</p><p></p><figure><img
+    src="https://files.helpdocs.io/i5nl071jo5/articles/ap7y94ap7h/1647974851933/image.png"/></figure><p></p><h3>Quick
+    Summary</h3><p>The following 1min video provides a quick summary of STO:</p><div
+    class="hd--embed" data-provider="Wistia" data-thumbnail=""><iframe src="//fast.wistia.net/embed/iframe/yjlevup9v4"
+    allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed"
+    allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen=""
+    msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js"
+    async=""></script></div><p></p><h3>STO Features</h3><p>Harness STO automatically
+    aggregates, normalizes, and deduplicates data to identify vulnerabilities across
+    all your scanners. You can use STO with no other Harness modules. See <a href="https://docs.harness.io/article/yvy4pmt8bw"
+    target="_blank">STO Tutorial 1: Standalone STO Workflows</a>.</p><p>You can also
+    include STO features in CI and CD workflows. You can set up your Pipelines to
+    scan repos, images, and artifacts, and then fail the Pipeline automatically if
+    any &#34;show-stopper&#34; vulnerabilities are detected. See <a href="https://docs.harness.io/article/zy4h4ch6dh"
+    target="_blank">STO Quickstart 2: Integrated STO/CI/CD Workflows</a>.</p><figure><img
+    src="https://files.helpdocs.io/kw8ldg1itf/articles/ap7y94ap7h/1660650807410/sto-overview-update.png"/></figure><p>Now
+    let&#39;s apply these features to common use cases:</p><p></p><table><tbody><tr><td><p><strong>Use
+    Cases</strong></p></td><td><p><strong>Shift Left Security Testing To CI/CD Pipeline</strong></p></td><td><p><strong>Developer-first
+    Remediation</strong></p></td><td><p><strong>Governance, Dashboards &amp; Reports</strong></p></td></tr><tr><td><p><strong>Features</strong></p></td><td><ul><li>STO
+    built into Harness CI/CD Pipelines.</li><li>STO standalone stage added to Harness
+    CD.</li><li>STO standalone stage initiated from any CI/CD stage.</li></ul></td><td><ul><li>Deduplication
+    and prioritization across all scanners.</li><li>Categorization of new vs. existing
+    vulnerabilities (with/without exemptions).</li></ul></td><td><ul><li>Pipeline
+    design and deployment governance.</li><li>Audit trails for scan execution, approvals,
+    and policy enforcement.</li><li>Enterprise dashboards and reports.</li></ul></td></tr></tbody></table><p></p><h3>Scanner
+    Coverage</h3><p>For a list of supported scanners, see <a href="https://docs.harness.io/article/0k0iubnzql#scanners_target_types_and_scan_approach"
+    target="_blank">Scanners, Target Types, and Scan Approach</a>.</p><h3>Next Steps</h3><ul><li><a
+    href="/article/b5jv0vlrvf-security-testing-orchestration-quickstart">Security
+    Testing Orchestration Quickstart</a></li></ul><p></p>'
+  slug: security-testing-orchestration-basics
+  tags: []
+  is_live: true

@@ -1,401 +1,764 @@
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG1] HelpDocs ID =  knunou9j30
-[DEBUG1] HelpDocs ID =  cifa2yb19a
-[DEBUG1] HelpDocs ID =  uiqe6jz9o1
-[DEBUG1] HelpDocs ID =  re8kk0ex4k
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+[DEBUG1] HelpDocs ID =  d24n34qdbk
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  43 original:	 * Install a [Harness Kubernetes (K8S) Delegate](/article/re8kk0ex4k-delegate-installation-overview) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
+	line  26 original:	 You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Set up ingestionOnly in an STO pipeline](https://docs.harness.io/article/d24n34qdbk) for an example.
 
-	line  43 upated:	 * Install a [Harness Kubernetes (K8S) Delegate](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) and ensure that, this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled.
+	line  26 upated:	 You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Set up ingestionOnly in an STO pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
 
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG4] section tag in  (/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo)  found, returning  step-4-create-an-slo
-[WARNING3] Original link points to subsection, tag might be incorrect:  #step-4-create-an-slo
+[INFO1] File updated:  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
 
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  48 original:	 You can skip to [Step 4](/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo) if you have already set up a Monitored Service.In the Harness Project with the Service you want to monitor, navigate to the **Service Reliability Management** module.
 
-	line  48 upated:	 You can skip to [Step 4](slo-management-quickstart.md#step-4-create-an-slo) if you have already set up a Monitored Service.In the Harness Project with the Service you want to monitor, navigate to the **Service Reliability Management** module.
-
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+[DEBUG1] HelpDocs ID =  wk018r6x3g
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  54 original:	 ![](./static/slo-management-quickstart-01.png)You can also set up a Monitored Service in the [Verify step](/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+	line  35 original:	 For an example of the setup workflow, go to [Run an Orchestrated Scan in an STO Pipeline](https://docs.harness.io/article/wk018r6x3g). This topic describes how to scan a container image using [Aqua Trivy](https://docs.harness.io/article/079248uzcu). The **runTrivyScanOnImage** step specifies all the information needed to scan the object:
 
-	line  54 upated:	 ![](./static/slo-management-quickstart-01.png)You can also set up a Monitored Service in the [Verify step](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+	line  35 upated:	 For an example of the setup workflow, go to [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md). This topic describes how to scan a container image using [Aqua Trivy](https://docs.harness.io/article/079248uzcu). The **runTrivyScanOnImage** step specifies all the information needed to scan the object:
 
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG4] section tag in  (https://ngdocs.harness.io/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo)  found, returning  step-4-create-an-slo
-[WARNING3] Original link points to subsection, tag might be incorrect:  #step-4-create-an-slo
+[DEBUG1] HelpDocs ID =  079248uzcu
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  68 original:	 You can skip to [Step 4](https://ngdocs.harness.io/article/trlszsj5lh-slo-management-quickstart#step_4_create_an_slo) if you have already added a Change Source or Health Source for your Monitored Service.A Change Source monitors change events related to deployments, infrastructure changes, and incidents.
+	line  35 original:	 For an example of the setup workflow, go to [Run an Orchestrated Scan in an STO Pipeline](https://docs.harness.io/article/wk018r6x3g). This topic describes how to scan a container image using [Aqua Trivy](https://docs.harness.io/article/079248uzcu). The **runTrivyScanOnImage** step specifies all the information needed to scan the object:
 
-	line  68 upated:	 You can skip to [Step 4](slo-management-quickstart.md#step-4-create-an-slo) if you have already added a Change Source or Health Source for your Monitored Service.A Change Source monitors change events related to deployments, infrastructure changes, and incidents.
+	line  35 upated:	 For an example of the setup workflow, go to [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md). This topic describes how to scan a container image using [Aqua Trivy](../sto-techref-category/aqua-trivy-scanner-reference.md). The **runTrivyScanOnImage** step specifies all the information needed to scan the object:
 
-[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG1] HelpDocs ID =  079248uzcu
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  19 original:	 [SLO-driven](/article/trlszsj5lh-slo-management-quickstart) governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
+	line  49 original:	 For an example of the setup workflow, go to [Ingest Scan Results into an STO Pipeline](https://harness.helpdocs.io/article/d24n34qdbk). This topic describes how to scan a container image using [Aqua Trivy](https://docs.harness.io/article/079248uzcu). The pipeline works like this:
 
-	line  19 upated:	 [SLO-driven](slo-management-quickstart.md) governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
+	line  49 upated:	 For an example of the setup workflow, go to [Ingest Scan Results into an STO Pipeline](https://harness.helpdocs.io/article/d24n34qdbk). This topic describes how to scan a container image using [Aqua Trivy](../sto-techref-category/aqua-trivy-scanner-reference.md). The pipeline works like this:
 
-[DEBUG1] HelpDocs ID =  4o7oqwih6h
+[DEBUG1] HelpDocs ID =  wk018r6x3g
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  66 original:	 * [Run an Orchestrated Scan in an STO Pipeline](https://docs.harness.io/article/wk018r6x3g)
+
+	line  66 upated:	 * [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md)
+
+[DEBUG1] HelpDocs ID =  d24n34qdbk
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  67 original:	 * [Ingest Scan Results into an STO Pipeline](https://docs.harness.io/article/d24n34qdbk)
+
+	line  67 upated:	 * [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  68 original:	 * [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql)
+
+	line  68 upated:	 * [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
+
+[INFO1] File updated:  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  17 original:	 In the following example workflow, you will clone the base pipeline created in [Set up Harness for STO](https://docs.harness.io/article/rlbw5luj4h) and configure it to scan a Docker image using Aqua Trivy.
+
+	line  17 upated:	 In the following example workflow, you will clone the base pipeline created in [Set up Harness for STO](../onboard-sto/set-up-harness-for-sto.md) and configure it to scan a Docker image using Aqua Trivy.
+
+[DEBUG1] HelpDocs ID =  cjqnd71y07
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  54 original:	 * [STO Ingestion Workflows](https://docs.harness.io/article/cjqnd71y07)
+
+	line  54 upated:	 * [STO Ingestion Workflows](sto-workflows-overview.md)
+
+[DEBUG1] HelpDocs ID =  d24n34qdbk
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  55 original:	 * [Ingest Scan Results into an STO Pipeline](https://docs.harness.io/article/d24n34qdbk)
+
+	line  55 upated:	 * [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  56 original:	 * [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql)
+
+	line  56 upated:	 * [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
+
+[INFO1] File updated:  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG1] HelpDocs ID =  ymkcm5lypf
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  15 original:	 STO also supports a generic JSON format if you want to to ingest data from tools that do not currently have STO integrations. For more information, go to [Custom Scanners Reference](https://docs.harness.io/article/ymkcm5lypf).
+
+	line  15 upated:	 STO also supports a generic JSON format if you want to to ingest data from tools that do not currently have STO integrations. For more information, go to [Custom Scanners Reference](ingesting-issues-from-other-scanners.md).
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+[DEBUG4] section tag in  (https://docs.harness.io/article/0k0iubnzql#scanners_target_types_and_scan_approach)  found, returning  scanners-target-types-and-scan-approach
+[WARNING3] Original link points to subsection, tag might be incorrect:  #scanners-target-types-and-scan-approach
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  30 original:	 For [supported scanners](https://docs.harness.io/article/0k0iubnzql#scanners_target_types_and_scan_approach), STO can ingest the default data format for the published tool.  
+
+	line  30 upated:	 For [supported scanners](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach), STO can ingest the default data format for the published tool.  
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  56 original:	 4. Specify any additional settings required for your specific scanner and the scanned object. Go to [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql).  
+
+	line  56 upated:	 4. Specify any additional settings required for your specific scanner and the scanned object. Go to [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md).  
+
+[DEBUG1] HelpDocs ID =  cjqnd71y07
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  153 original:	 * [STO Ingestion Workflows](https://docs.harness.io/article/cjqnd71y07)
+
+	line  153 upated:	 * [STO Ingestion Workflows](sto-workflows-overview.md)
+
+[DEBUG1] HelpDocs ID =  ymkcm5lypf
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  154 original:	 * [Ingest Results from Custom or Unsupported Scanners](https://docs.harness.io/article/ymkcm5lypf)
+
+	line  154 upated:	 * [Ingest Results from Custom or Unsupported Scanners](ingesting-issues-from-other-scanners.md)
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  155 original:	 * [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql)
+
+	line  155 upated:	 * [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
+
+[INFO1] File updated:  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sample.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sample.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG1] HelpDocs ID =  yvy4pmt8bw
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  13 original:	 This tutorial builds on the [previous tutorial](https://docs.harness.io/article/yvy4pmt8bw). You need to complete Tutorial 1 first.
+
+	line  13 upated:	 This tutorial builds on the [previous tutorial](tutorial-1-standalone-workflows.md). You need to complete Tutorial 1 first.
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  19 original:	 For the list of supported scanners, see [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql).
+
+	line  19 upated:	 For the list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md).
+
+[DEBUG1] HelpDocs ID =  yvy4pmt8bw
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  45 original:	 * **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](https://docs.harness.io/article/yvy4pmt8bw). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
+
+	line  45 upated:	 * **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](tutorial-1-standalone-workflows.md). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
+
+[DEBUG1] HelpDocs ID =  zy4h4ch6dh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  46 original:	 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in [Tutorial 2](https://docs.harness.io/article/zy4h4ch6dh).
+
+	line  46 upated:	 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  79 original:	 STO supports an extensive set of external scanners for repos, images, and artifacts. See [Security Steps Reference](https://docs.harness.io/article/0k0iubnzql).
+
+	line  79 upated:	 STO supports an extensive set of external scanners for repos, images, and artifacts. See [Security Steps Reference](../sto-techref-category/security-step-settings-reference.md).
+
 [DEBUG1] HelpDocs ID =  1d3lmhv4jl
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG4] section tag in  (/article/trlszsj5lh-slo-management-quickstart#step_5_create_an_slo)  found, returning  step-5-create-an-slo
-[WARNING3] Original link points to subsection, tag might be incorrect:  #step-5-create-an-slo
+[DEBUG1] HelpDocs ID =  0zvnn5s1ph
+[DEBUG1] HelpDocs ID =  htrur23poj
+[DEBUG1] HelpDocs ID =  qhgshfw3mg
+[DEBUG1] HelpDocs ID =  yvy4pmt8bw
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  246 original:	 Now, [create an SLO](/article/trlszsj5lh-slo-management-quickstart#step_5_create_an_slo) for the Monitored Service.
+	line  146 original:	 Here's the YAML of the [integrated workflow example](https://docs.harness.io/article/yvy4pmt8bw) we examined previously.
 
-	line  246 upated:	 Now, [create an SLO](slo-management-quickstart.md#step-5-create-an-slo) for the Monitored Service.
+	line  146 upated:	 Here's the YAML of the [integrated workflow example](tutorial-1-standalone-workflows.md) we examined previously.
 
+[DEBUG1] HelpDocs ID =  cjqnd71y07
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  265 original:	 * [STO Ingestion Workflows](https://docs.harness.io/article/cjqnd71y07)
+
+	line  265 upated:	 * [STO Ingestion Workflows](../use-sto/sto-workflows-overview.md)
+
+[DEBUG1] HelpDocs ID =  wk018r6x3g
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  266 original:	 * [Run an Orchestrated Scan in an STO Pipeline](https://docs.harness.io/article/wk018r6x3g)
+
+	line  266 upated:	 * [Run an Orchestrated Scan in an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
+
+[DEBUG1] HelpDocs ID =  wk018r6x3g
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  267 original:	 * [Ingest Scan Results into an STO Pipeline](https://docs.harness.io/article/wk018r6x3g)
+
+	line  267 upated:	 * [Ingest Scan Results into an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  268 original:	 * [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql)
+
+	line  268 upated:	 * [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
+
+[INFO1] File updated:  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+[DEBUG1] HelpDocs ID =  zy4h4ch6dh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  15 original:	 This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](https://docs.harness.io/article/zy4h4ch6dh), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
+
+	line  15 upated:	 This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  27 original:	 You must perform all the required steps in [Set Up Harness for STO](https://docs.harness.io/article/rlbw5luj4h). This topic describes how to do the following:
+
+	line  27 upated:	 You must perform all the required steps in [Set Up Harness for STO](set-up-harness-for-sto.md). This topic describes how to do the following:
+
+[DEBUG1] HelpDocs ID =  1e536z41av
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  50 original:	 See **Security Testing Orchestration** in [Supported Platforms and Technologies](/article/1e536z41av-supported-platforms-and-technologies).
+
+	line  50 upated:	 See **Security Testing Orchestration** in [Supported Platforms and Technologies](https://docs.harness.io/article/1e536z41av-supported-platforms-and-technologies).
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  56 original:	 This Pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql).
+
+	line  56 upated:	 This Pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md).
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+[DEBUG4] section tag in  (https://docs.harness.io/article/rlbw5luj4h#create-an-sto-pipeline)  found, returning  create-an-sto-pipeline
+[WARNING3] Original link points to subsection, tag might be incorrect:  #create-an-sto-pipeline
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  60 original:	 1. Go to the project with the [base STO pipeline](https://docs.harness.io/article/rlbw5luj4h#create-an-sto-pipeline) project.
+
+	line  60 upated:	 1. Go to the project with the [base STO pipeline](set-up-harness-for-sto.md#create-an-sto-pipeline) project.
+
+[DEBUG1] HelpDocs ID =  zy4h4ch6dh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  131 original:	 Proceed to [Tutorial 2](https://docs.harness.io/article/zy4h4ch6dh) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.
+
+	line  131 upated:	 Proceed to [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.
+
+[DEBUG1] HelpDocs ID =  cjqnd71y07
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  135 original:	 * [STO Ingestion Workflows](https://docs.harness.io/article/cjqnd71y07)
+
+	line  135 upated:	 * [STO Ingestion Workflows](../use-sto/sto-workflows-overview.md)
+
+[DEBUG1] HelpDocs ID =  wk018r6x3g
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  136 original:	 * [Run an Orchestrated Scan in an STO Pipeline](https://docs.harness.io/article/wk018r6x3g)
+
+	line  136 upated:	 * [Run an Orchestrated Scan in an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
+
+[DEBUG1] HelpDocs ID =  wk018r6x3g
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  137 original:	 * [Ingest Scan Results into an STO Pipeline](https://docs.harness.io/article/wk018r6x3g)
+
+	line  137 upated:	 * [Ingest Scan Results into an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
+
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  138 original:	 * [Security Step Settings Reference](https://docs.harness.io/article/0k0iubnzql)
+
+	line  138 upated:	 * [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
+
+[INFO1] File updated:  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+[DEBUG4] section tag in  (https://docs.harness.io/article/rlbw5luj4h#install-the-delegateadd-security-testing-roles)  found, returning  install-the-delegateadd-security-testing-roles
+[WARNING3] Original link points to subsection, tag might be incorrect:  #install-the-delegateadd-security-testing-roles
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  52 original:	 1. [Add Security Testing roles](https://docs.harness.io/article/rlbw5luj4h#install-the-delegateadd-security-testing-roles)
+
+	line  52 upated:	 1. [Add Security Testing roles](set-up-harness-for-sto.md#install-the-delegateadd-security-testing-roles)
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+[DEBUG4] section tag in  (https://docs.harness.io/article/rlbw5luj4h#install-the-delegateinstall-the-harness-delegate)  found, returning  install-the-delegateinstall-the-harness-delegate
+[WARNING3] Original link points to subsection, tag might be incorrect:  #install-the-delegateinstall-the-harness-delegate
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  53 original:	 2. [Install the Harness Delegate](https://docs.harness.io/article/rlbw5luj4h#install-the-delegateinstall-the-harness-delegate)
+
+	line  53 upated:	 2. [Install the Harness Delegate](set-up-harness-for-sto.md#install-the-delegateinstall-the-harness-delegate)
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  55 original:	 4. [Create a Secret for your Git Access Credentials](https://docs.harness.io/article/rlbw5luj4h#install-the-delegate#create-a-secret)
+
+	line  55 upated:	 4. [Create a Secret for your Git Access Credentials](set-up-harness-for-sto.md)
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  57 original:	 6. [Create an STO pipeline](https://docs.harness.io/article/rlbw5luj4h#install-the-delegate#create-an-sto-pipeline)
+
+	line  57 upated:	 6. [Create an STO pipeline](set-up-harness-for-sto.md)
+
+[DEBUG1] HelpDocs ID =  yvy4pmt8bw
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  63 original:	 * **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](https://docs.harness.io/article/yvy4pmt8bw).
+
+	line  63 upated:	 * **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](tutorial-1-standalone-workflows.md).
+
+[DEBUG1] HelpDocs ID =  zy4h4ch6dh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  64 original:	 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions (Ignore rules). These workflows are covered in [Tutorial 2](https://docs.harness.io/article/zy4h4ch6dh).
+
+	line  64 upated:	 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions (Ignore rules). These workflows are covered in [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
+
+[DEBUG1] HelpDocs ID =  ooelo06uy5
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  136 original:	   	In the Harness Delegate setup, you will see the Delegate register with Harness. This might take a few minutes.If you encounter errors, ensure your cluster can connect outbound to **app.harness.io**. See [Allowlist Harness Domains and IPs](/article/ooelo06uy5-whitelist-harness-domains-and-ips).
+
+	line  136 upated:	   	In the Harness Delegate setup, you will see the Delegate register with Harness. This might take a few minutes.If you encounter errors, ensure your cluster can connect outbound to **app.harness.io**. See [Allowlist Harness Domains and IPs](https://docs.harness.io/article/ooelo06uy5-whitelist-harness-domains-and-ips).
+
+[DEBUG1] HelpDocs ID =  yvy4pmt8bw
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  195 original:	 You'll need a GitHub Connector to do the [STO Tutorials](https://docs.harness.io/article/yvy4pmt8bw). You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), [Azure](https://docs.harness.io/article/9epdx5m9ae), [Bitbucket](https://harness.helpdocs.io/article/iz5tucdwyu), [Git](https://harness.helpdocs.io/article/tbm2hw6pr6) (platform-agnostic), [GitHub](https://harness.helpdocs.io/article/v9sigwjlgo), and [GitLab](https://harness.helpdocs.io/article/5abnoghjgo).
+
+	line  195 upated:	 You'll need a GitHub Connector to do the [STO Tutorials](tutorial-1-standalone-workflows.md). You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), [Azure](https://docs.harness.io/article/9epdx5m9ae), [Bitbucket](https://harness.helpdocs.io/article/iz5tucdwyu), [Git](https://harness.helpdocs.io/article/tbm2hw6pr6) (platform-agnostic), [GitHub](https://harness.helpdocs.io/article/v9sigwjlgo), and [GitLab](https://harness.helpdocs.io/article/5abnoghjgo).
+
+[DEBUG1] HelpDocs ID =  9epdx5m9ae
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  195 original:	 You'll need a GitHub Connector to do the [STO Tutorials](https://docs.harness.io/article/yvy4pmt8bw). You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), [Azure](https://docs.harness.io/article/9epdx5m9ae), [Bitbucket](https://harness.helpdocs.io/article/iz5tucdwyu), [Git](https://harness.helpdocs.io/article/tbm2hw6pr6) (platform-agnostic), [GitHub](https://harness.helpdocs.io/article/v9sigwjlgo), and [GitLab](https://harness.helpdocs.io/article/5abnoghjgo).
+
+	line  195 upated:	 You'll need a GitHub Connector to do the [STO Tutorials](tutorial-1-standalone-workflows.md). You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), [Azure](https://docs.harness.io/article/9epdx5m9ae), [Bitbucket](https://harness.helpdocs.io/article/iz5tucdwyu), [Git](https://harness.helpdocs.io/article/tbm2hw6pr6) (platform-agnostic), [GitHub](https://harness.helpdocs.io/article/v9sigwjlgo), and [GitLab](https://harness.helpdocs.io/article/5abnoghjgo).
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  213 original:	   	**Personal Access Token:** Your [GitHub Personal Access Token secret](https://docs.harness.io/article/rlbw5luj4h#install-the-delegate#create-a-secret).  
+
+	line  213 upated:	   	**Personal Access Token:** Your [GitHub Personal Access Token secret](set-up-harness-for-sto.md).  
+
+[DEBUG1] HelpDocs ID =  yvy4pmt8bw
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  227 original:	 The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in [STO Tutorial 1](https://docs.harness.io/article/yvy4pmt8bw).
+
+	line  227 upated:	 The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in [STO Tutorial 1](tutorial-1-standalone-workflows.md).
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  240 original:	 	3. Connector = The connector you created in [Create a Codebase Connector](https://docs.harness.io/article/rlbw5luj4h#install-the-delegate#create-a-codebase-connector).
+
+	line  240 upated:	 	3. Connector = The connector you created in [Create a Codebase Connector](set-up-harness-for-sto.md).
+
+[DEBUG1] HelpDocs ID =  rlbw5luj4h
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+[DEBUG4] section tag in  (https://docs.harness.io/article/rlbw5luj4h#install-the-delegate)  found, returning  install-the-delegate
+[WARNING3] Original link points to subsection, tag might be incorrect:  #install-the-delegate
+
+[UPDATE_LINK_SUCCESS3] line updated:
+	line  248 original:	 	2. Kubernetes Cluster = The delegate you created in [Install the delegate](https://docs.harness.io/article/rlbw5luj4h#install-the-delegate).
+
+	line  248 upated:	 	2. Kubernetes Cluster = The delegate you created in [Install the delegate](set-up-harness-for-sto.md#install-the-delegate).
+
+[DEBUG1] HelpDocs ID =  create
+[INFO1] File updated:  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
 [DEBUG1] HelpDocs ID =  1d3lmhv4jl
-[DEBUG1] HelpDocs ID =  jws2znftay
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  291 original:	 * [Harness Governance Quickstart](/article/jws2znftay-harness-governance-quickstart)
+	line  57 original:	 * **Govern:** use governance policies and real-time security dashboards for ensuring critical security issues never make it to production. You can apply [Harness existing OPA policy governance](/article/1d3lmhv4jl-harness-governance-overview) to enforce your security testing practices.
 
-	line  291 upated:	 * [Harness Governance Quickstart](https://docs.harness.io/article/jws2znftay-harness-governance-quickstart)
+	line  57 upated:	 * **Govern:** use governance policies and real-time security dashboards for ensuring critical security issues never make it to production. You can apply [Harness existing OPA policy governance](https://docs.harness.io/article/1d3lmhv4jl-harness-governance-overview) to enforce your security testing practices.
 
-[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG1] HelpDocs ID =  yvy4pmt8bw
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  27 original:	 * [SLO Management](/article/trlszsj5lh-slo-management-quickstart)
+	line  73 original:	 Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](https://docs.harness.io/article/yvy4pmt8bw).
 
-	line  27 upated:	 * [SLO Management](slo-management-quickstart.md)
+	line  73 upated:	 Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](tutorial-1-standalone-workflows.md).
 
-[DEBUG1] HelpDocs ID =  lwi37ku94x
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  28 original:	 * [Change Impact Analysis](/article/lwi37ku94x-change-impact-analysis-quickstart)
-
-	line  28 upated:	 * [Change Impact Analysis](change-impact-analysis-quickstart.md)
-
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[DEBUG1] HelpDocs ID =  zy4h4ch6dh
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  29 original:	 * [Service Reliability Checks](/article/3xhqq9xllp-verify-deployments-with-the-verify-step)
+	line  75 original:	 You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](https://docs.harness.io/article/zy4h4ch6dh).
 
-	line  29 upated:	 * [Service Reliability Checks](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step)
+	line  75 upated:	 You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
 
-[DEBUG1] HelpDocs ID =  d3m9uo4mx0
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  30 original:	 * [SLO Driven Governance](/article/d3m9uo4mx0-slo-driven-deployment-governance)
-
-	line  30 upated:	 * [SLO Driven Governance](slo-driven-deployment-governance.md)
-
-[DEBUG1] HelpDocs ID =  n67y68fopr
+[DEBUG1] HelpDocs ID =  0k0iubnzql
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+[DEBUG4] section tag in  (https://docs.harness.io/article/0k0iubnzql#scanners_target_types_and_scan_approach)  found, returning  scanners-target-types-and-scan-approach
+[WARNING3] Original link points to subsection, tag might be incorrect:  #scanners-target-types-and-scan-approach
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  78 original:	 Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/article/n67y68fopr-verify-deployments-with-custom-health-metrics) lets you customize APMs of your choice.
+	line  96 original:	 For a list of supported scanners, see [Scanners, Target Types, and Scan Approach](https://docs.harness.io/article/0k0iubnzql#scanners_target_types_and_scan_approach).
 
-	line  78 upated:	 Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](https://docs.harness.io/article/n67y68fopr-verify-deployments-with-custom-health-metrics) lets you customize APMs of your choice.
+	line  96 upated:	 For a list of supported scanners, see [Scanners, Target Types, and Scan Approach](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
 
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  98 original:	 * [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart)
-
-	line  98 upated:	 * [SLO Management Quickstart](slo-management-quickstart.md)
-
-[DEBUG1] HelpDocs ID =  lwi37ku94x
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[DEBUG1] HelpDocs ID =  b5jv0vlrvf
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  99 original:	 * [Change Impact Analysis Quickstart](/article/lwi37ku94x-change-impact-analysis-quickstart)
+	line  100 original:	 * [Security Testing Orchestration Quickstart](/article/b5jv0vlrvf-security-testing-orchestration-quickstart)
 
-	line  99 upated:	 * [Change Impact Analysis Quickstart](change-impact-analysis-quickstart.md)
+	line  100 upated:	 * [Security Testing Orchestration Quickstart](https://docs.harness.io/article/b5jv0vlrvf-security-testing-orchestration-quickstart)
 
-[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[INFO1] File updated:  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  576gjpak61
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
 
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  30 original:	 * [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart)
 
-	line  30 upated:	 * [SLO Management Quickstart](slo-management-quickstart.md)
-
-[DEBUG1] HelpDocs ID =  re8kk0ex4k
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  34 original:	 * Install a [Harness Kubernetes (K8S) Delegate](/article/re8kk0ex4k-delegate-installation-overview) and ensure that this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled
-
-	line  34 upated:	 * Install a [Harness Kubernetes (K8S) Delegate](https://docs.harness.io/article/re8kk0ex4k-delegate-installation-overview) and ensure that this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled
-
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
+[DEBUG1] HelpDocs ID =  osfw70e59c
+[DEBUG1] HelpDocs ID =  wk018r6x3g
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  49 original:	 You can also set up a Monitored Service in the [Verify step](/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+	line  29 original:	 	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestrated Scan in an STO Pipeline](https://docs.harness.io/article/wk018r6x3g).
 
-	line  49 upated:	 You can also set up a Monitored Service in the [Verify step](https://docs.harness.io/article/3xhqq9xllp-verify-deployments-with-the-verify-step#step_1_add_verify_step) in a CD stage.In **Overview**, in the **Service** tab, **Application** is selected by default in the **Type** field. You can also select **Infrastructure**.
+	line  29 upated:	 	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestrated Scan in an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md).
 
-[INFO1] File updated:  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  mozd8b49td
+[DEBUG1] HelpDocs ID =  576gjpak61
+[INFO1] File updated:  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
-[DEBUG1] HelpDocs ID =  l8up27c7rn
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG4] section tag in  (/article/l8up27c7rn-service-reliability-management-basics#sort=relevancy&f:@commonsource=[NextGen%20Docs])  found, returning  sort=relevancy&f:@commonsource=[NextGen%20Docs]
-[WARNING3] Original link points to subsection, tag might be incorrect:  #sort=relevancy&f:@commonsource=[NextGen%20Docs]
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  14 original:	 Error Tracking in the Harness [Service Reliability Management (SRM)](/article/l8up27c7rn-service-reliability-management-basics#sort=relevancy&f:@commonsource=[NextGen%20Docs]) module is a continuous reliability solution that enables you to identify, triage, and resolve errors in your Service. This helps to implement rapid code changes by ensuring that the code is always in a deployable state.
-
-	line  14 upated:	 Error Tracking in the Harness [Service Reliability Management (SRM)](../service-reliability-management-onboard/service-reliability-management-basics.md#sort=relevancy&f:@commonsource=[NextGen%20Docs]) module is a continuous reliability solution that enables you to identify, triage, and resolve errors in your Service. This helps to implement rapid code changes by ensuring that the code is always in a deployable state.
-
-[DEBUG1] HelpDocs ID =  cbj5uuzpbu
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
-[DEBUG4] section tag in  (/article/cbj5uuzpbu-error-tracking-in-srm#step_3_view_automated_root_cause_arc_screen)  found, returning  step-3-view-automated-root-cause-arc-screen
-[WARNING3] Original link points to subsection, tag might be incorrect:  #step-3-view-automated-root-cause-arc-screen
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
+[DEBUG1] HelpDocs ID =  d24n34qdbk
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  26 original:	 * Analyze and determine the root cause of detected issues using the [Automated Root Cause (ARC)](/article/cbj5uuzpbu-error-tracking-in-srm#step_3_view_automated_root_cause_arc_screen) screen.
+	line  24 original:	 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](https://docs.harness.io/article/d24n34qdbk).
 
-	line  26 upated:	 * Analyze and determine the root cause of detected issues using the [Automated Root Cause (ARC)](error-tracking-in-srm.md#step-3-view-automated-root-cause-arc-screen) screen.
+	line  24 upated:	 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
 
-[DEBUG1] HelpDocs ID =  nx99xfcoxz
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
-[DEBUG4] section tag in  (/article/nx99xfcoxz-install-the-error-tracking-agent#compatibility_and_requirements)  found, returning  compatibility-and-requirements
-[WARNING3] Original link points to subsection, tag might be incorrect:  #compatibility-and-requirements
+[INFO1] File updated:  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
 
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  37 original:	 * [Compatibility and Requirements](/article/nx99xfcoxz-install-the-error-tracking-agent#compatibility_and_requirements).
 
-	line  37 upated:	 * [Compatibility and Requirements](install-the-error-tracking-agent.md#compatibility-and-requirements).
-
-[DEBUG1] HelpDocs ID =  nx99xfcoxz
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
+[DEBUG1] HelpDocs ID =  d24n34qdbk
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  38 original:	 * [Install an Error Tracking Agent](/article/nx99xfcoxz-install-the-error-tracking-agent).
+	line  28 original:	 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](https://docs.harness.io/article/d24n34qdbk).
 
-	line  38 upated:	 * [Install an Error Tracking Agent](install-the-error-tracking-agent.md).
+	line  28 upated:	 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
 
-[DEBUG1] HelpDocs ID =  hngrlb7rd6
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  576gjpak61
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  ygyvp998mu
+[INFO1] File updated:  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
 
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  82 original:	 In **Encrypted Key**, click **Create or Select a Secret**. You can either select an existing API Key or create a new Secret by clicking **New Secret Text**. Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. You can choose to use your own secrets management solution, or the built-in Harness Secrets Manager.  For more details, see [Secret Management Overview](/article/hngrlb7rd6-harness-secret-manager-overview#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
 
-	line  82 upated:	 In **Encrypted Key**, click **Create or Select a Secret**. You can either select an existing API Key or create a new Secret by clicking **New Secret Text**. Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. You can choose to use your own secrets management solution, or the built-in Harness Secrets Manager.  For more details, see [Secret Management Overview](https://docs.harness.io/article/hngrlb7rd6-harness-secret-manager-overview#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
 
-[DEBUG1] HelpDocs ID =  tdoad7xrh9
 
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  88 original:	 In **Secret Value**, enter a value for the encrypted text. You can [create](/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
-
-	line  88 upated:	 In **Secret Value**, enter a value for the encrypted text. You can [create](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
-
-[DEBUG1] HelpDocs ID =  tdoad7xrh9
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  88 original:	 In **Secret Value**, enter a value for the encrypted text. You can [create](/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
-
-	line  88 upated:	 In **Secret Value**, enter a value for the encrypted text. You can [create](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#create_personal_access_token) and [generate](https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys#generate_personal_access_token) an API Token from your user profile that allows you to make authorized API calls to Harness.
-
-[DEBUG1] HelpDocs ID =  nx99xfcoxz
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+[DEBUG1] HelpDocs ID =  ymkcm5lypf
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  112 original:	 See [Install an Error Tracking Agent](/article/nx99xfcoxz-install-the-error-tracking-agent).
+	line  44 original:	 |  [External (JSON upload v2)](https://docs.harness.io/article/ymkcm5lypf) | container, repository, instance, configuration | ingestionOnly |
 
-	line  112 upated:	 See [Install an Error Tracking Agent](install-the-error-tracking-agent.md).
+	line  44 upated:	 |  [External (JSON upload v2)](../use-sto/ingesting-issues-from-other-scanners.md) | container, repository, instance, configuration | ingestionOnly |
 
-[DEBUG1] HelpDocs ID =  lwi37ku94x
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-[DEBUG4] section tag in  (/article/lwi37ku94x-change-impact-analysis-quickstart#step_4_view_service_health)  found, returning  step-4-view-service-health
-[WARNING3] Original link points to subsection, tag might be incorrect:  #step-4-view-service-health
+[DEBUG1] HelpDocs ID =  4qe4h3cl28
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  116 original:	 Once the Error Tracking Health Source is added, you can view the identified errors on the **Overall Health Score** timeline, in the [Service Health dashboard](/article/lwi37ku94x-change-impact-analysis-quickstart#step_4_view_service_health).
+	line  60 original:	 |  [SonarQube SonarScanner](https://docs.harness.io/article/4qe4h3cl28) | repository | orchestratedScan, dataLoad, ingestionOnly |
 
-	line  116 upated:	 Once the Error Tracking Health Source is added, you can view the identified errors on the **Overall Health Score** timeline, in the [Service Health dashboard](../service-reliability-management-onboard/change-impact-analysis-quickstart.md#step-4-view-service-health).
+	line  60 upated:	 |  [SonarQube SonarScanner](sonarqube-sonar-scanner-reference.md) | repository | orchestratedScan, dataLoad, ingestionOnly |
 
-[INFO1] File updated:  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
-[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
-[DEBUG1] HelpDocs ID =  m4pbiqb4m9
+[DEBUG1] HelpDocs ID =  ymkcm5lypf
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  17 original:	 * [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart)
+	line  333 original:	 Go to [Ingesting issues from other scanners](https://docs.harness.io/article/ymkcm5lypf).
 
-	line  17 upated:	 * [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart)
+	line  333 upated:	 Go to [Ingesting issues from other scanners](../use-sto/ingesting-issues-from-other-scanners.md).
 
-[DEBUG1] HelpDocs ID =  fs64l16dbp
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  18 original:	 * [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring)
-
-	line  18 upated:	 * [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring)
-
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG1] HelpDocs ID =  4qe4h3cl28
+[DEBUG3] newLinkLocalTarget found:	 ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
 
 [UPDATE_LINK_SUCCESS3] line updated:
-	line  19 original:	 * [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart)
+	line  655 original:	 Go to [SonarQube SonarScanner Reference.](https://docs.harness.io/article/4qe4h3cl28)
 
-	line  19 upated:	 * [SLO Management Quickstart](../service-reliability-management-onboard/slo-management-quickstart.md)
+	line  655 upated:	 Go to [SonarQube SonarScanner Reference.](sonarqube-sonar-scanner-reference.md)
 
-[DEBUG1] HelpDocs ID =  l8up27c7rn
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  20 original:	 * [Service Reliability Management Basics](/article/l8up27c7rn-service-reliability-management-basics)
-
-	line  20 upated:	 * [Service Reliability Management Basics](../service-reliability-management-onboard/service-reliability-management-basics.md)
-
-[DEBUG1] HelpDocs ID =  m4pbiqb4m9
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  37 original:	 See [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
-
-	line  37 upated:	 See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
-
-[DEBUG1] HelpDocs ID =  fs64l16dbp
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  37 original:	 See [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
-
-	line  37 upated:	 See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
-
-[DEBUG1] HelpDocs ID =  trlszsj5lh
-[DEBUG3] newLinkLocalTarget found:	 ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-
-[UPDATE_LINK_SUCCESS3] line updated:
-	line  37 original:	 See [Health Monitoring Quickstart](/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](/article/trlszsj5lh-slo-management-quickstart).
-
-	line  37 upated:	 See [Health Monitoring Quickstart](https://docs.harness.io/article/m4pbiqb4m9-verify-deployments-in-change-intelligence-quickstart), [Change Monitoring Quickstart](https://docs.harness.io/article/fs64l16dbp-change-intelligence-quick-start-change-monitoring), or [SLO Management Quickstart](../service-reliability-management-onboard/slo-management-quickstart.md).
-
-[INFO1] File updated:  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+[INFO1] File updated:  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG1] HelpDocs ID =  knunou9j30
-[DEBUG1] HelpDocs ID =  cifa2yb19a
-[DEBUG1] HelpDocs ID =  uiqe6jz9o1
-[DEBUG1] HelpDocs ID =  re8kk0ex4k
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
-[DEBUG1] HelpDocs ID =  4o7oqwih6h
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sample.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sample.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
 [DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  0zvnn5s1ph
+[DEBUG1] HelpDocs ID =  htrur23poj
+[DEBUG1] HelpDocs ID =  qhgshfw3mg
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+[DEBUG1] HelpDocs ID =  1e536z41av
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+[DEBUG1] HelpDocs ID =  ooelo06uy5
+[DEBUG1] HelpDocs ID =  9epdx5m9ae
+[DEBUG1] HelpDocs ID =  create
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
 [DEBUG1] HelpDocs ID =  1d3lmhv4jl
-[DEBUG1] HelpDocs ID =  jws2znftay
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+[DEBUG1] HelpDocs ID =  b5jv0vlrvf
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
-[DEBUG1] HelpDocs ID =  n67y68fopr
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  576gjpak61
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-[DEBUG1] HelpDocs ID =  re8kk0ex4k
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
+[DEBUG1] HelpDocs ID =  osfw70e59c
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  mozd8b49td
+[DEBUG1] HelpDocs ID =  576gjpak61
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
-[DEBUG1] HelpDocs ID =  hngrlb7rd6
-[DEBUG1] HelpDocs ID =  tdoad7xrh9
-[DEBUG1] HelpDocs ID =  tdoad7xrh9
-[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
-[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  576gjpak61
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  ygyvp998mu
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
-[DEBUG1] HelpDocs ID =  m4pbiqb4m9
-[DEBUG1] HelpDocs ID =  fs64l16dbp
-[DEBUG1] HelpDocs ID =  m4pbiqb4m9
-[DEBUG1] HelpDocs ID =  fs64l16dbp
-[INFO1] File not updated:  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG1] HelpDocs ID =  knunou9j30
-[DEBUG1] HelpDocs ID =  cifa2yb19a
-[DEBUG1] HelpDocs ID =  uiqe6jz9o1
-[DEBUG1] HelpDocs ID =  re8kk0ex4k
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
-[DEBUG1] HelpDocs ID =  4o7oqwih6h
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
 [DEBUG1] HelpDocs ID =  1d3lmhv4jl
+[DEBUG1] HelpDocs ID =  0zvnn5s1ph
+[DEBUG1] HelpDocs ID =  htrur23poj
+[DEBUG1] HelpDocs ID =  qhgshfw3mg
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+[DEBUG1] HelpDocs ID =  1e536z41av
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+[DEBUG1] HelpDocs ID =  ooelo06uy5
+[DEBUG1] HelpDocs ID =  9epdx5m9ae
+[DEBUG1] HelpDocs ID =  create
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
 [DEBUG1] HelpDocs ID =  1d3lmhv4jl
-[DEBUG1] HelpDocs ID =  jws2znftay
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+[DEBUG1] HelpDocs ID =  b5jv0vlrvf
+[INFO1] File not updated:  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
-[DEBUG1] HelpDocs ID =  n67y68fopr
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  576gjpak61
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-[DEBUG1] HelpDocs ID =  re8kk0ex4k
-[DEBUG1] HelpDocs ID =  3xhqq9xllp
-[INFO1] File not updated:  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
+[DEBUG1] HelpDocs ID =  osfw70e59c
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  mozd8b49td
+[DEBUG1] HelpDocs ID =  576gjpak61
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
-[DEBUG1] HelpDocs ID =  hngrlb7rd6
-[DEBUG1] HelpDocs ID =  tdoad7xrh9
-[DEBUG1] HelpDocs ID =  tdoad7xrh9
-[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
-[INFO1] File not updated:  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  576gjpak61
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[DEBUG1] HelpDocs ID =  ygyvp998mu
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
-[DEBUG1] HelpDocs ID =  m4pbiqb4m9
-[DEBUG1] HelpDocs ID =  fs64l16dbp
-[DEBUG1] HelpDocs ID =  m4pbiqb4m9
-[DEBUG1] HelpDocs ID =  fs64l16dbp
-[INFO1] File not updated:  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
-{'cbj5uuzpbu': './docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md',
- 'd3m9uo4mx0': './docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md',
- 'l8up27c7rn': './docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md',
- 'lwi37ku94x': './docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md',
- 'nx99xfcoxz': './docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md',
- 'trlszsj5lh': './docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md',
- 'x4165z3hfp': './docs/service-reliability-management/srm-notifications/srm-notifications.md'}
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
+[DEBUG1] HelpDocs ID =  ijkyokxrot
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+[INFO1] File not updated:  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+{'079248uzcu': './docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md',
+ '0k0iubnzql': './docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md',
+ '2ap1uol6ti': './docs/security-testing-orchestration/use-sto/sto-overview.md',
+ '4qe4h3cl28': './docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md',
+ 'ap7y94ap7h': './docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md',
+ 'cjqnd71y07': './docs/security-testing-orchestration/use-sto/sto-workflows-overview.md',
+ 'cy0deg32w9': './docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md',
+ 'd24n34qdbk': './docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md',
+ 'm9494vxwac': './docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md',
+ 'n3dcx6wzb3': './docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md',
+ 'rlbw5luj4h': './docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md',
+ 'wk018r6x3g': './docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md',
+ 'ymkcm5lypf': './docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md',
+ 'yvy4pmt8bw': './docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md',
+ 'zy4h4ch6dh': './docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md'}

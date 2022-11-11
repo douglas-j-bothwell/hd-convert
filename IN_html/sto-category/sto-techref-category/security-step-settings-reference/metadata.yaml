@@ -1,0 +1,341 @@
+type: article
+article_id: 0k0iubnzql
+user_id: znazf3hcp9
+category_id: m01pu2ubai
+author:
+  name: Michael Cretzman
+  email: michael.cretzman+docs@harness.io
+  profile_image: https://www.gravatar.com/avatar/77114bb5eef5503c5a09ad7655120b17?d=mm&s=150
+title: Security Step Settings Reference
+slug: security-step-settings-reference
+description: All the Scanner Provider settings for the Security step.
+short_version: All the Scanner Provider settings for the Security step.
+tags: []
+show_toc: true
+is_private: false
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-10-18T15:02:53.829002Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: Security Step Settings Reference
+  description: All the Scanner Provider settings for the Security step.
+  short_version: All the Scanner Provider settings for the Security step.
+  body: '<p>This topic includes the Security step settings for each of the scanner
+    providers supported by Harness.</p><h3>Scan Approach Types</h3><p>Harness Security
+    Testing Orchestration integrates with multiple scanners and targets. Different
+    types of scan approaches can be done on each scanner-target combination:</p><ul><li><strong>orchestratedScan:</strong>
+    <code>orchestratedScan</code> is <u>fully</u> orchestrated. A new scan is orchestrated
+    and the scan results are normalized and compressed by Security Testing Orchestration.</li><li><strong>ingestionOnly:</strong>
+    <code>ingestionOnly</code> is <u>not</u> orchestrated. For a scan that was done
+    previously (or an earlier step in the a Pipeline), the results are presented to
+    Security Testing Orchestration for normalization and compression.</li><li><strong>dataLoad:</strong>
+    <code>dataLoad</code> is <u>partially</u> orchestrated. A previously run scan
+    where the results exist in scan tool vendors SaaS. The data is pulled, normalized,
+    and compressed for Security Testing Orchestration.</li></ul><p>The scanner, targets,
+    and scan approach combinations are covered in the next section.</p><h3>Scanners,
+    Target Types, and Scan Approach</h3><p>The following scanners are supported.</p><table><tbody><tr
+    id="top-table"><td><p><strong>Scanner Name</strong></p></td><td><p><strong>Scan
+    Target Type</strong></p></td><td><p><strong>Scan Approach</strong></p></td></tr><tr><td><p>
+    <a href="#aqua-trivy">Aqua Trivy</a></p></td><td><p>container</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p><a href="/aws-ecr" target="_blank">AWS Elastic
+    Container Registry (ECR)</a></p></td><td><p>container</p></td><td><p>dataLoad</p></td></tr><tr><td><p>
+    <a href="#bandit">Bandit</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#black-duck-open-hub">Black Duck
+    Open Hub</a></p></td><td><p>repository, container</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#brakeman">Brakeman</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#burp">Burp</a></p></td><td><p>instance</p></td><td><p>ingestionOnly</p></td></tr><tr><td><p>
+    <a href="#checkmarx">Checkmarx</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    dataLoad, ingestionOnly</p></td></tr><tr><td><p> <a href="#data-theorem">Data
+    Theorem</a></p></td><td><p>repository</p></td><td><p>dataLoad, ingestionOnly</p></td></tr><tr><td><p>
+    <a href="#docker-content-trust">Docker Content Trust (DCT)</a></p></td><td><p>container</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#docker-content-trust-clair">Docker
+    Content Trust (clair)</a></p></td><td><p>container</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="https://docs.harness.io/article/ymkcm5lypf"
+    target="_blank">External (JSON upload v2)</a></p></td><td><p>container, repository,
+    instance, configuration</p></td><td><p>ingestionOnly</p></td></tr><tr><td><p>
+    <a href="#fortify-on-demend">Fortify on Demand</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    dataLoad, ingestionOnly</p></td></tr><tr><td><p><a href="#mend">Mend (formerly
+    WhiteSource)</a></p></td><td><p>repository</p></td><td><p>orchestratedScan, ingestionOnly</p></td></tr><tr><td><p>
+    <a href="#metasploit">Metasploit</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#nessus">Nessus</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#nexus-iq">Nexus IQ</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#nikto">Nikto</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#nmap">Nmap (&#34;Network Mapper&#34;)</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#open-vas">OpenVAS</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#owasp">OWASP</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#prowler" target="_blank">Prowler</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#qualys-web-application-scanning">Qualys
+    Web Application Scanning (WAS)</a></p></td><td><p>instance</p></td><td><p>ingestionOnly</p></td></tr><tr><td><p>
+    <a href="#reapsaw">Reapsaw</a></p></td><td><p>repository</p></td><td><p>ingestionOnly</p></td></tr><tr><td><p>
+    <a href="#shiftleft">ShiftLeft</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    dataLoad, ingestionOnly</p></td></tr><tr><td><p> <a href="#sniper">Sniper</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#snyk">Snyk</a></p></td><td><p>repository,
+    container</p></td><td><p>orchestratedScan (repository only), ingestionOnly</p></td></tr><tr><td><p>
+    <a href="https://docs.harness.io/article/4qe4h3cl28" target="_blank">SonarQube
+    SonarScanner</a></p></td><td><p>repository</p></td><td><p>orchestratedScan, dataLoad,
+    ingestionOnly</p></td></tr><tr><td><p> <a href="#tenable-io">Tenable.io</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    dataLoad, ingestionOnly</p></td></tr><tr><td><p> <a href="#prisma-cloud">Prisma
+    Cloud (formerly Twistlock)</a></p></td><td><p>container</p></td><td><p>orchestratedScan,
+    dataLoad, ingestionOnly</p></td></tr><tr><td><p> <a href="#veracode">Veracode</a></p></td><td><p>repository</p></td><td><p>orchestratedScan,
+    dataLoad, ingestionOnly</p></td></tr><tr><td><p> <a href="#jfrog-xray">JFrog Xray</a></p></td><td><p>container</p></td><td><p>ingestionOnly</p></td></tr><tr><td><p>
+    <a href="#zed-attack-proxy">Zed Attack Proxy (ZAP)</a></p></td><td><p>instance</p></td><td><p>orchestratedScan,
+    ingestionOnly</p></td></tr></tbody></table><p></p><h3>Test Targets</h3><p>The
+    following table specifies where the target to be tested is located.</p><table><tbody><tr><td><p><strong>Target
+    Name</strong></p></td><td><p><strong>Target Type</strong></p></td></tr><tr><td><p>azure</p></td><td><p>repository</p></td></tr><tr><td><p>bitbucket</p></td><td><p>repository</p></td></tr><tr><td><p>github</p></td><td><p>repository</p></td></tr><tr><td><p>gitlab</p></td><td><p>repository</p></td></tr><tr><td><p>local_image</p></td><td><p>container</p></td></tr><tr><td><p>docker_v2</p></td><td><p>container</p></td></tr><tr><td><p>jfrog_artifactory</p></td><td><p>container</p></td></tr><tr><td><p>aws_ecr</p></td><td><p>container</p></td></tr><tr><td><p>website</p></td><td><p>instance</p></td></tr></tbody></table><h3>Using
+    Scanner Providers in the Security Step</h3><p>To use any supported scanner provider
+    in the Harness Security step, you simply need to provide the <code>setting:value</code>
+    pairs for the scanner.</p><p>For example, here are the <code>setting:value</code>
+    pairs for Aqua Trivy:</p><figure><img src="https://files.helpdocs.io/i5nl071jo5/articles/0k0iubnzql/1649889372492/clean-shot-2022-04-13-at-15-35-59-2-x.png"
+    style="max-height:50%;max-width:50%" data-hd-height="50%" data-hd-width="50%"/></figure><p>The
+    Aqua Trivy-specific settings are just <code>scan_type</code> and <code>policy_type</code>.
+    The rest of the settings are common to all scanners where the <code>scan_type</code>
+    is <code>container</code>.</p><p>The following sections list the <code>setting:value</code>
+    pairs for each provider.</p><h3>All Scan Types</h3><p>The following settings apply
+    to all scanners.</p><ul><li><code>scan_type</code><ul><li>accepted values: <code>container</code>,
+    <code>repository</code>, <code>instance</code>, <code>configuration</code>.</li></ul></li></ul><h3>Repository
+    Scan Type Settings</h3><p>The following settings apply to all scanners where the
+    <code>scan_type</code> is <code>repository</code>.</p><ul><li><code>repository_project</code>
+    (required)</li><li><code>repository_branch</code> (required)</li></ul><h3>Container
+    Scan Type Settings</h3><p>The following settings apply to all scanners where the
+    <code>scan_type</code> is <code>containerImage</code>.</p><ul><li><code>container_project</code>
+    (required)</li><li><code>container_tag</code> (required)</li><li><code>container_type</code><ul><li>accepted
+    value(s): <code>local_image</code>, <code>docker_v2</code>, <code>jfrog_artifactory</code>, <code>aws_ecr</code><ul><li>for <code>container_type</code> set
+    to <code>local</code><ul><li><code>None</code></li></ul></li><li>for <code>container_type</code> set
+    to <code>docker_v2</code><ul><li><code>container_access_id</code>: Username</li><li><code>container_access_token</code>:
+    Password/Token</li></ul></li><li>for <code>container_type</code> set to <code>jfrog_artifactory</code><ul><li><code>container_access_id</code>:
+    Username</li><li><code>container_access_token</code>: Password/Token</li></ul></li><li>for <code>container_type</code> set
+    to <code>aws_ecr</code><ul><li><code>container_access_id</code>: Username</li><li><code>container_access_token</code>:
+    Password/Token</li><li><code>container_region</code>: AWS default region</li></ul></li></ul></li></ul></li><li><code>container_domain</code></li></ul><h3>Instance
+    Scan Type Settings</h3><p>The following settings apply to all scanners where the
+    <code>scan_type</code> is <code>instance</code>.</p><ul><li><code>instance_identifier</code>
+    (required)</li><li><code>instance_environment</code> (required)</li><li><code>instance_domain</code></li><li><code>instance_path</code></li><li><code>instance_protocol</code></li><li><code>instance_port</code></li><li><code>instance_type</code><ul><li>accepted
+    value(s): <code>website</code></li></ul></li></ul><h3>Configuration Scan Type
+    Settings</h3><p>The following settings apply to all scanners where the <code>scan_type</code>
+    is <code>configuration</code>.</p><ul><li><code>configuration_type</code><ul><li>accepted
+    value(s)s: <code>aws_account</code></li></ul></li><li><code>configuration_region</code></li><li><code>configuration_environment</code></li><li><code>configuration_access_id</code></li><li><code>configuration_access_token</code></li></ul><p></p><p><a
+    href="#top-table">↑ Scanners</a></p><h3 id="aqua-trivy">Aqua Trivy</h3><p>When <code>product_name</code> is
+    set to <code>aqua-trivy</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>containerImage</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>aqua-trivy</code> (Basic aqua docker image scanner)</li><li><code>aqua-trivy-debug</code></li></ul></li></ul></li></ul><p><a
+    href="#top-table">↑ Scanners</a></p><h3 id="aws-ecr">AWS Elastic Container Registry
+    (ECR)</h3><p>When <code>product_name</code> is set to <code>aws-ecr</code>:</p><ul><li><code>scan_type</code>
+    =<code>container</code></li><li><code>policy_type</code>= <code>dataLoad</code></li><li><code>product_config_name</code>
+    =<code>default</code></li><li><code>container_project</code> = The name of the
+    scanned ECR container with the results you want to ingest.</li><li><code>container_tag</code>
+    = The container tag for the given container project.</li><li><code>configuration_access_id</code>
+    = Your AWS Access ID secret</li><li><code>configuration_access_token</code> =
+    Your AWS Access Token secret</li><li><code>configuration_region</code> = The AWS
+    region where the container is located. For example, <code>us-east-1</code></li><li><code>container_domain</code>
+    = URI of the ECR container with the scan results you want to load.</li></ul><p><a
+    href="#top-table">↑ Scanners</a></p><h3 id="aws-security-hub">AWS Security Hub</h3><p>When <code>product_name</code> is
+    set to <code>aws-security-hub</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>configuration</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>dataLoad</code>,  <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="bandit">Bandit</h3><p>When <code>product_name</code> is set to <code>bandit</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="black-duck-open-hub">Black Duck Open Hub</h3><p>When <code>product_name</code> is
+    set to <code>blackduckhub</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code>, <code>containerImage</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code><ul><li><code>product_domain</code></li><li><code>product_auth_type</code><ul><li>accepted
+    value(s): <code>usernamePassword</code>, <code>apiKey</code></li></ul></li><li><code>product_access_id</code>:
+    api username</li><li><code>product_access_token</code> api password or api key</li><li><code>product_api_version</code></li><li><code>product_project_name</code></li><li><code>product_project_version</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="brakeman">Brakeman</h3><p>When <code>product_name</code> is set to <code>brakeman</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="burp">Burp</h3><p>When <code>product_name</code> is set to <code>burp</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>burp-default</code> (CLI interface uses a Cybric extension)</li><li><code>burp-fast-and-max-depth-of-1</code>
+    (Form fill disabled and max_link_depth=1)</li><li><code>burp-fast-mode</code>
+    (Turns off automatic form fill)</li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="checkmarx">Checkmarx</h3><p>When <code>product_name</code> is
+    set to <code>checkmarx</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>dataLoad</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code> or <code>dataLoad</code><ul><li><code>product_domain</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code>
+    — The account password</li><li><code>product_team_name</code><ul><li>accepted
+    value(s): <code>/&lt;</code><em><code>server-name</code></em><code>&gt;/&lt;</code><em><code>team-name</code></em><code>&gt;</code>
+    for example, <code>/server1.myorg.org/devOpsEast</code></li></ul></li><li><code>product_project_name</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="data-theorem">Data Theorem</h3><p>When <code>product_name</code> is set to <code>data-theorem</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>dataLoad</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>dataLoad</code><ul><li><code>product_app_id</code></li><li><code>product_access_token</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="docker-content-trust">Docker Content Trust (DCT)</h3><p>When <code>product_name</code> is
+    set to <code>docker-content-trust</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>containerImage</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="docker-content-trust-clair">Docker Content Trust (clair)</h3><p>When <code>product_name</code> is
+    set to <code>docker-content-trust</code> (clair)</p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>containerImage</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_url</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="external-json-upload">External (JSON upload v2)</h3><p>Go to <a href="https://docs.harness.io/article/ymkcm5lypf"
+    target="_blank">Ingesting issues from other scanners</a>.</p><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="fortify">Fortify</h3><p>When <code>product_name</code> is
+    set to <code>fortify</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code><ul><li><code>product_license_path</code>:
+    see <code>customer_artifacts</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="fortify-on-demend">Fortify on Demand</h3><p>When <code>product_name</code> is
+    set to <code>fortifyondemand</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>dataLoad</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code> or <code>dataLoad</code><ul><li><code>product_domain</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_owner_id</code></li><li><code>product_entitlement</code></li><li><code>product_scan_type</code></li><li><code>product_app_name</code></li><li><code>product_release_name</code></li><li><code>product_target_language</code></li><li><code>product_target_language_version</code></li><li><code>product_scan_settings</code><ul><li>accepted
+    values: <code>Custom</code>, <code>default</code></li></ul></li><li><code>product_audit_type</code></li><li><code>product_lookup_type</code><ul><li>accepted
+    values: <code>Dynamic</code>, <code>Static</code>, <code>Mobile</code></li></ul></li><li><code>product_data_center</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):</li><li> <code>sast</code> ( if <code>product_lookup_type</code> = <code>Static</code>)</li><li><code>dast</code> (
+    if <code>product_lookup_type</code> = <code>Dynamic</code>)</li></ul></li></ul><p><a
+    href="#top-table">↑ Scanners</a></p><h3 id="mend">Mend (formerly WhiteSource)</h3><p>When <code>product_name</code> is
+    set to <code>whitesource</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>ingestionOnly</code>, <code>dataLoad</code>, <code>orchestratedScan</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code><ul><li><code>product_domain</code> (<em>optional</em>)
+    — The default is <code>https://saas.whitesourcesoftware.com/api</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_include</code></li><li><code>product_exclude</code></li><li><code>product_lookup_type</code>(<em>optional</em>)<ul><li>Accepted
+    value(s): Not Set, <code>byName</code>, <code>byTokens</code>, <code>appendToProductByToken</code>, <code>appendToProductByName</code>,
+    <code>whitesource-agent</code></li></ul></li><li><code>product_product_name</code></li><li><code>product_project_name</code></li><li><code>product_product_token</code></li><li><code>product_project_token</code></li></ul></li><li><code>dataload</code><ul><li>accepted
+    value(s): <code>byTokens</code>, <code>byNames</code></li></ul></li><li><code>orchestratedScan</code><ul><li>accepted
+    value(s): <code>ppendToProductByToken</code>, <code>appendToProductByName</code></li></ul></li><li><code>orchestratedScan</code><ul><li>default
+    value(s): <code>https://saas.whitesourcesoftware.com/api</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="metasploit">Metasploit</h3><p>When <code>product_name</code> is set to <code>metasploit</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>metasploit-weak-ssh</code> (Brute-force test a host for
+    SSH weak ssh/pass)</li><li><code>metasploit-openssl-heartbleed</code> (Checkhttps
+    (443) for Heartbleed vulerability)</li><li><code>dynamic-by-cve</code> (Finds
+    and applies Metaspoit module by CVE)</li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="nessus">Nessus</h3><p>When <code>product_name</code> is
+    set to <code>nessus</code></p><ul><li><code>scan_type</code><ul><li>accepted value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code><ul><li><code>product_domain</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_policy_id</code></li><li><code>product_scanner_id</code></li><li><code>product_template_uuid</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>nessus-web-application</code></li></ul></li></ul></li></ul><p><a
+    href="#top-table">↑ Scanners</a></p><h3 id="nexus-iq">Nexus IQ</h3><p>When <code>product_name</code> is
+    set to <code>nexusiq</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code><ul><li><code>product_domain</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_organization_id</code></li><li><code>product_project_name</code></li><li><code>product_lookup_type</code><ul><li>accepted
+    value(s): <code>byPrivateId</code>, <code>byPublicId</code></li></ul></li><li>When <code>product_lookup_type</code> is
+    set to <code>byPublicId</code><ul><li>product_public_id</li></ul></li><li>When <code>product_lookup_type</code> is
+    set to <code>byPrivateId</code><ul><li>product_private_id</li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="nikto">Nikto</h3><p>When <code>product_name</code> is
+    set to <code>nikto</code></p><ul><li><code>scan_type</code><ul><li>accepted value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code>(Scan the host on port 80)</li><li><code>nikto-full</code>
+    (Scan the host on ports 80 and 443 with <code>-Tuning 9</code>)</li><li><code>nikto-full-web</code>
+    (Scan the host on ports 80 and 443)</li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="nmap">Nmap (&#34;Network Mapper&#34;)</h3><p>When <code>product_name</code> is
+    set to <code>nmap</code></p><ul><li><code>scan_type</code><ul><li>accepted value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li><li><a href="https://nmap.org/nsedoc/scripts/firewall-bypass.html"
+    target="_blank"><code>firewall-bypass</code></a></li><li><a href="https://nmap.org/nsedoc/scripts/unusual-port.html"
+    target="_blank"><code>unusual-port</code></a></li><li><a href="https://nmap.org/nsedoc/scripts/smb-security-mode.html"
+    target="_blank"><code>smb-security-mode</code></a></li><li><a href="https://nmap.org/nsedoc/categories/vuln.html"
+    target="_blank"><code>vuln</code></a></li><li><a href="https://nmap.org/nsedoc/categories/exploit.html"
+    target="_blank"><code>exploit</code></a></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="open-vas">OpenVAS</h3><p>When <code>product_name</code> is
+    set to <code>openvas</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_domain</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>host-discovery</code> (Do a host discovery scan on the
+    network)</li><li><code>network-discovery</code> (Do a network discovery scan)</li><li><code>full-and-very-deep</code>
+    (Do a full and very deep discovery scan)</li><li><code>openvas-system-discovery</code>
+    (Do a system discovery scan on the network)</li><li><code>default</code></li></ul></li></ul></li></ul><p><a
+    href="#top-table">↑ Scanners</a></p><h3 id="owasp">OWASP</h3><p>When <code>product_name</code> is
+    set to <code>owasp</code></p><ul><li><code>scan_type</code><ul><li>accepted value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="prowler">Prowler</h3><p>When <code>product_name</code> is
+    set to <code>prowler</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>configuration</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code>, <code>hipaa</code>, <code>gdpr</code>,
+    <code>exclude_extras</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="qualys-web-application-scanning">Qualys Web Application
+    Scanning (WAS)</h3><p>When <code>product_name</code> is set to <code>qualys</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="reapsaw">Reapsaw</h3><p>When <code>product_name</code> is
+    set to <code>reapsaw</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="scoutsuite">ScoutSuite</h3><p>When <code>product_name</code> is
+    set to <code>scoutsuite</code> (aws only)</p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>configuration</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="shiftleft">ShiftLeft</h3><p>When <code>product_name</code> is set to <code>shiftleft</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>dataLoad</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code> or <code>dataLoad</code><ul><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_app_name</code></li><li><code>product_target_language</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="sniper">Sniper</h3><p>When <code>product_name</code> is
+    set to <code>sniper</code></p><ul><li><code>scan_type</code><ul><li>accepted value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code> (Run a basic sniper scan on a target)</li><li><code>web</code>
+    (Sniper Stealth Mode)</li><li><code>stealth</code> (Run the web based scan)</li></ul></li></ul></li></ul><p><a
+    href="#top-table">↑ Scanners</a></p><h3 id="snyk">Snyk</h3><p>When <code>product_name</code> is
+    set to <code>snyk</code>:</p><ul><li><code>scan_type</code><ul><li>accepted value(s): <code>containerImage</code>,
+    <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value for <code>containerImage</code>: <code>ingestionOnly</code></li><li>accepted
+    values for <code>repository</code>: <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_access_token</code></li><li><code>product_config_name</code>
+    = <code>default</code></li><li><code>snyk_api</code> = URL to the Snyk instance,
+    if you&#39;re using an on-prem installation.</li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="sonarqube-sonarscanner">SonarQube SonarScanner</h3><p>Go
+    to <a href="https://docs.harness.io/article/4qe4h3cl28" target="_blank">SonarQube
+    SonarScanner Reference.</a></p><p><a href="#top-table">↑ Scanners</a></p><h3 id="tenable-io">Tenable.io</h3><p>When <code>product_name</code> is
+    set to <code>tenableio</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>dataLoad</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code> or <code>dataLoad</code><ul><li><code>product_domain</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li><li><code>product_policy_id</code></li><li><code>product_scanner_id</code></li><li><code>product_template_uuid</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>legacy-web-application-scan</code> (Use legacy nessus
+    scan inside tenableIO)</li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="prisma-cloud">Prisma Cloud (formerly Twistlock)</h3><p>When <code>product_name</code> is
+    set to <code>twistlock</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>containerImage</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>dataLoad</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code> or <code>dataLoad</code><ul><li><code>product_image_name</code></li><li><code>product_domain</code></li><li><code>product_access_id</code></li><li><code>product_access_token</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="veracode">Veracode</h3><p>When <code>product_name</code> is
+    set to <code>veracode</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>repository</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>dataLoad</code>, <code>ingestionOnly</code></li></ul></li><li><code>product_auth_type</code><ul><li>accepted
+    value(s): [&#39;usernamePassword&#39;, &#39;apiKey&#39;]</li></ul></li><li><code>product_access_id</code>:
+    username / keyId</li><li><code>product_access_token</code>: password / key</li><li><code>product_app_id</code></li><li><code>product_project_name</code></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s): <code>default</code></li></ul></li></ul><p><a href="#top-table">↑ Scanners</a></p><h3
+    id="jfrog-xray">JFrog Xray</h3><p>When <code>product_name</code> is set to <code>xray</code></p><ul><li><code>scan_type</code><ul><li>accepted
+    value(s): <code>containerImage</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>ingestionOnly</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>default</code></li></ul></li></ul></li></ul><p><a href="#top-table">↑
+    Scanners</a></p><h3 id="zed-attack-proxy">Zed Attack Proxy (ZAP)</h3><p>When <code>product_name</code> is
+    set to <code>zap</code></p><ul><li><code>scan_type</code><ul><li>accepted value(s): <code>instance</code></li></ul></li><li><code>policy_type</code><ul><li>accepted
+    value(s): <code>orchestratedScan</code>, <code>ingestionOnly</code></li></ul></li><li>When <code>policy_type</code> is
+    set to <code>orchestratedScan</code><ul><li><code>product_context_name</code>:
+    see <code>customer_artifacts</code></li></ul></li><li><code>product_config_name</code><ul><li>Accepted
+    values(s):<ul><li><code>standard</code> (scanMode = active, scanType = standard)</li><li><code>attack</code>(scanMode
+    = active, scanType = attach)</li><li><code>quick</code>(scanMode = active, scanType
+    = standard, quickMode = true)</li></ul></li></ul></li></ul><p></p><p></p><p></p>'
+  slug: security-step-settings-reference
+  tags: []
+  is_live: true

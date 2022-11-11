@@ -1,0 +1,51 @@
+type: article
+article_id: pty7if8sd3
+user_id: xwmdbyp4x8
+category_id: n1ta989mha
+author:
+  name: Doug Bothwell
+  email: douglas.bothwell@harness.io
+  profile_image: https://www.gravatar.com/avatar/120de2cc624d7903cf3d83b86d0f1b5e?d=mm&s=150
+title: DRAFT DOC-2165 STO release notes q3
+slug: draft-doc-2165-sto-release-notes-q-3
+description: What's New. The Security Testing Overview page enables you to see the
+  daily distribution of all issues detected by all STO scans over the past 30 or 90
+  days. The Security Testing Dashboard enables yo…
+short_version: What's New. The Security Testing Overview page enables you to see the
+  daily distribution of all issues detected by all STO scans over the past 30 or 90
+  days. The Security Testing Dashboard enables yo…
+tags: []
+show_toc: false
+is_private: true
+is_published: true
+is_featured: false
+stale_status:
+  is_stale: false
+  reason: ""
+  source: API
+  triggered_at: 2022-11-03T19:59:40.131493Z
+  expires_at: null
+permission_groups: []
+multilingual:
+- language_code: en
+  title: DRAFT DOC-2165 STO release notes q3
+  description: ""
+  short_version: ""
+  body: <p></p><h4 id="undefined">What&#39;s New</h4><ul><li>The Security Testing
+    Overview page enables you to see the daily distribution of all issues detected
+    by all STO scans over the past 30 or 90 days.</li><li>The Security Testing Dashboard
+    enables you to drill down into the set of all security issues detected by all
+    Harness pipeline scans. You can view detected issues by time, criticality, scanner,
+    and number of occurrences. To view all issues by group, click in a chart element.
+    You can also download issue lists to CSV.<figure><img src="https://files.helpdocs.io/kw8ldg1itf/articles/pty7if8sd3/1666805253859/sto-dashboard.png"
+    style="max-height:80%;max-width:80%" data-hd-height="80%" data-hd-width="80%"/></figure>To
+    view this dashboard, click <strong>Dashboards</strong> (left menu) and then <strong>Security
+    Testing Dashboard</strong>. (STO-???)</li><li>This release include a new set of
+    output variables for builds with security steps. When the build scans a target
+    that differs from the baseline, the following variables show the number of issues
+    found in the target but not in the baseline:<ul><li>NEW_CRITICAL</li><li>NEW_HIGH</li><li>NEW_MEDIUM</li><li>NEW_LOW</li><li>NEW_UNASSIGNED
+    (<em>Reserved for future use</em>)</li><li>NEW_TOTAL (CI-???)</li></ul></li></ul><h4
+    id="undefined">Early Access</h4><ul><li>NA</li></ul><h4 id="undefined">Fixed Issues</h4><ul><li></li></ul><p></p>
+  slug: draft-doc-2165-sto-release-notes-q-3
+  tags: []
+  is_live: true

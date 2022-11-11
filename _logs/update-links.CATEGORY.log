@@ -1,82 +1,379 @@
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-overview.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
-
-[UPDATE_LINK_SUCCESS1] Added domain to link:
-	line  72 original:  Click **Select Connector**. In the **Connector** settings, you can select an existing Connector or click **New Connector**. Harness uses Connectors to authenticate and perform operations with third-party tools. Connectors contain the information necessary to integrate and work with 3rd party tools. For more details, see [Connectors](/category/o1zhrfo8n5-connectors#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
-
-	line  72 updated :  Click **Select Connector**. In the **Connector** settings, you can select an existing Connector or click **New Connector**. Harness uses Connectors to authenticate and perform operations with third-party tools. Connectors contain the information necessary to integrate and work with 3rd party tools. For more details, see [Connectors](https://docs.harness.io/category/o1zhrfo8n5-connectors#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
 
 
-[UPDATE_LINK_SUCCESS1] Added domain to link:
-	line  96 original:  The Harness Delegate is a service you run in your own environment, such as your local network, VPC, or cluster. The Delegate connects all of your artifact, infrastructure, collaboration, verification, and other providers with the Harness Manager. For more details, see [Delegates](/category/9i5thr0ot2-delegates#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+[INFO] processing file  ./docs/security-testing-orchestration/sample.md
+[DEBUG5] Skipping, link already has domain:  (https://docs.harness.io/category/txlccquh5c-sto-category)
+[DEBUG1] Start URL string:  (https://docs.harness.io/category/txlccquh5c-sto-category)
+[DEBUG1] extracted hd_ID =  txlccquh5c
+[DEBUG1] hd_ID is in Dict  txlccquh5c
+[DEBUG2] curLink =  (https://docs.harness.io/category/txlccquh5c-sto-category)
+[DEBUG2] line  5 	 You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](https://docs.harness.io/category/txlccquh5c-sto-category).
 
-	line  96 updated :  The Harness Delegate is a service you run in your own environment, such as your local network, VPC, or cluster. The Delegate connects all of your artifact, infrastructure, collaboration, verification, and other providers with the Harness Manager. For more details, see [Delegates](https://docs.harness.io/category/9i5thr0ot2-delegates#sort=relevancy&f:@commonsource=[NextGen%20Docs]).
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/txlccquh5c-sto-category)  helpdocs ID =  txlccquh5c 	newLinkLocalTarget =  (/category/security-testing-orchestration)
+[DEBUG3] After replace. curLink =  (https://docs.harness.io/category/txlccquh5c-sto-category) 	newLinkLocalTarget =  (/category/security-testing-orchestration)
 
-[INFO1] File updated:  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 5
+	line  5 original:  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](https://docs.harness.io/category/txlccquh5c-sto-category).
 
+	line  5 updated :  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[DEBUG4] newLine updated:  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
 
+[DEBUG5] Skipping, link already has domain:  (https://docs.harness.io/category/txlccquh5c-sto-category)
+[DEBUG1] Start URL string:  (https://docs.harness.io/category/txlccquh5c-sto-category)
+[DEBUG1] extracted hd_ID =  txlccquh5c
+[DEBUG1] hd_ID is in Dict  txlccquh5c
+[DEBUG2] curLink =  (https://docs.harness.io/category/txlccquh5c-sto-category)
+[DEBUG2] line  7 	 You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](https://docs.harness.io/category/txlccquh5c-sto-category).
 
-[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/txlccquh5c-sto-category)  helpdocs ID =  txlccquh5c 	newLinkLocalTarget =  (/category/security-testing-orchestration)
+[DEBUG3] After replace. curLink =  (https://docs.harness.io/category/txlccquh5c-sto-category) 	newLinkLocalTarget =  (/category/security-testing-orchestration)
 
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 7
+	line  7 original:  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](https://docs.harness.io/category/txlccquh5c-sto-category).
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+	line  7 updated :  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
 
-
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
-
-
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-management-quickstart.md
+[DEBUG4] newLine updated:  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance.md
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  9 original:  See [CI Technical Reference](/category/4xo13zdnfx-ci-technical-reference).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG1] extracted hd_ID =  4xo13zdnfx
+[DEBUG2] curLink =  (/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG2] line  9 	 See [CI Technical Reference](/category/4xo13zdnfx-ci-technical-reference).
+
+[DEBUG5] Skipping, link already has domain:  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG1] Start URL string:  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG1] extracted hd_ID =  4xo13zdnfx
+[DEBUG2] curLink =  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG2] line  11 	 See [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference).
+
+[DEBUG5] Skipping, link already has domain:  (https://docs.harness.io/category/m01pu2ubai)
+[DEBUG1] Start URL string:  (https://docs.harness.io/category/m01pu2ubai)
+[DEBUG1] extracted hd_ID =  m01pu2ubai
+[DEBUG1] hd_ID is in Dict  m01pu2ubai
+[DEBUG2] curLink =  (https://docs.harness.io/category/m01pu2ubai)
+[DEBUG2] line  13 	 See [STO Technical Reference](https://docs.harness.io/category/m01pu2ubai).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/m01pu2ubai)  helpdocs ID =  m01pu2ubai 	newLinkLocalTarget =  (/category/sto-technical-reference)
+[DEBUG3] After replace. curLink =  (https://docs.harness.io/category/m01pu2ubai) 	newLinkLocalTarget =  (/category/sto-technical-reference)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 13
+	line  13 original:  See [STO Technical Reference](https://docs.harness.io/category/m01pu2ubai).
+
+	line  13 updated :  See [STO Technical Reference](/category/sto-technical-reference).
+
+[DEBUG4] newLine updated:  See [STO Technical Reference](/category/sto-technical-reference).
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics.md
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  15 original:  See [STO Technical Reference](/category/m01pu2ubai).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/m01pu2ubai)
+[DEBUG1] extracted hd_ID =  m01pu2ubai
+[DEBUG1] hd_ID is in Dict  m01pu2ubai
+[DEBUG2] curLink =  (/category/m01pu2ubai)
+[DEBUG2] line  15 	 See [STO Technical Reference](/category/m01pu2ubai).
+
+[DEBUG3] Category ID found. curLink =  (/category/m01pu2ubai)  helpdocs ID =  m01pu2ubai 	newLinkLocalTarget =  (/category/sto-technical-reference)
+[DEBUG3] After replace. curLink =  (/category/m01pu2ubai) 	newLinkLocalTarget =  (/category/sto-technical-reference)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 15
+	line  15 original:  See [STO Technical Reference](/category/m01pu2ubai).
+
+	line  15 updated :  See [STO Technical Reference](/category/sto-technical-reference).
+
+[DEBUG4] newLine updated:  See [STO Technical Reference](/category/sto-technical-reference).
+
+[DEBUG5] Skipping, link already has domain:  (https://docs.harness.io/category/8nywcs2sa7)
+[DEBUG1] Start URL string:  (https://docs.harness.io/category/8nywcs2sa7)
+[DEBUG1] extracted hd_ID =  8nywcs2sa7
+[DEBUG1] hd_ID is in Dict  8nywcs2sa7
+[DEBUG2] curLink =  (https://docs.harness.io/category/8nywcs2sa7)
+[DEBUG2] line  17 	 See [Onboard with STO](https://docs.harness.io/category/8nywcs2sa7).
+
+[DEBUG3] Category ID found. curLink =  (https://docs.harness.io/category/8nywcs2sa7)  helpdocs ID =  8nywcs2sa7 	newLinkLocalTarget =  (/category/onboard-with-sto)
+[DEBUG3] After replace. curLink =  (https://docs.harness.io/category/8nywcs2sa7) 	newLinkLocalTarget =  (/category/onboard-with-sto)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 17
+	line  17 original:  See [Onboard with STO](https://docs.harness.io/category/8nywcs2sa7).
+
+	line  17 updated :  See [Onboard with STO](/category/onboard-with-sto).
+
+[DEBUG4] newLine updated:  See [Onboard with STO](/category/onboard-with-sto).
 
 
-[INFO] processing file  ./docs/service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  19 original:  See [Onboard with STO](/category/8nywcs2sa7).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/8nywcs2sa7)
+[DEBUG1] extracted hd_ID =  8nywcs2sa7
+[DEBUG1] hd_ID is in Dict  8nywcs2sa7
+[DEBUG2] curLink =  (/category/8nywcs2sa7)
+[DEBUG2] line  19 	 See [Onboard with STO](/category/8nywcs2sa7).
+
+[DEBUG3] Category ID found. curLink =  (/category/8nywcs2sa7)  helpdocs ID =  8nywcs2sa7 	newLinkLocalTarget =  (/category/onboard-with-sto)
+[DEBUG3] After replace. curLink =  (/category/8nywcs2sa7) 	newLinkLocalTarget =  (/category/onboard-with-sto)
+
+[UPDATE_LINK_SUCCESS2] Replaced with local target: 19
+	line  19 original:  See [Onboard with STO](/category/8nywcs2sa7).
+
+	line  19 updated :  See [Onboard with STO](/category/onboard-with-sto).
+
+[DEBUG4] newLine updated:  See [Onboard with STO](/category/onboard-with-sto).
+
+[INFO1] File updated:  ./docs/security-testing-orchestration/sample.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/error-tracking-in-srm.md
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/error-tracking-category/install-the-error-tracking-agent.md
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
 
 
-[INFO] processing file  ./docs/service-reliability-management/srm-notifications/srm-notifications.md
-{'7lvetjzo1m': '/category/onboard-with-service-reliability-management',
- 'c40ko6e87n': '/category/error-tracking',
- 'iiv0olc0in': '/category/srm-notifications',
- 'ko19u4brsv': '/category/service-reliability-management',
- 'ugfrr8rck0': '/category/change-intelligence-technical-reference'}
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sample.md
+
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  5 original:  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/security-testing-orchestration)
+[DEBUG1] extracted hd_ID =  security
+[DEBUG2] curLink =  (/category/security-testing-orchestration)
+[DEBUG2] line  5 	 You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
+
+
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  7 original:  You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/security-testing-orchestration)
+[DEBUG1] extracted hd_ID =  security
+[DEBUG2] curLink =  (/category/security-testing-orchestration)
+[DEBUG2] line  7 	 You can find existing STO Docs at: [https://docs.harness.io/category/txlccquh5c-sto-category](/category/security-testing-orchestration).
+
+
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  9 original:  See [CI Technical Reference](/category/4xo13zdnfx-ci-technical-reference).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG1] extracted hd_ID =  4xo13zdnfx
+[DEBUG2] curLink =  (/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG2] line  9 	 See [CI Technical Reference](/category/4xo13zdnfx-ci-technical-reference).
+
+[DEBUG5] Skipping, link already has domain:  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG1] Start URL string:  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG1] extracted hd_ID =  4xo13zdnfx
+[DEBUG2] curLink =  (https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference)
+[DEBUG2] line  11 	 See [CI Technical Reference](https://docs.harness.io/category/4xo13zdnfx-ci-technical-reference).
+
+
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  13 original:  See [STO Technical Reference](/category/sto-technical-reference).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/sto-technical-reference)
+[DEBUG1] extracted hd_ID =  sto
+[DEBUG2] curLink =  (/category/sto-technical-reference)
+[DEBUG2] line  13 	 See [STO Technical Reference](/category/sto-technical-reference).
+
+
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  15 original:  See [STO Technical Reference](/category/sto-technical-reference).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/sto-technical-reference)
+[DEBUG1] extracted hd_ID =  sto
+[DEBUG2] curLink =  (/category/sto-technical-reference)
+[DEBUG2] line  15 	 See [STO Technical Reference](/category/sto-technical-reference).
+
+
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  17 original:  See [Onboard with STO](/category/onboard-with-sto).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/onboard-with-sto)
+[DEBUG1] extracted hd_ID =  onboard
+[DEBUG2] curLink =  (/category/onboard-with-sto)
+[DEBUG2] line  17 	 See [Onboard with STO](/category/onboard-with-sto).
+
+
+[WARNING] The following link might need updating:
+	File:  ./docs/security-testing-orchestration/sample.md
+	line  19 original:  See [Onboard with STO](/category/onboard-with-sto).
+
+	 You need to add 'https://docs.harness.io' to this link the category ID isn't in the following dictionary:
+{'utstv3qzqt': '/category/use-sto', 'txlccquh5c': '/category/security-testing-orchestration', '8nywcs2sa7': '/category/onboard-with-sto', 'm01pu2ubai': '/category/sto-technical-reference'}
+-----------------
+[DEBUG1] Start URL string:  (/category/onboard-with-sto)
+[DEBUG1] extracted hd_ID =  onboard
+[DEBUG2] curLink =  (/category/onboard-with-sto)
+[DEBUG2] line  19 	 See [Onboard with STO](/category/onboard-with-sto).
+
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-workflows-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/sto-overview.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md
+
+
+[INFO] processing file  ./docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md
+{'8nywcs2sa7': '/category/onboard-with-sto',
+ 'm01pu2ubai': '/category/sto-technical-reference',
+ 'txlccquh5c': '/category/security-testing-orchestration',
+ 'utstv3qzqt': '/category/use-sto'}
 []

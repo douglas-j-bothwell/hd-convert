@@ -1,83 +1,141 @@
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/error-tracking-in-srm.md
-[DEBUG] metadataFile  /Users/douglasbothwell/Desktop/hd-docs-migrate/hd-convert/IN_html/howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/metadata.yaml
-[DEBUG] ymlData {'type': 'category', 'category_id': 'c40ko6e87n', 'parent_category_id': 'km6d9j54ms', 'title': 'Error Tracking', 'description': '', 'slug': 'error-tracking-category', 'is_featured': False, 'icon': 'https://files.helpdocs.io/i5nl071jo5/other/1652249970244/image.png', 'permission_groups': [], 'multilingual': [{'language_code': 'en', 'title': 'Error Tracking', 'description': '', 'slug': 'error-tracking-category'}]}
-[DEBUG] ymlData['title']  Error Tracking
-[DEBUG] ymlData['category_id']  c40ko6e87n
-[DEBUG] categoryDict =  {'label': 'Error Tracking', 'collapsible': 'true', 'collapsed': 'true', 'className': 'red', 'link': {'type': 'generated-index', 'title': 'Error Tracking'}, 'customProps': {'position': 'To position the category, enter a number and move this to the root level.', 'helpdocs_category_id': 'c40ko6e87n'}}
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/install-the-error-tracking-agent.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/srm-notifications/srm-notifications/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/srm-notifications/srm-notifications.md
-[DEBUG] metadataFile  /Users/douglasbothwell/Desktop/hd-docs-migrate/hd-convert/IN_html/howtos-service-reliability-management/use-service-reliability-management/srm-notifications/metadata.yaml
-[DEBUG] ymlData {'type': 'category', 'category_id': 'iiv0olc0in', 'parent_category_id': 'km6d9j54ms', 'title': 'SRM Notifications', 'description': '', 'slug': 'srm-notifications', 'is_featured': False, 'icon': 'https://files.helpdocs.io/i5nl071jo5/other/1655844026953/notification.svg', 'permission_groups': [], 'multilingual': [{'language_code': 'en', 'title': 'SRM Notifications', 'description': '', 'slug': 'srm-notifications'}]}
-[DEBUG] ymlData['title']  SRM Notifications
-[DEBUG] ymlData['category_id']  iiv0olc0in
-[DEBUG] categoryDict =  {'label': 'SRM Notifications', 'collapsible': 'true', 'collapsed': 'true', 'className': 'red', 'link': {'type': 'generated-index', 'title': 'SRM Notifications'}, 'customProps': {'position': 'To position the category, enter a number and move this to the root level.', 'helpdocs_category_id': 'iiv0olc0in'}}
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG] metadataFile  /Users/douglasbothwell/Desktop/hd-docs-migrate/hd-convert/IN_html/howtos-service-reliability-management/service-reliability-management-onboard/metadata.yaml
-[DEBUG] ymlData {'type': 'category', 'category_id': '7lvetjzo1m', 'parent_category_id': 'ko19u4brsv', 'title': 'Onboard with Service Reliability Management', 'description': '', 'slug': 'service-reliability-management-onboard', 'is_featured': False, 'icon': 'https://files.helpdocs.io/i5nl071jo5/other/1613176667468/1580222-200.png', 'permission_groups': [], 'multilingual': [{'language_code': 'en', 'title': 'Onboard with Service Reliability Management', 'description': '', 'slug': 'service-reliability-management-onboard'}]}
-[DEBUG] ymlData['title']  Onboard with Service Reliability Management
-[DEBUG] ymlData['category_id']  7lvetjzo1m
-[DEBUG] categoryDict =  {'label': 'Onboard with Service Reliability Management', 'collapsible': 'true', 'collapsed': 'true', 'className': 'red', 'link': {'type': 'generated-index', 'title': 'Onboard with Service Reliability Management'}, 'customProps': {'position': 'To position the category, enter a number and move this to the root level.', 'helpdocs_category_id': '7lvetjzo1m'}}
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-driven-deployment-governance.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-management-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/error-tracking-in-srm.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/install-the-error-tracking-agent.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/srm-notifications/srm-notifications/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/srm-notifications/srm-notifications.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-driven-deployment-governance.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-management-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/error-tracking-in-srm.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/install-the-error-tracking-agent.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/srm-notifications/srm-notifications/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/srm-notifications/srm-notifications.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/error-tracking-in-srm.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/install-the-error-tracking-agent.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/error-tracking-in-srm.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/error-tracking-category/install-the-error-tracking-agent.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/srm-notifications/srm-notifications/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/srm-notifications/srm-notifications.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/use-service-reliability-management/srm-notifications/srm-notifications/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/srm-notifications/srm-notifications.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-driven-deployment-governance.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-management-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/change-impact-analysis-quickstart.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/service-reliability-management-basics/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/service-reliability-management-basics.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-driven-deployment-governance/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-driven-deployment-governance.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/slo-management-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/slo-management-quickstart.md
-[DEBUG] htmlFile =  ./howtos-service-reliability-management/service-reliability-management-onboard/change-impact-analysis-quickstart/index.html
-[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/service-reliability-management-onboard/change-impact-analysis-quickstart.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingesting-issues-from-other-scanners/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingesting-issues-from-other-scanners.md
+[DEBUG] metadataFile  /Users/douglasbothwell/Desktop/hd-docs-migrate/hd-convert/IN_html/sto-category/use-sto/metadata.yaml
+[DEBUG] ymlData {'type': 'category', 'category_id': 'utstv3qzqt', 'parent_category_id': 'txlccquh5c', 'title': 'Use STO', 'description': '', 'slug': 'use-sto', 'is_featured': False, 'icon': 'https://files.helpdocs.io/i5nl071jo5/other/1649886563021/concepts.png', 'permission_groups': [], 'multilingual': [{'language_code': 'en', 'title': 'Use STO', 'description': '', 'slug': 'use-sto'}]}
+[DEBUG] ymlData['title']  Use STO
+[DEBUG] ymlData['category_id']  utstv3qzqt
+[DEBUG] categoryDict =  {'label': 'Use STO', 'collapsible': 'true', 'collapsed': 'true', 'className': 'red', 'link': {'type': 'generated-index', 'title': 'Use STO'}, 'customProps': {'position': 'To position the category, enter a number and move this to the root level.', 'helpdocs_category_id': 'utstv3qzqt'}}
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/run-an-orchestrated-scan-in-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/run-an-orchestrated-scan-in-sto.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-workflows-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-workflows-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingest-scan-results-into-an-sto-pipeline/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG] metadataFile  /Users/douglasbothwell/Desktop/hd-docs-migrate/hd-convert/IN_html/sto-category/onboard-sto/metadata.yaml
+[DEBUG] ymlData {'type': 'category', 'category_id': '8nywcs2sa7', 'parent_category_id': 'txlccquh5c', 'title': 'Onboard with STO', 'description': '', 'slug': 'onboard-sto', 'is_featured': False, 'icon': 'https://files.helpdocs.io/i5nl071jo5/other/1649886487103/quickstart.png', 'permission_groups': [], 'multilingual': [{'language_code': 'en', 'title': 'Onboard with STO', 'description': '', 'slug': 'onboard-sto'}]}
+[DEBUG] ymlData['title']  Onboard with STO
+[DEBUG] ymlData['category_id']  8nywcs2sa7
+[DEBUG] categoryDict =  {'label': 'Onboard with STO', 'collapsible': 'true', 'collapsed': 'true', 'className': 'red', 'link': {'type': 'generated-index', 'title': 'Onboard with STO'}, 'customProps': {'position': 'To position the category, enter a number and move this to the root level.', 'helpdocs_category_id': '8nywcs2sa7'}}
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/set-up-harness-for-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/set-up-harness-for-sto.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/security-testing-orchestration-basics/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/security-testing-orchestration-basics.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/tutorial-1-standalone-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/tutorial-1-standalone-workflows.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/aqua-trivy-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/aqua-trivy-scanner-reference.md
+[DEBUG] metadataFile  /Users/douglasbothwell/Desktop/hd-docs-migrate/hd-convert/IN_html/sto-category/sto-techref-category/metadata.yaml
+[DEBUG] ymlData {'type': 'category', 'category_id': 'm01pu2ubai', 'parent_category_id': 'txlccquh5c', 'title': 'STO Technical Reference', 'description': '', 'slug': 'sto-techref-category', 'is_featured': False, 'icon': 'https://files.helpdocs.io/i5nl071jo5/other/1649887370444/tech-ref.png', 'permission_groups': [], 'multilingual': [{'language_code': 'en', 'title': 'STO Technical Reference', 'description': '', 'slug': 'sto-techref-category'}]}
+[DEBUG] ymlData['title']  STO Technical Reference
+[DEBUG] ymlData['category_id']  m01pu2ubai
+[DEBUG] categoryDict =  {'label': 'STO Technical Reference', 'collapsible': 'true', 'collapsed': 'true', 'className': 'red', 'link': {'type': 'generated-index', 'title': 'STO Technical Reference'}, 'customProps': {'position': 'To position the category, enter a number and move this to the root level.', 'helpdocs_category_id': 'm01pu2ubai'}}
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/security-step-settings-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/security-step-settings-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/zap-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/zap-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/bandit-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/bandit-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/sonarqube-sonar-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/sonarqube-sonar-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/veracode-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/veracode-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingesting-issues-from-other-scanners/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingesting-issues-from-other-scanners.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/run-an-orchestrated-scan-in-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/run-an-orchestrated-scan-in-sto.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-workflows-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-workflows-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingest-scan-results-into-an-sto-pipeline/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/set-up-harness-for-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/set-up-harness-for-sto.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/security-testing-orchestration-basics/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/security-testing-orchestration-basics.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/tutorial-1-standalone-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/tutorial-1-standalone-workflows.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/aqua-trivy-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/aqua-trivy-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/security-step-settings-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/security-step-settings-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/zap-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/zap-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/bandit-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/bandit-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/sonarqube-sonar-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/sonarqube-sonar-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/veracode-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/veracode-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingesting-issues-from-other-scanners/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingesting-issues-from-other-scanners.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/run-an-orchestrated-scan-in-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/run-an-orchestrated-scan-in-sto.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-workflows-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-workflows-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingest-scan-results-into-an-sto-pipeline/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingesting-issues-from-other-scanners/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingesting-issues-from-other-scanners.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/run-an-orchestrated-scan-in-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/run-an-orchestrated-scan-in-sto.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/sto-workflows-overview/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/sto-workflows-overview.md
+[DEBUG] htmlFile =  ./sto-category/use-sto/ingest-scan-results-into-an-sto-pipeline/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/use-sto/ingest-scan-results-into-an-sto-pipeline.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/set-up-harness-for-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/set-up-harness-for-sto.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/security-testing-orchestration-basics/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/security-testing-orchestration-basics.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/tutorial-1-standalone-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/tutorial-1-standalone-workflows.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/set-up-harness-for-sto/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/set-up-harness-for-sto.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/security-testing-orchestration-basics/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/security-testing-orchestration-basics.md
+[DEBUG] htmlFile =  ./sto-category/onboard-sto/tutorial-1-standalone-workflows/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/onboard-sto/tutorial-1-standalone-workflows.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/aqua-trivy-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/aqua-trivy-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/security-step-settings-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/security-step-settings-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/zap-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/zap-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/bandit-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/bandit-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/sonarqube-sonar-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/sonarqube-sonar-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/veracode-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/veracode-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/aqua-trivy-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/aqua-trivy-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/security-step-settings-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/security-step-settings-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/zap-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/zap-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/bandit-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/bandit-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/sonarqube-sonar-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/sonarqube-sonar-scanner-reference.md
+[DEBUG] htmlFile =  ./sto-category/sto-techref-category/veracode-scanner-reference/index.html
+[DEBUG] mdFile =  ../OUT_markdown/MODULE_NAME/sto-techref-category/veracode-scanner-reference.md
 
- FILES PROCESSED:  31
+ FILES PROCESSED:  60
 
- FILES SKIPPED:  97
+ FILES SKIPPED:  64
 
  UNIQUE TOPIC IDS:  0
