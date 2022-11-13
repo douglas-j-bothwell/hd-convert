@@ -128,7 +128,7 @@ def getFrontMatterString(ymlData):
         frontMatter = frontMatter + "description: " + description + '\n'
         
         frontMatter = frontMatter + "tags: " + '\n'
-        frontMatter = frontMatter + "   - helpDocs" + '\n'
+        # frontMatter = frontMatter + "   - helpDocs" + '\n'
         tags = ymlData['tags']
         for t in tags:
             frontMatter = frontMatter + "   - " + t + '\n'
