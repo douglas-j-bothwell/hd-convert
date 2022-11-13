@@ -5,6 +5,7 @@ import requests # request img from web
 import shutil # save img locally
 import glob
 import yaml
+import json
 import pprint
 
 '''
@@ -31,6 +32,7 @@ _categoryLinkRE = re.compile('\((https:\/\/n?g?docs.harness.io\/category\/|/cate
 # _topicCategoryURL_RE = re.compile('\(\/category\/.*?\.*?\)')
 # _topicLinkRE = re.compile('\((.*\/article\/[^)]*)\)')
 
+_articlesDataFile = '../_data/article-mappings.LATEST.json'
 _topicIDRE = re.compile('helpdocs_topic_id:.*$')
 _mdRoot = './docs/'
 _topicMap = {}
@@ -196,3 +198,6 @@ for mdFileName in glob.iglob(_mdRoot + '**/**', recursive=True):
 
 pp = pprint.PrettyPrinter(depth=4)
 pp.pprint(_topicMap)
+
+with open(_articlesDataFile, 'w') as fp:
+    json.dump(_topicMap, fp)

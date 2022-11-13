@@ -20,7 +20,7 @@ with open(_imageRefsFile , 'r') as inFile:
     _imgRefsDict = yaml.safe_load(inFile)
 '''
 
-_articlesDataFile = '../_data/image-mappings.LATEST.yml'
+_articlesDataFile = '../_logs/image-mappings.LATEST.yml'
 _downloadImagesShellScript = '../_logs/download-images.LATEST.sh'
 _mdRoot = './docs'
 _imgMap = {}
@@ -43,7 +43,7 @@ def getImage(imgURL, imageFileNameFull, mdFile):
         with open(imageFileNameFull,'wb') as f:
             shutil.copyfileobj(res.raw, f)
         # # print('[DEBUG] Image downloaded:           ',imageFileNameFull)
-        if imageFileNameFull.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')) == False:
+        if imageFileNameFull.lower().endswith(('.png', '.jpg', '.jpeg')) == False:
             imageFileNameNew = imageFileNameFull + '.' + imghdr.what(imageFileNameFull)
             print("[INFO5] Added extension and renamed file ", imageFileNameNew)
             os.rename(imageFileNameFull, imageFileNameNew)
