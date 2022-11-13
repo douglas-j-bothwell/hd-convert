@@ -29,6 +29,9 @@ https://developer.harness.io/***category/set-up-build-infrastructure***
 Primarily of interest to writers. `02-get-images.sh` downloads and saves an image file for each URL found in the markdown. If the same URL is referenced multiple times, there will be multiple local copies of the same image. You can parse this YAML to find duplicate files and the markdown files that reference them. This file has the following format:
 
 `helpdocs-image-url`:
+
      `local-copy-1` : `markdown-file-that-references-local-copy-1`,
+     
      `local-copy-2` : `markdown-file-that-references-local-copy-2`,
+     
      ....
