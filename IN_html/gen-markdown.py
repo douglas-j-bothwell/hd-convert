@@ -127,11 +127,14 @@ def getFrontMatterString(ymlData):
         description = description.replace(':',' -- ' )
         frontMatter = frontMatter + "description: " + description + '\n'
         
+        '''
         frontMatter = frontMatter + "tags: " + '\n'
-        # frontMatter = frontMatter + "   - helpDocs" + '\n'
+        frontMatter = frontMatter + "   - Current Generation" + '\n'
+        # frontMatter = frontMatter + "   - FirstGen" + '\n'
         tags = ymlData['tags']
         for t in tags:
             frontMatter = frontMatter + "   - " + t + '\n'
+        '''
         
         frontMatter = frontMatter + "# sidebar_position: 2\n"
         frontMatter = frontMatter + "helpdocs_topic_id: " + ymlData['article_id'] + '\n'

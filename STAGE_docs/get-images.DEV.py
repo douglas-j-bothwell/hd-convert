@@ -45,7 +45,7 @@ def getImage(imgURL, imageFileNameFull, mdFile):
         # # print('[DEBUG] Image downloaded:           ',imageFileNameFull)
         if imageFileNameFull.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')) == False:
             imageFileNameNew = imageFileNameFull + '.' + imghdr.what(imageFileNameFull)
-            print("[INFO5] Added extension and renamed file ", imageFileNameNew)
+            print("[INFO] Added extension and renamed file ", imageFileNameNew)
             os.rename(imageFileNameFull, imageFileNameNew)
             imageFileNameFull = imageFileNameNew
 
@@ -55,10 +55,12 @@ def getImage(imgURL, imageFileNameFull, mdFile):
         imageMapIndiv[imageFileNameBase] = mdFile
         addImageMapToCatalog(imgURL, imageMapIndiv)
         
-        return os.path.abspath(imageFileNameFull)
+        imageFileNameFull = os.path.abspath(imageFileNameFull)
+        print('[DEBUG] in getImage(), returning ',imageFileNameFull)
+        return imageFileNameFull
     else:
         # '''
-        print('[WARNING2] Image download failed:      ', imgURL)
+        print('[WARNING] Image download failed:      ', imgURL)
         print('\tTry the curl command, see end of log')
         # commentString = "\n# file not downloaded in " + mdFile        
         _download_cmds.append("\n #File not downloaded in " + mdFile)
@@ -94,12 +96,12 @@ def addImageMapToCatalog(imgURL, imgMapIndiv):
     imgMapList.append(imgMapIndiv)
     # '''
     if len(imgMapList) > 1:
-        print('-------------------------')
+        # print('-------------------------')
         print('[WARNING1] Image referenced in multiple topics:      ', imgURL)
-        print('Image URL:      ', imgURL)
-        print('Image mappings list:')
-        print(imgMapList)
-        print('-------------------------')
+        print('See /data/image-mappings.LATEST.yml')
+        # print('Image mappings list:')
+        # print(imgMapList)
+        # print('-------------------------')
     # '''
     _imgMap[imgURL] = imgMapList
     return imgMapList
@@ -128,14 +130,17 @@ def getimageFileNameFull(imageURL, mdFileName):
         imgRoot, imgExt = os.path.splitext(imageURL)
         imageFileNameFull = imageTargetFolder + mdFileName + '-' + str(idx).zfill(2) + imgExt
         
+        # print("[DEBUG] in getimageFileNameFull(), returning ", imageFileNameFull)        
         return imageFileNameFull
 
 # Given the full path to an image file, return the local target to use 
 # in the markdown file that will reference it.
 # For example, ./static/run-ci-scripts-003.png
-def getImageTarget(imgFileName):     
+def getImageTarget(imgFileName):
     imgPath, imgName = os.path.split(imgFileName)
-    return "./static/" + imgName   
+    imgName = "./static/" + imgName
+    # print("[DEBUG] In getImageTarget, returning ", imgName)
+    return imgName   
 
 # Given a markdown file, apply the _imgURLpattern regex.
 # For each match in the file, do the following: 
@@ -160,14 +165,15 @@ def updateImageRefsInFile(mdFileName):
         allMatches = re.findall(_imgURLpattern, line)
         for imgURL in allMatches:
              imgFileName = getimageFileNameFull(imgURL, mdFileName)
-             if getImage(imgURL, imgFileName, mdFileName) != False: 
+             imgFileName = getImage(imgURL, imgFileName, mdFileName)
+             if imgFileName != False: 
                 imgTarget = getImageTarget(imgFileName)
                 # print('')
                 # print('______________________________________________________')
-                print("[DEBUG] mdFileName = ", mdFileName)
-                print("[DEBUG] imgURL = ", imgURL)
-                print("[DEBUG] imgTarget = ", imgTarget)
-                print("imageFileName = ", imgFileName)
+                # print("[DEBUG] mdFileName = ", mdFileName)
+                # print("[DEBUG] imgURL = ", imgURL)
+                # print("[DEBUG] imgTarget = ", imgTarget)
+                # print("imageFileName = ", imgFileName)
                 # print('______________________________________________________')
                 # print('')
                 newLine = newLine.replace(imgURL, imgTarget)
@@ -178,7 +184,7 @@ def updateImageRefsInFile(mdFileName):
                 print("\t line ", idx, ": ", line)
                 print('')
         if line != newLine:
-            print("[DEBUG] line updated:")
+            print("[INFO] line updated:")
             print("\t original ", idx, ": ", line) 
             print("\t updated  ", idx, ": ", newLine)       
         newMarkdown.append(newLine)
