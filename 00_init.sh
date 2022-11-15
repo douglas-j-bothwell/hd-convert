@@ -9,12 +9,6 @@
 
 # brew install node
 
-brew install python3
-pip3 install markdownify
-pip3 install pyyaml
-pip3 install requests
-
-
 #Install Latest Node
 #brew install node
 
@@ -26,3 +20,9 @@ pip3 install requests
 # brew link node@16
 # brew link --overwrite node@16
 # brew switch
+
+
+brew install python3
+pip3 install markdownify
+pip3 install pyyaml
+pip3 install requests
