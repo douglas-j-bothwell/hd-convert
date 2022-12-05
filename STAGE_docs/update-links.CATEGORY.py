@@ -24,21 +24,21 @@ _linksNotUpdated = []
 def getCategoryMap(mdRoot):
     categoryDict = {}
     for jsonFileName in glob.iglob(mdRoot + '**/**', recursive=True):
-        # print("[DEBUG] processing file ", jsonFileName)
+        print("[DEBUG] processing file ", jsonFileName)
         if jsonFileName.endswith('.json'):
             with open(jsonFileName, "r") as jsonFile:
                 catDict = json.load(jsonFile)
-                # print("[DEBUG] catDict = ", catDict )
+                print("[DEBUG] catDict = ", catDict )
                 if 'label' in catDict:
                     newPath = catDict['label']
-                    # print("[DEBUG] newPath (v1) = ", newPath )
+                    print("[DEBUG] newPath (v1) = ", newPath )
                     if 'customProps' in catDict: 
                         cProps = catDict['customProps']
                         if 'helpdocs_category_id' in cProps:
                             newCatID = cProps['helpdocs_category_id']
                             newPath = '/category/' + newPath.replace(' ', '-').lower()
-                            # print("[DEBUG] newPath (v2) = ", newPath )
-                            # print("[DEBUG] newCatID = ", newCatID )
+                            print("[DEBUG] newPath (v2) = ", newPath )
+                            print("[DEBUG] newCatID = ", newCatID )
                             categoryDict[newCatID] = newPath
     return categoryDict
     
@@ -78,14 +78,14 @@ def updateLine(mdFileName, line, idx, cDict):
             newLinkLocalTarget = cDict[hd_ID]
             newLinkLocalTarget = '(' + newLinkLocalTarget + ')'
             newLine = newLine.replace(curLink, newLinkLocalTarget) 
-            # print("[DEBUG7] Category ID found. curLink = ", curLink, " helpdocs ID = ", hd_ID, "\tnewLinkLocalTarget = ", newLinkLocalTarget)
+            print("[DEBUG7] Category ID found. curLink = ", curLink, " helpdocs ID = ", hd_ID, "\tnewLinkLocalTarget = ", newLinkLocalTarget)
             continue
          else:
             # case 1: category has no local equivalent and no linkNeedsDomain, add domain to current link so it points to the HD target 
             if ("docs.harness.io" in curLink) == False: 
                 curLinkPlusDomain = curLink.replace("(", "(https://docs.harness.io")     
                 newLine = newLine.replace(curLink, curLinkPlusDomain)
-                # print("[DEBUG7] Adding domain. curLink = ", curLink, "\tcurLinkPlusDomain = ", curLinkPlusDomain)
+                print("[DEBUG8] Adding domain. curLink = ", curLink, "\tcurLinkPlusDomain = ", curLinkPlusDomain)
                 continue
     return newLine        
 
