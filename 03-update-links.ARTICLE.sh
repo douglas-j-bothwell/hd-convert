@@ -9,7 +9,7 @@ cd ./STAGE_docs/
 
 rm ../_logs/update-links.ARTICLE.log
 rm ../_data/article-mappings.LATEST.json
-rm ../_data/article-mappings.LATEST.txt
+rm ../_data/_article-redirects.LATEST.txt
 
 echo "Starting python script: " 
 python3 update-links.ARTICLE.py > ../_logs/update-links.ARTICLE.log
