@@ -1,4 +1,4 @@
-This folder contains a set of scripts for converting our Harness docs from the [HelpDocs platform](https://docs.harness.io/) to the new [Harness Developer Hub](https://github.com/harness/developer-hub).
+This folder contains a set of scripts for converting our Harness docs from the [HelpDocs platform](https://www.helpdocs.io/) to the new [Harness Developer Hub](https://github.com/harness/developer-hub).
 
 # Migration Workflow for Docs Team 
 
